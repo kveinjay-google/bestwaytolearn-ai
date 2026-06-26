@@ -1,0 +1,15 @@
+{
+  "name": "bestwaytolearn-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BestWayToLearn.AI — static learning hub (zero build step)",
+  "scripts": {
+    "serve": "npx --yes serve public -l 3000",
+    "preview": "npm run serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/bestwaytolearn-ai.git"
+  },
+  "license": "MIT"
+}

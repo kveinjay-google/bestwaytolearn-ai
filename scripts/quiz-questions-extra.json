@@ -1,0 +1,842 @@
+[
+  {
+    "q": "强化学习（Reinforcement Learning）的典型场景是？",
+    "options": [
+      "邮件分类",
+      "AlphaGo 下棋",
+      "图像压缩",
+      "数据库索引"
+    ],
+    "answer": 1,
+    "explain": "强化学习通过奖励信号学习策略，AlphaGo、机器人控制是经典应用。",
+    "topic": "fundamentals"
+  },
+  {
+    "q": "过拟合（Overfitting）是指？",
+    "options": [
+      "训练数据太少",
+      "模型在训练集表现好、新数据表现差",
+      "训练速度太慢",
+      "GPU 内存不足"
+    ],
+    "answer": 1,
+    "explain": "过拟合像「背答案」——记住训练样本却泛化不了，需更多数据或正则化。",
+    "topic": "fundamentals"
+  },
+  {
+    "q": "零样本（Zero-shot）提示是指？",
+    "options": [
+      "不给任何示例，直接描述任务",
+      "提供 100 个示例",
+      "只用图片",
+      "必须微调模型"
+    ],
+    "answer": 0,
+    "explain": "零样本不附示例，靠模型预训练知识完成；少样本（Few-shot）才给几个例子。",
+    "topic": "prompt-lab"
+  },
+  {
+    "q": "少样本（Few-shot）提示的优势是？",
+    "options": [
+      "一定更便宜",
+      "用少量示例快速对齐输出格式与风格",
+      "只能用于代码",
+      "不需要提示词"
+    ],
+    "answer": 1,
+    "explain": "在提示词里放 1–3 个输入输出范例，能显著提升格式一致性。",
+    "topic": "prompt-lab"
+  },
+  {
+    "q": "微调（Fine-tuning）与提示工程的主要区别是？",
+    "options": [
+      "完全相同",
+      "微调改模型权重，提示工程不改权重只改输入",
+      "提示工程更贵",
+      "微调只能用于图像"
+    ],
+    "answer": 1,
+    "explain": "大多数用户用提示工程即可；微调适合企业有大量标注数据、要深度定制时。",
+    "topic": "fundamentals"
+  },
+  {
+    "q": "判别式 AI 与生成式 AI 的区别是？",
+    "options": [
+      "判别式创造新内容",
+      "判别式做分类/预测，生成式创造新内容",
+      "生成式只能分类",
+      "没有区别"
+    ],
+    "answer": 1,
+    "explain": "垃圾邮件检测是判别式；ChatGPT 写文、Midjourney 出图是生成式。",
+    "topic": "fundamentals"
+  },
+  {
+    "q": "预训练（Pre-training）阶段模型主要学习什么？",
+    "options": [
+      "只有用户聊天记录",
+      "海量通用语料中的语言规律与世界知识",
+      "仅图像像素",
+      "人工编写的全部规则"
+    ],
+    "answer": 1,
+    "explain": "大模型先在海量文本上预训练，再通过微调/RLHF 对齐产品行为。",
+    "topic": "fundamentals"
+  },
+  {
+    "q": "反向传播（Backpropagation）的作用是？",
+    "options": [
+      "生成图像",
+      "根据误差更新神经网络权重",
+      "连接互联网",
+      "压缩模型"
+    ],
+    "answer": 1,
+    "explain": "训练神经网络的核心算法，让模型从错误中学习调整参数。",
+    "topic": "fundamentals"
+  },
+  {
+    "q": "CNN（卷积神经网络）特别擅长处理？",
+    "options": [
+      "只有文本",
+      "图像与空间结构数据",
+      "只有音频",
+      "表格数据"
+    ],
+    "answer": 1,
+    "explain": "CNN 的卷积操作适合图像识别；Transformer 在 NLP 和多模态中更主流。",
+    "topic": "fundamentals"
+  },
+  {
+    "q": "无监督学习的典型应用是？",
+    "options": [
+      "邮件标注分类",
+      "客户分群聚类",
+      "房价预测（有标签）",
+      "手写数字识别（有标签）"
+    ],
+    "answer": 1,
+    "explain": "无监督从无标签数据发现结构，聚类、降维是常见任务。",
+    "topic": "fundamentals"
+  },
+  {
+    "q": "ChatGPT 相比普通网页搜索更适合？",
+    "options": [
+      "查精确股价代码",
+      "多轮对话、改写、头脑风暴与草稿生成",
+      "替代所有搜索引擎",
+      "只做数学证明"
+    ],
+    "answer": 1,
+    "explain": "对话 AI 强项是交互式创作与分析；实时精确数据仍需搜索工具核实。",
+    "topic": "apps"
+  },
+  {
+    "q": "Claude 的核心优势之一是？",
+    "options": [
+      "只能生成图像",
+      "长上下文与细腻文风，适合长文档与写作",
+      "仅限编程",
+      "无免费版"
+    ],
+    "answer": 1,
+    "explain": "Claude 以 200K 级上下文和安全对齐著称，Artifacts 可预览代码与文档。",
+    "topic": "apps"
+  },
+  {
+    "q": "Gemini 的独特优势是？",
+    "options": [
+      "与 Google 搜索、Gmail、Docs 等生态深度整合",
+      "只能本地运行",
+      "不支持多模态",
+      "无中文能力"
+    ],
+    "answer": 0,
+    "explain": "Google 生态用户可无缝使用 Gemini，并具备实时搜索与多模态能力。",
+    "topic": "apps"
+  },
+  {
+    "q": "Kimi 最适合的场景是？",
+    "options": [
+      "短短信回复",
+      "超长文档（如整本书、大型 PDF）分析",
+      "3D 建模",
+      "硬件驱动开发"
+    ],
+    "answer": 1,
+    "explain": "Kimi 以超长上下文闻名，适合文献阅读与大型资料消化。",
+    "topic": "apps"
+  },
+  {
+    "q": "DeepSeek 对开发者特别有吸引力是因为？",
+    "options": [
+      "只能画画",
+      "开源模型 + 极低 API 价格 + 强推理能力",
+      "必须买 GPU",
+      "不支持代码"
+    ],
+    "answer": 1,
+    "explain": "DeepSeek-R1 推理表现突出，API 成本约为 GPT-4 的极小比例。",
+    "topic": "apps"
+  },
+  {
+    "q": "通义千问对国内用户的主要便利是？",
+    "options": [
+      "必须翻墙",
+      "中文优化好、无需翻墙、通义生态整合",
+      "只能英文",
+      "无 API"
+    ],
+    "answer": 1,
+    "explain": "阿里通义系列中文能力强，且与通义万相、灵码等产品联动。",
+    "topic": "apps"
+  },
+  {
+    "q": "GitHub Copilot 的工作方式是？",
+    "options": [
+      "替代 IDE",
+      "在 VS Code 等 IDE 内实时补全与对话辅助编程",
+      "只能写 Python",
+      "自动提交 Git"
+    ],
+    "answer": 1,
+    "explain": "Copilot 深度集成编辑器，行级/块级补全是日常最高频用法。",
+    "topic": "apps"
+  },
+  {
+    "q": "Cursor 相比普通 VS Code 的核心差异是？",
+    "options": [
+      "只能写 HTML",
+      "AI 原生：全项目索引 + Agent 多文件自主编程",
+      "没有终端",
+      "不支持插件"
+    ],
+    "answer": 1,
+    "explain": "Cursor 理解整个代码库上下文，Agent 模式可跨文件编辑与运行命令。",
+    "topic": "apps"
+  },
+  {
+    "q": "Windsurf 的 Cascade 模式强调？",
+    "options": [
+      "只能补全一行",
+      "智能体自主理解代码库并执行多步骤任务",
+      "仅限 Java",
+      "必须付费才能用"
+    ],
+    "answer": 1,
+    "explain": "Cascade 是 Codeium 的 Agent 能力，与 Cursor Agent 同属 AI IDE 竞争阵营。",
+    "topic": "apps"
+  },
+  {
+    "q": "Claude Code 的主要使用形态是？",
+    "options": [
+      "浏览器插件",
+      "终端 Agent，深度操作代码库与 Git",
+      "手机 App",
+      "只能聊天"
+    ],
+    "answer": 1,
+    "explain": "Claude Code 面向命令行工作流，适合复杂重构与长时程编码任务。",
+    "topic": "apps"
+  },
+  {
+    "q": "OpenAI Codex CLI 适合哪类用户？",
+    "options": [
+      "只做 PPT",
+      "OpenAI 订阅用户，在终端或云沙箱运行编程 Agent",
+      "只能小学生",
+      "无需网络"
+    ],
+    "answer": 1,
+    "explain": "Codex CLI 是 OpenAI 官方命令行编程 Agent，含于 ChatGPT Plus/Pro。",
+    "topic": "apps"
+  },
+  {
+    "q": "Aider 的核心特点是？",
+    "options": [
+      "闭源且贵",
+      "开源、自带 API Key、深度 Git 集成自动 commit",
+      "只能写 Java",
+      "无多文件编辑"
+    ],
+    "answer": 1,
+    "explain": "Aider 是终端结对编程工具，每次修改自动 Git 记录，成本自控。",
+    "topic": "apps"
+  },
+  {
+    "q": "Bolt.new 最适合？",
+    "options": [
+      "内核开发",
+      "非程序员用自然语言快速生成可运行 Web 应用原型",
+      "训练大模型",
+      "数据库运维"
+    ],
+    "answer": 1,
+    "explain": "Bolt 在浏览器内生成全栈应用，适合 MVP 验证与快速建站。",
+    "topic": "apps"
+  },
+  {
+    "q": "Midjourney 的主要使用入口曾经是？",
+    "options": [
+      "只有命令行",
+      "Discord 机器人（现也支持 Web）",
+      "只能 Excel 插件",
+      "手机短信"
+    ],
+    "answer": 1,
+    "explain": "Midjourney 以 Discord 交互起家，现 Web 版也可使用；英文提示词效果通常更好。",
+    "topic": "hands-on"
+  },
+  {
+    "q": "Stable Diffusion 相比闭源模型的优势是？",
+    "options": [
+      "只能云端",
+      "开源可本地部署，社区模型与 ControlNet 生态丰富",
+      "画质一定最差",
+      "不支持 LoRA"
+    ],
+    "answer": 1,
+    "explain": "SD 可本地运行，LoRA/ControlNet 让用户完全掌控生成流程。",
+    "topic": "apps"
+  },
+  {
+    "q": "Flux 模型在图像生成上的亮点是？",
+    "options": [
+      "只能黑白图",
+      "高画质 + 精准文字渲染 + 可本地/API 调用",
+      "仅限视频",
+      "无开源版本"
+    ],
+    "answer": 1,
+    "explain": "Black Forest Labs 的 Flux 在文字渲染和人体结构上表现优异。",
+    "topic": "apps"
+  },
+  {
+    "q": "Suno 主要用来？",
+    "options": [
+      "写代码",
+      "文字描述生成完整歌曲（含人声与伴奏）",
+      "做 PPT",
+      "训练 LLM"
+    ],
+    "answer": 1,
+    "explain": "Suno 是 AI 音乐生成工具，输入风格描述即可得完整曲目。",
+    "topic": "apps"
+  },
+  {
+    "q": "ElevenLabs 的核心能力是？",
+    "options": [
+      "图像生成",
+      "高质量 TTS 与即时声音克隆",
+      "视频剪辑",
+      "搜索引擎"
+    ],
+    "answer": 1,
+    "explain": "1–3 分钟干声即可克隆音色，支持多语言配音与播客制作。",
+    "topic": "hands-on"
+  },
+  {
+    "q": "Perplexity 与 Google 传统搜索的主要区别是？",
+    "options": [
+      "只给链接列表",
+      "直接给带引用来源的答案",
+      "不能联网",
+      "只能查图片"
+    ],
+    "answer": 1,
+    "explain": "Perplexity 是 AI 搜索引擎，答案附引用，适合快速调研但仍需核实。",
+    "topic": "apps"
+  },
+  {
+    "q": "NotebookLM 的「Audio Overview」功能是？",
+    "options": [
+      "生成代码",
+      "把上传文档转成 AI 双人播客式音频",
+      "自动发邮件",
+      "训练模型"
+    ],
+    "answer": 1,
+    "explain": "NotebookLM 可将 PDF/笔记变成可听的播客摘要，适合文献学习。",
+    "topic": "apps"
+  },
+  {
+    "q": "秘塔 AI 搜索对中文用户的优势是？",
+    "options": [
+      "必须翻墙",
+      "无广告、带引用、支持学术/播客等多种中文搜索模式",
+      "只能英文",
+      "无免费版"
+    ],
+    "answer": 1,
+    "explain": "秘塔是国产 AI 搜索，中文调研体验好，国内可直接访问。",
+    "topic": "apps"
+  },
+  {
+    "q": "Notion AI 的价值在于？",
+    "options": [
+      "替代 Photoshop",
+      "在笔记与数据库工作流内直接写作、总结、翻译",
+      "只能聊天",
+      "无法协作"
+    ],
+    "answer": 1,
+    "explain": "Notion AI 与笔记深度结合，适合团队文档与知识管理场景。",
+    "topic": "apps"
+  },
+  {
+    "q": "Gamma 最适合快速完成？",
+    "options": [
+      "内核编译",
+      "从大纲生成精美演示文稿/文档",
+      "3D 动画",
+      "硬件设计"
+    ],
+    "answer": 1,
+    "explain": "输入主题或大纲即可生成 PPT 风格幻灯片，赶汇报场景效率高。",
+    "topic": "apps"
+  },
+  {
+    "q": "OpenClaw 的定位是？",
+    "options": [
+      "图像编辑器",
+      "开源 AI Agent 网关：Cron、Webhook、多通道推送",
+      "音乐播放器",
+      "浏览器"
+    ],
+    "answer": 1,
+    "explain": "OpenClaw 让 Agent 定时执行任务并推送到 Telegram/Slack/飞书等。",
+    "topic": "agent"
+  },
+  {
+    "q": "Dify 主要用于？",
+    "options": [
+      "剪辑视频",
+      "可视化搭建 LLM 应用、RAG 知识库与工作流",
+      "挖矿",
+      "硬件驱动"
+    ],
+    "answer": 1,
+    "explain": "Dify 是开源 Agent/应用开发平台，支持自托管与企业知识库 Bot。",
+    "topic": "agent"
+  },
+  {
+    "q": "扣子（Coze）的核心场景是？",
+    "options": [
+      "训练 GPU 集群",
+      "零代码搭建 Bot 并发布到飞书/微信等平台",
+      "只做 3D",
+      "替代操作系统"
+    ],
+    "answer": 1,
+    "explain": "字节扣子让非开发者也能拖拽搭建 Agent Bot，国内上手快。",
+    "topic": "agent"
+  },
+  {
+    "q": "n8n 的价值在于？",
+    "options": [
+      "只能画图",
+      "连接数百项服务，编排自动化工作流（含 AI 节点）",
+      "替代 Word",
+      "只能发邮件"
+    ],
+    "answer": 1,
+    "explain": "n8n 是开源自动化平台，可把 LLM 嵌入业务流水线。",
+    "topic": "agent"
+  },
+  {
+    "q": "Manus 类通用 Agent 适合？",
+    "options": [
+      "只回答天气",
+      "端到端多步骤任务：调研、写报告、浏览网页等",
+      "替代律师出庭",
+      "无需人工复核"
+    ],
+    "answer": 1,
+    "explain": "Manus 强调自主规划执行长任务，结果仍需人工审核。",
+    "topic": "agent"
+  },
+  {
+    "q": "MCP 协议解决的核心问题是？",
+    "options": [
+      "加快 GPU",
+      "统一 AI 与外部工具/数据源的连接方式",
+      "生成音乐",
+      "替代 HTTP"
+    ],
+    "answer": 1,
+    "explain": "Model Context Protocol 让 Claude、Cursor 等以标准方式接入 GitHub、数据库等。",
+    "topic": "knowledge"
+  },
+  {
+    "q": "Function Calling（函数调用）让 LLM 能？",
+    "options": [
+      "只能聊天",
+      "根据意图自动选择并调用预定义 API/函数",
+      "免费无限使用",
+      "无需网络"
+    ],
+    "answer": 1,
+    "explain": "函数调用是 Agent 调用天气、计算器、数据库的基础能力。",
+    "topic": "knowledge"
+  },
+  {
+    "q": "向量数据库在 RAG 中的作用是？",
+    "options": [
+      "训练模型",
+      "存储 Embedding 并做语义相似度检索",
+      "发送邮件",
+      "渲染网页"
+    ],
+    "answer": 1,
+    "explain": "用户提问时先检索最相关文档片段，再交给 LLM 生成答案。",
+    "topic": "fundamentals"
+  },
+  {
+    "q": "使用 AI 处理公司机密文件时，最稳妥的做法是？",
+    "options": [
+      "随便上传公有云",
+      "确认工具隐私政策，敏感数据用企业版/本地部署/脱敏",
+      "发给任何人",
+      "截图发朋友圈"
+    ],
+    "answer": 1,
+    "explain": "机密数据需企业协议或私有化；本站内训也强调信息安全合规。",
+    "topic": "ai-overview"
+  },
+  {
+    "q": "发现 AI 给出的事实性答案，正确做法是？",
+    "options": [
+      "直接引用发表",
+      "交叉核实来源，尤其是数字、日期、人名",
+      "永远不信",
+      "只问一次"
+    ],
+    "answer": 1,
+    "explain": "幻觉是 LLM 已知局限；Perplexity 等带引用也需二次核实关键事实。",
+    "topic": "ai-overview"
+  },
+  {
+    "q": "提示词迭代优化的正确流程是？",
+    "options": [
+      "一次写完永不改",
+      "初稿 → 看输出 → 补充约束/示例 → 再试",
+      "越短一定越好",
+      "删除所有格式要求"
+    ],
+    "answer": 1,
+    "explain": "提示词工程是实验科学；本站提示词实验室即用于对比迭代。",
+    "topic": "prompt-lab"
+  },
+  {
+    "q": "在提示词中指定「输出格式」的好处是？",
+    "options": [
+      "浪费 Token",
+      "让结果可直接复制进表格/代码/报告，减少二次整理",
+      "一定更慢",
+      "模型会拒绝"
+    ],
+    "answer": 1,
+    "explain": "如要求 JSON、Markdown 表格、分点列表，可显著提升可用性。",
+    "topic": "prompt-lab"
+  },
+  {
+    "q": "用 ChatGPT 分析 Excel 数据的推荐方式是？",
+    "options": [
+      "截图模糊表格",
+      "上传文件或粘贴结构化数据，并说明要计算的指标",
+      "只问「分析一下」",
+      "不能分析数据"
+    ],
+    "answer": 1,
+    "explain": "本站实操：提供清晰数据与问题，必要时用代码解释器生成图表。",
+    "topic": "hands-on"
+  },
+  {
+    "q": "用 Perplexity 做竞品调研时应注意？",
+    "options": [
+      "结论直接当投资依据",
+      "核对引用来源与日期，交叉验证关键数据",
+      "不用写关注点",
+      "只问一句「分析竞品」"
+    ],
+    "answer": 1,
+    "explain": "本站实操强调：Perplexity 强项是可核查来源，但价格等仍需回官网核实。",
+    "topic": "hands-on"
+  },
+  {
+    "q": "用 NotebookLM 读论文的推荐流程是？",
+    "options": [
+      "上传后不提问",
+      "上传 PDF → 提问细节 → 用摘要/播客功能巩固",
+      "只能一篇",
+      "替代导师审稿"
+    ],
+    "answer": 1,
+    "explain": "上传论文后可对话提问，Audio Overview 适合通勤时复习要点。",
+    "topic": "hands-on"
+  },
+  {
+    "q": "Midjourney 生成人物肖像时应注意？",
+    "options": [
+      "随意用明星名字",
+      "避免未经授权的真实名人姓名，注意平台内容政策",
+      "一定违法",
+      "只能画风景"
+    ],
+    "answer": 1,
+    "explain": "尊重肖像权与平台规则；商用前确认订阅许可条款。",
+    "topic": "hands-on"
+  },
+  {
+    "q": "声音克隆服务的合规前提是？",
+    "options": [
+      "下载网红音频即可",
+      "仅克隆本人或已获书面授权的声音",
+      "越吵越好",
+      "不需要录音"
+    ],
+    "answer": 1,
+    "explain": "Fish Audio/ElevenLabs 均需有权使用的干声样本。",
+    "topic": "hands-on"
+  },
+  {
+    "q": "OpenClaw cron 任务中 --tz \"Asia/Shanghai\" 的作用是？",
+    "options": [
+      "设置语言",
+      "指定定时任务按上海时区触发",
+      "加密消息",
+      "选择 AI 模型"
+    ],
+    "answer": 1,
+    "explain": "Cron 需明确时区，否则工作日 8:30 可能对不上本地时间。",
+    "topic": "hands-on"
+  },
+  {
+    "q": "Windsurf 做深色模式批量改动时，推荐先让 Agent？",
+    "options": [
+      "直接改完全部不确认",
+      "列出将修改的文件清单，确认后再执行",
+      "删除项目",
+      "只改一个变量"
+    ],
+    "answer": 1,
+    "explain": "本站实操：Cascade 先给计划再执行，比「全改」更可控。",
+    "topic": "hands-on"
+  },
+  {
+    "q": "用 Gamma 快速做路演 PPT 时，输入最好是？",
+    "options": [
+      "空白",
+      "清晰大纲：每页标题 + 3 个要点",
+      "随机 emoji",
+      "500 页全文"
+    ],
+    "answer": 1,
+    "explain": "结构化大纲让 Gamma 生成逻辑清晰的幻灯片，再微调视觉。",
+    "topic": "hands-on"
+  },
+  {
+    "q": "Stable Diffusion 中 ControlNet 的作用是？",
+    "options": [
+      "加速训练",
+      "用边缘/姿态等条件精确控制构图",
+      "只能调色",
+      "替代 LoRA"
+    ],
+    "answer": 1,
+    "explain": "ControlNet 让用户用草图、姿态图等约束生成结果，是 SD 生态核心扩展。",
+    "topic": "knowledge"
+  },
+  {
+    "q": "LoRA 在图像生成中常用于？",
+    "options": [
+      "压缩视频",
+      "轻量微调特定风格/角色/产品外观",
+      "训练 LLM",
+      "发邮件"
+    ],
+    "answer": 1,
+    "explain": "LoRA 是小体积适配器，可叠加基础模型实现品牌一致视觉。",
+    "topic": "knowledge"
+  },
+  {
+    "q": "Sora 类视频模型目前的主要局限是？",
+    "options": [
+      "完全取代实拍",
+      "物理细节可能失真、需人工筛选与合规审核",
+      "只能 1 秒",
+      "免费无限"
+    ],
+    "answer": 1,
+    "explain": "AI 视频进步快但仍需审核物理合理性、版权与平台规则。",
+    "topic": "apps"
+  },
+  {
+    "q": "Microsoft Copilot 在 Office 中最适合？",
+    "options": [
+      "重装系统",
+      "在 Word/Excel/PPT 内生成、总结、分析文档数据",
+      "替代 Outlook 服务器",
+      "只能画图"
+    ],
+    "answer": 1,
+    "explain": "M365 订阅用户可在 Office 侧边栏唤起 Copilot 处理日常文档。",
+    "topic": "apps"
+  },
+  {
+    "q": "Zcode 的主要定位是？",
+    "options": [
+      "音乐播放器",
+      "智谱 GLM 驱动的 Agentic 开发环境，支持长时程任务",
+      "只能聊天",
+      "英文 only"
+    ],
+    "answer": 1,
+    "explain": "Zcode 面向国内开发者，支持桌面/Remote 与飞书微信 Bot。",
+    "topic": "apps"
+  },
+  {
+    "q": "Gemini CLI 对开发者吸引点是？",
+    "options": [
+      "必须买 GPU",
+      "终端使用 + Google 账号 + 较高免费配额",
+      "只能写 C++",
+      "无文件操作"
+    ],
+    "answer": 1,
+    "explain": "Gemini CLI 开源，免费层额度在同类 CLI 工具中较有竞争力。",
+    "topic": "apps"
+  },
+  {
+    "q": "Cline 与 Cursor 的关系是？",
+    "options": [
+      "完全相同",
+      "Cline 是 VS Code 扩展，可接多种 API，不必换编辑器",
+      "Cline 只能画图",
+      "Cline 是搜索引擎"
+    ],
+    "answer": 1,
+    "explain": "Cline 在现有 VS Code 上加 Agent 能力，适合自选模型用户。",
+    "topic": "apps"
+  },
+  {
+    "q": "Continue.dev 支持哪些 IDE？",
+    "options": [
+      "只有 Vim",
+      "VS Code 与 JetBrains 全家桶",
+      "只能浏览器",
+      "只有 Xcode"
+    ],
+    "answer": 1,
+    "explain": "Continue 是开源助手，团队可共享 config.yaml 统一模型配置。",
+    "topic": "apps"
+  },
+  {
+    "q": "Amazon Q Developer 特别适合？",
+    "options": [
+      "只做插画",
+      "AWS 云开发、SDK 文档整合与企业合规场景",
+      "只能手机",
+      "替代硬件"
+    ],
+    "answer": 1,
+    "explain": "Q Developer 深度整合 AWS 知识，提供 IDE 插件与 CLI。",
+    "topic": "apps"
+  },
+  {
+    "q": "Grok 的主要差异化是？",
+    "options": [
+      "无网络",
+      "X（Twitter）实时信息流与 DeepSearch 等模式",
+      "只能编程",
+      "国内必用"
+    ],
+    "answer": 1,
+    "explain": "Grok 集成 X 平台，擅长追踪实时社交与新闻动态。",
+    "topic": "apps"
+  },
+  {
+    "q": "豆包对国内用户的便利包括？",
+    "options": [
+      "必须翻墙",
+      "中文对话自然、免费额度、抖音/飞书生态整合",
+      "只能英文",
+      "无多模态"
+    ],
+    "answer": 1,
+    "explain": "豆包是字节旗下助手，国内用户基数大、访问便利。",
+    "topic": "apps"
+  },
+  {
+    "q": "文心一言整合的百度资源不包括？",
+    "options": [
+      "百度搜索与文库",
+      "完全离线的全球私密数据库",
+      "中文创作优化",
+      "多模态能力"
+    ],
+    "answer": 1,
+    "explain": "文心一言优势在中文语料与百度搜索等国内资源整合。",
+    "topic": "apps"
+  },
+  {
+    "q": "可灵 AI 主要生成？",
+    "options": [
+      "只有音乐",
+      "文生/图生视频，国内访问便利",
+      "只有代码",
+      "3D 打印文件"
+    ],
+    "answer": 1,
+    "explain": "快手可灵在国内视频生成领域领先，有每日免费额度。",
+    "topic": "apps"
+  },
+  {
+    "q": "Runway Gen-3 主要面向？",
+    "options": [
+      "表格计算",
+      "专业视频生成与编辑工作流",
+      "邮件客户端",
+      "硬件驱动"
+    ],
+    "answer": 1,
+    "explain": "Runway 提供 Gen-3 视频生成及剪辑、抠像等专业功能。",
+    "topic": "apps"
+  },
+  {
+    "q": "Fish Audio 相比 ElevenLabs 对国内用户？",
+    "options": [
+      "必须翻墙且只支持英文",
+      "中文发音自然、访问便利，适合国内配音场景",
+      "不能克隆",
+      "只能 1 秒音频"
+    ],
+    "answer": 1,
+    "explain": "Fish Audio 是国产语音平台，中文场景可优先尝试。",
+    "topic": "apps"
+  },
+  {
+    "q": "AI 变现时「先作品集后报价」的原因是？",
+    "options": [
+      "法律规定",
+      "客户需要看到可验证交付样例才愿付费",
+      "没有意义",
+      "只能免费"
+    ],
+    "answer": 1,
+    "explain": "本站变现指南原则：用 1 个示范案例证明能力，再谈价格与套餐。",
+    "topic": "monetize"
+  },
+  {
+    "q": "接单做企业知识库 Bot 时，合同应明确？",
+    "options": [
+      "只口头约定",
+      "数据归属、更新频率、免责声明与维护边界",
+      "无限免费改",
+      "保证 100% 准确"
+    ],
+    "answer": 1,
+    "explain": "Bot 回答需标注仅供参考；数据与密钥归属客户，维护范围写清。",
+    "topic": "monetize"
+  }
+]

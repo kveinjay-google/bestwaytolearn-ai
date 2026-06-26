@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 520" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060a10"/>
+      <stop offset="45%" stop-color="#0a1219"/>
+      <stop offset="100%" stop-color="#060a10"/>
+    </linearGradient>
+    <linearGradient id="pathGrad" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#2dd4bf" stop-opacity="0.55"/>
+      <stop offset="33%" stop-color="#f59e0b" stop-opacity="0.45"/>
+      <stop offset="66%" stop-color="#a78bfa" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#fb7185" stop-opacity="0.5"/>
+    </linearGradient>
+    <radialGradient id="glowTeal" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2dd4bf" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#2dd4bf" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowRose" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fb7185" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#fb7185" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="56" height="56" patternUnits="userSpaceOnUse">
+      <path d="M56 0H0V56" fill="none" stroke="#2dd4bf" stroke-opacity="0.035" stroke-width="0.5"/>
+      <circle cx="0" cy="0" r="1" fill="#2dd4bf" fill-opacity="0.1"/>
+    </pattern>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+  <rect width="1440" height="520" fill="url(#bg)"/>
+  <rect width="1440" height="520" fill="url(#grid)"/>
+  <ellipse cx="200" cy="120" rx="320" ry="200" fill="url(#glowTeal)"/>
+  <ellipse cx="1240" cy="380" rx="340" ry="220" fill="url(#glowRose)"/>
+
+  <g filter="url(#soft)" opacity="0.85">
+    <path d="M180 300 C340 180, 500 420, 660 260 S980 140, 1140 280 S1280 360, 1320 300" stroke="url(#pathGrad)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <path d="M180 300 C340 180, 500 420, 660 260 S980 140, 1140 280 S1280 360, 1320 300" stroke="#ffffff" stroke-opacity="0.06" stroke-width="8" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <g stroke="#2dd4bf" stroke-opacity="0.12" stroke-width="1">
+    <path d="M120 420 C280 360, 420 460, 580 400"/>
+    <path d="M860 160 C1020 220, 1160 100, 1320 180"/>
+  </g>
+
+  <!-- Stage nodes -->
+  <g>
+    <circle cx="180" cy="300" r="28" fill="#060a10" stroke="#2dd4bf" stroke-width="2" stroke-opacity="0.7"/>
+    <circle cx="180" cy="300" r="10" fill="#2dd4bf" fill-opacity="0.35"/>
+    <text x="180" y="306" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#2dd4bf" fill-opacity="0.9">01</text>
+
+    <circle cx="500" cy="340" r="28" fill="#060a10" stroke="#f59e0b" stroke-width="2" stroke-opacity="0.7"/>
+    <circle cx="500" cy="340" r="10" fill="#f59e0b" fill-opacity="0.35"/>
+    <text x="500" y="346" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#f59e0b" fill-opacity="0.9">02</text>
+
+    <circle cx="820" cy="220" r="28" fill="#060a10" stroke="#a78bfa" stroke-width="2" stroke-opacity="0.7"/>
+    <circle cx="820" cy="220" r="10" fill="#a78bfa" fill-opacity="0.35"/>
+    <text x="820" y="226" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#a78bfa" fill-opacity="0.9">03</text>
+
+    <circle cx="1180" cy="290" r="28" fill="#060a10" stroke="#fb7185" stroke-width="2" stroke-opacity="0.7"/>
+    <circle cx="1180" cy="290" r="10" fill="#fb7185" fill-opacity="0.35"/>
+    <text x="1180" y="296" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#fb7185" fill-opacity="0.9">04</text>
+  </g>
+
+  <g fill="#2dd4bf" fill-opacity="0.3">
+    <circle cx="340" cy="220" r="2.5"/>
+    <circle cx="660" cy="260" r="3"/>
+    <circle cx="980" cy="160" r="2"/>
+    <circle cx="1080" cy="340" r="2.5"/>
+  </g>
+</svg>
