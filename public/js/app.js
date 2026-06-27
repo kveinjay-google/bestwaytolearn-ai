@@ -405,7 +405,13 @@ function initNeuralCanvas() {
     }));
   }
 
+  function canvasRgb() {
+    if (typeof Theme !== 'undefined') return Theme.getCanvasColors().rgb;
+    return '45, 212, 191';
+  }
+
   function draw() {
+    const rgb = canvasRgb();
     ctx.clearRect(0, 0, viewW, viewH);
     nodes.forEach(n => {
       n.x += n.vx;
@@ -421,7 +427,7 @@ function initNeuralCanvas() {
         const dist = Math.hypot(dx, dy);
         if (dist < linkDist) {
           const alpha = (1 - dist / linkDist) * 0.22;
-          ctx.strokeStyle = `rgba(45, 212, 191, ${alpha})`;
+          ctx.strokeStyle = `rgba(${rgb}, ${alpha})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(nodes[i].x, nodes[i].y);
@@ -432,7 +438,7 @@ function initNeuralCanvas() {
     }
 
     nodes.forEach(n => {
-      ctx.fillStyle = 'rgba(45, 212, 191, 0.55)';
+      ctx.fillStyle = `rgba(${rgb}, 0.55)`;
       ctx.beginPath();
       ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
       ctx.fill();
@@ -4352,6 +4358,7 @@ function refreshLocaleUI() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  if (typeof Theme !== 'undefined') Theme.init();
   if (typeof I18n !== 'undefined') {
     I18n.init();
     I18n.onChange(() => refreshLocaleUI());

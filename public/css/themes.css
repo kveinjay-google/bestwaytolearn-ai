@@ -1,0 +1,364 @@
+/* BestWayToLearn.AI — Theme presets (5 palettes & styles) */
+
+/* ── 1. Neural · 神经网络（默认深色科技） ── */
+html[data-theme="neural"] {
+  --bg-deep: #060a10;
+  --bg-surface: #0d1219;
+  --bg-elevated: #141b26;
+  --bg-card: #111820;
+  --border: rgba(45, 212, 191, 0.12);
+  --border-strong: rgba(45, 212, 191, 0.28);
+  --text-primary: #e8edf4;
+  --text-secondary: #8b9cb3;
+  --text-muted: #5a6d85;
+  --accent-teal: #2dd4bf;
+  --accent-teal-dim: rgba(45, 212, 191, 0.15);
+  --accent-amber: #f59e0b;
+  --accent-amber-dim: rgba(245, 158, 11, 0.12);
+  --accent-rose: #fb7185;
+  --accent-violet: #a78bfa;
+  --accent-sky: #38bdf8;
+  --accent-sky-dim: rgba(56, 189, 248, 0.14);
+  --font-display: 'Noto Serif SC', serif;
+  --font-body: 'Outfit', sans-serif;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-glow: 0 10px 28px rgba(0, 0, 0, 0.28);
+  --bg-glow-1: rgba(45, 212, 191, 0.07);
+  --bg-glow-2: rgba(167, 139, 250, 0.05);
+  --canvas-rgb: 45, 212, 191;
+  --canvas-opacity: 0.32;
+  --logo-accent: #2dd4bf;
+}
+
+html[data-theme="neural"] #phase-view-path {
+  --path-accent: #7dd3c7;
+  --path-accent-strong: #5eead4;
+  --path-surface: #101820;
+  --path-surface-raised: #151d28;
+  --path-surface-hover: #1a2433;
+}
+
+html[data-theme="neural"] #phase-validate {
+  --validate-accent: #94a8d4;
+  --validate-surface: #101820;
+  --validate-surface-raised: #161e2a;
+  --validate-surface-hover: #1b2433;
+}
+
+/* ── 2. Aurora · 极光（冷蓝紫渐变） ── */
+html[data-theme="aurora"] {
+  --bg-deep: #070b18;
+  --bg-surface: #0c1228;
+  --bg-elevated: #131b38;
+  --bg-card: #10162e;
+  --border: rgba(96, 165, 250, 0.14);
+  --border-strong: rgba(96, 165, 250, 0.32);
+  --text-primary: #e8ecf8;
+  --text-secondary: #8b9cc8;
+  --text-muted: #5a6a94;
+  --accent-teal: #60a5fa;
+  --accent-teal-dim: rgba(96, 165, 250, 0.16);
+  --accent-amber: #f472b6;
+  --accent-amber-dim: rgba(244, 114, 182, 0.12);
+  --accent-rose: #fb7185;
+  --accent-violet: #818cf8;
+  --accent-sky: #38bdf8;
+  --accent-sky-dim: rgba(56, 189, 248, 0.16);
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Outfit', sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --shadow-glow: 0 12px 36px rgba(30, 58, 138, 0.22);
+  --bg-glow-1: rgba(96, 165, 250, 0.12);
+  --bg-glow-2: rgba(129, 140, 248, 0.1);
+  --canvas-rgb: 96, 165, 250;
+  --canvas-opacity: 0.28;
+  --logo-accent: #93c5fd;
+}
+
+html[data-theme="aurora"] #phase-view-path {
+  --path-accent: #7eb8ff;
+  --path-accent-strong: #60a5fa;
+  --path-surface: #0e1430;
+  --path-surface-raised: #131b3a;
+  --path-surface-hover: #182248;
+  --path-phase-1: #7eb8ff;
+  --path-phase-2: #a78bfa;
+  --path-phase-3: #c4b5fd;
+  --path-phase-4: #f0abfc;
+}
+
+html[data-theme="aurora"] #phase-validate {
+  --validate-accent: #93c5fd;
+  --validate-accent-strong: #bfdbfe;
+  --validate-surface: #0e1430;
+  --validate-surface-raised: #131b3a;
+  --validate-surface-hover: #182248;
+  --validate-success: #67e8f9;
+}
+
+/* ── 3. Sunrise · 晨曦（暖色浅色） ── */
+html[data-theme="sunrise"] {
+  --bg-deep: #faf7f2;
+  --bg-surface: #fffdf9;
+  --bg-elevated: #ffffff;
+  --bg-card: #ffffff;
+  --border: rgba(234, 88, 12, 0.14);
+  --border-strong: rgba(234, 88, 12, 0.28);
+  --text-primary: #1c1917;
+  --text-secondary: #57534e;
+  --text-muted: #a8a29e;
+  --accent-teal: #ea580c;
+  --accent-teal-dim: rgba(234, 88, 12, 0.1);
+  --accent-amber: #d97706;
+  --accent-amber-dim: rgba(217, 119, 6, 0.1);
+  --accent-rose: #e11d48;
+  --accent-violet: #c026d3;
+  --accent-sky: #0284c7;
+  --accent-sky-dim: rgba(2, 132, 199, 0.1);
+  --font-display: 'Noto Serif SC', serif;
+  --font-body: 'Outfit', sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --shadow-glow: 0 10px 30px rgba(120, 53, 15, 0.08);
+  --bg-glow-1: rgba(251, 146, 60, 0.14);
+  --bg-glow-2: rgba(253, 186, 116, 0.12);
+  --canvas-rgb: 234, 88, 12;
+  --canvas-opacity: 0.08;
+  --logo-accent: #ea580c;
+}
+
+html[data-theme="sunrise"] .locale-content-notice {
+  background: rgba(234, 88, 12, 0.06);
+  border-color: rgba(234, 88, 12, 0.2);
+}
+
+html[data-theme="sunrise"] #phase-view-path {
+  --path-accent: #ea580c;
+  --path-accent-strong: #c2410c;
+  --path-surface: #fff7ed;
+  --path-surface-raised: #ffffff;
+  --path-surface-hover: #ffedd5;
+  --path-text-soft: #78716c;
+  --path-phase-1: #ea580c;
+  --path-phase-2: #d97706;
+  --path-phase-3: #ca8a04;
+  --path-phase-4: #be185d;
+}
+
+html[data-theme="sunrise"] #phase-validate {
+  --validate-accent: #c2410c;
+  --validate-accent-strong: #9a3412;
+  --validate-surface: #fff7ed;
+  --validate-surface-raised: #ffffff;
+  --validate-surface-hover: #ffedd5;
+  --validate-text-soft: #78716c;
+  --validate-success: #059669;
+}
+
+/* ── 4. Forest · 森林（深绿自然） ── */
+html[data-theme="forest"] {
+  --bg-deep: #080f0a;
+  --bg-surface: #0d1610;
+  --bg-elevated: #121f16;
+  --bg-card: #101a13;
+  --border: rgba(74, 222, 128, 0.12);
+  --border-strong: rgba(74, 222, 128, 0.26);
+  --text-primary: #e8f0ea;
+  --text-secondary: #8ba894;
+  --text-muted: #5a6f60;
+  --accent-teal: #4ade80;
+  --accent-teal-dim: rgba(74, 222, 128, 0.12);
+  --accent-amber: #fbbf24;
+  --accent-amber-dim: rgba(251, 191, 36, 0.1);
+  --accent-rose: #f87171;
+  --accent-violet: #86efac;
+  --accent-sky: #34d399;
+  --accent-sky-dim: rgba(52, 211, 153, 0.12);
+  --font-display: 'Noto Serif SC', serif;
+  --font-body: 'Outfit', sans-serif;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --shadow-glow: 0 8px 24px rgba(0, 0, 0, 0.32);
+  --bg-glow-1: rgba(74, 222, 128, 0.06);
+  --bg-glow-2: rgba(52, 211, 153, 0.05);
+  --canvas-rgb: 74, 222, 128;
+  --canvas-opacity: 0.22;
+  --logo-accent: #4ade80;
+}
+
+html[data-theme="forest"] #phase-view-path {
+  --path-accent: #6ee7b7;
+  --path-accent-strong: #4ade80;
+  --path-surface: #0e1812;
+  --path-surface-raised: #132019;
+  --path-surface-hover: #182820;
+  --path-phase-1: #4ade80;
+  --path-phase-2: #34d399;
+  --path-phase-3: #a3e635;
+  --path-phase-4: #fbbf24;
+}
+
+html[data-theme="forest"] #phase-validate {
+  --validate-accent: #6ee7b7;
+  --validate-surface: #0e1812;
+  --validate-surface-raised: #132019;
+  --validate-surface-hover: #182820;
+  --validate-success: #4ade80;
+}
+
+/* ── 5. Ink · 水墨（冷灰浅色极简） ── */
+html[data-theme="ink"] {
+  --bg-deep: #f1f5f9;
+  --bg-surface: #ffffff;
+  --bg-elevated: #f8fafc;
+  --bg-card: #ffffff;
+  --border: rgba(79, 70, 229, 0.12);
+  --border-strong: rgba(79, 70, 229, 0.24);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --accent-teal: #4f46e5;
+  --accent-teal-dim: rgba(79, 70, 229, 0.08);
+  --accent-amber: #0ea5e9;
+  --accent-amber-dim: rgba(14, 165, 233, 0.08);
+  --accent-rose: #e11d48;
+  --accent-violet: #6366f1;
+  --accent-sky: #0284c7;
+  --accent-sky-dim: rgba(2, 132, 199, 0.08);
+  --font-display: 'IBM Plex Mono', monospace;
+  --font-body: 'Outfit', sans-serif;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --shadow-glow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  --bg-glow-1: rgba(99, 102, 241, 0.08);
+  --bg-glow-2: rgba(148, 163, 184, 0.12);
+  --canvas-rgb: 99, 102, 241;
+  --canvas-opacity: 0.06;
+  --logo-accent: #4f46e5;
+}
+
+html[data-theme="ink"] .locale-content-notice {
+  background: rgba(79, 70, 229, 0.06);
+  border-color: rgba(79, 70, 229, 0.18);
+}
+
+html[data-theme="ink"] #phase-view-path {
+  --path-accent: #4f46e5;
+  --path-accent-strong: #4338ca;
+  --path-surface: #f8fafc;
+  --path-surface-raised: #ffffff;
+  --path-surface-hover: #f1f5f9;
+  --path-text-soft: #64748b;
+  --path-phase-1: #4f46e5;
+  --path-phase-2: #0ea5e9;
+  --path-phase-3: #8b5cf6;
+  --path-phase-4: #ec4899;
+}
+
+html[data-theme="ink"] #phase-validate {
+  --validate-accent: #6366f1;
+  --validate-accent-strong: #4f46e5;
+  --validate-surface: #f8fafc;
+  --validate-surface-raised: #ffffff;
+  --validate-surface-hover: #f1f5f9;
+  --validate-text-soft: #64748b;
+  --validate-success: #059669;
+}
+
+html[lang="en"][data-theme="ink"] {
+  --font-display: 'IBM Plex Mono', monospace;
+}
+
+/* ── Theme picker UI ── */
+.header-prefs-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.pref-theme-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.pref-theme-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  padding: 0.45rem 0.55rem;
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.pref-theme-btn:hover {
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+
+.pref-theme-btn.active {
+  border-color: var(--accent-teal);
+  color: var(--accent-teal);
+  background: var(--accent-teal-dim);
+  box-shadow: 0 0 0 1px var(--accent-teal-dim);
+}
+
+.pref-theme-swatch {
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.pref-theme-btn[data-theme="neural"] .pref-theme-swatch {
+  background: linear-gradient(135deg, #060a10 45%, #2dd4bf 100%);
+}
+
+.pref-theme-btn[data-theme="aurora"] .pref-theme-swatch {
+  background: linear-gradient(135deg, #070b18 40%, #60a5fa 55%, #818cf8 100%);
+}
+
+.pref-theme-btn[data-theme="sunrise"] .pref-theme-swatch {
+  background: linear-gradient(135deg, #faf7f2 35%, #fb923c 70%, #ea580c 100%);
+}
+
+.pref-theme-btn[data-theme="forest"] .pref-theme-swatch {
+  background: linear-gradient(135deg, #080f0a 45%, #4ade80 100%);
+}
+
+.pref-theme-btn[data-theme="ink"] .pref-theme-swatch {
+  background: linear-gradient(135deg, #f1f5f9 40%, #4f46e5 100%);
+}
+
+.pref-theme-name {
+  flex: 1;
+  line-height: 1.2;
+}
+
+.header-prefs-divider {
+  height: 1px;
+  margin: 0.85rem 0;
+  background: var(--border);
+}
+
+.header-prefs-toggle .header-prefs-icon--theme {
+  font-size: 0.85rem;
+  line-height: 1;
+}

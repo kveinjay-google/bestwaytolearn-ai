@@ -4,6 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#060a10">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('bwtl-theme');
+        if (t) document.documentElement.dataset.theme = t;
+        else document.documentElement.dataset.theme = 'neural';
+      } catch (e) {
+        document.documentElement.dataset.theme = 'neural';
+      }
+    })();
+  </script>
   <meta name="description" content="BestWayToLearn.AI — 四阶段 AI 系统学习：认知基础、工具掌握、实战应用与知识测验。100 个术语、43 款主流应用、提示词实验室与真实实操教程，从零到实战。">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="application-name" content="BestWayToLearn.AI">
@@ -77,7 +88,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=20260627c">
+  <link rel="stylesheet" href="css/styles.css?v=20260627d">
+  <link rel="stylesheet" href="css/themes.css?v=20260627a">
 </head>
 <body>
   <canvas id="neural-canvas" aria-hidden="true"></canvas>
@@ -208,12 +220,39 @@
         <a href="#ai-nav" role="tab" data-nav-tab="aiToolsNav" data-i18n="nav.toolsNav">AI导航</a>
       </nav>
       <div class="header-prefs" id="header-prefs">
-        <button class="header-prefs-toggle" id="header-prefs-toggle" type="button" aria-expanded="false" aria-controls="header-prefs-panel" data-i18n-aria="settings.fontToggle" data-i18n-title="settings.fontToggle" title="字体大小">
-          <span class="header-prefs-icon" aria-hidden="true">Aa</span>
+        <button class="header-prefs-toggle" id="header-prefs-toggle" type="button" aria-expanded="false" aria-controls="header-prefs-panel" data-i18n-aria="settings.toggle" data-i18n-title="settings.toggle" title="显示设置">
+          <span class="header-prefs-icon header-prefs-icon--theme" aria-hidden="true">◐</span>
         </button>
         <div class="header-prefs-panel hidden" id="header-prefs-panel" role="dialog" aria-labelledby="header-prefs-title">
-          <h3 class="header-prefs-title" id="header-prefs-title" data-i18n="settings.fontSize">字体大小</h3>
+          <h3 class="header-prefs-title" id="header-prefs-title" data-i18n="settings.title">显示设置</h3>
           <div class="header-prefs-field">
+            <span class="header-prefs-label" data-i18n="settings.theme">配色风格</span>
+            <div class="pref-theme-list" role="listbox" data-i18n-aria="settings.themeGroup" aria-label="配色风格">
+              <button type="button" class="pref-theme-btn active" data-theme="neural" role="option" aria-selected="true" aria-pressed="true">
+                <span class="pref-theme-swatch" aria-hidden="true"></span>
+                <span class="pref-theme-name" data-i18n="settings.themeNeural">神经网络</span>
+              </button>
+              <button type="button" class="pref-theme-btn" data-theme="aurora" role="option" aria-selected="false" aria-pressed="false">
+                <span class="pref-theme-swatch" aria-hidden="true"></span>
+                <span class="pref-theme-name" data-i18n="settings.themeAurora">极光</span>
+              </button>
+              <button type="button" class="pref-theme-btn" data-theme="sunrise" role="option" aria-selected="false" aria-pressed="false">
+                <span class="pref-theme-swatch" aria-hidden="true"></span>
+                <span class="pref-theme-name" data-i18n="settings.themeSunrise">晨曦</span>
+              </button>
+              <button type="button" class="pref-theme-btn" data-theme="forest" role="option" aria-selected="false" aria-pressed="false">
+                <span class="pref-theme-swatch" aria-hidden="true"></span>
+                <span class="pref-theme-name" data-i18n="settings.themeForest">森林</span>
+              </button>
+              <button type="button" class="pref-theme-btn" data-theme="ink" role="option" aria-selected="false" aria-pressed="false">
+                <span class="pref-theme-swatch" aria-hidden="true"></span>
+                <span class="pref-theme-name" data-i18n="settings.themeInk">水墨</span>
+              </button>
+            </div>
+          </div>
+          <div class="header-prefs-divider" aria-hidden="true"></div>
+          <div class="header-prefs-field">
+            <span class="header-prefs-label" data-i18n="settings.fontSize">字体大小</span>
             <div class="pref-font-btns" role="group" data-i18n-aria="settings.fontSize" aria-label="字体大小">
               <button type="button" class="pref-font-btn" data-size="sm" aria-pressed="false" data-i18n="settings.fontSm">小</button>
               <button type="button" class="pref-font-btn active" data-size="md" aria-pressed="true" data-i18n="settings.fontMd">标准</button>
@@ -855,6 +894,7 @@
   <script src="js/ai-tools-nav.js?v=20260703b"></script>
   <script src="js/ai-skills-nav.js?v=20260707a"></script>
   <script src="js/terms.js?v=20260627a"></script>
-  <script src="js/app.js?v=20260627e"></script>
+  <script src="js/theme.js?v=20260627a"></script>
+  <script src="js/app.js?v=20260627f"></script>
 </body>
 </html>
