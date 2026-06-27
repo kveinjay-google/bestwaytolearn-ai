@@ -10,6 +10,8 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT_JS = ROOT / 'public' / 'js' / 'ai-skills-nav.js'
 OUT_EN = ROOT / 'public' / 'js' / 'locales' / 'en-skills-nav-generated.json'
 
+MIN_STARS = 1000
+
 # (name, category, agents, stars, desc, github, install, installNote?)
 RAW: list[tuple] = [
     # ── Skill 安装与合集 ──
@@ -73,184 +75,74 @@ RAW: list[tuple] = [
      'Vue 3 生态专项 Skill：组合式 API、Pinia、Nuxt 模式与最佳实践，适合 Vue 全栈项目。',
      'https://github.com/vuejs-ai/skills', 'npx skills add vuejs-ai/skills -g -y', None),
 
-    # ── 电商与零售 ──
-    ('Awesome E-commerce Skills', '电商与零售', ['Claude Code', 'Cursor', 'Antigravity'], 31,
-     '电商 Skill 索引合集：选品、Listing、广告、客服与店铺运营模板，适合独立站与平台卖家。',
-     'https://github.com/finsilabs/awesome-ecommerce-skills', 'npx skills add finsilabs/awesome-ecommerce-skills -g -y', None),
-    ('Shopify Agent Skills', '电商与零售', ['Cursor', 'Claude Code', 'Codex'], 43,
-     'Shopify 店铺运营 Skill：主题定制、商品上架、订单流程与营销插件集成指引。',
-     'https://github.com/dragnoir/Shopify-agent-skills', 'npx skills add dragnoir/Shopify-agent-skills -g -y', None),
-    ('Claude SEO (电商模块)', '电商与零售', ['Claude Code', 'Cursor', 'Codex'], 9933,
-     '含电商 SEO 子 Skill：类目页、商品结构化数据、国际站 hreflang 与转化型落地页优化。',
+    # ── 视频剪辑与生成 ──
+    ('OpenMontage', '视频剪辑与生成', ['Cursor', 'Claude Code', 'Codex', 'Gemini CLI'], 24341,
+     '开源 Agent 视频制作系统：12 条流水线、52 个工具、500+ Skill，覆盖脚本、分镜、TTS、剪辑与成片导出，把编码助手变成视频工作室。',
+     'https://github.com/calesthio/OpenMontage', 'npx skills add calesthio/OpenMontage -g -y',
+     '含 FFmpeg、Remotion、文生视频与配音集成；详见仓库 AGENT_GUIDE.md'),
+    ('ViMax', '视频剪辑与生成', ['Cursor', 'Claude Code', 'Codex'], 10703,
+     '港大出品的 Agent 视频生成框架：导演、编剧、制片与生成器一体化，从创意到成片全自动编排。',
+     'https://github.com/HKUDS/ViMax', 'npx skills add HKUDS/ViMax -g -y', None),
+    ('Remotion Skills', '视频剪辑与生成', ['Cursor', 'Claude Code', 'Codex'], 3804,
+     '用 React 编程式生成视频：口播字幕、动效、品牌片头与数据可视化短片，适合知识类短视频批量生产。',
+     'https://github.com/remotion-dev/skills', 'npx skills add remotion-dev/skills -g -y', None),
+    ('Pika Skills', '视频剪辑与生成', ['Cursor', 'Claude Code', 'Codex'], 1147,
+     'Pika AI 视频生成 Skill：文生视频、图生视频与风格化特效工作流，适合创意短片与广告概念片。',
+     'https://github.com/Pika-Labs/Pika-Skills', 'npx skills add Pika-Labs/Pika-Skills -g -y', None),
+    ('Google Gemini 视频生成', '视频剪辑与生成', ['Cursor', 'Claude Code', 'Gemini CLI', 'Codex'], 14169,
+     'Google 官方 Gemini API Skill：含 media_generation 子 Skill，支持 Veo 文生视频、图生视频与多模态素材生成。',
+     'https://github.com/google/skills/tree/main/skills/cloud/gemini-api', 'npx skills add google/skills --skill gemini-api -g -y',
+     '安装后可用 media_generation 等子 Skill 调用 Veo 视频模型'),
+    ('OpenAI Codex 多媒体', '视频剪辑与生成', ['Codex', 'Cursor', 'Claude Code'], 22931,
+     'OpenAI 官方 Codex Skill 目录：含 imagegen、sora 等多媒体生成与编辑子 Skill，适合 Agent 驱动创意素材生产。',
+     'https://github.com/openai/skills', 'npx skills add openai/skills -g -y',
+     'Codex 内可用 /skills 浏览 imagegen 等 curated 子 Skill'),
+    ('Marketing Skills (视频)', '视频剪辑与生成', ['Claude Code', 'Cursor', 'Codex'], 35148,
+     '营销 Skill 合集含 video 子 Skill：短视频脚本、广告片结构、社媒视频策略与转化型视频文案工作流。',
+     'https://github.com/coreyhaines31/marketingskills/tree/main/skills/video', 'npx skills add coreyhaines31/marketingskills --skill video -g -y', None),
+    ('Social Media Skills (短视频)', '视频剪辑与生成', ['Claude Code', 'Cursor', 'Codex'], 1537,
+     '社交媒体内容策略 Skill：短视频脚本、话题策划、分镜节奏与跨平台内容日历，适合 TikTok / 抖音 / Reels 运营。',
+     'https://github.com/charlie947/social-media-skills', 'npx skills add charlie947/social-media-skills -g -y', None),
+
+    # ── 跨境电商与电商 ──
+    ('Claude SEO (电商)', '跨境电商与电商', ['Claude Code', 'Cursor', 'Codex'], 9933,
+     '含电商 SEO 子 Skill：类目页、商品结构化数据、国际站 hreflang 与转化型落地页优化，适合平台卖家与 DTC。',
      'https://github.com/AgriciDaniel/claude-seo', 'npx skills add AgriciDaniel/claude-seo -g -y',
      '安装后可用 ecommerce-seo、schema-markup 等子 Skill'),
-    ('Solopreneur OPC Skills', '电商与零售', ['Claude Code', 'Cursor'], 943,
-     '一人公司电商 Skill：产品页文案、定价策略、邮件序列与微型 SaaS 变现工作流。',
-     'https://github.com/ReScienceLab/opc-skills', 'npx skills add ReScienceLab/opc-skills -g -y', None),
-    ('eCommerce Claude Skills', '电商与零售', ['Claude Code', 'Cursor'], 3,
-     '面向电商场景的 Claude Skill 模板：商品描述、促销邮件与客户旅程脚本。',
-     'https://github.com/amanamabasiakpan/Claude-Skills-for-eCommerce', 'npx skills add amanamabasiakpan/Claude-Skills-for-eCommerce -g -y', None),
-
-    # ── 跨境电商 ──
-    ('Cross-border E-commerce Skills', '跨境电商', ['Claude Code', 'Antigravity', 'Cursor'], 13,
-     '跨境 Skill 模板：选品调研、市场分析、IP 风险、关键词与 Listing 文案，覆盖 Amazon / 独立站出海场景。',
-     'https://github.com/noique/cross-border-ecommerce-skills', 'npx skills add noique/cross-border-ecommerce-skills -g -y', None),
-    ('GEO SEO Claude', '跨境电商', ['Claude Code', 'Cursor', 'Codex'], 8721,
+    ('GEO SEO Claude', '跨境电商与电商', ['Claude Code', 'Cursor', 'Codex'], 8721,
      'GEO 优先 SEO Skill：AI 搜索可见性、品牌权威、Schema 与多平台引用优化，适合出海品牌获客。',
      'https://github.com/zubair-trabzada/geo-seo-claude', 'npx skills add zubair-trabzada/geo-seo-claude -g -y', None),
-    ('Claude SEO', '跨境电商', ['Claude Code', 'Cursor', 'Codex'], 9933,
-     '25 个子 Skill + 18 子 Agent：技术 SEO、国际 SEO、电商 SEO、外链与 PDF/Excel 报告，适合跨境站增长。',
-     'https://github.com/AgriciDaniel/claude-seo', 'npx skills add AgriciDaniel/claude-seo -g -y', None),
-    ('Marketing Skill Pack', '跨境电商', ['Claude Code', 'Cursor'], 38,
-     'AI 营销工具一键安装包：Claude SEO、博客、Skill Forge 与 WordPress MCP，适合出海内容营销栈。',
-     'https://github.com/AgriciDaniel/marketing-skill-pack', 'npx skills add AgriciDaniel/marketing-skill-pack -g -y', None),
-    ('Last 30 Days', '跨境电商', ['Cursor', 'Claude Code', 'Codex'], 47046,
+    ('Last 30 Days', '跨境电商与电商', ['Cursor', 'Claude Code', 'Codex'], 47046,
      '调研目标市场近 30 天海外讨论热度：Reddit、X、YouTube、HN 合成报告，适合跨境选品与趋势验证。',
      'https://github.com/mvanhorn/last30days-skill', 'npx skills add mvanhorn/last30days-skill -g -y', None),
-    ('Nexscope E-commerce Skills', '跨境电商', ['Claude Code', 'Cursor', 'OpenClaw'], 7,
-     '跨境多平台情报 Skill：Amazon、TikTok Shop、Shopify、Temu 选品、关键词、竞品、定价与专利风险分析。',
-     'https://github.com/nexscope-ai/nexscope-ecommerce-skills', 'npx skills add nexscope-ai/nexscope-ecommerce-skills -g -y', None),
-
-    # ── Amazon 平台电商 ──
-    ('Amazon Seller Skill Suite', 'Amazon 平台电商', ['Claude Code', 'Cursor'], 3,
-     '6 个 Claude Cowork Skill：Amazon 卖家 Listing、广告、库存与客服运营工作流模板。',
-     'https://github.com/scottconverse/amazon-seller-skill-suite', 'npx skills add scottconverse/amazon-seller-skill-suite -g -y', None),
-    ('Amazon Listing Optimizer', 'Amazon 平台电商', ['Claude Code', 'Cursor'], 5,
-     'Amazon Listing 优化 Skill：标题、五点描述、A+ 内容与关键词布局 checklist。',
-     'https://github.com/boothzoo123/boothzoo-amazon-listing-optimizer', 'npx skills add boothzoo123/boothzoo-amazon-listing-optimizer -g -y', None),
-    ('Nexscope E-commerce (Amazon)', 'Amazon 平台电商', ['Claude Code', 'Cursor', 'OpenClaw'], 7,
-     'Amazon 专项：选品调研、关键词优化、竞品分析、定价监控与专利风险评估。',
-     'https://github.com/nexscope-ai/nexscope-ecommerce-skills', 'npx skills add nexscope-ai/nexscope-ecommerce-skills -g -y', None),
-    ('Apify Agent Skills', 'Amazon 平台电商', ['Cursor', 'Claude Code', 'Codex'], 2181,
+    ('Apify Agent Skills', '跨境电商与电商', ['Cursor', 'Claude Code', 'Codex'], 2181,
      '网页抓取 Skill：结构化采集 Amazon 竞品、评论与市场数据，适合卖家情报与选品验证。',
      'https://github.com/apify/agent-skills', 'npx skills add apify/agent-skills -g -y', None),
-    ('Cross-border E-commerce Skills', 'Amazon 平台电商', ['Claude Code', 'Antigravity', 'Cursor'], 13,
-     '跨境 Amazon 模板：选品调研、IP 风险、关键词与 Listing 文案，覆盖 FBA 与精品卖家场景。',
-     'https://github.com/noique/cross-border-ecommerce-skills', 'npx skills add noique/cross-border-ecommerce-skills -g -y', None),
 
-    # ── TikTok 电商 ──
-    ('TikTok Shop Skills', 'TikTok 电商', ['Claude Code', 'Cursor', 'OpenClaw'], 0,
-     'TikTok Shop 有机社交电商 Skill：短视频带货脚本、店铺运营与自然流量增长工作流。',
-     'https://github.com/Jhonhob/tiktok-shop-skills', 'npx skills add Jhonhob/tiktok-shop-skills -g -y', None),
-    ('Nexscope E-commerce (TikTok)', 'TikTok 电商', ['Claude Code', 'Cursor', 'OpenClaw'], 7,
-     'TikTok Shop 平台工具：趋势监测、竞品分析、关键词与定价策略，含 Temu 等多平台扩展。',
-     'https://github.com/nexscope-ai/nexscope-ecommerce-skills', 'npx skills add nexscope-ai/nexscope-ecommerce-skills -g -y', None),
-    ('OpenClaw E-commerce Ads', 'TikTok 电商', ['OpenClaw', 'Claude Code', 'Cursor'], 41,
-     '电商广告创意 Skill：TVC 工艺、Seedance 视频生成与 AI 漫剧工作流，适合 TikTok / 短视频投放素材。',
-     'https://github.com/lujiaheng-artpivot/openclaw-ecommerce-ad-skills', 'npx skills add lujiaheng-artpivot/openclaw-ecommerce-ad-skills -g -y', None),
-    ('Short Video Skills', 'TikTok 电商', ['Codex', 'Claude Code', 'Cursor'], 2,
-     '短视频全流程 Skill：脚本、分镜、剪辑节奏与发布 checklist，适合 TikTok Shop 带货短视频。',
-     'https://github.com/lixiaolin378-dev/short-video-skills', 'npx skills add lixiaolin378-dev/short-video-skills -g -y', None),
-
-    # ── 独立站 DTC ──
-    ('Shopify Agent Skills', '独立站 DTC', ['Cursor', 'Claude Code', 'Codex'], 43,
-     'Shopify DTC 品牌站 Skill：主题定制、商品上架、订阅盒与营销插件集成，适合独立站卖家。',
-     'https://github.com/dragnoir/Shopify-agent-skills', 'npx skills add dragnoir/Shopify-agent-skills -g -y', None),
-    ('Nexscope E-commerce (Shopify)', '独立站 DTC', ['Claude Code', 'Cursor', 'OpenClaw'], 7,
-     'Shopify / DTC 情报 Skill：选品、关键词、竞品定价与落地页转化优化辅助。',
-     'https://github.com/nexscope-ai/nexscope-ecommerce-skills', 'npx skills add nexscope-ai/nexscope-ecommerce-skills -g -y', None),
-    ('Solopreneur OPC Skills', '独立站 DTC', ['Claude Code', 'Cursor'], 943,
-     '一人公司 DTC Skill：产品页文案、定价策略、邮件序列与品牌站变现工作流。',
-     'https://github.com/ReScienceLab/opc-skills', 'npx skills add ReScienceLab/opc-skills -g -y', None),
-    ('Claude SEO (DTC 落地页)', '独立站 DTC', ['Claude Code', 'Cursor', 'Codex'], 9933,
-     'DTC 落地页 SEO：结构化数据、转化型产品页、国际站 hreflang 与品牌搜索可见性优化。',
-     'https://github.com/AgriciDaniel/claude-seo', 'npx skills add AgriciDaniel/claude-seo -g -y', None),
-    ('GEO SEO Claude', '独立站 DTC', ['Claude Code', 'Cursor', 'Codex'], 8721,
-     'DTC 品牌 GEO 优化：AI 搜索引用、品牌权威与 Schema，提升独立站自然获客。',
-     'https://github.com/zubair-trabzada/geo-seo-claude', 'npx skills add zubair-trabzada/geo-seo-claude -g -y', None),
-
-    # ── 小红书运营 ──
-    ('Xiaohongshu Skills', '小红书运营', ['Cursor', 'Claude Code', 'Codex'], 92,
-     '小红书封面与笔记 Skill：按主题生成精美封面图（Nano Banana Pro），适合种草图文与品牌笔记。',
-     'https://github.com/freestylefly/xiaohongshu-skills', 'npx skills add freestylefly/xiaohongshu-skills -g -y', None),
-    ('XHS Playwright Skill', '小红书运营', ['Claude Code', 'Cursor'], 29,
-     '基于 Playwright 的小红书工具 Skill：搜索笔记、帖子详情与用户主页数据提取，适合竞品与达人分析。',
-     'https://github.com/DeliciousBuding/xiaohongshu-skill', 'npx skills add DeliciousBuding/xiaohongshu-skill -g -y', None),
-    ('Rednote Skills', '小红书运营', ['Claude Code', 'Cursor', 'OpenClaw'], 48,
-     '连接小红书（RedNote）的 Agent Skill：读取、搜索与内容分析，适合运营复盘与选题研究。',
-     'https://github.com/MrMao007/rednote-skills', 'npx skills add MrMao007/rednote-skills -g -y', None),
-    ('XHS MCP Skills', '小红书运营', ['Claude Code', 'Cursor', 'OpenClaw'], 227,
-     '小红书 MCP 集成 Skill：通过 MCP 协议读写小红书数据，适合自动化运营与多账号工作流。',
-     'https://github.com/autoclaw-cc/xiaohongshu-mcp-skills', 'npx skills add autoclaw-cc/xiaohongshu-mcp-skills -g -y', None),
-    ('Agent Reach', '小红书运营', ['Cursor', 'Claude Code', 'Codex', 'OpenClaw'], 42834,
+    # ── 小红书与内容运营 ──
+    ('Agent Reach', '小红书与内容运营', ['Cursor', 'Claude Code', 'Codex', 'OpenClaw'], 42834,
      '13 平台统一调研：含小红书、B 站、推特、Reddit、GitHub、YouTube，零 API 费读取公开内容，适合选题与竞品。',
      'https://github.com/Panniantong/Agent-Reach', 'npx skills add Panniantong/Agent-Reach -g -y', None),
-    ('Humanizer 中文版', '小红书运营', ['Claude Code', 'Cursor'], 11722,
+    ('Humanizer 中文版', '小红书与内容运营', ['Claude Code', 'Cursor'], 11722,
      '去除中文 AI 痕迹，优化公众号、知乎、小红书等平台的笔记语气与自然度，降低平台识别风险。',
      'https://github.com/op7418/Humanizer-zh', 'npx skills add op7418/Humanizer-zh -g -a claude-code -y', None),
-
-    # ── 自媒体运营 ──
-    ('MD2WeChat Skill', '自媒体运营', ['Claude Code', 'Cursor'], 2997,
-     'Markdown 一键排版发布微信公众号：40+ 样式主题、AI 配图、批量发布与多账号管理。',
+    ('MD2WeChat Skill', '小红书与内容运营', ['Claude Code', 'Cursor'], 2997,
+     'Markdown 一键排版发布微信公众号：40+ 样式主题、AI 配图、批量发布与多账号管理，适合自媒体矩阵运营。',
      'https://github.com/geekjourneyx/md2wechat-skill', 'npx skills add geekjourneyx/md2wechat-skill -g -y', None),
-    ('WeChat Skills', '自媒体运营', ['Claude Code', 'Cursor'], 137,
-     '公众号写作 Skill 套装：选题、大纲、排版与发布流程，适合个人 IP 与品牌号运营。',
-     'https://github.com/gainubi/wechat-skills', 'npx skills add gainubi/wechat-skills -g -y', None),
-    ('Huashu MD/HTML', '自媒体运营', ['Claude Code', 'Cursor'], 815,
-     '万物→Markdown→精美 HTML 流水线，4 套反 AI slop 主题，适合公众号与自媒体长文排版。',
-     'https://github.com/alchaincyf/huashu-md-html', 'npx skills add alchaincyf/huashu-md-html -g -y', None),
-    ('Douyin Skills', '自媒体运营', ['Claude Code', 'Cursor', 'OpenClaw'], 11,
-     '抖音自动化 Skill：开箱即用的短视频运营与内容发布辅助流程。',
-     'https://github.com/zJay26/douyin-skills', 'npx skills add zJay26/douyin-skills -g -y', None),
-    ('Upload Post Skill', '自媒体运营', ['Claude Code', 'Cursor'], 21,
-     '多平台内容分发 Skill：一键上传帖子到多个社交媒体平台，适合矩阵号运营。',
-     'https://github.com/Upload-Post/upload-post-skill', 'npx skills add Upload-Post/upload-post-skill -g -y', None),
 
-    # ── 短视频与直播 ──
-    ('Short Video Skills', '短视频与直播', ['Codex', 'Claude Code', 'Cursor'], 2,
-     'Codex 热门短视频全流程 Skill：脚本、分镜、剪辑节奏与发布 checklist。',
-     'https://github.com/lixiaolin378-dev/short-video-skills', 'npx skills add lixiaolin378-dev/short-video-skills -g -y', None),
-    ('Remotion Skills', '短视频与直播', ['Cursor', 'Claude Code', 'Codex'], 3804,
-     '用 React 编程式生成视频：口播字幕、动效与品牌片头，适合知识类短视频批量生产。',
-     'https://github.com/remotion-dev/skills', 'npx skills add remotion-dev/skills -g -y', None),
-    ('Social Media Skills (Charlie)', '短视频与直播', ['Claude Code', 'Cursor', 'Codex'], 1537,
-     '社交媒体内容策略与创作 Skill：短视频脚本、话题策划与跨平台内容日历。',
-     'https://github.com/charlie947/social-media-skills', 'npx skills add charlie947/social-media-skills -g -y', None),
-    ('Blacktwist Social Skills', '短视频与直播', ['Claude Code', 'Cursor'], 275,
-     '文字优先社交平台内容策略、创作与分析 Skill，适合 Threads、X 与短视频引流文案。',
-     'https://github.com/blacktwist/social-media-skills', 'npx skills add blacktwist/social-media-skills -g -y', None),
-
-    # ── 社交媒体 ──
-    ('Social Media Skills', '社交媒体', ['Claude Code', 'Cursor', 'Codex'], 1537,
-     '全平台社媒运营 Skill：内容日历、互动策略、话题研究与竞品监测工作流。',
-     'https://github.com/charlie947/social-media-skills', 'npx skills add charlie947/social-media-skills -g -y', None),
-    ('Nox Influencer Skills', '社交媒体', ['Claude Code', 'Cursor'], 22,
-     '达人营销 Skill：创作者发现、尽职调查、联系方式获取与视频监测，适合品牌投放与 KOL 合作。',
-     'https://github.com/NoxInfluencer/skills', 'npx skills add NoxInfluencer/skills -g -y', None),
-    ('Claude Social Media Skills', '社交媒体', ['Claude Code', 'Cursor'], 4,
-     'Claude 社媒运营模板：发帖节奏、互动话术与品牌声线一致性检查。',
-     'https://github.com/michaellady/claude-social-media-skills', 'npx skills add michaellady/claude-social-media-skills -g -y', None),
-    ('Content Marketing Skills', '社交媒体', ['Claude Code', 'Cursor'], 1,
-     '内容营销 Claude Skill：漏斗内容、案例研究与 B2B 线索 nurturing 脚本。',
-     'https://github.com/esref1071/content-marketing-skills-claude-code', 'npx skills add esref1071/content-marketing-skills-claude-code -g -y', None),
-
-    # ── 营销增长 ──
-    ('Marketing Skill Pack', '营销增长', ['Claude Code', 'Cursor'], 38,
-     '营销工具全家桶一键安装：SEO、博客自动化、Skill Forge 与 WordPress MCP。',
-     'https://github.com/AgriciDaniel/marketing-skill-pack', 'npx skills add AgriciDaniel/marketing-skill-pack -g -y', None),
-    ('Claude SEO Skill (Agency)', '营销增长', ['Claude Code', 'Cursor'], 35,
-     '代理商级 SEO & AEO 插件：关键词研究、技术审计、本地 SEO、外链与 AI 搜索优化。',
-     'https://github.com/mangollc/claude-seo-skill', 'npx skills add mangollc/claude-seo-skill -g -y', None),
-    ('PM Skills', '营销增长', ['Claude Code', 'Cursor', 'Codex'], 21288,
+    # ── 营销与 SEO ──
+    ('Claude SEO', '营销与 SEO', ['Claude Code', 'Cursor', 'Codex'], 9933,
+     '25 个子 Skill + 18 子 Agent：技术 SEO、国际 SEO、电商 SEO、外链与 PDF/Excel 报告，适合品牌增长团队。',
+     'https://github.com/AgriciDaniel/claude-seo', 'npx skills add AgriciDaniel/claude-seo -g -y', None),
+    ('Marketing Skills', '营销与 SEO', ['Claude Code', 'Cursor', 'Codex'], 35148,
+     '营销 Skill 全家桶：CRO、文案、SEO、分析与增长工程，35k+ Star 社区首选营销 Agent 能力包。',
+     'https://github.com/coreyhaines31/marketingskills', 'npx skills add coreyhaines31/marketingskills -g -y', None),
+    ('PM Skills', '营销与 SEO', ['Claude Code', 'Cursor', 'Codex'], 21288,
      '产品增长 Skill 市场：100+ 从发现、策略、执行到上线与增长的 Agentic Skill 与命令。',
      'https://github.com/phuryn/pm-skills', 'npx skills add phuryn/pm-skills -g -y', None),
-    ('Claude Skills 大全 (营销)', '营销增长', ['Claude Code', 'Cursor', 'Codex'], 19168,
+    ('Claude Skills 大全 (营销)', '营销与 SEO', ['Claude Code', 'Cursor', 'Codex'], 19168,
      '337 个 Skill 含营销、品牌、内容与增长实验模板，适合市场团队快速启用。',
      'https://github.com/alirezarezvani/claude-skills', 'npx skills add alirezarezvani/claude-skills -g -y', None),
-
-    # ── SEO 与获客 ──
-    ('Claude SEO', 'SEO 与获客', ['Claude Code', 'Cursor', 'Codex'], 9933,
-     '通用 SEO Skill：技术 SEO、E-E-A-T、Schema、GEO/AEO、外链、本地 SEO 与 PDF/Excel 报告。',
-     'https://github.com/AgriciDaniel/claude-seo', 'npx skills add AgriciDaniel/claude-seo -g -y', None),
-    ('GEO SEO Claude', 'SEO 与获客', ['Claude Code', 'Cursor', 'Codex'], 8721,
-     'GEO 优先 AI 搜索优化：可引用性评分、AI 爬虫分析、品牌权威与平台专项优化。',
-     'https://github.com/zubair-trabzada/geo-seo-claude', 'npx skills add zubair-trabzada/geo-seo-claude -g -y', None),
-    ('Google Ads Skills', 'SEO 与获客', ['Claude Code', 'Cursor'], 15,
-     'Google 广告 Skill：搜索广告结构、关键词分组、出价策略与转化追踪检查清单。',
-     'https://github.com/itallstartedwithaidea/google-ads-skills', 'npx skills add itallstartedwithaidea/google-ads-skills -g -y', None),
-    ('Email Marketing Skill', 'SEO 与获客', ['Claude Code', 'Cursor'], 43,
-     '邮件营销 Skill：欢迎序列、促销战役、弃购挽回与列表分层策略模板。',
-     'https://github.com/jacquescorbytuech/email-marketing-skill', 'npx skills add jacquescorbytuech/email-marketing-skill -g -y', None),
 
     # ── 内容写作 ──
     ('Humanizer', '内容写作', ['Claude Code', 'Cursor'], 26324,
@@ -262,9 +154,6 @@ RAW: list[tuple] = [
     ('Agent Rules Books', '内容写作', ['Claude Code', 'Cursor'], 1986,
      '长文写作 Skill：结构化书籍/报告写作规则与章节编排，适合白皮书与课程内容生产。',
      'https://github.com/ciembor/agent-rules-books', 'npx skills add ciembor/agent-rules-books -g -y', None),
-    ('Huashu MD/HTML', '内容写作', ['Claude Code', 'Cursor'], 815,
-     'Markdown 与 HTML 互转排版流水线，反 AI slop 主题，适合专业长文与案例研究。',
-     'https://github.com/alchaincyf/huashu-md-html', 'npx skills add alchaincyf/huashu-md-html -g -y', None),
 
     # ── 调研搜索 ──
     ('Last 30 Days', '调研搜索', ['Cursor', 'Claude Code', 'Codex'], 47046,
@@ -309,12 +198,13 @@ RAW: list[tuple] = [
     ('Scientific Agent Skills', '科研学术', ['Cursor', 'Claude Code', 'Codex', 'Antigravity'], 29427,
      'K-Dense 科学 Skill 库：140+ 即用 Skill 与 100+ 科学数据库，覆盖生物、化学、医学与药物发现。',
      'https://github.com/K-Dense-AI/scientific-agent-skills', 'npx skills add K-Dense-AI/scientific-agent-skills -g -y', None),
-    ('Academic PPTX Skill', '科研学术', ['Claude Code', 'Cursor'], 604,
-     '学术演示 Skill：论文汇报幻灯片结构、图表说明与答辩节奏优化。',
-     'https://github.com/Gabberflast/academic-pptx-skill', 'npx skills add Gabberflast/academic-pptx-skill -g -y', None),
     ('Text-to-CAD', '科研学术', ['Cursor', 'Claude Code'], 7011,
      '文本描述生成 CAD 模型 Skill，适合工程、制造与科研原型快速建模。',
      'https://github.com/earthtojake/text-to-cad', 'npx skills add earthtojake/text-to-cad -g -y', None),
+    ('Document Skills (Anthropic)', '科研学术', ['Claude Code', 'Claude.ai', 'Cursor'], 155687,
+     '学术文档 Skill：PDF 解析、PPTX 幻灯片、论文图表与演示材料处理，适合科研汇报与学术写作。',
+     'https://github.com/anthropics/skills/tree/main/skills', 'npx skills add anthropics/skills --skill pdf --skill pptx -g -y',
+     'Claude Code 插件：/plugin install document-skills@anthropic-agent-skills'),
 
     # ── 浏览器自动化 ──
     ('Browser Use', '浏览器自动化', ['Claude Code', 'Cursor', 'Codex'], 100896,
@@ -323,9 +213,9 @@ RAW: list[tuple] = [
     ('Playwright Skill', '浏览器自动化', ['Claude Code'], 2831,
      'Claude Code 浏览器自动化 Skill：Agent 自主编写并执行 Playwright 脚本，用于 E2E 测试与页面验证。',
      'https://github.com/lackeyjb/playwright-skill', 'npx skills add lackeyjb/playwright-skill -g -a claude-code -y', None),
-    ('XHS Playwright Skill', '浏览器自动化', ['Claude Code', 'Cursor'], 29,
-     '小红书 Playwright 自动化：搜索、帖子详情与用户主页提取，适合运营数据采集。',
-     'https://github.com/DeliciousBuding/xiaohongshu-skill', 'npx skills add DeliciousBuding/xiaohongshu-skill -g -y', None),
+    ('Apify Agent Skills', '浏览器自动化', ['Cursor', 'Claude Code', 'Codex'], 2181,
+     '网页自动化抓取 Skill：结构化采集页面数据，适合运营数据采集与竞品监控。',
+     'https://github.com/apify/agent-skills', 'npx skills add apify/agent-skills -g -y', None),
 
     # ── 知识管理 ──
     ('Obsidian Skills', '知识管理', ['Cursor', 'Claude Code', 'Codex'], 38441,
@@ -358,31 +248,9 @@ RAW: list[tuple] = [
     ('Awesome Finance Skills', '财务金融', ['Claude Code', 'Cursor'], 2603,
      '金融 Skill 精选索引：会计、投资、风控与 FP&A 场景模板合集。',
      'https://github.com/RKiding/Awesome-finance-skills', 'npx skills add RKiding/Awesome-finance-skills -g -y', None),
-    ('WeChat Pay Skills', '财务金融', ['Claude Code', 'Cursor'], 289,
-     '微信支付 API Skill：下单、退款与对账流程指引，适合国内电商与小程序支付集成。',
-     'https://github.com/wechatpay-apiv3/wechatpay-skills', 'npx skills add wechatpay-apiv3/wechatpay-skills -g -y', None),
-
-    # ── 法律合规 ──
-    ('Awesome Legal Skills', '法律合规', ['Claude Code', 'Cursor'], 513,
-     '法律 Skill 合集：合同审查、合规检查与隐私政策起草工作流。',
-     'https://github.com/lawve-ai/awesome-legal-skills', 'npx skills add lawve-ai/awesome-legal-skills -g -y', None),
-    ('Legal Skills', '法律合规', ['Claude Code', 'Cursor'], 413,
-     '法律文档 Skill：条款分析、风险标注与多国法域对比辅助。',
-     'https://github.com/cat-xierluo/legal-skills', 'npx skills add cat-xierluo/legal-skills -g -y', None),
-    ('Legal Skills 中文版', '法律合规', ['Claude Code', 'Cursor'], 365,
-     '中文法律 Skill：劳动合同、隐私合规与电商法务常见问题模板。',
-     'https://github.com/THUYRan/Legal-Skills-Chinese', 'npx skills add THUYRan/Legal-Skills-Chinese -g -y', None),
-
-    # ── 教育培训 ──
-    ('Education Agent Skills', '教育培训', ['Claude Code', 'Cursor'], 359,
-     '教育场景 Skill：课程大纲、教案、测验与学习者反馈分析工作流。',
-     'https://github.com/GarethManning/education-agent-skills', 'npx skills add GarethManning/education-agent-skills -g -y', None),
-    ('Education Skills', '教育培训', ['Claude Code', 'Cursor'], 57,
-     '教学设计与课件 Skill：学习目标对齐、互动活动与评估 rubric 生成。',
-     'https://github.com/flysheep-ai/education-skills', 'npx skills add flysheep-ai/education-skills -g -y', None),
-    ('Academic PPTX Skill', '教育培训', ['Claude Code', 'Cursor'], 604,
-     '教学演示 Skill：课堂幻灯片、讲义与训练营路演材料结构化生成。',
-     'https://github.com/Gabberflast/academic-pptx-skill', 'npx skills add Gabberflast/academic-pptx-skill -g -y', None),
+    ('Claude Skills 大全 (财务)', '财务金融', ['Claude Code', 'Cursor', 'Codex'], 19168,
+     '337 个 Skill 含财务建模、预算、投融资与合规报告模板，适合财务与商业分析团队。',
+     'https://github.com/alirezarezvani/claude-skills', 'npx skills add alirezarezvani/claude-skills -g -y', None),
 ]
 
 
@@ -416,7 +284,7 @@ def render_js(items: list[dict], categories: list[str]) -> str:
     lines.append('];')
     lines.append('')
     lines.append('const AI_SKILLS_NAV_META = {')
-    lines.append("  lead: '精选 GitHub 上各方向 star 数名列前茅的 Agent Skill，按行业与用途分类。涵盖电商、小红书、跨境电商、社媒营销等垂直场景；每条附带安装命令、适用工具与官方仓库。',")
+    lines.append(f"  lead: '精选 GitHub 上 star ≥ {MIN_STARS} 的优质 Agent Skill，按行业与用途分类。涵盖视频剪辑生成、跨境电商、小红书运营、营销 SEO 等场景；每条附带安装命令、适用工具与官方仓库。',")
     lines.append("  searchPlaceholder: '搜索 Skill 名称、行业、用途、适用软件…',")
     lines.append("  countLabel: '{n} 个 Skill',")
     lines.append("  totalLabel: '共 {n} 个 Skill · {c} 个分类',")
@@ -468,17 +336,10 @@ EN_CATEGORIES = {
     'Skill 安装与合集': 'Installers & collections',
     '编程开发': 'Engineering',
     '前端与设计': 'Frontend & design',
-    '电商与零售': 'E-commerce & retail',
-    '跨境电商': 'Cross-border commerce',
-    'Amazon 平台电商': 'Amazon marketplace',
-    'TikTok 电商': 'TikTok commerce',
-    '独立站 DTC': 'DTC & Shopify',
-    '小红书运营': 'Xiaohongshu / RedNote',
-    '自媒体运营': 'Creator & self-media',
-    '短视频与直播': 'Short video & live',
-    '社交媒体': 'Social media',
-    '营销增长': 'Marketing & growth',
-    'SEO 与获客': 'SEO & acquisition',
+    '视频剪辑与生成': 'Video editing & generation',
+    '跨境电商与电商': 'Cross-border & e-commerce',
+    '小红书与内容运营': 'XHS & creator ops',
+    '营销与 SEO': 'Marketing & SEO',
     '内容写作': 'Writing & content',
     '调研搜索': 'Research & search',
     '产品运营': 'Product & ops',
@@ -488,8 +349,6 @@ EN_CATEGORIES = {
     '知识管理': 'Knowledge management',
     '办公文档': 'Office documents',
     '财务金融': 'Finance',
-    '法律合规': 'Legal & compliance',
-    '教育培训': 'Education & training',
 }
 
 EN_AGENTS = {
@@ -510,8 +369,12 @@ EN_AGENTS = {
 
 
 def main() -> None:
-    items = [item_to_dict(t) for t in RAW]
-    # preserve category order from first appearance
+    filtered = [t for t in RAW if t[3] >= MIN_STARS]
+    skipped = len(RAW) - len(filtered)
+    if skipped:
+        print(f'⚠ filtered out {skipped} entries below {MIN_STARS} stars')
+
+    items = [item_to_dict(t) for t in filtered]
     seen: set[str] = set()
     categories: list[str] = []
     for it in items:

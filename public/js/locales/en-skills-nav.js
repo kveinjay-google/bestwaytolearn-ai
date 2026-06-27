@@ -16,7 +16,7 @@
     },
     skillsNav: {
       meta: {
-        lead: 'Curated GitHub Agent Skills by industry and use case — e-commerce, Xiaohongshu, cross-border marketing, social media, and more. Each entry includes install command, compatible agents, and repo link.',
+        lead: 'Curated GitHub Agent Skills with 1,000+ stars — video editing & generation, e-commerce, Xiaohongshu, marketing, SEO, and more. Each entry includes install command, compatible agents, and repo link.',
         searchPlaceholder: 'Search skills, industry, use case, agents…',
         countLabel: '{n} skills',
         totalLabel: '{n} skills · {c} categories',
@@ -30,17 +30,10 @@
         'Skill 安装与合集': 'Installers & collections',
         '编程开发': 'Engineering',
         '前端与设计': 'Frontend & design',
-        '电商与零售': 'E-commerce & retail',
-        '跨境电商': 'Cross-border commerce',
-        'Amazon 平台电商': 'Amazon marketplace',
-        'TikTok 电商': 'TikTok commerce',
-        '独立站 DTC': 'DTC & Shopify',
-        '小红书运营': 'Xiaohongshu / RedNote',
-        '自媒体运营': 'Creator & self-media',
-        '短视频与直播': 'Short video & live',
-        '社交媒体': 'Social media',
-        '营销增长': 'Marketing & growth',
-        'SEO 与获客': 'SEO & acquisition',
+        '视频剪辑与生成': 'Video editing & generation',
+        '跨境电商与电商': 'Cross-border & e-commerce',
+        '小红书与内容运营': 'XHS & creator ops',
+        '营销与 SEO': 'Marketing & SEO',
         '内容写作': 'Writing & content',
         '调研搜索': 'Research & search',
         '产品运营': 'Product & ops',
@@ -50,8 +43,6 @@
         '知识管理': 'Knowledge management',
         '办公文档': 'Office documents',
         '财务金融': 'Finance',
-        '法律合规': 'Legal & compliance',
-        '教育培训': 'Education & training',
       },
       items: {
         'skills CLI': {
@@ -75,6 +66,10 @@
           name: 'Claude Skills Pack (Marketing)',
           desc: '337 skills including marketing, brand, content, and growth experiment templates.',
         },
+        'Claude Skills 大全 (财务)': {
+          name: 'Claude Skills Pack (Finance)',
+          desc: '337 skills including financial modeling, budgeting, fundraising, and compliance report templates.',
+        },
         'Awesome Agent Skills': {
           desc: 'VoltAgent curated index of 1,000+ official and community skills.',
           installNote: 'Search first with find, then npx skills add <repo>',
@@ -88,37 +83,41 @@
           desc: 'Top agent dev methodology: brainstorm → design review → TDD plan → subagent-driven execution.',
           installNote: 'Cursor: /add-plugin superpowers · Codex: /plugins → superpowers',
         },
-        'Awesome E-commerce Skills': {
-          desc: 'E-commerce skill index: product research, listings, ads, support — for marketplaces and DTC.',
+        'OpenMontage': {
+          desc: 'Open-source agent video studio: 12 pipelines, 52 tools, 500+ skills — script to final cut with FFmpeg, Remotion, TTS, and T2V.',
+          installNote: 'See AGENT_GUIDE.md for full video production workflow',
         },
-        'Shopify Agent Skills': {
-          desc: 'Shopify store ops: themes, product setup, orders, and marketing app integration.',
+        'ViMax': {
+          desc: 'HKU agent video framework: director, screenwriter, producer, and generator in one automated pipeline.',
         },
-        'Claude SEO (电商模块)': {
+        'Remotion Skills': {
+          desc: 'Programmatic video with React — captions, motion, brand intros for knowledge shorts.',
+        },
+        'Pika Skills': {
+          desc: 'Pika AI video generation: text-to-video, image-to-video, and stylized effects for creative shorts and ad concepts.',
+        },
+        'Google Gemini 视频生成': {
+          name: 'Google Gemini Video Gen',
+          desc: 'Official Gemini API skill with media_generation sub-skill — Veo text/image-to-video and multimodal assets.',
+          installNote: 'Use media_generation sub-skill for Veo video models',
+        },
+        'OpenAI Codex 多媒体': {
+          name: 'OpenAI Codex Multimedia',
+          desc: 'Official Codex skill catalog with imagegen, sora, and other multimedia generation sub-skills.',
+          installNote: 'Browse curated sub-skills via /skills in Codex',
+        },
+        'Marketing Skills (视频)': {
+          name: 'Marketing Skills (Video)',
+          desc: 'Video sub-skill: short-video scripts, ad structure, social video strategy, and conversion copy.',
+        },
+        'Social Media Skills (短视频)': {
+          name: 'Social Media Skills (Short Video)',
+          desc: 'Short-video scripts, topic planning, storyboard rhythm, and cross-platform content calendars for TikTok/Reels.',
+        },
+        'Claude SEO (电商)': {
           name: 'Claude SEO (E-commerce)',
           desc: 'E-commerce SEO sub-skills: category pages, product schema, hreflang, and conversion landing pages.',
           installNote: 'Use ecommerce-seo, schema-markup sub-skills after install',
-        },
-        'Cross-border E-commerce Skills': {
-          desc: 'Cross-border templates: product research, market analysis, IP risk, keywords, and listing copy for Amazon/DTC.',
-        },
-        'Nexscope E-commerce Skills': {
-          desc: 'Multi-platform intel for Amazon, TikTok Shop, Shopify, Temu: research, keywords, pricing, patent risk.',
-        },
-        'Amazon Seller Skill Suite': {
-          desc: '6 Claude Cowork skills for Amazon listing, ads, inventory, and seller ops workflows.',
-        },
-        'Amazon Listing Optimizer': {
-          desc: 'Amazon listing optimization: titles, bullets, A+ content, and keyword layout checklists.',
-        },
-        'TikTok Shop Skills': {
-          desc: 'TikTok Shop organic social commerce: short-video scripts, store ops, and growth workflows.',
-        },
-        'OpenClaw E-commerce Ads': {
-          desc: 'E-commerce ad creative: TVC craft, Seedance video, AI manga drama for short-video ad assets.',
-        },
-        'Shopify Agent Skills': {
-          desc: 'Shopify DTC: themes, product setup, subscriptions, and marketing app integration.',
         },
         'GEO SEO Claude': {
           desc: 'GEO-first SEO for AI search visibility, brand authority, schema, and cross-platform citations.',
@@ -126,50 +125,11 @@
         'Claude SEO': {
           desc: '25 sub-skills + 18 sub-agents: technical SEO, international SEO, e-commerce SEO, backlinks, reporting.',
         },
-        'Marketing Skill Pack': {
-          desc: 'One-command marketing stack: Claude SEO, blog automation, Skill Forge, WordPress MCP.',
-        },
-        'Xiaohongshu Skills': {
-          desc: 'XHS cover and note skill — themed cover images (Nano Banana Pro) for种草 posts and brand notes.',
-        },
-        'XHS Playwright Skill': {
-          desc: 'Playwright XHS tools: search notes, post details, and profile extraction for competitor research.',
-        },
-        'Rednote Skills': {
-          desc: 'Connect to RedNote/Xiaohongshu: read, search, and analyze content for ops and topic research.',
-        },
-        'XHS MCP Skills': {
-          desc: 'Xiaohongshu MCP integration for automated ops and multi-account workflows.',
+        'Marketing Skills': {
+          desc: '35k+ star marketing skill pack: CRO, copywriting, SEO, analytics, and growth engineering.',
         },
         'MD2WeChat Skill': {
           desc: 'Markdown to WeChat: 40+ themes, AI images, batch publish, multi-account management.',
-        },
-        'WeChat Skills': {
-          desc: 'WeChat official account writing pack: topics, outlines, layout, and publish workflow.',
-        },
-        'Huashu MD/HTML': {
-          desc: 'Markdown↔HTML pipeline with anti-AI-slop themes for long-form creator content.',
-        },
-        'Douyin Skills': {
-          desc: 'Douyin automation skills for short-video ops and publishing assistance.',
-        },
-        'Short Video Skills': {
-          desc: 'End-to-end short-video workflow: scripts, storyboards, edit rhythm, publish checklist.',
-        },
-        'Remotion Skills': {
-          desc: 'Programmatic video with React — captions, motion, brand intros for knowledge shorts.',
-        },
-        'Social Media Skills': {
-          desc: 'Cross-platform social ops: content calendar, engagement, topic research, competitor monitoring.',
-        },
-        'Nox Influencer Skills': {
-          desc: 'Influencer marketing: creator discovery, due diligence, contacts, and video monitoring.',
-        },
-        'Google Ads Skills': {
-          desc: 'Google Ads structure, keyword groups, bidding, and conversion tracking checklists.',
-        },
-        'Email Marketing Skill': {
-          desc: 'Email campaigns: welcome sequences, promos, cart recovery, and list segmentation.',
         },
         'Humanizer': {
           desc: 'Remove AI-writing tells for blogs, marketing, and published content.',
@@ -189,12 +149,6 @@
         },
         'Finance Skills': {
           desc: 'Financial analysis: statements, valuation models, budgets, and investment memos.',
-        },
-        'Awesome Legal Skills': {
-          desc: 'Legal skill collection: contract review, compliance checks, privacy policy drafting.',
-        },
-        'Education Agent Skills': {
-          desc: 'Education workflows: syllabi, lesson plans, quizzes, and learner feedback analysis.',
         },
       },
       agents: {

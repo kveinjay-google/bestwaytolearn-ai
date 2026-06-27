@@ -3,17 +3,10 @@
     "Skill 安装与合集": "Installers & collections",
     "编程开发": "Engineering",
     "前端与设计": "Frontend & design",
-    "电商与零售": "E-commerce & retail",
-    "跨境电商": "Cross-border commerce",
-    "Amazon 平台电商": "Amazon marketplace",
-    "TikTok 电商": "TikTok commerce",
-    "独立站 DTC": "DTC & Shopify",
-    "小红书运营": "Xiaohongshu / RedNote",
-    "自媒体运营": "Creator & self-media",
-    "短视频与直播": "Short video & live",
-    "社交媒体": "Social media",
-    "营销增长": "Marketing & growth",
-    "SEO 与获客": "SEO & acquisition",
+    "视频剪辑与生成": "Video editing & generation",
+    "跨境电商与电商": "Cross-border & e-commerce",
+    "小红书与内容运营": "XHS & creator ops",
+    "营销与 SEO": "Marketing & SEO",
     "内容写作": "Writing & content",
     "调研搜索": "Research & search",
     "产品运营": "Product & ops",
@@ -22,9 +15,7 @@
     "浏览器自动化": "Browser automation",
     "知识管理": "Knowledge management",
     "办公文档": "Office documents",
-    "财务金融": "Finance",
-    "法律合规": "Legal & compliance",
-    "教育培训": "Education & training"
+    "财务金融": "Finance"
   },
   "agents": {
     "多平台": "Multi-platform",
@@ -41,6 +32,6 @@
     "Antigravity": "Antigravity",
     "Grok": "Grok"
   },
-  "itemCount": 104,
-  "categoryCount": 25
+  "itemCount": 64,
+  "categoryCount": 16
 }
