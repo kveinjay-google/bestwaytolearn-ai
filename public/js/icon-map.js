@@ -1,4 +1,4 @@
-/* Synapse AI Academy — Emoji → themed icon image mapping */
+/* BestWayToLearn.AI — Emoji → themed icon image mapping */
 
 const ICON_BASE = 'assets/icons';
 
@@ -53,7 +53,7 @@ const EMOJI_ICON_SLUG = {
   '☁️': 'wave',
   '🍎': 'home',
   '💎': 'bwtl-mark',
-  '👑': 'synapse-star',
+  '👑': 'bwtl-mark',
   '🏆': 'graduation'
 };
 
@@ -117,9 +117,8 @@ const UI_ICONS = {
   book: `${ICON_BASE}/book.png`,
   chat: `${ICON_BASE}/chat.png`,
   rocket: `${ICON_BASE}/rocket.png`,
-  synapseStar: `${ICON_BASE}/synapse-star.png`,
-  brandMark: `${ICON_BASE}/bwtl-mark.png`,
-  synapseDiamond: `${ICON_BASE}/bwtl-mark.png`
+  brandStar: `${ICON_BASE}/bwtl-mark.png`,
+  brandMark: `${ICON_BASE}/bwtl-mark.png`
 };
 
 function iconPathFromSlug(slug) {

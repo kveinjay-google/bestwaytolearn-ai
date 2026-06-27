@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""将最新网站文件同步到桌面「Synapse AI 学院-部署包」文件夹。"""
+"""将最新网站文件同步到桌面「BestWayToLearn-AI-deploy」文件夹。"""
 import shutil
 from pathlib import Path
 

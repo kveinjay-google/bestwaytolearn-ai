@@ -1,4 +1,4 @@
-/* Synapse AI Academy — 100 个最常见 AI 术语（分类资料库） */
+/* BestWayToLearn.AI — 100 个最常见 AI 术语（分类资料库） */
 
 const TERM_CATEGORIES = [
   '基础概念',

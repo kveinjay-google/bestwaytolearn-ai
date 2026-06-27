@@ -1,7 +1,18 @@
-/* Synapse AI Academy — Interactive Logic */
+/* BestWayToLearn.AI — Interactive Logic */
 
-const STORAGE_KEY = 'synapse-ai-progress';
-const USER_KEY = 'synapse-ai-user';
+function migrateStorageKey(oldKey, newKey) {
+  try {
+    if (localStorage.getItem(newKey) == null && localStorage.getItem(oldKey) != null) {
+      localStorage.setItem(newKey, localStorage.getItem(oldKey));
+      localStorage.removeItem(oldKey);
+    }
+  } catch (_) { /* private mode */ }
+}
+
+const STORAGE_KEY = 'bwtl-ai-progress';
+const USER_KEY = 'bwtl-ai-user';
+migrateStorageKey('synapse-ai-progress', STORAGE_KEY);
+migrateStorageKey('synapse-ai-user', USER_KEY);
 const WELCOME_STEPS = 5;
 function getTeacherName() {
   return typeof I18n !== 'undefined' ? I18n.getTeacherName() : '凯文';
@@ -592,7 +603,8 @@ const QUIZ_REVIEW_LINKS = [
   { href: '#roadmap', label: '四阶段学习法' },
   { href: '#apps', label: '主流应用选型' },
 ];
-const PHASE_TAB_KEY = 'synapse-ai-phase-tab';
+const PHASE_TAB_KEY = 'bwtl-ai-phase-tab';
+migrateStorageKey('synapse-ai-phase-tab', PHASE_TAB_KEY);
 const PHASE_TAB_NUM = { learn: 1, tools: 2, practice: 3, validate: 4 };
 
 const PHASE_TAB_CONFIG = {
@@ -957,7 +969,7 @@ function renderPhaseMasteryBlock(tabId, cfg, { done, total }) {
   if (allDone) {
     return `
       <section class="phase-bridge-mastery phase-bridge-mastery--done">
-        <span class="phase-bridge-badge">${renderIcon({ image: UI_ICONS.synapseStar, className: 'theme-icon theme-icon-badge', size: 16, alt: '' })} ${uiT('mastery.badgeDone', '本阶段已掌握')}</span>
+        <span class="phase-bridge-badge">${renderIcon({ image: UI_ICONS.brandStar, className: 'theme-icon theme-icon-badge', size: 16, alt: '' })} ${uiT('mastery.badgeDone', '本阶段已掌握')}</span>
         <h3>${uiT('phaseBridge.phaseRangeDone', '「{label}」{range} 已标记掌握', { label: cfg.label, range })}</h3>
         <p>${uiT('phaseBridge.phaseRangeDoneDesc', '学习计划已同步更新。需要复习可返回上方模块，或取消掌握标记。')}</p>
         <div class="phase-bridge-day-chips">${dayChips}</div>
@@ -1000,7 +1012,7 @@ function renderPhaseBridgeStatus(tabId, cfg, { done, total, daysDone, fullyDone,
       : '';
     return `
       <section class="phase-bridge-status phase-bridge-status--done">
-        <span class="phase-bridge-badge">${renderIcon({ image: UI_ICONS.synapseStar, className: 'theme-icon theme-icon-badge', size: 16, alt: '' })} ${uiT('phaseBridge.phaseComplete', uiT('mastery.phaseDone', '本阶段完成'))}</span>
+        <span class="phase-bridge-badge">${renderIcon({ image: UI_ICONS.brandStar, className: 'theme-icon theme-icon-badge', size: 16, alt: '' })} ${uiT('phaseBridge.phaseComplete', uiT('mastery.phaseDone', '本阶段完成'))}</span>
         <h3>${uiT('phaseBridge.phaseSolid', '{name}，「{label}」已扎实掌握', { name, label: cfg.label })}</h3>
         <p>${uiT('phaseBridge.phaseSolidDesc', '当前阶段学习目标已达成，可以进入下一阶段继续进阶。')}</p>
         ${extra}
@@ -1568,7 +1580,7 @@ function renderLearningPath() {
             ${gotoLinks}
             <a href="${phaseHash}" class="path-phase-enter">${I18n.t('path.enterPhase', { phase: phaseLabel })}</a>
           </div>
-          <p class="path-milestone">${renderIcon({ image: UI_ICONS.synapseStar, className: 'theme-icon theme-icon-inline', size: 18, alt: '' })} ${day.milestone}</p>
+          <p class="path-milestone">${renderIcon({ image: UI_ICONS.brandStar, className: 'theme-icon theme-icon-inline', size: 18, alt: '' })} ${day.milestone}</p>
         </div>
         <button class="path-check ${done ? 'is-done' : ''}" type="button"
           aria-pressed="${done}"

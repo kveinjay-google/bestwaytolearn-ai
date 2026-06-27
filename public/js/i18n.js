@@ -1,8 +1,21 @@
-/* Synapse AI Academy — Internationalization & display preferences */
+/* BestWayToLearn.AI — Internationalization & display preferences */
 
 const I18n = (function () {
-  const LOCALE_KEY = 'synapse-ai-locale';
-  const FONT_KEY = 'synapse-ai-font-size';
+  const LOCALE_KEY = 'bwtl-ai-locale';
+  const FONT_KEY = 'bwtl-ai-font-size';
+
+  function migrateStorageKey(oldKey, newKey) {
+    try {
+      if (localStorage.getItem(newKey) == null && localStorage.getItem(oldKey) != null) {
+        localStorage.setItem(newKey, localStorage.getItem(oldKey));
+        localStorage.removeItem(oldKey);
+      }
+    } catch (_) { /* private mode */ }
+  }
+
+  migrateStorageKey('synapse-ai-locale', LOCALE_KEY);
+  migrateStorageKey('synapse-ai-font-size', FONT_KEY);
+
   const DEFAULT_LOCALE = 'zh-CN';
   const DEFAULT_FONT = 'md';
   const SUPPORTED_LOCALES = ['zh-CN', 'en'];
