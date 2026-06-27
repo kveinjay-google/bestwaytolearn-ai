@@ -61,32 +61,6 @@ Serve the **`public`** directory as the web root (not the repository root).
 
 ---
 
-## Azure Neural TTS (read-aloud)
-
-The floating **朗读** button prefers **Azure Neural TTS** when a server-side proxy is available; otherwise it falls back to the browser’s built-in speech engine.
-
-### Server setup (one-time)
-
-1. Create an [Azure Speech](https://portal.azure.com) resource and copy **Key** + **Region**.
-2. On the web server:
-
-   ```bash
-   scp -r server/azure-tts root@YOUR_SERVER:/opt/bwtl-tts-src
-   ssh root@YOUR_SERVER
-   cp /opt/bwtl-tts-src/.env.example /opt/bwtl-tts/.env   # or edit after install
-   # Set AZURE_SPEECH_KEY and AZURE_SPEECH_REGION in .env
-   bash /opt/bwtl-tts-src/install.sh /opt/bwtl-tts
-   curl -s http://127.0.0.1:8765/api/tts/health
-   ```
-
-3. Ensure Nginx proxies `/api/tts/` → `http://127.0.0.1:8765/api/tts/` (see `scripts/nginx-with-tts.conf.template`).
-
-4. Redeploy static files from `public/` as usual.
-
-Voices: **zh-CN-XiaoxiaoNeural** (Chinese), **en-US-JennyNeural** (English), chosen from the site locale.
-
----
-
 ## Deploy to GitHub Pages
 
 ### Method 1 — GitHub Actions (recommended)
