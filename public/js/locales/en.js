@@ -68,15 +68,12 @@ I18n.registerLocale('en', {
       defaultMsg: 'Hi! Ready to start learning?',
     },
     hero: {
-      greeting: 'bestwaytolearn.ai · 4 phases · 7-day path · 100 terms',
-      titleHtml: 'Start from zero<br><span class="hero-accent">and master <em class="hero-accent-ai">AI</em></span>',
-      desc: 'Follow Cognition → Tools → Practice → Review. Stick to the daily path and build end-to-end AI skills in 7 days.',
+      greeting: 'BestWayToLearn.AI',
+      titleHtml: 'Start from zero.<br><span class="hero-highlight">Master AI</span>',
+      desc: 'A four-phase path from foundations to practice—build real AI skills.',
+      phaseLine: 'Learn · Tools · Practice · Review',
       ctaMap: 'View learning map',
       ctaContinue: 'Continue learning',
-      flowLearn: 'Learn',
-      flowTools: 'Tools',
-      flowPractice: 'Practice',
-      flowValidate: 'Review',
     },
     roadmap: {
       tag: 'Learning map',
@@ -250,9 +247,9 @@ I18n.registerLocale('en', {
     phaseShortLabels: { 1: '01 Learn', 2: '02 Tools', 3: '03 Practice', 4: '04 Review' },
     personalization: {
       headerName: 'Learner',
-      greeting: 'bestwaytolearn.ai · 4 phases · 7-day path · 100 terms',
-      titleHtml: 'Start from zero<br><span class="hero-accent">and master <em class="hero-accent-ai">AI</em></span>',
-      desc: 'Follow Cognition → Tools → Practice → Review. Stick to the daily path and build end-to-end AI skills in 7 days.',
+      greeting: 'BestWayToLearn.AI',
+      titleHtml: 'Start from zero.<br><span class="hero-highlight">Master AI</span>',
+      desc: 'A four-phase path from foundations to practice—build real AI skills.',
       pathBanner: 'Tap Start learning for today\'s modules. Work Day 1–7 in order; mark mastered to skip.',
       roadmapHeader: 'Complete four phases in order. Progress saves automatically.',
       phaseBanners: [

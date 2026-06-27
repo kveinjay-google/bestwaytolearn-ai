@@ -67,15 +67,12 @@ I18n.registerLocale('zh-CN', {
       defaultMsg: '你好！准备好开始学习了吗？',
     },
     hero: {
-      greeting: 'bestwaytolearn.ai · 四阶段学习 · 100 个术语',
-      titleHtml: '从零开始<br><span class="hero-accent">系统学会 <em class="hero-accent-ai">AI</em></span>',
-      desc: '遵循「认知 → 工具 → 实战 → 检验」四步学习法，从学习地图按阶段推进，建立从原理理解到真实应用的完整 AI 能力。',
+      greeting: 'BestWayToLearn.AI',
+      titleHtml: '从零开始，<span class="hero-highlight">系统学会 AI</span>',
+      desc: '四步学习法，从原理到实战，建立完整的 AI 能力。',
+      phaseLine: '认知 · 工具 · 实战 · 检验',
       ctaMap: '查看学习地图',
       ctaContinue: '继续学习',
-      flowLearn: '认知',
-      flowTools: '工具',
-      flowPractice: '实战',
-      flowValidate: '检验',
     },
     roadmap: {
       tag: '学习地图',
@@ -259,9 +256,9 @@ I18n.registerLocale('zh-CN', {
     phaseShortLabels: { 1: '01 认知', 2: '02 工具', 3: '03 实战', 4: '04 检验' },
     personalization: {
       headerName: '学员',
-      greeting: 'bestwaytolearn.ai · 四阶段学习 · 100 个术语',
-      titleHtml: '从零开始<br><span class="hero-accent">系统学会 <em class="hero-accent-ai">AI</em></span>',
-      desc: '遵循「认知 → 工具 → 实战 → 检验」四步学习法，从学习地图按阶段推进，建立从原理理解到真实应用的完整 AI 能力。',
+      greeting: 'BestWayToLearn.AI',
+      titleHtml: '从零开始，<span class="hero-highlight">系统学会 AI</span>',
+      desc: '四步学习法，从原理到实战，建立完整的 AI 能力。',
       pathBanner: '点「开始学习」进入当日模块，按 Day 1–7 逐日推进；已掌握可勾选跳过。',
       roadmapHeader: '按顺序完成四个阶段，每个阶段有明确目标和对应模块。进度自动保存。',
       phaseBanners: [

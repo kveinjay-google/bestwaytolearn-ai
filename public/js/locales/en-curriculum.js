@@ -474,7 +474,7 @@
 
     personalizationNamed: {
       greeting: '{name}, welcome to BestWayToLearn.AI',
-      titleHtml: '{name}, let\'s<br><span class="hero-accent">master <em class="hero-accent-ai">AI</em></span> together',
+      titleHtml: '{name}, let\'s <span class="hero-highlight">master AI</span> together',
       readyTitle: 'Great, {name} — let\'s go!',
       readyDesc: 'From today on, I\'ll guide you step by step using "{name}".',
       readyQuote: '「{name}, the best way to learn AI is to practice on real problems.」',

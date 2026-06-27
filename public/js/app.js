@@ -3475,9 +3475,9 @@ function getDayCompleteMessage(idx) {
 function getDefaultPersonalization() {
   return typeof I18n !== 'undefined' ? I18n.getDefaultPersonalization() : {
     headerName: '学员',
-    greeting: 'bestwaytolearn.ai · 四阶段学习 · 7 天路径 · 100 个术语',
-    titleHtml: '从零开始<br><span class="hero-accent">系统学会 <em class="hero-accent-ai">AI</em></span>',
-    desc: '遵循「认知 → 工具 → 实战 → 检验」四步学习法，每天跟着路径走，7 天建立从原理理解到真实应用的完整 AI 能力。',
+    greeting: 'BestWayToLearn.AI',
+    titleHtml: '从零开始，<span class="hero-highlight">系统学会 AI</span>',
+    desc: '四步学习法，从原理到实战，建立完整的 AI 能力。',
     pathBanner: '点「开始学习」进入当日模块，按 Day 1–7 逐日推进；已掌握可勾选跳过。',
     roadmapHeader: '按顺序完成四个阶段，每个阶段有明确目标和对应模块。进度自动保存。',
     phaseBanners: [
@@ -3545,14 +3545,14 @@ function applyPersonalization(name) {
   if (title) {
     title.innerHTML = named
       ? I18n.interpolate(named.titleHtml, { name: n, teacher })
-      : `${n}，让我们一起<br><span class="hero-accent">系统学会 <em class="hero-accent-ai">AI</em></span>`;
+      : `${n}，一起<span class="hero-highlight">系统学会 AI</span>`;
   }
 
   const desc = document.getElementById('hero-desc');
   if (desc) {
     desc.textContent = I18n?.getLocale() === 'en'
       ? `${teacher} will guide you through Cognition → Tools → Practice → Review. I'll be with you every step.`
-      : `${teacher}会带你按「认知 → 工具 → 实战 → 检验」四步学习法，从零建立完整的 AI 能力。从学习地图按阶段推进，我会一直陪着你。`;
+      : `${teacher}会带你按四步学习法，从零建立完整的 AI 能力。从学习地图按阶段推进，我会一直陪着你。`;
   }
 
   const readyTitle = document.getElementById('welcome-ready-title');
