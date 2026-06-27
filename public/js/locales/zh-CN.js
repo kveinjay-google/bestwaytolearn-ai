@@ -48,6 +48,8 @@ I18n.registerLocale('zh-CN', {
       label: '朗读',
       aria: '朗读当前屏幕内容',
       title: '朗读当前屏幕内容',
+      neural: '神经网络朗读',
+      neuralTitle: '使用 Azure Neural TTS 朗读当前屏幕内容',
     },
     user: {
       defaultName: '学员',

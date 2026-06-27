@@ -48,6 +48,8 @@ I18n.registerLocale('en', {
       label: 'Read aloud',
       aria: 'Read current screen aloud',
       title: 'Read current screen aloud',
+      neural: 'Neural voice',
+      neuralTitle: 'Read current screen with Azure Neural TTS',
     },
     user: {
       defaultName: 'Learner',

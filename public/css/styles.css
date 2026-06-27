@@ -528,6 +528,18 @@ main {
   border-color: var(--accent-teal);
 }
 
+.page-reader-btn--neural:not(.active) {
+  border-color: rgba(99, 102, 241, 0.45);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.12);
+}
+
+.page-reader-btn--neural:not(.active):hover,
+.page-reader-btn--neural:not(.active):focus-visible {
+  color: #a5b4fc;
+  border-color: rgba(129, 140, 248, 0.65);
+  background: rgba(99, 102, 241, 0.1);
+}
+
 .page-reader-icon {
   display: block;
   width: 1rem;

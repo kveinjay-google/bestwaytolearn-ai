@@ -4338,10 +4338,14 @@ const READER_BLOCK_SELECTORS = [
   '.monetize-card:not(.hidden-monetize)', '.device-preset-card', '.device-ai-box-card', '.device-os-card', '.device-tier-card', '.device-gpu-card', 'main .section'
 ];
 
-let readerState = { active: false, chunks: [], index: 0 };
+let readerState = { active: false, chunks: [], index: 0, mode: 'browser' };
+
+function hasBrowserTts() {
+  return 'speechSynthesis' in window;
+}
 
 function getReaderVoices() {
-  return speechSynthesis.getVoices();
+  return hasBrowserTts() ? speechSynthesis.getVoices() : [];
 }
 
 function pickChineseVoice() {
@@ -4455,7 +4459,11 @@ function stopPageReader() {
   readerState.active = false;
   readerState.chunks = [];
   readerState.index = 0;
-  speechSynthesis.cancel();
+  if (readerState.mode === 'azure' && typeof AzureReader !== 'undefined') {
+    AzureReader.stop();
+  }
+  readerState.mode = 'browser';
+  if (hasBrowserTts()) speechSynthesis.cancel();
   updateReaderUI(false);
 }
 
@@ -4475,21 +4483,36 @@ function speakNextChunk() {
   speechSynthesis.speak(utter);
 }
 
-function startPageReader() {
-  if (document.body.classList.contains('welcome-active')) return;
-  if (!('speechSynthesis' in window)) {
-    showTeacherMessage('当前浏览器不支持语音朗读，请使用 Chrome、Safari 或 Edge。', { expand: true });
-    return;
+async function startPageReaderAzure(chunks, label) {
+  readerState = { active: true, chunks, index: 0, mode: 'azure' };
+  updateReaderUI(true, label);
+  try {
+    await AzureReader.speakChunks(chunks, {
+      onChunkStart: idx => { readerState.index = idx; },
+      onComplete: () => stopPageReader(),
+    });
+  } catch {
+    stopPageReader();
+    const isEn = typeof I18n !== 'undefined' && I18n.getLocale() === 'en';
+    showTeacherMessage(
+      isEn ? 'Neural voice failed. Check Azure TTS service or try again.' : '神经网络语音暂时不可用，请稍后重试或检查服务端 Azure TTS 配置。',
+      { expand: true }
+    );
   }
-  const root = getCurrentReadableElement();
-  const chunks = splitTextForSpeech(extractReadableText(root));
-  if (!chunks.length) {
-    showTeacherMessage('当前屏幕区域没有可朗读的正文内容。', { expand: false });
+}
+
+function startPageReaderBrowser(chunks, label) {
+  if (!hasBrowserTts()) {
+    const isEn = typeof I18n !== 'undefined' && I18n.getLocale() === 'en';
+    showTeacherMessage(
+      isEn ? 'Read-aloud is unavailable. Configure Azure TTS on the server.' : '朗读功能不可用，请在服务器配置 Azure Neural TTS。',
+      { expand: true }
+    );
     return;
   }
   speechSynthesis.cancel();
-  readerState = { active: true, chunks, index: 0 };
-  updateReaderUI(true, getReadableSectionTitle(root));
+  readerState = { active: true, chunks, index: 0, mode: 'browser' };
+  updateReaderUI(true, label);
   const begin = () => speakNextChunk();
   if (!getReaderVoices().length) {
     speechSynthesis.addEventListener('voiceschanged', begin, { once: true });
@@ -4497,19 +4520,54 @@ function startPageReader() {
   } else begin();
 }
 
+async function startPageReader() {
+  if (document.body.classList.contains('welcome-active')) return;
+  const root = getCurrentReadableElement();
+  const chunks = splitTextForSpeech(extractReadableText(root));
+  if (!chunks.length) {
+    const isEn = typeof I18n !== 'undefined' && I18n.getLocale() === 'en';
+    showTeacherMessage(
+      isEn ? 'No readable text in the current view.' : '当前屏幕区域没有可朗读的正文内容。',
+      { expand: false }
+    );
+    return;
+  }
+  const label = getReadableSectionTitle(root);
+  stopPageReader();
+  const useAzure = typeof AzureReader !== 'undefined' && await AzureReader.probe();
+  if (useAzure) {
+    startPageReaderAzure(chunks, label);
+    return;
+  }
+  startPageReaderBrowser(chunks, label);
+}
+
 function togglePageReader() {
   if (readerState.active) stopPageReader();
   else startPageReader();
 }
 
-function initPageReader() {
+async function initPageReader() {
   const btn = document.getElementById('page-reader-btn');
-  if (!btn || !('speechSynthesis' in window)) {
-    btn?.classList.add('hidden');
+  if (!btn) return;
+  const azureReady = typeof AzureReader !== 'undefined' && await AzureReader.probe();
+  if (!azureReady && !hasBrowserTts()) {
+    btn.classList.add('hidden');
     return;
   }
+  btn.classList.toggle('page-reader-btn--neural', azureReady);
+  if (azureReady) {
+    const neuralLabel = typeof I18n !== 'undefined' ? I18n.t('reader.neural') : '神经网络朗读';
+    const neuralTitle = typeof I18n !== 'undefined' ? I18n.t('reader.neuralTitle') : '使用 Azure Neural TTS 朗读当前屏幕内容';
+    const labelEl = btn.querySelector('.page-reader-label');
+    if (labelEl) labelEl.textContent = neuralLabel;
+    btn.setAttribute('title', neuralTitle);
+    btn.setAttribute('aria-label', neuralTitle);
+  }
   btn.addEventListener('click', togglePageReader);
-  speechSynthesis.addEventListener('voiceschanged', () => getReaderVoices());
+  if (hasBrowserTts()) {
+    speechSynthesis.addEventListener('voiceschanged', () => getReaderVoices());
+  }
   window.addEventListener('hashchange', stopPageReader);
   window.addEventListener('beforeunload', stopPageReader);
   document.addEventListener('visibilitychange', () => {

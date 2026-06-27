@@ -1,0 +1,15 @@
+[Unit]
+Description=BestWayToLearn.AI Azure Neural TTS proxy
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/bwtl-tts
+EnvironmentFile=/opt/bwtl-tts/.env
+ExecStart=/usr/bin/python3 /opt/bwtl-tts/tts_server.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,30 @@
+server {
+    listen 80 default_server;
+    server_name 8.135.40.124 _;
+
+    root /var/www/synapse-ai;
+    index index.html;
+    charset utf-8;
+
+    # Azure Neural TTS proxy (bwtl-tts systemd service on :8765)
+    location /api/tts/ {
+        proxy_pass http://127.0.0.1:8765/api/tts/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_read_timeout 60s;
+        proxy_connect_timeout 5s;
+    }
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    location ~* \.(css|js|svg|png|jpg|jpeg|gif|ico|webp|woff2?)$ {
+        expires 7d;
+        add_header Cache-Control "public, immutable";
+    }
+
+    gzip on;
+    gzip_types text/css application/javascript text/html application/json image/svg+xml;
+}
