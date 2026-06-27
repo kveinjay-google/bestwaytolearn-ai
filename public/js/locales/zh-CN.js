@@ -117,7 +117,7 @@ I18n.registerLocale('zh-CN', {
       graduatedHint: '恭喜你完成全部学习与测验',
       timelineTitle: '7 天学习日程',
       modulesLabel: '学习内容',
-      tipStart: '点上方 <strong>「开始学习」</strong> 或当天卡片里的开始学习，直达对应模块。',
+      tipStart: '点上方 <strong>「开始学习」</strong> 或当天卡片右侧的<strong>「开始学习」</strong>，按天进入学习内容。',
       tipOrder: '按 Day 1→7 顺序推进；完成当日任务后再进入下一天。',
       tipSkip: '内容已熟悉？点卡片右侧 <strong>「已掌握」</strong> 可跳过（随时可取消）。',
     },

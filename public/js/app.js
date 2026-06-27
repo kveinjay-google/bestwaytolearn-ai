@@ -1247,14 +1247,13 @@ function getContinueLearningTarget() {
   if (!allDaysDone) {
     const dayIdx = LEARNING_PATH.findIndex((_, i) => !prog.completedDays.includes(i));
     const day = typeof I18n !== 'undefined' ? I18n.localizePathDay(LEARNING_PATH[dayIdx], dayIdx) : LEARNING_PATH[dayIdx];
-    const firstGoto = day.goto?.[0];
     return {
       type: 'day',
       dayIdx,
       day,
       label: `${I18n.t('nav.continue').replace(/\s*→\s*$/, '')} Day ${day.day}`,
       sublabel: day.title,
-      href: firstGoto?.href || '#path',
+      href: getPathDayStartHref(day),
       phaseLabel: getPhaseShortLabels()[day.phase],
       phaseHash: `#${PHASE_HASH_FROM_NUM[day.phase]}`,
     };
@@ -1588,6 +1587,10 @@ function renderRoadmap() {
   updateAllProgress();
 }
 
+function getPathDayStartHref(day) {
+  return day.goto?.[0]?.href || `#${PHASE_HASH_FROM_NUM[day.phase] || 'path'}`;
+}
+
 function getCurrentPathDayIndex() {
   const prog = loadProgress();
   const idx = LEARNING_PATH.findIndex((_, i) => !prog.completedDays.includes(i));
@@ -1661,11 +1664,7 @@ function renderLearningPath() {
     const done = progress.completedDays.includes(i);
     const isCurrent = !allDone && i === currentIdx;
     const phaseLabel = phaseLabels[day.phase] || `${I18n.t('common.phase')} ${day.phase}`;
-    const phaseHash = `#${PHASE_HASH_FROM_NUM[day.phase]}`;
-    const primaryHref = day.goto?.[0]?.href || phaseHash;
-    const gotoLinks = (day.goto || []).map(g =>
-      `<a href="${g.href}" class="path-goto-link">${g.label} →</a>`
-    ).join('');
+    const primaryHref = getPathDayStartHref(day);
     const startLabel = done
       ? I18n.t('path.reviewDay', { day: day.day })
       : isCurrent
@@ -1687,11 +1686,6 @@ function renderLearningPath() {
           <p class="path-goal"><strong>${I18n.t('path.goal')}</strong>${day.goal}</p>
           <p>${day.desc}</p>
           <ul>${day.tasks.map(t => `<li>${t}</li>`).join('')}</ul>
-          <div class="path-goto">
-            <span class="path-goto-label">${I18n.t('path.modulesLabel')}</span>
-            ${gotoLinks}
-            <a href="${phaseHash}" class="path-phase-enter">${I18n.t('path.enterPhase', { phase: phaseLabel })}</a>
-          </div>
           <p class="path-milestone">${renderIcon({ image: UI_ICONS.brandStar, className: 'theme-icon theme-icon-inline', size: 18, alt: '' })} ${day.milestone}</p>
         </div>
         <div class="path-day-actions">
