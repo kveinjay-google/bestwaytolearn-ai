@@ -1483,6 +1483,13 @@ main {
     radial-gradient(ellipse 55% 80% at 78% 50%, rgba(245, 158, 11, 0.07) 0%, transparent 70%);
 }
 
+.page-poster-overlay-path {
+  background:
+    linear-gradient(105deg, rgba(8, 12, 20, 0.88) 0%, rgba(8, 12, 20, 0.42) 46%, rgba(8, 12, 20, 0.12) 72%),
+    radial-gradient(ellipse 70% 90% at 82% 42%, rgba(94, 196, 220, 0.09) 0%, transparent 62%),
+    linear-gradient(to top, rgba(6, 10, 16, 0.55) 0%, transparent 42%);
+}
+
 .page-poster-overlay-violet {
   background:
     linear-gradient(100deg, rgba(6, 10, 16, 0.72) 0%, rgba(6, 10, 16, 0.22) 42%, transparent 68%),
@@ -1545,13 +1552,16 @@ main {
 .phase-banner-rose .phase-progress { color: var(--accent-rose); border-color: rgba(251,113,133,0.3); background: rgba(251,113,133,0.1); }
 .phase-banner-plan .phase-num {
   font-size: 0.82rem;
-  letter-spacing: 0.04em;
-  color: var(--accent-amber);
+  letter-spacing: 0.06em;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  opacity: 1;
+  color: var(--path-accent, #7dd3c7);
 }
 .phase-banner-plan .phase-progress {
-  color: var(--accent-amber);
-  border-color: rgba(245, 158, 11, 0.35);
-  background: var(--accent-amber-dim);
+  color: var(--path-accent, #7dd3c7);
+  border-color: var(--path-accent-border, rgba(125, 211, 199, 0.28));
+  background: var(--path-accent-dim, rgba(125, 211, 199, 0.1));
 }
 
 .phase-banner-gold .phase-num {
@@ -1813,17 +1823,18 @@ main {
 .path-goto-link {
   font-size: 0.78rem;
   padding: 0.35rem 0.75rem;
-  background: var(--accent-teal-dim);
-  border: 1px solid var(--border-strong);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 100px;
-  color: var(--accent-teal);
+  color: var(--path-text-soft, var(--text-secondary));
   text-decoration: none;
   transition: var(--transition);
 }
 
 .path-goto-link:hover {
-  background: var(--accent-teal);
-  color: var(--bg-deep);
+  background: var(--path-accent-dim, var(--accent-teal-dim));
+  border-color: var(--path-accent-border, rgba(125, 211, 199, 0.28));
+  color: var(--path-accent, var(--accent-teal));
 }
 
 .path-day-phase-row {
@@ -1853,9 +1864,9 @@ main {
 }
 
 .path-phase-enter:hover {
-  color: var(--accent-teal);
-  border-color: var(--accent-teal);
-  background: var(--accent-teal-dim);
+  color: var(--path-accent, var(--accent-teal));
+  border-color: var(--path-accent-border, rgba(125, 211, 199, 0.32));
+  background: var(--path-accent-dim, var(--accent-teal-dim));
 }
 
 .path-phase-tag {
@@ -1867,10 +1878,10 @@ main {
   margin-bottom: 0.4rem;
 }
 
-.path-phase-1 { color: var(--accent-teal); background: var(--accent-teal-dim); }
-.path-phase-2 { color: var(--accent-amber); background: var(--accent-amber-dim); }
-.path-phase-3 { color: var(--accent-violet); background: rgba(167,139,250,0.12); }
-.path-phase-4 { color: var(--accent-rose); background: rgba(251,113,133,0.1); }
+.path-phase-1 { color: var(--path-phase-1, var(--accent-teal)); background: var(--path-phase-1-dim, var(--accent-teal-dim)); border: 1px solid rgba(125, 211, 199, 0.18); }
+.path-phase-2 { color: var(--path-phase-2, #8eb8e8); background: var(--path-phase-2-dim, rgba(142, 184, 232, 0.1)); border: 1px solid rgba(142, 184, 232, 0.18); }
+.path-phase-3 { color: var(--path-phase-3, #b0a8d8); background: var(--path-phase-3-dim, rgba(176, 168, 216, 0.1)); border: 1px solid rgba(176, 168, 216, 0.18); }
+.path-phase-4 { color: var(--path-phase-4, #d4a8b8); background: var(--path-phase-4-dim, rgba(212, 168, 184, 0.1)); border: 1px solid rgba(212, 168, 184, 0.18); }
 
 /* Buttons */
 .btn {
@@ -2380,7 +2391,36 @@ main {
   transform: translateY(0);
 }
 
-/* Learning Path */
+/* Learning Path — scoped palette */
+#phase-view-path {
+  --path-accent: #7dd3c7;
+  --path-accent-strong: #5eead4;
+  --path-accent-dim: rgba(125, 211, 199, 0.1);
+  --path-accent-border: rgba(125, 211, 199, 0.24);
+  --path-surface: #101820;
+  --path-surface-raised: #151d28;
+  --path-surface-hover: #1a2433;
+  --path-text-soft: #9aa8bc;
+  --path-phase-1: #7dd3c7;
+  --path-phase-1-dim: rgba(125, 211, 199, 0.1);
+  --path-phase-2: #8eb8e8;
+  --path-phase-2-dim: rgba(142, 184, 232, 0.1);
+  --path-phase-3: #b0a8d8;
+  --path-phase-3-dim: rgba(176, 168, 216, 0.1);
+  --path-phase-4: #d4a8b8;
+  --path-phase-4-dim: rgba(212, 168, 184, 0.1);
+}
+
+#phase-view-path .path-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1.75rem 4rem;
+}
+
+#phase-view-path .phase-banner-text p {
+  color: var(--path-text-soft);
+}
+
 .path-hero {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -2388,10 +2428,21 @@ main {
   gap: 1.5rem 2rem;
   margin-bottom: 1.5rem;
   padding: 1.5rem 1.75rem;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(45, 212, 191, 0.06));
-  border: 1px solid rgba(245, 158, 11, 0.28);
+  background: var(--path-surface-raised, var(--bg-elevated));
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-glow);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
+  position: relative;
+  overflow: hidden;
+}
+
+.path-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--path-accent-strong, var(--accent-teal)), transparent 85%);
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
 }
 
 .path-hero-main {
@@ -2407,19 +2458,22 @@ main {
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--accent-amber);
-  background: var(--accent-amber-dim);
+  color: var(--path-text-soft, var(--text-muted));
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 100px;
 }
 
 .path-hero-status.is-progress {
-  color: var(--accent-teal);
-  background: var(--accent-teal-dim);
+  color: var(--path-accent, var(--accent-teal));
+  background: var(--path-accent-dim, var(--accent-teal-dim));
+  border-color: var(--path-accent-border, rgba(125, 211, 199, 0.24));
 }
 
 .path-hero-status.is-done {
-  color: var(--accent-violet);
-  background: rgba(167, 139, 250, 0.12);
+  color: #a8e6cf;
+  background: rgba(168, 230, 207, 0.1);
+  border-color: rgba(168, 230, 207, 0.22);
 }
 
 .path-hero-title {
@@ -2470,8 +2524,8 @@ main {
   gap: 0.75rem;
   align-items: flex-start;
   padding: 1rem 1.1rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
+  background: var(--path-surface, var(--bg-card));
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-md);
 }
 
@@ -2485,8 +2539,9 @@ main {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 700;
-  color: var(--accent-amber);
-  background: var(--accent-amber-dim);
+  color: var(--path-accent, var(--accent-teal));
+  background: var(--path-accent-dim, var(--accent-teal-dim));
+  border: 1px solid var(--path-accent-border, rgba(125, 211, 199, 0.2));
   border-radius: 50%;
 }
 
@@ -2498,25 +2553,27 @@ main {
 }
 
 .path-timeline-heading {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--path-text-soft, var(--text-muted));
   margin-bottom: 1rem;
   font-weight: 600;
 }
 
 .path-progress-bar {
-  height: 4px;
-  background: var(--bg-elevated);
-  border-radius: 2px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 100px;
   overflow: hidden;
 }
 
 .path-progress-fill {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, var(--accent-teal), var(--accent-amber));
-  border-radius: 2px;
+  background: linear-gradient(90deg, var(--path-accent-strong, var(--accent-teal)), var(--path-accent, #7dd3c7));
+  border-radius: 100px;
   transition: width 0.6s var(--transition);
 }
 
@@ -2536,27 +2593,28 @@ main {
   align-items: start;
   gap: 1.25rem 1.5rem;
   padding: 1.5rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
+  background: var(--path-surface, var(--bg-card));
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-md);
   transition: var(--transition);
   position: relative;
 }
 
 .path-day:hover {
-  border-color: var(--border-strong);
-  box-shadow: var(--shadow-glow);
+  border-color: rgba(255, 255, 255, 0.1);
+  background: var(--path-surface-hover, var(--bg-elevated));
 }
 
 .path-day.is-current {
-  border-color: rgba(245, 158, 11, 0.55);
-  background: linear-gradient(135deg, var(--bg-card), rgba(245, 158, 11, 0.06));
-  box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.15), var(--shadow-glow);
+  border-color: var(--path-accent-border, rgba(125, 211, 199, 0.32));
+  background: linear-gradient(135deg, var(--path-surface-raised, var(--bg-elevated)), rgba(125, 211, 199, 0.04));
+  box-shadow: inset 3px 0 0 var(--path-accent-strong, var(--accent-teal));
 }
 
 .path-day.completed {
-  border-color: rgba(45, 212, 191, 0.35);
-  background: linear-gradient(135deg, var(--bg-card), rgba(45, 212, 191, 0.04));
+  border-color: rgba(125, 211, 199, 0.18);
+  background: var(--path-surface, var(--bg-card));
+  opacity: 0.92;
 }
 
 .path-day-side {
@@ -2573,8 +2631,9 @@ main {
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--bg-deep);
-  background: linear-gradient(135deg, var(--accent-amber), #fbbf24);
+  color: var(--path-accent-strong, var(--accent-teal));
+  background: var(--path-accent-dim, var(--accent-teal-dim));
+  border: 1px solid var(--path-accent-border, rgba(125, 211, 199, 0.28));
   border-radius: 100px;
 }
 
@@ -2600,11 +2659,18 @@ main {
 .path-day-num {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--accent-amber);
+  color: var(--path-text-soft, var(--text-secondary));
   padding: 0.4rem 0.7rem;
-  background: var(--accent-amber-dim);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-sm);
   white-space: nowrap;
+}
+
+.path-day.is-current .path-day-num {
+  color: var(--path-accent, var(--accent-teal));
+  background: var(--path-accent-dim, var(--accent-teal-dim));
+  border-color: var(--path-accent-border, rgba(125, 211, 199, 0.24));
 }
 
 .path-day h3 {
@@ -2614,9 +2680,14 @@ main {
 }
 
 .path-goal {
-  color: var(--accent-teal);
+  color: var(--path-text-soft, var(--text-secondary));
   font-size: 0.88rem;
   margin-bottom: 0.5rem;
+}
+
+.path-goal strong {
+  color: var(--path-accent, var(--accent-teal));
+  font-weight: 600;
 }
 
 .path-day p {
@@ -2630,10 +2701,11 @@ main {
   gap: 0.45rem;
   margin-top: 0.85rem;
   padding: 0.75rem 1rem;
-  background: var(--accent-amber-dim);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-sm);
   font-size: 0.82rem;
-  color: var(--accent-amber);
+  color: var(--path-text-soft, var(--text-secondary));
 }
 
 .path-day ul {
@@ -2649,8 +2721,8 @@ main {
   min-width: 4.25rem;
   padding: 0.45rem 0.55rem;
   border-radius: var(--radius-sm);
-  border: 2px solid var(--border-strong);
-  background: var(--bg-elevated);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -2685,29 +2757,30 @@ main {
 }
 
 .path-check:hover {
-  border-color: var(--accent-teal);
+  border-color: var(--path-accent-border, rgba(125, 211, 199, 0.32));
+  background: var(--path-accent-dim, var(--accent-teal-dim));
 }
 
 .path-check:hover .path-check-box {
-  border-color: var(--accent-teal);
+  border-color: var(--path-accent, var(--accent-teal));
 }
 
 .path-check.is-done,
 .path-day.completed .path-check {
-  border-color: rgba(45, 212, 191, 0.45);
-  background: var(--accent-teal-dim);
+  border-color: var(--path-accent-border, rgba(125, 211, 199, 0.32));
+  background: var(--path-accent-dim, var(--accent-teal-dim));
 }
 
 .path-check.is-done .path-check-box,
 .path-day.completed .path-check .path-check-box {
-  background: var(--accent-teal);
-  border-color: var(--accent-teal);
+  background: var(--path-accent-strong, var(--accent-teal));
+  border-color: var(--path-accent-strong, var(--accent-teal));
   color: var(--bg-deep);
 }
 
 .path-check.is-done .path-check-label,
 .path-day.completed .path-check .path-check-label {
-  color: var(--accent-teal);
+  color: var(--path-accent, var(--accent-teal));
 }
 
 /* AI Overview */
