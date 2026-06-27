@@ -6,7 +6,9 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 echo "→ Installing BWTL Azure TTS to $INSTALL_DIR"
 mkdir -p "$INSTALL_DIR"
-cp "$SCRIPT_DIR/tts_server.py" "$INSTALL_DIR/"
+if [ "$(cd "$SCRIPT_DIR" && pwd)" != "$(cd "$INSTALL_DIR" && pwd)" ]; then
+  cp "$SCRIPT_DIR/tts_server.py" "$INSTALL_DIR/"
+fi
 cp "$SCRIPT_DIR/bwtl-tts.service" /etc/systemd/system/bwtl-tts.service
 
 if [ ! -f "$INSTALL_DIR/.env" ]; then
