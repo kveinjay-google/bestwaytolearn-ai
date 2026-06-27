@@ -39,6 +39,11 @@ I18n.registerLocale('zh-CN', {
       fontXl: '特大',
       toggle: '显示设置',
       fontToggle: '字体大小',
+      installApp: '安装到主屏幕',
+      installHint: '像 App 一样全屏打开，支持离线浏览已缓存内容',
+    },
+    pwa: {
+      offline: '当前离线 · 已缓存内容仍可浏览',
     },
     nav: {
       home: 'AI学习',

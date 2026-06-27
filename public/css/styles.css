@@ -7006,3 +7006,52 @@ main {
   }
   html { scroll-behavior: auto; }
 }
+
+/* PWA */
+.pwa-offline-bar {
+  position: fixed;
+  left: 50%;
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  transform: translateX(-50%);
+  z-index: 9000;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  background: rgba(6, 10, 16, 0.92);
+  border: 1px solid var(--border-strong);
+  border-radius: 100px;
+  box-shadow: var(--shadow-glow);
+  pointer-events: none;
+}
+
+.pwa-install-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.pwa-install-btn {
+  width: 100%;
+  padding: 0.55rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--accent-teal-dim);
+  border: 1px solid rgba(45, 212, 191, 0.35);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.pwa-install-btn:hover {
+  background: rgba(45, 212, 191, 0.18);
+  border-color: rgba(45, 212, 191, 0.5);
+}
+
+.pwa-install-hint {
+  margin: 0;
+  font-size: 0.74rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+}

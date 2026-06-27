@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#060a10">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="BWTL.AI">
+  <link rel="manifest" href="/manifest.webmanifest">
   <script>
     (function () {
       try {
@@ -84,7 +89,7 @@
   </script>
   <link rel="icon" href="assets/icons/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="icon" href="assets/icons/favicon-16.png" type="image/png" sizes="16x16">
-  <link rel="apple-touch-icon" href="assets/icons/bwtl-mark.png">
+  <link rel="apple-touch-icon" href="assets/icons/pwa-icon-192.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -92,6 +97,9 @@
   <link rel="stylesheet" href="css/themes.css?v=20260627c">
 </head>
 <body>
+  <div class="pwa-offline-bar" id="pwa-offline-bar" role="status" aria-live="polite" hidden>
+    <span data-i18n="pwa.offline">当前离线 · 已缓存内容仍可浏览</span>
+  </div>
   <canvas id="neural-canvas" aria-hidden="true"></canvas>
 
   <!-- 欢迎引导 -->
@@ -281,6 +289,11 @@
               <button type="button" class="pref-font-btn" data-size="lg" aria-pressed="false" data-i18n="settings.fontLg">大</button>
               <button type="button" class="pref-font-btn" data-size="xl" aria-pressed="false" data-i18n="settings.fontXl">特大</button>
             </div>
+          </div>
+          <div class="header-prefs-divider" aria-hidden="true"></div>
+          <div class="header-prefs-field pwa-install-field hidden" id="pwa-install-field">
+            <button type="button" class="pwa-install-btn" id="pwa-install-btn" data-i18n="settings.installApp">安装到主屏幕</button>
+            <p class="pwa-install-hint" data-i18n="settings.installHint">像 App 一样全屏打开，支持离线浏览已缓存内容</p>
           </div>
         </div>
       </div>
@@ -931,6 +944,7 @@
   <script src="js/ai-skills-nav.js?v=20260707a"></script>
   <script src="js/ai-mcp-nav.js?v=20260708d"></script>
   <script src="js/terms.js?v=20260627a"></script>
+  <script src="js/pwa.js?v=20260709a"></script>
   <script src="js/theme.js?v=20260627c"></script>
   <script src="js/app.js?v=20260708f"></script>
 </body>

@@ -39,6 +39,11 @@ I18n.registerLocale('en', {
       fontXl: 'Extra large',
       toggle: 'Display settings',
       fontToggle: 'Font size',
+      installApp: 'Install app',
+      installHint: 'Open fullscreen like a native app; browse cached content offline',
+    },
+    pwa: {
+      offline: 'Offline — cached content is still available',
     },
     nav: {
       home: 'AI Learning',
