@@ -1,12 +1,12 @@
 {
-  "siteHost": "bestwaytolearn.ai",
-  "siteUrl": "https://bestwaytolearn.ai/",
-  "sitemapUrl": "https://bestwaytolearn.ai/sitemap.xml",
+  "siteHost": "www.bestwaytolearn.ai",
+  "siteUrl": "https://www.bestwaytolearn.ai/",
+  "sitemapUrl": "https://www.bestwaytolearn.ai/sitemap.xml",
   "indexNowKey": "bwtlindex2026a1b2c3d4e5f6",
   "urls": [
-    "https://bestwaytolearn.ai/",
-    "https://bestwaytolearn.ai/sitemap.xml"
+    "https://www.bestwaytolearn.ai/",
+    "https://www.bestwaytolearn.ai/sitemap.xml"
   ],
   "baiduPushToken": "",
-  "baiduSite": "bestwaytolearn.ai"
+  "baiduSite": "www.bestwaytolearn.ai"
 }
