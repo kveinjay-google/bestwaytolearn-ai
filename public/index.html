@@ -88,7 +88,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=20260627f">
+  <link rel="stylesheet" href="css/styles.css?v=20260708c">
   <link rel="stylesheet" href="css/themes.css?v=20260627c">
 </head>
 <body>
@@ -210,14 +210,15 @@
         <span class="logo-text" data-i18n-html="brand.logoHtml">BestWayToLearn<em>.AI</em></span>
       </a>
       <nav class="main-nav" role="tablist" data-i18n-aria="nav.mainLabel" aria-label="学习阶段">
-        <a href="#roadmap" role="tab" data-nav-tab="map" data-i18n="nav.home" aria-selected="true">首页</a>
-        <a href="#phase-learn" role="tab" data-nav-tab="learn" data-i18n="nav.learn">01 认知</a>
-        <a href="#phase-tools" role="tab" data-nav-tab="tools" data-i18n="nav.tools">02 工具</a>
-        <a href="#phase-practice" role="tab" data-nav-tab="practice" data-i18n="nav.practice">03 实战</a>
-        <a href="#phase-validate" role="tab" data-nav-tab="validate" data-i18n="nav.validate">04 检验</a>
+        <a href="#roadmap" role="tab" data-nav-tab="map" data-i18n="nav.home" aria-selected="true">AI学习</a>
+        <a href="#phase-learn" role="tab" data-nav-tab="learn" data-i18n="nav.learn">认知</a>
+        <a href="#phase-tools" role="tab" data-nav-tab="tools" data-i18n="nav.tools">工具</a>
+        <a href="#phase-practice" role="tab" data-nav-tab="practice" data-i18n="nav.practice">实战</a>
+        <a href="#phase-validate" role="tab" data-nav-tab="validate" data-i18n="nav.validate">检验</a>
         <a href="#monetize" role="tab" data-nav-tab="monetize" data-i18n="nav.monetize">变现</a>
         <a href="#devices" role="tab" data-nav-tab="devices" data-i18n="nav.devices">设备</a>
         <a href="#ai-nav" role="tab" data-nav-tab="aiToolsNav" data-i18n="nav.toolsNav">AI导航</a>
+        <a href="#ai-skills-nav" role="tab" data-nav-tab="aiSkillsNav" data-i18n="nav.skillsRecommend">SKILL推荐</a>
       </nav>
       <div class="header-prefs" id="header-prefs">
         <button class="header-prefs-toggle" id="header-prefs-toggle" type="button" aria-expanded="false" aria-controls="header-prefs-panel" data-i18n-aria="settings.toggle" data-i18n-title="settings.toggle" title="显示设置">
@@ -698,7 +699,7 @@
       <section class="section ai-nav-page" id="ai-nav">
         <nav class="ai-nav-tabs" role="tablist" aria-label="AI导航分类">
           <a href="#ai-nav" class="ai-nav-tab filter-btn active" role="tab" aria-selected="true" data-i18n="aiNavPage.tabTools">工具导航</a>
-          <a href="#ai-skills-nav" class="ai-nav-tab filter-btn" role="tab" aria-selected="false" data-i18n="aiNavPage.tabSkills">Skill 导航</a>
+          <a href="#ai-mcp-nav" class="ai-nav-tab filter-btn" role="tab" aria-selected="false" data-i18n="aiNavPage.tabMcp">MCP 导航</a>
         </nav>
         <div class="section-header tools-nav-section-header">
           <span class="section-tag" data-i18n="toolsNavPage.tag">工具</span>
@@ -719,7 +720,7 @@
       </section>
     </div>
 
-    <!-- ═══ AI 导航 · Skill ═══ -->
+    <!-- ═══ SKILL 推荐 ═══ -->
     <div class="phase-view" id="phase-view-ai-skills" data-phase-tab="aiSkillsNav" hidden>
       <div class="phase-banner phase-banner-violet has-page-poster">
         <div class="page-poster-bg" aria-hidden="true">
@@ -728,20 +729,16 @@
         </div>
         <span class="phase-num">◎</span>
         <div class="phase-banner-text">
-          <h2 data-i18n="aiNavPage.bannerTitle">AI导航</h2>
-          <p data-i18n="aiNavPage.skillsBannerSubtitle">GitHub 优质 Skill · 一键安装</p>
+          <h2 data-i18n="skillsNavPage.bannerTitle">SKILL推荐</h2>
+          <p data-i18n="skillsNavPage.bannerSubtitle">GitHub 优质 Skill · 一键安装</p>
         </div>
         <span class="phase-progress" id="ai-skills-banner-stat">64 个 Skill</span>
       </div>
 
-      <section class="section ai-nav-page" id="ai-skills-nav">
-        <nav class="ai-nav-tabs" role="tablist" aria-label="AI导航分类">
-          <a href="#ai-nav" class="ai-nav-tab filter-btn" role="tab" aria-selected="false" data-i18n="aiNavPage.tabTools">工具导航</a>
-          <a href="#ai-skills-nav" class="ai-nav-tab filter-btn active" role="tab" aria-selected="true" data-i18n="aiNavPage.tabSkills">Skill 导航</a>
-        </nav>
+      <section class="section skills-recommend-page" id="ai-skills-nav">
         <div class="section-header skills-nav-section-header">
           <span class="section-tag" data-i18n="skillsNavPage.tag">Skill</span>
-          <h2 data-i18n="skillsNavPage.title">优质 Agent Skill 导航</h2>
+          <h2 data-i18n="skillsNavPage.title">SKILL推荐</h2>
           <p id="skills-nav-lead"></p>
         </div>
         <div class="tools-nav-toolbar skills-nav-toolbar">
@@ -752,6 +749,45 @@
         <nav class="tools-nav-jump skills-nav-jump" id="skills-nav-jump" aria-label="Skill 分类快捷跳转"></nav>
         <div class="tools-nav-body skills-nav-body" id="skills-nav-body"></div>
         <p class="tools-nav-empty hidden" id="skills-nav-empty" role="status"></p>
+      </section>
+    </div>
+
+    <!-- ═══ AI 导航 · MCP ═══ -->
+    <div class="phase-view" id="phase-view-ai-mcp" data-phase-tab="aiMcpNav" hidden>
+      <div class="phase-banner phase-banner-sky has-page-poster">
+        <div class="page-poster-bg" aria-hidden="true">
+          <img data-theme-poster="tools" src="assets/posters/poster-tools-neural.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+          <div class="page-poster-overlay page-poster-overlay-sky"></div>
+        </div>
+        <span class="phase-num">◎</span>
+        <div class="phase-banner-text">
+          <h2 data-i18n="aiNavPage.bannerTitle">AI导航</h2>
+          <p data-i18n="aiNavPage.mcpBannerSubtitle">MCP Server 大全 · 一键复制配置</p>
+        </div>
+        <span class="phase-progress" id="ai-mcp-banner-stat">50+ MCP</span>
+      </div>
+
+      <section class="section ai-nav-page" id="ai-mcp-nav">
+        <nav class="ai-nav-tabs" role="tablist" aria-label="AI导航分类">
+          <a href="#ai-nav" class="ai-nav-tab filter-btn" role="tab" aria-selected="false" data-i18n="aiNavPage.tabTools">工具导航</a>
+          <a href="#ai-mcp-nav" class="ai-nav-tab filter-btn active" role="tab" aria-selected="true" data-i18n="aiNavPage.tabMcp">MCP 导航</a>
+        </nav>
+        <div class="section-header mcp-nav-section-header">
+          <span class="section-tag" data-i18n="mcpNavPage.tag">MCP</span>
+          <h2 data-i18n="mcpNavPage.title">MCP Server 导航</h2>
+          <p id="mcp-nav-lead"></p>
+          <p class="mcp-nav-curriculum-link-wrap">
+            <a class="mcp-nav-curriculum-link" href="#apps" data-i18n="mcpNavPage.linkApps">查看课程中的 Agent 与自动化工具 →</a>
+          </p>
+        </div>
+        <div class="tools-nav-toolbar mcp-nav-toolbar">
+          <label class="sr-only" for="mcp-nav-search">搜索 MCP Server</label>
+          <input type="search" id="mcp-nav-search" class="tools-nav-search" placeholder="搜索 MCP 名称、用途…" autocomplete="off">
+          <p class="tools-nav-stats" id="mcp-nav-stats" aria-live="polite"></p>
+        </div>
+        <nav class="tools-nav-jump mcp-nav-jump" id="mcp-nav-jump" aria-label="MCP 分类快捷跳转"></nav>
+        <div class="tools-nav-body mcp-nav-body" id="mcp-nav-body"></div>
+        <p class="tools-nav-empty hidden" id="mcp-nav-empty" role="status"></p>
       </section>
     </div>
 
@@ -884,23 +920,25 @@
   </footer>
 
   <script src="js/icon-map.js?v=20260702c"></script>
-  <script src="js/i18n.js?v=20260627e"></script>
-  <script src="js/locales/zh-CN.js?v=20260627e"></script>
-  <script src="js/locales/en.js?v=20260708a"></script>
+  <script src="js/i18n.js?v=20260627f"></script>
+  <script src="js/locales/zh-CN.js?v=20260627f"></script>
+  <script src="js/locales/en.js?v=20260708b"></script>
   <script src="js/locales/en-terms.js?v=20260630a"></script>
   <script src="js/locales/en-quiz.js?v=20260630a"></script>
 
   <script src="js/locales/en-curriculum.js?v=20260701a"></script>
   <script src="js/locales/en-tools.js?v=20260701c"></script>
   <script src="js/locales/en-devices.js?v=20260701c"></script>
-  <script src="js/locales/en-chrome.js?v=20260703a"></script>
+  <script src="js/locales/en-chrome.js?v=20260708c"></script>
   <script src="js/locales/en-tools-nav.js?v=20260703a"></script>
-  <script src="js/locales/en-skills-nav.js?v=20260707a"></script>
+  <script src="js/locales/en-skills-nav.js?v=20260708c"></script>
+  <script src="js/locales/en-mcp-nav.js?v=20260708b"></script>
   <script src="js/data.js?v=20260627a"></script>
   <script src="js/ai-tools-nav.js?v=20260703b"></script>
   <script src="js/ai-skills-nav.js?v=20260707a"></script>
+  <script src="js/ai-mcp-nav.js?v=20260708b"></script>
   <script src="js/terms.js?v=20260627a"></script>
   <script src="js/theme.js?v=20260627c"></script>
-  <script src="js/app.js?v=20260627g"></script>
+  <script src="js/app.js?v=20260708c"></script>
 </body>
 </html>

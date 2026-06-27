@@ -5,13 +5,12 @@
     strings: {
       skillsNavPage: {
         tag: 'Skill',
-        title: 'Top Agent Skills',
-      },
-      aiNavPage: {
-        tabSkills: 'Skills',
+        bannerTitle: 'Skill Picks',
+        bannerSubtitle: 'Top GitHub skills · One-click install',
+        title: 'Skill Picks',
       },
       search: {
-        typeSkillsNav: 'Skill',
+        typeSkillsNav: 'Skill Picks',
       },
     },
     skillsNav: {

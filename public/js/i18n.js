@@ -142,7 +142,7 @@ const I18n = (function () {
   function getPhaseShortLabels() {
     const labels = getBundle().data?.phaseShortLabels;
     if (labels) return labels;
-    return { 1: '01 认知', 2: '02 工具', 3: '03 实战', 4: '04 检验' };
+    return { 1: '认知', 2: '工具', 3: '实战', 4: '检验' };
   }
 
   function getDefaultPersonalization() {
@@ -325,6 +325,43 @@ const I18n = (function () {
       name: overlay.name || item.name,
       desc: overlay.desc || item.desc,
       installNote: overlay.installNote || item.installNote,
+    };
+  }
+
+  function getMcpNavMeta() {
+    if (currentLocale === DEFAULT_LOCALE && typeof AI_MCP_NAV_META !== 'undefined') {
+      return AI_MCP_NAV_META;
+    }
+    return getData('mcpNav')?.meta || (typeof AI_MCP_NAV_META !== 'undefined' ? AI_MCP_NAV_META : {});
+  }
+
+  function getMcpNavCategoryLabel(cat) {
+    return mapCategoryLabel(cat, getData('mcpNav')?.categories);
+  }
+
+  function getMcpNavClientLabel(client) {
+    return mapCategoryLabel(client, getData('mcpNav')?.clients) || client;
+  }
+
+  function getMcpNavTransportLabel(transport) {
+    return mapCategoryLabel(transport, getData('mcpNav')?.transports) || transport;
+  }
+
+  function getMcpNavSourceLabel(source) {
+    const sources = getData('mcpNav')?.sources;
+    if (sources && sources[source]) return sources[source];
+    return source;
+  }
+
+  function localizeMcpNavItem(item) {
+    if (!item || currentLocale === DEFAULT_LOCALE) return item;
+    const overlay = getData('mcpNav')?.items?.[item.name];
+    if (!overlay) return item;
+    return {
+      ...item,
+      name: overlay.name || item.name,
+      desc: overlay.desc || item.desc,
+      configNote: overlay.configNote || item.configNote,
     };
   }
 
@@ -930,6 +967,12 @@ const I18n = (function () {
     getSkillsNavCategoryLabel,
     getSkillsNavAgentLabel,
     localizeSkillsNavItem,
+    getMcpNavMeta,
+    getMcpNavCategoryLabel,
+    getMcpNavClientLabel,
+    getMcpNavTransportLabel,
+    getMcpNavSourceLabel,
+    localizeMcpNavItem,
     getQuizTopicLinks,
     getQuizReviewLinks,
     getPracticePlanFocus,

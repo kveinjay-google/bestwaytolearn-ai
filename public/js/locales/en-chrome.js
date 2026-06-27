@@ -153,7 +153,7 @@
         typeAiBox: 'AI box',
         typeConfig: 'Config',
         typeToolsNav: 'Tool link',
-        typeSkillsNav: 'Skill',
+        typeSkillsNav: 'Skill Picks',
         navMsg: 'Opened 「{label}」 for you.',
       },
       devices: {
@@ -165,10 +165,10 @@
       },
     },
     graduationModules: [
-      { phase: '01 Foundations', items: ['AI overview', 'How AI works (8 modules)', 'Knowledge base (100 terms)'] },
-      { phase: '02 Tools', items: ['Mainstream apps (43)', 'Prompt lab'] },
-      { phase: '03 Practice', items: ['Software tutorials (30)', 'Scenario templates (16)'] },
-      { phase: '04 Review', items: ['Knowledge quiz (100)', '30-day practice plan'] },
+      { phase: 'Foundations', items: ['AI overview', 'How AI works (8 modules)', 'Knowledge base (100 terms)'] },
+      { phase: 'Tools', items: ['Mainstream apps (43)', 'Prompt lab'] },
+      { phase: 'Practice', items: ['Software tutorials (30)', 'Scenario templates (16)'] },
+      { phase: 'Review', items: ['Knowledge quiz (100)', '30-day practice plan'] },
     ],
     practicePlanFocus: [
       { value: '写作办公', label: 'Writing & office' },
@@ -177,7 +177,7 @@
       { value: '数据分析', label: 'Data analysis' },
     ],
     coachQuickNav: [
-      { label: 'Home', href: '#hero' },
+      { label: 'AI Learning', href: '#hero' },
       { label: 'Learning map', href: '#roadmap' },
       { label: 'Learning plan', href: '#path' },
       { label: 'AI overview', href: '#ai-overview' },
@@ -191,6 +191,7 @@
       { label: 'Monetization', href: '#monetize' },
       { label: 'Devices', href: '#devices' },
       { label: 'AI hub', href: '#ai-nav' },
+      { label: 'Skill Picks', href: '#ai-skills-nav' },
     ],
     siteNavEntries: [
       { type: 'Module', title: 'Learning map', subtitle: 'Four-phase path overview', href: '#roadmap', keywords: 'learning map path phase roadmap' },

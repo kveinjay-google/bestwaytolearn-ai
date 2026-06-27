@@ -270,7 +270,8 @@ function getSearchTypeLabel(key) {
     aiBox: ['search.typeAiBox', 'AI 盒子'],
     config: ['search.typeConfig', '配置'],
     toolsNav: ['search.typeToolsNav', 'AI工具'],
-    skillsNav: ['search.typeSkillsNav', 'Skill'],
+    skillsNav: ['search.typeSkillsNav', 'SKILL推荐'],
+    mcpNav: ['search.typeMcpNav', 'MCP'],
   };
   const [k, fb] = map[key] || ['search.typeModule', '模块'];
   return uiT(k, fb);
@@ -465,16 +466,16 @@ const PHASE_TAB_FROM_NUM = { 1: 'learn', 2: 'tools', 3: 'practice', 4: 'validate
 const PHASE_HASH_FROM_NUM = { 1: 'phase-learn', 2: 'phase-tools', 3: 'phase-practice', 4: 'phase-validate' };
 function getPhaseShortLabels() {
   return typeof I18n !== 'undefined' ? I18n.getPhaseShortLabels() : {
-    1: '01 认知', 2: '02 工具', 3: '03 实战', 4: '04 检验',
+    1: '认知', 2: '工具', 3: '实战', 4: '检验',
   };
 }
 
 const GRADUATION_QUIZ_PASS = 80;
 const GRADUATION_MODULES = [
-  { phase: '01 认知', items: ['AI 全景入门', 'AI 原理（8 模块）', 'AI 知识库（100 术语）'] },
-  { phase: '02 工具', items: ['主流应用（43 款）', '提示词实验室'] },
-  { phase: '03 实战', items: ['真实软件实操（30 案例）', '场景提示词模板（16 个）'] },
-  { phase: '04 检验', items: ['知识测验（100 题）', '未来 30 天实践计划'] },
+  { phase: '认知', items: ['AI 全景入门', 'AI 原理（8 模块）', 'AI 知识库（100 术语）'] },
+  { phase: '工具', items: ['主流应用（43 款）', '提示词实验室'] },
+  { phase: '实战', items: ['真实软件实操（30 案例）', '场景提示词模板（16 个）'] },
+  { phase: '检验', items: ['知识测验（100 题）', '未来 30 天实践计划'] },
 ];
 
 const QUIZ_TOPIC_LINKS = {
@@ -641,10 +642,16 @@ const PHASE_TAB_CONFIG = {
     hashes: ['ai-nav', 'ai-tools-nav', 'tools-nav'],
   },
   aiSkillsNav: {
-    label: 'AI导航',
+    label: 'SKILL推荐',
     navHash: 'ai-skills-nav',
     panelSelector: '#phase-view-ai-skills',
     hashes: ['ai-skills-nav', 'skills-nav'],
+  },
+  aiMcpNav: {
+    label: 'AI导航',
+    navHash: 'ai-mcp-nav',
+    panelSelector: '#phase-view-ai-mcp',
+    hashes: ['ai-mcp-nav', 'mcp-nav'],
   },
   learn: {
     label: '认知基础',
@@ -735,8 +742,8 @@ function resolvePhaseTabFromHash(hash) {
 const PHASE_PANEL_SELECTOR = '.phase-view, .learning-phase';
 function getNavTabLabels() {
   return typeof I18n !== 'undefined' ? I18n.getNavLabels() : {
-    map: '首页', learn: '01 认知', tools: '02 工具',
-    practice: '03 实战', validate: '04 检验', monetize: '变现', devices: '设备', aiToolsNav: 'AI导航',
+    map: 'AI学习', learn: '认知', tools: '工具',
+    practice: '实战', validate: '检验', monetize: '变现', devices: '设备', aiToolsNav: 'AI导航', aiSkillsNav: 'SKILL推荐',
   };
 }
 
@@ -757,7 +764,7 @@ function repairNavTabs() {
 }
 
 function getMainNavHighlightTab(tabId) {
-  if (tabId === 'aiSkillsNav' || tabId === 'aiToolsNav' || tabId === 'toolsNav') return 'aiToolsNav';
+  if (tabId === 'aiMcpNav' || tabId === 'aiToolsNav' || tabId === 'toolsNav') return 'aiToolsNav';
   return tabId;
 }
 
@@ -775,8 +782,11 @@ function updateAiNavTabsUI(tabId) {
   document.querySelectorAll('.ai-nav-tabs').forEach(nav => {
     nav.querySelectorAll('.ai-nav-tab').forEach(tab => {
       const href = tab.getAttribute('href') || '';
-      const isSkills = href === '#ai-skills-nav';
-      const active = (tabId === 'aiSkillsNav' && isSkills) || ((tabId === 'aiToolsNav' || tabId === 'toolsNav') && !isSkills);
+      const isTools = href === '#ai-nav';
+      const isMcp = href === '#ai-mcp-nav';
+      const active =
+        (tabId === 'aiToolsNav' || tabId === 'toolsNav') && isTools ||
+        tabId === 'aiMcpNav' && isMcp;
       tab.classList.toggle('active', active);
       tab.setAttribute('aria-selected', active ? 'true' : 'false');
     });
@@ -1855,11 +1865,13 @@ function getAiNavMeta() {
     return {
       bannerStatTools: I18n.t('aiNavPage.bannerStatTools'),
       bannerStatSkills: I18n.t('aiNavPage.bannerStatSkills'),
+      bannerStatMcp: I18n.t('aiNavPage.bannerStatMcp'),
     };
   }
   return {
     bannerStatTools: '{n} 个工具',
     bannerStatSkills: '{n} 个 Skill',
+    bannerStatMcp: '{n} 个 MCP',
   };
 }
 
@@ -1881,6 +1893,16 @@ function updateAiSkillsBannerStat() {
   el.textContent = typeof I18n !== 'undefined'
     ? I18n.interpolate(meta.bannerStatSkills, { n })
     : meta.bannerStatSkills.replace('{n}', String(n));
+}
+
+function updateAiMcpBannerStat() {
+  const el = document.getElementById('ai-mcp-banner-stat');
+  if (!el) return;
+  const meta = getAiNavMeta();
+  const n = typeof getMcpNavLinks === 'function' ? getMcpNavLinks().length : 0;
+  el.textContent = typeof I18n !== 'undefined'
+    ? I18n.interpolate(meta.bannerStatMcp, { n })
+    : meta.bannerStatMcp.replace('{n}', String(n));
 }
 
 function migratePhaseTabStorage() {
@@ -2150,6 +2172,162 @@ function initSkillsNav() {
   }
 
   renderSkillsNav();
+}
+
+let mcpNavQuery = '';
+
+function getMcpNavMetaData() {
+  return typeof I18n !== 'undefined' ? I18n.getMcpNavMeta() : (typeof AI_MCP_NAV_META !== 'undefined' ? AI_MCP_NAV_META : {});
+}
+
+function getMcpNavLinks() {
+  const links = typeof buildAiMcpNavLinks === 'function' ? buildAiMcpNavLinks() : [];
+  return links.map(s => (typeof I18n !== 'undefined' ? I18n.localizeMcpNavItem(s) : s));
+}
+
+function mcpNavMatchesQuery(item, query) {
+  if (!query) return true;
+  const hay = [
+    item.name, item.category, item.desc, item.url, item.config, item.configNote,
+    item.transport, item.source, ...(item.clients || []),
+  ].join(' ').toLowerCase();
+  return hay.includes(query.toLowerCase());
+}
+
+function renderMcpNav() {
+  const meta = getMcpNavMetaData();
+  const lead = document.getElementById('mcp-nav-lead');
+  if (lead) lead.textContent = meta.lead || '';
+
+  const search = document.getElementById('mcp-nav-search');
+  if (search && meta.searchPlaceholder) search.placeholder = meta.searchPlaceholder;
+
+  const links = getMcpNavLinks();
+  const query = (mcpNavQuery || search?.value || '').trim();
+  const categories = typeof AI_MCP_NAV_CATEGORIES !== 'undefined' ? AI_MCP_NAV_CATEGORIES : [];
+  const filtered = links.filter(s => mcpNavMatchesQuery(s, query));
+  const activeCats = categories.filter(cat => filtered.some(s => s.category === cat));
+
+  const stats = document.getElementById('mcp-nav-stats');
+  if (stats) {
+    stats.textContent = typeof I18n !== 'undefined'
+      ? I18n.interpolate(meta.totalLabel, { n: filtered.length, c: activeCats.length })
+      : `共 ${filtered.length} 个 MCP · ${activeCats.length} 个分类`;
+  }
+  updateAiMcpBannerStat();
+
+  const jump = document.getElementById('mcp-nav-jump');
+  if (jump) {
+    jump.innerHTML = activeCats.map(cat => {
+      const slug = typeof getAiMcpNavCategorySlug === 'function' ? getAiMcpNavCategorySlug(cat) : cat;
+      const label = typeof I18n !== 'undefined' ? I18n.getMcpNavCategoryLabel(cat) : cat;
+      const count = filtered.filter(s => s.category === cat).length;
+      return `<a class="tools-nav-jump-btn" href="#mcp-nav-cat-${slug}">${label}<span>${count}</span></a>`;
+    }).join('');
+  }
+
+  const body = document.getElementById('mcp-nav-body');
+  const empty = document.getElementById('mcp-nav-empty');
+  if (!body) return;
+
+  if (!filtered.length) {
+    body.innerHTML = '';
+    if (empty) {
+      empty.textContent = meta.empty || '';
+      empty.classList.remove('hidden');
+    }
+    return;
+  }
+  if (empty) empty.classList.add('hidden');
+
+  const copyLabel = meta.copyConfig || (typeof I18n !== 'undefined' ? I18n.t('common.copy') : '复制配置');
+  const linkLabel = meta.openLink || '详情';
+  const clientsLabel = meta.clientsLabel || '适用';
+  const transportLabel = meta.transportLabel || '传输';
+  const catLabel = cat => (typeof I18n !== 'undefined' ? I18n.getMcpNavCategoryLabel(cat) : cat);
+  const clientLabel = client => (typeof I18n !== 'undefined' ? I18n.getMcpNavClientLabel(client) : client);
+  const transportFmt = t => (typeof I18n !== 'undefined' ? I18n.getMcpNavTransportLabel(t) : t);
+  const sourceFmt = s => (typeof I18n !== 'undefined' ? I18n.getMcpNavSourceLabel(s) : s);
+
+  body.innerHTML = activeCats.map(cat => {
+    const items = filtered.filter(s => s.category === cat);
+    const slug = typeof getAiMcpNavCategorySlug === 'function' ? getAiMcpNavCategorySlug(cat) : cat;
+    const countLabel = typeof I18n !== 'undefined'
+      ? I18n.interpolate(meta.countLabel, { n: items.length })
+      : `${items.length} 个 MCP`;
+    return `
+      <section class="tools-nav-category mcp-nav-category" id="mcp-nav-cat-${slug}">
+        <header class="tools-nav-category-head">
+          <h3 class="tools-nav-category-title">${catLabel(cat)}</h3>
+          <span class="tools-nav-category-count">${countLabel}</span>
+        </header>
+        <div class="mcp-nav-card-grid">
+          ${items.map(item => {
+            const clients = (item.clients || []).map(c =>
+              `<span class="mcp-nav-client-tag">${clientLabel(c)}</span>`
+            ).join('');
+            const transport = item.transport
+              ? `<span class="mcp-nav-transport" title="${transportLabel}">${transportFmt(item.transport)}</span>`
+              : '';
+            const source = item.source
+              ? `<span class="mcp-nav-source mcp-nav-source-${item.source}">${sourceFmt(item.source)}</span>`
+              : '';
+            const featured = item.featured ? '<span class="mcp-nav-featured">★</span>' : '';
+            const configBlock = item.config
+              ? `<div class="mcp-nav-cmd-wrap">
+                  <pre class="mcp-nav-cmd" aria-label="MCP 配置">${escapeHtml(item.config)}</pre>
+                  <button type="button" class="btn-copy mcp-nav-copy-btn" aria-label="${copyLabel}">${copyLabel}</button>
+                </div>`
+              : '';
+            const note = item.configNote
+              ? `<p class="mcp-nav-config-note">${escapeHtml(item.configNote)}</p>`
+              : '';
+            return `
+            <article class="mcp-nav-card${item.featured ? ' mcp-nav-card-featured' : ''}">
+              <div class="mcp-nav-card-head">
+                <div class="mcp-nav-card-title-row">
+                  <h4 class="mcp-nav-card-name">${escapeHtml(item.name)}${featured}</h4>
+                  <div class="mcp-nav-badges">${transport}${source}</div>
+                </div>
+                ${clients ? `<div class="mcp-nav-clients" aria-label="${clientsLabel}">
+                  <span class="mcp-nav-clients-label">${clientsLabel}</span>
+                  ${clients}
+                </div>` : ''}
+              </div>
+              <p class="mcp-nav-card-desc">${escapeHtml(item.desc)}</p>
+              ${configBlock}
+              ${note}
+              <a class="mcp-nav-link" href="${item.url}" target="_blank" rel="noopener noreferrer">${linkLabel} ↗</a>
+            </article>`;
+          }).join('')}
+        </div>
+      </section>`;
+  }).join('');
+}
+
+function initMcpNav() {
+  const search = document.getElementById('mcp-nav-search');
+  if (search && !search.dataset.bound) {
+    search.dataset.bound = 'true';
+    search.addEventListener('input', () => {
+      mcpNavQuery = search.value.trim();
+      renderMcpNav();
+    });
+  }
+
+  const body = document.getElementById('mcp-nav-body');
+  if (body && !body.dataset.copyBound) {
+    body.dataset.copyBound = 'true';
+    body.addEventListener('click', e => {
+      const btn = e.target.closest('.mcp-nav-copy-btn');
+      if (!btn) return;
+      e.preventDefault();
+      const text = btn.closest('.mcp-nav-card')?.querySelector('.mcp-nav-cmd')?.textContent?.trim() || '';
+      copyToClipboard(text, btn, getMcpNavMetaData().copyConfig || '复制配置');
+    });
+  }
+
+  renderMcpNav();
 }
 
 function renderMonetize() {
@@ -3792,7 +3970,7 @@ function initWelcome() {
 }
 
 const COACH_QUICK_NAV = [
-  { label: '首页', href: '#hero' },
+  { label: 'AI学习', href: '#hero' },
   { label: '学习地图', href: '#roadmap' },
   { label: '全景入门', href: '#ai-overview' },
   { label: 'AI 原理', href: '#fundamentals' },
@@ -3805,6 +3983,7 @@ const COACH_QUICK_NAV = [
   { label: '变现指南', href: '#monetize' },
   { label: '设备选购', href: '#devices' },
   { label: 'AI导航', href: '#ai-nav' },
+  { label: 'SKILL推荐', href: '#ai-skills-nav' },
 ];
 
 const SITE_NAV_ENTRIES = [
@@ -3820,7 +3999,8 @@ const SITE_NAV_ENTRIES = [
   { type: '模块', title: '结业报告', subtitle: '四阶段学习总结与 30 天计划', href: '#graduation', keywords: '结业 毕业 报告 成就 证书' },
   { type: '模块', title: 'AI 技能变现指南', subtitle: '30 个可落地的副业与接单方向', href: '#monetize', keywords: '变现 赚钱 副业 接单 收入 项目 创业 自由职业 monetize' },
   { type: '模块', title: '设备选购指南', subtitle: 'Windows/macOS、内存、显卡与推荐配置', href: '#devices', keywords: '设备 电脑 笔记本 台式机 内存 显卡 GPU RAM mac windows 苹果 配置 选购 硬件' },
-  { type: '模块', title: 'AI导航', subtitle: '100+ 工具与优质 Agent Skill', href: '#ai-nav', keywords: 'AI导航 工具导航 skill 大全 hao123 链接 官网 目录 directory' },
+  { type: '模块', title: 'AI导航', subtitle: '100+ 工具 · MCP Server', href: '#ai-nav', keywords: 'AI导航 工具导航 MCP 大全 hao123 链接 官网 目录 directory model context protocol' },
+  { type: '模块', title: 'SKILL推荐', subtitle: 'GitHub 优质 Agent Skill · 一键安装', href: '#ai-skills-nav', keywords: 'SKILL 推荐 skill agent 安装 npx skills cursor claude codex github' },
 ];
 
 function buildSiteSearchIndex() {
@@ -3871,6 +4051,19 @@ function buildSiteSearchIndex() {
         keywords: [skill.name, skill.category, skill.desc, skill.github, skill.install, skill.installNote, ...(skill.agents || [])].filter(Boolean).join(' '),
         href: '#ai-skills-nav',
         external: skill.github,
+      });
+    });
+  }
+
+  if (typeof getMcpNavLinks === 'function') {
+    getMcpNavLinks().forEach(mcp => {
+      entries.push({
+        type: getSearchTypeLabel('mcpNav'),
+        title: mcp.name,
+        subtitle: mcp.category,
+        keywords: [mcp.name, mcp.category, mcp.desc, mcp.url, mcp.config, mcp.configNote, mcp.transport, mcp.source, ...(mcp.clients || [])].filter(Boolean).join(' '),
+        href: '#ai-mcp-nav',
+        external: mcp.url,
       });
     });
   }
@@ -4314,6 +4507,7 @@ function refreshLocaleUI() {
   renderMonetize();
   renderToolsNav();
   renderSkillsNav();
+  renderMcpNav();
   renderTermFilters('concepts-filter', conceptCategory, cat => {
     conceptCategory = cat;
     renderConcepts(document.getElementById('concept-search')?.value || '', cat);
@@ -4374,6 +4568,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderDevices();
   initToolsNav();
   initSkillsNav();
+  initMcpNav();
   renderHandsOnCases();
   renderPractices();
   initPracticeCopyButtons();
