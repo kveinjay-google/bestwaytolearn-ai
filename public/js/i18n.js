@@ -403,8 +403,35 @@ const I18n = (function () {
     document.title = t('meta.title');
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.content = t('meta.description');
+    applySiteMeta();
 
     syncPrefsPanel();
+  }
+
+  function applySiteMeta() {
+    const url = getSiteUrl();
+    const title = t('meta.title');
+    const desc = t('meta.description');
+    const name = getBrandName();
+
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.href = url;
+
+    const setMetaContent = (selector, value) => {
+      const el = document.querySelector(selector);
+      if (el && value) el.setAttribute('content', value);
+    };
+
+    setMetaContent('meta[property="og:url"]', url);
+    setMetaContent('meta[property="og:site_name"]', name);
+    setMetaContent('meta[property="og:title"]', title);
+    setMetaContent('meta[property="og:description"]', desc);
+    setMetaContent('meta[name="twitter:title"]', title);
+    setMetaContent('meta[name="twitter:description"]', desc);
+
+    document.querySelectorAll('[data-site-url]').forEach(el => {
+      el.href = url;
+    });
   }
 
   function applyFontSize(size = currentFontSize) {
@@ -801,6 +828,14 @@ const I18n = (function () {
     return t('brand.logoHtml') || 'BestWayToLearn<em>.AI</em>';
   }
 
+  function getSiteUrl() {
+    return t('brand.url') || 'https://bestwaytolearn.ai/';
+  }
+
+  function getSiteDomain() {
+    return t('brand.domain') || 'bestwaytolearn.ai';
+  }
+
   return {
     registerLocale,
     mergeLocaleData,
@@ -875,6 +910,9 @@ const I18n = (function () {
     getPersonalizationNamed,
     getBrandName,
     getBrandLogoHtml,
+    getSiteUrl,
+    getSiteDomain,
+    applySiteMeta,
     interpolate,
   };
 })();

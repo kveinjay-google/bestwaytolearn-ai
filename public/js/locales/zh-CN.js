@@ -3,6 +3,9 @@ I18n.registerLocale('zh-CN', {
     brand: {
       name: 'BestWayToLearn.AI',
       logoHtml: 'BestWayToLearn<em>.AI</em>',
+      url: 'https://bestwaytolearn.ai/',
+      domain: 'bestwaytolearn.ai',
+      ariaLabel: 'BestWayToLearn.AI — bestwaytolearn.ai',
     },
     meta: {
       title: 'BestWayToLearn.AI | 从零到实战',
@@ -61,7 +64,7 @@ I18n.registerLocale('zh-CN', {
       defaultMsg: '你好！准备好开始学习了吗？',
     },
     hero: {
-      greeting: '四阶段学习 · 7 天路径 · 100 个术语',
+      greeting: 'bestwaytolearn.ai · 四阶段学习 · 7 天路径 · 100 个术语',
       titleHtml: '从零开始<br><span class="hero-accent">系统学会 <em class="hero-accent-ai">AI</em></span>',
       desc: '遵循「认知 → 工具 → 实战 → 检验」四步学习法，每天跟着路径走，7 天建立从原理理解到真实应用的完整 AI 能力。',
       ctaMap: '查看学习地图',
@@ -208,7 +211,7 @@ I18n.registerLocale('zh-CN', {
     phaseShortLabels: { 1: '01 认知', 2: '02 工具', 3: '03 实战', 4: '04 检验' },
     personalization: {
       headerName: '学员',
-      greeting: '四阶段学习 · 7 天路径 · 100 个术语',
+      greeting: 'bestwaytolearn.ai · 四阶段学习 · 7 天路径 · 100 个术语',
       titleHtml: '从零开始<br><span class="hero-accent">系统学会 <em class="hero-accent-ai">AI</em></span>',
       desc: '遵循「认知 → 工具 → 实战 → 检验」四步学习法，每天跟着路径走，7 天建立从原理理解到真实应用的完整 AI 能力。',
       pathBanner: '先看清全貌，再按 Day 1–7 逐日推进；已掌握的天数可勾选「已掌握」跳过。',

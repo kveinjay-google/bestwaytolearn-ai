@@ -1418,8 +1418,10 @@ function buildGraduationReportText() {
   const focusSep = typeof I18n !== 'undefined' && I18n.getLocale() === 'en' ? ', ' : '、';
   const focus = focusLabels.join(focusSep) || uiT('graduation.unfilled', '（未填写）');
   const brand = typeof I18n !== 'undefined' ? I18n.getBrandName() : 'BestWayToLearn.AI';
+  const siteUrl = typeof I18n !== 'undefined' ? I18n.getSiteUrl() : 'https://bestwaytolearn.ai/';
   const pending = uiT('graduation.reportPending', '（待填写）');
   let report = `${brand} · ${uiT('graduation.reportTitle', '结业报告')}\n`;
+  report += `${siteUrl}\n`;
   report += `============================\n`;
   report += `${uiT('graduation.reportNickname', '昵称：{name}', { name })}\n`;
   report += `${uiT('graduation.reportDate', '结业日期：{date}', { date: dateStr })}\n`;
@@ -3213,7 +3215,7 @@ function getDayCompleteMessage(idx) {
 function getDefaultPersonalization() {
   return typeof I18n !== 'undefined' ? I18n.getDefaultPersonalization() : {
     headerName: '学员',
-    greeting: '四阶段学习 · 7 天路径 · 100 个术语',
+    greeting: 'bestwaytolearn.ai · 四阶段学习 · 7 天路径 · 100 个术语',
     titleHtml: '从零开始<br><span class="hero-accent">系统学会 <em class="hero-accent-ai">AI</em></span>',
     desc: '遵循「认知 → 工具 → 实战 → 检验」四步学习法，每天跟着路径走，7 天建立从原理理解到真实应用的完整 AI 能力。',
     pathBanner: '先看清全貌，再按 Day 1–7 逐日推进；已掌握的天数可勾选「已掌握」跳过。',
@@ -4245,6 +4247,14 @@ function refreshLocaleUI() {
   renderDevices();
   renderQuizPrelude();
   renderMonetize();
+  renderTermFilters('concepts-filter', conceptCategory, cat => {
+    conceptCategory = cat;
+    renderConcepts(document.getElementById('concept-search')?.value || '', cat);
+  });
+  renderTermFilters('glossary-filter', glossaryCategory, cat => {
+    glossaryCategory = cat;
+    renderGlossary(document.getElementById('glossary-search')?.value || '', cat);
+  });
   renderConcepts(document.getElementById('concept-search')?.value || '', conceptCategory);
   renderGlossary(document.getElementById('glossary-search')?.value || '', glossaryCategory);
   siteSearchIndex = buildSiteSearchIndex();

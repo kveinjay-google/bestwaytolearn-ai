@@ -3,6 +3,9 @@ I18n.registerLocale('en', {
     brand: {
       name: 'BestWayToLearn.AI',
       logoHtml: 'BestWayToLearn<em>.AI</em>',
+      url: 'https://bestwaytolearn.ai/',
+      domain: 'bestwaytolearn.ai',
+      ariaLabel: 'BestWayToLearn.AI — bestwaytolearn.ai',
     },
     meta: {
       title: 'BestWayToLearn.AI | Zero to Practice',
@@ -61,7 +64,7 @@ I18n.registerLocale('en', {
       defaultMsg: 'Hi! Ready to start learning?',
     },
     hero: {
-      greeting: '4 phases · 7-day path · 100 terms',
+      greeting: 'bestwaytolearn.ai · 4 phases · 7-day path · 100 terms',
       titleHtml: 'Start from zero<br><span class="hero-accent">and master <em class="hero-accent-ai">AI</em></span>',
       desc: 'Follow Cognition → Tools → Practice → Review. Stick to the daily path and build end-to-end AI skills in 7 days.',
       ctaMap: 'View learning map',
@@ -208,7 +211,7 @@ I18n.registerLocale('en', {
     phaseShortLabels: { 1: '01 Learn', 2: '02 Tools', 3: '03 Practice', 4: '04 Review' },
     personalization: {
       headerName: 'Learner',
-      greeting: '4 phases · 7-day path · 100 terms',
+      greeting: 'bestwaytolearn.ai · 4 phases · 7-day path · 100 terms',
       titleHtml: 'Start from zero<br><span class="hero-accent">and master <em class="hero-accent-ai">AI</em></span>',
       desc: 'Follow Cognition → Tools → Practice → Review. Stick to the daily path and build end-to-end AI skills in 7 days.',
       pathBanner: 'See the full week first, then work Day 1–7. Mark mastered days to skip.',
