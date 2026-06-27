@@ -2189,9 +2189,17 @@ function mcpNavMatchesQuery(item, query) {
   if (!query) return true;
   const hay = [
     item.name, item.category, item.desc, item.url, item.config, item.configNote,
-    item.transport, item.source, ...(item.clients || []),
+    item.transport, item.source, ...(item.clients || []), ...(item.features || []),
   ].join(' ').toLowerCase();
   return hay.includes(query.toLowerCase());
+}
+
+function formatMcpNavStars(stars, meta) {
+  if (!stars) return '';
+  const tpl = meta.starsLabel || '{n} ★';
+  return typeof I18n !== 'undefined'
+    ? I18n.interpolate(tpl, { n: stars >= 1000 ? `${(stars / 1000).toFixed(stars >= 10000 ? 0 : 1)}k` : stars })
+    : `${stars} ★`;
 }
 
 function renderMcpNav() {
@@ -2244,13 +2252,16 @@ function renderMcpNav() {
   const linkLabel = meta.openLink || '详情';
   const clientsLabel = meta.clientsLabel || '适用';
   const transportLabel = meta.transportLabel || '传输';
+  const featuresLabel = meta.featuresLabel || '功能';
   const catLabel = cat => (typeof I18n !== 'undefined' ? I18n.getMcpNavCategoryLabel(cat) : cat);
   const clientLabel = client => (typeof I18n !== 'undefined' ? I18n.getMcpNavClientLabel(client) : client);
   const transportFmt = t => (typeof I18n !== 'undefined' ? I18n.getMcpNavTransportLabel(t) : t);
   const sourceFmt = s => (typeof I18n !== 'undefined' ? I18n.getMcpNavSourceLabel(s) : s);
 
   body.innerHTML = activeCats.map(cat => {
-    const items = filtered.filter(s => s.category === cat);
+    const items = filtered
+      .filter(s => s.category === cat)
+      .sort((a, b) => (b.stars || 0) - (a.stars || 0));
     const slug = typeof getAiMcpNavCategorySlug === 'function' ? getAiMcpNavCategorySlug(cat) : cat;
     const countLabel = typeof I18n !== 'undefined'
       ? I18n.interpolate(meta.countLabel, { n: items.length })
@@ -2263,6 +2274,7 @@ function renderMcpNav() {
         </header>
         <div class="mcp-nav-card-grid">
           ${items.map(item => {
+            const stars = formatMcpNavStars(item.stars, meta);
             const clients = (item.clients || []).map(c =>
               `<span class="mcp-nav-client-tag">${clientLabel(c)}</span>`
             ).join('');
@@ -2272,12 +2284,19 @@ function renderMcpNav() {
             const source = item.source
               ? `<span class="mcp-nav-source mcp-nav-source-${item.source}">${sourceFmt(item.source)}</span>`
               : '';
-            const featured = item.featured ? '<span class="mcp-nav-featured">★</span>' : '';
-            const configBlock = item.config
-              ? `<div class="mcp-nav-cmd-wrap">
-                  <pre class="mcp-nav-cmd" aria-label="MCP 配置">${escapeHtml(item.config)}</pre>
-                  <button type="button" class="btn-copy mcp-nav-copy-btn" aria-label="${copyLabel}">${copyLabel}</button>
+            const features = (item.features || []).length
+              ? `<div class="mcp-nav-features" aria-label="${featuresLabel}">
+                  <span class="mcp-nav-features-label">${featuresLabel}</span>
+                  <ul class="mcp-nav-features-list">
+                    ${item.features.map(f => `<li>${escapeHtml(f)}</li>`).join('')}
+                  </ul>
                 </div>`
+              : '';
+            const hiddenConfig = item.config
+              ? `<pre class="mcp-nav-cmd mcp-nav-cmd-hidden" hidden aria-hidden="true">${escapeHtml(item.config)}</pre>`
+              : '';
+            const copyBtn = item.config
+              ? `<button type="button" class="btn-copy mcp-nav-copy-btn" aria-label="${copyLabel}">${copyLabel}</button>`
               : '';
             const note = item.configNote
               ? `<p class="mcp-nav-config-note">${escapeHtml(item.configNote)}</p>`
@@ -2286,18 +2305,23 @@ function renderMcpNav() {
             <article class="mcp-nav-card${item.featured ? ' mcp-nav-card-featured' : ''}">
               <div class="mcp-nav-card-head">
                 <div class="mcp-nav-card-title-row">
-                  <h4 class="mcp-nav-card-name">${escapeHtml(item.name)}${featured}</h4>
-                  <div class="mcp-nav-badges">${transport}${source}</div>
+                  <h4 class="mcp-nav-card-name">${escapeHtml(item.name)}</h4>
+                  ${stars ? `<span class="mcp-nav-stars">${stars}</span>` : ''}
                 </div>
+                <div class="mcp-nav-badges">${transport}${source}</div>
                 ${clients ? `<div class="mcp-nav-clients" aria-label="${clientsLabel}">
                   <span class="mcp-nav-clients-label">${clientsLabel}</span>
                   ${clients}
                 </div>` : ''}
               </div>
               <p class="mcp-nav-card-desc">${escapeHtml(item.desc)}</p>
-              ${configBlock}
+              ${features}
               ${note}
-              <a class="mcp-nav-link" href="${item.url}" target="_blank" rel="noopener noreferrer">${linkLabel} ↗</a>
+              <div class="mcp-nav-card-footer">
+                ${copyBtn}
+                <a class="mcp-nav-link" href="${item.url}" target="_blank" rel="noopener noreferrer">${linkLabel} ↗</a>
+              </div>
+              ${hiddenConfig}
             </article>`;
           }).join('')}
         </div>
@@ -4061,7 +4085,7 @@ function buildSiteSearchIndex() {
         type: getSearchTypeLabel('mcpNav'),
         title: mcp.name,
         subtitle: mcp.category,
-        keywords: [mcp.name, mcp.category, mcp.desc, mcp.url, mcp.config, mcp.configNote, mcp.transport, mcp.source, ...(mcp.clients || [])].filter(Boolean).join(' '),
+        keywords: [mcp.name, mcp.category, mcp.desc, mcp.url, mcp.config, mcp.configNote, mcp.transport, mcp.source, ...(mcp.clients || []), ...(mcp.features || [])].filter(Boolean).join(' '),
         href: '#ai-mcp-nav',
         external: mcp.url,
       });

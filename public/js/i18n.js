@@ -362,6 +362,7 @@ const I18n = (function () {
       name: overlay.name || item.name,
       desc: overlay.desc || item.desc,
       configNote: overlay.configNote || item.configNote,
+      features: overlay.features || item.features,
     };
   }
 

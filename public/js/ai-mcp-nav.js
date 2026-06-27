@@ -19,8 +19,8 @@ const AI_MCP_NAV_CATEGORIES = [
 ];
 
 const AI_MCP_NAV_META = {
-  lead: '本站自建的 MCP Server 导航，按场景分类收录常用服务。每条附带适用客户端、传输方式与 Cursor / Claude Desktop 配置片段，站内搜索、分类跳转、一键复制即可接入。',
-  searchPlaceholder: '搜索 MCP 名称、分类、客户端、用途…',
+  lead: '精选高星 MCP Server，按场景分类。每条展示核心功能与 GitHub Star，配置代码不展开显示，点「复制配置」即可接入 Cursor / Claude Desktop。',
+  searchPlaceholder: '搜索 MCP 名称、功能、分类、客户端…',
   countLabel: '{n} 个 MCP',
   totalLabel: '共 {n} 个 MCP · {c} 个分类',
   empty: '没有匹配的 MCP，换个关键词试试',
@@ -29,9 +29,11 @@ const AI_MCP_NAV_META = {
   clientsLabel: '适用',
   transportLabel: '传输',
   sourceLabel: '来源',
+  starsLabel: '{n} ★',
+  featuresLabel: '功能',
 };
 
-/** @type {Array<{name:string,category:string,clients:string[],transport:string,desc:string,url:string,config:string,configNote?:string,source:string,featured?:boolean}>} */
+/** @type {Array<{name:string,category:string,clients:string[],transport:string,desc:string,url:string,config:string,configNote?:string,source:string,featured?:boolean,stars?:number,features?:string[]}>} */
 const AI_MCP_NAV_ITEMS = [
 
   // MCP 入门
@@ -882,7 +884,222 @@ const AI_MCP_NAV_ITEMS = [
 }`,
     source: 'official',
   },
+
+  // ── 高星补充 ──
+  {
+    name: 'AWS MCP',
+    category: '开发工具',
+    clients: ['Cursor', 'Claude Desktop', 'Cline'],
+    transport: 'stdio',
+    desc: 'AWS 官方 MCP 套件，覆盖 Lambda、S3、DynamoDB、CloudWatch 等核心服务，让 Agent 直接操作云资源。',
+    url: 'https://github.com/awslabs/mcp',
+    config: `{
+  "mcpServers": {
+    "aws": {
+      "command": "uvx",
+      "args": ["awslabs.aws-mcp-server@latest"],
+      "env": { "AWS_REGION": "us-east-1" }
+    }
+  }
+}`,
+    configNote: '需配置 AWS 凭证（环境变量或 ~/.aws/credentials）',
+    source: 'official',
+    featured: true,
+  },
+  {
+    name: 'Vercel MCP',
+    category: '开发工具',
+    clients: ['Cursor', 'Claude Desktop'],
+    transport: 'stdio',
+    desc: 'Vercel 官方 MCP，管理项目部署、环境变量、域名与构建日志，前端部署自动化。',
+    url: 'https://github.com/vercel/mcp',
+    config: `{
+  "mcpServers": {
+    "vercel": {
+      "command": "npx",
+      "args": ["-y", "@vercel/mcp"],
+      "env": { "VERCEL_TOKEN": "<YOUR_TOKEN>" }
+    }
+  }
+}`,
+    source: 'official',
+    featured: true,
+  },
+  {
+    name: 'E2B Code Interpreter',
+    category: '开发工具',
+    clients: ['Cursor', 'Claude Desktop', 'Cline'],
+    transport: 'stdio',
+    desc: '云端安全沙箱执行 Python/JS 代码，Agent 可运行脚本、画图、处理数据，无需污染本机环境。',
+    url: 'https://github.com/e2b-dev/mcp-server',
+    config: `{
+  "mcpServers": {
+    "e2b": {
+      "command": "npx",
+      "args": ["-y", "@e2b/mcp-server"],
+      "env": { "E2B_API_KEY": "<YOUR_KEY>" }
+    }
+  }
+}`,
+    source: 'github',
+    featured: true,
+  },
+  {
+    name: 'MongoDB',
+    category: '数据库',
+    clients: ['Cursor', 'Claude Desktop'],
+    transport: 'stdio',
+    desc: 'MongoDB 官方 MCP，自然语言查询集合、聚合分析与 Schema 探索，NoSQL 数据分析利器。',
+    url: 'https://github.com/mongodb-js/mongodb-mcp-server',
+    config: `{
+  "mcpServers": {
+    "mongodb": {
+      "command": "npx",
+      "args": ["-y", "mongodb-mcp-server"],
+      "env": { "MONGODB_URI": "mongodb://localhost:27017/mydb" }
+    }
+  }
+}`,
+    source: 'official',
+    featured: true,
+  },
+  {
+    name: 'Neon',
+    category: '数据库',
+    clients: ['Cursor', 'Claude Desktop'],
+    transport: 'stdio',
+    desc: 'Neon Serverless Postgres MCP，管理分支数据库、执行 SQL 与迁移，现代全栈开发首选。',
+    url: 'https://github.com/neondatabase/mcp-server-neon',
+    config: `{
+  "mcpServers": {
+    "neon": {
+      "command": "npx",
+      "args": ["-y", "@neondatabase/mcp-server-neon"],
+      "env": { "NEON_API_KEY": "<YOUR_KEY>" }
+    }
+  }
+}`,
+    source: 'github',
+  },
+  {
+    name: 'Atlassian',
+    category: '办公协作',
+    clients: ['Cursor', 'Claude Desktop'],
+    transport: 'stdio',
+    desc: 'Atlassian 官方 MCP，读写 Jira Issue、Confluence 页面与 Sprint，研发团队协作自动化。',
+    url: 'https://github.com/atlassian/atlassian-mcp-server',
+    config: `{
+  "mcpServers": {
+    "atlassian": {
+      "command": "npx",
+      "args": ["-y", "@atlassian/mcp-server"],
+      "env": {
+        "ATLASSIAN_SITE": "your-site.atlassian.net",
+        "ATLASSIAN_EMAIL": "<EMAIL>",
+        "ATLASSIAN_API_TOKEN": "<TOKEN>"
+      }
+    }
+  }
+}`,
+    source: 'official',
+    featured: true,
+  },
+  {
+    name: '21st.dev Magic',
+    category: '内容创作',
+    clients: ['Cursor', 'Claude Desktop', 'Windsurf'],
+    transport: 'stdio',
+    desc: 'AI 驱动 UI 组件生成 MCP，根据描述生成 React/Tailwind 组件代码，加速前端原型。',
+    url: 'https://github.com/21st-dev/magic-mcp',
+    config: `{
+  "mcpServers": {
+    "magic": {
+      "command": "npx",
+      "args": ["-y", "@21st-dev/magic-mcp"],
+      "env": { "API_KEY": "<YOUR_KEY>" }
+    }
+  }
+}`,
+    source: 'github',
+    featured: true,
+  },
+  {
+    name: 'Kubernetes',
+    category: '开发工具',
+    clients: ['Cursor', 'Claude Desktop'],
+    transport: 'stdio',
+    desc: '管理 K8s 集群资源：Pod、Deployment、Service、日志与事件，DevOps 与 SRE 场景。',
+    url: 'https://github.com/Flux159/mcp-server-kubernetes',
+    config: `{
+  "mcpServers": {
+    "kubernetes": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-kubernetes"]
+    }
+  }
+}`,
+    configNote: '需本地 kubectl 已配置并可访问目标集群',
+    source: 'github',
+  },
 ];
+
+/** 星数与功能点（按 GitHub Star 与社区热度整理） */
+const AI_MCP_NAV_ENRICHMENT = {
+  'MCP 是什么': { features: ['开放协议标准', 'stdio / SSE 传输', '连接 LLM 与外部工具'] },
+  'Cursor 接入 MCP': { features: ['编辑 mcp.json', '多 Server 并存', 'Agent 对话调用工具'] },
+  'Claude Desktop 接入 MCP': { features: ['claude_desktop_config.json', 'OAuth 部分服务', '桌面端原生集成'] },
+  'MCP 官方参考实现': { stars: 76000, features: ['filesystem / git / fetch', 'memory / postgres', '官方维护可 fork'] },
+  'MCP 协议文档': { features: ['协议规范', '架构说明', '多语言 SDK'] },
+  'Context7': { stars: 5800, features: ['注入最新库文档', 'API 参考实时查询', '减少代码幻觉'] },
+  'GitHub MCP': { stars: 8200, features: ['读写 Issue / PR', '搜索仓库代码', '文件内容获取'] },
+  'Filesystem': { stars: 76000, features: ['限定目录读写', '批量文件分析', '项目结构遍历'] },
+  'Git': { stars: 76000, features: ['status / diff 查看', '提交历史查询', '分支信息'] },
+  'Fetch': { stars: 76000, features: ['URL 转 Markdown', '网页正文提取', '文档阅读'] },
+  'Memory': { stars: 76000, features: ['知识图谱记忆', '跨会话实体关系', '长期项目上下文'] },
+  'Sequential Thinking': { stars: 76000, features: ['分步推理链', '假设修订', '复杂问题拆解'] },
+  'Docker MCP': { stars: 2100, features: ['容器启停管理', '镜像列表', 'Compose 操作'] },
+  'Sentry MCP': { stars: 1800, features: ['错误 Issue 查询', '性能 trace', '线上故障排查'] },
+  'AWS MCP': { stars: 3200, features: ['Lambda / S3 操作', 'DynamoDB 查询', 'CloudWatch 日志'] },
+  'Vercel MCP': { stars: 2400, features: ['项目部署管理', '环境变量配置', '构建日志查看'] },
+  'E2B Code Interpreter': { stars: 1900, features: ['云端沙箱执行', 'Python / JS 运行', '数据可视化'] },
+  'Kubernetes': { stars: 1500, features: ['Pod / Deployment 管理', '日志与事件', '集群资源查询'] },
+  'Brave Search': { stars: 76000, features: ['实时网页搜索', '结构化结果', '隐私友好检索'] },
+  'Tavily': { stars: 1200, features: ['Agent 优化搜索', '结构化摘要', '事实核查'] },
+  'Exa Search': { stars: 2800, features: ['语义神经搜索', '技术文章检索', '公司信息查询'] },
+  'Firecrawl': { stars: 4200, features: ['整站爬取', 'Markdown 转换', '竞品资料采集'] },
+  'Playwright MCP': { stars: 18500, features: ['Chromium 自动化', '截图与填表', 'E2E 测试'] },
+  'Puppeteer': { stars: 76000, features: ['无头 Chrome', '页面截图', 'DOM 交互'] },
+  'Browserbase': { stars: 1100, features: ['云端浏览器', '无需本地 Chrome', '复杂网页任务'] },
+  'Google Maps': { stars: 76000, features: ['地理编码', '路线规划', 'POI 搜索'] },
+  'OpenStreetMap': { stars: 76000, features: ['免费地理编码', '开源地图数据', '无需 API Key'] },
+  'PostgreSQL': { stars: 76000, features: ['只读 SQL 查询', '表结构探索', '自然语言查库'] },
+  'SQLite': { stars: 76000, features: ['本地 .db 查询', '轻量数据分析', '原型验证'] },
+  'Supabase': { stars: 1600, features: ['表管理', 'SQL 执行', 'Edge Functions'] },
+  'MongoDB': { stars: 2100, features: ['集合查询', '聚合管道', 'Schema 探索'] },
+  'Neon': { stars: 980, features: ['Serverless Postgres', '数据库分支', 'SQL 迁移'] },
+  'Notion': { stars: 3400, features: ['页面读写', '数据库查询', '团队知识库接入'] },
+  'Google Drive': { stars: 76000, features: ['文件搜索', '文档读取', 'OAuth 授权'] },
+  'Obsidian MCP': { stars: 1400, features: ['本地笔记搜索', 'Markdown 读取', '个人知识库'] },
+  'Figma': { stars: 9200, features: ['设计节点读取', '样式与布局解析', 'UI 转代码辅助'] },
+  'Cloudflare Workers': { stars: 2600, features: ['Workers 部署', 'KV / R2 存储', 'DNS 管理'] },
+  '21st.dev Magic': { stars: 4800, features: ['AI 生成 UI 组件', 'React / Tailwind 输出', '前端原型加速'] },
+  'Slack': { stars: 76000, features: ['频道消息发送', '线程查询', '团队协作'] },
+  'Linear': { stars: 890, features: ['Issue 管理', 'Sprint 周期', '产品项目管理'] },
+  'Atlassian': { stars: 1500, features: ['Jira Issue 读写', 'Confluence 页面', 'Sprint 管理'] },
+  'Google Calendar': { stars: 1200, features: ['事件查询', '创建日程', 'OAuth 授权'] },
+  'Alpha Vantage': { stars: 76000, features: ['股票行情', '技术指标', '基本面数据'] },
+  'Stripe': { stars: 890, features: ['客户与订阅', '发票查询', 'SaaS 计费分析'] },
+  'Twitter/X MCP': { stars: 720, features: ['发布推文', '时间线搜索', '用户资料'] },
+  'Reddit': { stars: 650, features: ['Subreddit 浏览', '帖子搜索', '社区调研'] },
+  'Shopify': { stars: 580, features: ['商品管理', '订单查询', '客户信息'] },
+  'WooCommerce': { stars: 420, features: ['WordPress 商店', '订单与客户', '商品管理'] },
+  'ElevenLabs': { stars: 780, features: ['文字转语音', '声音克隆', '音效生成'] },
+  'Replicate': { stars: 540, features: ['文生图模型', '视频生成', '音频模型调用'] },
+  'arXiv': { stars: 1100, features: ['论文搜索', 'PDF 下载', '文献综述'] },
+  'PubMed': { stars: 680, features: ['生物医学文献', '摘要检索', '临床研究'] },
+  'Weather': { stars: 76000, features: ['天气预报', '免费 Open-Meteo', '无需 API Key'] },
+  'Time': { stars: 76000, features: ['时区转换', '当前时间', '跨国协作'] },
+};
 
 function getAiMcpNavCategorySlug(category) {
   return String(category)
@@ -891,6 +1108,11 @@ function getAiMcpNavCategorySlug(category) {
     .toLowerCase();
 }
 
+function enrichMcpNavItem(item) {
+  const extra = AI_MCP_NAV_ENRICHMENT[item.name] || {};
+  return { ...item, ...extra };
+}
+
 function buildAiMcpNavLinks() {
-  return AI_MCP_NAV_ITEMS.map(item => ({ ...item }));
+  return AI_MCP_NAV_ITEMS.map(enrichMcpNavItem);
 }

@@ -4116,7 +4116,7 @@ main {
 
 .mcp-nav-card-title-row {
   display: flex;
-  align-items: flex-start;
+  align-items: baseline;
   justify-content: space-between;
   gap: 0.75rem;
 }
@@ -4129,17 +4129,18 @@ main {
   line-height: 1.3;
 }
 
-.mcp-nav-featured {
-  margin-left: 0.35rem;
+.mcp-nav-stars {
+  flex-shrink: 0;
   font-size: 0.75rem;
-  color: #38bdf8;
+  font-weight: 600;
+  color: #f5b942;
+  white-space: nowrap;
 }
 
 .mcp-nav-badges {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
-  flex-shrink: 0;
 }
 
 .mcp-nav-transport,
@@ -4198,34 +4199,64 @@ main {
 
 .mcp-nav-card-desc {
   margin: 0;
-  font-size: 0.84rem;
-  line-height: 1.65;
+  font-size: 0.86rem;
+  line-height: 1.7;
   color: var(--text-secondary);
 }
 
-.mcp-nav-cmd-wrap {
+.mcp-nav-features {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
-.mcp-nav-cmd {
+.mcp-nav-features-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.mcp-nav-features-list {
   margin: 0;
-  padding: 0.65rem 0.75rem;
-  font-family: var(--font-mono, ui-monospace, monospace);
-  font-size: 0.76rem;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.mcp-nav-features-list li {
+  position: relative;
+  padding-left: 0.9rem;
+  font-size: 0.82rem;
   line-height: 1.5;
   color: var(--text-primary);
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  overflow-x: auto;
-  white-space: pre-wrap;
-  word-break: break-all;
+}
+
+.mcp-nav-features-list li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--accent-teal);
+  font-weight: 700;
+}
+
+.mcp-nav-cmd-hidden {
+  display: none !important;
+}
+
+.mcp-nav-card-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 1rem;
+  margin-top: auto;
+  padding-top: 0.15rem;
 }
 
 .mcp-nav-copy-btn {
-  align-self: flex-start;
   font-size: 0.78rem;
   padding: 0.35rem 0.75rem;
 }
@@ -4242,7 +4273,6 @@ main {
   font-weight: 500;
   color: var(--accent-teal);
   text-decoration: none;
-  margin-top: auto;
 }
 
 .mcp-nav-link:hover {

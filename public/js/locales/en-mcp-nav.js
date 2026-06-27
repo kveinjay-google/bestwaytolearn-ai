@@ -19,7 +19,7 @@
     },
     mcpNav: {
       meta: {
-        lead: 'Our in-site MCP server directory, organized by use case. Each entry includes compatible clients, transport type, and a Cursor / Claude Desktop config snippet you can copy and search from here.',
+        lead: 'Curated high-star MCP servers by use case. Each card shows core features and GitHub stars — config JSON stays hidden; tap Copy config to paste into Cursor or Claude Desktop.',
         searchPlaceholder: 'Search MCP name, category, client, use case…',
         countLabel: '{n} servers',
         totalLabel: '{n} servers · {c} categories',
@@ -29,6 +29,8 @@
         clientsLabel: 'Clients',
         transportLabel: 'Transport',
         sourceLabel: 'Source',
+        starsLabel: '{n} ★',
+        featuresLabel: 'Features',
       },
       categories: {
         'MCP 入门': 'MCP basics',
