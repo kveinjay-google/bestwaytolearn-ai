@@ -4,11 +4,10 @@
   I18n.mergeLocaleData('en', {
     strings: {
       nav: {
-        toolsNav: 'Tools hub',
+        toolsNav: 'AI hub',
       },
-      toolsNavPage: {
-        linkDirectory: 'Browse full tools directory (100+) →',
-        linkSkills: 'Browse top Agent Skills →',
+      aiNavPage: {
+        linkDirectory: 'Browse AI hub (100+ tools) →',
       },
     },
     toolsNav: {

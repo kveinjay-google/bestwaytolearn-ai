@@ -3564,9 +3564,34 @@ main {
   color: var(--text-primary);
 }
 
+/* AI navigation hub */
+.ai-nav-hub {
+  padding-top: 1.5rem;
+}
+
+.ai-nav-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 1.75rem;
+}
+
+.ai-nav-tab {
+  min-width: 7.5rem;
+  text-align: center;
+}
+
+.ai-nav-panel[hidden] {
+  display: none !important;
+}
+
+.ai-nav-panel .section-header {
+  margin-bottom: 2rem;
+}
+
 /* AI tools directory (Hao123-style) */
-.tools-nav-section {
-  padding-top: 0.5rem;
+.tools-nav-section-header {
+  padding-top: 0;
 }
 
 .tools-nav-curriculum-link-wrap {
@@ -3786,10 +3811,8 @@ main {
 }
 
 /* Agent skills directory */
-.skills-nav-section {
-  margin-top: 3rem;
-  padding-top: 2.5rem;
-  border-top: 1px solid var(--border);
+.skills-nav-section-header {
+  padding-top: 0;
 }
 
 .skills-nav-card-grid {

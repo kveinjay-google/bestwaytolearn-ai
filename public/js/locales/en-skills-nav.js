@@ -4,10 +4,11 @@
   I18n.mergeLocaleData('en', {
     strings: {
       skillsNavPage: {
-        tag: 'Skills hub',
+        tag: 'Skill',
         title: 'Top Agent Skills',
-        linkTools: 'Browse AI tools directory →',
-        bannerStat: '{n} skills',
+      },
+      aiNavPage: {
+        tabSkills: 'Skills',
       },
       search: {
         typeSkillsNav: 'Skill',

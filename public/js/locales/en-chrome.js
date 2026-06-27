@@ -184,7 +184,7 @@
       { label: 'Quiz', href: '#quiz' },
       { label: 'Monetization', href: '#monetize' },
       { label: 'Devices', href: '#devices' },
-      { label: 'Tools directory', href: '#ai-tools-nav' },
+      { label: 'AI hub', href: '#ai-nav' },
     ],
     siteNavEntries: [
       { type: 'Module', title: 'Learning map', subtitle: 'Four-phase path overview', href: '#roadmap', keywords: 'learning map path phase roadmap' },
@@ -200,7 +200,7 @@
       { type: 'Module', title: 'Graduation report', subtitle: '7-day summary & 30-day plan', href: '#graduation', keywords: 'graduation report' },
       { type: 'Module', title: 'AI monetization', subtitle: '30 income directions', href: '#monetize', keywords: 'monetize freelance income' },
       { type: 'Module', title: 'Device buying guide', subtitle: 'OS, RAM, GPU, presets', href: '#devices', keywords: 'devices computer laptop gpu ram' },
-      { type: 'Module', title: 'AI tools directory', subtitle: '100+ tools by category', href: '#ai-tools-nav', keywords: 'tools directory navigation links official sites hao123' },
+      { type: 'Module', title: 'AI hub', subtitle: '100+ tools & Agent Skills', href: '#ai-nav', keywords: 'AI hub tools directory skills navigation links official sites hao123' },
     ],
     quizTopicLinks: {
       fundamentals: { href: '#fundamentals', label: 'How AI works' },

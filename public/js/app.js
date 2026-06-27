@@ -269,7 +269,7 @@ function getSearchTypeLabel(key) {
     monetize: ['search.typeMonetize', '变现'],
     aiBox: ['search.typeAiBox', 'AI 盒子'],
     config: ['search.typeConfig', '配置'],
-    toolsNav: ['search.typeToolsNav', '工具导航'],
+    toolsNav: ['search.typeToolsNav', 'AI工具'],
     skillsNav: ['search.typeSkillsNav', 'Skill'],
   };
   const [k, fb] = map[key] || ['search.typeModule', '模块'];
@@ -635,10 +635,10 @@ const PHASE_TAB_CONFIG = {
     hashes: ['devices', 'device-guide', 'device-ai-boxes', 'device-presets'],
   },
   toolsNav: {
-    label: '工具导航',
-    navHash: 'ai-tools-nav',
+    label: 'AI导航',
+    navHash: 'ai-nav',
     panelSelector: '#phase-view-tools-nav',
-    hashes: ['ai-tools-nav', 'tools-nav', 'ai-skills-nav', 'skills-nav'],
+    hashes: ['ai-nav', 'ai-tools-nav', 'tools-nav', 'ai-skills-nav', 'skills-nav'],
   },
   learn: {
     label: '认知基础',
@@ -730,7 +730,7 @@ const PHASE_PANEL_SELECTOR = '.phase-view, .learning-phase';
 function getNavTabLabels() {
   return typeof I18n !== 'undefined' ? I18n.getNavLabels() : {
     map: '首页', path: '学习计划', learn: '01 认知', tools: '02 工具',
-    practice: '03 实战', validate: '04 检验', monetize: '变现', devices: '设备', toolsNav: '工具导航',
+    practice: '03 实战', validate: '04 检验', monetize: '变现', devices: '设备', toolsNav: 'AI导航',
   };
 }
 
@@ -784,7 +784,14 @@ function switchPhaseTab(tabId, { scrollToId, behavior = 'smooth', save = true } 
   updatePhaseTabNavUI(tabId);
   if (save) localStorage.setItem(PHASE_TAB_KEY, tabId);
 
-  const scrollTarget = scrollToId || PHASE_TAB_CONFIG[tabId].navHash;
+  let scrollTarget = scrollToId || PHASE_TAB_CONFIG[tabId].navHash;
+  if (tabId === 'toolsNav') {
+    const hashId = String(scrollTarget).replace(/^#/, '');
+    switchAiNavSubTab(resolveAiNavSubTabFromHash(hashId), { scroll: false, updateHash: false });
+    scrollTarget = hashId === 'ai-nav'
+      ? 'ai-nav'
+      : (aiNavSubTab === 'skills' ? 'ai-skills-nav' : 'ai-tools-nav');
+  }
   requestAnimationFrame(() => {
     scrollToPhaseTarget(scrollTarget, { behavior });
     const panel = getPhasePanel(tabId);
@@ -1911,6 +1918,85 @@ function renderApps(filter = DEFAULT_APP_CATEGORY) {
 
 let monetizeCategory = '全部';
 let toolsNavQuery = '';
+let aiNavSubTab = 'tools';
+
+function resolveAiNavSubTabFromHash(hashId) {
+  const id = String(hashId || '').replace(/^#/, '');
+  if (id === 'ai-skills-nav' || id === 'skills-nav') return 'skills';
+  return 'tools';
+}
+
+function getAiNavMeta() {
+  if (typeof I18n !== 'undefined' && I18n.t('aiNavPage.bannerStatTools')) {
+    return {
+      bannerStatTools: I18n.t('aiNavPage.bannerStatTools'),
+      bannerStatSkills: I18n.t('aiNavPage.bannerStatSkills'),
+    };
+  }
+  return {
+    bannerStatTools: '{n} 个工具',
+    bannerStatSkills: '{n} 个 Skill',
+  };
+}
+
+function updateAiNavBannerStat() {
+  const el = document.getElementById('ai-nav-banner-stat');
+  if (!el) return;
+  const meta = getAiNavMeta();
+  const toolsCount = getToolsNavLinks().length;
+  const skillsCount = typeof getSkillsNavLinks === 'function' ? getSkillsNavLinks().length : 0;
+  const tpl = aiNavSubTab === 'skills' ? meta.bannerStatSkills : meta.bannerStatTools;
+  const n = aiNavSubTab === 'skills' ? skillsCount : toolsCount;
+  el.textContent = typeof I18n !== 'undefined'
+    ? I18n.interpolate(tpl, { n })
+    : tpl.replace('{n}', String(n));
+}
+
+function switchAiNavSubTab(subTab, { scroll = true, updateHash = true, behavior = 'smooth' } = {}) {
+  aiNavSubTab = subTab === 'skills' ? 'skills' : 'tools';
+  document.querySelectorAll('[data-ai-nav-tab]').forEach(btn => {
+    const active = btn.dataset.aiNavTab === aiNavSubTab;
+    btn.classList.toggle('active', active);
+    btn.setAttribute('aria-selected', active ? 'true' : 'false');
+  });
+  document.querySelectorAll('[data-ai-nav-panel]').forEach(panel => {
+    const show = panel.dataset.aiNavPanel === aiNavSubTab;
+    panel.hidden = !show;
+    panel.classList.toggle('ai-nav-panel-active', show);
+  });
+  updateAiNavBannerStat();
+  if (scroll && currentPhaseTab === 'toolsNav') {
+    const targetId = aiNavSubTab === 'skills' ? 'ai-skills-nav' : 'ai-tools-nav';
+    scrollToPhaseTarget(targetId, { behavior });
+  }
+  if (updateHash && currentPhaseTab === 'toolsNav') {
+    const hash = aiNavSubTab === 'skills' ? 'ai-skills-nav' : 'ai-nav';
+    if (location.hash !== `#${hash}`) {
+      history.replaceState(null, '', `#${hash}`);
+    }
+  }
+}
+
+function initAiNavTabs() {
+  const tabs = document.getElementById('ai-nav-tabs');
+  if (!tabs || tabs.dataset.bound) return;
+  tabs.dataset.bound = 'true';
+  tabs.addEventListener('click', e => {
+    const btn = e.target.closest('[data-ai-nav-tab]');
+    if (!btn) return;
+    const sub = btn.dataset.aiNavTab;
+    if (sub === aiNavSubTab) return;
+    if (currentPhaseTab !== 'toolsNav') {
+      navigateToHash(sub === 'skills' ? '#ai-skills-nav' : '#ai-nav');
+      return;
+    }
+    switchAiNavSubTab(sub, { scroll: true, updateHash: true });
+  });
+  switchAiNavSubTab(resolveAiNavSubTabFromHash(location.hash.replace(/^#/, '')), {
+    scroll: false,
+    updateHash: false,
+  });
+}
 
 function getToolsNavMetaData() {
   return typeof I18n !== 'undefined' ? I18n.getToolsNavMeta() : (typeof AI_TOOLS_NAV_META !== 'undefined' ? AI_TOOLS_NAV_META : {});
@@ -1941,12 +2027,7 @@ function renderToolsNav() {
   const filtered = links.filter(t => toolsNavMatchesQuery(t, query));
   const activeCats = categories.filter(cat => filtered.some(t => t.category === cat));
 
-  const bannerStat = document.getElementById('tools-nav-banner-stat');
-  if (bannerStat) {
-    bannerStat.textContent = typeof I18n !== 'undefined'
-      ? I18n.interpolate(I18n.t('toolsNavPage.bannerStat'), { n: links.length })
-      : `${links.length} 个工具`;
-  }
+  updateAiNavBannerStat();
 
   const stats = document.getElementById('tools-nav-stats');
   if (stats) {
@@ -2075,6 +2156,7 @@ function renderSkillsNav() {
       ? I18n.interpolate(meta.totalLabel, { n: filtered.length, c: activeCats.length })
       : `共 ${filtered.length} 个 Skill · ${activeCats.length} 个分类`;
   }
+  updateAiNavBannerStat();
 
   const jump = document.getElementById('skills-nav-jump');
   if (jump) {
@@ -3842,7 +3924,7 @@ const COACH_QUICK_NAV = [
   { label: '知识测验', href: '#quiz' },
   { label: '变现指南', href: '#monetize' },
   { label: '设备选购', href: '#devices' },
-  { label: '工具导航', href: '#ai-tools-nav' },
+  { label: 'AI导航', href: '#ai-nav' },
 ];
 
 const SITE_NAV_ENTRIES = [
@@ -3859,7 +3941,7 @@ const SITE_NAV_ENTRIES = [
   { type: '模块', title: '结业报告', subtitle: '7 天学习总结与 30 天计划', href: '#graduation', keywords: '结业 毕业 报告 成就 证书' },
   { type: '模块', title: 'AI 技能变现指南', subtitle: '30 个可落地的副业与接单方向', href: '#monetize', keywords: '变现 赚钱 副业 接单 收入 项目 创业 自由职业 monetize' },
   { type: '模块', title: '设备选购指南', subtitle: 'Windows/macOS、内存、显卡与推荐配置', href: '#devices', keywords: '设备 电脑 笔记本 台式机 内存 显卡 GPU RAM mac windows 苹果 配置 选购 硬件' },
-  { type: '模块', title: 'AI 工具导航', subtitle: '100+ 工具按分类直达官网', href: '#ai-tools-nav', keywords: '工具导航 大全 hao123 链接 官网 目录 directory' },
+  { type: '模块', title: 'AI导航', subtitle: '100+ 工具与优质 Agent Skill', href: '#ai-nav', keywords: 'AI导航 工具导航 skill 大全 hao123 链接 官网 目录 directory' },
 ];
 
 function buildSiteSearchIndex() {
@@ -3896,7 +3978,7 @@ function buildSiteSearchIndex() {
       title: tool.name,
       subtitle: tool.category,
       keywords: [tool.name, tool.category, tool.desc, tool.url, ...(tool.tags || [])].filter(Boolean).join(' '),
-      href: '#ai-tools-nav',
+      href: '#ai-nav',
       external: tool.url,
     });
   });
@@ -4620,6 +4702,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderApps();
   renderMonetize();
   renderDevices();
+  initAiNavTabs();
   initToolsNav();
   initSkillsNav();
   renderHandsOnCases();

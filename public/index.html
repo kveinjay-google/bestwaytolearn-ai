@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=20260704b">
+  <link rel="stylesheet" href="css/styles.css?v=20260704c">
 </head>
 <body>
   <canvas id="neural-canvas" aria-hidden="true"></canvas>
@@ -158,7 +158,7 @@
         <a href="#phase-validate" role="tab" data-nav-tab="validate" data-i18n="nav.validate">04 检验</a>
         <a href="#monetize" role="tab" data-nav-tab="monetize" data-i18n="nav.monetize">变现</a>
         <a href="#devices" role="tab" data-nav-tab="devices" data-i18n="nav.devices">设备</a>
-        <a href="#ai-tools-nav" role="tab" data-nav-tab="toolsNav" data-i18n="nav.toolsNav">工具导航</a>
+        <a href="#ai-nav" role="tab" data-nav-tab="toolsNav" data-i18n="nav.toolsNav">AI导航</a>
       </nav>
       <div class="header-prefs" id="header-prefs">
         <button class="header-prefs-toggle" id="header-prefs-toggle" type="button" aria-expanded="false" aria-controls="header-prefs-panel" data-i18n-aria="settings.fontToggle" data-i18n-title="settings.fontToggle" title="字体大小">
@@ -393,7 +393,7 @@
         <div class="section-header">
           <span class="section-tag">模块 2.1</span>
           <h2>选对工具，事半功倍</h2>
-          <p>43 款主流 AI 应用，按场景分类，含功能列表、适合人群与上手建议。<a class="section-inline-link" href="#ai-tools-nav" data-i18n="toolsNavPage.linkDirectory">浏览完整工具导航（100+）→</a></p>
+          <p>43 款主流 AI 应用，按场景分类，含功能列表、适合人群与上手建议。<a class="section-inline-link" href="#ai-nav" data-i18n="aiNavPage.linkDirectory">浏览 AI导航（100+ 工具）→</a></p>
         </div>
         <div class="apps-filter" id="apps-filter" role="tablist"></div>
         <div class="apps-grid" id="apps-grid"></div>
@@ -617,7 +617,7 @@
       </section>
     </div>
 
-    <!-- ═══ AI 工具导航 ═══ -->
+    <!-- ═══ AI 导航 ═══ -->
     <div class="phase-view" id="phase-view-tools-nav" data-phase-tab="toolsNav" hidden>
       <div class="phase-banner phase-banner-teal has-page-poster">
         <div class="page-poster-bg" aria-hidden="true">
@@ -626,50 +626,52 @@
         </div>
         <span class="phase-num">◎</span>
         <div class="phase-banner-text">
-          <h2 data-i18n="toolsNavPage.bannerTitle">AI 工具导航</h2>
-          <p data-i18n="toolsNavPage.bannerSubtitle">按用途分类 · 一站直达官网</p>
+          <h2 data-i18n="aiNavPage.bannerTitle">AI导航</h2>
+          <p data-i18n="aiNavPage.bannerSubtitle">工具与 Agent Skill · 分类发现</p>
         </div>
-        <span class="phase-progress" id="tools-nav-banner-stat">100+ 工具</span>
+        <span class="phase-progress" id="ai-nav-banner-stat">100+ 工具</span>
       </div>
 
-      <section class="section tools-nav-section" id="ai-tools-nav">
-        <div class="section-header">
-          <span class="section-tag" data-i18n="toolsNavPage.tag">工具导航</span>
-          <h2 data-i18n="toolsNavPage.title">AI 工具大全</h2>
-          <p id="tools-nav-lead"></p>
-          <p class="tools-nav-curriculum-link-wrap">
-            <a class="tools-nav-curriculum-link" href="#apps" data-i18n="toolsNavPage.linkCurriculum">查看课程深度选型指南 →</a>
-            ·
-            <a class="tools-nav-curriculum-link" href="#ai-skills-nav" data-i18n="toolsNavPage.linkSkills">浏览优质 Skill 导航 →</a>
-          </p>
-        </div>
-        <div class="tools-nav-toolbar">
-          <label class="sr-only" for="tools-nav-search">搜索 AI 工具</label>
-          <input type="search" id="tools-nav-search" class="tools-nav-search" placeholder="搜索工具名称、用途…" autocomplete="off">
-          <p class="tools-nav-stats" id="tools-nav-stats" aria-live="polite"></p>
-        </div>
-        <nav class="tools-nav-jump" id="tools-nav-jump" aria-label="分类快捷跳转"></nav>
-        <div class="tools-nav-body" id="tools-nav-body"></div>
-        <p class="tools-nav-empty hidden" id="tools-nav-empty" role="status"></p>
-      </section>
+      <section class="section ai-nav-hub" id="ai-nav">
+        <nav class="ai-nav-tabs" id="ai-nav-tabs" role="tablist" aria-label="AI导航分类">
+          <button type="button" class="ai-nav-tab filter-btn active" role="tab" id="ai-nav-tab-tools" data-ai-nav-tab="tools" aria-selected="true" aria-controls="ai-tools-nav" data-i18n="aiNavPage.tabTools">工具导航</button>
+          <button type="button" class="ai-nav-tab filter-btn" role="tab" id="ai-nav-tab-skills" data-ai-nav-tab="skills" aria-selected="false" aria-controls="ai-skills-nav" data-i18n="aiNavPage.tabSkills">Skill 导航</button>
+        </nav>
 
-      <section class="section skills-nav-section" id="ai-skills-nav">
-        <div class="section-header">
-          <span class="section-tag" data-i18n="skillsNavPage.tag">Skill 导航</span>
-          <h2 data-i18n="skillsNavPage.title">优质 Agent Skill 导航</h2>
-          <p id="skills-nav-lead"></p>
-          <p class="tools-nav-curriculum-link-wrap">
-            <a class="tools-nav-curriculum-link" href="#ai-tools-nav" data-i18n="skillsNavPage.linkTools">浏览 AI 工具导航 →</a>
-          </p>
+        <div class="ai-nav-panel ai-nav-panel-active" id="ai-tools-nav" data-ai-nav-panel="tools" role="tabpanel" aria-labelledby="ai-nav-tab-tools">
+          <div class="section-header tools-nav-section-header">
+            <span class="section-tag" data-i18n="toolsNavPage.tag">工具</span>
+            <h2 data-i18n="toolsNavPage.title">AI 工具大全</h2>
+            <p id="tools-nav-lead"></p>
+            <p class="tools-nav-curriculum-link-wrap">
+              <a class="tools-nav-curriculum-link" href="#apps" data-i18n="toolsNavPage.linkCurriculum">查看课程深度选型指南 →</a>
+            </p>
+          </div>
+          <div class="tools-nav-toolbar">
+            <label class="sr-only" for="tools-nav-search">搜索 AI 工具</label>
+            <input type="search" id="tools-nav-search" class="tools-nav-search" placeholder="搜索工具名称、用途…" autocomplete="off">
+            <p class="tools-nav-stats" id="tools-nav-stats" aria-live="polite"></p>
+          </div>
+          <nav class="tools-nav-jump" id="tools-nav-jump" aria-label="分类快捷跳转"></nav>
+          <div class="tools-nav-body" id="tools-nav-body"></div>
+          <p class="tools-nav-empty hidden" id="tools-nav-empty" role="status"></p>
         </div>
-        <div class="tools-nav-toolbar skills-nav-toolbar">
-          <label class="sr-only" for="skills-nav-search">搜索 Agent Skill</label>
-          <input type="search" id="skills-nav-search" class="tools-nav-search" placeholder="搜索 Skill 名称、用途…" autocomplete="off">
-          <p class="tools-nav-stats" id="skills-nav-stats" aria-live="polite"></p>
+
+        <div class="ai-nav-panel" id="ai-skills-nav" data-ai-nav-panel="skills" role="tabpanel" aria-labelledby="ai-nav-tab-skills" hidden>
+          <div class="section-header skills-nav-section-header">
+            <span class="section-tag" data-i18n="skillsNavPage.tag">Skill</span>
+            <h2 data-i18n="skillsNavPage.title">优质 Agent Skill 导航</h2>
+            <p id="skills-nav-lead"></p>
+          </div>
+          <div class="tools-nav-toolbar skills-nav-toolbar">
+            <label class="sr-only" for="skills-nav-search">搜索 Agent Skill</label>
+            <input type="search" id="skills-nav-search" class="tools-nav-search" placeholder="搜索 Skill 名称、用途…" autocomplete="off">
+            <p class="tools-nav-stats" id="skills-nav-stats" aria-live="polite"></p>
+          </div>
+          <nav class="tools-nav-jump skills-nav-jump" id="skills-nav-jump" aria-label="Skill 分类快捷跳转"></nav>
+          <div class="tools-nav-body skills-nav-body" id="skills-nav-body"></div>
+          <p class="tools-nav-empty hidden" id="skills-nav-empty" role="status"></p>
         </div>
-        <nav class="tools-nav-jump skills-nav-jump" id="skills-nav-jump" aria-label="Skill 分类快捷跳转"></nav>
-        <div class="tools-nav-body skills-nav-body" id="skills-nav-body"></div>
-        <p class="tools-nav-empty hidden" id="skills-nav-empty" role="status"></p>
       </section>
     </div>
 
@@ -813,6 +815,6 @@
   <script src="js/ai-tools-nav.js?v=20260703b"></script>
   <script src="js/ai-skills-nav.js?v=20260704a"></script>
   <script src="js/terms.js?v=20260630a"></script>
-  <script src="js/app.js?v=20260704a"></script>
+  <script src="js/app.js?v=20260704c"></script>
 </body>
 </html>
