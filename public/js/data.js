@@ -68,7 +68,7 @@ const LEARNING_PATH = [
     desc: '深度学习用多层神经网络自动提取特征。Transformer 架构催生了 GPT、Claude 等大语言模型，改变了人机交互方式。',
     tasks: [
       '阅读：神经网络、Transformer、大语言模型三个模块',
-      '学习概念卡：Token、上下文窗口、Transformer、GPT、RLHF',
+      '学习概念卡：词元、上下文窗口、Transformer、GPT、RLHF',
       '注册并试用一款对话 AI，问一个专业问题并评估回答质量',
       '记录：AI 回答中哪些部分准确？哪些需要核实？'
     ],
@@ -164,7 +164,7 @@ const AI_OVERVIEW_SECTIONS = [
       }
     ],
     points: [
-      { label: '日常所说的 AI', text: '多指基于大数据训练的机器学习系统，尤其是 LLM（如 GPT、Claude、通义千问）和图像/视频生成模型。它们通过「预测下一个 token/像素」来生成看似理解语义的输出。' },
+      { label: '日常所说的 AI', text: '多指基于大数据训练的机器学习系统，尤其是 LLM（如 GPT、Claude、通义千问）和图像/视频生成模型。它们通过「预测下一个词元/像素」来生成看似理解语义的输出。' },
       { label: '层级关系', text: '人工智能（AI）⊃ 机器学习（ML）⊃ 深度学习（DL）⊃ 大语言模型（LLM）。越往右越专精，但依赖的数据、算力与工程能力也越高。' },
       { label: '训练 vs 推理', text: '训练是「读书备考」——用海量数据调整模型参数，成本高、周期长；推理是「上考场答题」——你每次提问时模型实时生成结果，这也是日常使用的阶段。' },
       { label: '专用 AI（ANI）vs 通用 AI（AGI）', text: '当前所有商用系统都是专用 AI：在训练分布内表现强大，跨领域迁移有限。AGI（能像人一样广泛推理与行动）仍无公认时间表，不宜把现有产品当作全知代理。' },
@@ -459,7 +459,7 @@ const FUNDAMENTALS = [
     icon: '💬', color: 'var(--accent-teal-dim)',
     title: '大语言模型', abbr: 'LLM', fullEn: 'Large Language Model',
     content: `
-      <p><strong>大语言模型（LLM, Large Language Model）</strong>是在海量文本上训练的超大神经网络，核心训练目标是<strong>预测下一个 Token</strong>。通过这一简单目标，模型学会了语法、事实知识、推理、代码、多语言等复杂能力。</p>
+      <p><strong>大语言模型（LLM, Large Language Model）</strong>是在海量文本上训练的超大神经网络，核心训练目标是<strong>预测下一个词元</strong>。通过这一简单目标，模型学会了语法、事实知识、推理、代码、多语言等复杂能力。</p>
       <p><strong>关键训练阶段：</strong></p>
       <ul class="key-points">
         <li><strong>预训练（Pre-training）</strong>：海量通用文本，学习语言基础能力</li>
@@ -477,7 +477,7 @@ const FUNDAMENTALS = [
       <p><strong>生成式 AI（GenAI, Generative AI）</strong>能创造全新内容——文本、图像、音频、视频、代码、3D 模型。与传统<strong>判别式 AI（Discriminative AI）</strong>（分类、检测、预测）不同，GenAI 的核心是「创造」。</p>
       <p><strong>主要技术路线：</strong></p>
       <ul class="key-points">
-        <li><strong>自回归模型（Autoregressive）</strong>：逐 Token/像素生成，代表 GPT、DALL·E</li>
+        <li><strong>自回归模型（Autoregressive）</strong>：逐词元/像素生成，代表 GPT、DALL·E</li>
         <li><strong>扩散模型（Diffusion Model）</strong>：从噪声逐步去噪生成图像，代表 Stable Diffusion、Midjourney</li>
         <li><strong>GAN（Generative Adversarial Network，生成对抗网络）</strong>：生成器与判别器博弈，早期图像生成主流</li>
       </ul>
@@ -1578,24 +1578,24 @@ const PROMPT_TASK_PRESETS = {
 
 const QUIZ_DATA = [
   { q: 'AI、ML、DL 三者的关系是？', options: ['完全独立无关', 'AI ⊃ ML ⊃ DL', 'AI 是 DL 的子集', 'DL ⊂ ML ⊂ AI'], answer: 1, explain: '人工智能 ⊃ 机器学习 ⊃ 深度学习：从左到右（AI → ML → DL）范围依次缩小。' },
-  { q: 'LLM（Large Language Model）的核心训练目标是？', options: ['识别图像', '预测下一个 Token', '翻译所有语言', '存储所有网页'], answer: 1, explain: 'LLM 通过预测下一个 Token 的简单目标，在海量文本上学会了语言理解和生成。' },
+  { q: 'LLM（Large Language Model）的核心训练目标是？', options: ['识别图像', '预测下一个词元', '翻译所有语言', '存储所有网页'], answer: 1, explain: 'LLM 通过预测下一个词元的简单目标，在海量文本上学会了语言理解和生成。' },
   { q: 'Hallucination（幻觉）是指？', options: ['AI 拒绝回答', '运行变慢', '自信地生成错误内容', '只能处理虚构内容'], answer: 2, explain: '幻觉是 LLM 已知局限——流畅但事实错误，关键信息务必核实。' },
   { q: 'Transformer 的核心创新是？', options: ['CNN 卷积', 'Self-Attention 自注意力', 'RNN 循环', '决策树'], answer: 1, explain: '自注意力机制让模型同时关注输入序列所有位置，是 GPT 等 LLM 的基石。' },
   { q: 'RAG（Retrieval-Augmented Generation）的作用是？', options: ['加快训练', '减少参数量', '结合知识库减少幻觉', '生成图像'], answer: 2, explain: 'RAG 先检索外部资料再生成回答，大幅减少凭空捏造。' },
   { q: '最有效的提示词（Prompt）做法是？', options: ['越短越好', '只写「帮我写一篇文章」', '角色+任务+格式+约束的结构化描述', '多用表情符号'], answer: 2, explain: '结构化提示词能显著提升输出质量。' },
   { q: '以下哪个是 GenAI（生成式 AI）应用？', options: ['垃圾邮件过滤', '人脸识别', 'Midjourney 图像生成', '欺诈检测'], answer: 2, explain: 'GenAI 创造新内容；垃圾邮件过滤和欺诈检测是判别式 AI。' },
-  { q: 'Token 是什么？', options: ['用户名', '文本处理的基本单位', '加密货币', '版本号'], answer: 1, explain: 'Token 是模型处理文本的最小单位，上下文窗口以 Token 数计量。' },
+  { q: '词元（Token）是什么？', options: ['用户名', '文本处理的基本单位', '加密货币', '版本号'], answer: 1, explain: '词元是模型处理文本的最小单位（勿与加密货币「代币」混淆），上下文窗口以词元数计量。' },
   { q: 'AI Agent 与普通聊天机器人的区别？', options: ['更幽默', '能自主规划并调用工具执行任务', '只能回答是/否', '不需网络'], answer: 1, explain: 'Agent 能分解任务、调用工具、执行多步骤操作。' },
   { q: 'RLHF 的全称和作用是？', options: ['快速训练方法', 'Reinforcement Learning from Human Feedback，用人类偏好优化输出', '图像生成技术', '数据压缩算法'], answer: 1, explain: 'RLHF 让 ChatGPT 比原始 GPT-3 更友好、更安全。' },
-  { q: 'CoT（Chain of Thought）如何提升 AI 表现？', options: ['加快推理速度', '让 AI 一步步展示推理过程', '减少 Token 消耗', '增加模型参数'], answer: 1, explain: '链式思考让 AI 展示推理步骤，显著提升复杂逻辑任务准确率。' },
+  { q: 'CoT（Chain of Thought）如何提升 AI 表现？', options: ['加快推理速度', '让 AI 一步步展示推理过程', '减少词元消耗', '增加模型参数'], answer: 1, explain: '链式思考让 AI 展示推理步骤，显著提升复杂逻辑任务准确率。' },
   { q: 'LoRA（Low-Rank Adaptation）主要用于？', options: ['图像生成', '高效微调大模型', '数据标注', '模型部署'], answer: 1, explain: 'LoRA 只训练少量附加参数，高效适配特定任务，成本极低。' },
   { q: 'NLP（Natural Language Processing）包括？', options: ['只有机器翻译', '翻译、摘要、问答、情感分析等', '只有语音识别', '只有文本生成'], answer: 1, explain: 'NLP 涵盖所有让计算机处理人类语言的技术。' },
   { q: 'GPU 在 AI 中的主要作用是？', options: ['存储数据', '并行计算加速训练和推理', '网络通信', '显示图像'], answer: 1, explain: 'GPU 的并行计算能力使其成为 AI 训练和推理的核心硬件。' },
   { q: '新手开始使用 AI 的最佳方式是？', options: ['先学透数学再用', '带着真实问题直接试用', '只看不练', '等 AI 完全成熟'], answer: 1, explain: '学以致用最高效——带着真实任务试用，在实践中理解原理。' },
   { q: 'AGI 与当前已落地的 ANI 的主要区别是？', options: ['AGI 只能处理语言', 'ANI 能处理任意智力任务', 'AGI 尚未实现，ANI 只做特定任务', '两者完全相同'], answer: 2, explain: '今天所有商用 AI 都是 ANI（专用 AI）；AGI（通用人工智能）仍是长期研究目标。' },
   { q: '结构化提示词通常应包含哪些要素？', options: ['只有一句「帮我写」', '角色 + 任务 + 背景 + 格式 + 约束', '越短越好', '只用表情符号'], answer: 1, explain: '本站 Day 4 提示词工程：五要素齐全能显著提升输出质量与可复用性。' },
-  { q: 'Temperature（温度）参数的作用是？', options: ['加快推理速度', '控制输出随机性：低温度更稳定，高温度更创意', '增加上下文长度', '减少 Token 消耗'], answer: 1, explain: '写代码宜低温度（如 0.1），创意写作宜高温度（如 0.8）。' },
-  { q: '上下文窗口（Context Window）指的是？', options: ['浏览器窗口大小', '模型一次能处理的最大 Token 数', '训练数据集大小', 'API 调用次数限制'], answer: 1, explain: '超出上下文窗口的内容会被截断或遗忘，长文档任务需选大窗口模型（如 Kimi、Claude）。' },
+  { q: 'Temperature（温度）参数的作用是？', options: ['加快推理速度', '控制输出随机性：低温度更稳定，高温度更创意', '增加上下文长度', '减少词元消耗'], answer: 1, explain: '写代码宜低温度（如 0.1），创意写作宜高温度（如 0.8）。' },
+  { q: '上下文窗口（Context Window）指的是？', options: ['浏览器窗口大小', '模型一次能处理的最大词元数', '训练数据集大小', 'API 调用次数限制'], answer: 1, explain: '超出上下文窗口的内容会被截断或遗忘，长文档任务需选大窗口模型（如 Kimi、Claude）。' },
   { q: '监督学习与无监督学习的区别是？', options: ['监督学习用带标签数据，无监督学习从无标签数据发现模式', '无监督学习一定更准确', '监督学习不需要数据', '两者都不能用于分类'], answer: 0, explain: 'Day 2 核心：垃圾邮件过滤是监督学习；客户分群常是无监督学习。' },
   { q: '扩散模型（Diffusion Model）主要用于？', options: ['文本分类', '当前主流的图像/视频生成', '数据库查询', '网络路由'], answer: 1, explain: 'Stable Diffusion、Midjourney、DALL·E 3 等文生图工具基于扩散模型。' },
   { q: 'Embedding（嵌入向量）的核心用途是？', options: ['加密数据', '将文本转为向量以支持语义相似度搜索', '压缩视频', '训练 GPU 驱动'], answer: 1, explain: '语义相近的内容向量距离更近，是 RAG 和向量数据库的基础。' },
@@ -1651,7 +1651,7 @@ const QUIZ_DATA = [
   { q: '使用 AI 处理公司机密文件时，最稳妥的做法是？', options: ['随便上传公有云', '确认工具隐私政策，敏感数据用企业版/本地部署/脱敏', '发给任何人', '截图发朋友圈'], answer: 1, explain: '机密数据需企业协议或私有化；本站内训也强调信息安全合规。', topic: 'ai-overview' },
   { q: '发现 AI 给出的事实性答案，正确做法是？', options: ['直接引用发表', '交叉核实来源，尤其是数字、日期、人名', '永远不信', '只问一次'], answer: 1, explain: '幻觉是 LLM 已知局限；Perplexity 等带引用也需二次核实关键事实。', topic: 'ai-overview' },
   { q: '提示词迭代优化的正确流程是？', options: ['一次写完永不改', '初稿 → 看输出 → 补充约束/示例 → 再试', '越短一定越好', '删除所有格式要求'], answer: 1, explain: '提示词工程是实验科学；本站提示词实验室即用于对比迭代。', topic: 'prompt-lab' },
-  { q: '在提示词中指定「输出格式」的好处是？', options: ['浪费 Token', '让结果可直接复制进表格/代码/报告，减少二次整理', '一定更慢', '模型会拒绝'], answer: 1, explain: '如要求 JSON、Markdown 表格、分点列表，可显著提升可用性。', topic: 'prompt-lab' },
+  { q: '在提示词中指定「输出格式」的好处是？', options: ['浪费词元', '让结果可直接复制进表格/代码/报告，减少二次整理', '一定更慢', '模型会拒绝'], answer: 1, explain: '如要求 JSON、Markdown 表格、分点列表，可显著提升可用性。', topic: 'prompt-lab' },
   { q: '用 ChatGPT 分析 Excel 数据的推荐方式是？', options: ['截图模糊表格', '上传文件或粘贴结构化数据，并说明要计算的指标', '只问「分析一下」', '不能分析数据'], answer: 1, explain: '本站实操：提供清晰数据与问题，必要时用代码解释器生成图表。', topic: 'hands-on' },
   { q: '用 Perplexity 做竞品调研时应注意？', options: ['结论直接当投资依据', '核对引用来源与日期，交叉验证关键数据', '不用写关注点', '只问一句「分析竞品」'], answer: 1, explain: '本站实操强调：Perplexity 强项是可核查来源，但价格等仍需回官网核实。', topic: 'hands-on' },
   { q: '用 NotebookLM 读论文的推荐流程是？', options: ['上传后不提问', '上传 PDF → 提问细节 → 用摘要/播客功能巩固', '只能一篇', '替代导师审稿'], answer: 1, explain: '上传论文后可对话提问，Audio Overview 适合通勤时复习要点。', topic: 'hands-on' },

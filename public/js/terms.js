@@ -30,7 +30,7 @@ const AI_TERMS = [
   { term: '参数', abbr: '—', fullEn: 'Parameters', category: '基础概念', def: '模型内部可学习的权重数值。参数量越大，模型容量通常越强，但训练和推理成本也越高。', example: 'GPT-4 约 1.8 万亿参数；DeepSeek-R1 约 6710 亿。' },
 
   // ── 模型与架构 (12) ──
-  { term: '大语言模型', abbr: 'LLM', fullEn: 'Large Language Model', category: '模型与架构', def: '在海量文本上训练的超大神经网络，通过预测下一个 Token 学会语言理解与生成。', example: 'GPT-4、Claude、Gemini、通义千问、DeepSeek。' },
+  { term: '大语言模型', abbr: 'LLM', fullEn: 'Large Language Model', category: '模型与架构', def: '在海量文本上训练的超大神经网络，通过预测下一个词元学会语言理解与生成。', example: 'GPT-4、Claude、Gemini、通义千问、DeepSeek。' },
   { term: '小语言模型', abbr: 'SLM', fullEn: 'Small Language Model', category: '模型与架构', def: '参数量较小的语言模型，可在手机、边缘设备上运行，速度更快、成本更低。', example: 'Gemma 2B、Phi-3 Mini、端侧语音助手。' },
   { term: '生成式预训练变换器', abbr: 'GPT', fullEn: 'Generative Pre-trained Transformer', category: '模型与架构', def: 'OpenAI 提出的大语言模型系列，基于 Transformer 解码器，先预训练再微调。', example: 'GPT-3.5、GPT-4、GPT-4o 驱动 ChatGPT。' },
   { term: '双向编码器', abbr: 'BERT', fullEn: 'Bidirectional Encoder Representations from Transformers', category: '模型与架构', def: 'Google 提出的双向语言理解模型，擅长分类、问答等理解任务，不擅长长文本生成。', example: '搜索引擎排序、情感分析、命名实体识别。' },
@@ -44,7 +44,7 @@ const AI_TERMS = [
   { term: '神经网络', abbr: 'NN', fullEn: 'Neural Network', category: '模型与架构', def: '由大量神经元节点分层连接组成的计算模型，是深度学习的基本单元。', example: '所有 LLM、CNN、GAN 的底层结构。' },
 
   // ── 训练与调优 (11) ──
-  { term: '预训练', abbr: '—', fullEn: 'Pre-training', category: '训练与调优', def: '在大规模通用数据上训练模型，获得基础能力。是所有 LLM 的第一阶段。', example: 'GPT-4 在万亿 Token 文本上预训练。' },
+  { term: '预训练', abbr: '—', fullEn: 'Pre-training', category: '训练与调优', def: '在大规模通用数据上训练模型，获得基础能力。是所有 LLM 的第一阶段。', example: 'GPT-4 在万亿词元文本上预训练。' },
   { term: '微调', abbr: 'SFT', fullEn: 'Supervised Fine-Tuning', category: '训练与调优', def: '在预训练模型上用特定领域高质量数据进一步训练，使模型更擅长某项任务。', example: '用医疗对话数据微调出专科 AI 助手。' },
   { term: '人类反馈强化学习', abbr: 'RLHF', fullEn: 'Reinforcement Learning from Human Feedback', category: '训练与调优', def: '人类对模型多个回答排序偏好后，用强化学习优化输出质量与安全性。', example: 'ChatGPT 比 GPT-3 更友好安全，RLHF 是关键。' },
   { term: '低秩适配', abbr: 'LoRA', fullEn: 'Low-Rank Adaptation', category: '训练与调优', def: '高效微调技术：只训练少量低秩附加参数，不动原模型权重，成本低、速度快。', example: '给 Stable Diffusion 添加特定画风；企业私有化微调。' },
@@ -57,10 +57,10 @@ const AI_TERMS = [
   { term: '梯度下降', abbr: 'GD', fullEn: 'Gradient Descent', category: '训练与调优', def: '沿损失函数梯度反方向更新参数，使损失逐步减小的优化算法。', example: '下山时每一步朝最陡的方向走。' },
 
   // ── 提示与推理 (11) ──
-  { term: 'Token', abbr: '—', fullEn: 'Token', category: '提示与推理', def: 'AI 处理文本的最小单位。中文 1 字 ≈ 1-2 Token，英文 1 词 ≈ 1-3 Token。', example: '「人工智能」约 2-4 Token；128K 上下文 ≈ 10 万汉字。' },
+  { term: '词元', abbr: '—', fullEn: 'Token', category: '提示与推理', def: 'AI 处理文本的最小单位（勿与加密货币「代币」混淆）。中文 1 字 ≈ 1–2 词元，英文 1 词 ≈ 1–3 词元。', example: '「人工智能」约 2–4 词元；128K 上下文 ≈ 10 万汉字。' },
   { term: '提示词', abbr: '—', fullEn: 'Prompt', category: '提示与推理', def: '你发给 AI 的输入指令。好提示词 = 角色 + 任务 + 背景 + 格式 + 约束。', example: '「你是资深产品经理，请为以下需求写 PRD…」' },
   { term: '提示词工程', abbr: 'PE', fullEn: 'Prompt Engineering', category: '提示与推理', def: '设计和优化提示词以获得高质量 AI 输出的技术与方法论。', example: '结构化提示、Few-shot 示例、CoT 链式思考。' },
-  { term: '上下文窗口', abbr: '—', fullEn: 'Context Window', category: '提示与推理', def: '模型一次能处理的最大 Token 数，超出会被截断或遗忘。', example: 'Claude 200K、Kimi 200 万字、GPT-4o 128K。' },
+  { term: '上下文窗口', abbr: '—', fullEn: 'Context Window', category: '提示与推理', def: '模型一次能处理的最大词元数，超出会被截断或遗忘。', example: 'Claude 200K、Kimi 200 万字、GPT-4o 128K。' },
   { term: '温度', abbr: '—', fullEn: 'Temperature', category: '提示与推理', def: '控制输出随机性的参数。低温度精确稳定，高温度创意发散。', example: '写代码设 0.1，写故事设 0.8。' },
   { term: '核采样', abbr: 'Top-p', fullEn: 'Nucleus Sampling', category: '提示与推理', def: '从概率累计达 p 的最小词集合中采样，控制输出多样性，与 Temperature 配合使用。', example: 'Top-p=0.9 表示从累计概率 90% 的词中选取。' },
   { term: '幻觉', abbr: '—', fullEn: 'Hallucination', category: '提示与推理', def: 'AI 自信地生成看似合理但实际错误的内容，是 LLM 的已知局限。', example: '编造不存在的论文引用、错误的历史日期。' },
