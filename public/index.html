@@ -88,8 +88,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=20260627e">
-  <link rel="stylesheet" href="css/themes.css?v=20260627a">
+  <link rel="stylesheet" href="css/styles.css?v=20260627f">
+  <link rel="stylesheet" href="css/themes.css?v=20260627b">
 </head>
 <body>
   <canvas id="neural-canvas" aria-hidden="true"></canvas>
@@ -296,6 +296,12 @@
     <div class="phase-view" id="phase-view-map" data-phase-tab="map">
     <!-- Hero -->
     <section class="hero" id="hero">
+      <div class="hero-backdrop" aria-hidden="true">
+        <div class="hero-backdrop-image">
+          <img data-theme-poster="hero" src="assets/posters/poster-hero-neural.svg" alt="" width="1920" height="1080" decoding="async" fetchpriority="high">
+        </div>
+        <div class="hero-backdrop-fade"></div>
+      </div>
       <div class="hero-inner">
         <p class="hero-eyebrow reveal" id="hero-greeting" data-i18n="hero.greeting">BestWayToLearn.AI</p>
         <h1 class="hero-title reveal" id="hero-title" data-i18n-html="hero.titleHtml">
@@ -316,7 +322,7 @@
     <section class="section roadmap-section" id="roadmap">
       <div class="roadmap-backdrop" aria-hidden="true">
         <div class="roadmap-backdrop-image">
-          <img src="assets/posters/poster-roadmap.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+          <img data-theme-poster="roadmap" src="assets/posters/poster-roadmap-neural.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
         </div>
         <div class="roadmap-backdrop-fade"></div>
       </div>
@@ -344,7 +350,7 @@
     <div class="learning-phase" id="phase-learn" data-phase-tab="learn" hidden>
       <div class="phase-banner phase-banner-teal has-page-poster">
         <div class="page-poster-bg" aria-hidden="true">
-          <img src="assets/posters/poster-learn.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+          <img data-theme-poster="learn" src="assets/posters/poster-learn-neural.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
           <div class="page-poster-overlay page-poster-overlay-teal"></div>
         </div>
         <span class="phase-num">01</span>
@@ -415,7 +421,7 @@
     <div class="learning-phase" id="phase-tools" data-phase-tab="tools" hidden>
       <div class="phase-banner phase-banner-amber has-page-poster">
         <div class="page-poster-bg" aria-hidden="true">
-          <img src="assets/posters/poster-tools.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+          <img data-theme-poster="tools" src="assets/posters/poster-tools-neural.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
           <div class="page-poster-overlay page-poster-overlay-amber"></div>
         </div>
         <span class="phase-num">02</span>
@@ -520,7 +526,7 @@
     <div class="learning-phase" id="phase-practice" data-phase-tab="practice" hidden>
       <div class="phase-banner phase-banner-violet has-page-poster">
         <div class="page-poster-bg" aria-hidden="true">
-          <img src="assets/posters/poster-practice.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+          <img data-theme-poster="practice" src="assets/posters/poster-practice-neural.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
           <div class="page-poster-overlay page-poster-overlay-violet"></div>
         </div>
         <span class="phase-num">03</span>
@@ -562,7 +568,7 @@
     <div class="phase-view" id="phase-view-monetize" data-phase-tab="monetize" hidden>
       <div class="phase-banner phase-banner-gold has-page-poster">
         <div class="page-poster-bg" aria-hidden="true">
-          <img src="assets/posters/poster-monetize.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+          <img data-theme-poster="monetize" src="assets/posters/poster-monetize-neural.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
           <div class="page-poster-overlay page-poster-overlay-gold"></div>
         </div>
         <span class="phase-num">¥</span>
@@ -590,7 +596,7 @@
     <div class="phase-view" id="phase-view-devices" data-phase-tab="devices" hidden>
       <div class="phase-banner phase-banner-sky has-page-poster">
         <div class="page-poster-bg" aria-hidden="true">
-          <img src="assets/posters/poster-devices.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+          <img data-theme-poster="devices" src="assets/posters/poster-devices-neural.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
           <div class="page-poster-overlay page-poster-overlay-sky"></div>
         </div>
         <span class="phase-num">PC</span>
@@ -658,7 +664,7 @@
     <div class="phase-view" id="phase-view-ai-tools" data-phase-tab="aiToolsNav" hidden>
       <div class="phase-banner phase-banner-teal has-page-poster">
         <div class="page-poster-bg" aria-hidden="true">
-          <img src="assets/posters/poster-tools.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+          <img data-theme-poster="tools" src="assets/posters/poster-tools-neural.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
           <div class="page-poster-overlay page-poster-overlay-teal"></div>
         </div>
         <span class="phase-num">◎</span>
@@ -697,7 +703,7 @@
     <div class="phase-view" id="phase-view-ai-skills" data-phase-tab="aiSkillsNav" hidden>
       <div class="phase-banner phase-banner-violet has-page-poster">
         <div class="page-poster-bg" aria-hidden="true">
-          <img src="assets/posters/poster-tools.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+          <img data-theme-poster="tools" src="assets/posters/poster-tools-neural.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
           <div class="page-poster-overlay page-poster-overlay-violet"></div>
         </div>
         <span class="phase-num">◎</span>
@@ -733,7 +739,7 @@
     <div class="learning-phase" id="phase-validate" data-phase-tab="validate" hidden>
       <div class="phase-banner phase-banner-validate has-page-poster">
         <div class="page-poster-bg" aria-hidden="true">
-          <img src="assets/posters/poster-validate.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+          <img data-theme-poster="validate" src="assets/posters/poster-validate-neural.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
           <div class="page-poster-overlay page-poster-overlay-validate"></div>
         </div>
         <span class="phase-num">04</span>
@@ -874,7 +880,7 @@
   <script src="js/ai-tools-nav.js?v=20260703b"></script>
   <script src="js/ai-skills-nav.js?v=20260707a"></script>
   <script src="js/terms.js?v=20260627a"></script>
-  <script src="js/theme.js?v=20260627a"></script>
+  <script src="js/theme.js?v=20260627b"></script>
   <script src="js/app.js?v=20260627g"></script>
 </body>
 </html>

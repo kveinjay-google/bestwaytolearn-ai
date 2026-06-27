@@ -4,6 +4,7 @@ const Theme = (() => {
   const STORAGE_KEY = 'bwtl-theme';
   const DEFAULT_THEME = 'neural';
   const THEMES = ['neural', 'aurora', 'sunrise', 'forest', 'ink'];
+  const POSTER_BASE = 'assets/posters/poster';
 
   let current = DEFAULT_THEME;
 
@@ -27,6 +28,19 @@ const Theme = (() => {
     if (bg) meta.setAttribute('content', bg);
   }
 
+  function posterSrc(slot) {
+    return `${POSTER_BASE}-${slot}-${current}.svg`;
+  }
+
+  function syncPosters() {
+    document.querySelectorAll('[data-theme-poster]').forEach(img => {
+      const slot = img.dataset.themePoster;
+      if (!slot) return;
+      const next = posterSrc(slot);
+      if (img.getAttribute('src') !== next) img.setAttribute('src', next);
+    });
+  }
+
   function syncButtons() {
     document.querySelectorAll('.pref-theme-btn').forEach(btn => {
       const active = btn.dataset.theme === current;
@@ -44,6 +58,7 @@ const Theme = (() => {
       try { localStorage.setItem(STORAGE_KEY, theme); } catch { /* private mode */ }
     }
     syncMetaColor();
+    syncPosters();
     syncButtons();
     window.dispatchEvent(new CustomEvent('bwtl-theme-change', { detail: { theme } }));
   }

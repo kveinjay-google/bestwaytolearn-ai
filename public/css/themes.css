@@ -362,3 +362,27 @@ html[lang="en"][data-theme="ink"] {
   font-size: 0.85rem;
   line-height: 1;
 }
+
+/* Light themes — poster overlays follow page background */
+html[data-theme="sunrise"] .page-poster-overlay,
+html[data-theme="sunrise"] .page-poster-overlay-teal,
+html[data-theme="sunrise"] .page-poster-overlay-amber,
+html[data-theme="sunrise"] .page-poster-overlay-gold,
+html[data-theme="sunrise"] .page-poster-overlay-violet,
+html[data-theme="sunrise"] .page-poster-overlay-rose,
+html[data-theme="sunrise"] .page-poster-overlay-validate,
+html[data-theme="sunrise"] .page-poster-overlay-sky,
+html[data-theme="sunrise"] .page-poster-overlay-path,
+html[data-theme="ink"] .page-poster-overlay,
+html[data-theme="ink"] .page-poster-overlay-teal,
+html[data-theme="ink"] .page-poster-overlay-amber,
+html[data-theme="ink"] .page-poster-overlay-gold,
+html[data-theme="ink"] .page-poster-overlay-violet,
+html[data-theme="ink"] .page-poster-overlay-rose,
+html[data-theme="ink"] .page-poster-overlay-validate,
+html[data-theme="ink"] .page-poster-overlay-sky,
+html[data-theme="ink"] .page-poster-overlay-path {
+  background:
+    linear-gradient(100deg, color-mix(in srgb, var(--bg-deep) 94%, transparent) 0%, color-mix(in srgb, var(--bg-deep) 55%, transparent) 44%, transparent 70%),
+    linear-gradient(to top, color-mix(in srgb, var(--bg-deep) 70%, transparent) 0%, transparent 50%);
+}
