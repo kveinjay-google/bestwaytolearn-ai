@@ -32,6 +32,9 @@
         '前端与设计': 'Frontend & design',
         '电商与零售': 'E-commerce & retail',
         '跨境电商': 'Cross-border commerce',
+        'Amazon 平台电商': 'Amazon marketplace',
+        'TikTok 电商': 'TikTok commerce',
+        '独立站 DTC': 'DTC & Shopify',
         '小红书运营': 'Xiaohongshu / RedNote',
         '自媒体运营': 'Creator & self-media',
         '短视频与直播': 'Short video & live',
@@ -98,6 +101,24 @@
         },
         'Cross-border E-commerce Skills': {
           desc: 'Cross-border templates: product research, market analysis, IP risk, keywords, and listing copy for Amazon/DTC.',
+        },
+        'Nexscope E-commerce Skills': {
+          desc: 'Multi-platform intel for Amazon, TikTok Shop, Shopify, Temu: research, keywords, pricing, patent risk.',
+        },
+        'Amazon Seller Skill Suite': {
+          desc: '6 Claude Cowork skills for Amazon listing, ads, inventory, and seller ops workflows.',
+        },
+        'Amazon Listing Optimizer': {
+          desc: 'Amazon listing optimization: titles, bullets, A+ content, and keyword layout checklists.',
+        },
+        'TikTok Shop Skills': {
+          desc: 'TikTok Shop organic social commerce: short-video scripts, store ops, and growth workflows.',
+        },
+        'OpenClaw E-commerce Ads': {
+          desc: 'E-commerce ad creative: TVC craft, Seedance video, AI manga drama for short-video ad assets.',
+        },
+        'Shopify Agent Skills': {
+          desc: 'Shopify DTC: themes, product setup, subscriptions, and marketing app integration.',
         },
         'GEO SEO Claude': {
           desc: 'GEO-first SEO for AI search visibility, brand authority, schema, and cross-platform citations.',
