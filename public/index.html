@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=20260707b">
+  <link rel="stylesheet" href="css/styles.css?v=20260708a">
 </head>
 <body>
   <canvas id="neural-canvas" aria-hidden="true"></canvas>
@@ -271,28 +271,46 @@
         <span class="phase-num">7天</span>
         <div class="phase-banner-text">
           <h2>7 天学习计划</h2>
-          <p id="path-banner-desc">先看清全貌，再按 Day 1–7 逐日推进；已掌握的天数可勾选「已掌握」跳过。</p>
+          <p id="path-banner-desc">点「开始学习」进入当日模块，按 Day 1–7 逐日推进；已掌握可勾选跳过。</p>
         </div>
         <span class="phase-progress" id="path-tab-progress">0/7 天</span>
       </div>
 
       <section class="section path-section" id="path">
-        <aside class="path-guide" role="note" aria-label="学习计划使用说明">
-          <h3 data-i18n="path.guideTitle">如何使用</h3>
-          <ol id="path-guide-list">
-            <li><strong>按顺序学</strong>：建议从 Day 1 开始，完成当天任务后进入下一日。</li>
-            <li><strong>已掌握可跳过</strong>：若某天内容你已熟悉，点卡片右侧 <strong>「已掌握」</strong> 勾选跳过（可随时取消）。</li>
-            <li><strong>直达模块</strong>：点击「去学习 →」跳转到对应学习内容。</li>
-          </ol>
-          <div class="path-check-legend" aria-hidden="true">
-            <span class="path-check-legend-item"><span class="path-check-sample"></span> <span data-i18n="path.legendTodo">待学习</span></span>
-            <span class="path-check-legend-item"><span class="path-check-sample is-done">✓</span> <span data-i18n="path.legendDone">已掌握 · 可跳过</span></span>
+        <div class="path-hero" id="path-hero">
+          <div class="path-hero-main">
+            <span class="path-hero-status" id="path-hero-status" data-i18n="path.statusNotStarted">尚未开始</span>
+            <h3 class="path-hero-title" id="path-hero-title">Day 1 · 认识人工智能</h3>
+            <p class="path-hero-hint" id="path-hero-hint" data-i18n="path.startHintFirst">从 Day 1 开始，建立 AI 全局认知</p>
+            <div class="path-hero-progress">
+              <div class="path-progress-bar">
+                <div class="path-progress-fill" id="path-progress-fill"></div>
+              </div>
+              <p class="path-progress-text" id="path-progress-text">已完成 0 / 7 天</p>
+            </div>
           </div>
-        </aside>
-        <div class="path-progress-bar">
-          <div class="path-progress-fill" id="path-progress-fill"></div>
+          <div class="path-hero-actions">
+            <a href="#ai-overview" class="btn btn-primary path-hero-cta" id="path-start-btn" data-i18n="path.startFirst">开始 Day 1</a>
+            <a href="#roadmap" class="btn btn-ghost" data-i18n="path.viewMap">查看学习地图</a>
+          </div>
         </div>
-        <p class="path-progress-text" id="path-progress-text">已完成 0 / 7 天</p>
+
+        <div class="path-tips" role="note" aria-label="学习计划使用说明">
+          <div class="path-tip" id="path-tip-1">
+            <span class="path-tip-num">1</span>
+            <p data-i18n-html="path.tipStart">点上方 <strong>「开始 Day 1」</strong> 或当天卡片里的开始学习，直达对应模块。</p>
+          </div>
+          <div class="path-tip" id="path-tip-2">
+            <span class="path-tip-num">2</span>
+            <p data-i18n="path.tipOrder">按 Day 1→7 顺序推进；完成当日任务后再进入下一天。</p>
+          </div>
+          <div class="path-tip" id="path-tip-3">
+            <span class="path-tip-num">3</span>
+            <p data-i18n-html="path.tipSkip">内容已熟悉？点卡片右侧 <strong>「已掌握」</strong> 可跳过（随时可取消）。</p>
+          </div>
+        </div>
+
+        <h3 class="path-timeline-heading" data-i18n="path.timelineTitle">7 天学习日程</h3>
         <div class="path-timeline" id="path-timeline"></div>
       </section>
     </div>
@@ -811,8 +829,8 @@
 
   <script src="js/icon-map.js?v=20260702c"></script>
   <script src="js/i18n.js?v=20260703a"></script>
-  <script src="js/locales/zh-CN.js?v=20260703a"></script>
-  <script src="js/locales/en.js?v=20260703a"></script>
+  <script src="js/locales/zh-CN.js?v=20260708a"></script>
+  <script src="js/locales/en.js?v=20260708a"></script>
   <script src="js/locales/en-terms.js?v=20260630a"></script>
   <script src="js/locales/en-quiz.js?v=20260630a"></script>
 
@@ -826,6 +844,6 @@
   <script src="js/ai-tools-nav.js?v=20260703b"></script>
   <script src="js/ai-skills-nav.js?v=20260707a"></script>
   <script src="js/terms.js?v=20260630a"></script>
-  <script src="js/app.js?v=20260707b"></script>
+  <script src="js/app.js?v=20260708a"></script>
 </body>
 </html>

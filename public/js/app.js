@@ -1303,10 +1303,13 @@ function updateAllProgress() {
   const done = prog.completedDays.length;
   const pct = Math.round((done / total) * 100);
 
-  document.getElementById('path-progress-fill').style.width = `${pct}%`;
-  document.getElementById('path-progress-text').textContent = I18n.t('path.progress', { done, total });
+  const pathFill = document.getElementById('path-progress-fill');
+  if (pathFill) pathFill.style.width = `${pct}%`;
+  const pathText = document.getElementById('path-progress-text');
+  if (pathText) pathText.textContent = I18n.t('path.progress', { done, total });
   const pathTabProg = document.getElementById('path-tab-progress');
   if (pathTabProg) pathTabProg.textContent = I18n.t('path.tabProgress', { done });
+  updatePathPageUI();
 
   const overallFill = document.getElementById('roadmap-overall-fill');
   const overallText = document.getElementById('roadmap-overall-text');
@@ -1585,22 +1588,97 @@ function renderRoadmap() {
   updateAllProgress();
 }
 
+function getCurrentPathDayIndex() {
+  const prog = loadProgress();
+  const idx = LEARNING_PATH.findIndex((_, i) => !prog.completedDays.includes(i));
+  return idx >= 0 ? idx : LEARNING_PATH.length - 1;
+}
+
+function updatePathPageUI() {
+  const statusEl = document.getElementById('path-hero-status');
+  const titleEl = document.getElementById('path-hero-title');
+  const hintEl = document.getElementById('path-hero-hint');
+  const startBtn = document.getElementById('path-start-btn');
+  if (!startBtn) return;
+
+  const prog = loadProgress();
+  const doneCount = prog.completedDays.length;
+  const target = getContinueLearningTarget();
+  let statusKey = 'path.statusNotStarted';
+  let statusClass = '';
+  let title = '';
+  let hint = '';
+  let btnText = '';
+
+  if (target.type === 'graduation') {
+    statusKey = 'path.statusGraduated';
+    statusClass = 'is-done';
+    title = target.label;
+    hint = I18n.t('path.graduatedHint');
+    btnText = target.label;
+  } else if (target.type === 'quiz') {
+    statusKey = 'path.statusAllDone';
+    statusClass = 'is-done';
+    title = I18n.t('path.allDoneTitle');
+    hint = I18n.t('path.allDoneHint');
+    btnText = I18n.t('path.allDoneCta');
+  } else if (doneCount === 0) {
+    statusKey = 'path.statusNotStarted';
+    title = `${I18n.t('common.day')} ${target.day.day} · ${target.day.title}`;
+    hint = I18n.t('path.startHintFirst');
+    btnText = I18n.t('path.startFirst');
+  } else {
+    statusKey = 'path.statusInProgress';
+    statusClass = 'is-progress';
+    title = `${I18n.t('common.day')} ${target.day.day} · ${target.day.title}`;
+    hint = target.day.goal;
+    btnText = I18n.t('path.continueLearning', { day: target.day.day });
+  }
+
+  if (statusEl) {
+    statusEl.textContent = I18n.t(statusKey);
+    statusEl.className = `path-hero-status${statusClass ? ` ${statusClass}` : ''}`;
+  }
+  if (titleEl) titleEl.textContent = title;
+  if (hintEl) hintEl.textContent = hint;
+  startBtn.href = target.href;
+  startBtn.textContent = btnText;
+
+  const currentIdx = target.type === 'day' ? target.dayIdx : -1;
+  document.querySelectorAll('.path-day').forEach(el => {
+    el.classList.toggle('is-current', parseInt(el.dataset.day, 10) === currentIdx);
+  });
+}
+
 function renderLearningPath() {
   const container = document.getElementById('path-timeline');
   const progress = loadProgress();
   const phaseLabels = getPhaseShortLabels();
+  const currentIdx = getCurrentPathDayIndex();
+  const allDone = progress.completedDays.length >= LEARNING_PATH.length;
   container.innerHTML = LEARNING_PATH.map((rawDay, i) => {
     const day = typeof I18n !== 'undefined' ? I18n.localizePathDay(rawDay, i) : rawDay;
     const done = progress.completedDays.includes(i);
+    const isCurrent = !allDone && i === currentIdx;
     const phaseLabel = phaseLabels[day.phase] || `${I18n.t('common.phase')} ${day.phase}`;
     const phaseHash = `#${PHASE_HASH_FROM_NUM[day.phase]}`;
+    const primaryHref = day.goto?.[0]?.href || phaseHash;
     const gotoLinks = (day.goto || []).map(g =>
       `<a href="${g.href}" class="path-goto-link">${g.label} →</a>`
     ).join('');
+    const startLabel = done
+      ? I18n.t('path.reviewDay', { day: day.day })
+      : isCurrent
+        ? I18n.t('path.startLearning', { day: day.day })
+        : I18n.t('path.goto');
+    const startBtnClass = isCurrent && !done ? 'btn btn-primary path-day-start' : 'btn btn-ghost path-day-start';
     return `
-      <div class="path-day ${done ? 'completed' : ''}" data-day="${i}">
-        <span class="path-day-num">${I18n.t('common.day')} ${day.day} · ${day.duration}</span>
-        <div>
+      <div class="path-day ${done ? 'completed' : ''}${isCurrent ? ' is-current' : ''}" data-day="${i}">
+        <div class="path-day-side">
+          <span class="path-day-num">${I18n.t('common.day')} ${day.day} · ${day.duration}</span>
+          ${isCurrent ? `<span class="path-day-badge">${I18n.t('path.currentBadge')}</span>` : ''}
+        </div>
+        <div class="path-day-body">
           <div class="path-day-phase-row">
             <span class="path-phase-tag path-phase-${day.phase}">${I18n.t('common.phase')} ${String(day.phase).padStart(2, '0')}</span>
             <span class="path-day-phase-label">${I18n.t('path.phaseBelongs', { phase: phaseLabel })}</span>
@@ -1610,18 +1688,22 @@ function renderLearningPath() {
           <p>${day.desc}</p>
           <ul>${day.tasks.map(t => `<li>${t}</li>`).join('')}</ul>
           <div class="path-goto">
+            <span class="path-goto-label">${I18n.t('path.modulesLabel')}</span>
             ${gotoLinks}
             <a href="${phaseHash}" class="path-phase-enter">${I18n.t('path.enterPhase', { phase: phaseLabel })}</a>
           </div>
           <p class="path-milestone">${renderIcon({ image: UI_ICONS.brandStar, className: 'theme-icon theme-icon-inline', size: 18, alt: '' })} ${day.milestone}</p>
         </div>
-        <button class="path-check ${done ? 'is-done' : ''}" type="button"
-          aria-pressed="${done}"
-          title="${done ? I18n.t('path.checkDone') : I18n.t('path.checkTodo')}"
-          aria-label="${I18n.t('common.day')} ${day.day}: ${done ? I18n.t('path.checkAriaDone') : I18n.t('path.checkAriaTodo')}">
-          <span class="path-check-box" aria-hidden="true">${done ? '✓' : ''}</span>
-          <span class="path-check-label">${I18n.t('path.mastered')}</span>
-        </button>
+        <div class="path-day-actions">
+          <a href="${primaryHref}" class="${startBtnClass}">${startLabel}</a>
+          <button class="path-check ${done ? 'is-done' : ''}" type="button"
+            aria-pressed="${done}"
+            title="${done ? I18n.t('path.checkDone') : I18n.t('path.checkTodo')}"
+            aria-label="${I18n.t('common.day')} ${day.day}: ${done ? I18n.t('path.checkAriaDone') : I18n.t('path.checkAriaTodo')}">
+            <span class="path-check-box" aria-hidden="true">${done ? '✓' : ''}</span>
+            <span class="path-check-label">${I18n.t('path.mastered')}</span>
+          </button>
+        </div>
       </div>`;
   }).join('');
   updateAllProgress();
@@ -3566,7 +3648,7 @@ function getDefaultPersonalization() {
     greeting: 'bestwaytolearn.ai · 四阶段学习 · 7 天路径 · 100 个术语',
     titleHtml: '从零开始<br><span class="hero-accent">系统学会 <em class="hero-accent-ai">AI</em></span>',
     desc: '遵循「认知 → 工具 → 实战 → 检验」四步学习法，每天跟着路径走，7 天建立从原理理解到真实应用的完整 AI 能力。',
-    pathBanner: '先看清全貌，再按 Day 1–7 逐日推进；已掌握的天数可勾选「已掌握」跳过。',
+    pathBanner: '点「开始学习」进入当日模块，按 Day 1–7 逐日推进；已掌握可勾选跳过。',
     roadmapHeader: '按顺序完成四个阶段，每个阶段有明确目标和对应模块。进度自动保存。',
     phaseBanners: [
       '弄懂 AI 原理与核心术语 · Day 1–3 · 约 2.5 小时',
