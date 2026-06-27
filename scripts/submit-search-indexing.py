@@ -94,11 +94,13 @@ def submit_baidu(cfg: dict) -> tuple[bool, str]:
     token = (cfg.get('baiduPushToken') or '').strip()
     if not token:
         return False, '  跳过（未配置 baiduPushToken）'
-    site = cfg.get('baiduSite') or cfg['siteHost']
+    site = (cfg.get('baiduSite') or cfg['siteHost']).strip()
+    if not site.startswith('http'):
+        site = f'https://{site}'
     urls = cfg.get('urls') or [cfg['siteUrl']]
     body = '\n'.join(urls).encode('utf-8')
     q = urllib.parse.urlencode({'site': site, 'token': token})
-    url = f'http://data.zz.baidu.com/push?{q}'
+    url = f'http://data.zz.baidu.com/urls?{q}'
     status, resp = http_request(url, method='POST', data=body, headers={'Content-Type': 'text/plain'})
     success = status == 200 and 'success' in resp
     return success, f'  百度推送 → HTTP {status}: {resp.strip()}'
@@ -113,7 +115,8 @@ def print_manual_steps(cfg: dict) -> None:
     print(f'2. Bing Webmaster: https://www.bing.com/webmasters')
     print(f'   导入 Google 配置或手动添加站点 → 提交同一 Sitemap')
     print(f'3. 百度搜索资源平台: https://ziyuan.baidu.com/')
-    print(f'   验证站点后，在「普通收录」获取推送 token，填入 scripts/seo-config.json 的 baiduPushToken')
+    print(f'   在「普通收录 → 资源提交 → API 推送」获取 token，填入 scripts/seo-config.json')
+    print('   接口: http://data.zz.baidu.com/urls?site=<站点>&token=<token>')
     print('   之后每次部署运行本脚本即可自动百度推送。')
 
 
