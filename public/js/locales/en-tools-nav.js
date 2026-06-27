@@ -8,6 +8,7 @@
       },
       toolsNavPage: {
         linkDirectory: 'Browse full tools directory (100+) →',
+        linkSkills: 'Browse top Agent Skills →',
       },
     },
     toolsNav: {

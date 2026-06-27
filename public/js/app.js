@@ -270,6 +270,7 @@ function getSearchTypeLabel(key) {
     aiBox: ['search.typeAiBox', 'AI 盒子'],
     config: ['search.typeConfig', '配置'],
     toolsNav: ['search.typeToolsNav', '工具导航'],
+    skillsNav: ['search.typeSkillsNav', 'Skill'],
   };
   const [k, fb] = map[key] || ['search.typeModule', '模块'];
   return uiT(k, fb);
@@ -637,7 +638,7 @@ const PHASE_TAB_CONFIG = {
     label: '工具导航',
     navHash: 'ai-tools-nav',
     panelSelector: '#phase-view-tools-nav',
-    hashes: ['ai-tools-nav', 'tools-nav'],
+    hashes: ['ai-tools-nav', 'tools-nav', 'ai-skills-nav', 'skills-nav'],
   },
   learn: {
     label: '认知基础',
@@ -2027,6 +2028,154 @@ function initToolsNav() {
     });
   }
   renderToolsNav();
+}
+
+let skillsNavQuery = '';
+
+function getSkillsNavMetaData() {
+  return typeof I18n !== 'undefined' ? I18n.getSkillsNavMeta() : (typeof AI_SKILLS_NAV_META !== 'undefined' ? AI_SKILLS_NAV_META : {});
+}
+
+function getSkillsNavLinks() {
+  const links = typeof buildAiSkillsNavLinks === 'function' ? buildAiSkillsNavLinks() : [];
+  return links.map(s => (typeof I18n !== 'undefined' ? I18n.localizeSkillsNavItem(s) : s));
+}
+
+function skillsNavMatchesQuery(item, query) {
+  if (!query) return true;
+  const hay = [item.name, item.category, item.desc, item.github, item.install, item.installNote, ...(item.agents || [])].join(' ').toLowerCase();
+  return hay.includes(query.toLowerCase());
+}
+
+function formatSkillsNavStars(stars, meta) {
+  if (!stars) return '';
+  const tpl = meta.starsLabel || '{n} ★';
+  return typeof I18n !== 'undefined'
+    ? I18n.interpolate(tpl, { n: stars >= 1000 ? `${(stars / 1000).toFixed(stars >= 10000 ? 0 : 1)}k` : stars })
+    : `${stars} ★`;
+}
+
+function renderSkillsNav() {
+  const meta = getSkillsNavMetaData();
+  const lead = document.getElementById('skills-nav-lead');
+  if (lead) lead.textContent = meta.lead || '';
+
+  const search = document.getElementById('skills-nav-search');
+  if (search && meta.searchPlaceholder) search.placeholder = meta.searchPlaceholder;
+
+  const links = getSkillsNavLinks();
+  const query = (skillsNavQuery || search?.value || '').trim();
+  const categories = typeof AI_SKILLS_NAV_CATEGORIES !== 'undefined' ? AI_SKILLS_NAV_CATEGORIES : [];
+  const filtered = links.filter(s => skillsNavMatchesQuery(s, query));
+  const activeCats = categories.filter(cat => filtered.some(s => s.category === cat));
+
+  const stats = document.getElementById('skills-nav-stats');
+  if (stats) {
+    stats.textContent = typeof I18n !== 'undefined'
+      ? I18n.interpolate(meta.totalLabel, { n: filtered.length, c: activeCats.length })
+      : `共 ${filtered.length} 个 Skill · ${activeCats.length} 个分类`;
+  }
+
+  const jump = document.getElementById('skills-nav-jump');
+  if (jump) {
+    jump.innerHTML = activeCats.map(cat => {
+      const slug = typeof getAiSkillsNavCategorySlug === 'function' ? getAiSkillsNavCategorySlug(cat) : cat;
+      const label = typeof I18n !== 'undefined' ? I18n.getSkillsNavCategoryLabel(cat) : cat;
+      const count = filtered.filter(s => s.category === cat).length;
+      return `<a class="tools-nav-jump-btn" href="#skills-nav-cat-${slug}">${label}<span>${count}</span></a>`;
+    }).join('');
+  }
+
+  const body = document.getElementById('skills-nav-body');
+  const empty = document.getElementById('skills-nav-empty');
+  if (!body) return;
+
+  if (!filtered.length) {
+    body.innerHTML = '';
+    if (empty) {
+      empty.textContent = meta.empty || '';
+      empty.classList.remove('hidden');
+    }
+    return;
+  }
+  if (empty) empty.classList.add('hidden');
+
+  const copyLabel = meta.copyCmd || (typeof I18n !== 'undefined' ? I18n.t('common.copy') : '复制命令');
+  const githubLabel = meta.openGithub || 'GitHub';
+  const agentsLabel = meta.agentsLabel || '适用';
+  const catLabel = cat => (typeof I18n !== 'undefined' ? I18n.getSkillsNavCategoryLabel(cat) : cat);
+  const agentLabel = agent => (typeof I18n !== 'undefined' ? I18n.getSkillsNavAgentLabel(agent) : agent);
+
+  body.innerHTML = activeCats.map(cat => {
+    const items = filtered.filter(s => s.category === cat);
+    const slug = typeof getAiSkillsNavCategorySlug === 'function' ? getAiSkillsNavCategorySlug(cat) : cat;
+    const countLabel = typeof I18n !== 'undefined'
+      ? I18n.interpolate(meta.countLabel, { n: items.length })
+      : `${items.length} 个 Skill`;
+    return `
+      <section class="tools-nav-category skills-nav-category" id="skills-nav-cat-${slug}">
+        <header class="tools-nav-category-head">
+          <h3 class="tools-nav-category-title">${catLabel(cat)}</h3>
+          <span class="tools-nav-category-count">${countLabel}</span>
+        </header>
+        <div class="skills-nav-card-grid">
+          ${items.map(item => {
+            const stars = formatSkillsNavStars(item.stars, meta);
+            const agents = (item.agents || []).map(a =>
+              `<span class="skills-nav-agent-tag">${agentLabel(a)}</span>`
+            ).join('');
+            const note = item.installNote
+              ? `<p class="skills-nav-install-note">${escapeHtml(item.installNote)}</p>`
+              : '';
+            return `
+            <article class="skills-nav-card">
+              <div class="skills-nav-card-head">
+                <div class="skills-nav-card-title-row">
+                  <h4 class="skills-nav-card-name">${escapeHtml(item.name)}</h4>
+                  ${stars ? `<span class="skills-nav-stars">${stars}</span>` : ''}
+                </div>
+                <div class="skills-nav-agents" aria-label="${agentsLabel}">
+                  <span class="skills-nav-agents-label">${agentsLabel}</span>
+                  ${agents}
+                </div>
+              </div>
+              <p class="skills-nav-card-desc">${escapeHtml(item.desc)}</p>
+              <div class="skills-nav-cmd-wrap">
+                <pre class="skills-nav-cmd" aria-label="安装命令">${escapeHtml(item.install)}</pre>
+                <button type="button" class="btn-copy skills-nav-copy-btn" aria-label="${copyLabel}">${copyLabel}</button>
+              </div>
+              ${note}
+              <a class="skills-nav-github-link" href="${item.github}" target="_blank" rel="noopener noreferrer">${githubLabel} ↗</a>
+            </article>`;
+          }).join('')}
+        </div>
+      </section>`;
+  }).join('');
+}
+
+function initSkillsNav() {
+  const search = document.getElementById('skills-nav-search');
+  if (search && !search.dataset.bound) {
+    search.dataset.bound = 'true';
+    search.addEventListener('input', () => {
+      skillsNavQuery = search.value.trim();
+      renderSkillsNav();
+    });
+  }
+
+  const body = document.getElementById('skills-nav-body');
+  if (body && !body.dataset.copyBound) {
+    body.dataset.copyBound = 'true';
+    body.addEventListener('click', e => {
+      const btn = e.target.closest('.skills-nav-copy-btn');
+      if (!btn) return;
+      e.preventDefault();
+      const text = btn.closest('.skills-nav-card')?.querySelector('.skills-nav-cmd')?.textContent?.trim() || '';
+      copyToClipboard(text, btn, getSkillsNavMetaData().copyCmd || '复制命令');
+    });
+  }
+
+  renderSkillsNav();
 }
 
 function renderMonetize() {
@@ -3752,6 +3901,19 @@ function buildSiteSearchIndex() {
     });
   });
 
+  if (typeof getSkillsNavLinks === 'function') {
+    getSkillsNavLinks().forEach(skill => {
+      entries.push({
+        type: getSearchTypeLabel('skillsNav'),
+        title: skill.name,
+        subtitle: skill.category,
+        keywords: [skill.name, skill.category, skill.desc, skill.github, skill.install, skill.installNote, ...(skill.agents || [])].filter(Boolean).join(' '),
+        href: '#ai-skills-nav',
+        external: skill.github,
+      });
+    });
+  }
+
   getFundamentalsData().forEach((f, i) => {
     entries.push({
       type: getSearchTypeLabel('fundamental'),
@@ -4399,6 +4561,7 @@ function refreshLocaleUI() {
   renderQuizPrelude();
   renderMonetize();
   renderToolsNav();
+  renderSkillsNav();
   renderTermFilters('concepts-filter', conceptCategory, cat => {
     conceptCategory = cat;
     renderConcepts(document.getElementById('concept-search')?.value || '', cat);
@@ -4458,6 +4621,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderMonetize();
   renderDevices();
   initToolsNav();
+  initSkillsNav();
   renderHandsOnCases();
   renderPractices();
   initPracticeCopyButtons();

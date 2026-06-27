@@ -301,6 +301,33 @@ const I18n = (function () {
     return { ...tool, name: overlay.name || tool.name, desc: overlay.desc || tool.desc };
   }
 
+  function getSkillsNavMeta() {
+    if (currentLocale === DEFAULT_LOCALE && typeof AI_SKILLS_NAV_META !== 'undefined') {
+      return AI_SKILLS_NAV_META;
+    }
+    return getData('skillsNav')?.meta || (typeof AI_SKILLS_NAV_META !== 'undefined' ? AI_SKILLS_NAV_META : {});
+  }
+
+  function getSkillsNavCategoryLabel(cat) {
+    return mapCategoryLabel(cat, getData('skillsNav')?.categories);
+  }
+
+  function getSkillsNavAgentLabel(agent) {
+    return mapCategoryLabel(agent, getData('skillsNav')?.agents) || agent;
+  }
+
+  function localizeSkillsNavItem(item) {
+    if (!item || currentLocale === DEFAULT_LOCALE) return item;
+    const overlay = getData('skillsNav')?.items?.[item.name];
+    if (!overlay) return item;
+    return {
+      ...item,
+      name: overlay.name || item.name,
+      desc: overlay.desc || item.desc,
+      installNote: overlay.installNote || item.installNote,
+    };
+  }
+
   function getQuizTopicLinks() {
     if (currentLocale === DEFAULT_LOCALE) return null;
     return getData('quizTopicLinks') || null;
@@ -900,6 +927,10 @@ const I18n = (function () {
     getToolsNavMeta,
     getToolsNavCategoryLabel,
     localizeToolsNavTool,
+    getSkillsNavMeta,
+    getSkillsNavCategoryLabel,
+    getSkillsNavAgentLabel,
+    localizeSkillsNavItem,
     getQuizTopicLinks,
     getQuizReviewLinks,
     getPracticePlanFocus,

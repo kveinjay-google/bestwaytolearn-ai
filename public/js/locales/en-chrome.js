@@ -147,6 +147,7 @@
         typeAiBox: 'AI box',
         typeConfig: 'Config',
         typeToolsNav: 'Tool link',
+        typeSkillsNav: 'Skill',
         navMsg: 'Opened 「{label}」 for you.',
       },
       devices: {

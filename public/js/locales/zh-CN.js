@@ -129,6 +129,12 @@ I18n.registerLocale('zh-CN', {
       bannerStat: '{n} 个工具',
       linkCurriculum: '查看课程深度选型指南 →',
       linkDirectory: '浏览完整工具导航（100+）→',
+      linkSkills: '浏览优质 Skill 导航 →',
+    },
+    skillsNavPage: {
+      tag: 'Skill 导航',
+      title: '优质 Agent Skill 导航',
+      linkTools: '浏览 AI 工具导航 →',
     },
     footer: {
       brand: 'BestWayToLearn.AI',
