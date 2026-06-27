@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0B1220">
+  <meta name="theme-color" content="#060a10">
   <meta name="description" content="BestWayToLearn.AI — 帮助新用户系统了解、学习并应用 AI 原理与主流工具">
   <meta name="application-name" content="BestWayToLearn.AI">
   <link rel="canonical" href="https://bestwaytolearn.ai/">
@@ -22,9 +22,8 @@
   <link rel="apple-touch-icon" href="assets/icons/bwtl-mark.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css?v=20260627c">
-  <link rel="stylesheet" href="css/saas-theme.css?v=20260628a">
 </head>
 <body>
   <canvas id="neural-canvas" aria-hidden="true"></canvas>
@@ -144,11 +143,15 @@
         <img class="logo-mark" src="assets/icons/bwtl-mark.png" width="24" height="24" alt="">
         <span class="logo-text" data-i18n-html="brand.logoHtml">BestWayToLearn<em>.AI</em></span>
       </a>
-      <nav class="main-nav" role="tablist" data-i18n-aria="nav.mainLabel" aria-label="主导航">
+      <nav class="main-nav" role="tablist" data-i18n-aria="nav.mainLabel" aria-label="学习阶段">
         <a href="#roadmap" role="tab" data-nav-tab="map" data-i18n="nav.home" aria-selected="true">首页</a>
-        <a href="#learn" role="tab" data-nav-tab="learnHub" data-i18n="nav.learnHub">学习</a>
-        <a href="#progress-system" role="tab" data-nav-tab="progress" data-i18n="nav.progressHub">进度</a>
-        <a href="#ai-nav" role="tab" data-nav-tab="aiToolsNav" data-i18n="nav.toolsHub">工具</a>
+        <a href="#phase-learn" role="tab" data-nav-tab="learn" data-i18n="nav.learn">01 认知</a>
+        <a href="#phase-tools" role="tab" data-nav-tab="tools" data-i18n="nav.tools">02 工具</a>
+        <a href="#phase-practice" role="tab" data-nav-tab="practice" data-i18n="nav.practice">03 实战</a>
+        <a href="#phase-validate" role="tab" data-nav-tab="validate" data-i18n="nav.validate">04 检验</a>
+        <a href="#monetize" role="tab" data-nav-tab="monetize" data-i18n="nav.monetize">变现</a>
+        <a href="#devices" role="tab" data-nav-tab="devices" data-i18n="nav.devices">设备</a>
+        <a href="#ai-nav" role="tab" data-nav-tab="aiToolsNav" data-i18n="nav.toolsNav">AI导航</a>
       </nav>
       <div class="header-prefs" id="header-prefs">
         <button class="header-prefs-toggle" id="header-prefs-toggle" type="button" aria-expanded="false" aria-controls="header-prefs-panel" data-i18n-aria="settings.fontToggle" data-i18n-title="settings.fontToggle" title="字体大小">
@@ -193,27 +196,58 @@
     <div class="phase-view" id="phase-view-map" data-phase-tab="map">
     <!-- Hero -->
     <section class="hero" id="hero">
+      <div class="hero-backdrop" aria-hidden="true">
+        <div class="hero-backdrop-image">
+          <img src="assets/posters/poster-hero.svg" alt="" width="1920" height="1080" decoding="async" fetchpriority="high">
+        </div>
+        <div class="hero-backdrop-fade"></div>
+      </div>
       <div class="hero-inner">
-        <h1 class="hero-title" id="hero-title" data-i18n="hero.title">用正确的方式学习 AI</h1>
-        <p class="hero-desc" id="hero-desc" data-i18n="hero.desc">一套从零到真实应用的系统化学习路径，带你建立扎实的 AI 认知与实战能力。</p>
-        <div class="hero-actions">
-          <a href="#phase-learn" class="btn btn-primary hero-cta" id="hero-cta" data-i18n="hero.ctaStart">开始学习</a>
+        <div class="hero-content">
+          <p class="hero-eyebrow reveal" id="hero-greeting" data-i18n="hero.greeting">bestwaytolearn.ai · 四阶段学习 · 100 个术语</p>
+          <h1 class="hero-title reveal" id="hero-title" data-i18n-html="hero.titleHtml">
+            从零开始<br>
+            <span class="hero-accent">系统学会 <em class="hero-accent-ai">AI</em></span>
+          </h1>
+          <p class="hero-desc reveal" id="hero-desc" data-i18n="hero.desc">
+            遵循「认知 → 工具 → 实战 → 检验」四步学习法，从学习地图按阶段推进，
+            建立从原理理解到真实应用的完整 AI 能力。
+          </p>
+          <div class="hero-actions reveal">
+            <a href="#roadmap" class="btn btn-primary" data-i18n="hero.ctaMap">查看学习地图</a>
+            <a href="#phase-learn" class="btn btn-ghost" id="hero-continue" data-i18n="hero.ctaContinue">继续学习</a>
+          </div>
+        </div>
+        <div class="hero-visual reveal">
+          <div class="flow-preview">
+            <a href="#phase-learn" class="flow-step"><span>01</span><span data-i18n="hero.flowLearn">认知</span></a>
+            <span class="flow-arrow">→</span>
+            <a href="#phase-tools" class="flow-step"><span>02</span><span data-i18n="hero.flowTools">工具</span></a>
+            <span class="flow-arrow">→</span>
+            <a href="#phase-practice" class="flow-step"><span>03</span><span data-i18n="hero.flowPractice">实战</span></a>
+            <span class="flow-arrow">→</span>
+            <a href="#phase-validate" class="flow-step"><span>04</span><span data-i18n="hero.flowValidate">检验</span></a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="system-overview" id="system-overview" aria-labelledby="system-overview-title">
-      <span class="system-overview-tag" data-i18n="system.tag">学习系统</span>
-      <h2 id="system-overview-title" data-i18n="system.title">四阶段 AI 学习操作系统</h2>
-      <p data-i18n="system.desc">从认知建立到工具掌握、实战应用，再到成果检验——按模块推进，进度自动保存。</p>
-    </section>
-
-    <!-- Learning Path -->
+    <!-- Roadmap -->
     <section class="section roadmap-section" id="roadmap">
-      <div class="section-header">
-        <span class="section-tag" data-i18n="roadmap.tag">学习路径</span>
-        <h2 data-i18n="roadmap.title">模块学习路径</h2>
-        <p id="roadmap-header-desc" data-i18n="roadmap.desc">按顺序完成四个模块，每个模块有明确目标与单一入口。</p>
+      <div class="roadmap-backdrop" aria-hidden="true">
+        <div class="roadmap-backdrop-image">
+          <img src="assets/posters/poster-roadmap.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+        </div>
+        <div class="roadmap-backdrop-fade"></div>
+      </div>
+      <div class="section-header section-header-center">
+        <span class="section-tag" data-i18n="roadmap.tag">学习地图</span>
+        <h2 data-i18n="roadmap.title">四阶段学习路径</h2>
+        <p id="roadmap-header-desc" data-i18n="roadmap.desc">按顺序完成四个阶段，每个阶段有明确目标和对应模块。进度自动保存。</p>
+      </div>
+      <div class="roadmap-overall">
+        <div class="roadmap-overall-bar"><div class="roadmap-overall-fill" id="roadmap-overall-fill"></div></div>
+        <span class="roadmap-overall-text" id="roadmap-overall-text">总进度 0%</span>
       </div>
       <aside class="graduation-banner hidden" id="graduation-banner" aria-label="结业祝贺">
         <div class="graduation-banner-text">
@@ -222,29 +256,7 @@
         </div>
         <a href="#graduation" class="btn btn-primary btn-sm">查看结业报告 →</a>
       </aside>
-      <div class="roadmap-grid module-path" id="roadmap-grid"></div>
-      <div class="roadmap-overall" hidden aria-hidden="true">
-        <div class="roadmap-overall-bar"><div class="roadmap-overall-fill" id="roadmap-overall-fill"></div></div>
-        <span class="roadmap-overall-text" id="roadmap-overall-text">总进度 0%</span>
-      </div>
-    </section>
-
-    <!-- Progress System -->
-    <section class="progress-system" id="progress-system" aria-labelledby="progress-system-title">
-      <div class="progress-system-inner">
-        <div class="progress-system-meta">
-          <h3 id="progress-system-title" data-i18n="progress.title">学习进度</h3>
-          <p data-i18n="progress.desc">追踪整体完成度，从上次停下的地方继续。</p>
-          <div class="progress-system-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-system-bar">
-            <div class="progress-system-fill" id="progress-system-fill"></div>
-          </div>
-          <span class="progress-system-pct" id="progress-system-pct">0%</span>
-        </div>
-        <div class="progress-system-actions">
-          <a href="#phase-learn" class="btn btn-primary progress-system-cta" id="action-continue" data-i18n="progress.cta">继续学习</a>
-          <p class="progress-system-hint" id="progress-system-hint" data-i18n="progress.hint">进度保存在本浏览器，随时可接续。</p>
-        </div>
-      </div>
+      <div class="roadmap-grid" id="roadmap-grid"></div>
     </section>
     </div>
 
@@ -767,8 +779,8 @@
 
   <script src="js/icon-map.js?v=20260702c"></script>
   <script src="js/i18n.js?v=20260627e"></script>
-  <script src="js/locales/zh-CN.js?v=20260628a"></script>
-  <script src="js/locales/en.js?v=20260628a"></script>
+  <script src="js/locales/zh-CN.js?v=20260627e"></script>
+  <script src="js/locales/en.js?v=20260708a"></script>
   <script src="js/locales/en-terms.js?v=20260630a"></script>
   <script src="js/locales/en-quiz.js?v=20260630a"></script>
 
@@ -782,6 +794,6 @@
   <script src="js/ai-tools-nav.js?v=20260703b"></script>
   <script src="js/ai-skills-nav.js?v=20260707a"></script>
   <script src="js/terms.js?v=20260627a"></script>
-  <script src="js/app.js?v=20260628a"></script>
+  <script src="js/app.js?v=20260627e"></script>
 </body>
 </html>
