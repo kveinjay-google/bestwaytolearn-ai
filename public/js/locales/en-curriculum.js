@@ -429,7 +429,7 @@
         learningFootprint: 'Learning footprint',
         planTag: 'Keep improving',
         planTitle: '30-day practice plan',
-        planDesc: 'Practice with AI at least twice a week and turn your 7-day learning into real habits. Auto-saves; export anytime.',
+        planDesc: 'Practice with AI at least twice a week and turn what you learned into real habits. Auto-saves; export anytime.',
         focusLegend: 'Focus areas (multi-select)',
         exportPlan: 'Export plan',
         copyReport: 'Copy graduation report',

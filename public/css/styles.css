@@ -1502,6 +1502,13 @@ main {
     radial-gradient(ellipse 55% 80% at 78% 50%, rgba(251, 113, 133, 0.07) 0%, transparent 70%);
 }
 
+.page-poster-overlay-validate {
+  background:
+    linear-gradient(105deg, rgba(8, 12, 20, 0.86) 0%, rgba(8, 12, 20, 0.4) 48%, rgba(8, 12, 20, 0.1) 74%),
+    radial-gradient(ellipse 62% 88% at 80% 44%, rgba(148, 168, 212, 0.1) 0%, transparent 64%),
+    linear-gradient(to top, rgba(6, 10, 16, 0.52) 0%, transparent 44%);
+}
+
 .page-poster-overlay-sky {
   background:
     linear-gradient(100deg, rgba(6, 10, 16, 0.72) 0%, rgba(6, 10, 16, 0.22) 42%, transparent 68%),
@@ -1550,6 +1557,11 @@ main {
 .phase-banner-amber .phase-progress { color: var(--accent-amber); border-color: rgba(245,158,11,0.3); background: var(--accent-amber-dim); }
 .phase-banner-violet .phase-progress { color: var(--accent-violet); border-color: rgba(167,139,250,0.3); background: rgba(167,139,250,0.12); }
 .phase-banner-rose .phase-progress { color: var(--accent-rose); border-color: rgba(251,113,133,0.3); background: rgba(251,113,133,0.1); }
+.phase-banner-validate .phase-progress {
+  color: var(--validate-accent, #94a8d4);
+  border-color: var(--validate-accent-border, rgba(148, 168, 212, 0.28));
+  background: var(--validate-accent-dim, rgba(148, 168, 212, 0.1));
+}
 .phase-banner-plan .phase-num {
   font-size: 0.82rem;
   letter-spacing: 0.06em;
@@ -5668,6 +5680,312 @@ main {
   margin: 0;
 }
 
+/* Phase 4 — Validate (scoped palette & layout) */
+#phase-validate {
+  --validate-accent: #94a8d4;
+  --validate-accent-strong: #a8b8e8;
+  --validate-accent-dim: rgba(148, 168, 212, 0.1);
+  --validate-accent-border: rgba(148, 168, 212, 0.26);
+  --validate-surface: #101820;
+  --validate-surface-raised: #161e2a;
+  --validate-surface-hover: #1b2433;
+  --validate-text-soft: #9aa8bc;
+  --validate-success: #5eead4;
+  --validate-success-dim: rgba(94, 234, 212, 0.12);
+  --validate-warn: #c9a86c;
+  --validate-warn-dim: rgba(201, 168, 108, 0.1);
+  --validate-error: #d4909a;
+  --validate-error-dim: rgba(212, 144, 154, 0.1);
+}
+
+#phase-validate .phase-banner-text p {
+  color: var(--validate-text-soft);
+}
+
+#phase-validate .section-header .section-tag {
+  color: var(--validate-accent);
+  border-color: var(--validate-accent-border);
+  background: var(--validate-accent-dim);
+}
+
+#phase-validate .quiz-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1.75rem 3rem;
+}
+
+#phase-validate .quiz-container {
+  background: var(--validate-surface-raised);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+  padding: 0;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.24);
+  overflow: hidden;
+}
+
+#phase-validate .quiz-start {
+  text-align: left;
+}
+
+#phase-validate .quiz-prelude {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+#phase-validate .quiz-prelude-glow {
+  inset: -10% 20% auto;
+  height: 14rem;
+  background: radial-gradient(ellipse 60% 70% at 30% 0%, rgba(148, 168, 212, 0.14), transparent 72%);
+}
+
+#phase-validate .quiz-prelude-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 0;
+  position: relative;
+}
+
+#phase-validate .quiz-prelude-main,
+#phase-validate .quiz-prelude-aside {
+  padding: 2rem 2.25rem;
+}
+
+#phase-validate .quiz-prelude-aside {
+  background: rgba(0, 0, 0, 0.18);
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+#phase-validate .quiz-prelude-badge {
+  color: var(--validate-accent-strong);
+  margin-bottom: 1.15rem;
+}
+
+#phase-validate .quiz-prelude-title {
+  font-size: clamp(1.5rem, 2.8vw, 2rem);
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+}
+
+#phase-validate .quiz-prelude-lead {
+  font-size: 0.94rem;
+  margin-bottom: 1.5rem;
+  max-width: 36em;
+}
+
+#phase-validate .quiz-prelude-journey {
+  justify-content: flex-start;
+  margin-bottom: 0;
+  padding: 1rem 1.15rem;
+  background: var(--validate-accent-dim);
+  border: 1px solid var(--validate-accent-border);
+  border-radius: var(--radius-md);
+}
+
+#phase-validate .quiz-prelude-step.is-current {
+  color: var(--validate-accent-strong);
+}
+
+#phase-validate .quiz-prelude-purpose-title {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+#phase-validate .quiz-prelude-purpose {
+  font-size: 0.9rem;
+  margin-bottom: 0.45rem;
+}
+
+#phase-validate .quiz-prelude-purpose-sub {
+  font-size: 0.82rem;
+  margin-bottom: 1.15rem;
+}
+
+#phase-validate .quiz-prelude-stats {
+  margin-bottom: 1.15rem;
+}
+
+#phase-validate .quiz-prelude-stats li {
+  background: var(--validate-surface);
+  border-color: rgba(255, 255, 255, 0.06);
+  text-align: center;
+}
+
+#phase-validate .quiz-prelude-stats strong {
+  color: var(--validate-success);
+  font-size: 0.88rem;
+}
+
+#phase-validate .quiz-prelude-hint {
+  color: var(--validate-warn);
+  background: var(--validate-warn-dim);
+  border-color: rgba(201, 168, 108, 0.22);
+  margin-bottom: 1rem;
+}
+
+#phase-validate .quiz-prelude-actions {
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+#phase-validate .quiz-prelude-cta {
+  width: 100%;
+  min-width: 0;
+}
+
+#phase-validate .quiz-prelude-graduated {
+  color: var(--validate-success);
+  margin-top: 0.85rem;
+}
+
+#phase-validate .quiz-active,
+#phase-validate .quiz-result {
+  padding: 2rem 2.25rem;
+}
+
+#phase-validate .quiz-progress span {
+  color: var(--validate-accent-strong);
+}
+
+#phase-validate .quiz-bar-fill {
+  background: linear-gradient(90deg, var(--validate-accent), var(--validate-success));
+}
+
+#phase-validate .quiz-option:hover:not(:disabled) {
+  border-color: var(--validate-accent);
+  background: var(--validate-surface-hover);
+}
+
+#phase-validate .quiz-option.correct {
+  border-color: var(--validate-success);
+  background: var(--validate-success-dim);
+}
+
+#phase-validate .quiz-option.wrong {
+  border-color: var(--validate-error);
+  background: var(--validate-error-dim);
+}
+
+#phase-validate .quiz-feedback.correct-fb {
+  background: var(--validate-success-dim);
+  border-left-color: var(--validate-success);
+}
+
+#phase-validate .quiz-feedback.wrong-fb {
+  background: var(--validate-error-dim);
+  border-left-color: var(--validate-error);
+}
+
+#phase-validate .result-score {
+  color: var(--validate-success);
+}
+
+#phase-validate .quiz-review h4 {
+  color: var(--validate-accent-strong);
+}
+
+#phase-validate .quiz-review-a {
+  color: var(--validate-success);
+}
+
+#phase-validate .quiz-review-link {
+  color: var(--validate-warn);
+}
+
+#phase-validate .graduation-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.75rem 4rem;
+}
+
+#phase-validate .graduation-hero {
+  text-align: left;
+  padding: 2rem 2.25rem;
+  background: var(--validate-surface-raised);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+#phase-validate .graduation-hero-badge {
+  color: var(--validate-accent-strong);
+  margin-bottom: 0.75rem;
+}
+
+#phase-validate .graduation-hero h2 {
+  max-width: 20em;
+  margin-bottom: 0.6rem;
+}
+
+#phase-validate .graduation-hero-desc {
+  margin: 0 0 0.5rem;
+  max-width: 40em;
+}
+
+#phase-validate .graduation-hero-date {
+  color: var(--validate-text-soft);
+}
+
+#phase-validate .graduation-stat {
+  background: var(--validate-surface-raised);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+#phase-validate .graduation-stat-num {
+  color: var(--validate-success);
+}
+
+#phase-validate .graduation-module-group {
+  background: var(--validate-surface-raised);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+#phase-validate .graduation-module-phase {
+  color: var(--validate-accent-strong);
+}
+
+#phase-validate .practice-plan-30 {
+  background: var(--validate-surface-raised);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+#phase-validate .practice-plan-30 .section-tag {
+  color: var(--validate-accent);
+  border-color: var(--validate-accent-border);
+  background: var(--validate-accent-dim);
+}
+
+#phase-validate .practice-plan-week {
+  background: var(--validate-surface);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+#phase-validate .practice-plan-week h4 {
+  color: var(--validate-accent-strong);
+}
+
+#phase-validate .practice-plan-field input:focus {
+  border-color: var(--validate-accent);
+}
+
+#phase-validate .practice-plan-saved {
+  color: var(--validate-success);
+}
+
+#phase-validate .btn-primary {
+  background: linear-gradient(135deg, var(--validate-accent-strong), var(--validate-accent));
+  border-color: transparent;
+  color: #0a1018;
+  font-weight: 600;
+}
+
+#phase-validate .btn-primary:hover {
+  filter: brightness(1.06);
+}
+
 /* Quiz */
 .quiz-container {
   width: 100%;
@@ -6387,6 +6705,20 @@ main {
   .phase-num { font-size: 2rem; }
   .hands-on-item { padding: 1.25rem 1rem; }
   .quiz-container { padding: 1.5rem 1rem; }
+  #phase-validate .quiz-container { padding: 0; }
+  #phase-validate .quiz-prelude-layout { grid-template-columns: 1fr; }
+  #phase-validate .quiz-prelude-main,
+  #phase-validate .quiz-prelude-aside,
+  #phase-validate .quiz-active,
+  #phase-validate .quiz-result {
+    padding: 1.5rem 1rem;
+  }
+  #phase-validate .quiz-prelude-aside {
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  #phase-validate .graduation-section { padding-left: 1rem; padding-right: 1rem; }
+  #phase-validate .graduation-hero { padding: 1.5rem 1rem; }
   .quiz-prelude-stats { grid-template-columns: 1fr; }
   .quiz-prelude-journey { justify-content: flex-start; }
   .practice-item { padding: 1.25rem 1rem; }

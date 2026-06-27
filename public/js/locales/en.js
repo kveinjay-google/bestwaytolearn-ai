@@ -252,7 +252,7 @@ I18n.registerLocale('en', {
         'AI fundamentals & core terms · Day 1–3 · ~2.5 h',
         'Tool selection & prompt engineering · Day 4–5 · ~1.5 h',
         'Embed AI in real workflows · Day 6 · ~70 min',
-        'Quiz, review & next steps · Day 7 · ~60 min',
+        'Knowledge quiz · Graduation report · 30-day plan',
       ],
     },
     phaseBannerTitles: {

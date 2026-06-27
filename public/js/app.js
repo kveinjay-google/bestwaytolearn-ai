@@ -1246,6 +1246,22 @@ function getOverallProgressPct() {
   return totalDays ? Math.round((doneDays / totalDays) * 100) : 0;
 }
 
+function getValidatePhaseProgressLabel() {
+  const prog = loadProgress();
+  const pass = GRADUATION_QUIZ_PASS;
+  const best = prog.quizBestScore || 0;
+  if (isGraduated()) {
+    return uiT('validate.progressGraduated', '已结业');
+  }
+  if (best >= pass) {
+    return uiT('validate.progressQuizPass', '测验已达标');
+  }
+  if (best > 0) {
+    return uiT('validate.progressQuizScore', '最佳 {score} 分', { score: best });
+  }
+  return uiT('validate.progressQuizPending', '测验待完成');
+}
+
 function updateAllProgress() {
   const pct = getOverallProgressPct();
 
@@ -1259,7 +1275,11 @@ function updateAllProgress() {
   [1, 2, 3, 4].forEach(p => {
     const { done: pd, total: pt } = getPhaseProgress(p);
     const el = document.getElementById(`phase-progress-${p}`);
-    if (el) el.textContent = I18n.t('roadmap.daysDone', { done: pd, total: pt });
+    if (el) {
+      el.textContent = p === 4
+        ? getValidatePhaseProgressLabel()
+        : I18n.t('roadmap.daysDone', { done: pd, total: pt });
+    }
     const card = document.querySelector(`.roadmap-card[data-phase="${p}"]`);
     if (card) card.classList.toggle('done', pd === pt && pt > 0);
     const cardProg = card?.querySelector('.roadmap-card-progress');
@@ -3458,7 +3478,7 @@ function getDefaultPersonalization() {
       '弄懂 AI 原理与核心术语 · Day 1–3 · 约 2.5 小时',
       '选型主流应用、掌握提示词工程 · Day 4–5 · 约 1.5 小时',
       '将 AI 嵌入真实工作流 · Day 6 · 约 70 分钟',
-      '测验成果、复盘总结 · Day 7 · 约 60 分钟',
+      '知识测验 · 结业报告 · 30 天实践计划',
     ],
   };
 }

@@ -45,6 +45,12 @@
         jumpNext: '{name}, great! Entering 「{label}」 — keep going.',
         learningMap: 'Learning map',
       },
+      validate: {
+        progressPending: 'Quiz pending',
+        progressScore: 'Best {score} pts',
+        progressPass: 'Quiz passed',
+        progressGraduated: 'Graduated',
+      },
       graduation: {
         bannerBadge: 'Graduated',
         bannerMsg: '{name}, you finished the 7-day path and passed the quiz — officially graduated!',

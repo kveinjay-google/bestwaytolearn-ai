@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=20260627b">
+  <link rel="stylesheet" href="css/styles.css?v=20260627c">
 </head>
 <body>
   <canvas id="neural-canvas" aria-hidden="true"></canvas>
@@ -651,17 +651,17 @@
 
     <!-- ═══ PHASE 4: 检验巩固 ═══ -->
     <div class="learning-phase" id="phase-validate" data-phase-tab="validate" hidden>
-      <div class="phase-banner phase-banner-rose has-page-poster">
+      <div class="phase-banner phase-banner-validate has-page-poster">
         <div class="page-poster-bg" aria-hidden="true">
           <img src="assets/posters/poster-validate.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
-          <div class="page-poster-overlay page-poster-overlay-rose"></div>
+          <div class="page-poster-overlay page-poster-overlay-validate"></div>
         </div>
         <span class="phase-num">04</span>
         <div class="phase-banner-text">
           <h2>检验巩固</h2>
-          <p>测验成果、复盘总结 · Day 7 · 约 60 分钟</p>
+          <p>知识测验 · 结业报告 · 30 天实践计划</p>
         </div>
-        <span class="phase-progress" id="phase-progress-4">0/1 天</span>
+        <span class="phase-progress" id="phase-progress-4">测验待完成</span>
       </div>
 
       <section class="section quiz-section" id="quiz">
@@ -674,23 +674,28 @@
           <div class="quiz-start" id="quiz-start">
             <div class="quiz-prelude">
               <div class="quiz-prelude-glow" aria-hidden="true"></div>
-              <span class="quiz-prelude-badge" id="quiz-prelude-badge">
-                <img src="assets/icons/bwtl-mark.png" width="16" height="16" alt="">
-                <span data-i18n="quiz.preludeBadge">学习里程碑</span>
-              </span>
-              <h3 class="quiz-prelude-title" id="quiz-prelude-title"></h3>
-              <p class="quiz-prelude-lead" id="quiz-prelude-congrats"></p>
-              <div class="quiz-prelude-journey" id="quiz-prelude-journey" aria-label="四阶段学习路径"></div>
-              <div class="quiz-prelude-divider" aria-hidden="true"><span></span></div>
-              <h4 class="quiz-prelude-purpose-title" data-i18n="quiz.preludePurposeTitle">为你准备的结业检验</h4>
-              <p class="quiz-prelude-purpose" id="quiz-prelude-purpose"></p>
-              <p class="quiz-prelude-purpose-sub" id="quiz-prelude-purpose-sub"></p>
-              <ul class="quiz-prelude-stats" id="quiz-prelude-stats"></ul>
-              <p class="quiz-prelude-hint hidden" id="quiz-prelude-hint"></p>
-              <div class="quiz-prelude-actions">
-                <button class="btn btn-primary quiz-prelude-cta" id="start-quiz" type="button" data-i18n="quiz.startBtn">开始测验</button>
+              <div class="quiz-prelude-layout">
+                <div class="quiz-prelude-main">
+                  <span class="quiz-prelude-badge" id="quiz-prelude-badge">
+                    <img src="assets/icons/bwtl-mark.png" width="16" height="16" alt="">
+                    <span data-i18n="quiz.preludeBadge">学习里程碑</span>
+                  </span>
+                  <h3 class="quiz-prelude-title" id="quiz-prelude-title"></h3>
+                  <p class="quiz-prelude-lead" id="quiz-prelude-congrats"></p>
+                  <div class="quiz-prelude-journey" id="quiz-prelude-journey" aria-label="四阶段学习路径"></div>
+                </div>
+                <div class="quiz-prelude-aside">
+                  <h4 class="quiz-prelude-purpose-title" data-i18n="quiz.preludePurposeTitle">为你准备的结业检验</h4>
+                  <p class="quiz-prelude-purpose" id="quiz-prelude-purpose"></p>
+                  <p class="quiz-prelude-purpose-sub" id="quiz-prelude-purpose-sub"></p>
+                  <ul class="quiz-prelude-stats" id="quiz-prelude-stats"></ul>
+                  <p class="quiz-prelude-hint hidden" id="quiz-prelude-hint"></p>
+                  <div class="quiz-prelude-actions">
+                    <button class="btn btn-primary quiz-prelude-cta" id="start-quiz" type="button" data-i18n="quiz.startBtn">开始测验</button>
+                  </div>
+                  <p class="quiz-prelude-graduated hidden" id="quiz-prelude-graduated"></p>
+                </div>
               </div>
-              <p class="quiz-prelude-graduated hidden" id="quiz-prelude-graduated"></p>
             </div>
           </div>
           <div class="quiz-active hidden" id="quiz-active">
@@ -736,7 +741,7 @@
           <div class="section-header section-header-compact">
             <span class="section-tag">持续精进</span>
             <h3>未来 30 天实践计划</h3>
-            <p>每周至少 2 次 AI 实践，把 7 天所学变成真实习惯。填写后自动保存，可一键导出。</p>
+            <p>每周至少 2 次 AI 实践，把所学知识变成真实习惯。填写后自动保存，可一键导出。</p>
           </div>
           <form class="practice-plan-form" id="practice-plan-form">
             <fieldset class="practice-plan-focus">

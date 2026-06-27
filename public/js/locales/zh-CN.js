@@ -205,6 +205,12 @@ I18n.registerLocale('zh-CN', {
       quizDay: 'Day 7 已打卡',
       quizTitle: '完成本阶段最后一步：知识测验',
     },
+    validate: {
+      progressPending: '测验待完成',
+      progressScore: '最佳 {score} 分',
+      progressPass: '测验已达标',
+      progressGraduated: '已结业',
+    },
     quiz: {
       preludeBadge: '学习里程碑',
       preludeTitle: '{name}，你走到了这里',
@@ -255,7 +261,7 @@ I18n.registerLocale('zh-CN', {
         '弄懂 AI 原理与核心术语 · Day 1–3 · 约 2.5 小时',
         '选型主流应用、掌握提示词工程 · Day 4–5 · 约 1.5 小时',
         '将 AI 嵌入真实工作流 · Day 6 · 约 70 分钟',
-        '测验成果、复盘总结 · Day 7 · 约 60 分钟',
+        '知识测验 · 结业报告 · 30 天实践计划',
       ],
     },
     phaseBannerTitles: {

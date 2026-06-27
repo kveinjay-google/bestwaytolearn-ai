@@ -24,7 +24,7 @@ const LEARNING_PHASES = [
   },
   {
     id: 'validate', num: '04', title: '检验巩固', subtitle: '测验复盘、持续精进',
-    days: 'Day 7', color: 'var(--accent-rose)',
+    days: '100 题 · 约 60 分钟', color: 'var(--validate-accent, #94a8d4)',
     modules: ['知识测验'],
     anchors: ['#quiz'],
     desc: '100 道精选测验检验成果，制定后续 30 天实践计划。'
