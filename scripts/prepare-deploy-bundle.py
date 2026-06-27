@@ -9,6 +9,7 @@ BUNDLE = Path.home() / 'Desktop' / 'BestWayToLearn-AI-deploy'
 SITE_ITEMS = [
     'index.html', '404.html', 'robots.txt', 'sitemap.xml', '.nojekyll',
     'bwtlindex2026a1b2c3d4e5f6.txt',
+    'baidu_verify_codeva-vahRik1FaY.html',
     'css', 'js', 'assets',
 ]
 KEEP_NAMES = {
