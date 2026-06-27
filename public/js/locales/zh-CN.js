@@ -8,8 +8,8 @@ I18n.registerLocale('zh-CN', {
       ariaLabel: 'BestWayToLearn.AI — bestwaytolearn.ai',
     },
     meta: {
-      title: 'BestWayToLearn.AI | 从零到实战',
-      description: 'BestWayToLearn.AI — 帮助新用户系统了解、学习并应用 AI 原理与主流工具',
+      title: 'BestWayToLearn.AI | 从零到实战 — AI 系统学习',
+      description: 'BestWayToLearn.AI — 四阶段 AI 系统学习：认知基础、工具掌握、实战应用与知识测验。100 个术语、43 款主流应用、提示词实验室与真实实操教程，从零到实战。',
     },
     notice: {
       partialEn: '',

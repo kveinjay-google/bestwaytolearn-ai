@@ -8,8 +8,8 @@ I18n.registerLocale('en', {
       ariaLabel: 'BestWayToLearn.AI — bestwaytolearn.ai',
     },
     meta: {
-      title: 'BestWayToLearn.AI | Zero to Practice',
-      description: 'BestWayToLearn.AI — Learn AI fundamentals, tools, and hands-on workflows from scratch',
+      title: 'BestWayToLearn.AI | Learn AI — Zero to Practice',
+      description: 'BestWayToLearn.AI — Four-phase AI learning: foundations, tools, hands-on practice, and quiz. 100 terms, 43 apps, prompt lab, and real tutorials.',
     },
     notice: {
       partialEn: 'English UI is active. Tutorial prompts inside hands-on cases may stay in Chinese when they are meant to be copied into Chinese-first tools.',

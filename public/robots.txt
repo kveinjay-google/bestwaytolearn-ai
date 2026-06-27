@@ -1,0 +1,10 @@
+# BestWayToLearn.AI — https://bestwaytolearn.ai/
+User-agent: *
+Allow: /
+
+# Static assets
+Allow: /assets/
+Allow: /css/
+Allow: /js/
+
+Sitemap: https://bestwaytolearn.ai/sitemap.xml

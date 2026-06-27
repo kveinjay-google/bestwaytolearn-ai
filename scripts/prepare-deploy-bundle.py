@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 PUBLIC = ROOT / 'public'
 BUNDLE = Path.home() / 'Desktop' / 'BestWayToLearn-AI-deploy'
-SITE_ITEMS = ['index.html', 'css', 'js', 'assets']
+SITE_ITEMS = ['index.html', '404.html', 'robots.txt', 'sitemap.xml', '.nojekyll', 'css', 'js', 'assets']
 KEEP_NAMES = {
     'deploy.py',
     'deploy-config.json',
