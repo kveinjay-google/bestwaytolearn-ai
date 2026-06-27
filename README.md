@@ -137,6 +137,8 @@ wrangler pages deploy public --project-name=bestwaytolearn-ai
 - No build step — upload time is typically under a minute.
 - Enable **Always Use HTTPS** and **Automatic HTTPS Rewrites** in SSL/TLS if using a custom domain.
 - Optional: add caching rules for `assets/**` (long cache) and `index.html` (short cache) in the dashboard.
+- Cloudflare Pages strips `.html` from URLs by default (308 redirect). Baidu site verification requires a direct 200 on the `.html` path — handled by `functions/baidu_verify_codeva-vahRik1FaY.html.js` and `public/_routes.json`.
+- `public/CNAME` is only used by GitHub Pages; Cloudflare custom domains are configured in the dashboard.
 
 ---
 
