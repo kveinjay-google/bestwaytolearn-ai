@@ -44,13 +44,6 @@ I18n.registerLocale('zh-CN', {
       progress: '7 天学习进度',
       mainLabel: '学习阶段',
     },
-    reader: {
-      label: '朗读',
-      aria: '朗读当前屏幕内容',
-      title: '朗读当前屏幕内容',
-      neural: '神经网络朗读',
-      neuralTitle: '使用 Azure Neural TTS 朗读当前屏幕内容',
-    },
     user: {
       defaultName: '学员',
       manage: '管理我的昵称',

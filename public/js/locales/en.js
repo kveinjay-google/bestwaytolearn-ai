@@ -44,13 +44,6 @@ I18n.registerLocale('en', {
       progress: '7-day progress',
       mainLabel: 'Learning phases',
     },
-    reader: {
-      label: 'Read aloud',
-      aria: 'Read current screen aloud',
-      title: 'Read current screen aloud',
-      neural: 'Neural voice',
-      neuralTitle: 'Read current screen with Azure Neural TTS',
-    },
     user: {
       defaultName: 'Learner',
       manage: 'Manage nickname',
