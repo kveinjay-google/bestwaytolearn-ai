@@ -5,12 +5,12 @@
     strings: {
       mcpNavPage: {
         tag: 'MCP',
-        title: 'MCP Server Hub',
+        bannerTitle: 'MCP Hub',
+        bannerSubtitle: 'High-star MCP servers · Features · Copy config',
+        title: 'MCP Hub',
         linkApps: 'View Agent & automation tools in the curriculum →',
       },
       aiNavPage: {
-        tabMcp: 'MCP',
-        mcpBannerSubtitle: 'Model Context Protocol · One-click config',
         bannerStatMcp: '{n} MCP servers',
       },
       search: {

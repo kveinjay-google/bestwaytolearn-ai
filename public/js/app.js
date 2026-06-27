@@ -648,7 +648,7 @@ const PHASE_TAB_CONFIG = {
     hashes: ['ai-skills-nav', 'skills-nav'],
   },
   aiMcpNav: {
-    label: 'AI导航',
+    label: 'MCP导航',
     navHash: 'ai-mcp-nav',
     panelSelector: '#phase-view-ai-mcp',
     hashes: ['ai-mcp-nav', 'mcp-nav'],
@@ -743,7 +743,8 @@ const PHASE_PANEL_SELECTOR = '.phase-view, .learning-phase';
 function getNavTabLabels() {
   return typeof I18n !== 'undefined' ? I18n.getNavLabels() : {
     map: 'AI学习', learn: '认知', tools: '工具',
-    practice: '实战', validate: '检验', monetize: '变现', devices: '设备', aiToolsNav: 'AI导航', aiSkillsNav: 'SKILL推荐',
+    practice: '实战', validate: '检验', monetize: '变现', devices: '设备',
+    aiToolsNav: 'AI导航', aiSkillsNav: 'SKILL推荐', aiMcpNav: 'MCP导航',
   };
 }
 
@@ -764,7 +765,7 @@ function repairNavTabs() {
 }
 
 function getMainNavHighlightTab(tabId) {
-  if (tabId === 'aiMcpNav' || tabId === 'aiToolsNav' || tabId === 'toolsNav') return 'aiToolsNav';
+  if (tabId === 'aiToolsNav' || tabId === 'toolsNav') return 'aiToolsNav';
   return tabId;
 }
 
@@ -778,19 +779,8 @@ function updatePhaseTabNavUI(tabId) {
   updateAiNavTabsUI(tabId);
 }
 
-function updateAiNavTabsUI(tabId) {
-  document.querySelectorAll('.ai-nav-tabs').forEach(nav => {
-    nav.querySelectorAll('.ai-nav-tab').forEach(tab => {
-      const href = tab.getAttribute('href') || '';
-      const isTools = href === '#ai-nav';
-      const isMcp = href === '#ai-mcp-nav';
-      const active =
-        (tabId === 'aiToolsNav' || tabId === 'toolsNav') && isTools ||
-        tabId === 'aiMcpNav' && isMcp;
-      tab.classList.toggle('active', active);
-      tab.setAttribute('aria-selected', active ? 'true' : 'false');
-    });
-  });
+function updateAiNavTabsUI(_tabId) {
+  /* AI 导航子 Tab 已拆分为独立顶栏页面，保留空函数兼容旧调用 */
 }
 
 function scrollToPhaseTarget(targetId, { behavior = 'smooth' } = {}) {
@@ -4008,6 +3998,7 @@ const COACH_QUICK_NAV = [
   { label: '设备选购', href: '#devices' },
   { label: 'AI导航', href: '#ai-nav' },
   { label: 'SKILL推荐', href: '#ai-skills-nav' },
+  { label: 'MCP导航', href: '#ai-mcp-nav' },
 ];
 
 const SITE_NAV_ENTRIES = [
@@ -4023,8 +4014,9 @@ const SITE_NAV_ENTRIES = [
   { type: '模块', title: '结业报告', subtitle: '四阶段学习总结与 30 天计划', href: '#graduation', keywords: '结业 毕业 报告 成就 证书' },
   { type: '模块', title: 'AI 技能变现指南', subtitle: '30 个可落地的副业与接单方向', href: '#monetize', keywords: '变现 赚钱 副业 接单 收入 项目 创业 自由职业 monetize' },
   { type: '模块', title: '设备选购指南', subtitle: 'Windows/macOS、内存、显卡与推荐配置', href: '#devices', keywords: '设备 电脑 笔记本 台式机 内存 显卡 GPU RAM mac windows 苹果 配置 选购 硬件' },
-  { type: '模块', title: 'AI导航', subtitle: '100+ 工具 · MCP Server', href: '#ai-nav', keywords: 'AI导航 工具导航 MCP 大全 hao123 链接 官网 目录 directory model context protocol' },
+  { type: '模块', title: 'AI导航', subtitle: '100+ AI 工具大全', href: '#ai-nav', keywords: 'AI导航 工具导航 大全 hao123 链接 官网 目录 directory' },
   { type: '模块', title: 'SKILL推荐', subtitle: 'GitHub 优质 Agent Skill · 一键安装', href: '#ai-skills-nav', keywords: 'SKILL 推荐 skill agent 安装 npx skills cursor claude codex github' },
+  { type: '模块', title: 'MCP导航', subtitle: '高星 MCP Server · 功能介绍 · 一键复制配置', href: '#ai-mcp-nav', keywords: 'MCP 导航 model context protocol server cursor claude playwright context7' },
 ];
 
 function buildSiteSearchIndex() {

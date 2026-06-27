@@ -52,6 +52,8 @@ I18n.registerLocale('zh-CN', {
       aiToolsNav: 'AI导航',
       skillsRecommend: 'SKILL推荐',
       aiSkillsNav: 'SKILL推荐',
+      mcpNav: 'MCP导航',
+      aiMcpNav: 'MCP导航',
       continue: '继续学习 →',
       menuOpen: '打开菜单',
       progress: '学习进度',
@@ -173,7 +175,9 @@ I18n.registerLocale('zh-CN', {
     },
     mcpNavPage: {
       tag: 'MCP',
-      title: 'MCP Server 导航',
+      bannerTitle: 'MCP导航',
+      bannerSubtitle: '高星 MCP Server · 功能介绍 · 一键复制配置',
+      title: 'MCP导航',
       linkApps: '查看课程中的 Agent 与自动化工具 →',
     },
     footer: {
@@ -269,7 +273,7 @@ I18n.registerLocale('zh-CN', {
     nav: {
       map: 'AI学习', learn: '认知', tools: '工具',
       practice: '实战', validate: '检验', monetize: '变现', devices: '设备',
-      aiToolsNav: 'AI导航', aiSkillsNav: 'SKILL推荐',
+      aiToolsNav: 'AI导航', aiSkillsNav: 'SKILL推荐', aiMcpNav: 'MCP导航',
     },
     phaseShortLabels: { 1: '认知', 2: '工具', 3: '实战', 4: '检验' },
     personalization: {

@@ -192,6 +192,7 @@
       { label: 'Devices', href: '#devices' },
       { label: 'AI hub', href: '#ai-nav' },
       { label: 'Skill Picks', href: '#ai-skills-nav' },
+      { label: 'MCP Hub', href: '#ai-mcp-nav' },
     ],
     siteNavEntries: [
       { type: 'Module', title: 'Learning map', subtitle: 'Four-phase path overview', href: '#roadmap', keywords: 'learning map path phase roadmap' },

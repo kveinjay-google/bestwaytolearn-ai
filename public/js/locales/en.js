@@ -53,6 +53,8 @@ I18n.registerLocale('en', {
       aiToolsNav: 'AI hub',
       skillsRecommend: 'Skill Picks',
       aiSkillsNav: 'Skill Picks',
+      mcpNav: 'MCP Hub',
+      aiMcpNav: 'MCP Hub',
       continue: 'Continue →',
       menuOpen: 'Open menu',
       progress: '7-day progress',
@@ -253,7 +255,7 @@ I18n.registerLocale('en', {
     nav: {
       map: 'AI Learning', path: 'Plan', learn: 'Learn', tools: 'Tools',
       practice: 'Practice', validate: 'Review', monetize: 'Monetize', devices: 'Devices',
-      aiToolsNav: 'AI hub', aiSkillsNav: 'Skill Picks',
+      aiToolsNav: 'AI hub', aiSkillsNav: 'Skill Picks', aiMcpNav: 'MCP Hub',
     },
     phaseShortLabels: { 1: 'Learn', 2: 'Tools', 3: 'Practice', 4: 'Review' },
     personalization: {
