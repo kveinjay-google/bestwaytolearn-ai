@@ -736,6 +736,9 @@ function resolvePhaseTabFromHash(hash) {
   if (id.startsWith('overview-')) return 'learn';
   if (id.startsWith('hands-on-')) return 'practice';
   if (id.startsWith('practice-')) return 'practice';
+  if (id.startsWith('mcp-nav-cat-')) return 'aiMcpNav';
+  if (id.startsWith('skills-nav-cat-')) return 'aiSkillsNav';
+  if (id.startsWith('tools-nav-cat-')) return 'aiToolsNav';
   return 'map';
 }
 
