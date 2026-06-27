@@ -1,0 +1,291 @@
+I18n.registerLocale('fr', {
+  strings: {
+  brand: {
+    name: "BestWayToLearn.AI",
+    logoHtml: "BestWayToLearn<em>.AI</em>",
+    url: "https://bestwaytolearn.ai/",
+    domain: "bestwaytolearn.ai",
+    ariaLabel: "BestWayToLearn.AI — bestwaytolearn.ai"
+  },
+  meta: {
+    title: "BestWayToLearn.AI | Apprendre l'IA — De zéro à la pratique",
+    description: "BestWayToLearn.AI — Apprentissage IA en 4 phases : bases, outils, pratique et quiz. 100 termes, 43 apps, labo de prompts, tutoriels réels."
+  },
+  settings: {
+    title: "Paramètres d'affichage",
+    language: "Langue",
+    languageGroup: "Langue",
+    langZh: "简体中文",
+    langEn: "English",
+    langZhTW: "繁體中文",
+    langKo: "한국어",
+    langJa: "日本語",
+    langFr: "Français",
+    langEs: "Español",
+    langDe: "Deutsch",
+    chooseLanguage: "Choisir la langue",
+    theme: "Thème de couleur",
+    themeGroup: "Thème de couleur",
+    themeNeural: "Neural",
+    themeAurora: "Aurore",
+    themeSunrise: "Lever du soleil",
+    themeForest: "Forêt",
+    themeInk: "Encre",
+    themeEmber: "Braise",
+    themeOcean: "Océan",
+    themeLavender: "Lavande",
+    themeNoir: "Noir",
+    themeNeon: "Néon",
+    fontSize: "Taille de police",
+    fontSm: "Petite",
+    fontMd: "Par défaut",
+    fontLg: "Grande",
+    fontXl: "Très grande",
+    toggle: "Paramètres d'affichage",
+    fontToggle: "Taille de police",
+    installApp: "Installer l'app",
+    installHint: "Ouvrir en plein écran comme une app ; parcourir le contenu mis en cache hors ligne"
+  },
+  pwa: {
+    offline: "Hors ligne — le contenu mis en cache reste disponible"
+  },
+  nav: {
+    home: "Apprentissage IA",
+    path: "Plan d'étude",
+    learn: "Bases",
+    tools: "Outils",
+    practice: "Pratique",
+    validate: "Révision",
+    monetize: "Monétisation",
+    devices: "Appareils",
+    toolsNav: "Hub IA",
+    aiToolsNav: "Hub IA",
+    skillsRecommend: "Skills recommandés",
+    aiSkillsNav: "Skills recommandés",
+    mcpNav: "Hub MCP",
+    aiMcpNav: "Hub MCP",
+    continue: "Continuer →",
+    menuOpen: "Ouvrir le menu",
+    progress: "Progrès sur 7 jours",
+    mainLabel: "Phases d'apprentissage"
+  },
+  user: {
+    defaultName: "Apprenant",
+    manage: "Gérer le pseudo"
+  },
+  teacher: {
+    name: "Kevin",
+    label: "Votre coach IA",
+    coachToggle: "Réduire les conseils",
+    coachExpand: "Développer les conseils",
+    navLabel: "Navigation rapide",
+    navToggle: "Navigation rapide",
+    searchLabel: "Rechercher sur le site",
+    searchPlaceholder: "Termes, outils, modules…",
+    searchEmpty: "Aucun résultat. Essayez un autre mot-clé.",
+    defaultMsg: "Bonjour ! Prêt à commencer ?"
+  },
+  hero: {
+    greeting: "BestWayToLearn.AI",
+    titleHtml: "Partez de zéro.<br><span class=\"hero-highlight\">Maîtrisez l'IA</span>",
+    desc: "Un parcours en 4 phases des bases à la pratique — développez de vraies compétences IA.",
+    phaseLine: "Bases · Outils · Pratique · Révision",
+    ctaMap: "Voir la carte d'apprentissage",
+    ctaContinue: "Continuer l'apprentissage"
+  },
+  roadmap: {
+    tag: "Carte d'apprentissage",
+    title: "Parcours en 4 phases",
+    desc: "Complétez les quatre phases dans l'ordre. Chacune a des objectifs et modules clairs. La progression est sauvegardée automatiquement.",
+    overall: "Global {pct}%",
+    graduated: "Diplômé",
+    graduatedMsg: "Vous avez terminé le parcours de 7 jours et réussi le quiz. Félicitations !",
+    report: "Voir le rapport de fin →",
+    phaseLabel: "Phase {num}",
+    daysDone: "{done}/{total} jours faits",
+    enter: "Entrer dans la phase →"
+  },
+  path: {
+    bannerTitle: "Plan sur 7 jours",
+    bannerDesc: "Appuyez sur Commencer pour les modules du jour. Suivez Jour 1–7 ; marquez les jours maîtrisés pour sauter.",
+    guideTitle: "Comment utiliser",
+    progress: "{done} / {total} jours terminés",
+    tabProgress: "{done}/7 jours",
+    phaseBelongs: "Aujourd'hui · {phase}",
+    goal: "Objectif : ",
+    goto: "Aller apprendre →",
+    enterPhase: "Entrer {phase} →",
+    mastered: "Maîtrisé",
+    checkDone: "Cliquer pour retirer maîtrisé",
+    checkTodo: "Déjà connu ? Marquer maîtrisé pour sauter",
+    checkAriaDone: "Maîtrisé — cliquer pour retirer",
+    checkAriaTodo: "Marquer maîtrisé et sauter",
+    legendTodo: "À apprendre",
+    legendDone: "Maîtrisé · peut être sauté",
+    statusNotStarted: "Pas commencé",
+    statusInProgress: "En cours",
+    currentBadge: "Actuel",
+    statusAllDone: "Plan terminé",
+    statusGraduated: "Diplômé",
+    startFirst: "Commencer Jour 1",
+    startLearning: "Commencer Jour {day}",
+    continueLearning: "Continuer Jour {day}",
+    reviewDay: "Réviser Jour {day}",
+    startHintFirst: "Commencez par le Jour 1 pour une vue d'ensemble de l'IA",
+    viewMap: "Voir la carte",
+    allDoneTitle: "Les 7 jours sont maîtrisés",
+    allDoneHint: "Réussissez le quiz pour diplômer",
+    allDoneCta: "Passer le quiz",
+    graduatedHint: "Parcours et quiz terminés",
+    timelineTitle: "Planning 7 jours",
+    modulesLabel: "Modules",
+    tipStart: "Utilisez le bouton <strong>Commencer Jour 1</strong> ou <strong>Commencer</strong> sur chaque carte.",
+    tipOrder: "Suivez Jour 1→7 ; terminez les tâches quotidiennes avant de continuer.",
+    tipSkip: "Déjà connu ? Marquez <strong>Maîtrisé</strong> sur la carte (annulable)."
+  },
+  welcome: {
+    prev: "Retour",
+    next: "Suivant",
+    start: "Commencer",
+    namePlaceholder: "Pseudo, ex. Alex",
+    nameError: "Entrez au moins 1 caractère"
+  },
+  profile: {
+    title: "Gérer le pseudo",
+    desc: "Uniquement pour les salutations sur le site. Kevin utilisera votre pseudo pendant l'apprentissage.",
+    save: "Enregistrer",
+    clear: "Effacer le pseudo",
+    close: "Fermer",
+    nameError: "Entrez au moins 1 caractère",
+    clearConfirm: "Effacer le pseudo ? La page utilisera à nouveau « Apprenant ». Votre progression est conservée."
+  },
+  aiNavPage: {
+    bannerTitle: "Hub IA",
+    toolsBannerSubtitle: "Par catégorie · Sites officiels",
+    skillsBannerSubtitle: "Meilleurs Skills GitHub · Installation en un clic",
+    mcpBannerSubtitle: "Serveurs MCP · Copier la config",
+    tabTools: "Outils",
+    tabSkills: "Skills",
+    tabMcp: "MCP",
+    bannerStatTools: "{n} outils",
+    bannerStatSkills: "{n} skills",
+    bannerStatMcp: "{n} serveurs MCP",
+    linkDirectory: "Parcourir le hub IA (100+ outils) →"
+  },
+  toolsNavPage: {
+    tag: "Outils",
+    title: "Hub d'outils IA",
+    linkCurriculum: "Guide approfondi des apps →"
+  },
+  skillsNavPage: {
+    tag: "Skill",
+    bannerTitle: "Skills recommandés",
+    bannerSubtitle: "Meilleurs Skills GitHub · Installation en un clic",
+    title: "Skills recommandés"
+  },
+  mcpNavPage: {
+    tag: "MCP",
+    bannerTitle: "Hub MCP",
+    bannerSubtitle: "Serveurs MCP populaires · Fonctions · Copier la config",
+    title: "Hub MCP",
+    linkApps: "Voir les outils Agent du cours →"
+  },
+  footer: {
+    brand: "BestWayToLearn.AI",
+    tagline: "Bases → Outils → Pratique → Révision — construisez de solides compétences IA.",
+    manage: "Gérer le pseudo",
+    resetWelcome: "Revoir la visite guidée",
+    note: "Site statique éducatif. Liens d'apps à titre indicatif."
+  },
+  common: {
+    copy: "Copier",
+    copied: "Copié ✓",
+    copyFail: "Échec de la copie. Sélectionnez le texte manuellement.",
+    noCopy: "Rien à copier.",
+    goal: "Objectif : ",
+    suitable: "Idéal pour : ",
+    tradeoff: "Compromis : ",
+    vsDiy: "vs montage DIY : ",
+    oem: "Modèles représentatifs : ",
+    apps: "Apps recommandées",
+    phase: "Phase",
+    day: "Jour"
+  },
+  terms: {
+    categoryAll: "Tout",
+    flipAll: "Tout retourner",
+    flipAllBack: "Remettre face avant",
+    autoFlip: "Retournement auto",
+    autoFlipOn: "Retournement auto : Activé",
+    autoFlipTitle: "Survol pour retourner les cartes",
+    searchConcepts: "Rechercher abrév. ou nom complet, ex. Skill, LLM, RAG…",
+    searchGlossary: "Rechercher des termes…",
+    count: "{n} termes",
+    cardsView: "Cartes",
+    glossaryView: "Glossaire rapide",
+    viewToggle: "Vue de la base de connaissances"
+  },
+  monetize: {
+    categoryAll: "Tout"
+  },
+  mastery: {
+    badgeDone: "Phase maîtrisée",
+    badgeConfirm: "Vérification",
+    title: "Avez-vous maîtrisé cette page ?",
+    markRemaining: "Marquer les {n} jours restants",
+    markPhase: "Marquer la phase maîtrisée",
+    viewPath: "Voir le plan",
+    unmark: "Retirer maîtrisé",
+    phaseDone: "Phase terminée",
+    quizDay: "Jour 7 validé",
+    quizTitle: "Dernière étape : quiz"
+  },
+  validate: {
+    progressPending: "Quiz en attente",
+    progressScore: "Meilleur {score} pts",
+    progressPass: "Quiz réussi",
+    progressGraduated: "Diplômé"
+  },
+  quiz: {
+    preludeBadge: "Jalon d'apprentissage",
+    preludeTitle: "{name}, vous êtes arrivé(e) ici",
+    preludeCongrats: "Des fondamentaux IA aux outils et à la pratique — vous avez terminé tous les modules de BestWayToLearn.AI. Cette dévotion mérite d'être reconnue.",
+    preludeJourney: [
+      "Bases",
+      "Outils",
+      "Pratique",
+      "Révision"
+    ],
+    preludePurposeTitle: "Évaluation de fin",
+    preludePurpose: "Pour valider vos acquis et repérer les lacunes, nous avons conçu ce quiz de {n} questions.",
+    preludePurposeSub: "Théorie, termes clés, outils majeurs et scénarios réels. Sans limite de temps. Après le quiz, révisez les erreurs et retournez aux modules.",
+    statQuestions: "{n} questions sélectionnées",
+    statPass: "Seuil {pass}",
+    statDuration: "{duration}",
+    startBtn: "Je suis prêt(e) — commencer",
+    startBtnShort: "Commencer le quiz",
+    next: "Question suivante",
+    counter: "{cur} / {total}",
+    graduatedNote: "Diplômé ! Meilleur score : {score} / {total}. Repassez le quiz ou consultez le rapport ci-dessous."
+  },
+  devices: {
+    lead: "",
+    aiBoxesTitle: "⑥ Boîtiers IA dédiés",
+    presetsTitle: "⑦ Configurations recommandées",
+    dedicated: "Appareil IA dédié",
+    luxury: "Configuration haut de gamme",
+    chip: "Puce : ",
+    compute: "Calcul",
+    memory: "Mémoire",
+    storage: "Stockage",
+    network: "Réseau",
+    infer: "Inférence",
+    finetune: "Fine-tuning",
+    agents: "Agents"
+  },
+  notice: {
+    partial: "Interface en français. Une partie du contenu pédagogique peut rester en anglais.",
+    partialEn: "Interface en français. Une partie du contenu pédagogique peut rester en anglais."
+  }
+}
+});

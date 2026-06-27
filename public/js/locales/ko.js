@@ -1,0 +1,291 @@
+I18n.registerLocale('ko', {
+  strings: {
+  brand: {
+    name: "BestWayToLearn.AI",
+    logoHtml: "BestWayToLearn<em>.AI</em>",
+    url: "https://bestwaytolearn.ai/",
+    domain: "bestwaytolearn.ai",
+    ariaLabel: "BestWayToLearn.AI — bestwaytolearn.ai"
+  },
+  meta: {
+    title: "BestWayToLearn.AI | AI 배우기 — 기초부터 실전까지",
+    description: "BestWayToLearn.AI — 4단계 AI 학습: 기초, 도구, 실습, 퀴즈. 100개 용어, 43개 앱, 프롬프트 랩, 실전 튜토리얼."
+  },
+  settings: {
+    title: "표시 설정",
+    language: "언어",
+    languageGroup: "언어",
+    langZh: "简体中文",
+    langEn: "English",
+    langZhTW: "繁體中文",
+    langKo: "한국어",
+    langJa: "日本語",
+    langFr: "Français",
+    langEs: "Español",
+    langDe: "Deutsch",
+    chooseLanguage: "언어 선택",
+    theme: "색상 테마",
+    themeGroup: "색상 테마",
+    themeNeural: "뉴럴",
+    themeAurora: "오로라",
+    themeSunrise: "선라이즈",
+    themeForest: "포레스트",
+    themeInk: "잉크",
+    themeEmber: "엠버",
+    themeOcean: "오션",
+    themeLavender: "라벤더",
+    themeNoir: "느와르",
+    themeNeon: "네온",
+    fontSize: "글꼴 크기",
+    fontSm: "작게",
+    fontMd: "기본",
+    fontLg: "크게",
+    fontXl: "아주 크게",
+    toggle: "표시 설정",
+    fontToggle: "글꼴 크기",
+    installApp: "앱 설치",
+    installHint: "앱처럼 전체 화면으로 열고, 캐시된 콘텐츠를 오프라인에서 볼 수 있습니다"
+  },
+  pwa: {
+    offline: "오프라인 — 캐시된 콘텐츠를 계속 볼 수 있습니다"
+  },
+  nav: {
+    home: "AI 학습",
+    path: "학습 계획",
+    learn: "기초",
+    tools: "도구",
+    practice: "실습",
+    validate: "복습",
+    monetize: "수익화",
+    devices: "기기",
+    toolsNav: "AI 허브",
+    aiToolsNav: "AI 허브",
+    skillsRecommend: "Skill 추천",
+    aiSkillsNav: "Skill 추천",
+    mcpNav: "MCP 허브",
+    aiMcpNav: "MCP 허브",
+    continue: "계속 학습 →",
+    menuOpen: "메뉴 열기",
+    progress: "7일 진행률",
+    mainLabel: "학습 단계"
+  },
+  user: {
+    defaultName: "학습자",
+    manage: "닉네임 관리"
+  },
+  teacher: {
+    name: "Kevin",
+    label: "AI 학습 코치",
+    coachToggle: "코치 팁 접기",
+    coachExpand: "코치 팁 펼치기",
+    navLabel: "빠른 이동",
+    navToggle: "빠른 이동",
+    searchLabel: "사이트 검색",
+    searchPlaceholder: "용어, 도구, 모듈 검색…",
+    searchEmpty: "결과가 없습니다. 다른 키워드를 시도하세요.",
+    defaultMsg: "안녕하세요! 학습을 시작할 준비가 되셨나요?"
+  },
+  hero: {
+    greeting: "BestWayToLearn.AI",
+    titleHtml: "처음부터.<br><span class=\"hero-highlight\">AI 마스터</span>",
+    desc: "기초부터 실습까지 4단계 경로로 실전 AI 역량을 키우세요.",
+    phaseLine: "기초 · 도구 · 실습 · 복습",
+    ctaMap: "학습 지도 보기",
+    ctaContinue: "학습 계속하기"
+  },
+  roadmap: {
+    tag: "학습 지도",
+    title: "4단계 학습 경로",
+    desc: "네 단계를 순서대로 완료하세요. 각 단계마다 명확한 목표와 모듈이 있습니다. 진행 상황은 자동 저장됩니다.",
+    overall: "전체 {pct}%",
+    graduated: "수료",
+    graduatedMsg: "7일 경로를 완료하고 퀴즈에 합격했습니다. 축하합니다!",
+    report: "수료 보고서 보기 →",
+    phaseLabel: "단계 {num}",
+    daysDone: "{done}/{total}일 완료",
+    enter: "단계 입장 →"
+  },
+  path: {
+    bannerTitle: "7일 학습 계획",
+    bannerDesc: "「학습 시작」을 눌러 오늘의 모듈로 이동하세요. Day 1–7 순서대로 진행하고, 익숙한 날은 건너뛸 수 있습니다.",
+    guideTitle: "사용 방법",
+    progress: "{done} / {total}일 완료",
+    tabProgress: "{done}/7일",
+    phaseBelongs: "오늘의 단계 · {phase}",
+    goal: "목표: ",
+    goto: "학습하러 가기 →",
+    enterPhase: "{phase} 입장 →",
+    mastered: "습득 완료",
+    checkDone: "클릭하여 습득 표시 해제",
+    checkTodo: "이미 알고 있나요? 습득 완료로 표시하여 건너뛰기",
+    checkAriaDone: "습득 완료 — 클릭하여 해제",
+    checkAriaTodo: "습득 완료로 표시하고 건너뛰기",
+    legendTodo: "학습 예정",
+    legendDone: "습득 완료 · 건너뛰기 가능",
+    statusNotStarted: "시작 전",
+    statusInProgress: "진행 중",
+    currentBadge: "현재",
+    statusAllDone: "계획 완료",
+    statusGraduated: "수료",
+    startFirst: "Day 1 시작",
+    startLearning: "Day {day} 시작",
+    continueLearning: "Day {day} 계속",
+    reviewDay: "Day {day} 복습",
+    startHintFirst: "Day 1부터 시작해 AI 전체 그림을 잡으세요",
+    viewMap: "학습 지도 보기",
+    allDoneTitle: "7일 모두 습득 완료",
+    allDoneHint: "퀴즈에 합격하면 수료됩니다",
+    allDoneCta: "퀴즈 응시",
+    graduatedHint: "전체 경로와 퀴즈를 완료했습니다",
+    timelineTitle: "7일 일정",
+    modulesLabel: "모듈",
+    tipStart: "위의 <strong>Day 1 시작</strong> 버튼 또는 각 카드의 <strong>학습 시작</strong>을 사용하세요.",
+    tipOrder: "Day 1→7 순서를 따르고, 일일 과제를 마친 후 다음 날로 이동하세요.",
+    tipSkip: "이미 알고 있나요? 카드에서 <strong>습득 완료</strong>를 표시해 건너뛸 수 있습니다(언제든 취소 가능)."
+  },
+  welcome: {
+    prev: "이전",
+    next: "다음",
+    start: "학습 시작",
+    namePlaceholder: "닉네임, 예: Alex",
+    nameError: "1자 이상 입력해 주세요"
+  },
+  profile: {
+    title: "닉네임 관리",
+    desc: "사이트 내 인사에만 사용됩니다. Kevin이 학습 중 닉네임으로 불러 드립니다.",
+    save: "닉네임 저장",
+    clear: "닉네임 삭제",
+    close: "닫기",
+    nameError: "1자 이상 입력해 주세요",
+    clearConfirm: "닉네임을 삭제할까요? 페이지는 다시 「학습자」를 사용합니다. 학습 진행은 유지됩니다."
+  },
+  aiNavPage: {
+    bannerTitle: "AI 허브",
+    toolsBannerSubtitle: "카테고리별 탐색 · 공식 사이트 바로가기",
+    skillsBannerSubtitle: "인기 GitHub Skill · 원클릭 설치",
+    mcpBannerSubtitle: "MCP 서버 · 설정 스니펫 복사",
+    tabTools: "도구",
+    tabSkills: "Skill",
+    tabMcp: "MCP",
+    bannerStatTools: "도구 {n}개",
+    bannerStatSkills: "Skill {n}개",
+    bannerStatMcp: "MCP 서버 {n}개",
+    linkDirectory: "AI 허브 둘러보기(100+ 도구) →"
+  },
+  toolsNavPage: {
+    tag: "도구",
+    title: "AI 도구 허브",
+    linkCurriculum: "심화 앱 가이드 보기 →"
+  },
+  skillsNavPage: {
+    tag: "Skill",
+    bannerTitle: "Skill 추천",
+    bannerSubtitle: "인기 GitHub Skill · 원클릭 설치",
+    title: "Skill 추천"
+  },
+  mcpNavPage: {
+    tag: "MCP",
+    bannerTitle: "MCP 허브",
+    bannerSubtitle: "고평점 MCP 서버 · 기능 소개 · 설정 복사",
+    title: "MCP 허브",
+    linkApps: "코스의 Agent·자동화 도구 보기 →"
+  },
+  footer: {
+    brand: "BestWayToLearn.AI",
+    tagline: "기초 → 도구 → 실습 → 복습 — 4단계로 탄탄한 AI 역량을 쌓으세요.",
+    manage: "닉네임 관리",
+    resetWelcome: "환영 투어 다시 보기",
+    note: "교육용 정적 사이트입니다. 앱 링크는 참고용입니다."
+  },
+  common: {
+    copy: "복사",
+    copied: "복사됨 ✓",
+    copyFail: "복사 실패. 텍스트를 직접 선택해 주세요.",
+    noCopy: "복사할 내용이 없습니다.",
+    goal: "목표: ",
+    suitable: "추천: ",
+    tradeoff: "장단점: ",
+    vsDiy: "DIY 대비: ",
+    oem: "대표 모델: ",
+    apps: "추천 앱",
+    phase: "단계",
+    day: "Day"
+  },
+  terms: {
+    categoryAll: "전체",
+    flipAll: "모두 뒤집기",
+    flipAllBack: "다시 앞면",
+    autoFlip: "자동 뒤집기",
+    autoFlipOn: "자동 뒤집기: 켜짐",
+    autoFlipTitle: "마우스를 올리면 카드가 자동으로 뒤집힙니다",
+    searchConcepts: "약어 또는 전체 이름 검색, 예: Skill, LLM, RAG…",
+    searchGlossary: "용어 검색…",
+    count: "용어 {n}개",
+    cardsView: "카드 학습",
+    glossaryView: "빠른 사전",
+    viewToggle: "지식库 뷰 전환"
+  },
+  monetize: {
+    categoryAll: "전체"
+  },
+  mastery: {
+    badgeDone: "단계 습득 완료",
+    badgeConfirm: "습득 확인",
+    title: "이 페이지를 습득했나요?",
+    markRemaining: "남은 {n}일 습득 완료 표시",
+    markPhase: "단계 습득 완료 표시",
+    viewPath: "학습 계획 보기",
+    unmark: "습득 표시 해제",
+    phaseDone: "단계 완료",
+    quizDay: "Day 7 체크인 완료",
+    quizTitle: "마지막 단계: 지식 퀴즈"
+  },
+  validate: {
+    progressPending: "퀴즈 대기",
+    progressScore: "최고 {score}점",
+    progressPass: "퀴즈 합격",
+    progressGraduated: "수료"
+  },
+  quiz: {
+    preludeBadge: "학습 이정표",
+    preludeTitle: "{name}님, 여기까지 오셨네요",
+    preludeCongrats: "AI 기초부터 도구, 실습까지 — BestWayToLearn.AI의 모든 코스 모듈을 성실히 완료하셨습니다. 그 노력은 인정받을 가치가 있습니다.",
+    preludeJourney: [
+      "기초",
+      "도구",
+      "실습",
+      "복습"
+    ],
+    preludePurposeTitle: "수료 평가",
+    preludePurpose: "학습 성과를 확인하고 보완할 부분을 찾기 위해 {n}문항의 엄선 퀴즈를 준비했습니다.",
+    preludePurposeSub: "이론, 핵심 용어, 주요 도구, 실전 시나리오를 다룹니다. 시간 제한 없음 — 언제든 일시 정지 가능. 완료 후 오답을 복습하고 해당 모듈로 이동할 수 있습니다.",
+    statQuestions: "엄선 문제 {n}개",
+    statPass: "합격 점수 {pass}",
+    statDuration: "{duration}",
+    startBtn: "준비됐습니다 — 평가 시작",
+    startBtnShort: "퀴즈 시작",
+    next: "다음 문제",
+    counter: "{cur} / {total}",
+    graduatedNote: "수료했습니다! 최고 점수: {score} / {total}. 다시 응시하거나 아래에서 수료 보고서를 확인하세요."
+  },
+  devices: {
+    lead: "",
+    aiBoxesTitle: "⑥ 전용 AI 연산 박스",
+    presetsTitle: "⑦ 추천 구성",
+    dedicated: "전용 AI 기기",
+    luxury: "최상위 구성",
+    chip: "칩: ",
+    compute: "연산",
+    memory: "메모리",
+    storage: "저장소",
+    network: "네트워크",
+    infer: "추론",
+    finetune: "파인튜닝",
+    agents: "에이전트"
+  },
+  notice: {
+    partial: "한국어 UI가 적용되었습니다. 일부 학습 콘텐츠는 영어로 제공될 수 있습니다.",
+    partialEn: "한국어 UI가 적용되었습니다. 일부 학습 콘텐츠는 영어로 제공될 수 있습니다."
+  }
+}
+});

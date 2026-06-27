@@ -316,14 +316,14 @@ main {
 .user-profile-actions .btn { flex: 1; min-width: 100px; }
 
 .header-lang {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 0.3rem;
   flex-shrink: 0;
   order: 10;
 }
 
-.header-lang-btn {
+.header-lang-trigger {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -338,12 +338,8 @@ main {
   line-height: 1;
 }
 
-.header-lang-btn:hover {
-  border-color: var(--accent-violet);
-  transform: scale(1.06);
-}
-
-.header-lang-btn.active {
+.header-lang-trigger:hover,
+.header-lang-trigger[aria-expanded="true"] {
   border-color: var(--accent-teal);
   background: var(--accent-teal-dim);
   box-shadow: 0 0 0 2px rgba(45, 212, 191, 0.2);
@@ -352,6 +348,51 @@ main {
 .header-lang-flag {
   display: block;
   font-size: 1.1rem;
+}
+
+.header-lang-menu {
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  right: 0;
+  z-index: 120;
+  min-width: 10.5rem;
+  margin: 0;
+  padding: 0.35rem;
+  list-style: none;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg, 0 12px 32px rgba(0, 0, 0, 0.35));
+}
+
+.header-lang-option {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  padding: 0.5rem 0.65rem;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.header-lang-option:hover {
+  background: var(--bg-elevated);
+}
+
+.header-lang-option.active {
+  background: var(--accent-teal-dim);
+  color: var(--accent-teal);
+}
+
+.header-lang-option-label {
+  flex: 1;
+  white-space: nowrap;
 }
 
 .header-prefs {

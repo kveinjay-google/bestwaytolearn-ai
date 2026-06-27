@@ -1,0 +1,291 @@
+I18n.registerLocale('ja', {
+  strings: {
+  brand: {
+    name: "BestWayToLearn.AI",
+    logoHtml: "BestWayToLearn<em>.AI</em>",
+    url: "https://bestwaytolearn.ai/",
+    domain: "bestwaytolearn.ai",
+    ariaLabel: "BestWayToLearn.AI — bestwaytolearn.ai"
+  },
+  meta: {
+    title: "BestWayToLearn.AI | AIを学ぶ — ゼロから実践まで",
+    description: "BestWayToLearn.AI — 4段階のAI学習：基礎・ツール・実践・クイズ。100用語、43アプリ、プロンプトラボ、実践チュートリアル。"
+  },
+  settings: {
+    title: "表示設定",
+    language: "言語",
+    languageGroup: "言語",
+    langZh: "简体中文",
+    langEn: "English",
+    langZhTW: "繁體中文",
+    langKo: "한국어",
+    langJa: "日本語",
+    langFr: "Français",
+    langEs: "Español",
+    langDe: "Deutsch",
+    chooseLanguage: "言語を選択",
+    theme: "カラーテーマ",
+    themeGroup: "カラーテーマ",
+    themeNeural: "ニューラル",
+    themeAurora: "オーロラ",
+    themeSunrise: "サンライズ",
+    themeForest: "フォレスト",
+    themeInk: "インク",
+    themeEmber: "エンバー",
+    themeOcean: "オーシャン",
+    themeLavender: "ラベンダー",
+    themeNoir: "ノワール",
+    themeNeon: "ネオン",
+    fontSize: "文字サイズ",
+    fontSm: "小",
+    fontMd: "標準",
+    fontLg: "大",
+    fontXl: "特大",
+    toggle: "表示設定",
+    fontToggle: "文字サイズ",
+    installApp: "アプリをインストール",
+    installHint: "アプリのように全画面で開き、キャッシュ済みコンテンツをオフラインで閲覧できます"
+  },
+  pwa: {
+    offline: "オフライン — キャッシュ済みコンテンツは引き続き利用できます"
+  },
+  nav: {
+    home: "AI学習",
+    path: "学習プラン",
+    learn: "基礎",
+    tools: "ツール",
+    practice: "実践",
+    validate: "復習",
+    monetize: "収益化",
+    devices: "デバイス",
+    toolsNav: "AIハブ",
+    aiToolsNav: "AIハブ",
+    skillsRecommend: "Skillおすすめ",
+    aiSkillsNav: "Skillおすすめ",
+    mcpNav: "MCPハブ",
+    aiMcpNav: "MCPハブ",
+    continue: "学習を続ける →",
+    menuOpen: "メニューを開く",
+    progress: "7日間の進捗",
+    mainLabel: "学習フェーズ"
+  },
+  user: {
+    defaultName: "学習者",
+    manage: "ニックネーム管理"
+  },
+  teacher: {
+    name: "Kevin",
+    label: "AI学習コーチ",
+    coachToggle: "コーチのヒントを折りたたむ",
+    coachExpand: "コーチのヒントを展開",
+    navLabel: "クイックナビ",
+    navToggle: "クイックナビ",
+    searchLabel: "サイト内検索",
+    searchPlaceholder: "用語・ツール・モジュールを検索…",
+    searchEmpty: "結果がありません。別のキーワードをお試しください。",
+    defaultMsg: "こんにちは！学習を始める準備はできましたか？"
+  },
+  hero: {
+    greeting: "BestWayToLearn.AI",
+    titleHtml: "ゼロから。<br><span class=\"hero-highlight\">AIをマスター</span>",
+    desc: "基礎から実践まで4段階の道で、実践的なAIスキルを身につけます。",
+    phaseLine: "基礎 · ツール · 実践 · 復習",
+    ctaMap: "学習マップを見る",
+    ctaContinue: "学習を続ける"
+  },
+  roadmap: {
+    tag: "学習マップ",
+    title: "4段階の学習パス",
+    desc: "4つのフェーズを順番に完了してください。各フェーズに明確な目標とモジュールがあります。進捗は自動保存されます。",
+    overall: "全体 {pct}%",
+    graduated: "修了",
+    graduatedMsg: "7日間のパスを完了し、クイズに合格しました。おめでとうございます！",
+    report: "修了レポートを見る →",
+    phaseLabel: "フェーズ {num}",
+    daysDone: "{done}/{total}日完了",
+    enter: "フェーズに入る →"
+  },
+  path: {
+    bannerTitle: "7日間学習プラン",
+    bannerDesc: "「学習開始」をタップして今日のモジュールへ。Day 1–7の順で進め、習得済みの日はスキップできます。",
+    guideTitle: "使い方",
+    progress: "{done} / {total}日完了",
+    tabProgress: "{done}/7日",
+    phaseBelongs: "今日のフェーズ · {phase}",
+    goal: "目標: ",
+    goto: "学習へ →",
+    enterPhase: "{phase}へ →",
+    mastered: "習得済み",
+    checkDone: "クリックで習得済みを解除",
+    checkTodo: "すでに知っていますか？習得済みにしてスキップ",
+    checkAriaDone: "習得済み — クリックで解除",
+    checkAriaTodo: "習得済みにしてスキップ",
+    legendTodo: "未学習",
+    legendDone: "習得済み · スキップ可",
+    statusNotStarted: "未開始",
+    statusInProgress: "進行中",
+    currentBadge: "現在",
+    statusAllDone: "プラン完了",
+    statusGraduated: "修了",
+    startFirst: "Day 1を開始",
+    startLearning: "Day {day}を開始",
+    continueLearning: "Day {day}を続ける",
+    reviewDay: "Day {day}を復習",
+    startHintFirst: "Day 1から始めてAIの全体像を掴みましょう",
+    viewMap: "学習マップを見る",
+    allDoneTitle: "7日間すべて習得済み",
+    allDoneHint: "クイズに合格すると修了します",
+    allDoneCta: "クイズを受ける",
+    graduatedHint: "全パスとクイズを完了しました",
+    timelineTitle: "7日間スケジュール",
+    modulesLabel: "モジュール",
+    tipStart: "上の<strong>Day 1を開始</strong>ボタン、または各カードの<strong>学習開始</strong>を使ってください。",
+    tipOrder: "Day 1→7の順に進め、日次タスクを終えてから次の日へ。",
+    tipSkip: "すでに知っていますか？カードで<strong>習得済み</strong>を付けてスキップ（いつでも解除可）。"
+  },
+  welcome: {
+    prev: "戻る",
+    next: "次へ",
+    start: "学習開始",
+    namePlaceholder: "ニックネーム（例: Alex）",
+    nameError: "1文字以上入力してください"
+  },
+  profile: {
+    title: "ニックネーム管理",
+    desc: "サイト内の呼びかけにのみ使用。Kevinが学習中にニックネームでお呼びします。",
+    save: "ニックネームを保存",
+    clear: "ニックネームを削除",
+    close: "閉じる",
+    nameError: "1文字以上入力してください",
+    clearConfirm: "ニックネームを削除しますか？ページは再び「学習者」を使います。学習進捗は保持されます。"
+  },
+  aiNavPage: {
+    bannerTitle: "AIハブ",
+    toolsBannerSubtitle: "カテゴリ別 · 公式サイトへ",
+    skillsBannerSubtitle: "人気GitHub Skill · ワンクリックインストール",
+    mcpBannerSubtitle: "MCPサーバー · 設定スニペットをコピー",
+    tabTools: "ツール",
+    tabSkills: "Skill",
+    tabMcp: "MCP",
+    bannerStatTools: "ツール {n}件",
+    bannerStatSkills: "Skill {n}件",
+    bannerStatMcp: "MCPサーバー {n}件",
+    linkDirectory: "AIハブを見る（100+ツール）→"
+  },
+  toolsNavPage: {
+    tag: "ツール",
+    title: "AIツールハブ",
+    linkCurriculum: "詳細アプリガイドを見る →"
+  },
+  skillsNavPage: {
+    tag: "Skill",
+    bannerTitle: "Skillおすすめ",
+    bannerSubtitle: "人気GitHub Skill · ワンクリックインストール",
+    title: "Skillおすすめ"
+  },
+  mcpNavPage: {
+    tag: "MCP",
+    bannerTitle: "MCPハブ",
+    bannerSubtitle: "高評価MCPサーバー · 機能紹介 · 設定コピー",
+    title: "MCPハブ",
+    linkApps: "コースのAgent・自動化ツールを見る →"
+  },
+  footer: {
+    brand: "BestWayToLearn.AI",
+    tagline: "基礎 → ツール → 実践 → 復習 — 4ステップで確かなAI力を。",
+    manage: "ニックネーム管理",
+    resetWelcome: "ウェルカムツアーを再生",
+    note: "教育用静的サイト。アプリリンクは参考情報です。"
+  },
+  common: {
+    copy: "コピー",
+    copied: "コピーしました ✓",
+    copyFail: "コピーに失敗しました。手動で選択してください。",
+    noCopy: "コピーする内容がありません。",
+    goal: "目標: ",
+    suitable: "おすすめ: ",
+    tradeoff: "トレードオフ: ",
+    vsDiy: "DIY比較: ",
+    oem: "代表モデル: ",
+    apps: "おすすめアプリ",
+    phase: "フェーズ",
+    day: "Day"
+  },
+  terms: {
+    categoryAll: "すべて",
+    flipAll: "すべて裏返す",
+    flipAllBack: "表に戻す",
+    autoFlip: "自動裏返し",
+    autoFlipOn: "自動裏返し: オン",
+    autoFlipTitle: "ホバーでカードを自動裏返し",
+    searchConcepts: "略語または正式名称を検索（例: Skill, LLM, RAG…）",
+    searchGlossary: "用語を検索…",
+    count: "用語 {n}件",
+    cardsView: "カード学習",
+    glossaryView: "クイック用語集",
+    viewToggle: "知識ベース表示切替"
+  },
+  monetize: {
+    categoryAll: "すべて"
+  },
+  mastery: {
+    badgeDone: "フェーズ習得済み",
+    badgeConfirm: "習得確認",
+    title: "このページを習得しましたか？",
+    markRemaining: "残り{n}日を習得済みに",
+    markPhase: "フェーズを習得済みに",
+    viewPath: "学習プランを見る",
+    unmark: "習得済みを解除",
+    phaseDone: "フェーズ完了",
+    quizDay: "Day 7チェックイン済み",
+    quizTitle: "最終ステップ: 知識クイズ"
+  },
+  validate: {
+    progressPending: "クイズ未完了",
+    progressScore: "最高 {score}点",
+    progressPass: "クイズ合格",
+    progressGraduated: "修了"
+  },
+  quiz: {
+    preludeBadge: "学習マイルストーン",
+    preludeTitle: "{name}さん、ここまで来ました",
+    preludeCongrats: "AI基礎からツール、実践まで — BestWayToLearn.AIの全コースモジュールを真摯に完了しました。その努力は称えられるに値します。",
+    preludeJourney: [
+      "基礎",
+      "ツール",
+      "実践",
+      "復習"
+    ],
+    preludePurposeTitle: "修了評価",
+    preludePurpose: "学習成果を確認し、復習すべき点を見つけるため、{n}問の厳選クイズを用意しました。",
+    preludePurposeSub: "理論、核心用語、主要ツール、実践シナリオをカバー。時間制限なし — いつでも一時停止可。終了後、誤答を復習し該当モジュールへ移動できます。",
+    statQuestions: "厳選問題 {n}問",
+    statPass: "合格点 {pass}",
+    statDuration: "{duration}",
+    startBtn: "準備OK — 評価を開始",
+    startBtnShort: "クイズ開始",
+    next: "次の問題",
+    counter: "{cur} / {total}",
+    graduatedNote: "修了しました！最高スコア: {score} / {total}。再受験するか、下で修了レポートを確認してください。"
+  },
+  devices: {
+    lead: "",
+    aiBoxesTitle: "⑥ 専用AI計算ボックス",
+    presetsTitle: "⑦ 推奨構成",
+    dedicated: "専用AIデバイス",
+    luxury: "最上位構成",
+    chip: "チップ: ",
+    compute: "計算",
+    memory: "メモリ",
+    storage: "ストレージ",
+    network: "ネットワーク",
+    infer: "推論",
+    finetune: "ファインチューン",
+    agents: "エージェント"
+  },
+  notice: {
+    partial: "日本語UIが有効です。一部の学習コンテンツは英語のままの場合があります。",
+    partialEn: "日本語UIが有効です。一部の学習コンテンツは英語のままの場合があります。"
+  }
+}
+});

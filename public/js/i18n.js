@@ -18,7 +18,38 @@ const I18n = (function () {
 
   const DEFAULT_LOCALE = 'zh-CN';
   const DEFAULT_FONT = 'md';
-  const SUPPORTED_LOCALES = ['zh-CN', 'en'];
+  const SUPPORTED_LOCALES = ['zh-CN', 'zh-TW', 'en', 'ko', 'ja', 'fr', 'es', 'de'];
+
+  const LOCALE_META = {
+    'zh-CN': { flag: '🇨🇳', nativeName: '简体中文', htmlLang: 'zh-CN', dateLocale: 'zh-CN' },
+    'zh-TW': { flag: '🇹🇼', nativeName: '繁體中文', htmlLang: 'zh-TW', dateLocale: 'zh-TW' },
+    en: { flag: '🇺🇸', nativeName: 'English', htmlLang: 'en', dateLocale: 'en-US' },
+    ko: { flag: '🇰🇷', nativeName: '한국어', htmlLang: 'ko', dateLocale: 'ko-KR' },
+    ja: { flag: '🇯🇵', nativeName: '日本語', htmlLang: 'ja', dateLocale: 'ja-JP' },
+    fr: { flag: '🇫🇷', nativeName: 'Français', htmlLang: 'fr', dateLocale: 'fr-FR' },
+    es: { flag: '🇪🇸', nativeName: 'Español', htmlLang: 'es', dateLocale: 'es-ES' },
+    de: { flag: '🇩🇪', nativeName: 'Deutsch', htmlLang: 'de', dateLocale: 'de-DE' },
+  };
+
+  const LOCALE_FALLBACK = {
+    'zh-TW': 'zh-CN',
+    ko: 'en',
+    ja: 'en',
+    fr: 'en',
+    es: 'en',
+    de: 'en',
+  };
+
+  const LOCALE_ALIASES = {
+    zh: 'zh-CN', 'zh-hans': 'zh-CN', 'zh-cn': 'zh-CN', 'zh-sg': 'zh-CN',
+    'zh-tw': 'zh-TW', 'zh-hk': 'zh-TW', 'zh-mo': 'zh-TW', 'zh-hant': 'zh-TW',
+    en: 'en', 'en-us': 'en', 'en-gb': 'en', 'en-au': 'en',
+    ko: 'ko', 'ko-kr': 'ko',
+    ja: 'ja', 'ja-jp': 'ja',
+    fr: 'fr', 'fr-fr': 'fr', 'fr-ca': 'fr',
+    es: 'es', 'es-es': 'es', 'es-mx': 'es',
+    de: 'de', 'de-de': 'de', 'de-at': 'de', 'de-ch': 'de',
+  };
 
   const bundles = {};
   let currentLocale = DEFAULT_LOCALE;
@@ -26,7 +57,56 @@ const I18n = (function () {
   const listeners = new Set();
 
   function registerLocale(code, bundle) {
-    bundles[code] = bundle;
+    const existing = bundles[code] || { strings: {}, data: {} };
+    const { strings, data, ...rest } = bundle || {};
+    bundles[code] = {
+      strings: strings ? deepMerge(existing.strings || {}, strings) : (existing.strings || {}),
+      data: data ? deepMerge(existing.data || {}, data) : deepMerge(existing.data || {}, rest),
+    };
+  }
+
+  function isChineseLocale(locale = currentLocale) {
+    return locale === 'zh-CN' || locale === 'zh-TW';
+  }
+
+  function usesEnglishContent(locale = currentLocale) {
+    return !isChineseLocale(locale);
+  }
+
+  function getLocaleMeta(locale = currentLocale) {
+    return LOCALE_META[locale] || LOCALE_META[DEFAULT_LOCALE];
+  }
+
+  function getLocaleChain(locale = currentLocale) {
+    const chain = [];
+    let cur = locale;
+    const seen = new Set();
+    while (cur && !seen.has(cur)) {
+      seen.add(cur);
+      chain.push(cur);
+      cur = LOCALE_FALLBACK[cur];
+    }
+    return chain;
+  }
+
+  function getRawBundleData(locale) {
+    const data = bundles[locale]?.data;
+    return data ? JSON.parse(JSON.stringify(data)) : null;
+  }
+
+  function detectBrowserLocale() {
+    const langs = navigator.languages?.length
+      ? navigator.languages
+      : [navigator.language || DEFAULT_LOCALE];
+    for (const raw of langs) {
+      const norm = String(raw).toLowerCase().replace(/_/g, '-');
+      if (LOCALE_ALIASES[norm]) return LOCALE_ALIASES[norm];
+      const primary = norm.split('-')[0];
+      if (LOCALE_ALIASES[primary]) return LOCALE_ALIASES[primary];
+      const hit = SUPPORTED_LOCALES.find(code => norm === code.toLowerCase() || norm.startsWith(`${code.toLowerCase()}-`));
+      if (hit) return hit;
+    }
+    return DEFAULT_LOCALE;
   }
 
   function deepMerge(target = {}, source = {}) {
@@ -64,7 +144,7 @@ const I18n = (function () {
   }
 
   function mapCategoryLabel(cat, map) {
-    if (!cat || currentLocale === DEFAULT_LOCALE) return cat;
+    if (!cat || isChineseLocale()) return cat;
     return map?.[cat] || cat;
   }
 
@@ -73,7 +153,16 @@ const I18n = (function () {
   }
 
   function getBundle(locale = currentLocale) {
-    return bundles[locale] || bundles[DEFAULT_LOCALE] || { strings: {}, data: {} };
+    const chain = getLocaleChain(locale);
+    let strings = {};
+    let data = {};
+    chain.slice().reverse().forEach(code => {
+      const bundle = bundles[code];
+      if (!bundle) return;
+      if (bundle.data) data = deepMerge(bundle.data, data);
+      if (bundle.strings) strings = deepMerge(bundle.strings, strings);
+    });
+    return { strings, data };
   }
 
   function resolve(obj, path) {
@@ -81,12 +170,14 @@ const I18n = (function () {
   }
 
   function t(key, vars = {}) {
-    const str = resolve(getBundle().strings, key);
+    let str;
+    const chain = [...new Set([...getLocaleChain(), 'en', DEFAULT_LOCALE])];
+    for (const locale of chain) {
+      str = resolve(bundles[locale]?.strings, key);
+      if (typeof str === 'string') break;
+    }
     if (typeof str !== 'string') return key;
-    return Object.entries(vars).reduce(
-      (out, [k, v]) => out.replace(new RegExp(`\\{${k}\\}`, 'g'), String(v ?? '')),
-      str
-    );
+    return interpolate(str, vars);
   }
 
   function getData(path) {
@@ -107,7 +198,7 @@ const I18n = (function () {
 
   function getPhaseTabConfig() {
     const overlay = getBundle().data?.phaseTabs || {};
-    if (currentLocale === DEFAULT_LOCALE) return overlay;
+    if (isChineseLocale()) return overlay;
     return overlay;
   }
 
@@ -150,13 +241,13 @@ const I18n = (function () {
   }
 
   function localizePhases() {
-    if (currentLocale === DEFAULT_LOCALE) return LEARNING_PHASES;
+    if (isChineseLocale()) return LEARNING_PHASES;
     const map = getBundle().data?.learningPhases || {};
     return LEARNING_PHASES.map(p => ({ ...p, ...(map[p.id] || {}) }));
   }
 
   function localizePathDay(day, index) {
-    if (currentLocale === DEFAULT_LOCALE) return day;
+    if (isChineseLocale()) return day;
     const overlay = getBundle().data?.learningPath?.[index];
     if (!overlay) return day;
     return {
@@ -168,24 +259,24 @@ const I18n = (function () {
   }
 
   function localizeDeviceMeta() {
-    if (currentLocale === DEFAULT_LOCALE) return DEVICE_GUIDE_META;
+    if (isChineseLocale()) return DEVICE_GUIDE_META;
     return { ...DEVICE_GUIDE_META, ...(getBundle().data?.deviceGuideMeta || {}) };
   }
 
   function localizeAiBoxesMeta() {
-    if (currentLocale === DEFAULT_LOCALE) return DEVICE_AI_BOXES_META;
+    if (isChineseLocale()) return DEVICE_AI_BOXES_META;
     return { ...DEVICE_AI_BOXES_META, ...(getBundle().data?.deviceAiBoxesMeta || {}) };
   }
 
   function localizeNeedOptions() {
-    if (currentLocale === DEFAULT_LOCALE) return DEVICE_NEED_OPTIONS;
+    if (isChineseLocale()) return DEVICE_NEED_OPTIONS;
     const map = getBundle().data?.deviceNeedOptions || {};
     return DEVICE_NEED_OPTIONS.map(n => ({ ...n, ...(map[n.id] || {}) }));
   }
 
   function localizeOsCompare(key) {
     const base = DEVICE_OS_COMPARE[key];
-    if (!base || currentLocale === DEFAULT_LOCALE) return base;
+    if (!base || isChineseLocale()) return base;
     const overlay = getBundle().data?.deviceOsCompare?.[key] || {};
     return {
       ...base,
@@ -196,13 +287,13 @@ const I18n = (function () {
   }
 
   function localizeStorageTiers() {
-    if (currentLocale === DEFAULT_LOCALE) return DEVICE_STORAGE_TIERS;
+    if (isChineseLocale()) return DEVICE_STORAGE_TIERS;
     const overlays = getBundle().data?.deviceStorageTiers || [];
     return DEVICE_STORAGE_TIERS.map((s, i) => ({ ...s, ...(overlays[i] || {}) }));
   }
 
   function localizeAiBox(box, index) {
-    if (currentLocale === DEFAULT_LOCALE) return box;
+    if (isChineseLocale()) return box;
     const overlay = getBundle().data?.deviceAiBoxes?.[box.id];
     if (!overlay) return box;
     return {
@@ -217,7 +308,7 @@ const I18n = (function () {
   }
 
   function localizePreset(preset) {
-    if (currentLocale === DEFAULT_LOCALE) return preset;
+    if (isChineseLocale()) return preset;
     const overlay = getBundle().data?.devicePresets?.[preset.id];
     if (!overlay) return preset;
     return {
@@ -230,20 +321,20 @@ const I18n = (function () {
 
   function localizeMemoryTiers() {
     if (typeof DEVICE_MEMORY_TIERS === 'undefined') return [];
-    if (currentLocale === DEFAULT_LOCALE) return DEVICE_MEMORY_TIERS;
+    if (isChineseLocale()) return DEVICE_MEMORY_TIERS;
     const overlays = getData('deviceMemoryTiers') || [];
     return DEVICE_MEMORY_TIERS.map((s, i) => ({ ...s, ...(overlays[i] || {}) }));
   }
 
   function localizeGpuTiers() {
     if (typeof DEVICE_GPU_TIERS === 'undefined') return [];
-    if (currentLocale === DEFAULT_LOCALE) return DEVICE_GPU_TIERS;
+    if (isChineseLocale()) return DEVICE_GPU_TIERS;
     const overlays = getData('deviceGpuTiers') || [];
     return DEVICE_GPU_TIERS.map((g, i) => ({ ...g, ...(overlays[i] || {}) }));
   }
 
   function getDeviceFieldLabels() {
-    if (currentLocale === DEFAULT_LOCALE) return null;
+    if (isChineseLocale()) return null;
     return getData('deviceFieldLabels') || null;
   }
 
@@ -253,7 +344,7 @@ const I18n = (function () {
 
   function getResolvedPhaseTabConfig(tabId) {
     const base = typeof PHASE_TAB_CONFIG !== 'undefined' ? PHASE_TAB_CONFIG[tabId] : null;
-    if (!base || currentLocale === DEFAULT_LOCALE) return base;
+    if (!base || isChineseLocale()) return base;
     const overlay = getData('phaseTabs')?.[tabId] || {};
     return {
       ...base,
@@ -268,7 +359,7 @@ const I18n = (function () {
   }
 
   function getGraduationModules() {
-    if (currentLocale === DEFAULT_LOCALE && typeof GRADUATION_MODULES !== 'undefined') {
+    if (isChineseLocale() && typeof GRADUATION_MODULES !== 'undefined') {
       return GRADUATION_MODULES;
     }
     return getData('graduationModules')
@@ -284,7 +375,7 @@ const I18n = (function () {
   }
 
   function getToolsNavMeta() {
-    if (currentLocale === DEFAULT_LOCALE && typeof AI_TOOLS_NAV_META !== 'undefined') {
+    if (isChineseLocale() && typeof AI_TOOLS_NAV_META !== 'undefined') {
       return AI_TOOLS_NAV_META;
     }
     return getData('toolsNav')?.meta || (typeof AI_TOOLS_NAV_META !== 'undefined' ? AI_TOOLS_NAV_META : {});
@@ -295,14 +386,14 @@ const I18n = (function () {
   }
 
   function localizeToolsNavTool(tool) {
-    if (!tool || currentLocale === DEFAULT_LOCALE) return tool;
+    if (!tool || isChineseLocale()) return tool;
     const overlay = getData('toolsNav')?.tools?.[tool.name];
     if (!overlay) return tool;
     return { ...tool, name: overlay.name || tool.name, desc: overlay.desc || tool.desc };
   }
 
   function getSkillsNavMeta() {
-    if (currentLocale === DEFAULT_LOCALE && typeof AI_SKILLS_NAV_META !== 'undefined') {
+    if (isChineseLocale() && typeof AI_SKILLS_NAV_META !== 'undefined') {
       return AI_SKILLS_NAV_META;
     }
     return getData('skillsNav')?.meta || (typeof AI_SKILLS_NAV_META !== 'undefined' ? AI_SKILLS_NAV_META : {});
@@ -317,7 +408,7 @@ const I18n = (function () {
   }
 
   function localizeSkillsNavItem(item) {
-    if (!item || currentLocale === DEFAULT_LOCALE) return item;
+    if (!item || isChineseLocale()) return item;
     const overlay = getData('skillsNav')?.items?.[item.name];
     if (!overlay) return item;
     return {
@@ -329,7 +420,7 @@ const I18n = (function () {
   }
 
   function getMcpNavMeta() {
-    if (currentLocale === DEFAULT_LOCALE && typeof AI_MCP_NAV_META !== 'undefined') {
+    if (isChineseLocale() && typeof AI_MCP_NAV_META !== 'undefined') {
       return AI_MCP_NAV_META;
     }
     return getData('mcpNav')?.meta || (typeof AI_MCP_NAV_META !== 'undefined' ? AI_MCP_NAV_META : {});
@@ -354,7 +445,7 @@ const I18n = (function () {
   }
 
   function localizeMcpNavItem(item) {
-    if (!item || currentLocale === DEFAULT_LOCALE) return item;
+    if (!item || isChineseLocale()) return item;
     const overlay = getData('mcpNav')?.items?.[item.name];
     if (!overlay) return item;
     return {
@@ -367,7 +458,7 @@ const I18n = (function () {
   }
 
   function getQuizTopicLinks() {
-    if (currentLocale === DEFAULT_LOCALE) return null;
+    if (isChineseLocale()) return null;
     return getData('quizTopicLinks') || null;
   }
 
@@ -401,7 +492,7 @@ const I18n = (function () {
       if (p && data.desc !== undefined) p.innerHTML = data.desc;
     });
     const devicesSection = document.getElementById('devices');
-    if (devicesSection && currentLocale === 'en') {
+    if (devicesSection && usesEnglishContent()) {
       const tag = devicesSection.querySelector('.section-tag');
       const h2 = devicesSection.querySelector('.section-header h2');
       if (tag) tag.textContent = t('devices.sectionTag');
@@ -410,7 +501,7 @@ const I18n = (function () {
   }
 
   function applyGraduationChrome() {
-    if (currentLocale === DEFAULT_LOCALE) return;
+    if (isChineseLocale()) return;
     const hdr = getData('sectionHeaders')?.graduation || {};
     const gradSection = document.getElementById('graduation');
     const setBadgeText = (el, text) => {
@@ -435,10 +526,10 @@ const I18n = (function () {
     if (bannerLink) bannerLink.textContent = t('graduation.viewReport');
     const gradTitle = document.getElementById('graduation-title');
     const gradDesc = document.getElementById('graduation-desc');
-    if (gradTitle && currentLocale === 'en') {
+    if (gradTitle && usesEnglishContent()) {
       gradTitle.textContent = t('graduation.title', { name: getDefaultUserName() });
     }
-    if (gradDesc && currentLocale === 'en') gradDesc.textContent = t('graduation.desc');
+    if (gradDesc && usesEnglishContent()) gradDesc.textContent = t('graduation.desc');
     const planTag = gradSection?.querySelector('.practice-plan-30 .section-tag');
     const planH3 = gradSection?.querySelector('.practice-plan-30 h3');
     const planP = gradSection?.querySelector('.practice-plan-30 .section-header p');
@@ -466,7 +557,7 @@ const I18n = (function () {
   }
 
   function applyDom() {
-    document.documentElement.lang = currentLocale === 'en' ? 'en' : 'zh-CN';
+    document.documentElement.lang = getLocaleMeta().htmlLang;
     document.documentElement.dataset.locale = currentLocale;
 
     document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -492,8 +583,10 @@ const I18n = (function () {
 
     const notice = document.getElementById('locale-content-notice');
     if (notice) {
-      notice.classList.toggle('hidden', currentLocale === DEFAULT_LOCALE);
-      notice.textContent = t('notice.partialEn');
+      const partial = t('notice.partial');
+      const noticeText = partial !== 'notice.partial' ? partial : '';
+      notice.classList.toggle('hidden', !noticeText);
+      notice.textContent = noticeText;
     }
 
     document.title = t('meta.title');
@@ -559,16 +652,72 @@ const I18n = (function () {
     return () => listeners.delete(fn);
   }
 
-  function syncLangFlags() {
-    document.querySelectorAll('.header-lang-btn').forEach(btn => {
-      const active = btn.dataset.locale === currentLocale;
-      btn.classList.toggle('active', active);
-      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+  function getLocaleLabel(locale) {
+    const keyMap = {
+      'zh-CN': 'settings.langZh',
+      'zh-TW': 'settings.langZhTW',
+      en: 'settings.langEn',
+      ko: 'settings.langKo',
+      ja: 'settings.langJa',
+      fr: 'settings.langFr',
+      es: 'settings.langEs',
+      de: 'settings.langDe',
+    };
+    const key = keyMap[locale];
+    if (key) {
+      const fromStrings = t(key);
+      if (fromStrings !== key) return fromStrings;
+    }
+    return LOCALE_META[locale]?.nativeName || locale;
+  }
+
+  function closeLangMenu() {
+    const menu = document.getElementById('header-lang-menu');
+    const trigger = document.getElementById('header-lang-trigger');
+    if (!menu || !trigger) return;
+    menu.classList.add('hidden');
+    trigger.setAttribute('aria-expanded', 'false');
+  }
+
+  function buildLangMenu() {
+    const menu = document.getElementById('header-lang-menu');
+    if (!menu) return;
+    menu.innerHTML = SUPPORTED_LOCALES.map(locale => {
+      const meta = LOCALE_META[locale];
+      const active = locale === currentLocale;
+      return `<li role="presentation">
+        <button type="button" class="header-lang-option${active ? ' active' : ''}" role="option" data-locale="${locale}" aria-selected="${active ? 'true' : 'false'}">
+          <span class="header-lang-flag" aria-hidden="true">${meta.flag}</span>
+          <span class="header-lang-option-label">${getLocaleLabel(locale)}</span>
+        </button>
+      </li>`;
+    }).join('');
+    menu.querySelectorAll('.header-lang-option').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (btn.dataset.locale && btn.dataset.locale !== currentLocale) {
+          setLocale(btn.dataset.locale);
+        }
+        closeLangMenu();
+      });
     });
   }
 
+  function syncLangMenu() {
+    const meta = getLocaleMeta();
+    const flag = document.getElementById('header-lang-current-flag');
+    const label = document.getElementById('header-lang-current-label');
+    const trigger = document.getElementById('header-lang-trigger');
+    if (flag) flag.textContent = meta.flag;
+    if (label) label.textContent = getLocaleLabel(currentLocale);
+    if (trigger) {
+      trigger.title = getLocaleLabel(currentLocale);
+      trigger.setAttribute('aria-label', `${t('settings.chooseLanguage')}: ${getLocaleLabel(currentLocale)}`);
+    }
+    buildLangMenu();
+  }
+
   function syncPrefsPanel() {
-    syncLangFlags();
+    syncLangMenu();
     applyFontSize(currentFontSize);
   }
 
@@ -658,7 +807,11 @@ const I18n = (function () {
   function init() {
     try {
       const savedLocale = localStorage.getItem(LOCALE_KEY);
-      if (savedLocale && SUPPORTED_LOCALES.includes(savedLocale)) currentLocale = savedLocale;
+      if (savedLocale && SUPPORTED_LOCALES.includes(savedLocale)) {
+        currentLocale = savedLocale;
+      } else {
+        currentLocale = detectBrowserLocale();
+      }
       const savedFont = localStorage.getItem(FONT_KEY);
       if (savedFont && ['sm', 'md', 'lg', 'xl'].includes(savedFont)) currentFontSize = savedFont;
     } catch { /* ignore */ }
@@ -672,13 +825,21 @@ const I18n = (function () {
     applyDeviceSubsections();
     applyGraduationChrome();
 
-    document.querySelectorAll('.header-lang-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        if (btn.dataset.locale && btn.dataset.locale !== currentLocale) {
-          setLocale(btn.dataset.locale);
-        }
+    const langTrigger = document.getElementById('header-lang-trigger');
+    const langMenu = document.getElementById('header-lang-menu');
+    if (langTrigger && langMenu) {
+      langTrigger.addEventListener('click', e => {
+        e.stopPropagation();
+        const open = langMenu.classList.toggle('hidden');
+        langTrigger.setAttribute('aria-expanded', open ? 'false' : 'true');
       });
-    });
+      document.addEventListener('click', e => {
+        if (!e.target.closest('.header-lang')) closeLangMenu();
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeLangMenu();
+      });
+    }
 
     document.querySelectorAll('.pref-font-btn').forEach(btn => {
       btn.addEventListener('click', () => setFontSize(btn.dataset.size));
@@ -719,7 +880,7 @@ const I18n = (function () {
 
   function getTerms() {
     if (typeof AI_TERMS === 'undefined') return [];
-    if (currentLocale === DEFAULT_LOCALE) return AI_TERMS;
+    if (isChineseLocale()) return AI_TERMS;
     const overlay = getData('terms') || [];
     const catMap = getData('termCategories') || {};
     return AI_TERMS.map((t, i) => {
@@ -733,7 +894,7 @@ const I18n = (function () {
 
   function getApps() {
     if (typeof APPS === 'undefined') return [];
-    if (currentLocale === DEFAULT_LOCALE) return APPS;
+    if (isChineseLocale()) return APPS;
     const overlay = getData('apps') || [];
     const catMap = getData('appCategories') || {};
     return APPS.map((app, i) => {
@@ -753,34 +914,34 @@ const I18n = (function () {
 
   function getQuizData() {
     if (typeof QUIZ_DATA === 'undefined') return [];
-    if (currentLocale === DEFAULT_LOCALE) return QUIZ_DATA;
+    if (isChineseLocale()) return QUIZ_DATA;
     const overlay = getData('quiz') || [];
     return mergeIndexed(QUIZ_DATA, overlay);
   }
 
   function getAiOverviewSections() {
     if (typeof AI_OVERVIEW_SECTIONS === 'undefined') return [];
-    if (currentLocale === DEFAULT_LOCALE) return AI_OVERVIEW_SECTIONS;
+    if (isChineseLocale()) return AI_OVERVIEW_SECTIONS;
     const overlay = getData('aiOverview') || [];
     return mergeIndexed(AI_OVERVIEW_SECTIONS, overlay);
   }
 
   function getFundamentals() {
     if (typeof FUNDAMENTALS === 'undefined') return [];
-    if (currentLocale === DEFAULT_LOCALE) return FUNDAMENTALS;
+    if (isChineseLocale()) return FUNDAMENTALS;
     const overlay = getData('fundamentals') || [];
     return mergeIndexed(FUNDAMENTALS, overlay);
   }
 
   function getFundamentalsFigcaption() {
-    if (currentLocale === DEFAULT_LOCALE) {
+    if (isChineseLocale()) {
       return '一图看懂：AI 从学习数据到理解你的问题并生成回答；下方模块默认展开，可点击标题折叠。';
     }
     return getData('fundamentalsFigcaption') || '';
   }
 
   function getFundamentalsFigAlt() {
-    if (currentLocale === DEFAULT_LOCALE) {
+    if (isChineseLocale()) {
       return 'AI 工作原理示意图：数据训练、Transformer 架构、大语言模型推理到生成回答，以及 AI 包含机器学习与深度学习的层级关系';
     }
     return getData('fundamentalsFigAlt') || '';
@@ -788,7 +949,7 @@ const I18n = (function () {
 
   function getHandsOnCases() {
     if (typeof HANDS_ON_CASES === 'undefined') return [];
-    if (currentLocale === DEFAULT_LOCALE) return HANDS_ON_CASES;
+    if (isChineseLocale()) return HANDS_ON_CASES;
     return mergeIndexed(HANDS_ON_CASES, getData('handsOnCases') || []);
   }
 
@@ -798,7 +959,7 @@ const I18n = (function () {
 
   function getPractices() {
     if (typeof PRACTICES === 'undefined') return [];
-    if (currentLocale === DEFAULT_LOCALE) return PRACTICES;
+    if (isChineseLocale()) return PRACTICES;
     return mergeIndexed(PRACTICES, getData('practices') || []);
   }
 
@@ -808,7 +969,7 @@ const I18n = (function () {
 
   function getPromptCases() {
     if (typeof PROMPT_CASES === 'undefined') return [];
-    if (currentLocale === DEFAULT_LOCALE) return PROMPT_CASES;
+    if (isChineseLocale()) return PROMPT_CASES;
     const overlay = getData('promptLab.cases') || [];
     return PROMPT_CASES.map(c => {
       const o = overlay.find(x => x.id === c.id);
@@ -818,13 +979,13 @@ const I18n = (function () {
 
   function getPromptTasks() {
     if (typeof PROMPT_TASKS === 'undefined') return {};
-    if (currentLocale === DEFAULT_LOCALE) return PROMPT_TASKS;
+    if (isChineseLocale()) return PROMPT_TASKS;
     return { ...PROMPT_TASKS, ...(getData('promptLab.tasks') || {}) };
   }
 
   function getPromptTaskPresets() {
     if (typeof PROMPT_TASK_PRESETS === 'undefined') return {};
-    if (currentLocale === DEFAULT_LOCALE) return PROMPT_TASK_PRESETS;
+    if (isChineseLocale()) return PROMPT_TASK_PRESETS;
     const overlay = getData('promptLab.presets') || {};
     const out = { ...PROMPT_TASK_PRESETS };
     Object.keys(overlay).forEach(key => {
@@ -835,17 +996,17 @@ const I18n = (function () {
 
   function getPromptTools() {
     if (typeof PROMPT_TOOLS === 'undefined') return {};
-    if (currentLocale === DEFAULT_LOCALE) return PROMPT_TOOLS;
+    if (isChineseLocale()) return PROMPT_TOOLS;
     return { ...PROMPT_TOOLS, ...(getData('promptLab.tools') || {}) };
   }
 
   function getPromptTaskLabel(taskKey) {
-    if (currentLocale === DEFAULT_LOCALE) return taskKey;
+    if (isChineseLocale()) return taskKey;
     return getData('promptLab.taskLabels')?.[taskKey] || taskKey;
   }
 
   function getPromptToneLabel(toneKey) {
-    if (currentLocale === DEFAULT_LOCALE) return toneKey;
+    if (isChineseLocale()) return toneKey;
     return getData('promptLab.tones')?.[toneKey] || toneKey;
   }
 
@@ -855,7 +1016,7 @@ const I18n = (function () {
 
   function getMonetizeMeta() {
     if (typeof AI_MONETIZE_META === 'undefined') return {};
-    if (currentLocale === DEFAULT_LOCALE) return AI_MONETIZE_META;
+    if (isChineseLocale()) return AI_MONETIZE_META;
     const overlay = getData('monetize.meta') || {};
     return { ...AI_MONETIZE_META, ...overlay };
   }
@@ -866,7 +1027,7 @@ const I18n = (function () {
 
   function getMonetizeProjects() {
     if (typeof AI_MONETIZE_PROJECTS === 'undefined') return [];
-    if (currentLocale === DEFAULT_LOCALE) return AI_MONETIZE_PROJECTS;
+    if (isChineseLocale()) return AI_MONETIZE_PROJECTS;
     const overlay = getData('monetize.projects') || [];
     const catMap = getData('monetize.categories') || {};
     const diffMap = getData('monetize.ui.difficulty') || {};
@@ -888,7 +1049,7 @@ const I18n = (function () {
 
   function getCoachSections() {
     const overlay = getData('coachSections');
-    if (!overlay || currentLocale === DEFAULT_LOCALE) return null;
+    if (!overlay || isChineseLocale()) return null;
     const teacher = getTeacherName();
     return overlay.map(s => ({
       id: s.id,
@@ -898,7 +1059,7 @@ const I18n = (function () {
 
   function getPhaseCoachHints() {
     const overlay = getData('phaseCoachHints');
-    if (!overlay || currentLocale === DEFAULT_LOCALE) return null;
+    if (!overlay || isChineseLocale()) return null;
     return Object.fromEntries(
       Object.entries(overlay).map(([id, template]) => [
         id,
@@ -982,6 +1143,14 @@ const I18n = (function () {
     getTermCategoryAll,
     getMonetizeCategoryAll,
     getLocale: () => currentLocale,
+    getLocaleMeta,
+    getLocaleLabel,
+    getLocaleChain,
+    getBundle,
+    getRawBundleData,
+    isChineseLocale,
+    usesEnglishContent,
+    detectBrowserLocale,
     getFontSize: () => currentFontSize,
     setLocale,
     setFontSize,

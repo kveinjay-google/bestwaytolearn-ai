@@ -1,0 +1,291 @@
+I18n.registerLocale('de', {
+  strings: {
+  brand: {
+    name: "BestWayToLearn.AI",
+    logoHtml: "BestWayToLearn<em>.AI</em>",
+    url: "https://bestwaytolearn.ai/",
+    domain: "bestwaytolearn.ai",
+    ariaLabel: "BestWayToLearn.AI — bestwaytolearn.ai"
+  },
+  meta: {
+    title: "BestWayToLearn.AI | KI lernen — Von null zur Praxis",
+    description: "BestWayToLearn.AI — Vierphasiges KI-Lernen: Grundlagen, Tools, Praxis und Quiz. 100 Begriffe, 43 Apps, Prompt-Lab, echte Tutorials."
+  },
+  settings: {
+    title: "Anzeigeeinstellungen",
+    language: "Sprache",
+    languageGroup: "Sprache",
+    langZh: "简体中文",
+    langEn: "English",
+    langZhTW: "繁體中文",
+    langKo: "한국어",
+    langJa: "日本語",
+    langFr: "Français",
+    langEs: "Español",
+    langDe: "Deutsch",
+    chooseLanguage: "Sprache wählen",
+    theme: "Farbthema",
+    themeGroup: "Farbthema",
+    themeNeural: "Neural",
+    themeAurora: "Aurora",
+    themeSunrise: "Sonnenaufgang",
+    themeForest: "Wald",
+    themeInk: "Tinte",
+    themeEmber: "Glut",
+    themeOcean: "Ozean",
+    themeLavender: "Lavendel",
+    themeNoir: "Noir",
+    themeNeon: "Neon",
+    fontSize: "Schriftgröße",
+    fontSm: "Klein",
+    fontMd: "Standard",
+    fontLg: "Groß",
+    fontXl: "Sehr groß",
+    toggle: "Anzeigeeinstellungen",
+    fontToggle: "Schriftgröße",
+    installApp: "App installieren",
+    installHint: "Vollbild wie eine App öffnen; zwischengespeicherte Inhalte offline nutzen"
+  },
+  pwa: {
+    offline: "Offline — zwischengespeicherte Inhalte sind verfügbar"
+  },
+  nav: {
+    home: "KI-Lernen",
+    path: "Lernplan",
+    learn: "Grundlagen",
+    tools: "Tools",
+    practice: "Praxis",
+    validate: "Wiederholung",
+    monetize: "Monetarisierung",
+    devices: "Geräte",
+    toolsNav: "KI-Hub",
+    aiToolsNav: "KI-Hub",
+    skillsRecommend: "Skill-Empfehlungen",
+    aiSkillsNav: "Skill-Empfehlungen",
+    mcpNav: "MCP-Hub",
+    aiMcpNav: "MCP-Hub",
+    continue: "Weiterlernen →",
+    menuOpen: "Menü öffnen",
+    progress: "7-Tage-Fortschritt",
+    mainLabel: "Lernphasen"
+  },
+  user: {
+    defaultName: "Lernender",
+    manage: "Spitznamen verwalten"
+  },
+  teacher: {
+    name: "Kevin",
+    label: "Dein KI-Lerncoach",
+    coachToggle: "Coach-Tipps einklappen",
+    coachExpand: "Coach-Tipps ausklappen",
+    navLabel: "Schnellnavigation",
+    navToggle: "Schnellnavigation",
+    searchLabel: "Seite durchsuchen",
+    searchPlaceholder: "Begriffe, Tools, Module…",
+    searchEmpty: "Keine Ergebnisse. Anderes Stichwort versuchen.",
+    defaultMsg: "Hallo! Bereit zum Start?"
+  },
+  hero: {
+    greeting: "BestWayToLearn.AI",
+    titleHtml: "Von null starten.<br><span class=\"hero-highlight\">KI meistern</span>",
+    desc: "Vier Phasen von Grundlagen bis Praxis — echte KI-Fähigkeiten aufbauen.",
+    phaseLine: "Grundlagen · Tools · Praxis · Wiederholung",
+    ctaMap: "Lernkarte ansehen",
+    ctaContinue: "Weiterlernen"
+  },
+  roadmap: {
+    tag: "Lernkarte",
+    title: "Vierphasiger Lernpfad",
+    desc: "Schließe die vier Phasen der Reihe nach ab. Jede hat klare Ziele und Module. Fortschritt wird automatisch gespeichert.",
+    overall: "Gesamt {pct}%",
+    graduated: "Absolviert",
+    graduatedMsg: "Du hast den 7-Tage-Pfad und das Quiz geschafft. Glückwunsch!",
+    report: "Abschlussbericht ansehen →",
+    phaseLabel: "Phase {num}",
+    daysDone: "{done}/{total} Tage erledigt",
+    enter: "Phase betreten →"
+  },
+  path: {
+    bannerTitle: "7-Tage-Lernplan",
+    bannerDesc: "Tippe auf Lernen starten für die heutigen Module. Tag 1–7 der Reihe nach; beherrschte Tage überspringen.",
+    guideTitle: "So funktioniert's",
+    progress: "{done} / {total} Tage abgeschlossen",
+    tabProgress: "{done}/7 Tage",
+    phaseBelongs: "Heute gehört zu · {phase}",
+    goal: "Ziel: ",
+    goto: "Zum Lernen →",
+    enterPhase: "{phase} betreten →",
+    mastered: "Beherrscht",
+    checkDone: "Klicken zum Aufheben",
+    checkTodo: "Schon bekannt? Als beherrscht markieren und überspringen",
+    checkAriaDone: "Beherrscht — Klick zum Aufheben",
+    checkAriaTodo: "Als beherrscht markieren und überspringen",
+    legendTodo: "Zu lernen",
+    legendDone: "Beherrscht · überspringbar",
+    statusNotStarted: "Nicht gestartet",
+    statusInProgress: "In Bearbeitung",
+    currentBadge: "Aktuell",
+    statusAllDone: "Plan abgeschlossen",
+    statusGraduated: "Absolviert",
+    startFirst: "Tag 1 starten",
+    startLearning: "Tag {day} starten",
+    continueLearning: "Tag {day} fortsetzen",
+    reviewDay: "Tag {day} wiederholen",
+    startHintFirst: "Beginne mit Tag 1 und verschaffe dir ein Gesamtbild der KI",
+    viewMap: "Lernkarte ansehen",
+    allDoneTitle: "Alle 7 Tage beherrscht",
+    allDoneHint: "Bestehe das Quiz zum Abschluss",
+    allDoneCta: "Quiz starten",
+    graduatedHint: "Pfad und Quiz abgeschlossen",
+    timelineTitle: "7-Tage-Zeitplan",
+    modulesLabel: "Module",
+    tipStart: "Nutze den großen <strong>Tag 1 starten</strong>-Button oder <strong>Lernen starten</strong> auf jeder Karte.",
+    tipOrder: "Folge Tag 1→7; erledige tägliche Aufgaben vor dem Weitergehen.",
+    tipSkip: "Schon bekannt? <strong>Beherrscht</strong> auf der Karte markieren (jederzeit rückgängig)."
+  },
+  welcome: {
+    prev: "Zurück",
+    next: "Weiter",
+    start: "Lernen starten",
+    namePlaceholder: "Spitzname, z. B. Alex",
+    nameError: "Bitte mindestens 1 Zeichen eingeben"
+  },
+  profile: {
+    title: "Spitznamen verwalten",
+    desc: "Nur für Begrüßungen auf der Seite. Kevin nutzt deinen Spitznamen beim Lernen.",
+    save: "Spitznamen speichern",
+    clear: "Spitznamen löschen",
+    close: "Schließen",
+    nameError: "Bitte mindestens 1 Zeichen eingeben",
+    clearConfirm: "Spitznamen löschen? Die Seite nutzt wieder „Lernender“. Dein Fortschritt bleibt erhalten."
+  },
+  aiNavPage: {
+    bannerTitle: "KI-Hub",
+    toolsBannerSubtitle: "Nach Kategorie · Offizielle Seiten",
+    skillsBannerSubtitle: "Top GitHub Skills · Ein-Klick-Installation",
+    mcpBannerSubtitle: "MCP-Server · Config kopieren",
+    tabTools: "Tools",
+    tabSkills: "Skills",
+    tabMcp: "MCP",
+    bannerStatTools: "{n} Tools",
+    bannerStatSkills: "{n} Skills",
+    bannerStatMcp: "{n} MCP-Server",
+    linkDirectory: "KI-Hub durchsuchen (100+ Tools) →"
+  },
+  toolsNavPage: {
+    tag: "Tools",
+    title: "KI-Tools-Hub",
+    linkCurriculum: "Ausführlichen App-Guide ansehen →"
+  },
+  skillsNavPage: {
+    tag: "Skill",
+    bannerTitle: "Skill-Empfehlungen",
+    bannerSubtitle: "Top GitHub Skills · Ein-Klick-Installation",
+    title: "Skill-Empfehlungen"
+  },
+  mcpNavPage: {
+    tag: "MCP",
+    bannerTitle: "MCP-Hub",
+    bannerSubtitle: "Beliebte MCP-Server · Funktionen · Config kopieren",
+    title: "MCP-Hub",
+    linkApps: "Agent-Tools im Kurs ansehen →"
+  },
+  footer: {
+    brand: "BestWayToLearn.AI",
+    tagline: "Grundlagen → Tools → Praxis → Wiederholung — solide KI-Fähigkeiten in vier Schritten.",
+    manage: "Spitznamen verwalten",
+    resetWelcome: "Willkommenstour wiederholen",
+    note: "Statische Bildungsseite. App-Links nur zur Referenz."
+  },
+  common: {
+    copy: "Kopieren",
+    copied: "Kopiert ✓",
+    copyFail: "Kopieren fehlgeschlagen. Text manuell auswählen.",
+    noCopy: "Nichts zu kopieren.",
+    goal: "Ziel: ",
+    suitable: "Ideal für: ",
+    tradeoff: "Abwägungen: ",
+    vsDiy: "vs DIY-Build: ",
+    oem: "Repräsentative Modelle: ",
+    apps: "Empfohlene Apps",
+    phase: "Phase",
+    day: "Tag"
+  },
+  terms: {
+    categoryAll: "Alle",
+    flipAll: "Alle umdrehen",
+    flipAllBack: "Zur Vorderseite",
+    autoFlip: "Auto-Umdrehen",
+    autoFlipOn: "Auto-Umdrehen: An",
+    autoFlipTitle: "Hover dreht Karten automatisch",
+    searchConcepts: "Abkürzung oder vollen Namen suchen, z. B. Skill, LLM, RAG…",
+    searchGlossary: "Begriffe suchen…",
+    count: "{n} Begriffe",
+    cardsView: "Kartenlernen",
+    glossaryView: "Schnellglossar",
+    viewToggle: "Wissensbasis-Ansicht"
+  },
+  monetize: {
+    categoryAll: "Alle"
+  },
+  mastery: {
+    badgeDone: "Phase beherrscht",
+    badgeConfirm: "Beherrschungs-Check",
+    title: "Hast du diese Seite beherrscht?",
+    markRemaining: "Verbleibende {n} Tage markieren",
+    markPhase: "Phase als beherrscht markieren",
+    viewPath: "Lernplan ansehen",
+    unmark: "Markierung aufheben",
+    phaseDone: "Phase abgeschlossen",
+    quizDay: "Tag 7 eingecheckt",
+    quizTitle: "Letzter Schritt: Wissensquiz"
+  },
+  validate: {
+    progressPending: "Quiz ausstehend",
+    progressScore: "Beste {score} Pkt.",
+    progressPass: "Quiz bestanden",
+    progressGraduated: "Absolviert"
+  },
+  quiz: {
+    preludeBadge: "Lernmeilenstein",
+    preludeTitle: "{name}, du hast es hierher geschafft",
+    preludeCongrats: "Von KI-Grundlagen über Tools bis zur Praxis — du hast alle Kursmodule auf BestWayToLearn.AI gewissenhaft abgeschlossen. Diese Hingabe verdient Anerkennung.",
+    preludeJourney: [
+      "Grundlagen",
+      "Tools",
+      "Praxis",
+      "Wiederholung"
+    ],
+    preludePurposeTitle: "Deine Abschlussprüfung",
+    preludePurpose: "Um dein Wissen zu prüfen und Lücken zu finden, haben wir dieses {n}-Fragen-Quiz für dich erstellt.",
+    preludePurposeSub: "Theorie, Kernbegriffe, wichtige Tools und Praxisszenarien. Kein Zeitlimit — jederzeit pausierbar. Danach falsche Antworten prüfen und Module wiederholen.",
+    statQuestions: "{n} ausgewählte Fragen",
+    statPass: "Bestehensgrenze {pass}",
+    statDuration: "{duration}",
+    startBtn: "Ich bin bereit — Prüfung starten",
+    startBtnShort: "Quiz starten",
+    next: "Nächste Frage",
+    counter: "{cur} / {total}",
+    graduatedNote: "Absolviert! Beste Punktzahl: {score} / {total}. Quiz wiederholen oder Abschlussbericht unten ansehen."
+  },
+  devices: {
+    lead: "",
+    aiBoxesTitle: "⑥ Dedizierte KI-Compute-Boxen",
+    presetsTitle: "⑦ Empfohlene Konfigurationen",
+    dedicated: "Dediziertes KI-Gerät",
+    luxury: "Top-Konfiguration",
+    chip: "Chip: ",
+    compute: "Rechenleistung",
+    memory: "Speicher",
+    storage: "Storage",
+    network: "Netzwerk",
+    infer: "Inferenz",
+    finetune: "Fine-Tuning",
+    agents: "Agenten"
+  },
+  notice: {
+    partial: "Deutsche Oberfläche aktiv. Einige Lerninhalte können auf Englisch bleiben.",
+    partialEn: "Deutsche Oberfläche aktiv. Einige Lerninhalte können auf Englisch bleiben."
+  }
+}
+});

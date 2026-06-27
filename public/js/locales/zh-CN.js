@@ -12,6 +12,7 @@ I18n.registerLocale('zh-CN', {
       description: 'BestWayToLearn.AI — 四阶段 AI 系统学习：认知基础、工具掌握、实战应用与知识测验。100 个术语、43 款主流应用、提示词实验室与真实实操教程，从零到实战。',
     },
     notice: {
+      partial: '',
       partialEn: '',
     },
     settings: {
@@ -19,7 +20,14 @@ I18n.registerLocale('zh-CN', {
       language: '语言',
       languageGroup: '语言',
       langZh: '简体中文',
+      langZhTW: '繁體中文',
       langEn: 'English',
+      langKo: '한국어',
+      langJa: '日本語',
+      langFr: 'Français',
+      langEs: 'Español',
+      langDe: 'Deutsch',
+      chooseLanguage: '选择语言',
       theme: '配色风格',
       themeGroup: '配色风格',
       themeNeural: '神经网络',

@@ -86,7 +86,7 @@ function filterTerms(query = '', category = '全部') {
 
 function getTermFilterLabel(cat) {
   if (cat === '全部') return typeof I18n !== 'undefined' ? I18n.getTermCategoryAll() : '全部';
-  if (typeof I18n !== 'undefined' && I18n.getLocale() === 'en') {
+  if (typeof I18n !== 'undefined' && I18n.usesEnglishContent()) {
     const map = I18n.getData('termCategories') || {};
     return map[cat] || cat;
   }
@@ -211,7 +211,7 @@ function getCoachQuickNavData() {
 }
 
 function termDisplayName(c) {
-  if (typeof I18n !== 'undefined' && I18n.getLocale() === 'en') {
+  if (typeof I18n !== 'undefined' && I18n.usesEnglishContent()) {
     return (c.abbr && c.abbr !== '—') ? c.abbr : c.fullEn;
   }
   return c.term;
@@ -220,7 +220,9 @@ function termDisplayName(c) {
 function formatLocaleDate(iso) {
   if (!iso) return '';
   try {
-    const loc = typeof I18n !== 'undefined' && I18n.getLocale() === 'en' ? 'en-US' : 'zh-CN';
+    const loc = typeof I18n !== 'undefined'
+      ? I18n.getLocaleMeta().dateLocale
+      : 'zh-CN';
     return new Date(iso).toLocaleDateString(loc, { year: 'numeric', month: 'long', day: 'numeric' });
   } catch {
     return '';
@@ -501,7 +503,7 @@ function getQuizReviewLink(qIdx) {
 
 function getQuizDurationHint() {
   const mins = Math.max(15, Math.round(getQuizData().length * 0.45));
-  if (typeof I18n !== 'undefined' && I18n.getLocale() === 'en') {
+  if (typeof I18n !== 'undefined' && I18n.usesEnglishContent()) {
     return `~${mins} min`;
   }
   return `约需 ${mins} 分钟`;
@@ -1426,7 +1428,7 @@ function buildGraduationReportText() {
   const dateStr = formatLocaleDate(prog.graduatedAt) || uiT('graduation.today', '今日');
   const plan = prog.practicePlan30 || {};
   const focusLabels = (plan.focus || []).map(getPracticePlanFocusLabel);
-  const focusSep = typeof I18n !== 'undefined' && I18n.getLocale() === 'en' ? ', ' : '、';
+  const focusSep = typeof I18n !== 'undefined' && I18n.usesEnglishContent() ? ', ' : '、';
   const focus = focusLabels.join(focusSep) || uiT('graduation.unfilled', '（未填写）');
   const brand = typeof I18n !== 'undefined' ? I18n.getBrandName() : 'BestWayToLearn.AI';
   const siteUrl = typeof I18n !== 'undefined' ? I18n.getSiteUrl() : 'https://bestwaytolearn.ai/';
@@ -2671,12 +2673,12 @@ function renderMonetizeGrid() {
 }
 
 function renderAppsGrid(category) {
-  const bestForLabel = typeof I18n !== 'undefined' && I18n.getLocale() === 'en' ? 'Best for: ' : '适合：';
-  const tipLabel = typeof I18n !== 'undefined' && I18n.getLocale() === 'en' ? 'Getting started: ' : '上手建议：';
+  const bestForLabel = typeof I18n !== 'undefined' && I18n.usesEnglishContent() ? 'Best for: ' : '适合：';
+  const tipLabel = typeof I18n !== 'undefined' && I18n.usesEnglishContent() ? 'Getting started: ' : '上手建议：';
   document.getElementById('apps-grid').innerHTML = getAppsData().map(app => {
     const show = category === '全部' || app.category === category;
     const catLabel = app.categoryLabel || app.category;
-    const openTitle = typeof I18n !== 'undefined' && I18n.getLocale() === 'en'
+    const openTitle = typeof I18n !== 'undefined' && I18n.usesEnglishContent()
       ? `Open ${app.name} website`
       : `打开 ${app.name} 官网`;
     return `
@@ -2749,7 +2751,7 @@ function renderHandsOnList() {
     handsOnCategory === '全部' || getHandsOnCategory(i) === handsOnCategory
   ).length;
   const countEl = document.getElementById('hands-on-count');
-  const countText = typeof I18n !== 'undefined' && I18n.getLocale() === 'en'
+  const countText = typeof I18n !== 'undefined' && I18n.usesEnglishContent()
     ? `${visibleCount} / ${total} shown`
     : `显示 ${visibleCount} / ${total} 个`;
   if (countEl) countEl.textContent = countText;
@@ -2759,25 +2761,25 @@ function renderHandsOnList() {
   });
 
   if (!visibleCount) {
-    const emptyHint = typeof I18n !== 'undefined' && I18n.getLocale() === 'en'
+    const emptyHint = typeof I18n !== 'undefined' && I18n.usesEnglishContent()
       ? 'No cases in this category. Try another tag.'
       : '该分类下暂无案例，试试其他标签。';
     container.innerHTML = `<p class="empty-hint">${emptyHint}</p>`;
     return;
   }
 
-  const resultLabel = typeof I18n !== 'undefined' && I18n.getLocale() === 'en' ? 'You will get: ' : '完成后你将得到：';
-  const tipsLabel = typeof I18n !== 'undefined' && I18n.getLocale() === 'en' ? 'Tips: ' : '小贴士：';
+  const resultLabel = typeof I18n !== 'undefined' && I18n.usesEnglishContent() ? 'You will get: ' : '完成后你将得到：';
+  const tipsLabel = typeof I18n !== 'undefined' && I18n.usesEnglishContent() ? 'Tips: ' : '小贴士：';
   const copyLabel = typeof I18n !== 'undefined' ? I18n.t('common.copy') : '一键复制';
   const promptHeader = (c) => c.software === 'OpenClaw'
-    ? (I18n?.getLocale() === 'en' ? 'Command / prompt' : '命令 / 提示词')
-    : (I18n?.getLocale() === 'en' ? `Copy to ${c.software}` : `复制到 ${c.software}`);
+    ? (I18n?.usesEnglishContent() ? 'Command / prompt' : '命令 / 提示词')
+    : (I18n?.usesEnglishContent() ? `Copy to ${c.software}` : `复制到 ${c.software}`);
 
   container.innerHTML = cases.map((c, i) => {
     const cat = getHandsOnCategory(i);
     const catLabel = typeof I18n !== 'undefined' ? I18n.getHandsOnCategoryLabel(cat) : cat;
     const show = handsOnCategory === '全部' || cat === handsOnCategory;
-    const openTitle = I18n?.getLocale() === 'en' ? `Open ${c.software} website` : `打开 ${c.software} 官网`;
+    const openTitle = I18n?.usesEnglishContent() ? `Open ${c.software} website` : `打开 ${c.software} 官网`;
     return `
     <article class="hands-on-item ${show ? '' : 'hidden-practice-item'}" id="hands-on-${i}">
       <div class="hands-on-header">
@@ -2833,7 +2835,7 @@ function renderPracticeList() {
     practiceCategory === '全部' || getPracticeCategory(i) === practiceCategory
   ).length;
   const countEl = document.getElementById('practice-count');
-  const countText = typeof I18n !== 'undefined' && I18n.getLocale() === 'en'
+  const countText = typeof I18n !== 'undefined' && I18n.usesEnglishContent()
     ? `${visibleCount} / ${total} shown`
     : `显示 ${visibleCount} / ${total} 个`;
   if (countEl) countEl.textContent = countText;
@@ -2843,14 +2845,14 @@ function renderPracticeList() {
   });
 
   if (!visibleCount) {
-    const emptyHint = typeof I18n !== 'undefined' && I18n.getLocale() === 'en'
+    const emptyHint = typeof I18n !== 'undefined' && I18n.usesEnglishContent()
       ? 'No templates in this category. Try another tag.'
       : '该分类下暂无模板，试试其他标签。';
     container.innerHTML = `<p class="empty-hint">${emptyHint}</p>`;
     return;
   }
 
-  const promptTplLabel = typeof I18n !== 'undefined' && I18n.getLocale() === 'en' ? 'Prompt template' : '提示词模板';
+  const promptTplLabel = typeof I18n !== 'undefined' && I18n.usesEnglishContent() ? 'Prompt template' : '提示词模板';
   const copyLabel = typeof I18n !== 'undefined' ? I18n.t('common.copy') : '一键复制';
 
   container.innerHTML = practices.map((p, i) => {
@@ -3036,8 +3038,8 @@ function showPromptGuide(taskOrCase) {
     '粘贴提示词并发送，将背景替换为你的真实场景',
     '根据回复迭代：「更简洁」「换成表格」「补充数据」'
   ];
-  const stepPrefix = I18n?.getLocale() === 'en' ? 'Step' : '第';
-  const stepSuffix = I18n?.getLocale() === 'en' ? '' : ' 步';
+  const stepPrefix = I18n?.usesEnglishContent() ? 'Step' : '第';
+  const stepSuffix = I18n?.usesEnglishContent() ? '' : ' 步';
   document.getElementById('guide-steps').innerHTML = steps
     .map((s, i) => `<li><strong>${stepPrefix} ${i + 1}${stepSuffix}</strong> — ${s}</li>`).join('');
   document.getElementById('guide-tool-tags').innerHTML = tools
@@ -3745,7 +3747,7 @@ function applyPersonalization(name) {
 
   const desc = document.getElementById('hero-desc');
   if (desc) {
-    desc.textContent = I18n?.getLocale() === 'en'
+    desc.textContent = I18n?.usesEnglishContent()
       ? `${teacher} will guide you through Cognition → Tools → Practice → Review. I'll be with you every step.`
       : `${teacher}会带你按四步学习法，从零建立完整的 AI 能力。从学习地图按阶段推进，我会一直陪着你。`;
   }
@@ -4028,7 +4030,7 @@ function buildSiteSearchIndex() {
   getTermsData().forEach(t => {
     entries.push({
       type: getSearchTypeLabel('term'),
-      title: typeof I18n !== 'undefined' && I18n.getLocale() === 'en' ? (t.abbr && t.abbr !== '—' ? t.abbr : t.fullEn) : t.term,
+      title: typeof I18n !== 'undefined' && I18n.usesEnglishContent() ? (t.abbr && t.abbr !== '—' ? t.abbr : t.fullEn) : t.term,
       subtitle: t.abbr && t.abbr !== '—' ? `${t.abbr} · ${t.fullEn}` : t.fullEn,
       keywords: [t.term, t.abbr, t.fullEn, t.def, t.category].filter(Boolean).join(' '),
       action: 'term',
