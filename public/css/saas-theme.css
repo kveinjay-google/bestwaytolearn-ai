@@ -1,0 +1,751 @@
+/* BestWayToLearn.AI — SaaS Product System (Linear / Stripe aesthetic) */
+
+:root {
+  --bg-deep: #0B1220;
+  --bg-surface: #0B1220;
+  --bg-elevated: rgba(255, 255, 255, 0.03);
+  --bg-card: rgba(255, 255, 255, 0.03);
+  --border: rgba(148, 163, 184, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.08);
+  --text-primary: #E6EDF3;
+  --text-secondary: #94A3B8;
+  --text-muted: #94A3B8;
+  --accent: #4F46E5;
+  --accent-hover: #6366F1;
+  --accent-dim: rgba(79, 70, 229, 0.12);
+  --accent-teal: var(--accent);
+  --accent-teal-dim: var(--accent-dim);
+  --accent-amber: var(--accent);
+  --accent-amber-dim: rgba(79, 70, 229, 0.08);
+  --accent-rose: var(--accent);
+  --accent-violet: var(--accent);
+  --accent-sky: var(--accent);
+  --accent-sky-dim: var(--accent-dim);
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', system-ui, sans-serif;
+  --font-body: var(--font-display);
+  --font-mono: 'Inter', ui-monospace, monospace;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 12px;
+  --shadow-glow: 0 1px 2px rgba(0, 0, 0, 0.24);
+  --transition: 0.2s ease;
+  --content-max: 1120px;
+  --header-height: 3.5rem;
+}
+
+html[lang="zh-CN"] {
+  --font-display: 'Inter', 'PingFang SC', 'Noto Sans SC', -apple-system, sans-serif;
+  --font-body: var(--font-display);
+}
+
+html[lang="en"] .section-header h2,
+html[lang="en"] .phase-banner-text h2,
+html[lang="en"] .hero-title {
+  letter-spacing: -0.03em;
+}
+
+body {
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+#neural-canvas {
+  display: none !important;
+}
+
+/* ─── Header ─── */
+.site-header {
+  height: var(--header-height);
+  padding: 0 1.5rem;
+  background: rgba(11, 18, 32, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  max-width: var(--content-max);
+  gap: 1.25rem;
+}
+
+.logo {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.logo-mark {
+  animation: none;
+  opacity: 0.9;
+}
+
+.logo-text em {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0 auto;
+}
+
+.main-nav a {
+  padding: 0.45rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: color var(--transition), background var(--transition), border-color var(--transition);
+}
+
+.main-nav a:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.main-nav a.active {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.header-continue {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.header-continue:hover {
+  background: var(--accent-hover);
+}
+
+.header-progress {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 0.35rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.header-user {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.header-lang-btn.active {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ─── Buttons ─── */
+.btn {
+  font-family: var(--font-body);
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition), border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.btn-primary {
+  background: var(--accent);
+  border: 1px solid transparent;
+  color: #fff;
+  box-shadow: none;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+}
+
+.btn-ghost:hover {
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* ─── Hero ─── */
+.hero {
+  padding: calc(var(--header-height) + 4.5rem) 1.5rem 3.5rem;
+  background: var(--bg-deep);
+  overflow: visible;
+  isolation: auto;
+}
+
+.hero-backdrop,
+.hero-visual,
+.hero-eyebrow,
+.flow-preview {
+  display: none !important;
+}
+
+.hero-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: block;
+  text-align: left;
+  padding: 0;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.hero-title .hero-accent,
+.hero-title .hero-accent-ai {
+  color: inherit;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.hero-desc {
+  max-width: 36rem;
+  font-size: 1.0625rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0 0 2rem;
+}
+
+.hero-actions {
+  justify-content: flex-start;
+}
+
+.hero-cta {
+  min-width: 10rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9375rem;
+}
+
+/* ─── Home sections ─── */
+.phase-view[data-phase-tab="map"] {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 1.5rem 5rem;
+}
+
+.system-overview {
+  padding: 0 0 3.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 3.5rem;
+}
+
+.system-overview-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.system-overview h2 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.system-overview p {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  max-width: 32rem;
+  line-height: 1.6;
+}
+
+.roadmap-section {
+  padding: 0;
+  margin-bottom: 4rem;
+  position: relative;
+  background: transparent;
+}
+
+.roadmap-backdrop {
+  display: none !important;
+}
+
+.roadmap-section .section-header {
+  margin-bottom: 1.75rem;
+  text-align: left;
+}
+
+.roadmap-section .section-header-center {
+  text-align: left;
+}
+
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.section-header p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  max-width: 32rem;
+}
+
+.section-tag {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  padding: 0.25rem 0.55rem;
+  border-radius: 100px;
+}
+
+.roadmap-overall {
+  display: none;
+}
+
+.roadmap-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Module cards */
+.module-card,
+.roadmap-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.35rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto auto;
+  gap: 0.65rem 1rem;
+  align-items: center;
+  box-shadow: none;
+  transition: border-color var(--transition), transform var(--transition), background var(--transition);
+}
+
+.module-card:hover,
+.roadmap-card:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+}
+
+.module-card.done,
+.roadmap-card.done {
+  border-color: rgba(79, 70, 229, 0.28);
+}
+
+.module-card-head {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+.module-card-num,
+.roadmap-card-num {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.module-card-head h3,
+.roadmap-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0;
+  font-family: var(--font-display);
+}
+
+.module-card-status {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 0.2rem 0.55rem;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+  white-space: nowrap;
+}
+
+.module-card-status.is-progress {
+  color: var(--accent);
+  border-color: rgba(79, 70, 229, 0.25);
+  background: var(--accent-dim);
+}
+
+.module-card-status.is-done {
+  color: var(--text-primary);
+}
+
+.module-card-bar {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.module-card-bar-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.module-card-cta,
+.roadmap-card-link {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  justify-self: start;
+  margin: 0.25rem 0 0;
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-align: center;
+  width: auto;
+  min-width: 7.5rem;
+}
+
+.roadmap-card-sub,
+.roadmap-card-desc,
+.roadmap-modules,
+.roadmap-card-footer,
+.roadmap-card-days {
+  display: none !important;
+}
+
+.roadmap-card-progress {
+  display: none;
+}
+
+/* Progress system */
+.progress-system {
+  padding: 2rem 0 0;
+  border-top: 1px solid var(--border);
+}
+
+.progress-system-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 2rem;
+  padding: 1.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+}
+
+.progress-system-meta h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.02em;
+}
+
+.progress-system-meta p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.progress-system-bar {
+  width: min(280px, 100%);
+  height: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-system-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.progress-system-pct {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.progress-system-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.progress-system-cta {
+  padding: 0.7rem 1.35rem;
+  font-size: 0.9rem;
+}
+
+.progress-system-hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  max-width: 16rem;
+  line-height: 1.45;
+}
+
+.graduation-banner {
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(79, 70, 229, 0.22);
+  border-radius: var(--radius-md);
+}
+
+.graduation-banner-badge {
+  color: var(--accent);
+}
+
+/* ─── Phase panels ─── */
+.learning-phase,
+.phase-view:not([data-phase-tab="map"]) {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+}
+
+.phase-banner {
+  margin-top: calc(var(--header-height) + 1.5rem);
+  padding: 1.5rem 0 2rem;
+  border-bottom: 1px solid var(--border);
+  background: transparent !important;
+  min-height: 0 !important;
+  border-radius: 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.phase-banner .page-poster-bg {
+  display: none !important;
+}
+
+.phase-num {
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 1;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+}
+
+.phase-banner-text h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.phase-banner-text p {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.phase-progress {
+  color: var(--text-secondary);
+  border-color: var(--border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.phase-banner-teal .phase-progress,
+.phase-banner-amber .phase-progress,
+.phase-banner-violet .phase-progress,
+.phase-banner-rose .phase-progress,
+.phase-banner-validate .phase-progress,
+.phase-banner-gold .phase-progress,
+.phase-banner-sky .phase-progress {
+  color: var(--text-secondary);
+  border-color: var(--border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.section {
+  padding: 2.5rem 0;
+}
+
+/* Cards & surfaces */
+.overview-point,
+.fundamental-card,
+.term-card,
+.app-card,
+.hands-on-item,
+.practice-item,
+.quiz-container,
+.graduation-hero,
+.practice-plan-30,
+.prompt-case-card,
+.device-card,
+.monetize-card,
+.tools-nav-section {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: none !important;
+}
+
+.overview-point:hover,
+.fundamental-card:hover,
+.term-card:hover,
+.app-card:hover,
+.hands-on-item:hover {
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Remove glow / neon */
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+
+.teacher-coach {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(11, 18, 32, 0.94);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.welcome-modal,
+.user-profile-modal {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: var(--bg-deep);
+}
+
+.site-footer .footer-inner {
+  max-width: var(--content-max);
+}
+
+.footer-domain {
+  color: var(--accent);
+}
+
+/* Quiz / validate scoped overrides → unified accent */
+#phase-validate {
+  --validate-accent: var(--accent);
+  --validate-accent-strong: var(--accent-hover);
+  --validate-accent-dim: var(--accent-dim);
+  --validate-success: var(--accent);
+  --validate-success-dim: var(--accent-dim);
+}
+
+#phase-validate .btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Path view legacy */
+#phase-view-path {
+  --path-accent: var(--accent);
+  --path-accent-strong: var(--accent-hover);
+  --path-accent-dim: var(--accent-dim);
+  --path-accent-border: rgba(79, 70, 229, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-nav {
+    gap: 0;
+  }
+
+  .main-nav a {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.8125rem;
+  }
+
+  .hero {
+    padding-top: calc(var(--header-height) + 2.5rem);
+    padding-bottom: 2.5rem;
+  }
+
+  .progress-system-inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .progress-system-actions {
+    width: 100%;
+  }
+
+  .progress-system-cta {
+    width: 100%;
+    text-align: center;
+  }
+
+  .module-card,
+  .roadmap-card {
+    grid-template-columns: 1fr;
+  }
+
+  .module-card-status {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+  }
+
+  .module-card-bar {
+    grid-row: 3;
+  }
+
+  .module-card-cta,
+  .roadmap-card-link {
+    grid-row: 4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary:hover,
+  .module-card:hover,
+  .roadmap-card:hover {
+    transform: none;
+  }
+}
