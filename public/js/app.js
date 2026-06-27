@@ -634,11 +634,17 @@ const PHASE_TAB_CONFIG = {
     panelSelector: '#phase-view-devices',
     hashes: ['devices', 'device-guide', 'device-ai-boxes', 'device-presets'],
   },
-  toolsNav: {
+  aiToolsNav: {
     label: 'AI导航',
     navHash: 'ai-nav',
-    panelSelector: '#phase-view-tools-nav',
-    hashes: ['ai-nav', 'ai-tools-nav', 'tools-nav', 'ai-skills-nav', 'skills-nav'],
+    panelSelector: '#phase-view-ai-tools',
+    hashes: ['ai-nav', 'ai-tools-nav', 'tools-nav'],
+  },
+  aiSkillsNav: {
+    label: 'AI导航',
+    navHash: 'ai-skills-nav',
+    panelSelector: '#phase-view-ai-skills',
+    hashes: ['ai-skills-nav', 'skills-nav'],
   },
   learn: {
     label: '认知基础',
@@ -730,7 +736,7 @@ const PHASE_PANEL_SELECTOR = '.phase-view, .learning-phase';
 function getNavTabLabels() {
   return typeof I18n !== 'undefined' ? I18n.getNavLabels() : {
     map: '首页', path: '学习计划', learn: '01 认知', tools: '02 工具',
-    practice: '03 实战', validate: '04 检验', monetize: '变现', devices: '设备', toolsNav: 'AI导航',
+    practice: '03 实战', validate: '04 检验', monetize: '变现', devices: '设备', aiToolsNav: 'AI导航',
   };
 }
 
@@ -750,11 +756,30 @@ function repairNavTabs() {
   document.querySelectorAll('.main-nav .phase-next-bridge').forEach(el => el.remove());
 }
 
+function getMainNavHighlightTab(tabId) {
+  if (tabId === 'aiSkillsNav' || tabId === 'aiToolsNav' || tabId === 'toolsNav') return 'aiToolsNav';
+  return tabId;
+}
+
 function updatePhaseTabNavUI(tabId) {
+  const navTab = getMainNavHighlightTab(tabId);
   document.querySelectorAll('.main-nav a[data-nav-tab]').forEach(link => {
-    const active = link.dataset.navTab === tabId;
+    const active = link.dataset.navTab === navTab;
     link.classList.toggle('active', active);
     link.setAttribute('aria-selected', active ? 'true' : 'false');
+  });
+  updateAiNavTabsUI(tabId);
+}
+
+function updateAiNavTabsUI(tabId) {
+  document.querySelectorAll('.ai-nav-tabs').forEach(nav => {
+    nav.querySelectorAll('.ai-nav-tab').forEach(tab => {
+      const href = tab.getAttribute('href') || '';
+      const isSkills = href === '#ai-skills-nav';
+      const active = (tabId === 'aiSkillsNav' && isSkills) || ((tabId === 'aiToolsNav' || tabId === 'toolsNav') && !isSkills);
+      tab.classList.toggle('active', active);
+      tab.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
   });
 }
 
@@ -784,14 +809,7 @@ function switchPhaseTab(tabId, { scrollToId, behavior = 'smooth', save = true } 
   updatePhaseTabNavUI(tabId);
   if (save) localStorage.setItem(PHASE_TAB_KEY, tabId);
 
-  let scrollTarget = scrollToId || PHASE_TAB_CONFIG[tabId].navHash;
-  if (tabId === 'toolsNav') {
-    const hashId = String(scrollTarget).replace(/^#/, '');
-    switchAiNavSubTab(resolveAiNavSubTabFromHash(hashId), { scroll: false, updateHash: false });
-    scrollTarget = hashId === 'ai-nav'
-      ? 'ai-nav'
-      : (aiNavSubTab === 'skills' ? 'ai-skills-nav' : 'ai-tools-nav');
-  }
+  const scrollTarget = scrollToId || PHASE_TAB_CONFIG[tabId].navHash;
   requestAnimationFrame(() => {
     scrollToPhaseTarget(scrollTarget, { behavior });
     const panel = getPhasePanel(tabId);
@@ -1137,6 +1155,7 @@ function handlePhaseBridgeClick(e) {
 }
 
 function initPhaseTabs() {
+  migratePhaseTabStorage();
   hashToPhaseTab = buildHashToPhaseTabMap();
   repairNavTabs();
   renderPhaseBridges();
@@ -1918,13 +1937,6 @@ function renderApps(filter = DEFAULT_APP_CATEGORY) {
 
 let monetizeCategory = '全部';
 let toolsNavQuery = '';
-let aiNavSubTab = 'tools';
-
-function resolveAiNavSubTabFromHash(hashId) {
-  const id = String(hashId || '').replace(/^#/, '');
-  if (id === 'ai-skills-nav' || id === 'skills-nav') return 'skills';
-  return 'tools';
-}
 
 function getAiNavMeta() {
   if (typeof I18n !== 'undefined' && I18n.t('aiNavPage.bannerStatTools')) {
@@ -1939,63 +1951,31 @@ function getAiNavMeta() {
   };
 }
 
-function updateAiNavBannerStat() {
-  const el = document.getElementById('ai-nav-banner-stat');
+function updateAiToolsBannerStat() {
+  const el = document.getElementById('ai-tools-banner-stat');
   if (!el) return;
   const meta = getAiNavMeta();
-  const toolsCount = getToolsNavLinks().length;
-  const skillsCount = typeof getSkillsNavLinks === 'function' ? getSkillsNavLinks().length : 0;
-  const tpl = aiNavSubTab === 'skills' ? meta.bannerStatSkills : meta.bannerStatTools;
-  const n = aiNavSubTab === 'skills' ? skillsCount : toolsCount;
+  const n = getToolsNavLinks().length;
   el.textContent = typeof I18n !== 'undefined'
-    ? I18n.interpolate(tpl, { n })
-    : tpl.replace('{n}', String(n));
+    ? I18n.interpolate(meta.bannerStatTools, { n })
+    : meta.bannerStatTools.replace('{n}', String(n));
 }
 
-function switchAiNavSubTab(subTab, { scroll = true, updateHash = true, behavior = 'smooth' } = {}) {
-  aiNavSubTab = subTab === 'skills' ? 'skills' : 'tools';
-  document.querySelectorAll('[data-ai-nav-tab]').forEach(btn => {
-    const active = btn.dataset.aiNavTab === aiNavSubTab;
-    btn.classList.toggle('active', active);
-    btn.setAttribute('aria-selected', active ? 'true' : 'false');
-  });
-  document.querySelectorAll('[data-ai-nav-panel]').forEach(panel => {
-    const show = panel.dataset.aiNavPanel === aiNavSubTab;
-    panel.hidden = !show;
-    panel.classList.toggle('ai-nav-panel-active', show);
-  });
-  updateAiNavBannerStat();
-  if (scroll && currentPhaseTab === 'toolsNav') {
-    const targetId = aiNavSubTab === 'skills' ? 'ai-skills-nav' : 'ai-tools-nav';
-    scrollToPhaseTarget(targetId, { behavior });
-  }
-  if (updateHash && currentPhaseTab === 'toolsNav') {
-    const hash = aiNavSubTab === 'skills' ? 'ai-skills-nav' : 'ai-nav';
-    if (location.hash !== `#${hash}`) {
-      history.replaceState(null, '', `#${hash}`);
-    }
-  }
+function updateAiSkillsBannerStat() {
+  const el = document.getElementById('ai-skills-banner-stat');
+  if (!el) return;
+  const meta = getAiNavMeta();
+  const n = typeof getSkillsNavLinks === 'function' ? getSkillsNavLinks().length : 0;
+  el.textContent = typeof I18n !== 'undefined'
+    ? I18n.interpolate(meta.bannerStatSkills, { n })
+    : meta.bannerStatSkills.replace('{n}', String(n));
 }
 
-function initAiNavTabs() {
-  const tabs = document.getElementById('ai-nav-tabs');
-  if (!tabs || tabs.dataset.bound) return;
-  tabs.dataset.bound = 'true';
-  tabs.addEventListener('click', e => {
-    const btn = e.target.closest('[data-ai-nav-tab]');
-    if (!btn) return;
-    const sub = btn.dataset.aiNavTab;
-    if (sub === aiNavSubTab) return;
-    if (currentPhaseTab !== 'toolsNav') {
-      navigateToHash(sub === 'skills' ? '#ai-skills-nav' : '#ai-nav');
-      return;
-    }
-    switchAiNavSubTab(sub, { scroll: true, updateHash: true });
-  });
-  switchAiNavSubTab(resolveAiNavSubTabFromHash(location.hash.replace(/^#/, '')), {
-    scroll: false,
-    updateHash: false,
-  });
+function migratePhaseTabStorage() {
+  try {
+    const saved = localStorage.getItem(PHASE_TAB_KEY);
+    if (saved === 'toolsNav') localStorage.setItem(PHASE_TAB_KEY, 'aiToolsNav');
+  } catch (_) { /* private mode */ }
 }
 
 function getToolsNavMetaData() {
@@ -2027,7 +2007,7 @@ function renderToolsNav() {
   const filtered = links.filter(t => toolsNavMatchesQuery(t, query));
   const activeCats = categories.filter(cat => filtered.some(t => t.category === cat));
 
-  updateAiNavBannerStat();
+  updateAiToolsBannerStat();
 
   const stats = document.getElementById('tools-nav-stats');
   if (stats) {
@@ -2156,7 +2136,7 @@ function renderSkillsNav() {
       ? I18n.interpolate(meta.totalLabel, { n: filtered.length, c: activeCats.length })
       : `共 ${filtered.length} 个 Skill · ${activeCats.length} 个分类`;
   }
-  updateAiNavBannerStat();
+  updateAiSkillsBannerStat();
 
   const jump = document.getElementById('skills-nav-jump');
   if (jump) {
@@ -4702,7 +4682,6 @@ document.addEventListener('DOMContentLoaded', () => {
   renderApps();
   renderMonetize();
   renderDevices();
-  initAiNavTabs();
   initToolsNav();
   initSkillsNav();
   renderHandsOnCases();

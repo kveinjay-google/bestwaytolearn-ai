@@ -5,6 +5,7 @@
     strings: {
       nav: {
         toolsNav: 'AI hub',
+        aiToolsNav: 'AI hub',
       },
       aiNavPage: {
         linkDirectory: 'Browse AI hub (100+ tools) →',

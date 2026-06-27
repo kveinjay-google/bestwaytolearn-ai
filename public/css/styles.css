@@ -3564,8 +3564,8 @@ main {
   color: var(--text-primary);
 }
 
-/* AI navigation hub */
-.ai-nav-hub {
+/* AI navigation pages */
+.ai-nav-page {
   padding-top: 1.5rem;
 }
 
@@ -3579,14 +3579,7 @@ main {
 .ai-nav-tab {
   min-width: 7.5rem;
   text-align: center;
-}
-
-.ai-nav-panel[hidden] {
-  display: none !important;
-}
-
-.ai-nav-panel .section-header {
-  margin-bottom: 2rem;
+  text-decoration: none;
 }
 
 /* AI tools directory (Hao123-style) */

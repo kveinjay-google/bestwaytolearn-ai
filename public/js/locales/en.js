@@ -38,6 +38,7 @@ I18n.registerLocale('en', {
       monetize: 'Monetize',
       devices: 'Devices',
       toolsNav: 'AI hub',
+      aiToolsNav: 'AI hub',
       continue: 'Continue →',
       menuOpen: 'Open menu',
       progress: '7-day progress',
@@ -123,7 +124,8 @@ I18n.registerLocale('en', {
     },
     aiNavPage: {
       bannerTitle: 'AI hub',
-      bannerSubtitle: 'Tools & Agent Skills · Browse by category',
+      toolsBannerSubtitle: 'Browse by category · Jump to official sites',
+      skillsBannerSubtitle: 'Top GitHub skills · One-click install',
       tabTools: 'Tools',
       tabSkills: 'Skills',
       bannerStatTools: '{n} tools',

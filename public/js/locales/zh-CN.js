@@ -38,6 +38,7 @@ I18n.registerLocale('zh-CN', {
       monetize: '变现',
       devices: '设备',
       toolsNav: 'AI导航',
+      aiToolsNav: 'AI导航',
       continue: '继续学习 →',
       menuOpen: '打开菜单',
       progress: '7 天学习进度',
@@ -123,7 +124,8 @@ I18n.registerLocale('zh-CN', {
     },
     aiNavPage: {
       bannerTitle: 'AI导航',
-      bannerSubtitle: '工具与 Agent Skill · 分类发现',
+      toolsBannerSubtitle: '按用途分类 · 一站直达官网',
+      skillsBannerSubtitle: 'GitHub 优质 Skill · 一键安装',
       tabTools: '工具导航',
       tabSkills: 'Skill 导航',
       bannerStatTools: '{n} 个工具',
