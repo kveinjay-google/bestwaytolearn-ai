@@ -22,7 +22,7 @@ const I18n = (function () {
 
   const LOCALE_META = {
     'zh-CN': { flag: '🇨🇳', nativeName: '简体中文', htmlLang: 'zh-CN', dateLocale: 'zh-CN' },
-    'zh-TW': { flag: '🇹🇼', nativeName: '繁體中文', htmlLang: 'zh-TW', dateLocale: 'zh-TW' },
+    'zh-TW': { flag: '❤️', nativeName: '繁體中文', htmlLang: 'zh-TW', dateLocale: 'zh-TW' },
     en: { flag: '🇺🇸', nativeName: 'English', htmlLang: 'en', dateLocale: 'en-US' },
     ko: { flag: '🇰🇷', nativeName: '한국어', htmlLang: 'ko', dateLocale: 'ko-KR' },
     ja: { flag: '🇯🇵', nativeName: '日本語', htmlLang: 'ja', dateLocale: 'ja-JP' },
