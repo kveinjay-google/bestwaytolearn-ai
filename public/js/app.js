@@ -616,12 +616,6 @@ const PHASE_TAB_CONFIG = {
     panelSelector: '#phase-view-map',
     hashes: ['', 'top', 'hero', 'roadmap'],
   },
-  path: {
-    label: '学习计划',
-    navHash: 'path',
-    panelSelector: '#phase-view-path',
-    hashes: ['path', 'phase-path'],
-  },
   monetize: {
     label: '变现指南',
     navHash: 'monetize',
@@ -735,7 +729,7 @@ function resolvePhaseTabFromHash(hash) {
 const PHASE_PANEL_SELECTOR = '.phase-view, .learning-phase';
 function getNavTabLabels() {
   return typeof I18n !== 'undefined' ? I18n.getNavLabels() : {
-    map: '首页', path: '学习计划', learn: '01 认知', tools: '02 工具',
+    map: '首页', learn: '01 认知', tools: '02 工具',
     practice: '03 实战', validate: '04 检验', monetize: '变现', devices: '设备', aiToolsNav: 'AI导航',
   };
 }
@@ -822,7 +816,8 @@ function switchPhaseTab(tabId, { scrollToId, behavior = 'smooth', save = true } 
 
 function navigateToHash(hash, { behavior = 'smooth', updateHistory = true } = {}) {
   const raw = hash || '#roadmap';
-  const id = raw.replace(/^#/, '') || 'roadmap';
+  let id = raw.replace(/^#/, '') || 'roadmap';
+  if (id === 'path' || id === 'phase-path') id = 'roadmap';
   const tabId = resolvePhaseTabFromHash(`#${id}`);
 
   phaseTabNavigating = true;
@@ -857,7 +852,6 @@ function isPhaseTabComplete(tabId) {
 }
 
 function getRecommendedPhaseTab() {
-  if (loadProgress().completedDays.length === 0) return 'path';
   if (!isPhaseDaysComplete(1)) return 'learn';
   if (!isPhaseDaysComplete(2)) return 'tools';
   if (!isPhaseDaysComplete(3)) return 'practice';
@@ -889,54 +883,6 @@ function getPhaseDayRangeLabel(phaseNum) {
   return `Day ${days[0]}–${days[days.length - 1]}`;
 }
 
-function syncPathDayChecks() {
-  const container = document.getElementById('path-timeline');
-  if (!container) return;
-  const prog = loadProgress();
-  container.querySelectorAll('.path-day').forEach(dayEl => {
-    const idx = parseInt(dayEl.dataset.day, 10);
-    const done = prog.completedDays.includes(idx);
-    const btn = dayEl.querySelector('.path-check');
-    const dayNum = LEARNING_PATH[idx]?.day;
-    dayEl.classList.toggle('completed', done);
-    if (!btn) return;
-    btn.classList.toggle('is-done', done);
-    btn.setAttribute('aria-pressed', done ? 'true' : 'false');
-    const box = btn.querySelector('.path-check-box');
-    if (box) box.textContent = done ? '✓' : '';
-    btn.title = done ? I18n.t('path.checkDone') : I18n.t('path.checkTodo');
-    btn.setAttribute('aria-label', `${I18n.t('common.day')} ${dayNum}: ${done ? I18n.t('path.checkAriaDone') : I18n.t('path.checkAriaTodo')}`);
-  });
-}
-
-function setDayMastery(dayIdx, mastered, { notify = true } = {}) {
-  const prog = loadProgress();
-  const pos = prog.completedDays.indexOf(dayIdx);
-  const isDone = pos >= 0;
-  const dayNum = LEARNING_PATH[dayIdx].day;
-
-  if (mastered && !isDone) {
-    prog.completedDays.push(dayIdx);
-    saveProgress(prog);
-    syncPathDayChecks();
-    updateAllProgress();
-    if (notify) showTeacherMessage(getDayCompleteMessage(dayIdx));
-    maybeCelebrateGraduation();
-    return true;
-  }
-  if (!mastered && isDone) {
-    prog.completedDays.splice(pos, 1);
-    saveProgress(prog);
-    syncPathDayChecks();
-    updateAllProgress();
-    if (notify) {
-      showTeacherMessage(uiT('path.unmarkDay', '{name}，已取消 Day {day} 的「已掌握」标记，需要时可以继续学习。', { name: getUserName(), day: dayNum }));
-    }
-    return false;
-  }
-  return isDone;
-}
-
 function setPhaseDaysMastery(phaseNum, mastered, { notify = true } = {}) {
   const indices = PHASE_DAY_MAP[phaseNum] || [];
   const prog = loadProgress();
@@ -962,7 +908,6 @@ function setPhaseDaysMastery(phaseNum, mastered, { notify = true } = {}) {
   if (!changed) return;
 
   saveProgress(prog);
-  syncPathDayChecks();
   updateAllProgress();
 
   if (notify) {
@@ -993,18 +938,14 @@ function renderPhaseDayChips(phaseNum) {
 
 function renderPhaseMasteryBlock(tabId, cfg, { done, total }) {
   const phaseNum = PHASE_TAB_NUM[tabId];
-  const range = getPhaseDayRangeLabel(phaseNum);
-  const dayChips = renderPhaseDayChips(phaseNum);
   const allDone = total > 0 && done === total;
-  const remaining = total - done;
 
   if (allDone) {
     return `
       <section class="phase-bridge-mastery phase-bridge-mastery--done">
         <span class="phase-bridge-badge">${renderIcon({ image: UI_ICONS.brandStar, className: 'theme-icon theme-icon-badge', size: 16, alt: '' })} ${uiT('mastery.badgeDone', '本阶段已掌握')}</span>
-        <h3>${uiT('phaseBridge.phaseRangeDone', '「{label}」{range} 已标记掌握', { label: cfg.label, range })}</h3>
-        <p>${uiT('phaseBridge.phaseRangeDoneDesc', '学习计划已同步更新。需要复习可返回上方模块，或取消掌握标记。')}</p>
-        <div class="phase-bridge-day-chips">${dayChips}</div>
+        <h3>${uiT('phaseBridge.phaseRangeDone', '「{label}」已标记掌握', { label: cfg.label })}</h3>
+        <p>${uiT('phaseBridge.phaseRangeDoneDesc', '学习地图进度已同步更新。需要复习可返回上方模块，或取消掌握标记。')}</p>
         <div class="phase-bridge-modules">
           ${cfg.modules.map(m => `<a href="${m.href}" class="phase-bridge-module">${m.label}</a>`).join('')}
         </div>
@@ -1014,17 +955,14 @@ function renderPhaseMasteryBlock(tabId, cfg, { done, total }) {
       </section>`;
   }
 
-  const markLabel = done > 0
-    ? uiT('phaseBridge.markRemaining', '标记剩余 {n} 天已掌握', { n: remaining })
-    : uiT('phaseBridge.markPhase', uiT('mastery.markPhase', '标记本阶段已掌握'));
+  const markLabel = uiT('phaseBridge.markPhase', uiT('mastery.markPhase', '标记本阶段已掌握'));
 
   return `
     <section class="phase-bridge-mastery">
       <span class="phase-bridge-badge">${uiT('phaseBridge.masteryConfirm', uiT('mastery.badgeConfirm', '掌握确认'))}</span>
       <h3>${uiT('phaseBridge.masteryTitle', uiT('mastery.title', '掌握本页内容了吗？'))}</h3>
-      <p>${uiT('phaseBridge.masteryDesc', '学完「{label}」各模块后，若内容已熟悉，可标记<strong>已掌握</strong>，学习计划将自动更新（对应 {range}）。', { label: cfg.label, range })}</p>
-      <div class="phase-bridge-day-chips">${dayChips}</div>
-      <p class="phase-bridge-mastery-progress">${uiT('phaseBridge.masteryProgress', '本阶段进度 <strong>{done}/{total}</strong> 天 · 也可在「学习计划」逐日勾选。', { done, total })}</p>
+      <p>${uiT('phaseBridge.masteryDesc', '学完「{label}」各模块后，若内容已熟悉，可标记<strong>已掌握</strong>，学习地图将同步更新进度。', { label: cfg.label })}</p>
+      <p class="phase-bridge-mastery-progress">${uiT('phaseBridge.masteryProgress', '本阶段进度 <strong>{done}/{total}</strong>', { done, total })}</p>
       <div class="phase-bridge-modules">
         ${cfg.modules.map(m => `<a href="${m.href}" class="phase-bridge-module">${m.label}</a>`).join('')}
       </div>
@@ -1032,7 +970,6 @@ function renderPhaseMasteryBlock(tabId, cfg, { done, total }) {
         <button type="button" class="btn btn-primary phase-bridge-master-btn" data-phase-num="${phaseNum}">
           <span class="phase-bridge-master-check" aria-hidden="true">✓</span>${markLabel}
         </button>
-        <a href="#path" class="btn btn-ghost">${uiT('phaseBridge.viewPath', uiT('mastery.viewPath', '查看学习计划'))}</a>
       </div>
     </section>`;
 }
@@ -1056,7 +993,7 @@ function renderPhaseBridgeStatus(tabId, cfg, { done, total, daysDone, fullyDone,
       const best = loadProgress().quizBestScore || 0;
       return `
         <section class="phase-bridge-status phase-bridge-status--quiz">
-          <span class="phase-bridge-badge">${uiT('phaseBridge.quizDayDone', uiT('mastery.quizDay', 'Day 7 已打卡'))}</span>
+          <span class="phase-bridge-badge">${uiT('phaseBridge.quizDayDone', uiT('mastery.quizDay', '本阶段已掌握'))}</span>
           <h3>${uiT('phaseBridge.quizFinalStep', uiT('mastery.quizTitle', '完成本阶段最后一步：知识测验'))}</h3>
           <p>${uiT('phaseBridge.quizTarget', '目标 {pass}/{total} 分以上。当前最佳：{score} 分。', { pass: GRADUATION_QUIZ_PASS, total: getQuizData().length, score: best })}</p>
           <div class="phase-bridge-actions">
@@ -1217,46 +1154,48 @@ function isGraduated() {
 
 function getGraduationProgressHint() {
   const prog = loadProgress();
-  const daysDone = prog.completedDays.length;
-  const daysTotal = LEARNING_PATH.length;
   const quizScore = prog.quizBestScore || 0;
   if (isGraduated()) return null;
-  const missingDays = daysTotal - daysDone;
-  if (missingDays > 0 && quizScore >= GRADUATION_QUIZ_PASS) {
-    return uiT('graduation.hintQuizPassNeedDays', '测验已达标，还差 {n} 天学习计划即可结业。', { n: missingDays });
+  const phasesDone = [1, 2, 3, 4].filter(p => isPhaseDaysComplete(p)).length;
+  const missingPhases = 4 - phasesDone;
+  if (missingPhases > 0 && quizScore >= GRADUATION_QUIZ_PASS) {
+    return uiT('graduation.hintQuizPassNeedPhases', '测验已达标，还差 {n} 个阶段即可结业。', { n: missingPhases });
   }
-  if (missingDays === 0 && quizScore < GRADUATION_QUIZ_PASS) {
-    return uiT('graduation.hintDaysDoneNeedQuiz', '7 天已全部完成，测验达到 {pass} 分即可结业。', { pass: GRADUATION_QUIZ_PASS });
+  if (missingPhases === 0 && quizScore < GRADUATION_QUIZ_PASS) {
+    return uiT('graduation.hintPhasesDoneNeedQuiz', '四阶段已全部完成，测验达到 {pass} 分即可结业。', { pass: GRADUATION_QUIZ_PASS });
   }
   return null;
 }
 
-function getContinueLearningTarget() {
-  const prog = loadProgress();
-  const allDaysDone = LEARNING_PATH.every((_, i) => prog.completedDays.includes(i));
+function getPhaseStartHref(phaseNum) {
+  const tabId = PHASE_TAB_FROM_NUM[phaseNum];
+  const modules = typeof I18n !== 'undefined' ? I18n.getPhaseTabModules(tabId) : PHASE_TAB_CONFIG[tabId]?.modules;
+  return modules?.[0]?.href || `#${PHASE_HASH_FROM_NUM[phaseNum]}`;
+}
 
+function getContinueLearningTarget() {
   if (isGraduated()) {
     return {
       type: 'graduation',
       label: uiT('graduation.continueLabel', '查看结业报告'),
-      sublabel: uiT('graduation.continueSublabel', '7 天学习已圆满完成'),
+      sublabel: uiT('graduation.continueSublabel', '四阶段学习已圆满完成'),
       href: '#graduation',
     };
   }
 
-  if (!allDaysDone) {
-    const dayIdx = LEARNING_PATH.findIndex((_, i) => !prog.completedDays.includes(i));
-    const day = typeof I18n !== 'undefined' ? I18n.localizePathDay(LEARNING_PATH[dayIdx], dayIdx) : LEARNING_PATH[dayIdx];
-    return {
-      type: 'day',
-      dayIdx,
-      day,
-      label: `${I18n.t('nav.continue').replace(/\s*→\s*$/, '')} Day ${day.day}`,
-      sublabel: day.title,
-      href: getPathDayStartHref(day),
-      phaseLabel: getPhaseShortLabels()[day.phase],
-      phaseHash: `#${PHASE_HASH_FROM_NUM[day.phase]}`,
-    };
+  for (let phaseNum = 1; phaseNum <= 4; phaseNum++) {
+    if (!isPhaseDaysComplete(phaseNum)) {
+      const tabId = PHASE_TAB_FROM_NUM[phaseNum];
+      const cfg = getPhaseTabConfig(tabId) || PHASE_TAB_CONFIG[tabId];
+      return {
+        type: 'phase',
+        phaseNum,
+        label: cfg?.label || `${I18n.t('common.phase')} ${phaseNum}`,
+        sublabel: cfg?.nextDesc || '',
+        href: getPhaseStartHref(phaseNum),
+        phaseHash: `#${PHASE_HASH_FROM_NUM[phaseNum]}`,
+      };
+    }
   }
 
   return {
@@ -1275,13 +1214,13 @@ function updateContinueLearningCTA() {
   const headerBtn = document.getElementById('header-continue');
   const heroBtn = document.getElementById('hero-continue');
 
-  const headerText = target.type === 'day'
-    ? uiT('graduation.continueDayHeader', '继续 Day {day} →', { day: target.day.day })
+  const headerText = target.type === 'phase'
+    ? uiT('graduation.continuePhaseHeader', '继续 {label} →', { label: target.label })
     : target.type === 'graduation'
       ? uiT('graduation.continueGradHeader', '结业报告 →')
       : `${target.label} →`;
-  const heroText = target.type === 'day'
-    ? uiT('graduation.continueDayHero', '继续 Day {day}：{sublabel}', { day: target.day.day, sublabel: target.sublabel })
+  const heroText = target.type === 'phase'
+    ? uiT('graduation.continuePhaseHero', '继续学习：{label}', { label: target.label })
     : target.type === 'graduation'
       ? uiT('graduation.continueLabel', '查看结业报告')
       : target.label;
@@ -1296,19 +1235,19 @@ function updateContinueLearningCTA() {
   if (heroBtn) heroBtn.textContent = heroText;
 }
 
-function updateAllProgress() {
-  const prog = loadProgress();
-  const total = LEARNING_PATH.length;
-  const done = prog.completedDays.length;
-  const pct = Math.round((done / total) * 100);
+function getOverallProgressPct() {
+  let totalDays = 0;
+  let doneDays = 0;
+  [1, 2, 3, 4].forEach(phaseNum => {
+    const { done, total } = getPhaseProgress(phaseNum);
+    doneDays += done;
+    totalDays += total;
+  });
+  return totalDays ? Math.round((doneDays / totalDays) * 100) : 0;
+}
 
-  const pathFill = document.getElementById('path-progress-fill');
-  if (pathFill) pathFill.style.width = `${pct}%`;
-  const pathText = document.getElementById('path-progress-text');
-  if (pathText) pathText.textContent = I18n.t('path.progress', { done, total });
-  const pathTabProg = document.getElementById('path-tab-progress');
-  if (pathTabProg) pathTabProg.textContent = I18n.t('path.tabProgress', { done });
-  updatePathPageUI();
+function updateAllProgress() {
+  const pct = getOverallProgressPct();
 
   const overallFill = document.getElementById('roadmap-overall-fill');
   const overallText = document.getElementById('roadmap-overall-text');
@@ -1338,16 +1277,12 @@ function renderGraduationStats() {
   if (!statsEl) return;
   statsEl.innerHTML = `
     <div class="graduation-stat">
-      <span class="graduation-stat-num">7/7</span>
-      <span class="graduation-stat-label">${uiT('graduation.statPath', '学习计划')}</span>
+      <span class="graduation-stat-num">4/4</span>
+      <span class="graduation-stat-label">${uiT('graduation.statPhases', '阶段通关')}</span>
     </div>
     <div class="graduation-stat">
       <span class="graduation-stat-num">${prog.quizBestScore || 0}</span>
       <span class="graduation-stat-label">${uiT('graduation.statQuiz', '测验最佳（/{total}）', { total: getQuizData().length })}</span>
-    </div>
-    <div class="graduation-stat">
-      <span class="graduation-stat-num">4</span>
-      <span class="graduation-stat-label">${uiT('graduation.statPhases', '阶段通关')}</span>
     </div>
     <div class="graduation-stat">
       <span class="graduation-stat-num">100+</span>
@@ -1357,7 +1292,7 @@ function renderGraduationStats() {
   const title = document.getElementById('graduation-title');
   const desc = document.getElementById('graduation-desc');
   const dateEl = document.getElementById('graduation-date');
-  if (title) title.textContent = uiT('graduation.title', '{name}，7 天 AI 学习圆满完成！', { name });
+  if (title) title.textContent = uiT('graduation.title', '{name}，四阶段 AI 学习圆满完成！', { name });
   if (desc) desc.textContent = uiT('graduation.desc', '你已走完「认知 → 工具 → 实战 → 检验」全流程，具备系统的 AI 认知与实战起点。');
   if (dateEl) {
     const dateStr = formatLocaleDate(prog.graduatedAt);
@@ -1472,7 +1407,7 @@ function buildGraduationReportText() {
   report += `============================\n`;
   report += `${uiT('graduation.reportNickname', '昵称：{name}', { name })}\n`;
   report += `${uiT('graduation.reportDate', '结业日期：{date}', { date: dateStr })}\n`;
-  report += `${uiT('graduation.reportPath', '学习计划：7/7 天完成')}\n`;
+  report += `${uiT('graduation.reportPhases', '四阶段学习：4/4 完成')}\n`;
   report += `${uiT('graduation.reportQuiz', '测验最佳：{score} / {total}', { score: prog.quizBestScore || 0, total: getQuizData().length })}\n`;
   report += `\n【${uiT('graduation.reportFootprint', '学习足迹')}】\n`;
   getGraduationModulesData().forEach(g => {
@@ -1497,7 +1432,7 @@ function maybeCelebrateGraduation() {
   if (!prog.graduatedAt) {
     prog.graduatedAt = new Date().toISOString();
     saveProgress(prog);
-    showTeacherMessage(uiT('graduation.celebrate', '{name}，恭喜你正式结业！7 天学习 + 测验达标，快去查看结业报告，并填写未来 30 天实践计划 🎉', { name: getUserName() }));
+    showTeacherMessage(uiT('graduation.celebrate', '{name}，恭喜你正式结业！四阶段学习 + 测验达标，快去查看结业报告，并填写未来 30 天实践计划 🎉', { name: getUserName() }));
   }
   updateGraduationUI();
 }
@@ -1518,7 +1453,7 @@ function updateGraduationUI() {
     loadPracticePlanForm();
     const bannerMsg = document.getElementById('graduation-banner-msg');
     if (bannerMsg) {
-      bannerMsg.textContent = uiT('graduation.bannerMsg', '{name}，你已完成 7 天学习与知识测验，正式结业！', { name: getUserName() });
+      bannerMsg.textContent = uiT('graduation.bannerMsg', '{name}，你已完成四阶段学习与知识测验，正式结业！', { name: getUserName() });
     }
   }
 
@@ -1585,130 +1520,6 @@ function renderRoadmap() {
       </div>`;
   }).join('');
   updateAllProgress();
-}
-
-function getPathDayStartHref(day) {
-  return day.goto?.[0]?.href || `#${PHASE_HASH_FROM_NUM[day.phase] || 'path'}`;
-}
-
-function getCurrentPathDayIndex() {
-  const prog = loadProgress();
-  const idx = LEARNING_PATH.findIndex((_, i) => !prog.completedDays.includes(i));
-  return idx >= 0 ? idx : LEARNING_PATH.length - 1;
-}
-
-function updatePathPageUI() {
-  const statusEl = document.getElementById('path-hero-status');
-  const titleEl = document.getElementById('path-hero-title');
-  const hintEl = document.getElementById('path-hero-hint');
-  const startBtn = document.getElementById('path-start-btn');
-  if (!startBtn) return;
-
-  const prog = loadProgress();
-  const doneCount = prog.completedDays.length;
-  const target = getContinueLearningTarget();
-  let statusKey = 'path.statusNotStarted';
-  let statusClass = '';
-  let title = '';
-  let hint = '';
-  let btnText = '';
-
-  if (target.type === 'graduation') {
-    statusKey = 'path.statusGraduated';
-    statusClass = 'is-done';
-    title = target.label;
-    hint = I18n.t('path.graduatedHint');
-    btnText = target.label;
-  } else if (target.type === 'quiz') {
-    statusKey = 'path.statusAllDone';
-    statusClass = 'is-done';
-    title = I18n.t('path.allDoneTitle');
-    hint = I18n.t('path.allDoneHint');
-    btnText = I18n.t('path.allDoneCta');
-  } else if (doneCount === 0) {
-    statusKey = 'path.statusNotStarted';
-    title = `${I18n.t('common.day')} ${target.day.day} · ${target.day.title}`;
-    hint = I18n.t('path.startHintFirst');
-    btnText = I18n.t('path.startFirst');
-  } else {
-    statusKey = 'path.statusInProgress';
-    statusClass = 'is-progress';
-    title = `${I18n.t('common.day')} ${target.day.day} · ${target.day.title}`;
-    hint = target.day.goal;
-    btnText = I18n.t('path.continueLearning', { day: target.day.day });
-  }
-
-  if (statusEl) {
-    statusEl.textContent = I18n.t(statusKey);
-    statusEl.className = `path-hero-status${statusClass ? ` ${statusClass}` : ''}`;
-  }
-  if (titleEl) titleEl.textContent = title;
-  if (hintEl) hintEl.textContent = hint;
-  startBtn.href = target.href;
-  startBtn.textContent = btnText;
-
-  const currentIdx = target.type === 'day' ? target.dayIdx : -1;
-  document.querySelectorAll('.path-day').forEach(el => {
-    el.classList.toggle('is-current', parseInt(el.dataset.day, 10) === currentIdx);
-  });
-}
-
-function renderLearningPath() {
-  const container = document.getElementById('path-timeline');
-  const progress = loadProgress();
-  const phaseLabels = getPhaseShortLabels();
-  const currentIdx = getCurrentPathDayIndex();
-  const allDone = progress.completedDays.length >= LEARNING_PATH.length;
-  container.innerHTML = LEARNING_PATH.map((rawDay, i) => {
-    const day = typeof I18n !== 'undefined' ? I18n.localizePathDay(rawDay, i) : rawDay;
-    const done = progress.completedDays.includes(i);
-    const isCurrent = !allDone && i === currentIdx;
-    const phaseLabel = phaseLabels[day.phase] || `${I18n.t('common.phase')} ${day.phase}`;
-    const primaryHref = getPathDayStartHref(day);
-    const startLabel = done
-      ? I18n.t('path.reviewDay', { day: day.day })
-      : isCurrent
-        ? I18n.t('path.startLearning', { day: day.day })
-        : I18n.t('path.goto');
-    const startBtnClass = isCurrent && !done ? 'btn btn-primary path-day-start' : 'btn btn-ghost path-day-start';
-    return `
-      <div class="path-day ${done ? 'completed' : ''}${isCurrent ? ' is-current' : ''}" data-day="${i}">
-        <div class="path-day-side">
-          <span class="path-day-num">${I18n.t('common.day')} ${day.day} · ${day.duration}</span>
-          ${isCurrent ? `<span class="path-day-badge">${I18n.t('path.currentBadge')}</span>` : ''}
-        </div>
-        <div class="path-day-body">
-          <div class="path-day-phase-row">
-            <span class="path-phase-tag path-phase-${day.phase}">${I18n.t('common.phase')} ${String(day.phase).padStart(2, '0')}</span>
-            <span class="path-day-phase-label">${I18n.t('path.phaseBelongs', { phase: phaseLabel })}</span>
-          </div>
-          <h3>${day.title}</h3>
-          <p class="path-goal"><strong>${I18n.t('path.goal')}</strong>${day.goal}</p>
-          <p>${day.desc}</p>
-          <ul>${day.tasks.map(t => `<li>${t}</li>`).join('')}</ul>
-          <p class="path-milestone">${renderIcon({ image: UI_ICONS.brandStar, className: 'theme-icon theme-icon-inline', size: 18, alt: '' })} ${day.milestone}</p>
-        </div>
-        <div class="path-day-actions">
-          <a href="${primaryHref}" class="${startBtnClass}">${startLabel}</a>
-          <button class="path-check ${done ? 'is-done' : ''}" type="button"
-            aria-pressed="${done}"
-            title="${done ? I18n.t('path.checkDone') : I18n.t('path.checkTodo')}"
-            aria-label="${I18n.t('common.day')} ${day.day}: ${done ? I18n.t('path.checkAriaDone') : I18n.t('path.checkAriaTodo')}">
-            <span class="path-check-box" aria-hidden="true">${done ? '✓' : ''}</span>
-            <span class="path-check-label">${I18n.t('path.mastered')}</span>
-          </button>
-        </div>
-      </div>`;
-  }).join('');
-  updateAllProgress();
-  container.querySelectorAll('.path-check').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const dayEl = btn.closest('.path-day');
-      const idx = parseInt(dayEl.dataset.day, 10);
-      const prog = loadProgress();
-      setDayMastery(idx, !prog.completedDays.includes(idx));
-    });
-  });
 }
 
 function renderOverviewBlock(section) {
@@ -3577,7 +3388,6 @@ function showQuizResult() {
 const COACH_SECTIONS = [
   { id: 'hero', msg: n => `${n}，我是${TEACHER_NAME}！准备好开始你的 AI 学习之旅了吗？` },
   { id: 'roadmap', msg: n => `${n}，这里是学习地图。按四个阶段顺序走，我会一路陪着你。` },
-  { id: 'path', msg: n => `${n}，这是 7 天学习计划。按 Day 顺序学；已掌握的内容点「已掌握」勾选跳过，我会帮你记进度。` },
   { id: 'ai-overview', msg: n => `${n}，先读「AI 全景入门」！弄清 AI 是什么、能干什么，再学原理会轻松很多。` },
   { id: 'fundamentals', msg: n => `${n}，搞懂这 8 个原理模块，是理解一切 AI 工具的基石。` },
   { id: 'knowledge', msg: n => `${n}，100 个术语不用一次背完，遇到不懂的随时来速查。` },
@@ -3585,7 +3395,7 @@ const COACH_SECTIONS = [
   { id: 'prompt-lab', msg: n => `${n}，提示词是驾驭 AI 的钥匙，来这里练习结构化写法吧。` },
   { id: 'hands-on', msg: n => `${n}，先从「真实软件实操」开始！跟着 Cursor、Midjourney 等教程做一遍，最有成就感。` },
   { id: 'practice', msg: n => `${n}，挑一个和你工作相关的场景，复制提示词去真实试一试！` },
-  { id: 'quiz', msg: n => `${n}，最后一关！完成测验检验你这 7 天的成果，加油！` },
+  { id: 'quiz', msg: n => `${n}，最后一关！完成测验检验你的学习成果，加油！` },
   { id: 'graduation', msg: n => `${n}，恭喜结业！这是你的学习报告，记得填写未来 30 天实践计划。` },
   { id: 'monetize', msg: n => `${n}，学完工具想知道怎么赚钱？这里有 30 个可落地的变现方向，挑一个最适合你的开始验证。` },
   { id: 'devices', msg: n => `${n}，买电脑前先看这里！按你的学习路线选系统、内存和显卡，避免花冤枉钱。` },
@@ -3680,9 +3490,6 @@ function clearPersonalization() {
     if (p && d.phaseBanners[i]) p.textContent = d.phaseBanners[i];
   });
 
-  const pathBanner = document.getElementById('path-banner-desc');
-  if (pathBanner) pathBanner.textContent = d.pathBanner;
-
   const roadmapHeader = document.querySelector('#roadmap .section-header p');
   if (roadmapHeader) roadmapHeader.textContent = d.roadmapHeader;
 }
@@ -3718,8 +3525,8 @@ function applyPersonalization(name) {
   const desc = document.getElementById('hero-desc');
   if (desc) {
     desc.textContent = I18n?.getLocale() === 'en'
-      ? `${teacher} will guide you through Cognition → Tools → Practice → Review in 7 days. I'll be with you every step.`
-      : `${teacher}会带你按「认知 → 工具 → 实战 → 检验」四步学习法，7 天从零建立完整的 AI 能力。每天跟着路径走，我会一直陪着你。`;
+      ? `${teacher} will guide you through Cognition → Tools → Practice → Review. I'll be with you every step.`
+      : `${teacher}会带你按「认知 → 工具 → 实战 → 检验」四步学习法，从零建立完整的 AI 能力。从学习地图按阶段推进，我会一直陪着你。`;
   }
 
   const readyTitle = document.getElementById('welcome-ready-title');
@@ -3753,13 +3560,6 @@ function applyPersonalization(name) {
         : `${n}，${phaseData.subtitle} · ${phaseData.days} · ${descFirst}。`;
     }
   });
-
-  const pathBanner = document.getElementById('path-banner-desc');
-  if (pathBanner) {
-    pathBanner.textContent = named
-      ? I18n.interpolate(named.pathBanner, { name: n, teacher })
-      : `${n}，先看清 7 天全貌再逐日推进；已掌握的天数可勾选「已掌握」跳过，我会为你记录进度。`;
-  }
 
   const roadmapHeader = document.querySelector('#roadmap .section-header p');
   if (roadmapHeader) {
@@ -3870,9 +3670,9 @@ function finishWelcome(name) {
   applyPersonalization(name);
   document.getElementById('welcome-overlay')?.classList.add('hidden');
   setWelcomeOpen(false);
-  navigateToHash('#path', { behavior: 'smooth', updateHistory: true });
-  showTeacherMessage(uiT('welcome.joined', '{name}，欢迎加入！先到「学习计划」看清 7 天路径；已掌握的内容可点「已掌握」勾选跳过，否则按 Day 顺序学。', { name: name.trim() }));
-  initTeacherCoachObserver({ skipInitial: ['hero', 'path'] });
+  navigateToHash('#roadmap', { behavior: 'smooth', updateHistory: true });
+  showTeacherMessage(uiT('welcome.joined', '{name}，欢迎加入！先从首页「学习地图」看清四阶段路径，按顺序进入各阶段学习即可。', { name: name.trim() }));
+  initTeacherCoachObserver({ skipInitial: ['hero', 'roadmap'] });
 }
 
 function initWelcome() {
@@ -3968,7 +3768,6 @@ function initWelcome() {
 const COACH_QUICK_NAV = [
   { label: '首页', href: '#hero' },
   { label: '学习地图', href: '#roadmap' },
-  { label: '学习计划', href: '#path' },
   { label: '全景入门', href: '#ai-overview' },
   { label: 'AI 原理', href: '#fundamentals' },
   { label: '知识库', href: '#knowledge' },
@@ -3984,7 +3783,6 @@ const COACH_QUICK_NAV = [
 
 const SITE_NAV_ENTRIES = [
   { type: '模块', title: '学习地图', subtitle: '四阶段路径总览', href: '#roadmap', keywords: '学习地图 路径 阶段 roadmap' },
-  { type: '模块', title: '7 天学习计划', subtitle: '每日任务与进度打卡', href: '#path', keywords: '学习计划 7天 路径 day 打卡 已掌握' },
   { type: '模块', title: 'AI 全景入门', subtitle: '什么是AI、能干什么、工具、领域、未来', href: '#ai-overview', keywords: '全景 入门 介绍 概述' },
   { type: '模块', title: 'AI 原理', subtitle: '8 大原理模块', href: '#fundamentals', keywords: '原理 工作机制 transformer llm' },
   { type: '模块', title: 'AI 知识库', subtitle: '100 个术语', href: '#knowledge', keywords: '知识库 术语 词典 glossary' },
@@ -3993,7 +3791,7 @@ const SITE_NAV_ENTRIES = [
   { type: '模块', title: '真实软件实操', subtitle: '30 个手把手教程', href: '#hands-on', keywords: '实操 教程 codex midjourney cursor chatgpt' },
   { type: '模块', title: '实战场景', subtitle: '16 个提示词模板', href: '#practice', keywords: '实战 场景 模板' },
   { type: '模块', title: '知识测验', subtitle: '100 道精选题', href: '#quiz', keywords: '测验 考试 题目 quiz' },
-  { type: '模块', title: '结业报告', subtitle: '7 天学习总结与 30 天计划', href: '#graduation', keywords: '结业 毕业 报告 成就 证书' },
+  { type: '模块', title: '结业报告', subtitle: '四阶段学习总结与 30 天计划', href: '#graduation', keywords: '结业 毕业 报告 成就 证书' },
   { type: '模块', title: 'AI 技能变现指南', subtitle: '30 个可落地的副业与接单方向', href: '#monetize', keywords: '变现 赚钱 副业 接单 收入 项目 创业 自由职业 monetize' },
   { type: '模块', title: '设备选购指南', subtitle: 'Windows/macOS、内存、显卡与推荐配置', href: '#devices', keywords: '设备 电脑 笔记本 台式机 内存 显卡 GPU RAM mac windows 苹果 配置 选购 硬件' },
   { type: '模块', title: 'AI导航', subtitle: '100+ 工具与优质 Agent Skill', href: '#ai-nav', keywords: 'AI导航 工具导航 skill 大全 hao123 链接 官网 目录 directory' },
@@ -4108,19 +3906,6 @@ function buildSiteSearchIndex() {
     });
   });
 
-  LEARNING_PATH.forEach((rawDay, i) => {
-    const day = typeof I18n !== 'undefined' ? I18n.localizePathDay(rawDay, i) : rawDay;
-    entries.push({
-      type: getSearchTypeLabel('day'),
-      title: `Day ${day.day} · ${day.title}`,
-      subtitle: day.goal?.slice(0, 36) + '…',
-      keywords: [day.title, day.goal, day.desc, `day${day.day}`].filter(Boolean).join(' '),
-      href: '#path',
-      action: 'path-day',
-      dayIdx: i
-    });
-  });
-
   getHandsOnData().forEach((c, i) => {
     entries.push({
       type: getSearchTypeLabel('case'),
@@ -4205,11 +3990,6 @@ function navigateSearchResult(item) {
       const card = document.querySelector(`.fundamental-card[data-idx="${item.idx}"]`);
       card?.classList.add('open');
       card?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    });
-  } else if (item.action === 'path-day') {
-    navigateToHash('#path');
-    afterNav(() => {
-      document.querySelector(`.path-day[data-day="${item.dayIdx}"]`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   } else if (item.href) {
     navigateToHash(item.href);
@@ -4494,7 +4274,6 @@ function refreshLocaleUI() {
   applyLocalePersonalization();
 
   renderRoadmap();
-  renderLearningPath();
   renderAiOverview();
   renderFundamentals();
   renderApps(document.querySelector('#apps-filter .filter-btn.active')?.dataset.cat || DEFAULT_APP_CATEGORY);
@@ -4560,7 +4339,6 @@ document.addEventListener('DOMContentLoaded', () => {
   hashToPhaseTab = buildHashToPhaseTabMap();
   initNeuralCanvas();
   renderRoadmap();
-  renderLearningPath();
   renderAiOverview();
   renderFundamentals();
   renderConcepts();

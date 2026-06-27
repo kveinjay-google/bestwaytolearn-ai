@@ -42,7 +42,7 @@
       <div class="welcome-step active" data-step="0">
         <h2 id="welcome-title">欢迎来到 BestWayToLearn.AI</h2>
         <p>我是<strong>凯文</strong>，接下来我会作为你的专属 AI 导师，手把手带你从零开始，系统学会 AI 的原理、工具和实战方法。</p>
-        <p class="welcome-hint">全程约 7 天，每天 45–70 分钟，进度自动保存在你的浏览器中。</p>
+        <p class="welcome-hint">按四阶段循序渐进学习，进度自动保存在你的浏览器中。</p>
       </div>
 
       <div class="welcome-step" data-step="1">
@@ -60,12 +60,12 @@
       </div>
 
       <div class="welcome-step" data-step="2">
-        <h2>7 天学习主线</h2>
-        <p>每天我会为你安排明确的学习目标和任务清单。你只需：</p>
+        <h2>如何开始</h2>
+        <p>从首页<strong>「学习地图」</strong>看清四阶段全貌，按顺序进入各阶段学习：</p>
         <ul class="welcome-list">
-          <li>打开顶部<strong>「学习计划」</strong>看清 7 天全貌</li>
-          <li>按 Day 顺序学习；<strong>已掌握</strong>的内容可勾选跳过</li>
-          <li>点击「去学习 →」直达对应模块，进度自动保存</li>
+          <li>首页学习地图 → 点击<strong>「进入本阶段」</strong>开始</li>
+          <li>学完一阶段后，在底部标记<strong>「已掌握」</strong>记录进度</li>
+          <li>进度自动保存，随时可从顶部<strong>「继续学习」</strong>接续</li>
           <li>有疑问随时看<strong>AI 知识库</strong>速查术语</li>
         </ul>
       </div>
@@ -145,7 +145,6 @@
       </a>
       <nav class="main-nav" role="tablist" data-i18n-aria="nav.mainLabel" aria-label="学习阶段">
         <a href="#roadmap" role="tab" data-nav-tab="map" data-i18n="nav.home" aria-selected="true">首页</a>
-        <a href="#path" role="tab" data-nav-tab="path" data-i18n="nav.path">学习计划</a>
         <a href="#phase-learn" role="tab" data-nav-tab="learn" data-i18n="nav.learn">01 认知</a>
         <a href="#phase-tools" role="tab" data-nav-tab="tools" data-i18n="nav.tools">02 工具</a>
         <a href="#phase-practice" role="tab" data-nav-tab="practice" data-i18n="nav.practice">03 实战</a>
@@ -180,12 +179,12 @@
           <span class="sr-only" data-i18n="settings.langEn">English</span>
         </button>
       </div>
-      <a href="#path" class="header-continue" id="header-continue" data-i18n="nav.continue" data-i18n-title="nav.continue" title="继续未完成的学习">继续学习 →</a>
+      <a href="#phase-learn" class="header-continue" id="header-continue" data-i18n="nav.continue" data-i18n-title="nav.continue" title="继续未完成的学习">继续学习 →</a>
       <button class="header-user" id="header-user" type="button" data-i18n-title="user.manage" title="管理我的昵称" aria-haspopup="dialog" aria-expanded="false" aria-controls="user-profile-panel">
         <img class="header-user-avatar" src="assets/icons/bwtl-mark.png" width="20" height="20" alt="">
         <span class="header-user-name" id="header-user-name" data-i18n="user.defaultName">学员</span>
       </button>
-      <div class="header-progress" id="header-progress" data-i18n-title="nav.progress" title="7 天学习进度">0%</div>
+      <div class="header-progress" id="header-progress" data-i18n-title="nav.progress" title="学习进度">0%</div>
       <button class="nav-toggle" data-i18n-aria="nav.menuOpen" aria-label="打开菜单" aria-expanded="false">
         <span></span><span></span>
       </button>
@@ -205,18 +204,18 @@
       </div>
       <div class="hero-inner">
         <div class="hero-content">
-          <p class="hero-eyebrow reveal" id="hero-greeting" data-i18n="hero.greeting">bestwaytolearn.ai · 四阶段学习 · 7 天路径 · 100 个术语</p>
+          <p class="hero-eyebrow reveal" id="hero-greeting" data-i18n="hero.greeting">bestwaytolearn.ai · 四阶段学习 · 100 个术语</p>
           <h1 class="hero-title reveal" id="hero-title" data-i18n-html="hero.titleHtml">
             从零开始<br>
             <span class="hero-accent">系统学会 <em class="hero-accent-ai">AI</em></span>
           </h1>
           <p class="hero-desc reveal" id="hero-desc" data-i18n="hero.desc">
-            遵循「认知 → 工具 → 实战 → 检验」四步学习法，每天跟着路径走，
-            7 天建立从原理理解到真实应用的完整 AI 能力。
+            遵循「认知 → 工具 → 实战 → 检验」四步学习法，从学习地图按阶段推进，
+            建立从原理理解到真实应用的完整 AI 能力。
           </p>
           <div class="hero-actions reveal">
             <a href="#roadmap" class="btn btn-primary" data-i18n="hero.ctaMap">查看学习地图</a>
-            <a href="#path" class="btn btn-ghost" id="hero-continue" data-i18n="hero.ctaContinue">继续学习</a>
+            <a href="#phase-learn" class="btn btn-ghost" id="hero-continue" data-i18n="hero.ctaContinue">继续学习</a>
           </div>
         </div>
         <div class="hero-visual reveal">
@@ -253,66 +252,12 @@
       <aside class="graduation-banner hidden" id="graduation-banner" aria-label="结业祝贺">
         <div class="graduation-banner-text">
           <span class="graduation-banner-badge"><img src="assets/icons/bwtl-mark.png" width="16" height="16" alt=""> 已结业</span>
-          <p id="graduation-banner-msg">你已完成 7 天学习与知识测验，正式结业！</p>
+          <p id="graduation-banner-msg">你已完成四阶段学习与知识测验，正式结业！</p>
         </div>
         <a href="#graduation" class="btn btn-primary btn-sm">查看结业报告 →</a>
       </aside>
       <div class="roadmap-grid" id="roadmap-grid"></div>
     </section>
-    </div>
-
-    <!-- ═══ 7 天学习计划（独立 Tab）═══ -->
-    <div class="phase-view learning-phase" id="phase-view-path" data-phase-tab="path" hidden>
-      <div class="phase-banner phase-banner-plan has-page-poster">
-        <div class="page-poster-bg" aria-hidden="true">
-          <img src="assets/posters/poster-path.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
-          <div class="page-poster-overlay page-poster-overlay-path"></div>
-        </div>
-        <span class="phase-num">7天</span>
-        <div class="phase-banner-text">
-          <h2>7 天学习计划</h2>
-          <p id="path-banner-desc">点「开始学习」进入当日模块，按 Day 1–7 逐日推进；已掌握可勾选跳过。</p>
-        </div>
-        <span class="phase-progress" id="path-tab-progress">0/7 天</span>
-      </div>
-
-      <section class="section path-section" id="path">
-        <div class="path-hero" id="path-hero">
-          <div class="path-hero-main">
-            <span class="path-hero-status" id="path-hero-status" data-i18n="path.statusNotStarted">尚未开始</span>
-            <h3 class="path-hero-title" id="path-hero-title">Day 1 · 认识人工智能</h3>
-            <p class="path-hero-hint" id="path-hero-hint" data-i18n="path.startHintFirst">从 Day 1 开始，建立 AI 全局认知</p>
-            <div class="path-hero-progress">
-              <div class="path-progress-bar">
-                <div class="path-progress-fill" id="path-progress-fill"></div>
-              </div>
-              <p class="path-progress-text" id="path-progress-text">已完成 0 / 7 天</p>
-            </div>
-          </div>
-          <div class="path-hero-actions">
-            <a href="#ai-overview" class="btn btn-primary path-hero-cta" id="path-start-btn" data-i18n="path.startFirst">开始学习</a>
-            <a href="#roadmap" class="btn btn-ghost" data-i18n="path.viewMap">查看学习地图</a>
-          </div>
-        </div>
-
-        <div class="path-tips" role="note" aria-label="学习计划使用说明">
-          <div class="path-tip" id="path-tip-1">
-            <span class="path-tip-num">1</span>
-            <p data-i18n-html="path.tipStart">点上方 <strong>「开始学习」</strong> 或当天卡片右侧的<strong>「开始学习」</strong>，按天进入学习内容。</p>
-          </div>
-          <div class="path-tip" id="path-tip-2">
-            <span class="path-tip-num">2</span>
-            <p data-i18n="path.tipOrder">按 Day 1→7 顺序推进；完成当日任务后再进入下一天。</p>
-          </div>
-          <div class="path-tip" id="path-tip-3">
-            <span class="path-tip-num">3</span>
-            <p data-i18n-html="path.tipSkip">内容已熟悉？点卡片右侧 <strong>「已掌握」</strong> 可跳过（随时可取消）。</p>
-          </div>
-        </div>
-
-        <h3 class="path-timeline-heading" data-i18n="path.timelineTitle">7 天学习日程</h3>
-        <div class="path-timeline" id="path-timeline"></div>
-      </section>
     </div>
 
     <!-- ═══ PHASE 1: 认知基础 ═══ -->
@@ -778,7 +723,7 @@
       <section class="section graduation-section hidden" id="graduation">
         <div class="graduation-hero">
           <span class="graduation-hero-badge"><img src="assets/icons/bwtl-mark.png" width="18" height="18" alt=""> 正式结业</span>
-          <h2 id="graduation-title">恭喜，7 天 AI 学习圆满完成！</h2>
+          <h2 id="graduation-title">恭喜，四阶段 AI 学习圆满完成！</h2>
           <p class="graduation-hero-desc" id="graduation-desc">你已走完「认知 → 工具 → 实战 → 检验」全流程。</p>
           <p class="graduation-hero-date" id="graduation-date"></p>
         </div>
@@ -828,8 +773,8 @@
   </footer>
 
   <script src="js/icon-map.js?v=20260702c"></script>
-  <script src="js/i18n.js?v=20260703a"></script>
-  <script src="js/locales/zh-CN.js?v=20260627d"></script>
+  <script src="js/i18n.js?v=20260627e"></script>
+  <script src="js/locales/zh-CN.js?v=20260627e"></script>
   <script src="js/locales/en.js?v=20260708a"></script>
   <script src="js/locales/en-terms.js?v=20260630a"></script>
   <script src="js/locales/en-quiz.js?v=20260630a"></script>
@@ -844,6 +789,6 @@
   <script src="js/ai-tools-nav.js?v=20260703b"></script>
   <script src="js/ai-skills-nav.js?v=20260707a"></script>
   <script src="js/terms.js?v=20260627a"></script>
-  <script src="js/app.js?v=20260627d"></script>
+  <script src="js/app.js?v=20260627e"></script>
 </body>
 </html>

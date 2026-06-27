@@ -30,7 +30,6 @@ I18n.registerLocale('zh-CN', {
     },
     nav: {
       home: '首页',
-      path: '学习计划',
       learn: '01 认知',
       tools: '02 工具',
       practice: '03 实战',
@@ -41,7 +40,7 @@ I18n.registerLocale('zh-CN', {
       aiToolsNav: 'AI导航',
       continue: '继续学习 →',
       menuOpen: '打开菜单',
-      progress: '7 天学习进度',
+      progress: '学习进度',
       mainLabel: '学习阶段',
     },
     user: {
@@ -61,9 +60,9 @@ I18n.registerLocale('zh-CN', {
       defaultMsg: '你好！准备好开始学习了吗？',
     },
     hero: {
-      greeting: 'bestwaytolearn.ai · 四阶段学习 · 7 天路径 · 100 个术语',
+      greeting: 'bestwaytolearn.ai · 四阶段学习 · 100 个术语',
       titleHtml: '从零开始<br><span class="hero-accent">系统学会 <em class="hero-accent-ai">AI</em></span>',
-      desc: '遵循「认知 → 工具 → 实战 → 检验」四步学习法，每天跟着路径走，7 天建立从原理理解到真实应用的完整 AI 能力。',
+      desc: '遵循「认知 → 工具 → 实战 → 检验」四步学习法，从学习地图按阶段推进，建立从原理理解到真实应用的完整 AI 能力。',
       ctaMap: '查看学习地图',
       ctaContinue: '继续学习',
       flowLearn: '认知',
@@ -77,7 +76,7 @@ I18n.registerLocale('zh-CN', {
       desc: '按顺序完成四个阶段，每个阶段有明确目标和对应模块。进度自动保存。',
       overall: '总进度 {pct}%',
       graduated: '已结业',
-      graduatedMsg: '你已完成 7 天学习与知识测验，正式结业！',
+      graduatedMsg: '你已完成四阶段学习与知识测验，正式结业！',
       report: '查看结业报告 →',
       phaseLabel: '阶段 {num}',
       daysDone: '{done}/{total} 天完成',
@@ -241,15 +240,15 @@ I18n.registerLocale('zh-CN', {
   },
   data: {
     nav: {
-      map: '首页', path: '学习计划', learn: '01 认知', tools: '02 工具',
+      map: '首页', learn: '01 认知', tools: '02 工具',
       practice: '03 实战', validate: '04 检验', monetize: '变现', devices: '设备',
     },
     phaseShortLabels: { 1: '01 认知', 2: '02 工具', 3: '03 实战', 4: '04 检验' },
     personalization: {
       headerName: '学员',
-      greeting: 'bestwaytolearn.ai · 四阶段学习 · 7 天路径 · 100 个术语',
+      greeting: 'bestwaytolearn.ai · 四阶段学习 · 100 个术语',
       titleHtml: '从零开始<br><span class="hero-accent">系统学会 <em class="hero-accent-ai">AI</em></span>',
-      desc: '遵循「认知 → 工具 → 实战 → 检验」四步学习法，每天跟着路径走，7 天建立从原理理解到真实应用的完整 AI 能力。',
+      desc: '遵循「认知 → 工具 → 实战 → 检验」四步学习法，从学习地图按阶段推进，建立从原理理解到真实应用的完整 AI 能力。',
       pathBanner: '点「开始学习」进入当日模块，按 Day 1–7 逐日推进；已掌握可勾选跳过。',
       roadmapHeader: '按顺序完成四个阶段，每个阶段有明确目标和对应模块。进度自动保存。',
       phaseBanners: [
@@ -269,7 +268,7 @@ I18n.registerLocale('zh-CN', {
         paragraphs: [
           '我是<strong>凯文</strong>，接下来我会作为你的专属 AI 导师，手把手带你从零开始，系统学会 AI 的原理、工具和实战方法。',
         ],
-        hint: '全程约 7 天，每天 45–70 分钟，进度自动保存在你的浏览器中。',
+        hint: '按四阶段循序渐进学习，进度自动保存在你的浏览器中。',
       },
       {
         title: '四阶段学习法',
@@ -285,12 +284,12 @@ I18n.registerLocale('zh-CN', {
         ],
       },
       {
-        title: '7 天学习主线',
-        paragraphs: ['每天我会为你安排明确的学习目标和任务清单。你只需：'],
+        title: '如何开始',
+        paragraphs: ['从首页<strong>「学习地图」</strong>看清四阶段全貌，按顺序进入各阶段学习：'],
         list: [
-          '打开顶部<strong>「学习计划」</strong>看清 7 天全貌',
-          '按 Day 顺序学习；<strong>已掌握</strong>的内容可勾选跳过',
-          '点击「去学习 →」直达对应模块，进度自动保存',
+          '首页学习地图 → 点击<strong>「进入本阶段」</strong>开始',
+          '学完一阶段后，在底部标记<strong>「已掌握」</strong>记录进度',
+          '进度自动保存，随时可从顶部<strong>「继续学习」</strong>接续',
           '有疑问随时看<strong>AI 知识库</strong>速查术语',
         ],
       },

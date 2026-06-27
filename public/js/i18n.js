@@ -597,7 +597,6 @@ const I18n = (function () {
     tools: '#phase-tools',
     practice: '#phase-practice',
     validate: '#phase-validate',
-    path: '#phase-view-path',
     monetize: '#phase-view-monetize',
     devices: '#phase-view-devices',
   };
