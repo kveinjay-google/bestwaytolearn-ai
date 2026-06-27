@@ -55,6 +55,7 @@ I18n.registerLocale('zh-CN', {
     },
     nav: {
       home: 'AI学习',
+      path: '学习计划',
       learn: '认知',
       tools: '工具',
       practice: '实战',

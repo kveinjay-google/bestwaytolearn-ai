@@ -8,8 +8,8 @@ I18n.registerLocale('zh-TW', {
       ariaLabel: 'BestWayToLearn.AI — bestwaytolearn.ai',
     },
     meta: {
-      title: 'BestWayToLearn.AI | 从零到实战 — AI 系统学习',
-      description: 'BestWayToLearn.AI — 四阶段 AI 系统学习：认知基础、工具掌握、实战应用与知识测验。100 个术语、43 款主流应用、提示词实验室与真实实操教程，从零到实战。',
+      title: 'BestWayToLearn.AI | 從零到實戰 — AI 系統學習',
+      description: 'BestWayToLearn.AI — 四階段 AI 系統學習：認知基礎、工具掌握、實戰應用與知識測驗。100 個術語、43 款主流應用、提示詞實驗室與真實實操教學，從零到實戰。',
     },
     notice: { partial: '介面為繁體中文，部分教學內容仍為簡體中文。', partialEn: '' },
     settings: {
@@ -52,6 +52,7 @@ I18n.registerLocale('zh-TW', {
     },
     nav: {
       home: 'AI學習',
+      path: '學習計劃',
       learn: '認知',
       tools: '工具',
       practice: '實戰',
