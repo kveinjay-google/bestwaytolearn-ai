@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=20260702b">
+  <link rel="stylesheet" href="css/styles.css?v=20260703a">
 </head>
 <body>
   <canvas id="neural-canvas" aria-hidden="true"></canvas>
@@ -158,6 +158,7 @@
         <a href="#phase-validate" role="tab" data-nav-tab="validate" data-i18n="nav.validate">04 检验</a>
         <a href="#monetize" role="tab" data-nav-tab="monetize" data-i18n="nav.monetize">变现</a>
         <a href="#devices" role="tab" data-nav-tab="devices" data-i18n="nav.devices">设备</a>
+        <a href="#ai-tools-nav" role="tab" data-nav-tab="toolsNav" data-i18n="nav.toolsNav">工具导航</a>
       </nav>
       <div class="header-prefs" id="header-prefs">
         <button class="header-prefs-toggle" id="header-prefs-toggle" type="button" aria-expanded="false" aria-controls="header-prefs-panel" data-i18n-aria="settings.fontToggle" data-i18n-title="settings.fontToggle" title="字体大小">
@@ -390,7 +391,7 @@
         <div class="section-header">
           <span class="section-tag">模块 2.1</span>
           <h2>选对工具，事半功倍</h2>
-          <p>43 款主流 AI 应用，按场景分类，含功能列表、适合人群与上手建议。</p>
+          <p>43 款主流 AI 应用，按场景分类，含功能列表、适合人群与上手建议。<a class="section-inline-link" href="#ai-tools-nav" data-i18n="toolsNavPage.linkDirectory">浏览完整工具导航（100+）→</a></p>
         </div>
         <div class="apps-filter" id="apps-filter" role="tablist"></div>
         <div class="apps-grid" id="apps-grid"></div>
@@ -614,6 +615,41 @@
       </section>
     </div>
 
+    <!-- ═══ AI 工具导航 ═══ -->
+    <div class="phase-view" id="phase-view-tools-nav" data-phase-tab="toolsNav" hidden>
+      <div class="phase-banner phase-banner-teal has-page-poster">
+        <div class="page-poster-bg" aria-hidden="true">
+          <img src="assets/posters/poster-tools.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+          <div class="page-poster-overlay page-poster-overlay-teal"></div>
+        </div>
+        <span class="phase-num">◎</span>
+        <div class="phase-banner-text">
+          <h2 data-i18n="toolsNavPage.bannerTitle">AI 工具导航</h2>
+          <p data-i18n="toolsNavPage.bannerSubtitle">按用途分类 · 一站直达官网</p>
+        </div>
+        <span class="phase-progress" id="tools-nav-banner-stat">100+ 工具</span>
+      </div>
+
+      <section class="section tools-nav-section" id="ai-tools-nav">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="toolsNavPage.tag">工具导航</span>
+          <h2 data-i18n="toolsNavPage.title">AI 工具大全</h2>
+          <p id="tools-nav-lead"></p>
+          <p class="tools-nav-curriculum-link-wrap">
+            <a class="tools-nav-curriculum-link" href="#apps" data-i18n="toolsNavPage.linkCurriculum">查看课程深度选型指南 →</a>
+          </p>
+        </div>
+        <div class="tools-nav-toolbar">
+          <label class="sr-only" for="tools-nav-search">搜索 AI 工具</label>
+          <input type="search" id="tools-nav-search" class="tools-nav-search" placeholder="搜索工具名称、用途…" autocomplete="off">
+          <p class="tools-nav-stats" id="tools-nav-stats" aria-live="polite"></p>
+        </div>
+        <nav class="tools-nav-jump" id="tools-nav-jump" aria-label="分类快捷跳转"></nav>
+        <div class="tools-nav-body" id="tools-nav-body"></div>
+        <p class="tools-nav-empty hidden" id="tools-nav-empty" role="status"></p>
+      </section>
+    </div>
+
     <!-- ═══ PHASE 4: 检验巩固 ═══ -->
     <div class="learning-phase" id="phase-validate" data-phase-tab="validate" hidden>
       <div class="phase-banner phase-banner-rose has-page-poster">
@@ -738,18 +774,20 @@
   </footer>
 
   <script src="js/icon-map.js?v=20260702c"></script>
-  <script src="js/i18n.js?v=20260702c"></script>
-  <script src="js/locales/zh-CN.js?v=20260702b"></script>
-  <script src="js/locales/en.js?v=20260702b"></script>
+  <script src="js/i18n.js?v=20260703a"></script>
+  <script src="js/locales/zh-CN.js?v=20260703a"></script>
+  <script src="js/locales/en.js?v=20260703a"></script>
   <script src="js/locales/en-terms.js?v=20260630a"></script>
   <script src="js/locales/en-quiz.js?v=20260630a"></script>
 
   <script src="js/locales/en-curriculum.js?v=20260701a"></script>
   <script src="js/locales/en-tools.js?v=20260701c"></script>
   <script src="js/locales/en-devices.js?v=20260701c"></script>
-  <script src="js/locales/en-chrome.js?v=20260701c"></script>
+  <script src="js/locales/en-chrome.js?v=20260703a"></script>
+  <script src="js/locales/en-tools-nav.js?v=20260703a"></script>
   <script src="js/data.js?v=20260701a"></script>
+  <script src="js/ai-tools-nav.js?v=20260703a"></script>
   <script src="js/terms.js?v=20260630a"></script>
-  <script src="js/app.js?v=20260702c"></script>
+  <script src="js/app.js?v=20260703a"></script>
 </body>
 </html>

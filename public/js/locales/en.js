@@ -37,6 +37,7 @@ I18n.registerLocale('en', {
       validate: '04 Review',
       monetize: 'Monetize',
       devices: 'Devices',
+      toolsNav: 'Tools hub',
       continue: 'Continue →',
       menuOpen: 'Open menu',
       progress: '7-day progress',
@@ -119,6 +120,15 @@ I18n.registerLocale('en', {
       close: 'Close',
       nameError: 'Please enter at least 1 character',
       clearConfirm: 'Clear nickname? The page will use “Learner” again. Your learning progress is kept.',
+    },
+    toolsNavPage: {
+      tag: 'Tool directory',
+      title: 'AI tools hub',
+      bannerTitle: 'AI Tools Directory',
+      bannerSubtitle: 'Browse by category · One-click to official sites',
+      bannerStat: '{n} tools',
+      linkCurriculum: 'View in-depth app guide →',
+      linkDirectory: 'Browse full tools directory (100+) →',
     },
     footer: {
       brand: 'BestWayToLearn.AI',

@@ -283,6 +283,24 @@ const I18n = (function () {
     return getData('siteNavEntries') || null;
   }
 
+  function getToolsNavMeta() {
+    if (currentLocale === DEFAULT_LOCALE && typeof AI_TOOLS_NAV_META !== 'undefined') {
+      return AI_TOOLS_NAV_META;
+    }
+    return getData('toolsNav')?.meta || (typeof AI_TOOLS_NAV_META !== 'undefined' ? AI_TOOLS_NAV_META : {});
+  }
+
+  function getToolsNavCategoryLabel(cat) {
+    return mapCategoryLabel(cat, getData('toolsNav')?.categories);
+  }
+
+  function localizeToolsNavTool(tool) {
+    if (!tool || currentLocale === DEFAULT_LOCALE) return tool;
+    const overlay = getData('toolsNav')?.tools?.[tool.name];
+    if (!overlay) return tool;
+    return { ...tool, name: overlay.name || tool.name, desc: overlay.desc || tool.desc };
+  }
+
   function getQuizTopicLinks() {
     if (currentLocale === DEFAULT_LOCALE) return null;
     return getData('quizTopicLinks') || null;
@@ -879,6 +897,9 @@ const I18n = (function () {
     getGraduationModules,
     getCoachQuickNav,
     getSiteNavEntries,
+    getToolsNavMeta,
+    getToolsNavCategoryLabel,
+    localizeToolsNavTool,
     getQuizTopicLinks,
     getQuizReviewLinks,
     getPracticePlanFocus,

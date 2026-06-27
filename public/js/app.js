@@ -269,6 +269,7 @@ function getSearchTypeLabel(key) {
     monetize: ['search.typeMonetize', '变现'],
     aiBox: ['search.typeAiBox', 'AI 盒子'],
     config: ['search.typeConfig', '配置'],
+    toolsNav: ['search.typeToolsNav', '工具导航'],
   };
   const [k, fb] = map[key] || ['search.typeModule', '模块'];
   return uiT(k, fb);
@@ -632,6 +633,12 @@ const PHASE_TAB_CONFIG = {
     panelSelector: '#phase-view-devices',
     hashes: ['devices', 'device-guide', 'device-ai-boxes', 'device-presets'],
   },
+  toolsNav: {
+    label: '工具导航',
+    navHash: 'ai-tools-nav',
+    panelSelector: '#phase-view-tools-nav',
+    hashes: ['ai-tools-nav', 'tools-nav'],
+  },
   learn: {
     label: '认知基础',
     navHash: 'phase-learn',
@@ -722,7 +729,7 @@ const PHASE_PANEL_SELECTOR = '.phase-view, .learning-phase';
 function getNavTabLabels() {
   return typeof I18n !== 'undefined' ? I18n.getNavLabels() : {
     map: '首页', path: '学习计划', learn: '01 认知', tools: '02 工具',
-    practice: '03 实战', validate: '04 检验', monetize: '变现', devices: '设备',
+    practice: '03 实战', validate: '04 检验', monetize: '变现', devices: '设备', toolsNav: '工具导航',
   };
 }
 
@@ -1902,6 +1909,125 @@ function renderApps(filter = DEFAULT_APP_CATEGORY) {
 }
 
 let monetizeCategory = '全部';
+let toolsNavQuery = '';
+
+function getToolsNavMetaData() {
+  return typeof I18n !== 'undefined' ? I18n.getToolsNavMeta() : (typeof AI_TOOLS_NAV_META !== 'undefined' ? AI_TOOLS_NAV_META : {});
+}
+
+function getToolsNavLinks() {
+  const links = typeof buildAiToolsNavLinks === 'function' ? buildAiToolsNavLinks() : [];
+  return links.map(t => (typeof I18n !== 'undefined' ? I18n.localizeToolsNavTool(t) : t));
+}
+
+function toolsNavMatchesQuery(tool, query) {
+  if (!query) return true;
+  const hay = [tool.name, tool.category, tool.desc, tool.url, ...(tool.tags || [])].join(' ').toLowerCase();
+  return hay.includes(query.toLowerCase());
+}
+
+function renderToolsNav() {
+  const meta = getToolsNavMetaData();
+  const lead = document.getElementById('tools-nav-lead');
+  if (lead) lead.textContent = meta.lead || '';
+
+  const search = document.getElementById('tools-nav-search');
+  if (search && meta.searchPlaceholder) search.placeholder = meta.searchPlaceholder;
+
+  const links = getToolsNavLinks();
+  const query = (toolsNavQuery || search?.value || '').trim();
+  const categories = typeof AI_TOOLS_NAV_CATEGORIES !== 'undefined' ? AI_TOOLS_NAV_CATEGORIES : [];
+  const filtered = links.filter(t => toolsNavMatchesQuery(t, query));
+  const activeCats = categories.filter(cat => filtered.some(t => t.category === cat));
+
+  const bannerStat = document.getElementById('tools-nav-banner-stat');
+  if (bannerStat) {
+    bannerStat.textContent = typeof I18n !== 'undefined'
+      ? I18n.interpolate(I18n.t('toolsNavPage.bannerStat'), { n: links.length })
+      : `${links.length} 个工具`;
+  }
+
+  const stats = document.getElementById('tools-nav-stats');
+  if (stats) {
+    stats.textContent = typeof I18n !== 'undefined'
+      ? I18n.interpolate(meta.totalLabel, { n: filtered.length, c: activeCats.length })
+      : `共 ${filtered.length} 个工具 · ${activeCats.length} 个分类`;
+  }
+
+  const jump = document.getElementById('tools-nav-jump');
+  if (jump) {
+    jump.innerHTML = activeCats.map(cat => {
+      const slug = typeof getAiToolsNavCategorySlug === 'function' ? getAiToolsNavCategorySlug(cat) : cat;
+      const label = typeof I18n !== 'undefined' ? I18n.getToolsNavCategoryLabel(cat) : cat;
+      const count = filtered.filter(t => t.category === cat).length;
+      return `<a class="tools-nav-jump-btn" href="#tools-nav-cat-${slug}">${label}<span>${count}</span></a>`;
+    }).join('');
+  }
+
+  const body = document.getElementById('tools-nav-body');
+  const empty = document.getElementById('tools-nav-empty');
+  if (!body) return;
+
+  if (!filtered.length) {
+    body.innerHTML = '';
+    if (empty) {
+      empty.textContent = meta.empty || '';
+      empty.classList.remove('hidden');
+    }
+    return;
+  }
+  if (empty) empty.classList.add('hidden');
+
+  const featuredBadge = meta.featuredBadge || '本站推荐';
+  const catLabel = cat => (typeof I18n !== 'undefined' ? I18n.getToolsNavCategoryLabel(cat) : cat);
+
+  body.innerHTML = activeCats.map(cat => {
+    const items = filtered.filter(t => t.category === cat);
+    const slug = typeof getAiToolsNavCategorySlug === 'function' ? getAiToolsNavCategorySlug(cat) : cat;
+    const countLabel = typeof I18n !== 'undefined'
+      ? I18n.interpolate(meta.countLabel, { n: items.length })
+      : `${items.length} 个工具`;
+    return `
+      <section class="tools-nav-category" id="tools-nav-cat-${slug}">
+        <header class="tools-nav-category-head">
+          <h3 class="tools-nav-category-title">${catLabel(cat)}</h3>
+          <span class="tools-nav-category-count">${countLabel}</span>
+        </header>
+        <div class="tools-nav-chip-grid">
+          ${items.map(tool => {
+            const icon = renderIcon({
+              image: iconPathForApp(tool.name, tool.emoji),
+              emoji: tool.emoji,
+              className: 'theme-icon tools-nav-chip-icon',
+              size: 22,
+              alt: '',
+            });
+            return `
+            <a class="tools-nav-chip${tool.featured ? ' is-featured' : ''}" href="${tool.url}" target="_blank" rel="noopener noreferrer" title="${tool.desc}">
+              <span class="tools-nav-chip-icon-wrap">${icon}</span>
+              <span class="tools-nav-chip-text">
+                <span class="tools-nav-chip-name">${tool.name}</span>
+                <span class="tools-nav-chip-desc">${tool.desc}</span>
+              </span>
+              ${tool.featured ? `<span class="tools-nav-chip-badge">${featuredBadge}</span>` : ''}
+            </a>`;
+          }).join('')}
+        </div>
+      </section>`;
+  }).join('');
+}
+
+function initToolsNav() {
+  const search = document.getElementById('tools-nav-search');
+  if (search && !search.dataset.bound) {
+    search.dataset.bound = 'true';
+    search.addEventListener('input', () => {
+      toolsNavQuery = search.value.trim();
+      renderToolsNav();
+    });
+  }
+  renderToolsNav();
+}
 
 function renderMonetize() {
   const meta = getMonetizeMetaData();
@@ -3567,6 +3693,7 @@ const COACH_QUICK_NAV = [
   { label: '知识测验', href: '#quiz' },
   { label: '变现指南', href: '#monetize' },
   { label: '设备选购', href: '#devices' },
+  { label: '工具导航', href: '#ai-tools-nav' },
 ];
 
 const SITE_NAV_ENTRIES = [
@@ -3583,6 +3710,7 @@ const SITE_NAV_ENTRIES = [
   { type: '模块', title: '结业报告', subtitle: '7 天学习总结与 30 天计划', href: '#graduation', keywords: '结业 毕业 报告 成就 证书' },
   { type: '模块', title: 'AI 技能变现指南', subtitle: '30 个可落地的副业与接单方向', href: '#monetize', keywords: '变现 赚钱 副业 接单 收入 项目 创业 自由职业 monetize' },
   { type: '模块', title: '设备选购指南', subtitle: 'Windows/macOS、内存、显卡与推荐配置', href: '#devices', keywords: '设备 电脑 笔记本 台式机 内存 显卡 GPU RAM mac windows 苹果 配置 选购 硬件' },
+  { type: '模块', title: 'AI 工具导航', subtitle: '100+ 工具按分类直达官网', href: '#ai-tools-nav', keywords: '工具导航 大全 hao123 链接 官网 目录 directory' },
 ];
 
 function buildSiteSearchIndex() {
@@ -3610,6 +3738,17 @@ function buildSiteSearchIndex() {
       action: 'app',
       appCategory: app.category,
       href: '#apps'
+    });
+  });
+
+  getToolsNavLinks().forEach(tool => {
+    entries.push({
+      type: getSearchTypeLabel('toolsNav'),
+      title: tool.name,
+      subtitle: tool.category,
+      keywords: [tool.name, tool.category, tool.desc, tool.url, ...(tool.tags || [])].filter(Boolean).join(' '),
+      href: '#ai-tools-nav',
+      external: tool.url,
     });
   });
 
@@ -4259,6 +4398,7 @@ function refreshLocaleUI() {
   renderDevices();
   renderQuizPrelude();
   renderMonetize();
+  renderToolsNav();
   renderTermFilters('concepts-filter', conceptCategory, cat => {
     conceptCategory = cat;
     renderConcepts(document.getElementById('concept-search')?.value || '', cat);
@@ -4317,6 +4457,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderApps();
   renderMonetize();
   renderDevices();
+  initToolsNav();
   renderHandsOnCases();
   renderPractices();
   initPracticeCopyButtons();

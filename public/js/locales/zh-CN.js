@@ -37,6 +37,7 @@ I18n.registerLocale('zh-CN', {
       validate: '04 检验',
       monetize: '变现',
       devices: '设备',
+      toolsNav: '工具导航',
       continue: '继续学习 →',
       menuOpen: '打开菜单',
       progress: '7 天学习进度',
@@ -119,6 +120,15 @@ I18n.registerLocale('zh-CN', {
       close: '关闭',
       nameError: '请至少输入 1 个字符',
       clearConfirm: '确定清除昵称吗？页面将恢复默认称呼「学员」，学习进度不会丢失。',
+    },
+    toolsNavPage: {
+      tag: '工具导航',
+      title: 'AI 工具大全',
+      bannerTitle: 'AI 工具导航',
+      bannerSubtitle: '按用途分类 · 一站直达官网',
+      bannerStat: '{n} 个工具',
+      linkCurriculum: '查看课程深度选型指南 →',
+      linkDirectory: '浏览完整工具导航（100+）→',
     },
     footer: {
       brand: 'BestWayToLearn.AI',
