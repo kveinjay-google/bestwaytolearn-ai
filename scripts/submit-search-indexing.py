@@ -94,13 +94,13 @@ def submit_baidu(cfg: dict) -> tuple[bool, str]:
     token = (cfg.get('baiduPushToken') or '').strip()
     if not token:
         return False, '  跳过（未配置 baiduPushToken）'
-    site = (cfg.get('baiduSite') or cfg['siteHost']).strip()
+    site = (cfg.get('baiduSite') or cfg['siteHost']).strip().rstrip('/')
     if not site.startswith('http'):
         site = f'https://{site}'
     urls = cfg.get('urls') or [cfg['siteUrl']]
     body = '\n'.join(urls).encode('utf-8')
-    q = urllib.parse.urlencode({'site': site, 'token': token})
-    url = f'http://data.zz.baidu.com/urls?{q}'
+    # Baidu returns "site init fail" if site= is percent-encoded (e.g. https%3A%2F%2F…).
+    url = f'http://data.zz.baidu.com/urls?site={site}&token={token}'
     status, resp = http_request(url, method='POST', data=body, headers={'Content-Type': 'text/plain'})
     success = status == 200 and 'success' in resp
     return success, f'  百度推送 → HTTP {status}: {resp.strip()}'
