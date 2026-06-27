@@ -5,7 +5,8 @@
   "description": "BestWayToLearn.AI — static learning hub (zero build step)",
   "scripts": {
     "serve": "npx --yes serve public -l 3000",
-    "preview": "npm run serve"
+    "preview": "npm run serve",
+    "seo:submit": "python3 scripts/submit-search-indexing.py"
   },
   "repository": {
     "type": "git",
