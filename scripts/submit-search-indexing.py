@@ -3,7 +3,7 @@
 
 支持全自动：
   - IndexNow → Bing、Yandex、Naver、Seznam 等（共享 api.indexnow.org）
-  - 百度主动推送（需在 seo-config.json 填写 baiduPushToken）
+  - 百度主动推送（需在 .env 设置 BAIDU_PUSH_TOKEN）
 
 无法全自动（需你一次性登录验证）：
   - Google Search Console（Google 已停用匿名 sitemap ping）
@@ -12,6 +12,7 @@
 from __future__ import annotations
 
 import json
+import os
 import ssl
 import sys
 import urllib.error
@@ -24,10 +25,29 @@ CONFIG_PATH = Path(__file__).resolve().parent / 'seo-config.json'
 USER_AGENT = 'BestWayToLearn.AI-SEO-Submit/1.0'
 
 
+def load_dotenv(path: Path) -> None:
+    if not path.exists():
+        return
+    for line in path.read_text(encoding='utf-8').splitlines():
+        line = line.strip()
+        if not line or line.startswith('#') or '=' not in line:
+            continue
+        key, _, value = line.partition('=')
+        key = key.strip()
+        value = value.strip().strip('"').strip("'")
+        if key and key not in os.environ:
+            os.environ[key] = value
+
+
 def load_config() -> dict:
+    load_dotenv(ROOT / '.env')
     if not CONFIG_PATH.exists():
         raise FileNotFoundError(f'缺少配置: {CONFIG_PATH}')
     return json.loads(CONFIG_PATH.read_text(encoding='utf-8'))
+
+
+def get_baidu_token() -> str:
+    return os.environ.get('BAIDU_PUSH_TOKEN', '').strip()
 
 
 def http_request(url: str, *, method: str = 'GET', data: bytes | None = None, headers: dict | None = None, timeout: float = 20.0) -> tuple[int, str]:
@@ -91,9 +111,9 @@ def submit_indexnow(cfg: dict) -> tuple[bool, str]:
 
 
 def submit_baidu(cfg: dict) -> tuple[bool, str]:
-    token = (cfg.get('baiduPushToken') or '').strip()
+    token = get_baidu_token()
     if not token:
-        return False, '  跳过（未配置 baiduPushToken）'
+        return False, '  跳过（未设置环境变量 BAIDU_PUSH_TOKEN，可复制 .env.example 为 .env）'
     site = (cfg.get('baiduSite') or cfg['siteHost']).strip().rstrip('/')
     if not site.startswith('http'):
         site = f'https://{site}'
@@ -115,9 +135,9 @@ def print_manual_steps(cfg: dict) -> None:
     print(f'2. Bing Webmaster: https://www.bing.com/webmasters')
     print(f'   导入 Google 配置或手动添加站点 → 提交同一 Sitemap')
     print(f'3. 百度搜索资源平台: https://ziyuan.baidu.com/')
-    print(f'   在「普通收录 → 资源提交 → API 推送」获取 token，填入 scripts/seo-config.json')
-    print('   接口: http://data.zz.baidu.com/urls?site=<站点>&token=<token>')
-    print('   之后每次部署运行本脚本即可自动百度推送。')
+    print('   在「普通收录 → 资源提交 → API 推送」获取 token，写入项目根目录 .env：')
+    print('   BAIDU_PUSH_TOKEN=<token>  （参考 .env.example）')
+    print('   之后每次部署运行 npm run seo:submit 即可自动百度推送。')
 
 
 def main() -> int:
@@ -140,7 +160,7 @@ def main() -> int:
     print('\n百度主动推送 …')
     ok_bd, msg_bd = submit_baidu(cfg)
     print(msg_bd)
-    if cfg.get('baiduPushToken'):
+    if get_baidu_token():
         print('✓ 百度推送成功' if ok_bd else '✗ 百度推送失败')
 
     print_manual_steps(cfg)
