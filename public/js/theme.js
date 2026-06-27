@@ -3,7 +3,10 @@
 const Theme = (() => {
   const STORAGE_KEY = 'bwtl-theme';
   const DEFAULT_THEME = 'neural';
-  const THEMES = ['neural', 'aurora', 'sunrise', 'forest', 'ink'];
+  const THEMES = [
+    'neural', 'aurora', 'sunrise', 'forest', 'ink',
+    'ember', 'ocean', 'lavender', 'noir', 'neon',
+  ];
   const POSTER_BASE = 'assets/posters/poster';
 
   let current = DEFAULT_THEME;
