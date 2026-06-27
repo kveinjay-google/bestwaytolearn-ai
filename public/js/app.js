@@ -2003,13 +2003,13 @@ function renderToolsNav() {
               alt: '',
             });
             return `
-            <a class="tools-nav-chip${tool.featured ? ' is-featured' : ''}" href="${tool.url}" target="_blank" rel="noopener noreferrer" title="${tool.desc}">
-              <span class="tools-nav-chip-icon-wrap">${icon}</span>
-              <span class="tools-nav-chip-text">
+            <a class="tools-nav-chip${tool.featured ? ' is-featured' : ''}" href="${tool.url}" target="_blank" rel="noopener noreferrer">
+              <div class="tools-nav-chip-head">
+                <span class="tools-nav-chip-icon-wrap">${icon}</span>
                 <span class="tools-nav-chip-name">${tool.name}</span>
-                <span class="tools-nav-chip-desc">${tool.desc}</span>
-              </span>
-              ${tool.featured ? `<span class="tools-nav-chip-badge">${featuredBadge}</span>` : ''}
+                ${tool.featured ? `<span class="tools-nav-chip-badge">${featuredBadge}</span>` : ''}
+              </div>
+              <p class="tools-nav-chip-desc">${tool.desc}</p>
             </a>`;
           }).join('')}
         </div>

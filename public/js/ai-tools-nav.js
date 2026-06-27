@@ -127,7 +127,7 @@ function buildAiToolsNavLinks() {
       category: app.category,
       url: app.url,
       emoji: app.emoji,
-      desc: (app.desc || '').replace(/\s+/g, ' ').slice(0, 56) + (app.desc && app.desc.length > 56 ? '…' : ''),
+      desc: (app.desc || '').replace(/\s+/g, ' ').trim(),
       featured: true,
       tags: app.tags || [],
     });
