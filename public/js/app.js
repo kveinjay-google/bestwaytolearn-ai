@@ -788,6 +788,7 @@ function repairNavTabs() {
 
 function getMainNavHighlightTab(tabId) {
   if (tabId === 'aiToolsNav' || tabId === 'toolsNav') return 'aiToolsNav';
+  if (tabId === 'learn' || tabId === 'tools' || tabId === 'practice' || tabId === 'validate') return 'map';
   return tabId;
 }
 
