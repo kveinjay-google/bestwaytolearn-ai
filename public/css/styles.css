@@ -5388,6 +5388,141 @@ main {
   word-break: break-word;
 }
 
+/* Prompt examples library */
+.prompt-examples-framework {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0 0 1.25rem;
+  padding: 0.85rem 1rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-amber);
+}
+
+.prompt-examples-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.prompt-example-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.35rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.prompt-example-item:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.prompt-example-item.hidden-practice-item {
+  display: none;
+}
+
+.prompt-example-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+.prompt-example-software {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 600;
+  font-size: 0.82rem;
+  color: var(--accent-amber);
+}
+
+.prompt-example-cat {
+  font-size: 0.72rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.prompt-example-badge {
+  font-size: 0.72rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-xs);
+  background: rgba(148, 168, 212, 0.12);
+  color: var(--validate-accent, #94a8d4);
+}
+
+.prompt-example-item h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+}
+
+.prompt-example-scenario {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  margin: 0 0 0.75rem;
+  line-height: 1.5;
+}
+
+.prompt-example-structure {
+  margin: 0 0 0.85rem;
+}
+
+.prompt-example-structure strong {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.prompt-example-structure-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.prompt-example-structure-tags span {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-xs);
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  color: var(--accent-teal);
+  font-family: var(--font-mono);
+}
+
+.prompt-example-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.65rem;
+}
+
+.prompt-example-tags span {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.prompt-example-tips {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin: 0.75rem 0 0;
+  line-height: 1.5;
+}
+
+.prompt-example-tips strong {
+  color: var(--text-secondary);
+}
+
 /* Prompt Lab — unified studio */
 .prompt-studio {
   background: var(--bg-card);

@@ -131,6 +131,10 @@ function getPracticesData() {
   return typeof I18n !== 'undefined' ? I18n.getPractices() : PRACTICES;
 }
 
+function getPromptExamplesData() {
+  return typeof I18n !== 'undefined' ? I18n.getPromptExamples() : (typeof PROMPT_EXAMPLES !== 'undefined' ? PROMPT_EXAMPLES : []);
+}
+
 function getPromptCasesData() {
   return typeof I18n !== 'undefined' ? I18n.getPromptCases() : PROMPT_CASES;
 }
@@ -682,6 +686,12 @@ const PHASE_TAB_CONFIG = {
       { label: '提示词实验室', href: '#prompt-lab' },
     ],
   },
+  prompts: {
+    label: '提示词范例',
+    navHash: 'prompt-examples',
+    panelSelector: '#phase-view-prompts',
+    hashes: ['prompt-examples', 'prompt-examples-section'],
+  },
   practice: {
     label: '实战应用',
     navHash: 'phase-practice',
@@ -728,6 +738,9 @@ function buildHashToPhaseTabMap() {
   if (typeof PRACTICES !== 'undefined') {
     PRACTICES.forEach((_, i) => { map[`practice-${i}`] = 'practice'; });
   }
+  if (typeof PROMPT_EXAMPLES !== 'undefined') {
+    PROMPT_EXAMPLES.forEach((ex, i) => { map[`prompt-example-${i}`] = 'prompts'; map[`prompt-example-${ex.id}`] = 'prompts'; });
+  }
   return map;
 }
 
@@ -738,6 +751,7 @@ function resolvePhaseTabFromHash(hash) {
   if (id.startsWith('overview-')) return 'learn';
   if (id.startsWith('hands-on-')) return 'practice';
   if (id.startsWith('practice-')) return 'practice';
+  if (id.startsWith('prompt-example-')) return 'prompts';
   if (id.startsWith('mcp-nav-cat-')) return 'aiMcpNav';
   if (id.startsWith('skills-nav-cat-')) return 'aiSkillsNav';
   if (id.startsWith('tools-nav-cat-')) return 'aiToolsNav';
@@ -747,7 +761,7 @@ function resolvePhaseTabFromHash(hash) {
 const PHASE_PANEL_SELECTOR = '.phase-view, .learning-phase';
 function getNavTabLabels() {
   return typeof I18n !== 'undefined' ? I18n.getNavLabels() : {
-    map: 'AI学习', learn: '认知', tools: '工具',
+    map: 'AI学习', learn: '认知', tools: '工具', prompts: '提示词',
     practice: '实战', validate: '检验', monetize: '变现', devices: '设备',
     aiToolsNav: 'AI导航', aiSkillsNav: 'SKILL推荐', aiMcpNav: 'MCP导航',
   };
@@ -2836,6 +2850,99 @@ function renderPractices() {
   renderPracticeList();
 }
 
+let promptExampleCategory = '全部';
+
+function getPromptExampleCategories() {
+  if (typeof PROMPT_EXAMPLE_CATEGORIES !== 'undefined') return PROMPT_EXAMPLE_CATEGORIES;
+  return ['全部'];
+}
+
+function renderPromptExamples() {
+  const fc = document.getElementById('prompt-examples-filter');
+  if (fc) {
+    delete fc.dataset.rendered;
+    delete fc.dataset.bound;
+  }
+  const labelFor = cat => (typeof I18n !== 'undefined' ? I18n.getPromptExampleCategoryLabel(cat) : cat);
+  initPracticeFilterBar('prompt-examples-filter', getPromptExampleCategories(), () => promptExampleCategory, cat => {
+    promptExampleCategory = cat;
+    renderPromptExamplesList();
+  }, labelFor);
+  const ui = typeof I18n !== 'undefined' ? I18n.getPromptExamplesUi() : {};
+  const frameworkEl = document.getElementById('prompt-examples-framework');
+  if (frameworkEl) {
+    frameworkEl.textContent = ui.frameworkHint || '结构化提示词建议包含：角色 → 任务 → 背景 → 格式 → 约束（RTFC）。将 [占位符] 替换为你的真实信息。';
+    frameworkEl.classList.toggle('hidden', !frameworkEl.textContent);
+  }
+  renderPromptExamplesList();
+}
+
+function renderPromptExamplesList() {
+  const container = document.getElementById('prompt-examples-list');
+  if (!container) return;
+  const examples = getPromptExamplesData();
+  const ui = typeof I18n !== 'undefined' ? I18n.getPromptExamplesUi() : {};
+  const total = examples.length;
+  const visible = examples.filter(ex =>
+    promptExampleCategory === '全部' || ex.category === promptExampleCategory
+  );
+  const countEl = document.getElementById('prompt-examples-count');
+  const countText = ui.countShown
+    ? I18n.renderPromptTemplate(ui.countShown, { visible: visible.length, total })
+    : `显示 ${visible.length} / ${total} 个`;
+  if (countEl) countEl.textContent = countText;
+
+  document.querySelectorAll('#prompt-examples-filter .filter-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.cat === promptExampleCategory);
+  });
+
+  if (!visible.length) {
+    const emptyHint = ui.emptyHint || '该分类下暂无范例，试试其他标签。';
+    container.innerHTML = `<p class="empty-hint">${emptyHint}</p>`;
+    return;
+  }
+
+  const structureLabel = ui.structureLabel || '提示词结构';
+  const scenarioLabel = ui.scenarioLabel || '适用场景';
+  const tipsLabel = ui.tipsLabel || '使用建议';
+  const copyLabel = ui.copyLabel || (typeof I18n !== 'undefined' ? I18n.t('common.copy') : '一键复制');
+
+  container.innerHTML = examples.map((ex, i) => {
+    const catLabel = typeof I18n !== 'undefined' ? I18n.getPromptExampleCategoryLabel(ex.category) : ex.category;
+    const show = promptExampleCategory === '全部' || ex.category === promptExampleCategory;
+    const structureTags = (ex.structure || []).map(s => `<span>${escapeHtml(s)}</span>`).join('');
+    const tagPills = (ex.tags || []).map(t => `<span>#${escapeHtml(t)}</span>`).join('');
+    return `
+    <article class="prompt-example-item ${show ? '' : 'hidden-practice-item'}" id="prompt-example-${i}" data-id="${escapeHtml(ex.id)}">
+      <div class="prompt-example-header">
+        <span class="prompt-example-software">${renderIcon({ emoji: ex.emoji, className: 'theme-icon theme-icon-inline', size: 22, alt: ex.software })} ${escapeHtml(ex.software)}</span>
+        <span class="prompt-example-cat">${escapeHtml(catLabel)}</span>
+        <span class="prompt-example-badge">${escapeHtml(ex.difficulty || '')}</span>
+      </div>
+      <h3>${escapeHtml(ex.title)}</h3>
+      <p class="prompt-example-scenario"><strong>${escapeHtml(scenarioLabel)}：</strong>${escapeHtml(ex.scenario)}</p>
+      ${structureTags ? `<div class="prompt-example-structure"><strong>${escapeHtml(structureLabel)}</strong><div class="prompt-example-structure-tags">${structureTags}</div></div>` : ''}
+      <div class="practice-prompt-block">
+        <div class="practice-prompt-header">
+          <span>${escapeHtml(ex.software)} prompt</span>
+          <button class="btn-copy practice-copy-btn prompt-example-copy-btn" type="button" data-prompt-idx="${i}" aria-label="${escapeHtml(copyLabel)}">${copyLabel}</button>
+        </div>
+        <pre class="practice-prompt">${escapeHtml(ex.prompt)}</pre>
+      </div>
+      ${ex.tips ? `<p class="prompt-example-tips"><strong>${escapeHtml(tipsLabel)}：</strong>${escapeHtml(ex.tips)}</p>` : ''}
+      ${tagPills ? `<div class="prompt-example-tags">${tagPills}</div>` : ''}
+    </article>`;
+  }).join('');
+
+  container.querySelectorAll('.prompt-example-copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.dataset.promptIdx, 10);
+      const text = getPromptExamplesData()[idx]?.prompt;
+      if (text) copyToClipboard(text, btn, copyLabel);
+    });
+  });
+}
+
 function renderPracticeList() {
   const container = document.getElementById('practice-list');
   if (!container) return;
@@ -4205,6 +4312,16 @@ function buildSiteSearchIndex() {
     });
   });
 
+  getPromptExamplesData().forEach((ex, i) => {
+    entries.push({
+      type: getSearchTypeLabel('case'),
+      title: ex.title,
+      subtitle: `${ex.software} · ${ex.category}`,
+      keywords: [ex.title, ex.software, ex.category, ex.scenario, ex.prompt, ...(ex.tags || [])].filter(Boolean).join(' '),
+      href: `#prompt-example-${i}`,
+    });
+  });
+
   getPracticesData().forEach((p, i) => {
     entries.push({
       type: getSearchTypeLabel('template'),
@@ -4571,6 +4688,7 @@ function refreshLocaleUI() {
   });
   renderHandsOnCases();
   renderPractices();
+  renderPromptExamples();
   refreshPromptLabChrome();
   renderDevices();
   renderQuizPrelude();
@@ -4641,6 +4759,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMcpNav();
   renderHandsOnCases();
   renderPractices();
+  renderPromptExamples();
   initPracticeCopyButtons();
   renderGlossary();
   initPromptLab();

@@ -471,6 +471,11 @@
           title: "Choisissez les bons outils",
           desc: "43 applications d'IA grand public par scénario, avec fonctionnalités, audience et conseils de démarrage."
         },
+        "prompt-examples": {
+          tag: "Référence de prompts",
+          title: "Exemples de prompts par type de logiciel",
+          desc: "Sept catégories — chat, code, images, vidéo, bureau, agents et recherche — avec scénarios, structure et prompts prêts à copier."
+        },
         "prompt-lab": {
           tag: "Module 2.2",
           title: "Laboratoire rapide",

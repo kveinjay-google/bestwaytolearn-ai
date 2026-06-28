@@ -471,6 +471,11 @@
           title: "Wählen Sie die richtigen Werkzeuge",
           desc: "43 gängige KI-Apps nach Szenario, mit Funktionen, Zielgruppe und Tipps für den Einstieg."
         },
+        "prompt-examples": {
+          tag: "Prompt-Referenz",
+          title: "Prompt-Beispiele nach Softwaretyp",
+          desc: "Sieben Kategorien — Chat, Coding, Bilder, Video, Büro, Agenten und Recherche — mit Szenarien, Strukturhinweisen und kopierfertigen Prompts."
+        },
         "prompt-lab": {
           tag: "Module 2.2",
           title: "Promptes Labor",

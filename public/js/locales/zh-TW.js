@@ -58,6 +58,7 @@ I18n.registerLocale('zh-TW', {
         path: "學習計劃",
         learn: "認知",
         tools: "工具",
+        prompts: "提示詞",
         practice: "實戰",
         validate: "檢驗",
         monetize: "變現",
@@ -293,6 +294,7 @@ I18n.registerLocale('zh-TW', {
         map: "AI學習",
         learn: "認知",
         tools: "工具",
+        prompts: "提示詞",
         practice: "實戰",
         validate: "檢驗",
         monetize: "變現",
@@ -428,6 +430,11 @@ I18n.registerLocale('zh-TW', {
           tag: "模块 2.1",
           title: "選對工具，事半功倍",
           desc: "43 款主流 AI 應用，按場景分類，含功能列表、適合人群與上手建議。"
+        },
+        "prompt-examples": {
+          tag: "提示詞參考",
+          title: "各軟體類型提示詞範例",
+          desc: "覆蓋對話、程式設計、圖像、影片、辦公、Agent 與搜尋研究 7 大類，每條範例含使用場景、結構說明與可複製提示詞。"
         },
         "prompt-lab": {
           tag: "模块 2.2",

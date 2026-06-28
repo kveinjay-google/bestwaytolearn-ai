@@ -471,6 +471,11 @@
           title: "Elija las herramientas adecuadas",
           desc: "43 aplicaciones de IA convencionales por escenario, con funciones, audiencia y consejos para comenzar."
         },
+        "prompt-examples": {
+          tag: "Referencia de prompts",
+          title: "Ejemplos de prompts por tipo de software",
+          desc: "Siete categorías — chat, código, imágenes, video, oficina, agentes e investigación — con escenarios, estructura y prompts listos para copiar."
+        },
         "prompt-lab": {
           tag: "Module 2.2",
           title: "laboratorio rápido",

@@ -379,6 +379,11 @@
       fundamentals: { tag: 'Module 1.2', title: 'How does AI work?', desc: '8 fundamental modules: AI → ML → DL → Transformer → LLM → GenAI → NLP.' },
       knowledge: { tag: 'Module 1.3', title: 'AI knowledge base', desc: '100 common AI terms in 9 categories. Card study or quick glossary.' },
       apps: { tag: 'Module 2.1', title: 'Pick the right tools', desc: '43 mainstream AI apps by scenario, with features, audience, and getting-started tips.' },
+      'prompt-examples': {
+        tag: 'Prompt reference',
+        title: 'Prompt examples by software type',
+        desc: 'Seven categories—chat, coding, images, video, office, agents, and research—with scenarios, structure notes, and copy-ready prompts.',
+      },
       'prompt-lab': {
         tag: 'Module 2.2',
         title: 'Prompt lab',

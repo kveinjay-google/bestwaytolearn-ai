@@ -1027,6 +1027,22 @@ const I18n = (function () {
     return getData('practiceUi') || {};
   }
 
+  function getPromptExamples() {
+    if (typeof PROMPT_EXAMPLES === 'undefined') return [];
+    if (usesChineseSourceContent()) return PROMPT_EXAMPLES;
+    const overlay = getData('promptExamples') || [];
+    const byId = Object.fromEntries(overlay.filter(o => o?.id).map(o => [o.id, o]));
+    return PROMPT_EXAMPLES.map(item => (byId[item.id] ? { ...item, ...byId[item.id] } : item));
+  }
+
+  function getPromptExampleCategoryLabel(cat) {
+    return mapCategoryLabel(cat, getData('promptExampleCategories'));
+  }
+
+  function getPromptExamplesUi() {
+    return getData('promptExamplesUi') || {};
+  }
+
   function getPromptSimulatedResponses() {
     if (usesChineseSourceContent()) return null;
     return getData('promptLab.simulatedResponses') || null;
@@ -1211,6 +1227,9 @@ const I18n = (function () {
     getPromptLabUi,
     getHandsOnUi,
     getPracticeUi,
+    getPromptExamples,
+    getPromptExampleCategoryLabel,
+    getPromptExamplesUi,
     getPromptSimulatedResponses,
     getPromptFollowupPatterns,
     renderPromptTemplate,
