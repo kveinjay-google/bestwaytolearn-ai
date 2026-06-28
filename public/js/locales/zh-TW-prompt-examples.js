@@ -24,7 +24,7 @@
   "promptExamples": [
     {
       "id": "chatgpt-longform",
-      "category": "對話助手",
+      "category": "对话助手",
       "software": "ChatGPT",
       "emoji": "💬",
       "difficulty": "入門",
@@ -46,7 +46,7 @@
     },
     {
       "id": "claude-contract",
-      "category": "對話助手",
+      "category": "对话助手",
       "software": "Claude",
       "emoji": "🎭",
       "difficulty": "進階",
@@ -68,7 +68,7 @@
     },
     {
       "id": "kimi-annual-report",
-      "category": "對話助手",
+      "category": "对话助手",
       "software": "Kimi",
       "emoji": "🌙",
       "difficulty": "進階",
@@ -90,7 +90,7 @@
     },
     {
       "id": "deepseek-code-review",
-      "category": "對話助手",
+      "category": "对话助手",
       "software": "DeepSeek",
       "emoji": "🔍",
       "difficulty": "入門",
@@ -112,7 +112,7 @@
     },
     {
       "id": "cursor-feature",
-      "category": "程式設計開發",
+      "category": "编程开发",
       "software": "Cursor",
       "emoji": "⚡",
       "difficulty": "入門",
@@ -134,7 +134,7 @@
     },
     {
       "id": "copilot-comment-driven",
-      "category": "程式設計開發",
+      "category": "编程开发",
       "software": "GitHub Copilot",
       "emoji": "👨‍💻",
       "difficulty": "入門",
@@ -155,7 +155,7 @@
     },
     {
       "id": "codex-cli-bugfix",
-      "category": "程式設計開發",
+      "category": "编程开发",
       "software": "Codex CLI",
       "emoji": "⚡",
       "difficulty": "進階",
@@ -177,7 +177,7 @@
     },
     {
       "id": "bolt-prototype",
-      "category": "程式設計開發",
+      "category": "编程开发",
       "software": "Bolt.new",
       "emoji": "⚡",
       "difficulty": "入門",
@@ -199,7 +199,7 @@
     },
     {
       "id": "mj-product-shot",
-      "category": "影象創作",
+      "category": "图像创作",
       "software": "Midjourney",
       "emoji": "🎨",
       "difficulty": "入門",
@@ -222,7 +222,7 @@
     },
     {
       "id": "dalle-article-cover",
-      "category": "影象創作",
+      "category": "图像创作",
       "software": "DALL·E 3",
       "emoji": "🖼️",
       "difficulty": "入門",
@@ -244,7 +244,7 @@
     },
     {
       "id": "sd-ecommerce-white",
-      "category": "影象創作",
+      "category": "图像创作",
       "software": "Stable Diffusion",
       "emoji": "🌀",
       "difficulty": "進階",
@@ -265,7 +265,7 @@
     },
     {
       "id": "kling-product-video",
-      "category": "影片音訊",
+      "category": "视频音频",
       "software": "可靈 AI",
       "emoji": "🎬",
       "difficulty": "入門",
@@ -287,7 +287,7 @@
     },
     {
       "id": "runway-image-to-video",
-      "category": "影片音訊",
+      "category": "视频音频",
       "software": "Runway",
       "emoji": "🎥",
       "difficulty": "進階",
@@ -309,7 +309,7 @@
     },
     {
       "id": "suno-bgm",
-      "category": "影片音訊",
+      "category": "视频音频",
       "software": "Suno",
       "emoji": "🎵",
       "difficulty": "入門",
@@ -332,7 +332,7 @@
     },
     {
       "id": "notion-meeting",
-      "category": "辦公效率",
+      "category": "办公效率",
       "software": "Notion AI",
       "emoji": "📋",
       "difficulty": "入門",
@@ -354,7 +354,7 @@
     },
     {
       "id": "gamma-pitch",
-      "category": "辦公效率",
+      "category": "办公效率",
       "software": "Gamma",
       "emoji": "📊",
       "difficulty": "入門",
@@ -376,7 +376,7 @@
     },
     {
       "id": "copilot-excel",
-      "category": "辦公效率",
+      "category": "办公效率",
       "software": "Microsoft Copilot",
       "emoji": "🪟",
       "difficulty": "進階",
@@ -398,7 +398,7 @@
     },
     {
       "id": "openclaw-cron-digest",
-      "category": "Agent 自動化",
+      "category": "Agent 自动化",
       "software": "OpenClaw",
       "emoji": "🦞",
       "difficulty": "進階",
@@ -420,7 +420,7 @@
     },
     {
       "id": "coze-support-bot",
-      "category": "Agent 自動化",
+      "category": "Agent 自动化",
       "software": "釦子 Coze",
       "emoji": "🎯",
       "difficulty": "入門",
@@ -442,7 +442,7 @@
     },
     {
       "id": "dify-rag-agent",
-      "category": "Agent 自動化",
+      "category": "Agent 自动化",
       "software": "Dify",
       "emoji": "🔗",
       "difficulty": "進階",
@@ -464,7 +464,7 @@
     },
     {
       "id": "perplexity-competitor",
-      "category": "搜尋研究",
+      "category": "搜索研究",
       "software": "Perplexity",
       "emoji": "🔎",
       "difficulty": "入門",
@@ -486,7 +486,7 @@
     },
     {
       "id": "notebooklm-papers",
-      "category": "搜尋研究",
+      "category": "搜索研究",
       "software": "NotebookLM",
       "emoji": "📓",
       "difficulty": "進階",
@@ -508,7 +508,7 @@
     },
     {
       "id": "metaso-academic",
-      "category": "搜尋研究",
+      "category": "搜索研究",
       "software": "秘塔 AI 搜尋",
       "emoji": "🔭",
       "difficulty": "入門",

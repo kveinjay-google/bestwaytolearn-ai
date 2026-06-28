@@ -15,6 +15,7 @@ LOCALES_DIR = ROOT / "public/js/locales"
 CACHE_LOCK = threading.Lock()
 
 TARGET = {"ko": "ko", "ja": "ja", "fr": "fr", "es": "es", "de": "de"}
+SKIP_TRANSLATE_KEYS = frozenset({"id"})
 
 
 def load_zh_examples() -> dict:
@@ -94,6 +95,7 @@ def build_zh_tw(cc) -> dict:
     examples = []
     for item in zh["examples"]:
         ex = convert_obj(cc, item)
+        ex["category"] = item["category"]
         if item.get("difficulty") in diff:
             ex["difficulty"] = diff[item["difficulty"]]
         examples.append(ex)
@@ -106,53 +108,67 @@ def init_translator(lang: str):
     return GoogleTranslator(source="en", target=lang)
 
 
-def collect_strings(obj, out: dict | None = None) -> dict[str, str]:
+def collect_strings(obj, out: dict | None = None, parent_key: str | None = None) -> dict[str, str]:
     if out is None:
         out = {}
     if isinstance(obj, str):
-        if re.search(r"[A-Za-z]", obj):
+        if parent_key not in SKIP_TRANSLATE_KEYS and re.search(r"[A-Za-z]", obj):
             out.setdefault(obj, obj)
     elif isinstance(obj, list):
         for v in obj:
             collect_strings(v, out)
     elif isinstance(obj, dict):
-        for v in obj.values():
-            collect_strings(v, out)
+        for k, v in obj.items():
+            collect_strings(v, out, k)
     return out
 
 
-def apply_map(obj, mapping: dict):
+def apply_map(obj, mapping: dict, parent_key: str | None = None):
     if isinstance(obj, str):
+        if parent_key in SKIP_TRANSLATE_KEYS:
+            return obj
         return mapping.get(obj, obj)
     if isinstance(obj, list):
         return [apply_map(v, mapping) for v in obj]
     if isinstance(obj, dict):
-        return {k: apply_map(v, mapping) for k, v in obj.items()}
+        return {k: apply_map(v, mapping, k) for k, v in obj.items()}
     return obj
 
 
-def translate_payload(gt, payload: dict, cache: dict) -> dict:
+def load_cache(path: Path) -> dict[str, dict[str, str]]:
+    if not path.exists():
+        return {}
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    if not raw:
+        return {}
+    # Legacy flat cache (pre per-locale) — discard to avoid cross-locale bleed.
+    if any(k in TARGET for k in raw.keys()):
+        return {k: dict(v) for k, v in raw.items() if k in TARGET and isinstance(v, dict)}
+    return {}
+
+
+def translate_payload(gt, payload: dict, locale_cache: dict[str, str]) -> dict:
     out = json.loads(json.dumps(payload))
     strings = collect_strings(out)
-    pending = [s for s in strings if s not in cache]
+    pending = [s for s in strings if s not in locale_cache]
     for i, text in enumerate(pending):
         for attempt in range(4):
             try:
                 with CACHE_LOCK:
-                    if text in cache:
+                    if text in locale_cache:
                         break
                 result = gt.translate(text)
                 with CACHE_LOCK:
-                    cache[text] = result
+                    locale_cache[text] = result
                 break
             except Exception:
                 time.sleep(2 ** attempt)
         else:
             with CACHE_LOCK:
-                cache[text] = text
+                locale_cache[text] = text
         if (i + 1) % 20 == 0:
             print(f"    {i+1}/{len(pending)}", flush=True)
-    return apply_map(out, cache)
+    return apply_map(out, locale_cache)
 
 
 def write_locale(locale: str, payload: dict):
@@ -176,18 +192,19 @@ def main():
 
     en_payload = load_en_payload()
     cache_file = ROOT / "scripts/locale-modules/prompt-examples-en-cache.json"
-    cache = json.loads(cache_file.read_text(encoding="utf-8")) if cache_file.exists() else {}
+    all_cache = load_cache(cache_file)
 
     for loc in locales:
         if loc not in TARGET:
             continue
         print(f"== {loc} ==", flush=True)
         gt = init_translator(TARGET[loc])
-        translated = translate_payload(gt, en_payload, cache)
+        loc_cache = all_cache.setdefault(loc, {})
+        translated = translate_payload(gt, en_payload, loc_cache)
         write_locale(loc, translated)
 
     cache_file.parent.mkdir(parents=True, exist_ok=True)
-    cache_file.write_text(json.dumps(cache, ensure_ascii=False), encoding="utf-8")
+    cache_file.write_text(json.dumps(all_cache, ensure_ascii=False), encoding="utf-8")
 
 
 if __name__ == "__main__":

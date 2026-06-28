@@ -1,348 +1,348 @@
-/* DE overlays — prompt examples (interim from en) */
+/* DE overlays — prompt examples */
 (function () {
   if (typeof I18n === 'undefined') return;
   I18n.mergeLocaleData('de', {
   "promptExampleCategories": {
-    "全部": "All",
-    "对话助手": "Chat assistants",
-    "编程开发": "Coding & development",
-    "图像创作": "Image creation",
-    "视频音频": "Video & audio",
-    "办公效率": "Office productivity",
-    "Agent 自动化": "Agent automation",
-    "搜索研究": "Search & research"
+    "全部": "Alle",
+    "对话助手": "Chat-Assistenten",
+    "编程开发": "Codierung und Entwicklung",
+    "图像创作": "Bilderstellung",
+    "视频音频": "Video und Audio",
+    "办公效率": "Produktivität im Büro",
+    "Agent 自动化": "Agentenautomatisierung",
+    "搜索研究": "Suchen und recherchieren"
   },
   "promptExamplesUi": {
-    "countShown": "Showing {visible} / {total}",
-    "emptyHint": "No examples in this category. Try another tag.",
-    "structureLabel": "Prompt structure",
-    "scenarioLabel": "When to use",
-    "tipsLabel": "Tips",
-    "copyLabel": "Copy prompt",
-    "frameworkHint": "Use Role → Task → Context → Format → Constraints (RTFC). Replace [placeholders] with your details."
+    "countShown": "Zeigt {visible} / {total}",
+    "emptyHint": "Keine Beispiele in dieser Kategorie. Versuchen Sie es mit einem anderen Tag.",
+    "structureLabel": "Schnelle Struktur",
+    "scenarioLabel": "Wann zu verwenden",
+    "tipsLabel": "Tipps",
+    "copyLabel": "Eingabeaufforderung kopieren",
+    "frameworkHint": "Verwenden Sie Rolle → Aufgabe → Kontext → Format → Einschränkungen (RTFC). Ersetzen Sie [Platzhalter] durch Ihre Angaben."
   },
   "promptExamples": [
     {
       "id": "chatgpt-longform",
-      "difficulty": "Beginner",
-      "title": "Structured long article writing (RTFC framework)",
-      "scenario": "It is necessary to produce public accounts/blogs/product descriptions that can be published directly to avoid empty and clichéd statements.",
+      "difficulty": "Anfänger",
+      "title": "Strukturiertes Schreiben langer Artikel (RTFC-Framework)",
+      "scenario": "Es ist notwendig, öffentliche Accounts/Blogs/Produktbeschreibungen zu erstellen, die direkt veröffentlicht werden können, um leere und klischeehafte Aussagen zu vermeiden.",
       "structure": [
-        "Role role",
-        "Task task",
+        "Rollenrolle",
+        "Aufgabenaufgabe",
         "Format",
-        "Constraints"
+        "Einschränkungen"
       ],
-      "prompt": "# Role\nYou are a content strategy consultant with 10 years of experience, specializing in long-form B2B technology articles.\n\n#Task\nBased on the background below, write a popular science article on AI learning for newcomers in the workplace.\n\n#Context\n- Target readers: office workers aged 25–35, with zero basic knowledge\n- Core information: Get started in 7 days, task-driven learning, no need to learn math first\n- Word count: 1200–1500 words\n- Channel: WeChat official account\n\n#Format\n1. 3 title options (including subtitles)\n2. Main text: Opening story → 3 common misunderstandings → 7-day method → Tool recommendations → Ending CTA\n3. 5 hashtags\n\n#Constraints\n- Tone: friendly, specific, less adjectives\n- Prohibited: \"To sum up\" and \"with the development of AI\" and other empty words\n- 1 executable example for each argument\n- Do not make up data, mark \"to be verified\" where uncertain",
-      "tips": "First try the same topic with fuzzy instructions, and then use this template to compare - the difference is the value of the prompt word. GPT-4o responds best to the Format section."
+      "prompt": "# Rolle\nSie sind ein Content-Strategieberater mit 10 Jahren Erfahrung, spezialisiert auf lange B2B-Technologieartikel.\n\n#Aufgabe\nSchreiben Sie auf der Grundlage des folgenden Hintergrunds einen populärwissenschaftlichen Artikel über KI-Lernen für Neueinsteiger am Arbeitsplatz.\n\n#Kontext\n- Zielgruppe: Büroangestellte im Alter von 25–35 Jahren ohne Grundkenntnisse\n- Kerninformationen: Beginnen Sie in 7 Tagen, aufgabengesteuertes Lernen, Sie müssen nicht zuerst Mathematik lernen\n- Wortanzahl: 1200–1500 Wörter\n- Kanal: Offizielles WeChat-Konto\n\n#Format\n1. 3 Titeloptionen (einschließlich Untertitel)\n2. Haupttext: Eröffnungsgeschichte → 3 häufige Missverständnisse → 7-Tage-Methode → Tool-Empfehlungen → Schluss-CTA\n3. 5 Hashtags\n\n#Einschränkungen\n- Ton: freundlich, spezifisch, weniger Adjektive\n- Verboten: „Zusammenfassend“ und „mit der Entwicklung der KI“ und andere leere Worte\n- 1 ausführbares Beispiel für jedes Argument\n- Erfinden Sie keine Daten, kreuzen Sie bei Unsicherheiten „zu überprüfen“ an",
+      "tips": "Probieren Sie zunächst das gleiche Thema mit Fuzzy-Anweisungen aus und verwenden Sie dann diese Vorlage zum Vergleich – der Unterschied liegt im Wert des Aufforderungsworts. GPT-4o reagiert am besten auf den Abschnitt „Format“."
     },
     {
       "id": "claude-contract",
-      "difficulty": "Intermediate",
-      "title": "Contract risk review (long document)",
-      "scenario": "Upload the PDF contract, identify high-risk clauses from Party B's perspective and provide negotiation suggestions.",
+      "difficulty": "Dazwischenliegend",
+      "title": "Vertragsrisikoprüfung (langes Dokument)",
+      "scenario": "Laden Sie den PDF-Vertrag hoch, identifizieren Sie risikoreiche Klauseln aus Sicht von Partei B und machen Sie Verhandlungsvorschläge.",
       "structure": [
-        "Role",
-        "Task",
-        "Output structure",
-        "Verification annotation"
+        "Rolle",
+        "Aufgabe",
+        "Ausgabestruktur",
+        "Anmerkung zur Überprüfung"
       ],
-      "prompt": "# Role\nYou are a discreet corporate legal associate who specializes in SaaS procurement and technology services contract reviews.\n\n#Task\nReview the full text of the contract I uploaded. We are Party B (service provider).\n\n#Output\n## 1. High-risk clauses (Top 5)\nEach article contains: Original quote of the article | Risk level (high/medium/low) | Risk reasons | Suggested wording modifications\n\n## 2. Medium risk clauses (3 clauses)\nSame format as above\n\n## 3. Negotiation priority list\n| Clause location | Risks | Negotiable | Suggestions |\n\n## 4. 3 questions that Party B needs to confirm\n\n#Constraints\n- Uncertain legal conclusions are marked \"requires confirmation by a human lawyer\"\n- Do not make up law numbers\n- Please indicate the chapter/page number when citing (if the PDF has it)",
-      "tips": "Claude Long context has obvious advantages: uploading the entire contract is more accurate than pasting snippets. Do not use public accounts for sensitive contracts."
+      "prompt": "# Rolle\nSie sind ein diskreter Rechtsberater für Unternehmen, der sich auf die Prüfung von SaaS-Beschaffungs- und Technologiedienstleistungsverträgen spezialisiert hat.\n\n#Aufgabe\nSehen Sie sich den vollständigen Vertragstext an, den ich hochgeladen habe. Wir sind Partei B (Dienstleister).\n\n#Ausgabe\n## 1. Hochrisikoklauseln (Top 5)\nJeder Artikel enthält: Originalzitat des Artikels | Risikostufe (hoch/mittel/niedrig) | Risikogründe | Vorgeschlagene Formulierungsänderungen\n\n## 2. Klauseln für mittleres Risiko (3 Klauseln)\nGleiches Format wie oben\n\n## 3. Verhandlungsprioritätenliste\n| Klauselposition | Risiken | Verhandelbar | Vorschläge |\n\n## 4. 3 Fragen, die Partei B bestätigen muss\n\n#Einschränkungen\n- Unsichere rechtliche Schlussfolgerungen sind mit „Bestätigung durch einen menschlichen Anwalt erforderlich“ gekennzeichnet.\n- Erfinden Sie keine Gesetzesnummern\n- Bitte geben Sie beim Zitieren die Kapitel-/Seitenzahl an (sofern im PDF vorhanden)",
+      "tips": "Der Claude-Long-Kontext hat offensichtliche Vorteile: Das Hochladen des gesamten Vertrags ist genauer als das Einfügen von Auszügen. Verwenden Sie keine öffentlichen Konten für sensible Verträge."
     },
     {
       "id": "kimi-annual-report",
-      "difficulty": "Intermediate",
-      "title": "Structured summary of annual report/prospectus",
-      "scenario": "Upload 100+ pages of PDF annual reports to quickly extract financial trends, risks and management statements.",
+      "difficulty": "Dazwischenliegend",
+      "title": "Strukturierte Zusammenfassung des Jahresberichts/Prospekts",
+      "scenario": "Laden Sie mehr als 100 Seiten PDF-Jahresberichte hoch, um schnell Finanztrends, Risiken und Managementerklärungen abzurufen.",
       "structure": [
-        "Task",
-        "Data scope",
-        "Output schema",
-        "Citation"
+        "Aufgabe",
+        "Datenumfang",
+        "Ausgabeschema",
+        "Zitat"
       ],
-      "prompt": "Please output structured analysis notes based on the annual report PDF I uploaded:\n\n## 1. Business positioning in one sentence\n## 2. Revenue/net profit trend in the past three years (table, indicate unit)\n## 3. 3 highlights + 3 risks in this issue (section/page number for each quote)\n## 4. Excerpts from management’s forward-looking statements (original text + page number)\n## 5. Investor Questions List (5 questions)\n\n#Rules\n- Numbers must come from documents; if missing, write \"undisclosed\"\n- Do not speculate on financial data that does not appear\n- The unit of amount is consistent with the original text (10,000 yuan/100 million yuan)",
-      "tips": "Kimi is suitable for the entire PDF; financial figures must be checked back to the original text, as AI can easily confuse units."
+      "prompt": "Bitte geben Sie strukturierte Analysenotizen basierend auf dem von mir hochgeladenen Geschäftsberichts-PDF aus:\n\n## 1. Unternehmenspositionierung in einem Satz\n## 2. Umsatz-/Nettogewinnentwicklung in den letzten drei Jahren (Tabelle, Einheit angeben)\n## 3. 3 Highlights + 3 Risiken in dieser Ausgabe (Abschnitt/Seitenzahl für jedes Zitat)\n## 4. Auszüge aus zukunftsgerichteten Aussagen des Managements (Originaltext + Seitenzahl)\n## 5. Liste der Anlegerfragen (5 Fragen)\n\n#Regeln\n- Zahlen müssen aus Dokumenten stammen; Falls fehlend, schreiben Sie „nicht bekannt gegeben“\n- Spekulieren Sie nicht über Finanzdaten, die nicht angezeigt werden\n- Die Betragseinheit stimmt mit dem Originaltext überein (10.000 Yuan/100 Millionen Yuan).",
+      "tips": "Kimi ist für das gesamte PDF geeignet; Finanzzahlen müssen auf den Originaltext überprüft werden, da KI die Einheiten leicht verwirren kann."
     },
     {
       "id": "deepseek-code-review",
-      "difficulty": "Beginner",
-      "title": "Code review and refactoring suggestions",
-      "scenario": "Submit the module code and obtain review opinions on security, performance, and readability.",
+      "difficulty": "Anfänger",
+      "title": "Codeüberprüfungs- und Refactoring-Vorschläge",
+      "scenario": "Reichen Sie den Modulcode ein und holen Sie Bewertungsmeinungen zu Sicherheit, Leistung und Lesbarkeit ein.",
       "structure": [
-        "Role",
-        "Code block",
-        "Review dimensions",
-        "Output format"
+        "Rolle",
+        "Codeblock",
+        "Überprüfen Sie die Abmessungen",
+        "Ausgabeformat"
       ],
-      "prompt": "# Role\nYou are a senior Python engineer with a focus on maintainability and boundary handling.\n\n#Task\nReview the following code and suggest improvements.\n\n```python\n[Paste your code here]\n```\n\n# Review dimensions\n1. **Correctness**: logic errors, boundary conditions, exception handling\n2. **Security**: injection, sensitive information, permissions\n3. **Performance**: Obvious bottleneck (just pointed out, no need to optimize prematurely)\n4. **Readability**: naming, function length, type hints\n\n#Output\n- Problem list (Severity P0/P1/P2)\n- Refactored code example (only change necessary parts)\n- 2 pytest test case suggestions",
-      "tips": "DeepSeek is cost-effective and suitable for daily code review; it is better to attach call context and error logs."
+      "prompt": "# Rolle\nSie sind ein leitender Python-Ingenieur mit Schwerpunkt auf Wartbarkeit und Grenzbehandlung.\n\n#Aufgabe\nÜberprüfen Sie den folgenden Code und schlagen Sie Verbesserungen vor.\n\n„Python\n[Fügen Sie hier Ihren Code ein]\n„\n\n# Überprüfen Sie die Abmessungen\n1. **Korrektheit**: Logikfehler, Randbedingungen, Ausnahmebehandlung\n2. **Sicherheit**: Injektion, vertrauliche Informationen, Berechtigungen\n3. **Leistung**: Offensichtlicher Engpass (nur darauf hingewiesen, keine Notwendigkeit einer vorzeitigen Optimierung)\n4. **Lesbarkeit**: Benennung, Funktionslänge, Typhinweise\n\n#Ausgabe\n- Problemliste (Schweregrad P0/P1/P2)\n- Überarbeitetes Codebeispiel (nur notwendige Teile ändern)\n- 2 Vorschläge für Pytest-Testfälle",
+      "tips": "DeepSeek ist kostengünstig und für die tägliche Codeüberprüfung geeignet; Es ist besser, Anrufkontext- und Fehlerprotokolle anzuhängen."
     },
     {
       "id": "cursor-feature",
-      "difficulty": "Beginner",
-      "title": "Agent mode: full stack function development",
-      "scenario": "Add a complete functional module (multi-file collaboration) to the existing project.",
+      "difficulty": "Anfänger",
+      "title": "Agentenmodus: Full-Stack-Funktionsentwicklung",
+      "scenario": "Fügen Sie dem bestehenden Projekt ein komplettes Funktionsmodul (Multi-File-Collaboration) hinzu.",
       "structure": [
-        "Context",
-        "Requirements",
-        "Acceptance criteria",
-        "Constraints"
+        "Kontext",
+        "Anforderungen",
+        "Akzeptanzkriterien",
+        "Einschränkungen"
       ],
-      "prompt": "Please implement the \"User Theme Switching\" function in the current project.\n\n## Current situation\n- Technology stack: HTML + CSS + native JS (single page)\n- Existing: header, main, footer layout\n\n## Requirements\n1. Dark/light theme, CSS variable driven color palette\n2. Switch button on the right side of Header, the preference is to save to localStorage\n3. No flicker on the first screen (read localStorage before rendering)\n4. Available on mobile devices without changing the existing layout structure\n\n## Acceptance criteria\n- [ ] After switching, the contrast of all text reaches the standard.\n- [ ] Refresh the page to keep the selection\n- [ ] List modified files\n- [ ] README supplementary instructions for use\n\n## Constraints\n- No new frameworks introduced\n- The code contains Chinese comments\n- Instructions on how to test locally after completion",
-      "tips": "Cursor Agent first lets it be scheduled and then executed; major changes require step-by-step commit instructions."
+      "prompt": "Bitte implementieren Sie die Funktion „User Theme Switching“ im aktuellen Projekt.\n\n## Aktuelle Situation\n- Technologie-Stack: HTML + CSS + natives JS (einzelne Seite)\n- Vorhanden: Kopf-, Haupt- und Fußzeilenlayout\n\n## Anforderungen\n1. Dunkel/Hell-Thema, CSS-Variablengesteuerte Farbpalette\n2. Schalten Sie die Schaltfläche auf der rechten Seite der Kopfzeile um. Die Voreinstellung ist die Speicherung im lokalen Speicher\n3. Kein Flackern auf dem ersten Bildschirm (lesen Sie localStorage vor dem Rendern)\n4. Verfügbar auf Mobilgeräten, ohne die bestehende Layoutstruktur zu ändern\n\n## Akzeptanzkriterien\n- [ ] Nach dem Umschalten erreicht der Kontrast aller Texte den Standard.\n- [ ] Aktualisieren Sie die Seite, um die Auswahl beizubehalten\n- [ ] Geänderte Dateien auflisten\n- [ ] README ergänzende Gebrauchsanweisung\n\n## Einschränkungen\n- Keine neuen Frameworks eingeführt\n- Der Code enthält chinesische Kommentare\n- Anleitung zum Testen vor Ort nach Fertigstellung",
+      "tips": "Cursor Agent lässt es zunächst planen und dann ausführen; Größere Änderungen erfordern Schritt-für-Schritt-Commit-Anweisungen."
     },
     {
       "id": "copilot-comment-driven",
-      "difficulty": "Beginner",
-      "title": "Annotation driven function generation",
-      "scenario": "Use clear function annotations to trigger Copilot completion of business logic and unit tests.",
+      "difficulty": "Anfänger",
+      "title": "Annotationsgesteuerte Funktionsgenerierung",
+      "scenario": "Verwenden Sie klare Funktionsanmerkungen, um den Abschluss von Geschäftslogik- und Komponententests durch Copilot auszulösen.",
       "structure": [
-        "Function spec comment",
-        "Input/Output examples",
-        "Edge cases"
+        "Kommentar zur Funktionsspezifikation",
+        "Eingabe-/Ausgabebeispiele",
+        "Randfälle"
       ],
-      "prompt": "// Calculate order discount amount\n// Rules: minus 10 for purchases over 100, minus 30 for purchases over 200, minus 80 for purchases over 500\n//Input: orderAmount (non-negative number, unit: yuan)\n// Output: { original, discount, final } are all numbers, final >= 0\n//Boundary: 0 yuan order discount=0; negative input throws an error\n// Example: calcDiscount(150) => { original: 150, discount: 10, final: 140 }\nfunction calcDiscount(orderAmount) {\n  // Copilot completes from here\n}",
-      "tips": "Copilot responds most stably to the four-element annotation of \"input/output/example/boundary\"; the test files are placed in the same directory."
+      "prompt": "// Bestellrabattbetrag berechnen\n// Regeln: minus 10 für Einkäufe über 100, minus 30 für Einkäufe über 200, minus 80 für Einkäufe über 500\n//Eingabe: orderAmount (nicht negative Zahl, Einheit: Yuan)\n// Ausgabe: { original, discount, final } sind alle Zahlen, final >= 0\n//Grenze: 0 Yuan Bestellrabatt=0; Eine negative Eingabe löst einen Fehler aus\n// Beispiel: calcDiscount(150) => { original: 150, discount: 10, final: 140 }\nFunktion calcDiscount(orderAmount) {\n  // Copilot wird von hier aus abgeschlossen\n}",
+      "tips": "Copilot reagiert am stabilsten auf die Vier-Elemente-Annotation „Eingabe/Ausgabe/Beispiel/Grenze“; Die Testdateien werden im selben Verzeichnis abgelegt."
     },
     {
       "id": "codex-cli-bugfix",
-      "difficulty": "Intermediate",
-      "title": "Terminal Agent: Error reporting and repair closed loop",
-      "scenario": "Paste the complete traceback and let the Agent locate, fix, and add tests.",
+      "difficulty": "Dazwischenliegend",
+      "title": "Terminal Agent: Fehlerbericht und Reparatur im geschlossenen Regelkreis",
+      "scenario": "Fügen Sie den vollständigen Traceback ein und lassen Sie den Agent Tests suchen, reparieren und hinzufügen.",
       "structure": [
-        "Error log",
-        "Repro steps",
-        "Fix requirements",
-        "Test command"
+        "Fehlerprotokoll",
+        "Repro-Schritte",
+        "Anforderungen festlegen",
+        "Testbefehl"
       ],
-      "prompt": "Project directory: ./my-api (Node.js + Express)\n\n## Question\nRunning npm test fails with the following error:\n```\n[Paste full traceback]\n```\n\n## Recurrence\n1. npm install\n2. npm test\n\n## Requirements\n1. Explain the root cause (Chinese)\n2. Fix the code and keep the API behavior unchanged\n3. Supplement/update tests to cover this boundary\n4. Give verification command\n\n## Constraints\n- Do not upgrade major dependencies\n- Explain which files will be changed before modification",
-      "tips": "Codex CLI requires the full stack rather than the last line; allows the Agent to run test commands for verification."
+      "prompt": "Projektverzeichnis: ./my-api (Node.js + Express)\n\n## Frage\nDas Ausführen des NPM-Tests schlägt mit der folgenden Fehlermeldung fehl:\n„\n[Vollständiges Traceback einfügen]\n„\n\n## Wiederholung\n1. NPM-Installation\n2. NPM-Test\n\n## Anforderungen\n1. Erklären Sie die Grundursache (Chinesisch)\n2. Korrigieren Sie den Code und lassen Sie das API-Verhalten unverändert\n3. Ergänzen/aktualisieren Sie Tests, um diese Grenze abzudecken\n4. Geben Sie den Bestätigungsbefehl\n\n## Einschränkungen\n- Führen Sie keine Upgrades wichtiger Abhängigkeiten durch\n- Erklären Sie vor der Änderung, welche Dateien geändert werden",
+      "tips": "Codex CLI erfordert den gesamten Stapel und nicht die letzte Zeile; Ermöglicht dem Agenten, Testbefehle zur Überprüfung auszuführen."
     },
     {
       "id": "bolt-prototype",
-      "difficulty": "Beginner",
-      "title": "Natural language generation deployable prototypes",
-      "scenario": "Non-programmers or PMs quickly validate product ideas and generate web prototypes with shareable links.",
+      "difficulty": "Anfänger",
+      "title": "Bereitstellbare Prototypen zur Generierung natürlicher Sprache",
+      "scenario": "Nicht-Programmierer oder PMs validieren Produktideen schnell und erstellen Web-Prototypen mit gemeinsam nutzbaren Links.",
       "structure": [
-        "Product vision",
-        "Pages",
-        "Style",
-        "Interactions"
+        "Produktvision",
+        "Seiten",
+        "Stil",
+        "Interaktionen"
       ],
-      "prompt": "Build a single-page \"AI Learning Progress Tracker\" web app.\n\n## Pages/sections\n1. Hero: title + 7-day learning path summary\n2. Progress cards: 4 phases (Learn, Tools, Practice, Review) with % complete\n3. Daily log：textarea to save notes (localStorage)\n4. Footer CTA: Export notes as .txt\n\n## Style\n- Dark tech aesthetic, teal accent\n- Responsive, mobile-first\n- Clean sans-serif typography\n\n## Tech\n- React or vanilla — your choice\n- No backend; localStorage only\n-Deploy-ready structure",
-      "tips": "Bolt describes the page structure in English to be more stable; iterates \"bigger tap targets\" and \"simpler colors\" after generation."
+      "prompt": "Erstellen Sie eine einseitige Web-App „AI Learning Progress Tracker“.\n\n## Seiten/Abschnitte\n1. Held: Titel + Zusammenfassung des 7-Tage-Lernpfads\n2. Fortschrittskarten: 4 Phasen (Lernen, Tools, Üben, Überprüfen) mit % abgeschlossen\n3. Tägliches Protokoll: Textbereich zum Speichern von Notizen (localStorage)\n4. Fußzeilen-CTA: Notizen als .txt exportieren\n\n## Stil\n- Dunkle Tech-Ästhetik, blaugrüner Akzent\n- Reaktionsschnell, mobil-first\n- Saubere serifenlose Typografie\n\n## Tech\n- Reagieren oder Vanille – Sie haben die Wahl\n- Kein Backend; Nur localStorage\n-Bereitstellungsbereite Struktur",
+      "tips": "Bolt beschreibt die Seitenstruktur im Englischen als stabiler; iteriert nach der Generierung „größere Tippziele“ und „einfachere Farben“."
     },
     {
       "id": "mj-product-shot",
-      "difficulty": "Beginner",
-      "title": "E-commerce product pictures (English prompt words)",
-      "scenario": "Generate white background/scene product images for use in detail pages or advertising creatives.",
+      "difficulty": "Anfänger",
+      "title": "E-Commerce-Produktbilder (englische Aufforderungswörter)",
+      "scenario": "Generieren Sie weiße Hintergrund-/Szenenproduktbilder zur Verwendung auf Detailseiten oder Werbemotiven.",
       "structure": [
-        "Subject",
-        "Environment",
-        "Lighting",
-        "Style",
-        "Parameters"
+        "Thema",
+        "Umfeld",
+        "Beleuchtung",
+        "Stil",
+        "Parameter"
       ],
-      "prompt": "minimalist product photo of wireless earbuds in charging case,\npure white seamless background, studio softbox lighting,\ncentered composition, subtle shadow beneath product,\nultra sharp commercial photography, 4k detail,\nclean negative space for text overlay --ar 4:5 --style raw --v 6\n\nNegative prompt: text, watermark, logo, blurry, deformed, extra objects, cluttered background, hands",
-      "tips": "Midjourney is mainly in English; order: subject → environment → light → style → --ar/--v. Text typesetting needs to be superimposed later."
+      "prompt": "minimalistisches Produktfoto von kabellosen Ohrhörern im Ladeetui,\nreinweißer, nahtloser Hintergrund, Studio-Softbox-Beleuchtung,\nzentrierte Komposition, subtiler Schatten unter dem Produkt,\nultrascharfe kommerzielle Fotografie, 4K-Details,\nnegativen Raum für Textüberlagerung bereinigen --ar 4:5 --style raw --v 6\n\nNegative Eingabeaufforderung: Text, Wasserzeichen, Logo, verschwommen, deformiert, zusätzliche Objekte, unübersichtlicher Hintergrund, Hände",
+      "tips": "Midjourney ist hauptsächlich auf Englisch; Reihenfolge: Thema → Umgebung → Licht → Stil → --ar/--v. Der Textsatz muss später überlagert werden."
     },
     {
       "id": "dalle-article-cover",
-      "difficulty": "Beginner",
-      "title": "Article cover image (natural language)",
-      "scenario": "Use DALL·E to generate blog/newsletter covers in ChatGPT, supporting Chinese scene descriptions.",
+      "difficulty": "Anfänger",
+      "title": "Titelbild des Artikels (natürliche Sprache)",
+      "scenario": "Verwenden Sie DALL·E, um Blog-/Newsletter-Cover in ChatGPT zu generieren und chinesische Szenenbeschreibungen zu unterstützen.",
       "structure": [
-        "Subject",
-        "Mood",
-        "Composition",
-        "Aspect ratio"
+        "Thema",
+        "Stimmung",
+        "Zusammensetzung",
+        "Seitenverhältnis"
       ],
-      "prompt": "Please use DALL·E to generate an article cover image:\n\nTopic: People in the workplace use AI to improve efficiency (abstract concept, no specific brand logos)\nImage: A professional uses a laptop in a bright modern office, with a soft blue-green glow from the screen and a faint pattern of neural network lines in the background\nStyle: flat illustration + slight 3D texture, professional, optimistic, not cartoony\nComposition: Leave 30% blank on the right side for title text\nFormat: Horizontal 16:9, suitable for public number pictures",
-      "tips": "DALL·E understands Chinese scenes well; explains the blank space to avoid the main body blocking the title area."
+      "prompt": "Bitte verwenden Sie DALL·E, um ein Titelbild für einen Artikel zu erstellen:\n\nThema: Menschen am Arbeitsplatz nutzen KI zur Effizienzsteigerung (abstraktes Konzept, keine spezifischen Markenlogos)\nBild: Ein Fachmann nutzt einen Laptop in einem hellen, modernen Büro, mit einem sanften blaugrünen Schimmer auf dem Bildschirm und einem schwachen Muster neuronaler Netzwerklinien im Hintergrund\nStil: flache Illustration + leichte 3D-Textur, professionell, optimistisch, nicht cartoonartig\nZusammensetzung: Lassen Sie auf der rechten Seite 30 % für den Titeltext frei\nFormat: Horizontal 16:9, geeignet für öffentliche Bilder",
+      "tips": "DALL·E versteht chinesische Szenen gut; erklärt den Leerraum, um zu vermeiden, dass der Hauptteil den Titelbereich blockiert."
     },
     {
       "id": "sd-ecommerce-white",
-      "difficulty": "Intermediate",
-      "title": "Product picture on white background (positive and negative prompt words)",
-      "scenario": "Batch generate unified style e-commerce main images locally/WebUI.",
+      "difficulty": "Dazwischenliegend",
+      "title": "Produktbild auf weißem Hintergrund (positive und negative Aufforderungswörter)",
+      "scenario": "Batch-Generierung einheitlicher E-Commerce-Hauptbilder lokal/WebUI.",
       "structure": [
-        "Positive prompt",
-        "Negative prompt",
-        "Sampler settings"
+        "Positive Aufforderung",
+        "Negative Aufforderung",
+        "Sampler-Einstellungen"
       ],
-      "prompt": "Positive:\n(product photography:1.3), smart thermos bottle, matte white finish,\nseamless white background, studio lighting, soft ground shadow,\ncentered, sharp focus, commercial catalog style, 8k uhd\n\nNegative:\nlowres, blurry, text, watermark, logo, bad anatomy, extra fingers,\ndeformed, jpeg artifacts, cluttered, colorful background, people\n\nSettings suggestion: Steps 28–35, CFG 7–8, Size 1024×1024 or 4:5",
-      "tips": "SD uses weight syntax (keyword:1.2); fixed seed can unify the style in batches."
+      "prompt": "Positiv:\n(Produktfotografie:1.3), smarte Thermosflasche, mattweißes Finish,\nnahtloser weißer Hintergrund, Studiobeleuchtung, weicher Bodenschatten,\nzentriert, scharfer Fokus, kommerzieller Katalogstil, 8k uhd\n\nNegativ:\nniedrige Auflösung, verschwommen, Text, Wasserzeichen, Logo, schlechte Anatomie, zusätzliche Finger,\ndeformiert, JPEG-Artefakte, überfüllt, bunter Hintergrund, Menschen\n\nEinstellungsvorschlag: Schritte 28–35, CFG 7–8, Größe 1024×1024 oder 4:5",
+      "tips": "SD verwendet Gewichtssyntax (Schlüsselwort:1.2); Feste Startwerte können den Stil stapelweise vereinheitlichen."
     },
     {
       "id": "kling-product-video",
-      "difficulty": "Beginner",
-      "title": "Vertical screen product display short video",
-      "scenario": "Generate 5–10 seconds of product surround footage for Douyin/Xiaohongshu.",
+      "difficulty": "Anfänger",
+      "title": "Kurzes Video zur Produktpräsentation auf vertikalem Bildschirm",
+      "scenario": "Generieren Sie 5–10 Sekunden Produkt-Surround-Filmmaterial für Douyin/Xiaohongshu.",
       "structure": [
-        "Shot type",
-        "Subject action",
-        "Lighting",
-        "Technical"
+        "Schussart",
+        "Subjektaktion",
+        "Beleuchtung",
+        "Technisch"
       ],
-      "prompt": "Vertical screen 9:16, a smart thermos cup is placed on a simple white table.\nSlowly orbit shot, steam rising slightly from the mouth of the cup,\nSoft natural light, high-end commercial advertising texture, clean background without text,\nThe product is always clear and not blurry, with real physical movement, 5–8 seconds",
-      "tips": "Ke Ling responds well to \"slow wrap\" and \"commercial texture\"; complex plots are broken into multiple segments to generate and then edit."
+      "prompt": "Vertikaler Bildschirm 9:16, ein smarter Thermosbecher steht auf einem einfachen weißen Tisch.\nLangsamer Orbitschuss, Dampf steigt leicht aus der Mündung des Bechers auf,\nSanftes natürliches Licht, hochwertige kommerzielle Werbetextur, sauberer Hintergrund ohne Text,\nDas Produkt ist immer klar und nicht verschwommen, bei echter körperlicher Bewegung, 5–8 Sekunden",
+      "tips": "Ke Ling reagiert gut auf „Slow Wrap“ und „Commercial Texture“; Komplexe Diagramme werden in mehrere Segmente unterteilt, um sie zu erstellen und dann zu bearbeiten."
     },
     {
       "id": "runway-image-to-video",
-      "difficulty": "Intermediate",
-      "title": "Tusheng video: Product micro-motion effects",
-      "scenario": "Convert static product images into 4-second Hero animations for landing pages or ad titles.",
+      "difficulty": "Dazwischenliegend",
+      "title": "Tusheng-Video: Produkt-Mikrobewegungseffekte",
+      "scenario": "Konvertieren Sie statische Produktbilder in 4-sekündige Hero-Animationen für Landingpages oder Anzeigentitel.",
       "structure": [
-        "Motion description",
-        "Preserve subject",
-        "Duration",
-        "Quality"
+        "Bewegungsbeschreibung",
+        "Betreff beibehalten",
+        "Dauer",
+        "Qualität"
       ],
-      "prompt": "Slow cinematic push-in toward the product,\nsubtle parallax depth, product remains sharp and undistorted,\nsoft studio light with gentle shadow movement,\nno morphing or melting artifacts, commercial ad quality,\n4 seconds, seamless loop-friendly ending",
-      "tips": "Graphics videos should have small movements; use the \"product remains sharp\" constraint when the edges of the product are easily deformed."
+      "prompt": "Langsame filmische Annäherung an das Produkt,\nsubtile Parallaxentiefe, das Produkt bleibt scharf und unverzerrt,\nweiches Studiolicht mit sanfter Schattenbewegung,\nkeine Morphing- oder Schmelzartefakte, kommerzielle Anzeigenqualität,\n4 Sekunden, nahtloses, loopfreundliches Ende",
+      "tips": "Grafikvideos sollten kleine Bewegungen haben; Verwenden Sie die Einschränkung „Produkt bleibt scharf“, wenn sich die Kanten des Produkts leicht verformen."
     },
     {
       "id": "suno-bgm",
-      "difficulty": "Beginner",
-      "title": "Brand promotion background music (pure music)",
-      "scenario": "Generate a 30–60 second lyric-less BGM for a product launch video.",
+      "difficulty": "Anfänger",
+      "title": "Hintergrundmusik zur Markenwerbung (reine Musik)",
+      "scenario": "Generieren Sie eine 30–60 Sekunden lange Hintergrundmusik ohne Text für ein Produkteinführungsvideo.",
       "structure": [
         "Genre",
-        "Mood",
-        "Instruments",
+        "Stimmung",
+        "Instrumente",
         "BPM",
-        "Use case"
+        "Anwendungsfall"
       ],
-      "prompt": "Instrumental upbeat corporate technology track,\nmodern synth pads and light percussion, optimistic and clean,\nno vocals, suitable for AI product launch video,\n100–110 BPM, steady energy without dramatic drops,\n30–45 seconds",
-      "tips": "Suno defines \"Instrumental + BPM + Scene\"; generates a 2-track Extend with a more stable rhythm."
+      "prompt": "Instrumentaler, optimistischer Corporate-Technology-Track,\nmoderne Synth-Pads und leichte Percussion, optimistisch und sauber,\nkein Gesang, geeignet für AI-Produkteinführungsvideo,\n100–110 BPM, gleichmäßige Energie ohne dramatische Einbrüche,\n30–45 Sekunden",
+      "tips": "Suno definiert „Instrumental + BPM + Szene“; erzeugt einen 2-Spur-Extend mit stabilerem Rhythmus."
     },
     {
       "id": "notion-meeting",
-      "difficulty": "Beginner",
-      "title": "Meeting recording/notes → structured minutes",
-      "scenario": "Organize loose meeting notes into a minutes format that can be synced to project management.",
+      "difficulty": "Anfänger",
+      "title": "Besprechungsaufzeichnung/Notizen → strukturierte Protokolle",
+      "scenario": "Organisieren Sie lose Besprechungsnotizen in einem Protokollformat, das mit dem Projektmanagement synchronisiert werden kann.",
       "structure": [
-        "Input",
-        "Output schema",
-        "Owner assignment",
-        "Rules"
+        "Eingang",
+        "Ausgabeschema",
+        "Eigentümerzuordnung",
+        "Regeln"
       ],
-      "prompt": "Please organize the following original meeting minutes into structured minutes:\n\n# Output format\n## Meeting information\n- Topic, date, participants\n\n## Key Resolutions (Numbered List)\n\n## To-do list\n| Matter | Responsible Person | Deadline | Priority |\n\n## Open issues\n\n## Suggestions on topics for the next meeting\n\n# Rules\n- Don’t make up things that haven’t been discussed\n- To-dos without a responsible person are marked \"to be designated\"\n- If the date is unknown, write \"to be determined\"\n\n---\n[Paste meeting minutes]",
-      "tips": "Notion AI is suitable for secondary sorting; recording keywords in real time during a meeting is more accurate than making up for it afterward."
+      "prompt": "Bitte gliedern Sie die folgenden ursprünglichen Sitzungsprotokolle in strukturierte Protokolle:\n\n# Ausgabeformat\n## Besprechungsinformationen\n- Thema, Datum, Teilnehmer\n\n## Wichtige Vorsätze (nummerierte Liste)\n\n## To-Do-Liste\n| Materie | Verantwortliche Person | Frist | Priorität |\n\n## Offene Probleme\n\n## Themenvorschläge für das nächste Treffen\n\n# Regeln\n- Erfinden Sie keine Dinge, die nicht besprochen wurden\n- To-Dos ohne verantwortliche Person sind mit „zu benennen“ gekennzeichnet\n- Wenn das Datum unbekannt ist, schreiben Sie „noch festzulegen“\n\n---\n[Besprechungsprotokoll einfügen]",
+      "tips": "Notion AI eignet sich für die sekundäre Sortierung; Das Aufzeichnen von Schlüsselwörtern in Echtzeit während eines Meetings ist genauer, als dies im Nachhinein nachzuholen."
     },
     {
       "id": "gamma-pitch",
-      "difficulty": "Beginner",
-      "title": "10 page roadshow PPT outline",
-      "scenario": "Enter a business outline and quickly generate a first draft of presentation-ready slides.",
+      "difficulty": "Anfänger",
+      "title": "10-seitige Roadshow-PPT-Gliederung",
+      "scenario": "Geben Sie eine Geschäftsskizze ein und erstellen Sie schnell einen ersten Entwurf präsentationsfertiger Folien.",
       "structure": [
-        "Topic",
-        "Audience",
-        "Slide outline",
-        "Visual style"
+        "Thema",
+        "Publikum",
+        "Foliengliederung",
+        "Visueller Stil"
       ],
-      "prompt": "Generate a 10-page Chinese roadshow PPT:\n\nTopic: AI Learning Platform BestWayToLearn.AI\nAudience: Corporate training leaders / HR L&D\n\nPage structure:\n1. Cover 2. Pain Point 3. Solution 4. Product Demonstration 5. Learning Path\n6. Customer cases 7. Business model 8. Differentiation 9. Milestones 10. Contact information\n\nStyle: dark tech style, 3–5 bullet points per page, avoid large blocks of text\nData: You can first use the placeholder [X%] to mark the real data that needs to be replaced.",
-      "tips": "Gamma requires a clear page structure; after generation, replace placeholder data and insert product screenshots."
+      "prompt": "Erstellen Sie eine 10-seitige chinesische Roadshow-PPT:\n\nThema: KI-Lernplattform BestWayToLearn.AI\nZielgruppe: Unternehmensschulungsleiter / HR-L&D\n\nSeitenstruktur:\n1. Cover 2. Problempunkt 3. Lösung 4. Produktdemonstration 5. Lernpfad\n6. Kundenfälle 7. Geschäftsmodell 8. Differenzierung 9. Meilensteine 10. Kontaktinformationen\n\nStil: dunkler Tech-Stil, 3–5 Aufzählungspunkte pro Seite, große Textblöcke vermeiden\nDaten: Mit dem Platzhalter [X%] können Sie zunächst die realen Daten markieren, die ersetzt werden müssen.",
+      "tips": "Gamma erfordert eine klare Seitenstruktur; Ersetzen Sie nach der Generierung die Platzhalterdaten und fügen Sie Produkt-Screenshots ein."
     },
     {
       "id": "copilot-excel",
-      "difficulty": "Intermediate",
-      "title": "Excel data analysis and formulas",
-      "scenario": "Use Copilot within Excel to analyze sales tables and generate pivot recommendations.",
+      "difficulty": "Dazwischenliegend",
+      "title": "Excel-Datenanalyse und Formeln",
+      "scenario": "Verwenden Sie Copilot in Excel, um Verkaufstabellen zu analysieren und Pivot-Empfehlungen zu generieren.",
       "structure": [
-        "Data description",
-        "Questions",
-        "Output",
-        "Formula"
+        "Datenbeschreibung",
+        "Fragen",
+        "Ausgabe",
+        "Formel"
       ],
-      "prompt": "I have a sales data table with fields: date, region, SKU, quantity, unit price, and amount.\nTime frame: Past 12 months.\n\nPlease complete:\n1. Overview of Monthly Sales Trends\n2. Amount Top 5 SKUs and proportion\n3. Find the month with abnormal sales decline and analyze the possible reasons (based on data, not speculation)\n4. Suggest 2 chart types and axis definitions\n5. Give an example of the Excel formula for calculating YoY chain ratio\n\nIf I need to select a data range, please indicate which columns need to be included.",
-      "tips": "Copilot selects the data area in Excel before asking questions; pay attention to corporate compliance for sensitive financial data."
+      "prompt": "Ich habe eine Verkaufsdatentabelle mit folgenden Feldern: Datum, Region, SKU, Menge, Stückpreis und Menge.\nZeitrahmen: Letzte 12 Monate.\n\nBitte vervollständigen Sie:\n1. Überblick über monatliche Verkaufstrends\n2. Anzahl der Top-5-SKUs und Anteil\n3. Finden Sie den Monat mit ungewöhnlichem Umsatzrückgang und analysieren Sie die möglichen Gründe (basierend auf Daten, nicht auf Spekulationen).\n4. Schlagen Sie zwei Diagrammtypen und Achsendefinitionen vor\n5. Geben Sie ein Beispiel für die Excel-Formel zur Berechnung des YoY-Kettenverhältnisses\n\nWenn ich einen Datenbereich auswählen muss, geben Sie bitte an, welche Spalten einbezogen werden müssen.",
+      "tips": "Copilot wählt den Datenbereich in Excel aus, bevor er Fragen stellt; Achten Sie auf Corporate Compliance bei sensiblen Finanzdaten."
     },
     {
       "id": "openclaw-cron-digest",
-      "difficulty": "Intermediate",
-      "title": "Cron scheduled industry briefing push",
-      "scenario": "Industry news is automatically summarized and pushed to Telegram/Slack on weekday mornings.",
+      "difficulty": "Dazwischenliegend",
+      "title": "Cron hat einen Briefing-Vorstoß für die Branche geplant",
+      "scenario": "Branchennachrichten werden automatisch zusammengefasst und an Wochentagen vormittags an Telegram/Slack weitergeleitet.",
       "structure": [
-        "Schedule",
-        "Agent role",
-        "Output spec",
-        "Channel"
+        "Zeitplan",
+        "Agentenrolle",
+        "Ausgabespez",
+        "Kanal"
       ],
-      "prompt": "openclaw cron create \"0 9 * * 1-5\" \\\n  --name \"Daily AI industry digest\" \\\n  --tz \"Asia/Shanghai\" \\\n  --session isolated \\\n  --message \"You are an industry research assistant. Summary of important developments in the AI industry in the past 24 hours:\n\n1) 3 headlines (1 sentence each + source link)\n2) Impact on developers\n3) Focus on 2 variables today\n\nOutput in Chinese, within 400 words. When there is no reliable source, write \"No major update yet\" and fabrication is prohibited.\nQuotes must be clickable. \" \\\n  --announce \\\n  --channel telegram \\\n  --to \"YOUR_CHANNEL_ID\"",
-      "tips": "First, openclaw cron run to test manually; write clearly the output structure and prohibit fabrication in the message."
+      "prompt": "openclaw cron create „0 9 * * 1-5“ \\\n  --name „Täglicher Überblick über die KI-Branche“ \\\n  --tz \"Asien/Shanghai\" \\\n  --session isoliert \\\n  --message „Sie sind ein wissenschaftlicher Mitarbeiter in der Branche. Zusammenfassung wichtiger Entwicklungen in der KI-Branche in den letzten 24 Stunden:\n\n1) 3 Schlagzeilen (je 1 Satz + Quellenlink)\n2) Auswirkungen auf Entwickler\n3) Konzentrieren Sie sich heute auf zwei Variablen\n\nAusgabe auf Chinesisch, innerhalb von 400 Wörtern. Wenn es keine zuverlässige Quelle gibt, schreiben Sie „Noch kein größeres Update“ und eine Fälschung ist verboten.\nZitate müssen anklickbar sein. \" \\\n  --announce \\\n  --channel-Telegramm \\\n  --to „DEINE_KANAL_ID“",
+      "tips": "Führen Sie zunächst den Openclaw-Cron aus, um ihn manuell zu testen. Schreiben Sie die Ausgabestruktur klar und deutlich und verbieten Sie Fälschungen in der Nachricht."
     },
     {
       "id": "coze-support-bot",
-      "difficulty": "Beginner",
-      "title": "Customer Service Bot System Prompt Word",
-      "scenario": "Create a product FAQ bot in Coze to unify tone and upgrade strategy.",
+      "difficulty": "Anfänger",
+      "title": "Kundendienst-Bot-System-Eingabewort",
+      "scenario": "Erstellen Sie in Coze einen Produkt-FAQ-Bot, um den Ton und die Upgrade-Strategie zu vereinheitlichen.",
       "structure": [
         "Persona",
-        "Knowledge scope",
-        "Reply format",
-        "Escalation"
+        "Wissensumfang",
+        "Antwortformat",
+        "Eskalation"
       ],
-      "prompt": "# role\nYou are the official learning assistant of \"BestWayToLearn.AI\", friendly, professional and patient.\n\n#Knowledge scope\nOnly answer: course structure, learning path, account and progress, common technical issues.\nDon't answer: investment advice, medical and legal topics, and topics unrelated to products.\n\n# Reply format\n1. Answer directly in 1 sentence first\n2. List of steps (if applicable)\n3. Related links or \"If you need manual labor, please reply: Transfer to manual labor\"\n\n# Constraints\n- When unsure, say \"I'm not sure, I suggest contacting support@example.com\"\n- Don’t make up features or prices\n- Keep your tone concise and avoid exceeding 200 words\n\n#Upgrade\nThe user asked \"It's useless\" twice in a row or it involved a payment dispute → prompt to transfer to manual work order",
-      "tips": "Connect the FAQ document to the knowledge base in Coze; the system prompts that words manage boundaries and the knowledge base manages facts."
+      "prompt": "# Rolle\nDu bist der offizielle Lernassistent von „BestWayToLearn.AI“, freundlich, professionell und geduldig.\n\n#Wissensumfang\nEinzige Antwort: Kursstruktur, Lernpfad, Konto und Fortschritt, häufige technische Probleme.\nNicht antworten: Anlageberatung, medizinische und rechtliche Themen sowie Themen, die nichts mit Produkten zu tun haben.\n\n# Antwortformat\n1. Antworten Sie zunächst direkt in einem Satz\n2. Liste der Schritte (falls zutreffend)\n3. Verwandte Links oder „Wenn Sie Handarbeit benötigen, antworten Sie bitte: Umstellung auf Handarbeit“\n\n# Einschränkungen\n- Wenn Sie sich nicht sicher sind, sagen Sie „Ich bin nicht sicher, ich empfehle Ihnen, sich an support@example.com zu wenden.“\n- Erfinden Sie keine Funktionen oder Preise\n- Halten Sie Ihren Ton prägnant und vermeiden Sie mehr als 200 Wörter\n\n#Upgrade\nDer Benutzer fragte zweimal hintereinander „Es ist sinnlos“ oder es handelte sich um einen Zahlungsstreit → Aufforderung zur Übertragung auf einen manuellen Arbeitsauftrag",
+      "tips": "Verbinden Sie das FAQ-Dokument mit der Wissensdatenbank in Coze; Das System weist darauf hin, dass Wörter Grenzen verwalten und die Wissensdatenbank Fakten verwaltet."
     },
     {
       "id": "dify-rag-agent",
-      "difficulty": "Intermediate",
+      "difficulty": "Dazwischenliegend",
       "title": "Enterprise Knowledge Base RAG Q&A",
-      "scenario": "Build a question and answer agent based on internal documents, and the answers must contain reference fragments.",
+      "scenario": "Erstellen Sie einen Frage- und Antwortagenten auf der Grundlage interner Dokumente. Die Antworten müssen Referenzfragmente enthalten.",
       "structure": [
-        "System prompt",
-        "Retrieval rules",
-        "Citation format",
-        "Refusal"
+        "Systemaufforderung",
+        "Abrufregeln",
+        "Zitierformat",
+        "Ablehnung"
       ],
-      "prompt": "# System\nYou are the internal knowledge base assistant of the enterprise. Answers based only on retrieved document fragments, without relying on pre-trained knowledge to concoct company policies.\n\n# Answer rules\n1. Give a direct answer first (2–4 sentences)\n2. \"Basis\" section: List the cited document name + summary of relevant paragraphs\n3. If the search results are not enough to answer the question, reply: \"The relevant regulations are not found in the current knowledge base. It is recommended to contact [department] or submit a work order.\"\n\n# format\n- Use Markdown\n- Citation format: [Document name § Chapter]\n- The dates/numbers involved must be consistent with the original text\n\n# Forbidden\n- Speculate policies that are not written into the knowledge base\n- Give final conclusion on legal/compliance",
-      "tips": "Dify knowledge base segmentation is recommended to be 500–800 words/block; the test set is prepared with 20 real employee questions for acceptance."
+      "prompt": "# System\nSie sind der interne Wissensdatenbankassistent des Unternehmens. Antworten basieren nur auf abgerufenen Dokumentfragmenten, ohne sich bei der Erstellung von Unternehmensrichtlinien auf vorab trainiertes Wissen zu verlassen.\n\n# Antwortregeln\n1. Geben Sie zunächst eine direkte Antwort (2–4 Sätze)\n2. Abschnitt „Basis“: Listen Sie den Namen des zitierten Dokuments + eine Zusammenfassung der relevanten Absätze auf\n3. Reichen die Suchergebnisse zur Beantwortung der Frage nicht aus, antworten Sie: „Die relevanten Vorschriften sind in der aktuellen Wissensdatenbank nicht zu finden. Es wird empfohlen, [Abteilung] zu kontaktieren oder einen Arbeitsauftrag zu erteilen.“\n\n#-Format\n- Markdown verwenden\n- Zitierformat: [Dokumentname § Kapitel]\n- Die verwendeten Daten/Nummern müssen mit dem Originaltext übereinstimmen\n\n# Verboten\n- Spekulieren Sie über Richtlinien, die nicht in die Wissensdatenbank geschrieben sind\n- Geben Sie eine abschließende Schlussfolgerung zur Rechtslage/Compliance ab",
+      "tips": "Die Dify-Wissensdatenbank-Segmentierung wird mit 500–800 Wörtern/Block empfohlen; Das Testset ist mit 20 echten Mitarbeiterfragen zur Abnahme vorbereitet."
     },
     {
       "id": "perplexity-competitor",
-      "difficulty": "Beginner",
-      "title": "Competitive product and market one-page research",
-      "scenario": "Quickly obtain competitive product comparisons with references for internal discussions or selection meetings.",
+      "difficulty": "Anfänger",
+      "title": "Wettbewerbsfähige Produkt- und Marktrecherche auf einer Seite",
+      "scenario": "Erhalten Sie schnell wettbewerbsfähige Produktvergleiche mit Referenzen für interne Gespräche oder Auswahlgespräche.",
       "structure": [
-        "Scope",
-        "Comparison dimensions",
-        "Output",
-        "Source rules"
+        "Umfang",
+        "Vergleichsmaße",
+        "Ausgabe",
+        "Quellregeln"
       ],
-      "prompt": "Investigate the \"AI programming IDE\" market in 2026, focusing on comparing Cursor, Windsurf, and GitHub Copilot.\n\nPlease output one page in Chinese:\n1. Market Overview (2 paragraphs)\n2. Comparison table: positioning | pricing | core differences | target users\n3. 3 selection suggestions (by user type)\n4. All key conclusions are accompanied by reference numbers and source links.\n\nRules: Pricing is subject to the official website; data without official sources is marked \"to be verified\".",
-      "tips": "The advantage of Perplexity lies in the quotation; pricing and functions still need to be confirmed on the official website."
+      "prompt": "Untersuchen Sie den Markt „KI-Programmier-IDE“ im Jahr 2026 und konzentrieren Sie sich dabei auf den Vergleich von Cursor, Windsurf und GitHub Copilot.\n\nBitte geben Sie eine Seite auf Chinesisch aus:\n1. Marktübersicht (2 Absätze)\n2. Vergleichstabelle: Positionierung | Preisgestaltung | Kernunterschiede | Zielbenutzer\n3. 3 Auswahlvorschläge (nach Benutzertyp)\n4. Alle wichtigen Schlussfolgerungen sind mit Referenznummern und Quellenlinks versehen.\n\nRegeln: Die Preise unterliegen der offiziellen Website; Daten ohne offizielle Quellen sind mit „zu überprüfen“ gekennzeichnet.",
+      "tips": "Der Vorteil von Perplexity liegt im Zitat; Preise und Funktionen müssen noch auf der offiziellen Website bestätigt werden."
     },
     {
       "id": "notebooklm-papers",
-      "difficulty": "Intermediate",
-      "title": "Comparative notes on multiple papers",
-      "scenario": "Upload 3 related papers and generate a comparison table and reading order suggestions.",
+      "difficulty": "Dazwischenliegend",
+      "title": "Vergleichende Anmerkungen zu mehreren Arbeiten",
+      "scenario": "Laden Sie drei verwandte Artikel hoch und erstellen Sie eine Vergleichstabelle sowie Vorschläge für die Lesereihenfolge.",
       "structure": [
-        "Upload scope",
-        "Comparison fields",
-        "Recommendation",
-        "Limits"
+        "Umfang hochladen",
+        "Vergleichsfelder",
+        "Empfehlung",
+        "Grenzen"
       ],
-      "prompt": "(Send after uploading 3 PDFs)\n\nPlease compare these three papers and output:\n\n## Comparison table\n| Thesis | Research questions | Dataset | Methods | Main conclusions | Limitations |\n\n## Similarities and differences in methods (300 words)\n\n## Suggested reading order for newbies\nExplain which article to read first and why\n\n## 3 research questions to ask\n\nRules: Based only on uploaded documents, experimental results that do not appear will not be supplemented.",
-      "tips": "NotebookLM is a read-only upload of content; for academic citations, please refer back to the original DOI."
+      "prompt": "(Nach dem Hochladen von 3 PDFs senden)\n\nBitte vergleichen Sie diese drei Papiere und Ergebnisse:\n\n## Vergleichstabelle\n| These | Forschungsfragen | Datensatz | Methoden | Wichtigste Schlussfolgerungen | Einschränkungen |\n\n## Ähnlichkeiten und Unterschiede in den Methoden (300 Wörter)\n\n## Empfohlene Lesereihenfolge für Neulinge\nErklären Sie, welchen Artikel Sie zuerst lesen sollten und warum\n\n## 3 Forschungsfragen, die Sie stellen sollten\n\nRegeln: Basierend nur auf hochgeladenen Dokumenten, nicht angezeigte Versuchsergebnisse werden nicht ergänzt.",
+      "tips": "Bei NotebookLM handelt es sich um einen schreibgeschützten Upload von Inhalten. Für wissenschaftliche Zitate beziehen Sie sich bitte auf das Original-DOI."
     },
     {
       "id": "metaso-academic",
-      "difficulty": "Beginner",
-      "title": "Starting point for literature review of academic model",
-      "scenario": "Use the academic search mode to quickly locate core papers and review entries in the field.",
+      "difficulty": "Anfänger",
+      "title": "Ausgangspunkt für die Literaturrecherche des akademischen Modells",
+      "scenario": "Nutzen Sie den akademischen Suchmodus, um schnell Kernpapiere zu finden und Einträge zu diesem Fachgebiet zu überprüfen.",
       "structure": [
-        "Research question",
-        "Time range",
-        "Output",
-        "Next steps"
+        "Forschungsfrage",
+        "Zeitbereich",
+        "Ausgabe",
+        "Nächste Schritte"
       ],
-      "prompt": "Use academic search mode:\n\nResearch question: What are the methods for evaluating the reliability of large language models in code generation?\nTime frame: 2023–2026\nLanguage: Both Chinese and English academic sources are accepted\n\nPlease output:\n1. 5 highly cited papers in this field (title, author, year, one sentence contribution)\n2. Recommendation of 2 review/research papers\n3. Names and definitions of 3 commonly used evaluation indicators\n4. Suggested further search keywords (Chinese and English)\n\nEach article has a clickable source. If not found, it will be clearly stated.",
-      "tips": "The secret tower academic mode is suitable for Chinese users; for important papers, it is recommended to cross-verify the citations on Google Scholar."
+      "prompt": "Verwenden Sie den akademischen Suchmodus:\n\nForschungsfrage: Welche Methoden gibt es, um die Zuverlässigkeit großer Sprachmodelle bei der Codegenerierung zu bewerten?\nZeitrahmen: 2023–2026\nSprache: Es werden sowohl chinesische als auch englische akademische Quellen akzeptiert\n\nBitte ausgeben:\n1. 5 häufig zitierte Arbeiten in diesem Bereich (Titel, Autor, Jahr, Ein-Satz-Beitrag)\n2. Empfehlung von 2 Übersichts-/Forschungsarbeiten\n3. Namen und Definitionen von drei häufig verwendeten Bewertungsindikatoren\n4. Vorgeschlagene weitere Suchbegriffe (Chinesisch und Englisch)\n\nJeder Artikel hat eine anklickbare Quelle. Wenn es nicht gefunden wird, wird es deutlich angegeben.",
+      "tips": "Der akademische Modus „Secret Tower“ ist für chinesische Benutzer geeignet; Bei wichtigen Arbeiten empfiehlt es sich, die Zitate auf Google Scholar zu überprüfen."
     }
   ]
 });

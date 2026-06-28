@@ -1,348 +1,348 @@
-/* JA overlays — prompt examples (interim from en) */
+/* JA overlays — prompt examples */
 (function () {
   if (typeof I18n === 'undefined') return;
   I18n.mergeLocaleData('ja', {
   "promptExampleCategories": {
-    "全部": "All",
-    "对话助手": "Chat assistants",
-    "编程开发": "Coding & development",
-    "图像创作": "Image creation",
-    "视频音频": "Video & audio",
-    "办公效率": "Office productivity",
-    "Agent 自动化": "Agent automation",
-    "搜索研究": "Search & research"
+    "全部": "全て",
+    "对话助手": "チャットアシスタント",
+    "编程开发": "コーディングと開発",
+    "图像创作": "画像作成",
+    "视频音频": "ビデオとオーディオ",
+    "办公效率": "オフィスの生産性",
+    "Agent 自动化": "エージェントの自動化",
+    "搜索研究": "検索と調査"
   },
   "promptExamplesUi": {
-    "countShown": "Showing {visible} / {total}",
-    "emptyHint": "No examples in this category. Try another tag.",
-    "structureLabel": "Prompt structure",
-    "scenarioLabel": "When to use",
-    "tipsLabel": "Tips",
-    "copyLabel": "Copy prompt",
-    "frameworkHint": "Use Role → Task → Context → Format → Constraints (RTFC). Replace [placeholders] with your details."
+    "countShown": "{visible} / {total} 件を表示",
+    "emptyHint": "このカテゴリには例がありません。別のタグを試してください。",
+    "structureLabel": "プロンプト構造",
+    "scenarioLabel": "いつ使用するか",
+    "tipsLabel": "ヒント",
+    "copyLabel": "プロンプトのコピー",
+    "frameworkHint": "役割 → タスク → コンテキスト → フォーマット → 制約 (RTFC) を使用します。 [プレースホルダー] を自分の詳細情報に置き換えます。"
   },
   "promptExamples": [
     {
       "id": "chatgpt-longform",
-      "difficulty": "Beginner",
-      "title": "Structured long article writing (RTFC framework)",
-      "scenario": "It is necessary to produce public accounts/blogs/product descriptions that can be published directly to avoid empty and clichéd statements.",
+      "difficulty": "初心者",
+      "title": "構造化された長い記事の執筆 (RTFC フレームワーク)",
+      "scenario": "空虚でありきたりな発言を避けるために、直接公開できる公開アカウント/ブログ/製品説明を作成する必要があります。",
       "structure": [
-        "Role role",
-        "Task task",
-        "Format",
-        "Constraints"
+        "役割 役割",
+        "タスクタスク",
+        "形式",
+        "制約"
       ],
-      "prompt": "# Role\nYou are a content strategy consultant with 10 years of experience, specializing in long-form B2B technology articles.\n\n#Task\nBased on the background below, write a popular science article on AI learning for newcomers in the workplace.\n\n#Context\n- Target readers: office workers aged 25–35, with zero basic knowledge\n- Core information: Get started in 7 days, task-driven learning, no need to learn math first\n- Word count: 1200–1500 words\n- Channel: WeChat official account\n\n#Format\n1. 3 title options (including subtitles)\n2. Main text: Opening story → 3 common misunderstandings → 7-day method → Tool recommendations → Ending CTA\n3. 5 hashtags\n\n#Constraints\n- Tone: friendly, specific, less adjectives\n- Prohibited: \"To sum up\" and \"with the development of AI\" and other empty words\n- 1 executable example for each argument\n- Do not make up data, mark \"to be verified\" where uncertain",
-      "tips": "First try the same topic with fuzzy instructions, and then use this template to compare - the difference is the value of the prompt word. GPT-4o responds best to the Format section."
+      "prompt": "# 役割\nあなたは 10 年の経験を持つコンテンツ戦略コンサルタントで、長文の B2B テクノロジー記事を専門としています。\n\n#タスク\n以下の背景に基づいて、職場の新人向けに AI 学習に関する人気のある科学記事を作成します。\n\n#コンテキスト\n・対象読者：基礎知識ゼロの25～35歳の会社員\n- 重要な情報: 7 日間で開始、タスク主導型学習、最初に数学を学ぶ必要はありません\n- 単語数: 1200 ～ 1500 単語\n- チャンネル：WeChat公式アカウント\n\n#フォーマット\n1. 3つのタイトルオプション（字幕を含む）\n2. 本文: 冒頭のストーリー → 3 つのよくある誤解 → 7 日間のメソッド → ツールの推奨事項 → 終了 CTA\n3. 5つのハッシュタグ\n\n#制約\n- 口調: フレンドリー、具体的、形容詞が少ない\n・禁止：「一言で言えば」「AIの発達で」など空虚な言葉\n- 引数ごとに 1 つの実行可能サンプル\n- データをでっち上げず、不確実な場合は「検証中」とマークしてください",
+      "tips": "まず、あいまいな指示で同じトピックを試してから、このテンプレートを使用して比較してください。違いは、プロンプトの単語の値です。 GPT-4o は、「フォーマット」セクションに最もよく応答します。"
     },
     {
       "id": "claude-contract",
-      "difficulty": "Intermediate",
-      "title": "Contract risk review (long document)",
-      "scenario": "Upload the PDF contract, identify high-risk clauses from Party B's perspective and provide negotiation suggestions.",
+      "difficulty": "中級",
+      "title": "契約リスクレビュー（長い文書）",
+      "scenario": "PDF 契約書をアップロードし、当事者 B の観点からリスクの高い条項を特定し、交渉の提案を提供します。",
       "structure": [
-        "Role",
-        "Task",
-        "Output structure",
-        "Verification annotation"
+        "役割",
+        "タスク",
+        "出力構造",
+        "検証アノテーション"
       ],
-      "prompt": "# Role\nYou are a discreet corporate legal associate who specializes in SaaS procurement and technology services contract reviews.\n\n#Task\nReview the full text of the contract I uploaded. We are Party B (service provider).\n\n#Output\n## 1. High-risk clauses (Top 5)\nEach article contains: Original quote of the article | Risk level (high/medium/low) | Risk reasons | Suggested wording modifications\n\n## 2. Medium risk clauses (3 clauses)\nSame format as above\n\n## 3. Negotiation priority list\n| Clause location | Risks | Negotiable | Suggestions |\n\n## 4. 3 questions that Party B needs to confirm\n\n#Constraints\n- Uncertain legal conclusions are marked \"requires confirmation by a human lawyer\"\n- Do not make up law numbers\n- Please indicate the chapter/page number when citing (if the PDF has it)",
-      "tips": "Claude Long context has obvious advantages: uploading the entire contract is more accurate than pasting snippets. Do not use public accounts for sensitive contracts."
+      "prompt": "# 役割\nあなたは、SaaS 調達およびテクノロジー サービス契約のレビューを専門とする、慎重な企業法務担当者です。\n\n#タスク\nアップロードした契約書の全文を確認してください。私たちは当事者B（サービスプロバイダー）です。\n\n#出力\n## 1. 高リスク条項 (上位 5)\n各記事には次の内容が含まれます。 記事の元の引用 |リスクレベル (高/中/低) |リスクの理由 |提案された文言の修正\n\n## 2. 中リスク条項 (3 条項)\n上記と同じ形式\n\n## 3. 交渉の優先順位リスト\n|条項の場所 |リスク |交渉可能 |提案 |\n\n## 4. 当事者Bが確認する必要がある3つの質問\n\n#制約\n- 不確実な法的結論には「人間の弁護士による確認が必要」とマークされています\n- 法律番号をでっち上げないでください\n- 引用する場合は、章/ページ番号を明記してください（PDF に章/ページ番号がある場合）。",
+      "tips": "Claude Long コンテキストには明らかな利点があります。契約全体をアップロードする方が、スニペットを貼り付けるよりも正確です。機密性の高い契約には公開アカウントを使用しないでください。"
     },
     {
       "id": "kimi-annual-report",
-      "difficulty": "Intermediate",
-      "title": "Structured summary of annual report/prospectus",
-      "scenario": "Upload 100+ pages of PDF annual reports to quickly extract financial trends, risks and management statements.",
+      "difficulty": "中級",
+      "title": "年次報告書/目論見書の構造化された概要",
+      "scenario": "100 ページを超える PDF 年次報告書をアップロードして、財務傾向、リスク、経営声明をすばやく抽出します。",
       "structure": [
-        "Task",
-        "Data scope",
-        "Output schema",
-        "Citation"
+        "タスク",
+        "データ範囲",
+        "出力スキーマ",
+        "引用"
       ],
-      "prompt": "Please output structured analysis notes based on the annual report PDF I uploaded:\n\n## 1. Business positioning in one sentence\n## 2. Revenue/net profit trend in the past three years (table, indicate unit)\n## 3. 3 highlights + 3 risks in this issue (section/page number for each quote)\n## 4. Excerpts from management’s forward-looking statements (original text + page number)\n## 5. Investor Questions List (5 questions)\n\n#Rules\n- Numbers must come from documents; if missing, write \"undisclosed\"\n- Do not speculate on financial data that does not appear\n- The unit of amount is consistent with the original text (10,000 yuan/100 million yuan)",
-      "tips": "Kimi is suitable for the entire PDF; financial figures must be checked back to the original text, as AI can easily confuse units."
+      "prompt": "私がアップロードした年次報告書 PDF に基づいて構造化分析ノートを出力してください。\n\n## 1. ビジネスの位置付けを一文で表す\n## 2. 過去3年間の売上高・純利益の推移（表、単位を示す）\n## 3. この号の 3 つのハイライト + 3 つのリスク (各引用のセクション/ページ番号)\n## 4. 経営陣の将来予想に関する記述の抜粋 (原文 + ページ番号)\n## 5. 投資家向け質問リスト (5 つの質問)\n\n#ルール\n- 数値は文書から取得したものでなければなりません。ない場合は「非公開」と記入してください\n- 表示されていない財務データについて推測しないでください\n- 金額の単位は原文と一致しています（1万元/1億元）",
+      "tips": "kimi は PDF 全体に適しています。 AI は単位を混同しやすいため、財務数値は原文に戻って確認する必要があります。"
     },
     {
       "id": "deepseek-code-review",
-      "difficulty": "Beginner",
-      "title": "Code review and refactoring suggestions",
-      "scenario": "Submit the module code and obtain review opinions on security, performance, and readability.",
+      "difficulty": "初心者",
+      "title": "コードレビューとリファクタリングの提案",
+      "scenario": "モジュール コードを送信し、セキュリティ、パフォーマンス、読みやすさに関するレビューの意見を入手します。",
       "structure": [
-        "Role",
-        "Code block",
-        "Review dimensions",
-        "Output format"
+        "役割",
+        "コードブロック",
+        "寸法の確認",
+        "出力形式"
       ],
-      "prompt": "# Role\nYou are a senior Python engineer with a focus on maintainability and boundary handling.\n\n#Task\nReview the following code and suggest improvements.\n\n```python\n[Paste your code here]\n```\n\n# Review dimensions\n1. **Correctness**: logic errors, boundary conditions, exception handling\n2. **Security**: injection, sensitive information, permissions\n3. **Performance**: Obvious bottleneck (just pointed out, no need to optimize prematurely)\n4. **Readability**: naming, function length, type hints\n\n#Output\n- Problem list (Severity P0/P1/P2)\n- Refactored code example (only change necessary parts)\n- 2 pytest test case suggestions",
-      "tips": "DeepSeek is cost-effective and suitable for daily code review; it is better to attach call context and error logs."
+      "prompt": "# 役割\nあなたは、保守性と境界処理に重点を置くシニア Python エンジニアです。\n\n#タスク\n次のコードを確認し、改善を提案してください。\n\n「」パイソン\n[ここにコードを貼り付けてください]\n「」\n\n# 寸法を確認する\n1. **正確性**: 論理エラー、境界条件、例外処理\n2. **セキュリティ**: インジェクション、機密情報、権限\n3. **パフォーマンス**: 明らかなボトルネック (指摘したばかりなので、時期尚早に最適化する必要はありません)\n4. **可読性**: 名前付け、関数の長さ、型のヒント\n\n#出力\n- 問題リスト (重大度 P0/P1/P2)\n- リファクタリングしたコード例（必要な部分のみ変更）\n- 2 つの pytest テスト ケースの提案",
+      "tips": "DeepSeek はコスト効率が高く、毎日のコード レビューに適しています。呼び出しコンテキストとエラー ログを添付することをお勧めします。"
     },
     {
       "id": "cursor-feature",
-      "difficulty": "Beginner",
-      "title": "Agent mode: full stack function development",
-      "scenario": "Add a complete functional module (multi-file collaboration) to the existing project.",
+      "difficulty": "初心者",
+      "title": "エージェントモード：フルスタック機能開発",
+      "scenario": "完全な機能モジュール (複数ファイルのコラボレーション) を既存のプロジェクトに追加します。",
       "structure": [
-        "Context",
-        "Requirements",
-        "Acceptance criteria",
-        "Constraints"
+        "コンテクスト",
+        "要件",
+        "合格基準",
+        "制約"
       ],
-      "prompt": "Please implement the \"User Theme Switching\" function in the current project.\n\n## Current situation\n- Technology stack: HTML + CSS + native JS (single page)\n- Existing: header, main, footer layout\n\n## Requirements\n1. Dark/light theme, CSS variable driven color palette\n2. Switch button on the right side of Header, the preference is to save to localStorage\n3. No flicker on the first screen (read localStorage before rendering)\n4. Available on mobile devices without changing the existing layout structure\n\n## Acceptance criteria\n- [ ] After switching, the contrast of all text reaches the standard.\n- [ ] Refresh the page to keep the selection\n- [ ] List modified files\n- [ ] README supplementary instructions for use\n\n## Constraints\n- No new frameworks introduced\n- The code contains Chinese comments\n- Instructions on how to test locally after completion",
-      "tips": "Cursor Agent first lets it be scheduled and then executed; major changes require step-by-step commit instructions."
+      "prompt": "現在のプロジェクトに「ユーザーテーマ切り替え」機能を実装してください。\n\n## 現在の状況\n- テクノロジースタック: HTML + CSS + ネイティブ JS (単一ページ)\n- 既存: ヘッダー、メイン、フッターのレイアウト\n\n## 要件\n1. ダーク/ライトテーマ、CSS 変数駆動カラーパレット\n2. ヘッダーの右側にある切り替えボタン。ローカルストレージに保存することを選択します。\n3. 最初の画面がちらつきません (レンダリング前に localStorage を読み取ります)\n4. 既存のレイアウト構造を変更せずにモバイルデバイスで利用可能\n\n## 受け入れ基準\n- [ ] 切り替え後は、すべての文字のコントラストが標準になります。\n- [ ] ページを更新して選択内容を維持します\n- [ ] 変更されたファイルのリストを表示します\n- [ ] README の使用に関する補足説明\n\n## 制約\n- 新しいフレームワークは導入されません\n- コードに中国語のコメントが含まれています\n- 完了後にローカルでテストする方法の説明",
+      "tips": "Cursor Agent は、まずスケジュールを設定してから実行します。大きな変更には段階的なコミット手順が必要です。"
     },
     {
       "id": "copilot-comment-driven",
-      "difficulty": "Beginner",
-      "title": "Annotation driven function generation",
-      "scenario": "Use clear function annotations to trigger Copilot completion of business logic and unit tests.",
+      "difficulty": "初心者",
+      "title": "アノテーション駆動の関数生成",
+      "scenario": "明確な関数アノテーションを使用して、ビジネス ロジックと単体テストの Copilot の完了をトリガーします。",
       "structure": [
-        "Function spec comment",
-        "Input/Output examples",
-        "Edge cases"
+        "機能仕様コメント",
+        "入出力例",
+        "エッジケース"
       ],
-      "prompt": "// Calculate order discount amount\n// Rules: minus 10 for purchases over 100, minus 30 for purchases over 200, minus 80 for purchases over 500\n//Input: orderAmount (non-negative number, unit: yuan)\n// Output: { original, discount, final } are all numbers, final >= 0\n//Boundary: 0 yuan order discount=0; negative input throws an error\n// Example: calcDiscount(150) => { original: 150, discount: 10, final: 140 }\nfunction calcDiscount(orderAmount) {\n  // Copilot completes from here\n}",
-      "tips": "Copilot responds most stably to the four-element annotation of \"input/output/example/boundary\"; the test files are placed in the same directory."
+      "prompt": "// 注文割引額を計算します\n// ルール: 100 を超える購入の場合はマイナス 10、200 を超える購入の場合はマイナス 30、500 を超える購入の場合はマイナス 80\n//入力: orderAmount (負でない数値、単位: 元)\n// 出力: { オリジナル、割引、最終 } はすべて数値、最終 >= 0\n//境界: 0 元の注文割引 = 0;負の入力はエラーをスローします\n// 例: calcDiscount(150) => { 元: 150、割引: 10、最終: 140 }\n関数 calcDiscount(orderAmount) {\n  // ここからコパイロットが完了します\n}",
+      "tips": "Copilot は、「入力/出力/例/境界」の 4 要素のアノテーションに最も安定して応答します。テスト ファイルは同じディレクトリに配置されます。"
     },
     {
       "id": "codex-cli-bugfix",
-      "difficulty": "Intermediate",
-      "title": "Terminal Agent: Error reporting and repair closed loop",
-      "scenario": "Paste the complete traceback and let the Agent locate, fix, and add tests.",
+      "difficulty": "中級",
+      "title": "ターミナル エージェント: エラー報告と修復閉ループ",
+      "scenario": "完全なトレースバックを貼り付けて、エージェントにテストを見つけて修正し、追加させます。",
       "structure": [
-        "Error log",
-        "Repro steps",
-        "Fix requirements",
-        "Test command"
+        "エラーログ",
+        "再現ステップ",
+        "修正要件",
+        "テストコマンド"
       ],
-      "prompt": "Project directory: ./my-api (Node.js + Express)\n\n## Question\nRunning npm test fails with the following error:\n```\n[Paste full traceback]\n```\n\n## Recurrence\n1. npm install\n2. npm test\n\n## Requirements\n1. Explain the root cause (Chinese)\n2. Fix the code and keep the API behavior unchanged\n3. Supplement/update tests to cover this boundary\n4. Give verification command\n\n## Constraints\n- Do not upgrade major dependencies\n- Explain which files will be changed before modification",
-      "tips": "Codex CLI requires the full stack rather than the last line; allows the Agent to run test commands for verification."
+      "prompt": "プロジェクトディレクトリ: ./my-api (Node.js + Express)\n\n## 質問\nnpm テストの実行は次のエラーで失敗します。\n「」\n[完全なトレースバックを貼り付ける]\n「」\n\n## 再発\n1.npmインストール\n2.npmテスト\n\n## 要件\n1. 根本原因の説明 (中国語)\n2. コードを修正し、API の動作を変更しないでください。\n3. この境界をカバーするためにテストを補足/更新します\n4. 検証コマンドを与える\n\n## 制約\n- 主要な依存関係をアップグレードしないでください\n- 変更前にどのファイルが変更されるかを説明します",
+      "tips": "Codex CLI では、最後の行ではなくフルスタックが必要です。エージェントが検証のためにテスト コマンドを実行できるようになります。"
     },
     {
       "id": "bolt-prototype",
-      "difficulty": "Beginner",
-      "title": "Natural language generation deployable prototypes",
-      "scenario": "Non-programmers or PMs quickly validate product ideas and generate web prototypes with shareable links.",
+      "difficulty": "初心者",
+      "title": "自然言語生成のデプロイ可能なプロトタイプ",
+      "scenario": "プログラマーではない人や PM も、製品アイデアを迅速に検証し、共有可能なリンクを含む Web プロトタイプを生成します。",
       "structure": [
-        "Product vision",
-        "Pages",
-        "Style",
-        "Interactions"
+        "製品ビジョン",
+        "ページ",
+        "スタイル",
+        "インタラクション"
       ],
-      "prompt": "Build a single-page \"AI Learning Progress Tracker\" web app.\n\n## Pages/sections\n1. Hero: title + 7-day learning path summary\n2. Progress cards: 4 phases (Learn, Tools, Practice, Review) with % complete\n3. Daily log：textarea to save notes (localStorage)\n4. Footer CTA: Export notes as .txt\n\n## Style\n- Dark tech aesthetic, teal accent\n- Responsive, mobile-first\n- Clean sans-serif typography\n\n## Tech\n- React or vanilla — your choice\n- No backend; localStorage only\n-Deploy-ready structure",
-      "tips": "Bolt describes the page structure in English to be more stable; iterates \"bigger tap targets\" and \"simpler colors\" after generation."
+      "prompt": "シングルページの「AI Learning Progress Tracker」Web アプリを構築します。\n\n## ページ/セクション\n1. ヒーロー: タイトル + 7 日間の学習パスの概要\n2. 進捗カード: 4 つのフェーズ (学習、ツール、実践、復習) と完了率\n3. 日次ログ：メモを保存するテキストエリア（localStorage）\n4. フッター CTA: メモを .txt としてエクスポート\n\n## スタイル\n- ダークテックの美学、ティールのアクセント\n- レスポンシブ、モバイルファースト\n- すっきりとしたサンセリフのタイポグラフィー\n\n## 技術\n- React または Vanilla — あなたの選択\n- バックエンドなし。ローカルストレージのみ\n-すぐに導入できる構造",
+      "tips": "ボルト氏は、英語のページ構造の方が安定していると説明しています。生成後に「より大きなタップターゲット」と「よりシンプルな色」を繰り返します。"
     },
     {
       "id": "mj-product-shot",
-      "difficulty": "Beginner",
-      "title": "E-commerce product pictures (English prompt words)",
-      "scenario": "Generate white background/scene product images for use in detail pages or advertising creatives.",
+      "difficulty": "初心者",
+      "title": "EC商品画像（英語プロンプト）",
+      "scenario": "詳細ページまたは広告クリエイティブで使用するための白い背景/シーンの商品画像を生成します。",
       "structure": [
-        "Subject",
-        "Environment",
-        "Lighting",
-        "Style",
-        "Parameters"
+        "主題",
+        "環境",
+        "点灯",
+        "スタイル",
+        "パラメータ"
       ],
-      "prompt": "minimalist product photo of wireless earbuds in charging case,\npure white seamless background, studio softbox lighting,\ncentered composition, subtle shadow beneath product,\nultra sharp commercial photography, 4k detail,\nclean negative space for text overlay --ar 4:5 --style raw --v 6\n\nNegative prompt: text, watermark, logo, blurry, deformed, extra objects, cluttered background, hands",
-      "tips": "Midjourney is mainly in English; order: subject → environment → light → style → --ar/--v. Text typesetting needs to be superimposed later."
+      "prompt": "充電ケースに入ったワイヤレスイヤホンのシンプルな製品写真、\n真っ白なシームレスな背景、スタジオのソフトボックス照明、\n中央に配置された構図、製品の下の微妙な影、\n超鮮明な商業写真、4K ディテール、\nテキスト オーバーレイのクリーンなネガティブ スペース --ar 4:5 --style raw --v 6\n\n否定的なプロンプト: テキスト、透かし、ロゴ、ぼやけた、変形、余分なオブジェクト、乱雑な背景、手",
+      "tips": "Midjourney は主に英語で話されます。順序: 件名 → 環境 → ライト → スタイル → --ar/--v。文字組版は後で重ね合わせる必要があります。"
     },
     {
       "id": "dalle-article-cover",
-      "difficulty": "Beginner",
-      "title": "Article cover image (natural language)",
-      "scenario": "Use DALL·E to generate blog/newsletter covers in ChatGPT, supporting Chinese scene descriptions.",
+      "difficulty": "初心者",
+      "title": "記事の表紙画像（自然言語）",
+      "scenario": "DALL·E を使用して、ChatGPT でブログ/ニュースレターの表紙を生成し、中国語のシーンの説明をサポートします。",
       "structure": [
-        "Subject",
-        "Mood",
-        "Composition",
-        "Aspect ratio"
+        "主題",
+        "気分",
+        "構成",
+        "アスペクト比"
       ],
-      "prompt": "Please use DALL·E to generate an article cover image:\n\nTopic: People in the workplace use AI to improve efficiency (abstract concept, no specific brand logos)\nImage: A professional uses a laptop in a bright modern office, with a soft blue-green glow from the screen and a faint pattern of neural network lines in the background\nStyle: flat illustration + slight 3D texture, professional, optimistic, not cartoony\nComposition: Leave 30% blank on the right side for title text\nFormat: Horizontal 16:9, suitable for public number pictures",
-      "tips": "DALL·E understands Chinese scenes well; explains the blank space to avoid the main body blocking the title area."
+      "prompt": "DALL・E を使用して記事の表紙画像を生成してください。\n\nトピック: 職場の人々は AI を使用して効率を向上させています (抽象的な概念、具体的なブランドロゴなし)\n画像: 明るいモダンなオフィスで専門家がラップトップを使用しています。画面からは柔らかな青緑色の輝きがあり、背景にはニューラル ネットワークの線のかすかなパターンが見えます。\nスタイル: フラットなイラスト + わずかな 3D テクスチャ、プロフェッショナル、楽観的、漫画的ではない\n構成: タイトルテキストの右側の 30% を空白のままにします。\nフォーマット: 横 16:9、公衆番号の写真に適しています",
+      "tips": "DALL・E は中国の情景をよく理解しています。本体がタイトル領域を塞がないようにするための空白スペースについて説明します。"
     },
     {
       "id": "sd-ecommerce-white",
-      "difficulty": "Intermediate",
-      "title": "Product picture on white background (positive and negative prompt words)",
-      "scenario": "Batch generate unified style e-commerce main images locally/WebUI.",
+      "difficulty": "中級",
+      "title": "白い背景に製品画像 (肯定的な言葉と否定的な言葉)",
+      "scenario": "統一スタイルの電子商取引メイン画像をローカル/WebUIでバッチ生成します。",
       "structure": [
-        "Positive prompt",
-        "Negative prompt",
-        "Sampler settings"
+        "肯定的なプロンプト",
+        "否定的なプロンプト",
+        "サンプラーの設定"
       ],
-      "prompt": "Positive:\n(product photography:1.3), smart thermos bottle, matte white finish,\nseamless white background, studio lighting, soft ground shadow,\ncentered, sharp focus, commercial catalog style, 8k uhd\n\nNegative:\nlowres, blurry, text, watermark, logo, bad anatomy, extra fingers,\ndeformed, jpeg artifacts, cluttered, colorful background, people\n\nSettings suggestion: Steps 28–35, CFG 7–8, Size 1024×1024 or 4:5",
-      "tips": "SD uses weight syntax (keyword:1.2); fixed seed can unify the style in batches."
+      "prompt": "肯定的:\n(商品写真:1.3)、スマート魔法びん、マットホワイト仕上げ、\nシームレスな白い背景、スタジオの照明、柔らかい地面の影、\n中央揃え、シャープフォーカス、商用カタログスタイル、8k UHD\n\n否定的:\n低解像度、ぼやけた、テキスト、透かし、ロゴ、悪い解剖学、余分な指、\n変形した、JPEG アーティファクト、乱雑な、カラフルな背景、人々\n\n設定の提案: ステップ 28 ～ 35、CFG 7 ～ 8、サイズ 1024×1024 または 4:5",
+      "tips": "SD は重み構文 (キーワード:1.2) を使用します。固定シードはバッチでスタイルを統一できます。"
     },
     {
       "id": "kling-product-video",
-      "difficulty": "Beginner",
-      "title": "Vertical screen product display short video",
-      "scenario": "Generate 5–10 seconds of product surround footage for Douyin/Xiaohongshu.",
+      "difficulty": "初心者",
+      "title": "縦画面製品展示ショートビデオ",
+      "scenario": "Douyin/Xiaohongshu 用の 5 ～ 10 秒の製品サラウンド映像を生成します。",
       "structure": [
-        "Shot type",
-        "Subject action",
-        "Lighting",
-        "Technical"
+        "ショットタイプ",
+        "対象のアクション",
+        "点灯",
+        "テクニカル"
       ],
-      "prompt": "Vertical screen 9:16, a smart thermos cup is placed on a simple white table.\nSlowly orbit shot, steam rising slightly from the mouth of the cup,\nSoft natural light, high-end commercial advertising texture, clean background without text,\nThe product is always clear and not blurry, with real physical movement, 5–8 seconds",
-      "tips": "Ke Ling responds well to \"slow wrap\" and \"commercial texture\"; complex plots are broken into multiple segments to generate and then edit."
+      "prompt": "縦画面9:16、シンプルな白いテーブルの上にスマートサーモスのカップが置かれています。\nゆっくりと軌道を描いてショットし、カップの口からわずかに蒸気が立ち上り、\n柔らかい自然光、ハイエンドの商業広告テクスチャ、テキストのないきれいな背景、\n製品は常に鮮明でぼやけず、実際の物理的な動きで 5 ～ 8 秒間表示されます。",
+      "tips": "Ke Ling は「スローラップ」と「コマーシャルテクスチャー」によく反応します。複雑なプロットは複数のセグメントに分割されて生成され、編集されます。"
     },
     {
       "id": "runway-image-to-video",
-      "difficulty": "Intermediate",
-      "title": "Tusheng video: Product micro-motion effects",
-      "scenario": "Convert static product images into 4-second Hero animations for landing pages or ad titles.",
+      "difficulty": "中級",
+      "title": "Tusheng ビデオ: 製品のマイクロモーション効果",
+      "scenario": "静的な商品画像を、ランディング ページまたは広告タイトル用の 4 秒のヒーロー アニメーションに変換します。",
       "structure": [
-        "Motion description",
-        "Preserve subject",
-        "Duration",
-        "Quality"
+        "動作説明",
+        "件名を保存",
+        "間隔",
+        "品質"
       ],
-      "prompt": "Slow cinematic push-in toward the product,\nsubtle parallax depth, product remains sharp and undistorted,\nsoft studio light with gentle shadow movement,\nno morphing or melting artifacts, commercial ad quality,\n4 seconds, seamless loop-friendly ending",
-      "tips": "Graphics videos should have small movements; use the \"product remains sharp\" constraint when the edges of the product are easily deformed."
+      "prompt": "製品に向かってゆっくりと映画のような押し込みを行います。\n微妙な視差の深さ、製品は鮮明で歪みのないままです。\n穏やかな影の動きを持つ柔らかいスタジオライト、\n変形や溶けるアーティファクトはなく、商業広告の品質はありません。\n4 秒、シームレスなループフレンドリーなエンディング",
+      "tips": "グラフィック ビデオには小さな動きが必要です。製品のエッジが変形しやすい場合は、「製品は鋭利なまま」制約を使用してください。"
     },
     {
       "id": "suno-bgm",
-      "difficulty": "Beginner",
-      "title": "Brand promotion background music (pure music)",
-      "scenario": "Generate a 30–60 second lyric-less BGM for a product launch video.",
+      "difficulty": "初心者",
+      "title": "ブランドプロモーション用BGM（純音楽）",
+      "scenario": "製品発表ビデオ用に 30 ～ 60 秒の歌詞のない BGM を生成します。",
       "structure": [
-        "Genre",
-        "Mood",
-        "Instruments",
+        "ジャンル",
+        "気分",
+        "楽器",
         "BPM",
-        "Use case"
+        "使用事例"
       ],
-      "prompt": "Instrumental upbeat corporate technology track,\nmodern synth pads and light percussion, optimistic and clean,\nno vocals, suitable for AI product launch video,\n100–110 BPM, steady energy without dramatic drops,\n30–45 seconds",
-      "tips": "Suno defines \"Instrumental + BPM + Scene\"; generates a 2-track Extend with a more stable rhythm."
+      "prompt": "楽器を使った明るい企業テクノロジートラック、\nモダンなシンセパッドと軽いパーカッション、楽観的でクリーン、\nボーカルなし、AI 製品発表ビデオに適しています。\n100 ～ 110 BPM、劇的な低下のない安定したエネルギー、\n30～45秒",
+      "tips": "スノは「インストゥルメンタル + BPM + シーン」と定義しています。より安定したリズムの2トラックエクステンドを生成します。"
     },
     {
       "id": "notion-meeting",
-      "difficulty": "Beginner",
-      "title": "Meeting recording/notes → structured minutes",
-      "scenario": "Organize loose meeting notes into a minutes format that can be synced to project management.",
+      "difficulty": "初心者",
+      "title": "会議の記録/メモ → 構造化された議事録",
+      "scenario": "緩い会議メモを議事録形式に整理し、プロジェクト管理と同期できるようにします。",
       "structure": [
-        "Input",
-        "Output schema",
-        "Owner assignment",
-        "Rules"
+        "入力",
+        "出力スキーマ",
+        "所有者の割り当て",
+        "ルール"
       ],
-      "prompt": "Please organize the following original meeting minutes into structured minutes:\n\n# Output format\n## Meeting information\n- Topic, date, participants\n\n## Key Resolutions (Numbered List)\n\n## To-do list\n| Matter | Responsible Person | Deadline | Priority |\n\n## Open issues\n\n## Suggestions on topics for the next meeting\n\n# Rules\n- Don’t make up things that haven’t been discussed\n- To-dos without a responsible person are marked \"to be designated\"\n- If the date is unknown, write \"to be determined\"\n\n---\n[Paste meeting minutes]",
-      "tips": "Notion AI is suitable for secondary sorting; recording keywords in real time during a meeting is more accurate than making up for it afterward."
+      "prompt": "次のオリジナルの会議議事録を構造化された議事録に整理してください。\n\n# 出力形式\n## 会議情報\n- テーマ、日付、参加者\n\n## 主要な解決策 (番号付きリスト)\n\n## やることリスト\n|問題 |責任者 |締め切り |優先順位 |\n\n## 未解決の問題\n\n## 次回の会議の議題についての提案\n\n# ルール\n- 議論されていないことをでっち上げないでください\n- 責任者がいないToDoには「指定する」マークが付きます\n・日付が不明の場合は「未定」とご記入ください。\n\n---\n[議事録を貼り付ける]",
+      "tips": "Notion AI is suitable for secondary sorting;後で補うよりも、会議中にリアルタイムでキーワードを記録する方が正確です。"
     },
     {
       "id": "gamma-pitch",
-      "difficulty": "Beginner",
-      "title": "10 page roadshow PPT outline",
-      "scenario": "Enter a business outline and quickly generate a first draft of presentation-ready slides.",
+      "difficulty": "初心者",
+      "title": "10ページのロードショーPPT概要",
+      "scenario": "ビジネスの概要を入力し、すぐにプレゼンテーション用のスライドの初稿を作成します。",
       "structure": [
-        "Topic",
-        "Audience",
-        "Slide outline",
-        "Visual style"
+        "トピック",
+        "観客",
+        "スライドの概要",
+        "ビジュアルスタイル"
       ],
-      "prompt": "Generate a 10-page Chinese roadshow PPT:\n\nTopic: AI Learning Platform BestWayToLearn.AI\nAudience: Corporate training leaders / HR L&D\n\nPage structure:\n1. Cover 2. Pain Point 3. Solution 4. Product Demonstration 5. Learning Path\n6. Customer cases 7. Business model 8. Differentiation 9. Milestones 10. Contact information\n\nStyle: dark tech style, 3–5 bullet points per page, avoid large blocks of text\nData: You can first use the placeholder [X%] to mark the real data that needs to be replaced.",
-      "tips": "Gamma requires a clear page structure; after generation, replace placeholder data and insert product screenshots."
+      "prompt": "10 ページの中国語ロードショー PPT を生成します。\n\nトピック: AI 学習プラットフォーム BestWayToLearn.AI\n対象者: 企業研修リーダー / HR L&D\n\nページ構造:\n1. 表紙 2. 問題点 3. ソリューション 4. 製品デモンストレーション 5. 学習パス\n6. お客様事例 7. ビジネスモデル 8. 差別化 9. マイルストーン 10. 連絡先情報\n\nスタイル: ダークテック スタイル、1 ページあたり 3 ～ 5 個の箇条書き、大きなテキスト ブロックは避ける\nデータ: まず、プレースホルダー [X%] を使用して、置換する必要がある実際のデータをマークします。",
+      "tips": "Gamma には明確なページ構造が必要です。生成後、プレースホルダー データを置き換え、製品のスクリーンショットを挿入します。"
     },
     {
       "id": "copilot-excel",
-      "difficulty": "Intermediate",
-      "title": "Excel data analysis and formulas",
-      "scenario": "Use Copilot within Excel to analyze sales tables and generate pivot recommendations.",
+      "difficulty": "中級",
+      "title": "Excel データ分析と数式",
+      "scenario": "Excel 内で Copilot を使用して売上表を分析し、ピボットの推奨事項を生成します。",
       "structure": [
-        "Data description",
-        "Questions",
-        "Output",
-        "Formula"
+        "データの説明",
+        "質問",
+        "出力",
+        "式"
       ],
-      "prompt": "I have a sales data table with fields: date, region, SKU, quantity, unit price, and amount.\nTime frame: Past 12 months.\n\nPlease complete:\n1. Overview of Monthly Sales Trends\n2. Amount Top 5 SKUs and proportion\n3. Find the month with abnormal sales decline and analyze the possible reasons (based on data, not speculation)\n4. Suggest 2 chart types and axis definitions\n5. Give an example of the Excel formula for calculating YoY chain ratio\n\nIf I need to select a data range, please indicate which columns need to be included.",
-      "tips": "Copilot selects the data area in Excel before asking questions; pay attention to corporate compliance for sensitive financial data."
+      "prompt": "日付、地域、SKU、数量、単価、金額のフィールドを含む販売データ テーブルがあります。\n期間: 過去 12 か月。\n\n以下を完了してください:\n1. 月次売上推移の概要\n2. 上位 5 SKU の金額と割合\n3. 売上が異常に減少した月を特定し、考えられる理由を分析します（推測ではなくデータに基づいて）\n4. 2 つのグラフの種類と軸の定義を提案する\n5. 前年比連鎖率を計算するための Excel 式の例を示します\n\nデータ範囲を選択する必要がある場合は、どの列を含める必要があるかを指定してください。",
+      "tips": "Copilot は質問する前に Excel のデータ領域を選択します。機密の財務データに関する企業のコンプライアンスに注意を払ってください。"
     },
     {
       "id": "openclaw-cron-digest",
-      "difficulty": "Intermediate",
-      "title": "Cron scheduled industry briefing push",
-      "scenario": "Industry news is automatically summarized and pushed to Telegram/Slack on weekday mornings.",
+      "difficulty": "中級",
+      "title": "Cron が予定している業界説明会のプッシュ",
+      "scenario": "業界ニュースは自動的に要約され、平日の午前中に Telegram/Slack にプッシュされます。",
       "structure": [
-        "Schedule",
-        "Agent role",
-        "Output spec",
-        "Channel"
+        "スケジュール",
+        "エージェントの役割",
+        "出力仕様",
+        "チャネル"
       ],
-      "prompt": "openclaw cron create \"0 9 * * 1-5\" \\\n  --name \"Daily AI industry digest\" \\\n  --tz \"Asia/Shanghai\" \\\n  --session isolated \\\n  --message \"You are an industry research assistant. Summary of important developments in the AI industry in the past 24 hours:\n\n1) 3 headlines (1 sentence each + source link)\n2) Impact on developers\n3) Focus on 2 variables today\n\nOutput in Chinese, within 400 words. When there is no reliable source, write \"No major update yet\" and fabrication is prohibited.\nQuotes must be clickable. \" \\\n  --announce \\\n  --channel telegram \\\n  --to \"YOUR_CHANNEL_ID\"",
-      "tips": "First, openclaw cron run to test manually; write clearly the output structure and prohibit fabrication in the message."
+      "prompt": "openclaw cron 作成 \"0 9 * * 1-5\" \\\n  --name 「デイリー AI 業界ダイジェスト」\\\n  --tz「アジア/上海」\\\n  --分離されたセッション \\\n  --メッセージ「あなたは業界リサーチアシスタントです。過去 24 時間における AI 業界の重要な動向の概要:\n\n1) 見出し 3 つ (各 1 文 + ソースリンク)\n2) 開発者への影響\n3) 今日は 2 つの変数に焦点を当てます\n\n中国語で400ワード以内で出力します。信頼できるソースがない場合は「メジャーアップデートはまだありません」と記載し捏造を禁止します。\n引用符はクリック可能でなければなりません。 \" \\\n  --発表します\\\n  --チャンネル電報\\\n  --「YOUR_CHANNEL_ID」へ",
+      "tips": "まず、openclaw cron を実行して手動でテストします。出力構造を明確に記述し、メッセージ内での捏造を禁止します。"
     },
     {
       "id": "coze-support-bot",
-      "difficulty": "Beginner",
-      "title": "Customer Service Bot System Prompt Word",
-      "scenario": "Create a product FAQ bot in Coze to unify tone and upgrade strategy.",
+      "difficulty": "初心者",
+      "title": "顧客サービスボットシステムのプロンプトワード",
+      "scenario": "Coze で製品 FAQ ボットを作成し、トーンとアップグレード戦略を統一します。",
       "structure": [
-        "Persona",
-        "Knowledge scope",
-        "Reply format",
-        "Escalation"
+        "ペルソナ",
+        "知識範囲",
+        "返信形式",
+        "エスカレーション"
       ],
-      "prompt": "# role\nYou are the official learning assistant of \"BestWayToLearn.AI\", friendly, professional and patient.\n\n#Knowledge scope\nOnly answer: course structure, learning path, account and progress, common technical issues.\nDon't answer: investment advice, medical and legal topics, and topics unrelated to products.\n\n# Reply format\n1. Answer directly in 1 sentence first\n2. List of steps (if applicable)\n3. Related links or \"If you need manual labor, please reply: Transfer to manual labor\"\n\n# Constraints\n- When unsure, say \"I'm not sure, I suggest contacting support@example.com\"\n- Don’t make up features or prices\n- Keep your tone concise and avoid exceeding 200 words\n\n#Upgrade\nThe user asked \"It's useless\" twice in a row or it involved a payment dispute → prompt to transfer to manual work order",
-      "tips": "Connect the FAQ document to the knowledge base in Coze; the system prompts that words manage boundaries and the knowledge base manages facts."
+      "prompt": "# 役割\nあなたは「BestWayToLearn.AI」の公式学習アシスタントで、フレンドリーでプロフェッショナル、そして忍耐強いです。\n\n#知識の範囲\n唯一の答えは、コースの構造、学習パス、アカウントと進捗状況、一般的な技術的な問題です。\n投資アドバイス、医療や法律の話題、製品に関係のない話題は回答しないでください。\n\n# 返信形式\n1. 最初に 1 文で直接答えてください\n2. 手順のリスト (該当する場合)\n3. 関連リンクまたは「肉体労働が必要な場合は、ご返信ください: 肉体労働への移行」\n\n# 制約\n- 不明な場合は、「よくわかりません。support@example.com に連絡することをお勧めします」と言います。\n- 機能や価格をでっち上げないでください\n- 口調は簡潔にして、200 語を超えないようにしてください。\n\n#アップグレード\nユーザーが 2 回続けて「役に立たない」と尋ねた、または支払いに関する紛争が発生した → 手動の作業指示への移行を求めるプロンプト",
+      "tips": "FAQ ドキュメントを Coze のナレッジ ベースに接続します。システムは単語で境界を管理し、知識ベースで事実を管理するように促します。"
     },
     {
       "id": "dify-rag-agent",
-      "difficulty": "Intermediate",
-      "title": "Enterprise Knowledge Base RAG Q&A",
-      "scenario": "Build a question and answer agent based on internal documents, and the answers must contain reference fragments.",
+      "difficulty": "中級",
+      "title": "エンタープライズナレッジベース RAG Q&A",
+      "scenario": "内部文書に基づいて質問と回答のエージェントを構築します。回答には参照フラグメントが含まれている必要があります。",
       "structure": [
-        "System prompt",
-        "Retrieval rules",
-        "Citation format",
-        "Refusal"
+        "システムプロンプト",
+        "取得ルール",
+        "引用形式",
+        "拒否"
       ],
-      "prompt": "# System\nYou are the internal knowledge base assistant of the enterprise. Answers based only on retrieved document fragments, without relying on pre-trained knowledge to concoct company policies.\n\n# Answer rules\n1. Give a direct answer first (2–4 sentences)\n2. \"Basis\" section: List the cited document name + summary of relevant paragraphs\n3. If the search results are not enough to answer the question, reply: \"The relevant regulations are not found in the current knowledge base. It is recommended to contact [department] or submit a work order.\"\n\n# format\n- Use Markdown\n- Citation format: [Document name § Chapter]\n- The dates/numbers involved must be consistent with the original text\n\n# Forbidden\n- Speculate policies that are not written into the knowledge base\n- Give final conclusion on legal/compliance",
-      "tips": "Dify knowledge base segmentation is recommended to be 500–800 words/block; the test set is prepared with 20 real employee questions for acceptance."
+      "prompt": "# システム\nあなたは企業の内部ナレッジベースアシスタントです。会社のポリシーをでっち上げるために事前に訓練された知識に頼ることなく、取得した文書の断片のみに基づいて回答します。\n\n# 回答ルール\n1. 最初に直接答えてください (2 ～ 4 文)\n2.「根拠」欄：引用文献名＋関連段落の要約を記載\n3. 検索結果が質問に答えるのに十分でない場合は、「関連する規制が現在のナレッジ ベースに見つかりません。[部門] に連絡するか、作業指示書を提出することをお勧めします。」と返信します。\n\n# 形式\n- マークダウンを使用する\n- 引用形式: [文書名 § 章]\n- 含まれる日付/番号は元のテキストと一致している必要があります\n\n# 禁止\n- 知識ベースに書き込まれていないポリシーを推測する\n- 法的/コンプライアンスに関する最終結論を与える",
+      "tips": "Dify ナレッジ ベースのセグメンテーションは、ブロックあたり 500 ～ 800 ワードにすることをお勧めします。テスト セットには、実際に従業員に受け入れられるよう 20 問の質問が用意されています。"
     },
     {
       "id": "perplexity-competitor",
-      "difficulty": "Beginner",
-      "title": "Competitive product and market one-page research",
-      "scenario": "Quickly obtain competitive product comparisons with references for internal discussions or selection meetings.",
+      "difficulty": "初心者",
+      "title": "競合製品と市場の 1 ページ調査",
+      "scenario": "内部ディスカッションや選択会議の参考資料として、競合製品の比較を迅速に取得します。",
       "structure": [
-        "Scope",
-        "Comparison dimensions",
-        "Output",
-        "Source rules"
+        "範囲",
+        "比較寸法",
+        "出力",
+        "ソースルール"
       ],
-      "prompt": "Investigate the \"AI programming IDE\" market in 2026, focusing on comparing Cursor, Windsurf, and GitHub Copilot.\n\nPlease output one page in Chinese:\n1. Market Overview (2 paragraphs)\n2. Comparison table: positioning | pricing | core differences | target users\n3. 3 selection suggestions (by user type)\n4. All key conclusions are accompanied by reference numbers and source links.\n\nRules: Pricing is subject to the official website; data without official sources is marked \"to be verified\".",
-      "tips": "The advantage of Perplexity lies in the quotation; pricing and functions still need to be confirmed on the official website."
+      "prompt": "Cursor、Windsurf、GitHub Copilot の比較を中心に、2026 年の「AI プログラミング IDE」市場を調査します。\n\n中国語で 1 ページを出力してください:\n1. 市場概要 (2 段落)\n2. 比較表: ポジショニング |価格設定 |主要な違い |対象ユーザー\n3. 3つの選択候補（ユーザータイプ別）\n4. すべての重要な結論には参照番号と出典リンクが付いています。\n\nルール: 価格は公式ウェブサイトに準拠します。公式ソースのないデータには「検証予定」とマークされています。",
+      "tips": "Perplexity の利点は引用にあります。価格や機能については公式サイトで確認する必要があります。"
     },
     {
       "id": "notebooklm-papers",
-      "difficulty": "Intermediate",
-      "title": "Comparative notes on multiple papers",
-      "scenario": "Upload 3 related papers and generate a comparison table and reading order suggestions.",
+      "difficulty": "中級",
+      "title": "複数の論文の比較メモ",
+      "scenario": "3 つの関連論文をアップロードし、比較表と読む順序の提案を生成します。",
       "structure": [
-        "Upload scope",
-        "Comparison fields",
-        "Recommendation",
-        "Limits"
+        "アップロード範囲",
+        "比較フィールド",
+        "おすすめ",
+        "限界"
       ],
-      "prompt": "(Send after uploading 3 PDFs)\n\nPlease compare these three papers and output:\n\n## Comparison table\n| Thesis | Research questions | Dataset | Methods | Main conclusions | Limitations |\n\n## Similarities and differences in methods (300 words)\n\n## Suggested reading order for newbies\nExplain which article to read first and why\n\n## 3 research questions to ask\n\nRules: Based only on uploaded documents, experimental results that do not appear will not be supplemented.",
-      "tips": "NotebookLM is a read-only upload of content; for academic citations, please refer back to the original DOI."
+      "prompt": "（PDFを3枚アップロードして送信）\n\nこれら 3 つの論文を比較して出力してください。\n\n## 比較表\n|論文 |研究上の質問 |データセット |メソッド |主な結論 |制限事項 |\n\n## 手法の類似点と相違点 (300 ワード)\n\n## 初心者向けに推奨される読む順序\nどの記事を最初に読むべきか、そしてその理由を説明する\n\n## 研究で尋ねるべき 3 つの質問\n\nルール：アップロードされた文書のみに基づいており、掲載されていない実験結果は補足されません。",
+      "tips": "NotebookLM は、コンテンツの読み取り専用アップロードです。学術的な引用については、元の DOI を参照してください。"
     },
     {
       "id": "metaso-academic",
-      "difficulty": "Beginner",
-      "title": "Starting point for literature review of academic model",
-      "scenario": "Use the academic search mode to quickly locate core papers and review entries in the field.",
+      "difficulty": "初心者",
+      "title": "学術モデルの文献レビューの出発点",
+      "scenario": "学術検索モードを使用すると、主要な論文をすばやく見つけて、その分野のエントリをレビューできます。",
       "structure": [
-        "Research question",
-        "Time range",
-        "Output",
-        "Next steps"
+        "リサーチクエスチョン",
+        "時間範囲",
+        "出力",
+        "次のステップ"
       ],
-      "prompt": "Use academic search mode:\n\nResearch question: What are the methods for evaluating the reliability of large language models in code generation?\nTime frame: 2023–2026\nLanguage: Both Chinese and English academic sources are accepted\n\nPlease output:\n1. 5 highly cited papers in this field (title, author, year, one sentence contribution)\n2. Recommendation of 2 review/research papers\n3. Names and definitions of 3 commonly used evaluation indicators\n4. Suggested further search keywords (Chinese and English)\n\nEach article has a clickable source. If not found, it will be clearly stated.",
-      "tips": "The secret tower academic mode is suitable for Chinese users; for important papers, it is recommended to cross-verify the citations on Google Scholar."
+      "prompt": "学術検索モードを使用します。\n\n研究の質問: コード生成における大規模言語モデルの信頼性を評価する方法は何ですか?\n期間: 2023 ～ 2026 年\n言語: 中国語と英語の両方の学術情報源が受け入れられます\n\n出力してください:\n1. この分野で引用度の高い論文 5 件 (タイトル、著者、年、寄稿文 1 文)\n2. 2 件の総説/研究論文の推薦\n3. よく使われる3つの評価指標の名称と定義\n4. さらに推奨される検索キーワード (中国語と英語)\n\n各記事にはクリック可能なソースがあります。見つからない場合は明記されます。",
+      "tips": "シークレットタワーのアカデミックモードは中国人ユーザーに適しています。重要な論文については、Google Scholar で引用文献を相互検証することをお勧めします。"
     }
   ]
 });
