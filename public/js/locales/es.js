@@ -9,7 +9,7 @@ I18n.registerLocale('es', {
       },
       meta: {
         title: "BestWayToLearn.AI | Aprende IA — De cero a la práctica",
-        description: "BestWayToLearn.AI — Aprendizaje de IA en 4 fases: bases, herramientas, práctica y quiz. 100 términos, 43 apps, laboratorio de prompts, tutoriales reales."
+        description: "BestWayToLearn.AI — Aprendizaje de IA en 4 fases: bases, herramientas, práctica y quiz. 100 términos, 43 apps, simulación práctica, tutoriales reales."
       },
       settings: {
         title: "Ajustes de visualización",
@@ -371,7 +371,7 @@ I18n.registerLocale('es', {
               label: "Aplicaciones convencionales"
             },
             {
-              label: "laboratorio rápido"
+              label: "Simulación práctica"
             }
           ]
         },
@@ -420,7 +420,7 @@ I18n.registerLocale('es', {
           days: "Día 4-5",
           modules: [
             "Aplicaciones convencionales",
-            "laboratorio rápido"
+            "Simulación práctica"
           ],
           desc: "Explore 43 aplicaciones de IA convencionales e impulse los resultados con indicaciones estructuradas."
         },
@@ -525,7 +525,7 @@ I18n.registerLocale('es', {
           desc: "Un mensaje es su interfaz con la IA. Las indicaciones fuertes incluyen rol, tarea, contexto, formato y limitaciones.",
           tasks: [
             "Tarjetas de estudio: indicación, temperatura, disparo cero, pocos disparos, CoT",
-            "Pruebe 3 casos en Prompt Lab",
+            "Pruebe 3 casos en Simulación práctica",
             "Compare sugerencias vagas versus estructuradas sobre la misma pregunta",
             "Escriba su lista de verificación personal de 3 elementos"
           ],
@@ -536,7 +536,7 @@ I18n.registerLocale('es', {
               href: "#knowledge"
             },
             {
-              label: "laboratorio rápido",
+              label: "Simulación práctica",
               href: "#prompt-lab"
             }
           ]
@@ -582,7 +582,7 @@ I18n.registerLocale('es', {
               href: "#practice"
             },
             {
-              label: "laboratorio rápido",
+              label: "Simulación práctica",
               href: "#prompt-lab"
             }
           ]
@@ -749,7 +749,7 @@ I18n.registerLocale('es', {
         },
         "prompt-lab": {
           tag: "Module 2.2",
-          title: "laboratorio rápido",
+          title: "Simulación práctica",
           desc: "Un espacio de trabajo: elija un caso → editar mensaje → vista previa de respuesta → vaya a operar con herramientas reales."
         },
         devices: {

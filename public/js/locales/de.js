@@ -371,7 +371,7 @@ I18n.registerLocale('de', {
               label: "Mainstream-Apps"
             },
             {
-              label: "Promptes Labor"
+              label: "Simulationsübung"
             }
           ]
         },
@@ -420,7 +420,7 @@ I18n.registerLocale('de', {
           days: "Tag 4–5",
           modules: [
             "Mainstream-Apps",
-            "Promptes Labor"
+            "Simulationsübung"
           ],
           desc: "Entdecken Sie 43 gängige KI-Apps und steigern Sie die Ausgabe mit strukturierten Eingabeaufforderungen."
         },
@@ -525,7 +525,7 @@ I18n.registerLocale('de', {
           desc: "Eine Eingabeaufforderung ist Ihre Schnittstelle zur KI. Zu den starken Eingabeaufforderungen gehören Rolle, Aufgabe, Kontext, Format und Einschränkungen.",
           tasks: [
             "Lernkarten: Eingabeaufforderung, Temperatur, Nullschuss, Wenigschuss, CoT",
-            "Probieren Sie drei Fälle im Prompt Lab aus",
+            "Probieren Sie drei Fälle in der Simulationsübung aus",
             "Vergleichen Sie vage und strukturierte Eingabeaufforderungen zu derselben Frage",
             "Schreiben Sie Ihre persönliche 3-Punkte-Checkliste für die Eingabeaufforderung"
           ],
@@ -536,7 +536,7 @@ I18n.registerLocale('de', {
               href: "#knowledge"
             },
             {
-              label: "Promptes Labor",
+              label: "Simulationsübung",
               href: "#prompt-lab"
             }
           ]
@@ -582,7 +582,7 @@ I18n.registerLocale('de', {
               href: "#practice"
             },
             {
-              label: "Promptes Labor",
+              label: "Simulationsübung",
               href: "#prompt-lab"
             }
           ]
@@ -749,7 +749,7 @@ I18n.registerLocale('de', {
         },
         "prompt-lab": {
           tag: "Module 2.2",
-          title: "Promptes Labor",
+          title: "Simulationsübung",
           desc: "Ein Arbeitsbereich: Wählen Sie einen Fall aus → Eingabeaufforderung bearbeiten → Antwort in der Vorschau anzeigen → Mit echten Tools arbeiten."
         },
         devices: {

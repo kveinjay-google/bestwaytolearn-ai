@@ -386,7 +386,7 @@
       },
       'prompt-lab': {
         tag: 'Module 2.2',
-        title: 'Prompt lab',
+        title: 'Simulated practice',
         desc: 'One workspace: pick a case → edit prompt → preview reply → go operate in real tools.',
         caseLabel: 'Practice cases',
         selectCaseBadge: 'Pick a case to start',

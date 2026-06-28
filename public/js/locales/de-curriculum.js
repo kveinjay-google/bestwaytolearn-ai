@@ -478,7 +478,7 @@
         },
         "prompt-lab": {
           tag: "Module 2.2",
-          title: "Promptes Labor",
+          title: "Simulationsübung",
           desc: "Ein Arbeitsbereich: Wählen Sie einen Fall aus → Eingabeaufforderung bearbeiten → Antwort in der Vorschau anzeigen → Mit echten Tools arbeiten.",
           caseLabel: "Praxisfälle",
           selectCaseBadge: "Wählen Sie einen Fall aus, mit dem Sie beginnen möchten",

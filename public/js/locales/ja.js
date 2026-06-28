@@ -9,7 +9,7 @@ I18n.registerLocale('ja', {
       },
       meta: {
         title: "BestWayToLearn.AI | AIを学ぶ — ゼロから実践まで",
-        description: "BestWayToLearn.AI — 4段階のAI学習：基礎・ツール・実践・クイズ。100用語、43アプリ、プロンプトラボ、実践チュートリアル。"
+        description: "BestWayToLearn.AI — 4段階のAI学習：基礎・ツール・実践・クイズ。100用語、43アプリ、シミュレーション操作、実践チュートリアル。"
       },
       settings: {
         title: "表示設定",
@@ -371,7 +371,7 @@ I18n.registerLocale('ja', {
               label: "主流のアプリ"
             },
             {
-              label: "プロンプトラボ"
+              label: "シミュレーション操作"
             }
           ]
         },
@@ -420,7 +420,7 @@ I18n.registerLocale('ja', {
           days: "4～5日目",
           modules: [
             "主流のアプリ",
-            "プロンプトラボ"
+            "シミュレーション操作"
           ],
           desc: "AIを実際の仕事に組み込む"
         },
@@ -525,7 +525,7 @@ I18n.registerLocale('ja', {
           desc: "プロンプトは AI へのインターフェースです。強力なプロンプトには、役割、タスク、コンテキスト、形式、制約が含まれます。",
           tasks: [
             "学習カード: プロンプト、温度、ゼロショット、少数ショット、CoT",
-            "プロンプト ラボで 3 つのケースを試してください",
+            "シミュレーション操作で 3 つのケースを試してください",
             "同じ質問について、曖昧なプロンプトと構造化されたプロンプトを比較する",
             "個人的な 3 項目のプロンプト チェックリストを作成します"
           ],
@@ -536,7 +536,7 @@ I18n.registerLocale('ja', {
               href: "#knowledge"
             },
             {
-              label: "プロンプトラボ",
+              label: "シミュレーション操作",
               href: "#prompt-lab"
             }
           ]
@@ -582,7 +582,7 @@ I18n.registerLocale('ja', {
               href: "#practice"
             },
             {
-              label: "プロンプトラボ",
+              label: "シミュレーション操作",
               href: "#prompt-lab"
             }
           ]
@@ -749,7 +749,7 @@ I18n.registerLocale('ja', {
         },
         "prompt-lab": {
           tag: "Module 2.2",
-          title: "プロンプトラボ",
+          title: "シミュレーション操作",
           desc: "1 つのワークスペース: ケースを選択→プロンプトを編集→返信をプレビュー→実際のツールで操作します。"
         },
         devices: {

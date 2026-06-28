@@ -482,7 +482,7 @@ function getPhaseShortLabels() {
 const GRADUATION_QUIZ_PASS = 80;
 const GRADUATION_MODULES = [
   { phase: '认知', items: ['AI 全景入门', 'AI 原理（8 模块）', 'AI 知识库（100 术语）'] },
-  { phase: '工具', items: ['主流应用（43 款）', '提示词实验室'] },
+  { phase: '工具', items: ['主流应用（43 款）', '模拟操作'] },
   { phase: '实战', items: ['真实软件实操（30 案例）', '场景提示词模板（16 个）'] },
   { phase: '检验', items: ['知识测验（100 题）', '未来 30 天实践计划'] },
 ];
@@ -490,7 +490,7 @@ const GRADUATION_MODULES = [
 const QUIZ_TOPIC_LINKS = {
   fundamentals: { href: '#fundamentals', label: 'AI 原理' },
   knowledge: { href: '#knowledge', label: 'AI 知识库' },
-  'prompt-lab': { href: '#prompt-lab', label: '提示词实验室' },
+  'prompt-lab': { href: '#prompt-lab', label: '模拟操作' },
   apps: { href: '#apps', label: '主流应用' },
   'hands-on': { href: '#hands-on', label: '真实软件实操' },
   'ai-overview': { href: '#ai-overview', label: 'AI 全景入门' },
@@ -595,7 +595,7 @@ const QUIZ_REVIEW_LINKS = [
   { href: '#fundamentals', label: '幻觉与局限' },
   { href: '#fundamentals', label: 'Transformer' },
   { href: '#fundamentals', label: 'RAG 与 Agent' },
-  { href: '#prompt-lab', label: '提示词实验室' },
+  { href: '#prompt-lab', label: '模拟操作' },
   { href: '#fundamentals', label: '生成式 AI' },
   { href: '#knowledge', label: 'AI 知识库' },
   { href: '#fundamentals', label: 'AI Agent' },
@@ -686,7 +686,7 @@ const PHASE_TAB_CONFIG = {
     nextDesc: '把 AI 嵌入真实工作流，跟着实操案例产出成果。',
     modules: [
       { label: '主流应用', href: '#apps' },
-      { label: '提示词实验室', href: '#prompt-lab' },
+      { label: '模拟操作', href: '#prompt-lab' },
     ],
   },
   prompts: {
@@ -3728,7 +3728,7 @@ function initPromptLab() {
     });
   } catch (err) {
     console.error('initPromptLab failed:', err);
-    showPromptLabError('提示词实验室初始化失败，请强制刷新页面（Cmd+Shift+R）。');
+    showPromptLabError('模拟操作初始化失败，请强制刷新页面（Cmd+Shift+R）。');
   }
 }
 
@@ -4330,7 +4330,7 @@ const SITE_NAV_ENTRIES = [
   { type: '模块', title: 'AI 原理', subtitle: '8 大原理模块', href: '#fundamentals', keywords: '原理 工作机制 transformer llm' },
   { type: '模块', title: 'AI 知识库', subtitle: '100 个术语', href: '#knowledge', keywords: '知识库 术语 词典 glossary' },
   { type: '模块', title: '主流应用', subtitle: '43 款 AI 工具', href: '#apps', keywords: '应用 工具 chatgpt cursor claude code codex grok zcode openclaw dify coze n8n manus agent' },
-  { type: '模块', title: '提示词实验室', subtitle: '6 个实战案例同屏模拟', href: '#prompt-lab', keywords: '提示词 prompt 实验室 案例 模拟' },
+  { type: '模块', title: '模拟操作', subtitle: '6 个实战案例同屏模拟', href: '#prompt-lab', keywords: '模拟 操作 提示词 prompt 案例 同屏' },
   { type: '模块', title: '真实软件实操', subtitle: '30 个手把手教程', href: '#hands-on', keywords: '实操 教程 codex midjourney cursor chatgpt' },
   { type: '模块', title: '实战场景', subtitle: '16 个提示词模板', href: '#practice', keywords: '实战 场景 模板' },
   { type: '模块', title: '知识测验', subtitle: '100 道精选题', href: '#quiz', keywords: '测验 考试 题目 quiz' },

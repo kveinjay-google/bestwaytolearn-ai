@@ -371,7 +371,7 @@ I18n.registerLocale('fr', {
               label: "Passez à la phase 4 : Révision"
             },
             {
-              label: "Laboratoire rapide"
+              label: "Simulation pratique"
             }
           ]
         },
@@ -420,7 +420,7 @@ I18n.registerLocale('fr', {
           days: "Jour 4-5",
           modules: [
             "Passez à la phase 4 : Révision",
-            "Laboratoire rapide"
+            "Simulation pratique"
           ],
           desc: "Explorez 43 applications d'IA grand public et stimulez les résultats avec des invites structurées."
         },
@@ -525,7 +525,7 @@ I18n.registerLocale('fr', {
           desc: "Une invite est votre interface avec l’IA. Les invites fortes incluent le rôle, la tâche, le contexte, le format et les contraintes.",
           tasks: [
             "Cartes d'étude : invite, température, tir zéro, quelques tirs, CoT",
-            "Essayez 3 cas dans le Prompt Lab",
+            "Essayez 3 cas dans la Simulation pratique",
             "Comparez les invites vagues et structurées sur la même question",
             "Rédigez votre liste de contrôle personnelle en 3 éléments"
           ],
@@ -536,7 +536,7 @@ I18n.registerLocale('fr', {
               href: "#knowledge"
             },
             {
-              label: "Laboratoire rapide",
+              label: "Simulation pratique",
               href: "#prompt-lab"
             }
           ]
@@ -582,7 +582,7 @@ I18n.registerLocale('fr', {
               href: "#practice"
             },
             {
-              label: "Laboratoire rapide",
+              label: "Simulation pratique",
               href: "#prompt-lab"
             }
           ]
@@ -749,7 +749,7 @@ I18n.registerLocale('fr', {
         },
         "prompt-lab": {
           tag: "Module 2.2",
-          title: "Laboratoire rapide",
+          title: "Simulation pratique",
           desc: "Un espace de travail : choisissez un cas → modifiez l'invite → prévisualisez la réponse → allez opérer dans de vrais outils."
         },
         devices: {

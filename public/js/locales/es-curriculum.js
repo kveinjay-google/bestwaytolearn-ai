@@ -478,7 +478,7 @@
         },
         "prompt-lab": {
           tag: "Module 2.2",
-          title: "laboratorio rápido",
+          title: "Simulación práctica",
           desc: "Un espacio de trabajo: elija un caso → editar mensaje → vista previa de respuesta → vaya a operar con herramientas reales.",
           caseLabel: "Casos de práctica",
           selectCaseBadge: "Elija un caso para comenzar",
@@ -578,7 +578,7 @@
           msgTemplate: "{name}, elige herramientas para tus escenarios: regístrate y prueba una; esa es la forma más rápida de empezar."
         },
         {
-          id: "laboratorio rápido",
+          id: "Simulación práctica",
           msgTemplate: "{name}, las indicaciones son la clave para dirigir la IA; practique la escritura estructurada aquí."
         },
         {

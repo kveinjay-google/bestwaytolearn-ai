@@ -367,7 +367,7 @@
           ],
           answer: 0,
           explain: "Zero-shot no da ejemplos y se basa en un entrenamiento previo; las indicaciones de unos pocos disparos proporcionan algunos ejemplos.",
-          topic: "laboratorio rápido"
+          topic: "prompt-lab"
         },
         {
           q: "¿Cuál es la ventaja de las indicaciones de pocos disparos?",
@@ -379,7 +379,7 @@
           ],
           answer: 1,
           explain: "Poner de 1 a 3 ejemplos de entrada y salida en el mensaje mejora enormemente la coherencia del formato.",
-          topic: "laboratorio rápido"
+          topic: "prompt-lab"
         },
         {
           q: "¿Cuál es la principal diferencia entre ajuste fino e ingeniería rápida?",
@@ -858,8 +858,8 @@
             "Eliminar todos los requisitos de formato"
           ],
           answer: 1,
-          explain: "La ingeniería rápida es una ciencia experimental; El laboratorio rápido de este sitio es para comparar iteraciones.",
-          topic: "laboratorio rápido"
+          explain: "La ingeniería rápida es una ciencia experimental; la Simulación práctica de este sitio es para comparar iteraciones.",
+          topic: "prompt-lab"
         },
         {
           q: "¿Cuál es el beneficio de especificar el formato de salida en un mensaje?",
@@ -871,7 +871,7 @@
           ],
           answer: 1,
           explain: "Solicitar JSON, tablas Markdown o listas con viñetas mejora enormemente la usabilidad.",
-          topic: "laboratorio rápido"
+          topic: "prompt-lab"
         },
         {
           q: "¿Cuál es la forma recomendada de analizar datos de Excel con ChatGPT?",

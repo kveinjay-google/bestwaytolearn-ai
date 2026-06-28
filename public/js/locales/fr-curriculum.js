@@ -478,7 +478,7 @@
         },
         "prompt-lab": {
           tag: "Module 2.2",
-          title: "Laboratoire rapide",
+          title: "Simulation pratique",
           desc: "Un espace de travail : choisissez un cas → modifiez l'invite → prévisualisez la réponse → allez opérer dans de vrais outils.",
           caseLabel: "Cas pratiques",
           selectCaseBadge: "Choisissez une affaire pour commencer",

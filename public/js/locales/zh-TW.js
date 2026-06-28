@@ -9,7 +9,7 @@ I18n.registerLocale('zh-TW', {
       },
       meta: {
         title: "BestWayToLearn.AI | 從零到實戰 — AI 系統學習",
-        description: "BestWayToLearn.AI — 四階段 AI 系統學習：認知基礎、工具掌握、實戰應用與知識測驗。100 個術語、43 款主流應用、提示詞實驗室與真實實操教程，從零到實戰。"
+        description: "BestWayToLearn.AI — 四階段 AI 系統學習：認知基礎、工具掌握、實戰應用與知識測驗。100 個術語、43 款主流應用、模擬操作與真實實操教程，從零到實戰。"
       },
       notice: {
         partial: "介面為繁體中文，部分教學內容仍為簡體中文。",
@@ -438,7 +438,7 @@ I18n.registerLocale('zh-TW', {
         },
         "prompt-lab": {
           tag: "模块 2.2",
-          title: "提示詞實驗室",
+          title: "模擬操作",
           desc: "在一個工作臺內完成：選案例 → 編輯提示詞 → 預覽回覆 → 按引導去真實工具操作。"
         },
         devices: {

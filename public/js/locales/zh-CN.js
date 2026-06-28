@@ -9,7 +9,7 @@ I18n.registerLocale('zh-CN', {
     },
     meta: {
       title: 'BestWayToLearn.AI | 从零到实战 — AI 系统学习',
-      description: 'BestWayToLearn.AI — 四阶段 AI 系统学习：认知基础、工具掌握、实战应用与知识测验。100 个术语、43 款主流应用、提示词实验室与真实实操教程，从零到实战。',
+      description: 'BestWayToLearn.AI — 四阶段 AI 系统学习：认知基础、工具掌握、实战应用与知识测验。100 个术语、43 款主流应用、模拟操作与真实实操教程，从零到实战。',
     },
     notice: {
       partial: '',
@@ -369,7 +369,7 @@ I18n.registerLocale('zh-CN', {
       fundamentals: { tag: '模块 1.2', title: 'AI 是如何工作的？', desc: '8 大原理模块，覆盖 AI → ML → DL → Transformer → LLM → GenAI → NLP 完整知识链。' },
       knowledge: { tag: '模块 1.3', title: 'AI 知识库', desc: '100 个最常见 AI 术语，9 大分类。卡片模式深度学习，词典模式快速查阅。' },
       apps: { tag: '模块 2.1', title: '选对工具，事半功倍', desc: '43 款主流 AI 应用，按场景分类，含功能列表、适合人群与上手建议。' },
-      'prompt-lab': { tag: '模块 2.2', title: '提示词实验室', desc: '在一个工作台内完成：选案例 → 编辑提示词 → 预览回复 → 按引导去真实工具操作。' },
+      'prompt-lab': { tag: '模块 2.2', title: '模拟操作', desc: '在一个工作台内完成：选案例 → 编辑提示词 → 预览回复 → 按引导去真实工具操作。' },
       'prompt-examples': { tag: '提示词参考', title: '各软件类型提示词范例', desc: '覆盖对话、编程、图像、视频、办公、Agent 与搜索研究 7 大类，每条范例含使用场景、结构说明与可复制提示词。' },
       devices: { tag: '选购地图', title: '按真实需求选设备，不花冤枉钱', desc: '' },
       quiz: { tag: '模块 4.1', title: '检验你的学习成果', desc: '100 道精选题，覆盖原理、术语、工具与实战。目标 80/100 分以上。' },

@@ -9,7 +9,7 @@ I18n.registerLocale('en', {
     },
     meta: {
       title: 'BestWayToLearn.AI | Learn AI — Zero to Practice',
-      description: 'BestWayToLearn.AI — Four-phase AI learning: foundations, tools, hands-on practice, and quiz. 100 terms, 43 apps, prompt lab, and real tutorials.',
+      description: 'BestWayToLearn.AI — Four-phase AI learning: foundations, tools, hands-on practice, and quiz. 100 terms, 43 apps, simulated practice, and real tutorials.',
     },
     notice: {
       partial: '',
@@ -314,7 +314,7 @@ I18n.registerLocale('en', {
         label: 'Tools',
         nextLabel: 'Go to Phase 3: Practice',
         nextDesc: 'Apply AI in real workflows with hands-on cases.',
-        modules: [{ label: 'Mainstream apps' }, { label: 'Prompt lab' }],
+        modules: [{ label: 'Mainstream apps' }, { label: 'Simulated practice' }],
       },
       practice: {
         label: 'Practice',
@@ -341,7 +341,7 @@ I18n.registerLocale('en', {
         title: 'Tools',
         subtitle: 'Pick tools and write prompts',
         days: 'Day 4–5',
-        modules: ['Mainstream apps', 'Prompt lab'],
+        modules: ['Mainstream apps', 'Simulated practice'],
         desc: 'Explore 43 mainstream AI apps and drive output with structured prompts.',
       },
       practice: {
@@ -419,14 +419,14 @@ I18n.registerLocale('en', {
         desc: 'A prompt is your interface to AI. Strong prompts include role, task, context, format, and constraints.',
         tasks: [
           'Study cards: prompt, temperature, zero-shot, few-shot, CoT',
-          'Try 3 cases in the Prompt Lab',
+          'Try 3 cases in Simulated practice',
           'Compare vague vs structured prompts on the same question',
           'Write your personal 3-item prompt checklist',
         ],
         milestone: 'You can write reusable structured prompt templates.',
         goto: [
           { label: 'Knowledge base', href: '#knowledge' },
-          { label: 'Prompt lab', href: '#prompt-lab' },
+          { label: 'Simulated practice', href: '#prompt-lab' },
         ],
       },
       {
@@ -458,7 +458,7 @@ I18n.registerLocale('en', {
         goto: [
           { label: 'Software tutorials', href: '#hands-on' },
           { label: 'Scenarios', href: '#practice' },
-          { label: 'Prompt lab', href: '#prompt-lab' },
+          { label: 'Simulated practice', href: '#prompt-lab' },
         ],
       },
       {
@@ -549,7 +549,7 @@ I18n.registerLocale('en', {
       knowledge: { tag: 'Module 1.3', title: 'AI knowledge base', desc: '100 common AI terms in 9 categories. Card study or quick glossary.' },
       apps: { tag: 'Module 2.1', title: 'Pick the right tools', desc: '43 mainstream AI apps by scenario, with features, audience, and getting-started tips.' },
       'prompt-examples': { tag: 'Prompt reference', title: 'Prompt examples by software type', desc: 'Seven categories—chat, coding, images, video, office, agents, and research—with scenarios, structure notes, and copy-ready prompts.' },
-      'prompt-lab': { tag: 'Module 2.2', title: 'Prompt lab', desc: 'One workspace: pick a case → edit prompt → preview reply → go operate in real tools.' },
+      'prompt-lab': { tag: 'Module 2.2', title: 'Simulated practice', desc: 'One workspace: pick a case → edit prompt → preview reply → go operate in real tools.' },
       devices: { tag: 'Buying map', title: 'Choose devices by real needs', desc: '' },
       quiz: { tag: 'Module 4.1', title: 'Test your learning', desc: '100 curated questions on theory, terms, tools, and practice. Target 80/100+.' },
     },

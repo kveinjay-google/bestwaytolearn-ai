@@ -9,7 +9,7 @@ I18n.registerLocale('ko', {
       },
       meta: {
         title: "BestWayToLearn.AI | AI 배우기 — 제로부터 연습까지",
-        description: "BestWayToLearn.AI — 4단계 AI 학습: 기초, 도구, 실습 및 퀴즈. 100개의 용어, 43개의 앱, 프롬프트 랩 및 실제 튜토리얼."
+        description: "BestWayToLearn.AI — 4단계 AI 학습: 기초, 도구, 실습 및 퀴즈. 100개의 용어, 43개의 앱, 모의 조작 및 실제 튜토리얼."
       },
       notice: {
         partial: "영어 UI가 활성화되었습니다. 실습 사례 내부의 튜토리얼 프롬프트는 중국어 우선 도구에 복사할 때 중국어로 유지될 수 있습니다.",
@@ -352,7 +352,7 @@ I18n.registerLocale('ko', {
               label: "주류 앱"
             },
             {
-              label: "프롬프트랩"
+              label: "모의 조작"
             }
           ]
         },
@@ -401,7 +401,7 @@ I18n.registerLocale('ko', {
           days: "4~5일차",
           modules: [
             "주류 앱",
-            "프롬프트랩"
+            "모의 조작"
           ],
           desc: "43개의 주류 AI 앱을 탐색하고 구조화된 프롬프트로 결과를 도출하세요."
         },
@@ -506,7 +506,7 @@ I18n.registerLocale('ko', {
           desc: "프롬프트는 AI에 대한 인터페이스입니다. 강력한 프롬프트에는 역할, 작업, 컨텍스트, 형식 및 제약 조건이 포함됩니다.",
           tasks: [
             "연구 카드: 프롬프트, 온도, 제로샷, 퓨샷, CoT",
-            "Prompt Lab에서 3가지 사례를 시도해 보세요.",
+            "모의 조작에서 3가지 사례를 시도해 보세요.",
             "같은 질문에 대해 모호한 프롬프트와 구조화된 프롬프트를 비교하세요.",
             "개인 3개 항목 프롬프트 체크리스트 작성"
           ],
@@ -517,7 +517,7 @@ I18n.registerLocale('ko', {
               href: "#knowledge"
             },
             {
-              label: "프롬프트랩",
+              label: "모의 조작",
               href: "#prompt-lab"
             }
           ]
@@ -563,7 +563,7 @@ I18n.registerLocale('ko', {
               href: "#practice"
             },
             {
-              label: "프롬프트랩",
+              label: "모의 조작",
               href: "#prompt-lab"
             }
           ]
@@ -730,7 +730,7 @@ I18n.registerLocale('ko', {
         },
         "prompt-lab": {
           tag: "Module 2.2",
-          title: "프롬프트랩",
+          title: "모의 조작",
           desc: "하나의 작업 공간: 사례 선택 → 프롬프트 편집 → 답변 미리 보기 → 실제 도구에서 작업하기"
         },
         devices: {
