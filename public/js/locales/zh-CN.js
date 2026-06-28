@@ -97,6 +97,13 @@ I18n.registerLocale('zh-CN', {
       phaseLine: '认知 · 工具 · 实战 · 检验',
       ctaMap: '查看学习地图',
       ctaContinue: '继续学习',
+      startFirst: '开始学习',
+      startHint: '从 Day 1 开始，建立 AI 全局认知',
+      continueWithProgress: '继续学习：{progress}',
+      progressPhase: '{label} · {done}/{total} 天',
+      progressQuiz: '测验 · 最佳 {score} 分',
+      progressQuizPending: '测验待完成',
+      progressGraduated: '已结业',
     },
     roadmap: {
       tag: '学习地图',

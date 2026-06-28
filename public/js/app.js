@@ -1296,30 +1296,62 @@ function getContinueLearningTarget() {
   };
 }
 
+function hasLearningRecord() {
+  const prog = loadProgress();
+  return (prog.completedDays?.length > 0) || (prog.quizBestScore > 0);
+}
+
+function getHeroProgressLabel(target) {
+  if (target.type === 'graduation') {
+    return uiT('hero.progressGraduated', '已结业');
+  }
+  if (target.type === 'quiz') {
+    const best = loadProgress().quizBestScore || 0;
+    return best > 0
+      ? uiT('hero.progressQuiz', '测验 · 最佳 {score} 分', { score: best })
+      : uiT('hero.progressQuizPending', '测验待完成');
+  }
+  if (target.type === 'phase') {
+    const { done, total } = getPhaseProgress(target.phaseNum);
+    return uiT('hero.progressPhase', '{label} · {done}/{total} 天', { label: target.label, done, total });
+  }
+  return target.label;
+}
+
 function updateContinueLearningCTA() {
   const target = getContinueLearningTarget();
   const headerBtn = document.getElementById('header-continue');
-  const heroBtn = document.getElementById('hero-continue');
+  const heroBtn = document.getElementById('hero-cta');
+  const hasRecord = hasLearningRecord();
 
   const headerText = target.type === 'phase'
     ? uiT('graduation.continuePhaseHeader', '继续 {label} →', { label: target.label })
     : target.type === 'graduation'
       ? uiT('graduation.continueGradHeader', '结业报告 →')
       : `${target.label} →`;
-  const heroText = target.type === 'phase'
-    ? uiT('graduation.continuePhaseHero', '继续学习：{label}', { label: target.label })
-    : target.type === 'graduation'
-      ? uiT('graduation.continueLabel', '查看结业报告')
-      : target.label;
 
-  [headerBtn, heroBtn].forEach(btn => {
-    if (!btn) return;
-    btn.href = target.href;
-    btn.hidden = false;
-    btn.title = target.sublabel || target.label;
-  });
-  if (headerBtn) headerBtn.textContent = headerText;
-  if (heroBtn) heroBtn.textContent = heroText;
+  if (headerBtn) {
+    headerBtn.href = target.href;
+    headerBtn.hidden = false;
+    headerBtn.title = target.sublabel || target.label;
+    headerBtn.textContent = headerText;
+  }
+
+  if (heroBtn) {
+    if (hasRecord) {
+      const progress = getHeroProgressLabel(target);
+      heroBtn.href = target.href;
+      heroBtn.title = target.sublabel || progress;
+      heroBtn.textContent = uiT('hero.continueWithProgress', '继续学习：{progress}', { progress });
+      heroBtn.dataset.i18n = '';
+    } else {
+      heroBtn.href = getPhaseStartHref(1);
+      heroBtn.title = typeof I18n !== 'undefined' ? I18n.t('hero.startHint') : '从 Day 1 开始，建立 AI 全局认知';
+      heroBtn.textContent = typeof I18n !== 'undefined' ? I18n.t('hero.startFirst') : '开始学习';
+      heroBtn.dataset.i18n = 'hero.startFirst';
+    }
+    heroBtn.hidden = false;
+  }
 }
 
 function getOverallProgressPct() {

@@ -97,6 +97,13 @@ I18n.registerLocale('en', {
       phaseLine: 'Learn · Tools · Practice · Review',
       ctaMap: 'View learning map',
       ctaContinue: 'Continue learning',
+      startFirst: 'Start learning',
+      startHint: 'Begin with Day 1 and build your AI foundation',
+      continueWithProgress: 'Continue: {progress}',
+      progressPhase: '{label} · {done}/{total} days',
+      progressQuiz: 'Quiz · best {score}',
+      progressQuizPending: 'Quiz pending',
+      progressGraduated: 'Graduated',
     },
     roadmap: {
       tag: 'Learning map',
