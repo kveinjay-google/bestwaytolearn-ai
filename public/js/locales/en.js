@@ -58,7 +58,7 @@ I18n.registerLocale('en', {
       path: 'Learning plan',
       learn: 'Learn',
       tools: 'Tools',
-      prompts: 'Prompts',
+      prompts: 'Prompt',
       practice: 'Practice',
       validate: 'Review',
       monetize: 'Monetize',
@@ -274,7 +274,7 @@ I18n.registerLocale('en', {
   },
   data: {
     nav: {
-      map: 'AI Learning', path: 'Plan', learn: 'Learn', tools: 'Tools', prompts: 'Prompts',
+      map: 'AI Learning', path: 'Plan', learn: 'Learn', tools: 'Tools', prompts: 'Prompt',
       practice: 'Practice', validate: 'Review', monetize: 'Monetize', devices: 'Devices',
       aiToolsNav: 'AI hub', aiSkillsNav: 'Skill Picks', aiMcpNav: 'MCP Hub',
     },
