@@ -58,7 +58,7 @@ I18n.registerLocale('zh-CN', {
       path: '学习计划',
       learn: '认知',
       tools: '工具',
-      prompts: '提示词',
+      prompts: 'Prompt提示词',
       practice: '实战',
       validate: '检验',
       monetize: '变现',
@@ -293,7 +293,7 @@ I18n.registerLocale('zh-CN', {
   },
   data: {
     nav: {
-      map: 'AI学习', learn: '认知', tools: '工具', prompts: '提示词',
+      map: 'AI学习', learn: '认知', tools: '工具', prompts: 'Prompt提示词',
       practice: '实战', validate: '检验', monetize: '变现', devices: '设备',
       aiToolsNav: 'AI导航', aiSkillsNav: 'SKILL推荐', aiMcpNav: 'MCP导航',
     },

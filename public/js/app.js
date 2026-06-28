@@ -690,7 +690,7 @@ const PHASE_TAB_CONFIG = {
     ],
   },
   prompts: {
-    label: '提示词范例',
+    label: 'Prompt提示词',
     navHash: 'prompt-examples',
     panelSelector: '#phase-view-prompts',
     hashes: ['prompt-examples', 'prompt-examples-section'],
@@ -764,7 +764,7 @@ function resolvePhaseTabFromHash(hash) {
 const PHASE_PANEL_SELECTOR = '.phase-view, .learning-phase';
 function getNavTabLabels() {
   return typeof I18n !== 'undefined' ? I18n.getNavLabels() : {
-    map: 'AI学习', learn: '认知', tools: '工具', prompts: '提示词',
+    map: 'AI学习', learn: '认知', tools: '工具', prompts: 'Prompt提示词',
     practice: '实战', validate: '检验', monetize: '变现', devices: '设备',
     aiToolsNav: 'AI导航', aiSkillsNav: 'SKILL推荐', aiMcpNav: 'MCP导航',
   };
