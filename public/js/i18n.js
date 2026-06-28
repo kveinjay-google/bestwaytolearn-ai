@@ -69,6 +69,11 @@ const I18n = (function () {
     return locale === 'zh-CN' || locale === 'zh-TW';
   }
 
+  /** Only zh-CN reads course content from data.js / terms.js (Simplified Chinese source). */
+  function usesChineseSourceContent(locale = currentLocale) {
+    return locale === 'zh-CN';
+  }
+
   function usesEnglishContent(locale = currentLocale) {
     return !isChineseLocale(locale);
   }
@@ -144,7 +149,7 @@ const I18n = (function () {
   }
 
   function mapCategoryLabel(cat, map) {
-    if (!cat || isChineseLocale()) return cat;
+    if (!cat || usesChineseSourceContent()) return cat;
     return map?.[cat] || cat;
   }
 
@@ -198,7 +203,7 @@ const I18n = (function () {
 
   function getPhaseTabConfig() {
     const overlay = getBundle().data?.phaseTabs || {};
-    if (isChineseLocale()) return overlay;
+    if (usesChineseSourceContent()) return PHASE_TAB_CONFIG || overlay;
     return overlay;
   }
 
@@ -241,13 +246,13 @@ const I18n = (function () {
   }
 
   function localizePhases() {
-    if (isChineseLocale()) return LEARNING_PHASES;
+    if (usesChineseSourceContent()) return LEARNING_PHASES;
     const map = getBundle().data?.learningPhases || {};
     return LEARNING_PHASES.map(p => ({ ...p, ...(map[p.id] || {}) }));
   }
 
   function localizePathDay(day, index) {
-    if (isChineseLocale()) return day;
+    if (usesChineseSourceContent()) return day;
     const overlay = getBundle().data?.learningPath?.[index];
     if (!overlay) return day;
     return {
@@ -259,24 +264,24 @@ const I18n = (function () {
   }
 
   function localizeDeviceMeta() {
-    if (isChineseLocale()) return DEVICE_GUIDE_META;
+    if (usesChineseSourceContent()) return DEVICE_GUIDE_META;
     return { ...DEVICE_GUIDE_META, ...(getBundle().data?.deviceGuideMeta || {}) };
   }
 
   function localizeAiBoxesMeta() {
-    if (isChineseLocale()) return DEVICE_AI_BOXES_META;
+    if (usesChineseSourceContent()) return DEVICE_AI_BOXES_META;
     return { ...DEVICE_AI_BOXES_META, ...(getBundle().data?.deviceAiBoxesMeta || {}) };
   }
 
   function localizeNeedOptions() {
-    if (isChineseLocale()) return DEVICE_NEED_OPTIONS;
+    if (usesChineseSourceContent()) return DEVICE_NEED_OPTIONS;
     const map = getBundle().data?.deviceNeedOptions || {};
     return DEVICE_NEED_OPTIONS.map(n => ({ ...n, ...(map[n.id] || {}) }));
   }
 
   function localizeOsCompare(key) {
     const base = DEVICE_OS_COMPARE[key];
-    if (!base || isChineseLocale()) return base;
+    if (!base || usesChineseSourceContent()) return base;
     const overlay = getBundle().data?.deviceOsCompare?.[key] || {};
     return {
       ...base,
@@ -287,13 +292,13 @@ const I18n = (function () {
   }
 
   function localizeStorageTiers() {
-    if (isChineseLocale()) return DEVICE_STORAGE_TIERS;
+    if (usesChineseSourceContent()) return DEVICE_STORAGE_TIERS;
     const overlays = getBundle().data?.deviceStorageTiers || [];
     return DEVICE_STORAGE_TIERS.map((s, i) => ({ ...s, ...(overlays[i] || {}) }));
   }
 
   function localizeAiBox(box, index) {
-    if (isChineseLocale()) return box;
+    if (usesChineseSourceContent()) return box;
     const overlay = getBundle().data?.deviceAiBoxes?.[box.id];
     if (!overlay) return box;
     return {
@@ -308,7 +313,7 @@ const I18n = (function () {
   }
 
   function localizePreset(preset) {
-    if (isChineseLocale()) return preset;
+    if (usesChineseSourceContent()) return preset;
     const overlay = getBundle().data?.devicePresets?.[preset.id];
     if (!overlay) return preset;
     return {
@@ -321,20 +326,20 @@ const I18n = (function () {
 
   function localizeMemoryTiers() {
     if (typeof DEVICE_MEMORY_TIERS === 'undefined') return [];
-    if (isChineseLocale()) return DEVICE_MEMORY_TIERS;
+    if (usesChineseSourceContent()) return DEVICE_MEMORY_TIERS;
     const overlays = getData('deviceMemoryTiers') || [];
     return DEVICE_MEMORY_TIERS.map((s, i) => ({ ...s, ...(overlays[i] || {}) }));
   }
 
   function localizeGpuTiers() {
     if (typeof DEVICE_GPU_TIERS === 'undefined') return [];
-    if (isChineseLocale()) return DEVICE_GPU_TIERS;
+    if (usesChineseSourceContent()) return DEVICE_GPU_TIERS;
     const overlays = getData('deviceGpuTiers') || [];
     return DEVICE_GPU_TIERS.map((g, i) => ({ ...g, ...(overlays[i] || {}) }));
   }
 
   function getDeviceFieldLabels() {
-    if (isChineseLocale()) return null;
+    if (usesChineseSourceContent()) return null;
     return getData('deviceFieldLabels') || null;
   }
 
@@ -344,7 +349,7 @@ const I18n = (function () {
 
   function getResolvedPhaseTabConfig(tabId) {
     const base = typeof PHASE_TAB_CONFIG !== 'undefined' ? PHASE_TAB_CONFIG[tabId] : null;
-    if (!base || isChineseLocale()) return base;
+    if (!base || usesChineseSourceContent()) return base;
     const overlay = getData('phaseTabs')?.[tabId] || {};
     return {
       ...base,
@@ -359,7 +364,7 @@ const I18n = (function () {
   }
 
   function getGraduationModules() {
-    if (isChineseLocale() && typeof GRADUATION_MODULES !== 'undefined') {
+    if (usesChineseSourceContent() && typeof GRADUATION_MODULES !== 'undefined') {
       return GRADUATION_MODULES;
     }
     return getData('graduationModules')
@@ -375,7 +380,7 @@ const I18n = (function () {
   }
 
   function getToolsNavMeta() {
-    if (isChineseLocale() && typeof AI_TOOLS_NAV_META !== 'undefined') {
+    if (usesChineseSourceContent() && typeof AI_TOOLS_NAV_META !== 'undefined') {
       return AI_TOOLS_NAV_META;
     }
     return getData('toolsNav')?.meta || (typeof AI_TOOLS_NAV_META !== 'undefined' ? AI_TOOLS_NAV_META : {});
@@ -386,14 +391,14 @@ const I18n = (function () {
   }
 
   function localizeToolsNavTool(tool) {
-    if (!tool || isChineseLocale()) return tool;
+    if (!tool || usesChineseSourceContent()) return tool;
     const overlay = getData('toolsNav')?.tools?.[tool.name];
     if (!overlay) return tool;
     return { ...tool, name: overlay.name || tool.name, desc: overlay.desc || tool.desc };
   }
 
   function getSkillsNavMeta() {
-    if (isChineseLocale() && typeof AI_SKILLS_NAV_META !== 'undefined') {
+    if (usesChineseSourceContent() && typeof AI_SKILLS_NAV_META !== 'undefined') {
       return AI_SKILLS_NAV_META;
     }
     return getData('skillsNav')?.meta || (typeof AI_SKILLS_NAV_META !== 'undefined' ? AI_SKILLS_NAV_META : {});
@@ -408,7 +413,7 @@ const I18n = (function () {
   }
 
   function localizeSkillsNavItem(item) {
-    if (!item || isChineseLocale()) return item;
+    if (!item || usesChineseSourceContent()) return item;
     const overlay = getData('skillsNav')?.items?.[item.name];
     if (!overlay) return item;
     return {
@@ -420,7 +425,7 @@ const I18n = (function () {
   }
 
   function getMcpNavMeta() {
-    if (isChineseLocale() && typeof AI_MCP_NAV_META !== 'undefined') {
+    if (usesChineseSourceContent() && typeof AI_MCP_NAV_META !== 'undefined') {
       return AI_MCP_NAV_META;
     }
     return getData('mcpNav')?.meta || (typeof AI_MCP_NAV_META !== 'undefined' ? AI_MCP_NAV_META : {});
@@ -445,7 +450,7 @@ const I18n = (function () {
   }
 
   function localizeMcpNavItem(item) {
-    if (!item || isChineseLocale()) return item;
+    if (!item || usesChineseSourceContent()) return item;
     const overlay = getData('mcpNav')?.items?.[item.name];
     if (!overlay) return item;
     return {
@@ -458,7 +463,7 @@ const I18n = (function () {
   }
 
   function getQuizTopicLinks() {
-    if (isChineseLocale()) return null;
+    if (usesChineseSourceContent()) return null;
     return getData('quizTopicLinks') || null;
   }
 
@@ -501,7 +506,7 @@ const I18n = (function () {
   }
 
   function applyGraduationChrome() {
-    if (isChineseLocale()) return;
+    if (usesChineseSourceContent()) return;
     const hdr = getData('sectionHeaders')?.graduation || {};
     const gradSection = document.getElementById('graduation');
     const setBadgeText = (el, text) => {
@@ -880,7 +885,7 @@ const I18n = (function () {
 
   function getTerms() {
     if (typeof AI_TERMS === 'undefined') return [];
-    if (isChineseLocale()) return AI_TERMS;
+    if (usesChineseSourceContent()) return AI_TERMS;
     const overlay = getData('terms') || [];
     const catMap = getData('termCategories') || {};
     return AI_TERMS.map((t, i) => {
@@ -894,7 +899,7 @@ const I18n = (function () {
 
   function getApps() {
     if (typeof APPS === 'undefined') return [];
-    if (isChineseLocale()) return APPS;
+    if (usesChineseSourceContent()) return APPS;
     const overlay = getData('apps') || [];
     const catMap = getData('appCategories') || {};
     return APPS.map((app, i) => {
@@ -914,34 +919,34 @@ const I18n = (function () {
 
   function getQuizData() {
     if (typeof QUIZ_DATA === 'undefined') return [];
-    if (isChineseLocale()) return QUIZ_DATA;
+    if (usesChineseSourceContent()) return QUIZ_DATA;
     const overlay = getData('quiz') || [];
     return mergeIndexed(QUIZ_DATA, overlay);
   }
 
   function getAiOverviewSections() {
     if (typeof AI_OVERVIEW_SECTIONS === 'undefined') return [];
-    if (isChineseLocale()) return AI_OVERVIEW_SECTIONS;
+    if (usesChineseSourceContent()) return AI_OVERVIEW_SECTIONS;
     const overlay = getData('aiOverview') || [];
     return mergeIndexed(AI_OVERVIEW_SECTIONS, overlay);
   }
 
   function getFundamentals() {
     if (typeof FUNDAMENTALS === 'undefined') return [];
-    if (isChineseLocale()) return FUNDAMENTALS;
+    if (usesChineseSourceContent()) return FUNDAMENTALS;
     const overlay = getData('fundamentals') || [];
     return mergeIndexed(FUNDAMENTALS, overlay);
   }
 
   function getFundamentalsFigcaption() {
-    if (isChineseLocale()) {
+    if (usesChineseSourceContent()) {
       return '一图看懂：AI 从学习数据到理解你的问题并生成回答；下方模块默认展开，可点击标题折叠。';
     }
     return getData('fundamentalsFigcaption') || '';
   }
 
   function getFundamentalsFigAlt() {
-    if (isChineseLocale()) {
+    if (usesChineseSourceContent()) {
       return 'AI 工作原理示意图：数据训练、Transformer 架构、大语言模型推理到生成回答，以及 AI 包含机器学习与深度学习的层级关系';
     }
     return getData('fundamentalsFigAlt') || '';
@@ -949,7 +954,7 @@ const I18n = (function () {
 
   function getHandsOnCases() {
     if (typeof HANDS_ON_CASES === 'undefined') return [];
-    if (isChineseLocale()) return HANDS_ON_CASES;
+    if (usesChineseSourceContent()) return HANDS_ON_CASES;
     return mergeIndexed(HANDS_ON_CASES, getData('handsOnCases') || []);
   }
 
@@ -959,7 +964,7 @@ const I18n = (function () {
 
   function getPractices() {
     if (typeof PRACTICES === 'undefined') return [];
-    if (isChineseLocale()) return PRACTICES;
+    if (usesChineseSourceContent()) return PRACTICES;
     return mergeIndexed(PRACTICES, getData('practices') || []);
   }
 
@@ -969,7 +974,7 @@ const I18n = (function () {
 
   function getPromptCases() {
     if (typeof PROMPT_CASES === 'undefined') return [];
-    if (isChineseLocale()) return PROMPT_CASES;
+    if (usesChineseSourceContent()) return PROMPT_CASES;
     const overlay = getData('promptLab.cases') || [];
     return PROMPT_CASES.map(c => {
       const o = overlay.find(x => x.id === c.id);
@@ -979,13 +984,13 @@ const I18n = (function () {
 
   function getPromptTasks() {
     if (typeof PROMPT_TASKS === 'undefined') return {};
-    if (isChineseLocale()) return PROMPT_TASKS;
+    if (usesChineseSourceContent()) return PROMPT_TASKS;
     return { ...PROMPT_TASKS, ...(getData('promptLab.tasks') || {}) };
   }
 
   function getPromptTaskPresets() {
     if (typeof PROMPT_TASK_PRESETS === 'undefined') return {};
-    if (isChineseLocale()) return PROMPT_TASK_PRESETS;
+    if (usesChineseSourceContent()) return PROMPT_TASK_PRESETS;
     const overlay = getData('promptLab.presets') || {};
     const out = { ...PROMPT_TASK_PRESETS };
     Object.keys(overlay).forEach(key => {
@@ -996,17 +1001,17 @@ const I18n = (function () {
 
   function getPromptTools() {
     if (typeof PROMPT_TOOLS === 'undefined') return {};
-    if (isChineseLocale()) return PROMPT_TOOLS;
+    if (usesChineseSourceContent()) return PROMPT_TOOLS;
     return { ...PROMPT_TOOLS, ...(getData('promptLab.tools') || {}) };
   }
 
   function getPromptTaskLabel(taskKey) {
-    if (isChineseLocale()) return taskKey;
+    if (usesChineseSourceContent()) return taskKey;
     return getData('promptLab.taskLabels')?.[taskKey] || taskKey;
   }
 
   function getPromptToneLabel(toneKey) {
-    if (isChineseLocale()) return toneKey;
+    if (usesChineseSourceContent()) return toneKey;
     return getData('promptLab.tones')?.[toneKey] || toneKey;
   }
 
@@ -1016,7 +1021,7 @@ const I18n = (function () {
 
   function getMonetizeMeta() {
     if (typeof AI_MONETIZE_META === 'undefined') return {};
-    if (isChineseLocale()) return AI_MONETIZE_META;
+    if (usesChineseSourceContent()) return AI_MONETIZE_META;
     const overlay = getData('monetize.meta') || {};
     return { ...AI_MONETIZE_META, ...overlay };
   }
@@ -1027,7 +1032,7 @@ const I18n = (function () {
 
   function getMonetizeProjects() {
     if (typeof AI_MONETIZE_PROJECTS === 'undefined') return [];
-    if (isChineseLocale()) return AI_MONETIZE_PROJECTS;
+    if (usesChineseSourceContent()) return AI_MONETIZE_PROJECTS;
     const overlay = getData('monetize.projects') || [];
     const catMap = getData('monetize.categories') || {};
     const diffMap = getData('monetize.ui.difficulty') || {};
@@ -1049,7 +1054,7 @@ const I18n = (function () {
 
   function getCoachSections() {
     const overlay = getData('coachSections');
-    if (!overlay || isChineseLocale()) return null;
+    if (!overlay || usesChineseSourceContent()) return null;
     const teacher = getTeacherName();
     return overlay.map(s => ({
       id: s.id,
@@ -1059,7 +1064,7 @@ const I18n = (function () {
 
   function getPhaseCoachHints() {
     const overlay = getData('phaseCoachHints');
-    if (!overlay || isChineseLocale()) return null;
+    if (!overlay || usesChineseSourceContent()) return null;
     return Object.fromEntries(
       Object.entries(overlay).map(([id, template]) => [
         id,
@@ -1149,6 +1154,7 @@ const I18n = (function () {
     getBundle,
     getRawBundleData,
     isChineseLocale,
+    usesChineseSourceContent,
     usesEnglishContent,
     detectBrowserLocale,
     getFontSize: () => currentFontSize,

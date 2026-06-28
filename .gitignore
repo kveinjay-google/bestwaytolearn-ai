@@ -44,3 +44,7 @@ deploy-config.json
 # Cloudflare local
 .wrangler/
 .dev.vars
+
+# i18n build artifacts (generated JS in public/js/locales is committed)
+scripts/locale-modules/
+scripts/.tmp-*

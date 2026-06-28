@@ -1,0 +1,248 @@
+/* ZH-TW overlays — tools-nav */
+(function () {
+  if (typeof I18n === 'undefined') return;
+  I18n.mergeLocaleData('zh-TW', {
+    toolsNav: {
+        meta: {
+          lead: "Browse trusted AI tools by use case and jump to official sites. Items tagged “Featured here” are included in our curriculum app guide.",
+          searchPlaceholder: "Search tools…",
+          featuredBadge: "Featured here",
+          countLabel: "{n} tools",
+          totalLabel: "{n} tools · {c} categories",
+          empty: "No matching tools. Try another keyword.",
+          openSite: "Open site"
+        },
+        categories: {
+          "对话助手": "Chat assistants",
+          "编程开发": "Coding & dev",
+          "图像创作": "Image creation",
+          "视频音频": "Video & audio",
+          "办公效率": "Productivity",
+          "搜索研究": "Search & research",
+          "Agent 自动化": "Agents & automation",
+          "设计原型": "Design & prototyping",
+          "营销写作": "Marketing & writing",
+          "本地与开源": "Local & open source"
+        },
+        tools: {
+          Poe: {
+            desc: "Multi-model chat hub — switch GPT, Claude, Gemini in one account"
+          },
+          "Meta AI": {
+            desc: "Meta assistant tied to Instagram / WhatsApp"
+          },
+          "Character.AI": {
+            desc: "Role-play and persona chat community"
+          },
+          "腾讯混元": {
+            name: "Tencent Hunyuan",
+            desc: "Tencent LLM for Chinese chat and multimodal creation"
+          },
+          "讯飞星火": {
+            name: "iFlytek Spark",
+            desc: "iFlytek model strong in speech and office workflows"
+          },
+          "天工 AI": {
+            name: "Skywork AI",
+            desc: "Kunlun search-augmented Q&A and multimodal chat"
+          },
+          "智谱清言": {
+            name: "ChatGLM",
+            desc: "Zhipu GLM official chat and open-model ecosystem"
+          },
+          Replit: {
+            desc: "In-browser full-stack dev and AI agent deploy"
+          },
+          Lovable: {
+            desc: "Natural language to full-stack web apps"
+          },
+          v0: {
+            desc: "Vercel AI UI generator for React / shadcn"
+          },
+          "Google AI Studio": {
+            desc: "Gemini API playground and prototyping"
+          },
+          "Hugging Face": {
+            desc: "Open models, Spaces demos, datasets"
+          },
+          Replicate: {
+            desc: "Run open models via API, pay per call"
+          },
+          Tabnine: {
+            desc: "Enterprise AI code completion, private deploy"
+          },
+          "JetBrains AI": {
+            desc: "Built-in AI assistant in JetBrains IDEs"
+          },
+          "Sourcegraph Cody": {
+            desc: "Codebase-aware AI coding assistant"
+          },
+          "Leonardo.ai": {
+            desc: "Game and concept art generation"
+          },
+          Ideogram: {
+            desc: "Strong text rendering in AI images"
+          },
+          "Adobe Firefly": {
+            desc: "Commercial-safe Adobe generative images"
+          },
+          "即梦 AI": {
+            name: "Jimeng AI",
+            desc: "ByteDance image gen, China-friendly"
+          },
+          LiblibAI: {
+            desc: "Chinese SD model hub and online generation"
+          },
+          Civitai: {
+            desc: "Largest SD / LoRA model community"
+          },
+          Recraft: {
+            desc: "Vector and on-brand AI design"
+          },
+          Canva: {
+            desc: "Magic Studio for social and marketing design"
+          },
+          Pika: {
+            desc: "Stylized short video generation"
+          },
+          "Luma Dream Machine": {
+            desc: "High-quality text-to-video"
+          },
+          HeyGen: {
+            desc: "AI avatars and multilingual lip-sync video"
+          },
+          Descript: {
+            desc: "Edit audio/video by editing text"
+          },
+          Udio: {
+            desc: "AI music with vocals and styles"
+          },
+          "剪映 CapCut": {
+            name: "CapCut",
+            desc: "ByteDance editor with AI captions and effects"
+          },
+          Vidu: {
+            desc: "Shengshu text-to-video, Chinese prompts"
+          },
+          PixVerse: {
+            desc: "AI video with templates and effects"
+          },
+          "海螺 AI": {
+            name: "Hailuo AI",
+            desc: "MiniMax voice and video platform"
+          },
+          Tome: {
+            desc: "Narrative AI slide decks"
+          },
+          "Beautiful.ai": {
+            desc: "Smart layout presentations"
+          },
+          "飞书": {
+            name: "Lark / Feishu",
+            desc: "ByteDance suite with AI copilot"
+          },
+          "WPS AI": {
+            desc: "Kingsoft WPS AI writing and spreadsheets"
+          },
+          Grammarly: {
+            desc: "English grammar, tone, and clarity"
+          },
+          "Slack AI": {
+            desc: "Channel summaries and workflow AI"
+          },
+          "钉钉 AI": {
+            name: "DingTalk AI",
+            desc: "Enterprise collab with AI assistant"
+          },
+          Consensus: {
+            desc: "Academic paper search with citations"
+          },
+          Elicit: {
+            desc: "Literature review and paper extraction"
+          },
+          "You.com": {
+            desc: "AI search with multiple models"
+          },
+          Phind: {
+            desc: "Developer-focused AI search"
+          },
+          "夸克 AI": {
+            name: "Quark AI",
+            desc: "Alibaba Quark browser AI search"
+          },
+          Flowise: {
+            desc: "Visual LLM apps, self-hostable"
+          },
+          LangChain: {
+            desc: "LLM app framework and LangSmith"
+          },
+          CrewAI: {
+            desc: "Multi-agent orchestration framework"
+          },
+          Zapier: {
+            desc: "Connect 7000+ apps with AI automation"
+          },
+          Make: {
+            desc: "Visual automation with AI modules"
+          },
+          FastGPT: {
+            desc: "Open knowledge-base Q&A workflows"
+          },
+          Figma: {
+            desc: "Figma AI for UI, copy, and prototypes"
+          },
+          Framer: {
+            desc: "AI-assisted sites and motion"
+          },
+          Uizard: {
+            desc: "Sketch/screenshot to UI prototypes"
+          },
+          Motiff: {
+            desc: "AI-native UI design tool"
+          },
+          Relume: {
+            desc: "AI sitemaps and wireframes"
+          },
+          Jasper: {
+            desc: "Brand marketing and SEO copy"
+          },
+          "Copy.ai": {
+            desc: "Ads, email, and social copy at scale"
+          },
+          Writesonic: {
+            desc: "SEO articles and landing pages"
+          },
+          Sudowrite: {
+            desc: "Fiction and creative writing aid"
+          },
+          Ollama: {
+            desc: "Run Llama, Qwen, etc. locally"
+          },
+          "LM Studio": {
+            desc: "GUI for local LLM chat"
+          },
+          ComfyUI: {
+            desc: "Node-based Stable Diffusion workflows"
+          },
+          "Open WebUI": {
+            desc: "Self-hosted chat UI for Ollama"
+          },
+          LocalAI: {
+            desc: "Local OpenAI-compatible API server"
+          },
+          OpenRouter: {
+            desc: "Unified API routing across LLM providers"
+          }
+        }
+      },
+      strings: {
+        nav: {
+          toolsNav: "AI hub",
+          aiToolsNav: "AI hub"
+        },
+        aiNavPage: {
+          linkDirectory: "Browse AI hub (100+ tools) →"
+        }
+      }
+  });
+})();

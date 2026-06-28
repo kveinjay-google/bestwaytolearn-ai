@@ -6,7 +6,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const root = path.join(__dirname, '..');
+const root = path.join(__dirname, '..', 'public');
 
 function loadConsts(file, names) {
   const code = fs.readFileSync(path.join(root, file), 'utf8');
