@@ -775,10 +775,20 @@ function getPhasePanel(tabId) {
   return sel ? document.querySelector(sel) : null;
 }
 
+function resolveNavTabLabel(tabId, fallback = '') {
+  const labels = getNavTabLabels();
+  if (labels[tabId]) return labels[tabId];
+  if (typeof I18n !== 'undefined') {
+    const translated = I18n.t(`nav.${tabId}`);
+    if (translated && translated !== `nav.${tabId}`) return translated;
+  }
+  return fallback;
+}
+
 function repairNavTabs() {
   document.querySelectorAll('.main-nav a[data-nav-tab]').forEach(link => {
     const tabId = link.dataset.navTab;
-    link.textContent = getNavTabLabels()[tabId] || link.textContent;
+    link.textContent = resolveNavTabLabel(tabId, link.textContent);
     link.hidden = false;
     link.classList.remove('phase-view-active');
     link.querySelectorAll('.phase-next-bridge').forEach(el => el.remove());

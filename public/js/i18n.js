@@ -198,8 +198,26 @@ const I18n = (function () {
     return t('user.defaultName');
   }
 
+  const NAV_TAB_ALIASES = {
+    map: ['home'],
+    aiToolsNav: ['toolsNav'],
+    aiSkillsNav: ['skillsRecommend'],
+    aiMcpNav: ['mcpNav'],
+  };
+
   function getNavLabels() {
-    return getBundle().data?.nav || {};
+    const { strings, data } = getBundle();
+    const out = { ...(strings?.nav || {}), ...(data?.nav || {}) };
+    Object.entries(NAV_TAB_ALIASES).forEach(([tabId, alts]) => {
+      if (out[tabId]) return;
+      for (const alt of alts) {
+        if (out[alt]) {
+          out[tabId] = out[alt];
+          break;
+        }
+      }
+    });
+    return out;
   }
 
   function getPhaseTabConfig() {
