@@ -1019,6 +1019,32 @@ const I18n = (function () {
     return getData('promptLab.ui') || {};
   }
 
+  function getHandsOnUi() {
+    return getData('handsOnUi') || {};
+  }
+
+  function getPracticeUi() {
+    return getData('practiceUi') || {};
+  }
+
+  function getPromptSimulatedResponses() {
+    if (usesChineseSourceContent()) return null;
+    return getData('promptLab.simulatedResponses') || null;
+  }
+
+  function getPromptFollowupPatterns() {
+    if (usesChineseSourceContent()) return null;
+    return getData('promptLab.followupPatterns') || null;
+  }
+
+  function renderPromptTemplate(template, vars = {}) {
+    if (typeof template !== 'string') return template;
+    return Object.entries(vars).reduce(
+      (out, [k, v]) => out.replace(new RegExp(`\\{${k}\\}`, 'g'), String(v ?? '')),
+      template
+    );
+  }
+
   function getMonetizeMeta() {
     if (typeof AI_MONETIZE_META === 'undefined') return {};
     if (usesChineseSourceContent()) return AI_MONETIZE_META;
@@ -1183,6 +1209,11 @@ const I18n = (function () {
     getPromptTaskLabel,
     getPromptToneLabel,
     getPromptLabUi,
+    getHandsOnUi,
+    getPracticeUi,
+    getPromptSimulatedResponses,
+    getPromptFollowupPatterns,
+    renderPromptTemplate,
     getMonetizeMeta,
     getMonetizeCategoryLabel,
     getMonetizeProjects,

@@ -12,8 +12,8 @@ I18n.registerLocale('ko', {
         description: "BestWayToLearn.AI — 4단계 AI 학습: 기초, 도구, 실습 및 퀴즈. 100개의 용어, 43개의 앱, 프롬프트 랩 및 실제 튜토리얼."
       },
       notice: {
-        partial: "",
-        partialEn: ""
+        partial: "영어 UI가 활성화되었습니다. 실습 사례 내부의 튜토리얼 프롬프트는 중국어 우선 도구에 복사할 때 중국어로 유지될 수 있습니다.",
+        partialEn: "영어 UI가 활성화되었습니다. 실습 사례 내부의 튜토리얼 프롬프트는 중국어 우선 도구에 복사할 때 중국어로 유지될 수 있습니다."
       },
       settings: {
         title: "디스플레이 설정",

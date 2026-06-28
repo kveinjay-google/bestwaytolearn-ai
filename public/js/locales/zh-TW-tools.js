@@ -924,14 +924,23 @@
         "搜索研究": "搜尋研究",
         "Agent 自动化": "Agent 自動化"
       },
+      handsOnUi: {
+        countShown: "顯示 {visible} / {total} 個",
+        emptyHint: "該分類下暫無案例，試試其他標籤。",
+        resultLabel: "完成後你將得到：",
+        tipsLabel: "小貼士：",
+        commandPrompt: "命令 / 提示詞",
+        copyToSoftware: "複製到 {software}",
+        openWebsite: "開啟 {software} 官網"
+      },
       handsOnCases: [
         {
           title: "用 Cursor Codex 編寫網頁計算器",
           software: "Cursor",
           emoji: "⚡",
           url: "https://cursor.com",
-          difficulty: "入门",
-          duration: "约 15 分钟",
+          difficulty: "入門",
+          duration: "約 15 分鐘",
           desc: "從零開始，用 Cursor 內建 Codex Agent 生成一個可執行的 HTML 計算器，體驗「說一句話 → 得到可執行程式碼」的 AI 程式設計流程。",
           steps: [
             "安裝 Cursor，新建空資料夾 calc-demo 並用 Cursor 開啟",
@@ -950,8 +959,8 @@
           software: "Midjourney",
           emoji: "🎨",
           url: "https://www.midjourney.com",
-          difficulty: "入门",
-          duration: "约 10 分钟",
+          difficulty: "入門",
+          duration: "約 10 分鐘",
           desc: "在 Midjourney 中用英文提示詞生成一張電影感的紐約自由女神像圖片，學會文生圖的基本流程和引數用法。",
           steps: [
             "註冊 Midjourney，進入 midjourney.com 的 Create 頁面（或 Discord #general 頻道）",
@@ -970,8 +979,8 @@
           software: "ChatGPT",
           emoji: "💬",
           url: "https://chat.openai.com",
-          difficulty: "入门",
-          duration: "约 5 分钟",
+          difficulty: "入門",
+          duration: "約 5 分鐘",
           desc: "不想折騰 Discord？直接在 ChatGPT 裡用自然語言讓 DALL·E 3 生成自由女神像，適合最快體驗文生圖。",
           steps: [
             "開啟 ChatGPT（Plus 或 Team 賬戶支援 DALL·E 3；免費版可用有限額度）",
@@ -989,8 +998,8 @@
           software: "ElevenLabs",
           emoji: "🎙️",
           url: "https://elevenlabs.io",
-          difficulty: "进阶",
-          duration: "约 20 分钟",
+          difficulty: "進階",
+          duration: "約 20 分鐘",
           desc: "上傳一段你的幹聲錄音，在 ElevenLabs 建立個人聲音模型，再用它朗讀任意文字——體驗聲音克隆的完整流程。",
           steps: [
             "註冊 ElevenLabs，進入左側 Voice Lab → Instant Voice Cloning",
@@ -1009,8 +1018,8 @@
           software: "Fish Audio",
           emoji: "🐟",
           url: "https://fish.audio",
-          difficulty: "进阶",
-          duration: "约 15 分钟",
+          difficulty: "進階",
+          duration: "約 15 分鐘",
           desc: "國內使用者可用 Fish Audio 完成中文聲音克隆，發音自然，適合短影片口播和中文配音場景。",
           steps: [
             "開啟 fish.audio 註冊賬號，進入「聲音克隆」或「建立聲音」",
@@ -1029,8 +1038,8 @@
           software: "OpenClaw",
           emoji: "🦞",
           url: "https://docs.openclaw.ai",
-          difficulty: "高级",
-          duration: "约 30 分钟",
+          difficulty: "高階",
+          duration: "約 30 分鐘",
           desc: "配置 OpenClaw Cron 定時任務，讓每個交易日早上自動執行 Agent 蒐集股票資訊，並推送到 Telegram 或 Slack。",
           steps: [
             "安裝 OpenClaw CLI，執行 openclaw doctor --fix 完成 Gateway 初始化",
@@ -1049,8 +1058,8 @@
           software: "GitHub Copilot",
           emoji: "👨‍💻",
           url: "https://github.com/features/copilot",
-          difficulty: "入门",
-          duration: "约 12 分钟",
+          difficulty: "入門",
+          duration: "約 12 分鐘",
           desc: "在 VS Code 中用 Copilot 補全業務函式，並一鍵生成 Jest 單元測試，體驗日常編碼提效。",
           steps: [
             "安裝 VS Code + GitHub Copilot 外掛並登入",
@@ -1069,8 +1078,8 @@
           software: "Windsurf",
           emoji: "🏄",
           url: "https://codeium.com/windsurf",
-          difficulty: "进阶",
-          duration: "约 25 分钟",
+          difficulty: "進階",
+          duration: "約 25 分鐘",
           desc: "用 Windsurf Cascade Agent 理解小型前端專案結構，跨多檔案新增 CSS 變數與主題切換按鈕。",
           steps: [
             "用 Windsurf 開啟含 index.html + styles.css 的練習專案",
@@ -1089,8 +1098,8 @@
           software: "Claude",
           emoji: "🎭",
           url: "https://claude.ai",
-          difficulty: "进阶",
-          duration: "约 20 分钟",
+          difficulty: "進階",
+          duration: "約 20 分鐘",
           desc: "上傳 PDF 合同，讓 Claude 從乙方視角標註高風險條款並給出修改建議，適合法務/採購入門練習。",
           steps: [
             "註冊 Claude，新建對話（Pro 版可上傳更長 PDF）",
@@ -1109,8 +1118,8 @@
           software: "Gemini",
           emoji: "✨",
           url: "https://gemini.google.com",
-          difficulty: "入门",
-          duration: "约 10 分钟",
+          difficulty: "入門",
+          duration: "約 10 分鐘",
           desc: "利用 Gemini 與 Google 搜尋整合，快速生成某行業一週要聞快報，並附可點選來源。",
           steps: [
             "開啟 gemini.google.com 並登入 Google 賬號",
@@ -1129,8 +1138,8 @@
           software: "通义千问",
           emoji: "🌐",
           url: "https://tongyi.aliyun.com",
-          difficulty: "入门",
-          duration: "约 8 分钟",
+          difficulty: "入門",
+          duration: "約 8 分鐘",
           desc: "用通義千問生成符合小紅書語感的種草文案，含標題、正文、標籤和封面建議。",
           steps: [
             "開啟通義千問，新建對話",
@@ -1149,8 +1158,8 @@
           software: "Kimi",
           emoji: "🌙",
           url: "https://kimi.moonshot.cn",
-          difficulty: "进阶",
-          duration: "约 25 分钟",
+          difficulty: "進階",
+          duration: "約 25 分鐘",
           desc: "上傳上市公司年報 PDF，讓 Kimi 提取財務亮點、風險因素與管理層論述，適合投研/商科學習。",
           steps: [
             "開啟 Kimi，點選附件上傳年報 PDF（可公開樣本）",
@@ -1169,8 +1178,8 @@
           software: "DeepSeek",
           emoji: "🔍",
           url: "https://chat.deepseek.com",
-          difficulty: "入门",
-          duration: "约 12 分钟",
+          difficulty: "入門",
+          duration: "約 12 分鐘",
           desc: "把 Traceback 和程式碼片段交給 DeepSeek，定位 IndexError 根因並給出修復與防呆建議。",
           steps: [
             "開啟 DeepSeek 對話，新建聊天",
@@ -1189,8 +1198,8 @@
           software: "Stable Diffusion",
           emoji: "🌀",
           url: "https://stability.ai",
-          difficulty: "进阶",
-          duration: "约 20 分钟",
+          difficulty: "進階",
+          duration: "約 20 分鐘",
           desc: "透過 Stability 線上服務或本地 WebUI，生成簡約風產品展示圖，學習文生圖 + 負面提示詞。",
           steps: [
             "開啟 Stability 官方線上生成或本地 Automatic1111 / ComfyUI",
@@ -1209,8 +1218,8 @@
           software: "可灵 AI",
           emoji: "🎬",
           url: "https://klingai.com",
-          difficulty: "入门",
-          duration: "约 15 分钟",
+          difficulty: "入門",
+          duration: "約 15 分鐘",
           desc: "輸入中文提示詞，讓可靈生成豎屏產品展示短片，適合抖音/小紅書帶貨場景。",
           steps: [
             "註冊可靈 AI，進入影片生成",
@@ -1229,8 +1238,8 @@
           software: "Runway",
           emoji: "🎥",
           url: "https://runwayml.com",
-          difficulty: "进阶",
-          duration: "约 18 分钟",
+          difficulty: "進階",
+          duration: "約 18 分鐘",
           desc: "上傳靜態產品照片，用 Runway 圖生影片生成 4 秒動態展示，用於廣告片頭或網站 Hero。",
           steps: [
             "註冊 Runway，進入 Gen-3 圖生影片",
@@ -1249,8 +1258,8 @@
           software: "Suno",
           emoji: "🎵",
           url: "https://suno.com",
-          difficulty: "入门",
-          duration: "约 10 分钟",
+          difficulty: "入門",
+          duration: "約 10 分鐘",
           desc: "用 Suno v4 根據品牌調性生成短宣傳曲，含器樂與節奏，可用於影片 BGM 或活動暖場。",
           steps: [
             "註冊 Suno，點選 Create",
@@ -1269,8 +1278,8 @@
           software: "Notion AI",
           emoji: "📋",
           url: "https://www.notion.so/product/ai",
-          difficulty: "入门",
-          duration: "约 12 分钟",
+          difficulty: "入門",
+          duration: "約 12 分鐘",
           desc: "在 Notion 頁面貼上會議速記，用 AI 生成結構化紀要、決策項和可勾選待辦列表。",
           steps: [
             "在 Notion 新建頁面「週會 2026-06-25」",
@@ -1289,8 +1298,8 @@
           software: "Gamma",
           emoji: "📊",
           url: "https://gamma.app",
-          difficulty: "入门",
-          duration: "约 10 分钟",
+          difficulty: "入門",
+          duration: "約 10 分鐘",
           desc: "輸入大綱讓 Gamma 自動生成 10 頁路演 Deck，可線上分享與匯出 PDF。",
           steps: [
             "登入 Gamma，選擇 Create → Presentation",
@@ -1309,8 +1318,8 @@
           software: "Perplexity",
           emoji: "🔎",
           url: "https://www.perplexity.ai",
-          difficulty: "入门",
-          duration: "约 15 分钟",
+          difficulty: "入門",
+          duration: "約 15 分鐘",
           desc: "用 Perplexity Pro Search 梳理競品格局，輸出帶引用來源的一頁對比摘要。",
           steps: [
             "開啟 Perplexity，登入（Pro 搜尋更深）",
@@ -1329,8 +1338,8 @@
           software: "NotebookLM",
           emoji: "📓",
           url: "https://notebooklm.google.com",
-          difficulty: "进阶",
-          duration: "约 20 分钟",
+          difficulty: "進階",
+          duration: "約 20 分鐘",
           desc: "上傳 3 篇相關 PDF 論文，生成 Audio Overview 播客，通勤時聽文獻要點。",
           steps: [
             "開啟 NotebookLM，新建 Notebook",
@@ -1349,8 +1358,8 @@
           software: "文心一言",
           emoji: "📝",
           url: "https://yiyan.baidu.com",
-          difficulty: "入门",
-          duration: "约 15 分钟",
+          difficulty: "入門",
+          duration: "約 15 分鐘",
           desc: "用文心一言完成 1500 字科普長文，含標題備選、小標題結構與 SEO 關鍵詞佈局。",
           steps: [
             "開啟文心一言，新建對話",
@@ -1369,8 +1378,8 @@
           software: "ChatGPT",
           emoji: "💬",
           url: "https://chat.openai.com",
-          difficulty: "进阶",
-          duration: "约 18 分钟",
+          difficulty: "進階",
+          duration: "約 18 分鐘",
           desc: "上傳 CSV 樣本，用 ChatGPT 高階資料分析計算趨勢、Top SKU 與異常月份，並建議圖表。",
           steps: [
             "準備脫敏後的 sales.csv（月份,SKU,銷量,金額）",
@@ -1389,8 +1398,8 @@
           software: "Claude",
           emoji: "🎭",
           url: "https://claude.ai",
-          difficulty: "进阶",
-          duration: "约 15 分钟",
+          difficulty: "進階",
+          duration: "約 15 分鐘",
           desc: "讓 Claude 在 Artifacts 面板生成單檔案 HTML 待辦應用，支援本地儲存與勾選。",
           steps: [
             "Claude 新建對話，貼上下方提示詞",
@@ -1409,8 +1418,8 @@
           software: "Cursor",
           emoji: "⚡",
           url: "https://cursor.com",
-          difficulty: "进阶",
-          duration: "约 30 分钟",
+          difficulty: "進階",
+          duration: "約 30 分鐘",
           desc: "用 Cursor Agent 從零生成 Node.js Express API，含健康檢查、TODO CRUD 與 README。",
           steps: [
             "新建資料夾 todo-api，用 Cursor 開啟",
@@ -1429,8 +1438,8 @@
           software: "Midjourney",
           emoji: "🎨",
           url: "https://www.midjourney.com",
-          difficulty: "入门",
-          duration: "约 12 分钟",
+          difficulty: "入門",
+          duration: "約 12 分鐘",
           desc: "不同於風景圖，本次練習商業海報構圖：主體、留白、品牌色與排版區域。",
           steps: [
             "Midjourney Create 頁面新建任務",
@@ -1449,8 +1458,8 @@
           software: "ChatGPT",
           emoji: "🖼️",
           url: "https://chat.openai.com",
-          difficulty: "入门",
-          duration: "约 8 分钟",
+          difficulty: "入門",
+          duration: "約 8 分鐘",
           desc: "用 DALL·E 在 ChatGPT 內一次生成 4 種風格的 App 圖示草案，供 Figma 精修。",
           steps: [
             "ChatGPT 新建對話，確認可用影象生成",
@@ -1469,8 +1478,8 @@
           software: "ElevenLabs",
           emoji: "🎙️",
           url: "https://elevenlabs.io",
-          difficulty: "入门",
-          duration: "约 12 分钟",
+          difficulty: "入門",
+          duration: "約 12 分鐘",
           desc: "選擇 ElevenLabs 預設英文音色，為 60 秒產品介紹生成旁白 MP3，匯入剪映替換原聲。",
           steps: [
             "ElevenLabs → Text to Speech，選專業英文男/女聲",
@@ -1489,8 +1498,8 @@
           software: "Fish Audio",
           emoji: "🐟",
           url: "https://fish.audio",
-          difficulty: "进阶",
-          duration: "约 18 分钟",
+          difficulty: "進階",
+          duration: "約 18 分鐘",
           desc: "用已克隆或預設中文音色，將 3 段短影片指令碼批次轉為口播音訊，提升產能。",
           steps: [
             "Fish Audio 登入，選擇穩定中文音色",
@@ -1509,8 +1518,8 @@
           software: "OpenClaw",
           emoji: "🦞",
           url: "https://docs.openclaw.ai",
-          difficulty: "高级",
-          duration: "约 25 分钟",
+          difficulty: "高階",
+          duration: "約 25 分鐘",
           desc: "在股票資訊之外，配置 OpenClaw 每個工作日蒐集競品官網/部落格更新並推送 Slack。",
           steps: [
             "確保 OpenClaw Gateway 已執行，Slack webhook/bot 已連通",
@@ -1531,6 +1540,11 @@
         "编程开发": "程式設計開發",
         "数据营销": "資料營銷",
         "翻译法务": "翻譯法務"
+      },
+      practiceUi: {
+        countShown: "顯示 {visible} / {total} 個",
+        emptyHint: "該分類下暫無模板，試試其他標籤。",
+        promptTplLabel: "提示詞模板"
       },
       practices: [
         {
@@ -1920,6 +1934,18 @@
           "竞品调研": "請對以下行業/產品進行競品和市場分析。",
           "简历优化": "請根據以下資訊最佳化簡歷和求職材料。"
         },
+        taskLabels: {
+          "内容写作": "內容寫作",
+          "问题分析": "問題分析",
+          "代码开发": "程式碼開發",
+          "学习辅导": "學習輔導",
+          "数据分析": "資料分析",
+          "创意策划": "創意策劃",
+          "翻译润色": "翻譯潤色",
+          "会议纪要": "會議紀要",
+          "竞品调研": "競品調研",
+          "简历优化": "簡歷最佳化"
+        },
         presets: {
           "内容写作": {
             role: "資深內容策劃",
@@ -2033,6 +2059,71 @@
             "Claude",
             "文心一言"
           ]
+        },
+        tones: {
+          "专业严谨": "專業嚴謹",
+          "通俗易懂": "通俗易懂",
+          "创意发散": "創意發散",
+          "简洁直接": "簡潔直接"
+        },
+        ui: {
+          casesLabel: "真實案例",
+          selectCaseStart: "選擇案例開始",
+          copyPrompt: "複製提示詞",
+          configTitle: "提示詞配置",
+          taskType: "任務型別",
+          role: "角色",
+          rolePlaceholder: "例如：資深產品經理",
+          context: "背景資訊",
+          contextPlaceholder: "描述場景、受眾、約束條件…",
+          output: "期望輸出",
+          outputPlaceholder: "例如：一份 500 字的 PRD 大綱",
+          tone: "語氣風格",
+          generateSimulate: "生成並模擬",
+          chatTitle: "提示詞與回覆 · 同屏模擬",
+          resetSim: "重置模擬",
+          simEmptyTitle: "尚未開始模擬",
+          simEmptyDesc: "點選上方案例，或編輯左側配置後點「生成並模擬」。提示詞、AI 回覆與操作引導都在此視窗展示。",
+          guideTitle: "模擬完成 · 去真實工具試試",
+          guideToolsLabel: "推薦工具：",
+          followupPlaceholder: "追問，例如「更簡潔一點」…",
+          send: "傳送",
+          disclaimer: "本地預置演示，幫助理解提示詞結構。真實效果請複製提示詞到推薦工具驗證。",
+          tryFollowup: "試試追問：",
+          taskPrefix: "任務：",
+          casePrefix: "案例：",
+          customScene: "自訂場景",
+          defaultRole: "資深專家",
+          defaultContext: "[請補充具體背景]",
+          defaultOutput: "[請描述期望輸出]",
+          buildPrompt: {
+            roleHeader: "# 角色",
+            rolePrefix: "你是一位",
+            taskHeader: "# 任務",
+            contextHeader: "# 背景資訊",
+            outputHeader: "# 期望輸出",
+            requirementsHeader: "# 要求",
+            toneLine: "- 語氣風格：",
+            clarifyLine: "- 資訊不足時先列出需確認的 2-3 個關鍵問題",
+            structureLine: "- 輸出結構清晰，使用標題和列表",
+            uncertainLine: "- 不確定的內容明確標註，不要編造事實"
+          },
+          systemLabel: "系統",
+          simulating: "模擬中…",
+          promptSent: "提示詞已傳送",
+          aiReply: "AI 回覆",
+          copyFail: "複製失敗",
+          defaultGuideSteps: [
+            "點選工具列「複製提示詞」",
+            "開啟 ChatGPT 或通義千問，新建對話",
+            "貼上提示詞，將背景替換為你的真實場景",
+            "根據回覆迭代：「更簡潔」「換成表格」「補充資料」"
+          ],
+          stepPrefix: "第",
+          stepSuffix: " 步",
+          simError: "模擬出錯，請重新整理頁面後重試。若仍失敗，請強制重新整理（Cmd+Shift+R）清除快取。",
+          caseDataError: "案例資料未載入，請強制重新整理頁面（Cmd+Shift+R）。",
+          copyPromptLabel: "複製提示詞"
         }
       },
       monetize: {
@@ -2079,7 +2170,7 @@
             title: "自媒體內容矩陣代運營",
             emoji: "📱",
             category: "内容创作",
-            difficulty: "入门",
+            difficulty: "入門",
             income: "月入 2,000–8,000 元",
             tools: [
               "ChatGPT",
@@ -2104,7 +2195,7 @@
             title: "企業知識庫客服 Bot 定製",
             emoji: "🤖",
             category: "技术服务",
-            difficulty: "进阶",
+            difficulty: "進階",
             income: "單專案 3,000–20,000 元",
             tools: [
               "Dify",
@@ -2128,7 +2219,7 @@
             title: "電商視覺設計外包",
             emoji: "🎨",
             category: "内容创作",
-            difficulty: "入门",
+            difficulty: "入門",
             income: "月入 3,000–15,000 元",
             tools: [
               "Midjourney",
@@ -2152,7 +2243,7 @@
             title: "垂直行業提示詞包售賣",
             emoji: "📝",
             category: "知识服务",
-            difficulty: "入门",
+            difficulty: "入門",
             income: "月入 1,000–10,000 元",
             tools: [
               "Claude",
@@ -2176,7 +2267,7 @@
             title: "AI 自動化工作流整合",
             emoji: "⚙️",
             category: "自动化",
-            difficulty: "进阶",
+            difficulty: "進階",
             income: "單專案 5,000–30,000 元",
             tools: [
               "n8n",
@@ -2200,7 +2291,7 @@
             title: "AI 配音短影片製作",
             emoji: "🎙️",
             category: "内容创作",
-            difficulty: "入门",
+            difficulty: "入門",
             income: "單條 100–800 元",
             tools: [
               "ElevenLabs",
@@ -2225,7 +2316,7 @@
             title: "行業調研簡報訂閱",
             emoji: "📊",
             category: "知识服务",
-            difficulty: "进阶",
+            difficulty: "進階",
             income: "訂閱 99–499 元/月/人",
             tools: [
               "Perplexity",
@@ -2250,7 +2341,7 @@
             title: "MVP 落地頁快速交付",
             emoji: "🚀",
             category: "技术服务",
-            difficulty: "入门",
+            difficulty: "入門",
             income: "單專案 3,000–12,000 元",
             tools: [
               "Bolt.new",
@@ -2274,7 +2365,7 @@
             title: "資料處理與指令碼定製",
             emoji: "👨‍💻",
             category: "技术服务",
-            difficulty: "进阶",
+            difficulty: "進階",
             income: "單專案 1,000–15,000 元",
             tools: [
               "Cursor",
@@ -2298,7 +2389,7 @@
             title: "企業 AI 內訓與陪跑",
             emoji: "🎓",
             category: "教育培训",
-            difficulty: "进阶",
+            difficulty: "進階",
             income: "半天 3,000–8,000 元；陪跑 2,000 元/月起",
             tools: [
               "本站全套模組",
@@ -2322,7 +2413,7 @@
             title: "跨境電商 Listing 文案與本地化",
             emoji: "🛒",
             category: "内容创作",
-            difficulty: "入门",
+            difficulty: "入門",
             income: "單條 Listing 80–300 元",
             tools: [
               "ChatGPT",
@@ -2346,7 +2437,7 @@
             title: "AI 播客節目製作外包",
             emoji: "🎵",
             category: "内容创作",
-            difficulty: "入门",
+            difficulty: "入門",
             income: "單期 300–1,500 元",
             tools: [
               "NotebookLM",
@@ -2370,7 +2461,7 @@
             title: "AI 有聲書 / 課件朗讀服務",
             emoji: "📓",
             category: "内容创作",
-            difficulty: "入门",
+            difficulty: "入門",
             income: "千字 15–40 元",
             tools: [
               "ElevenLabs",
@@ -2393,7 +2484,7 @@
             title: "簡歷與面試輔導 AI 潤色",
             emoji: "💼",
             category: "知识服务",
-            difficulty: "入门",
+            difficulty: "入門",
             income: "單份 99–499 元",
             tools: [
               "Claude",
@@ -2417,7 +2508,7 @@
             title: "合同與法律文書初稿輔助",
             emoji: "⚖️",
             category: "知识服务",
-            difficulty: "进阶",
+            difficulty: "進階",
             income: "單份 300–2,000 元",
             tools: [
               "Claude",
@@ -2441,7 +2532,7 @@
             title: "競品與 SEO 內容策略報告",
             emoji: "🔎",
             category: "知识服务",
-            difficulty: "进阶",
+            difficulty: "進階",
             income: "單份 800–5,000 元",
             tools: [
               "Perplexity",
@@ -2465,7 +2556,7 @@
             title: "考研 / 考證學習計劃定製",
             emoji: "🎓",
             category: "知识服务",
-            difficulty: "入门",
+            difficulty: "入門",
             income: "單套 199–899 元",
             tools: [
               "NotebookLM",
@@ -2489,7 +2580,7 @@
             title: "個人「第二大腦」知識庫搭建",
             emoji: "🧠",
             category: "知识服务",
-            difficulty: "进阶",
+            difficulty: "進階",
             income: "單專案 1,500–8,000 元",
             tools: [
               "Notion AI",
@@ -2513,7 +2604,7 @@
             title: "GitHub 開源專案文件與 README 最佳化",
             emoji: "🔗",
             category: "技术服务",
-            difficulty: "入门",
+            difficulty: "入門",
             income: "單專案 500–3,000 元",
             tools: [
               "Cursor",
@@ -2537,7 +2628,7 @@
             title: "SaaS 產品幫助中心與 Changelog 建設",
             emoji: "🪟",
             category: "技术服务",
-            difficulty: "进阶",
+            difficulty: "進階",
             income: "單專案 3,000–15,000 元",
             tools: [
               "Cursor",
@@ -2561,7 +2652,7 @@
             title: "WordPress / 企業站 AI 改版維護",
             emoji: "🌐",
             category: "技术服务",
-            difficulty: "进阶",
+            difficulty: "進階",
             income: "改版 2,000–10,000 元",
             tools: [
               "Cursor",
@@ -2585,7 +2676,7 @@
             title: "AI 功能白標接入開發",
             emoji: "⚡",
             category: "技术服务",
-            difficulty: "进阶",
+            difficulty: "進階",
             income: "單專案 8,000–50,000 元",
             tools: [
               "Cursor",
@@ -2609,7 +2700,7 @@
             title: "電商售後客服話術與工單自動化",
             emoji: "🏭",
             category: "自动化",
-            difficulty: "入门",
+            difficulty: "入門",
             income: "月入 1,500–6,000 元",
             tools: [
               "釦子 Coze",
@@ -2633,7 +2724,7 @@
             title: "招聘 JD 撰寫與簡歷初篩 Agent",
             emoji: "👨‍💻",
             category: "自动化",
-            difficulty: "进阶",
+            difficulty: "進階",
             income: "單崗位 300–1,200 元",
             tools: [
               "Claude",
@@ -2657,7 +2748,7 @@
             title: "發票 / 合同智慧歸檔流水線",
             emoji: "📋",
             category: "自动化",
-            difficulty: "进阶",
+            difficulty: "進階",
             income: "單專案 4,000–18,000 元",
             tools: [
               "n8n",
@@ -2681,7 +2772,7 @@
             title: "多平臺社媒定時釋出與輿情監控",
             emoji: "𝕏",
             category: "自动化",
-            difficulty: "进阶",
+            difficulty: "進階",
             income: "月入 2,000–8,000 元",
             tools: [
               "OpenClaw",
@@ -2705,7 +2796,7 @@
             title: "1v1 職場 AI 技能陪練",
             emoji: "🎯",
             category: "教育培训",
-            difficulty: "入门",
+            difficulty: "入門",
             income: "200–500 元/小時",
             tools: [
               "本站全套模組",
@@ -2729,7 +2820,7 @@
             title: "青少年 AI 科創體驗營",
             emoji: "✨",
             category: "教育培训",
-            difficulty: "进阶",
+            difficulty: "進階",
             income: "單場 3,000–15,000 元",
             tools: [
               "Bolt.new",
@@ -2753,7 +2844,7 @@
             title: "銀髮族 AI 應用公益課（可收費進階版）",
             emoji: "🏥",
             category: "教育培训",
-            difficulty: "入门",
+            difficulty: "入門",
             income: "單次 50–200 元/人",
             tools: [
               "豆包",
@@ -2777,7 +2868,7 @@
             title: "設計師 AI 工作流小班課",
             emoji: "🎨",
             category: "教育培训",
-            difficulty: "进阶",
+            difficulty: "進階",
             income: "1,499–3,999 元/期",
             tools: [
               "Midjourney",

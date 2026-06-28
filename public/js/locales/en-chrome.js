@@ -3,7 +3,7 @@
   I18n.mergeLocaleData('en', {
     strings: {
       notice: {
-        partialEn: 'English UI is active. Tutorial prompts inside hands-on cases may stay in Chinese when they are meant to be copied into Chinese-first tools.',
+        partialEn: '',
       },
       terms: {
         flipHintFront: 'Tap to flip for details →',

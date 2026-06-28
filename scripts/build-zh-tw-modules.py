@@ -27,7 +27,7 @@ SKIP_TRANSLATE = re.compile(
 
 PRESERVE_KEYS = {
     "id", "icon", "color", "goto", "next", "software", "url", "href", "stars",
-    "github", "repo", "answer", "difficulty", "duration", "category", "agent",
+    "github", "repo", "answer", "category", "agent",
     "client", "transport", "source", "tag", "num", "arrow", "abbr", "fullEn",
 }
 
@@ -115,19 +115,115 @@ def cat_map(cc, cats) -> dict:
     return {k: cc.convert(k) for k in (cats or []) if k != "全部"}
 
 
+def build_prompt_lab_ui(cc) -> dict:
+    ui = {
+        "casesLabel": "真實案例",
+        "selectCaseStart": "選擇案例開始",
+        "copyPrompt": "複製提示詞",
+        "configTitle": "提示詞配置",
+        "taskType": "任務類型",
+        "role": "角色",
+        "rolePlaceholder": "例如：資深產品經理",
+        "context": "背景資訊",
+        "contextPlaceholder": "描述場景、受眾、約束條件…",
+        "output": "期望輸出",
+        "outputPlaceholder": "例如：一份 500 字的 PRD 大綱",
+        "tone": "語氣風格",
+        "generateSimulate": "生成並模擬",
+        "chatTitle": "提示詞與回覆 · 同屏模擬",
+        "resetSim": "重置模擬",
+        "simEmptyTitle": "尚未開始模擬",
+        "simEmptyDesc": "點擊上方案例，或編輯左側配置後點「生成並模擬」。提示詞、AI 回覆與操作引導都在此視窗展示。",
+        "guideTitle": "模擬完成 · 去真實工具試試",
+        "guideToolsLabel": "推薦工具：",
+        "followupPlaceholder": "追問，例如「更簡潔一點」…",
+        "send": "傳送",
+        "disclaimer": "本地預置演示，幫助理解提示詞結構。真實效果請複製提示詞到推薦工具驗證。",
+        "tryFollowup": "試試追問：",
+        "taskPrefix": "任務：",
+        "casePrefix": "案例：",
+        "customScene": "自訂場景",
+        "defaultRole": "資深專家",
+        "defaultContext": "[請補充具體背景]",
+        "defaultOutput": "[請描述期望輸出]",
+        "buildPrompt": {
+            "roleHeader": "# 角色",
+            "rolePrefix": "你是一位",
+            "taskHeader": "# 任務",
+            "contextHeader": "# 背景資訊",
+            "outputHeader": "# 期望輸出",
+            "requirementsHeader": "# 要求",
+            "toneLine": "- 語氣風格：",
+            "clarifyLine": "- 資訊不足時先列出需確認的 2-3 個關鍵問題",
+            "structureLine": "- 輸出結構清晰，使用標題和列表",
+            "uncertainLine": "- 不確定的內容明確標註，不要編造事實",
+        },
+        "systemLabel": "系統",
+        "simulating": "模擬中…",
+        "promptSent": "提示詞已傳送",
+        "aiReply": "AI 回覆",
+        "copyFail": "複製失敗",
+        "defaultGuideSteps": [
+            "點擊工具列「複製提示詞」",
+            "開啟 ChatGPT 或通義千問，新建對話",
+            "貼上提示詞，將背景替換為你的真實場景",
+            "根據回覆迭代：「更簡潔」「換成表格」「補充資料」",
+        ],
+        "stepPrefix": "第",
+        "stepSuffix": " 步",
+        "simError": "模擬出錯，請重新整理頁面後重試。若仍失敗，請強制重新整理（Cmd+Shift+R）清除快取。",
+        "caseDataError": "案例資料未載入，請強制重新整理頁面（Cmd+Shift+R）。",
+        "copyPromptLabel": "複製提示詞",
+    }
+    return convert_obj(cc, ui)
+
+
+def build_hands_on_ui(cc) -> dict:
+    return convert_obj(cc, {
+        "countShown": "顯示 {visible} / {total} 個",
+        "emptyHint": "該分類下暫無案例，試試其他標籤。",
+        "resultLabel": "完成後你將得到：",
+        "tipsLabel": "小貼士：",
+        "commandPrompt": "命令 / 提示詞",
+        "copyToSoftware": "複製到 {software}",
+        "openWebsite": "開啟 {software} 官網",
+    })
+
+
+def build_practice_ui(cc) -> dict:
+    return convert_obj(cc, {
+        "countShown": "顯示 {visible} / {total} 個",
+        "emptyHint": "該分類下暫無模板，試試其他標籤。",
+        "promptTplLabel": "提示詞模板",
+    })
+
+
 def build_tools(cc, zh: dict) -> dict:
+    task_labels = {k: cc.convert(k) for k in zh.get("PROMPT_TASKS", {})}
+    tone_labels = {
+        "专业严谨": "專業嚴謹",
+        "通俗易懂": "通俗易懂",
+        "创意发散": "創意發散",
+        "简洁直接": "簡潔直接",
+    }
+    tone_labels = {k: cc.convert(v) for k, v in tone_labels.items()}
     data = convert_obj(cc, {
         "appCategories": cat_map(cc, zh.get("APP_CATEGORIES", [])),
         "apps": zh["APPS"],
         "handsOnCategories": cat_map(cc, zh.get("HANDS_ON_CATEGORIES", [])),
+        "handsOnUi": build_hands_on_ui(cc),
         "handsOnCases": zh["HANDS_ON_CASES"],
         "practiceCategories": cat_map(cc, zh.get("PRACTICE_CATEGORIES", [])),
+        "practiceUi": build_practice_ui(cc),
         "practices": zh["PRACTICES"],
         "promptLab": {
             "cases": zh["PROMPT_CASES"],
             "tasks": zh["PROMPT_TASKS"],
+            "taskLabels": task_labels,
             "presets": zh["PROMPT_TASK_PRESETS"],
             "tools": zh["PROMPT_TOOLS"],
+            "tones": tone_labels,
+            "ui": build_prompt_lab_ui(cc),
         },
         "monetize": {
             "meta": zh["AI_MONETIZE_META"],

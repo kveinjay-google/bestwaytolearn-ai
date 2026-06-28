@@ -2751,9 +2751,10 @@ function renderHandsOnList() {
     handsOnCategory === '全部' || getHandsOnCategory(i) === handsOnCategory
   ).length;
   const countEl = document.getElementById('hands-on-count');
-  const countText = typeof I18n !== 'undefined' && I18n.usesEnglishContent()
-    ? `${visibleCount} / ${total} shown`
-    : `显示 ${visibleCount} / ${total} 个`;
+  const hoUi = typeof I18n !== 'undefined' ? I18n.getHandsOnUi() : {};
+  const countText = hoUi.countShown
+    ? I18n.renderPromptTemplate(hoUi.countShown, { visible: visibleCount, total })
+    : (I18n?.usesEnglishContent() ? `${visibleCount} / ${total} shown` : `显示 ${visibleCount} / ${total} 个`);
   if (countEl) countEl.textContent = countText;
 
   document.querySelectorAll('#hands-on-filter .filter-btn').forEach(btn => {
@@ -2761,25 +2762,34 @@ function renderHandsOnList() {
   });
 
   if (!visibleCount) {
-    const emptyHint = typeof I18n !== 'undefined' && I18n.usesEnglishContent()
-      ? 'No cases in this category. Try another tag.'
-      : '该分类下暂无案例，试试其他标签。';
+    const emptyHint = hoUi.emptyHint
+      || (I18n?.usesEnglishContent() ? 'No cases in this category. Try another tag.' : '该分类下暂无案例，试试其他标签。');
     container.innerHTML = `<p class="empty-hint">${emptyHint}</p>`;
     return;
   }
 
-  const resultLabel = typeof I18n !== 'undefined' && I18n.usesEnglishContent() ? 'You will get: ' : '完成后你将得到：';
-  const tipsLabel = typeof I18n !== 'undefined' && I18n.usesEnglishContent() ? 'Tips: ' : '小贴士：';
+  const resultLabel = hoUi.resultLabel
+    || (I18n?.usesEnglishContent() ? 'You will get: ' : '完成后你将得到：');
+  const tipsLabel = hoUi.tipsLabel
+    || (I18n?.usesEnglishContent() ? 'Tips: ' : '小贴士：');
   const copyLabel = typeof I18n !== 'undefined' ? I18n.t('common.copy') : '一键复制';
-  const promptHeader = (c) => c.software === 'OpenClaw'
-    ? (I18n?.usesEnglishContent() ? 'Command / prompt' : '命令 / 提示词')
-    : (I18n?.usesEnglishContent() ? `Copy to ${c.software}` : `复制到 ${c.software}`);
+  const promptHeader = (c) => {
+    if (c.software === 'OpenClaw') {
+      return hoUi.commandPrompt || (I18n?.usesEnglishContent() ? 'Command / prompt' : '命令 / 提示词');
+    }
+    if (hoUi.copyToSoftware) {
+      return I18n.renderPromptTemplate(hoUi.copyToSoftware, { software: c.software });
+    }
+    return I18n?.usesEnglishContent() ? `Copy to ${c.software}` : `复制到 ${c.software}`;
+  };
 
   container.innerHTML = cases.map((c, i) => {
     const cat = getHandsOnCategory(i);
     const catLabel = typeof I18n !== 'undefined' ? I18n.getHandsOnCategoryLabel(cat) : cat;
     const show = handsOnCategory === '全部' || cat === handsOnCategory;
-    const openTitle = I18n?.usesEnglishContent() ? `Open ${c.software} website` : `打开 ${c.software} 官网`;
+    const openTitle = hoUi.openWebsite
+      ? I18n.renderPromptTemplate(hoUi.openWebsite, { software: c.software })
+      : (I18n?.usesEnglishContent() ? `Open ${c.software} website` : `打开 ${c.software} 官网`);
     return `
     <article class="hands-on-item ${show ? '' : 'hidden-practice-item'}" id="hands-on-${i}">
       <div class="hands-on-header">
@@ -2835,9 +2845,10 @@ function renderPracticeList() {
     practiceCategory === '全部' || getPracticeCategory(i) === practiceCategory
   ).length;
   const countEl = document.getElementById('practice-count');
-  const countText = typeof I18n !== 'undefined' && I18n.usesEnglishContent()
-    ? `${visibleCount} / ${total} shown`
-    : `显示 ${visibleCount} / ${total} 个`;
+  const prUi = typeof I18n !== 'undefined' ? I18n.getPracticeUi() : {};
+  const countText = prUi.countShown
+    ? I18n.renderPromptTemplate(prUi.countShown, { visible: visibleCount, total })
+    : (I18n?.usesEnglishContent() ? `${visibleCount} / ${total} shown` : `显示 ${visibleCount} / ${total} 个`);
   if (countEl) countEl.textContent = countText;
 
   document.querySelectorAll('#practice-filter .filter-btn').forEach(btn => {
@@ -2845,14 +2856,14 @@ function renderPracticeList() {
   });
 
   if (!visibleCount) {
-    const emptyHint = typeof I18n !== 'undefined' && I18n.usesEnglishContent()
-      ? 'No templates in this category. Try another tag.'
-      : '该分类下暂无模板，试试其他标签。';
+    const emptyHint = prUi.emptyHint
+      || (I18n?.usesEnglishContent() ? 'No templates in this category. Try another tag.' : '该分类下暂无模板，试试其他标签。');
     container.innerHTML = `<p class="empty-hint">${emptyHint}</p>`;
     return;
   }
 
-  const promptTplLabel = typeof I18n !== 'undefined' && I18n.usesEnglishContent() ? 'Prompt template' : '提示词模板';
+  const promptTplLabel = prUi.promptTplLabel
+    || (I18n?.usesEnglishContent() ? 'Prompt template' : '提示词模板');
   const copyLabel = typeof I18n !== 'undefined' ? I18n.t('common.copy') : '一键复制';
 
   container.innerHTML = practices.map((p, i) => {
@@ -3038,8 +3049,8 @@ function showPromptGuide(taskOrCase) {
     '粘贴提示词并发送，将背景替换为你的真实场景',
     '根据回复迭代：「更简洁」「换成表格」「补充数据」'
   ];
-  const stepPrefix = I18n?.usesEnglishContent() ? 'Step' : '第';
-  const stepSuffix = I18n?.usesEnglishContent() ? '' : ' 步';
+  const stepPrefix = ui.stepPrefix || (I18n?.usesEnglishContent() ? 'Step' : '第');
+  const stepSuffix = ui.stepSuffix ?? (I18n?.usesEnglishContent() ? '' : ' 步');
   document.getElementById('guide-steps').innerHTML = steps
     .map((s, i) => `<li><strong>${stepPrefix} ${i + 1}${stepSuffix}</strong> — ${s}</li>`).join('');
   document.getElementById('guide-tool-tags').innerHTML = tools
@@ -3091,7 +3102,8 @@ function showPromptLabError(message) {
   hideSimEmpty();
   const err = document.createElement('div');
   err.className = 'sim-msg sim-msg-error';
-  err.innerHTML = `<span class="sim-msg-label">系统</span>${escapeHtml(message)}`;
+  const sysLabel = (typeof I18n !== 'undefined' ? I18n.getPromptLabUi().systemLabel : null) || '系统';
+  err.innerHTML = `<span class="sim-msg-label">${escapeHtml(sysLabel)}</span>${escapeHtml(message)}`;
   container.appendChild(err);
   container.scrollTop = container.scrollHeight;
 }
@@ -3106,7 +3118,8 @@ function renderFollowupChips(caseData) {
     return;
   }
   wrap.classList.remove('hidden');
-  wrap.innerHTML = '<span class="sim-chips-label">试试追问：</span>' + followups
+  const chipsLabel = (typeof I18n !== 'undefined' ? I18n.getPromptLabUi().tryFollowup : null) || '试试追问：';
+  wrap.innerHTML = `<span class="sim-chips-label">${escapeHtml(chipsLabel)}</span>` + followups
     .map((f, i) => `<button type="button" class="sim-chip" data-chip-idx="${i}">${f.user}</button>`)
     .join('');
   wrap.querySelectorAll('.sim-chip').forEach(chip => {
@@ -3117,7 +3130,22 @@ function renderFollowupChips(caseData) {
   });
 }
 
+function getPromptTemplateVars(form) {
+  const { role, context, output, tone } = form;
+  const ctx = context.length > 80 ? context.slice(0, 80) + '…' : context;
+  const toneLabel = typeof I18n !== 'undefined' ? I18n.getPromptToneLabel(tone) : tone;
+  return { role, context, output, tone, ctx, toneLabel };
+}
+
 function generateSimulatedResponse(form) {
+  if (typeof I18n !== 'undefined' && !I18n.usesChineseSourceContent()) {
+    const templates = I18n.getPromptSimulatedResponses();
+    if (templates) {
+      const vars = getPromptTemplateVars(form);
+      const tpl = templates[form.task] || templates.__default__;
+      if (tpl) return I18n.renderPromptTemplate(tpl, vars);
+    }
+  }
   const { task, role, context, output, tone } = form;
   const ctx = context.length > 80 ? context.slice(0, 80) + '…' : context;
   const templates = {
@@ -3136,6 +3164,19 @@ function generateSimulatedResponse(form) {
 }
 
 function generateFollowupResponse(followup, form) {
+  if (typeof I18n !== 'undefined' && !I18n.usesChineseSourceContent()) {
+    const patterns = I18n.getPromptFollowupPatterns();
+    if (patterns?.length) {
+      const vars = { ...getPromptTemplateVars(form), followup, ctx: (form.context || '').slice(0, 40) || 'your request' };
+      for (const { match, response } of patterns) {
+        if (match === '.') continue;
+        const re = new RegExp(match, 'i');
+        if (re.test(followup)) return I18n.renderPromptTemplate(response, vars);
+      }
+      const fallback = patterns.find(p => p.match === '.');
+      if (fallback) return I18n.renderPromptTemplate(fallback.response, vars);
+    }
+  }
   const lower = followup.toLowerCase();
   if (/简洁|简短|精简|短一点/.test(followup)) {
     return `好的，以下是更简洁的版本：\n\n**核心要点**：\n1. …\n2. …\n3. …\n\n**一句话总结**：…\n\n还需要进一步压缩吗？`;
@@ -3276,7 +3317,9 @@ async function runSimulation({ scroll = true } = {}) {
     }
   } catch (err) {
     console.error('Prompt lab simulation failed:', err);
-    showPromptLabError('模拟出错，请刷新页面后重试。若仍失败，请强制刷新（Cmd+Shift+R）清除缓存。');
+    const errMsg = (typeof I18n !== 'undefined' ? I18n.getPromptLabUi().simError : null)
+      || '模拟出错，请刷新页面后重试。若仍失败，请强制刷新（Cmd+Shift+R）清除缓存。';
+    showPromptLabError(errMsg);
     enableSimFollowup(false);
   } finally {
     setPromptLabBusy(false);
@@ -3286,7 +3329,9 @@ async function runSimulation({ scroll = true } = {}) {
 async function loadPromptCase(caseId) {
   const cases = getPromptCasesData();
   if (!cases.length) {
-    showPromptLabError('案例数据未加载，请强制刷新页面（Cmd+Shift+R）。');
+    const errMsg = (typeof I18n !== 'undefined' ? I18n.getPromptLabUi().caseDataError : null)
+      || '案例数据未加载，请强制刷新页面（Cmd+Shift+R）。';
+    showPromptLabError(errMsg);
     return;
   }
   const caseData = cases.find(c => c.id === caseId);
@@ -3318,12 +3363,13 @@ async function sendFollowup(text, presetReply = null) {
 }
 
 function getPromptForm() {
+  const ui = typeof I18n !== 'undefined' ? I18n.getPromptLabUi() : {};
   const taskSelect = document.getElementById('prompt-task');
   return {
     task: taskSelect.value,
-    role: document.getElementById('prompt-role').value.trim() || '资深专家',
-    context: document.getElementById('prompt-context').value.trim() || '[请补充具体背景]',
-    output: document.getElementById('prompt-output').value.trim() || '[请描述期望输出]',
+    role: document.getElementById('prompt-role').value.trim() || (ui.defaultRole || '资深专家'),
+    context: document.getElementById('prompt-context').value.trim() || (ui.defaultContext || '[请补充具体背景]'),
+    output: document.getElementById('prompt-output').value.trim() || (ui.defaultOutput || '[请描述期望输出]'),
     tone: document.getElementById('prompt-tone').value
   };
 }
@@ -3421,7 +3467,10 @@ function initPromptLab() {
     document.getElementById('copy-prompt')?.addEventListener('click', async () => {
       const text = promptLabState.lastPrompt || buildPrompt(getPromptForm());
       const btn = document.getElementById('copy-prompt');
-      await copyToClipboard(text, btn, '复制提示词');
+      const copyLabel = (typeof I18n !== 'undefined' ? I18n.getPromptLabUi().copyPromptLabel : null)
+        || (typeof I18n !== 'undefined' ? I18n.getPromptLabUi().copyPrompt : null)
+        || '复制提示词';
+      await copyToClipboard(text, btn, copyLabel);
       showPromptGuide(promptLabActiveCase || { task: promptLabState.task || getPromptForm().task });
     });
 

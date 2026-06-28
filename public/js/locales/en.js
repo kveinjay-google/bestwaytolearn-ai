@@ -12,8 +12,8 @@ I18n.registerLocale('en', {
       description: 'BestWayToLearn.AI — Four-phase AI learning: foundations, tools, hands-on practice, and quiz. 100 terms, 43 apps, prompt lab, and real tutorials.',
     },
     notice: {
-      partial: 'English UI is active. Tutorial prompts inside hands-on cases may stay in Chinese when they are meant to be copied into Chinese-first tools.',
-      partialEn: 'English UI is active. Tutorial prompts inside hands-on cases may stay in Chinese when they are meant to be copied into Chinese-first tools.',
+      partial: '',
+      partialEn: '',
     },
     settings: {
       title: 'Display settings',

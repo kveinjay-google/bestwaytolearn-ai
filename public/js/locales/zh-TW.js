@@ -12,7 +12,7 @@ I18n.registerLocale('zh-TW', {
         description: "BestWayToLearn.AI — 四階段 AI 系統學習：認知基礎、工具掌握、實戰應用與知識測驗。100 個術語、43 款主流應用、提示詞實驗室與真實實操教程，從零到實戰。"
       },
       notice: {
-        partial: "",
+        partial: "介面為繁體中文，部分教學內容仍為簡體中文。",
         partialEn: ""
       },
       settings: {

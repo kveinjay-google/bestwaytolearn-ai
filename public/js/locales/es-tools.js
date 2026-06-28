@@ -754,6 +754,15 @@
         "搜索研究": "Búsqueda e investigación",
         "Agent 自动化": "Automatización de agentes"
       },
+      handsOnUi: {
+        countShown: "Se muestra {visible} / {total}",
+        emptyHint: "No hay casos en esta categoría. Prueba con otra etiqueta.",
+        resultLabel: "Obtendrás:",
+        tipsLabel: "Consejos:",
+        commandPrompt: "Comando/indicador",
+        copyToSoftware: "Copiar a {software}",
+        openWebsite: "Abrir el sitio web {software}"
+      },
       handsOnCases: [
         {
           title: "Construya una calculadora web con Cursor Codex",
@@ -1273,6 +1282,11 @@
         "数据营销": "Datos y marketing",
         "翻译法务": "Traducción y legal"
       },
+      practiceUi: {
+        countShown: "Se muestra {visible} / {total}",
+        emptyHint: "plantilla de aviso",
+        promptTplLabel: "plantilla de aviso"
+      },
       practices: [
         {
           title: "Enumere los aspectos más destacados del trabajo como viñetas; La IA se expande a informes semanales estructurados o correos electrónicos profesionales.",
@@ -1632,8 +1646,48 @@
             "Abra ChatGPT o Claude e inicie un nuevo chat",
             "Pegue el mensaje y reemplace el contexto con su escenario real",
             "Iterar sobre la respuesta: \"más corto\", \"como tabla\", \"agregar datos\""
-          ]
+          ],
+          stepPrefix: "Paso",
+          stepSuffix: "",
+          simError: "La simulación falló. Actualiza la página y vuelve a intentarlo. Si persiste, realice una actualización completa (Cmd+Shift+R) para borrar el caché.",
+          caseDataError: "No se pudieron cargar los datos del caso. Actualice completamente la página (Cmd+Shift+R).",
+          copyPromptLabel: "Copiar mensaje"
         },
+        simulatedResponses: {
+          "内容写作": "Entendido: escribiré como {role}.\n\n## Borrador\n\nSegún su contexto 「{ctx}」, aquí está {output}:\n\n---\n\n[El cuerpo se expande aquí en un tono {tone} con títulos y listas claros.]\n\n1. Abre con el punto central\n2. Apoyar con evidencia y ejemplos.\n3. Cerrar con los siguientes pasos prácticos\n\n---\n\n💡 Cuéntame si quieres otro largo, tono o más ejemplos.",
+          "问题分析": "Como {role}, aquí está mi análisis:\n\n## Encuadre del problema\n「{ctx}」\n\n## Análisis central\n\n**1. Tensiones clave**\nCausas fundamentales desde múltiples ángulos...\n\n**2. Conductores**\n- Interno:…\n- Externo:…\n\n**3. Opciones**\n| Opción | Al revés | Riesgo |\n|--------|--------|------|\n| Un | … | … |\n| B | … | … |\n\n## Recomendación\nPrefiero la opción A porque...\n\n({tone} · Salida objetivo: {output})",
+          "代码开发": "```pitón\n# {output}\n# Código de ejemplo de sus requisitos\n\ndefinición principal():\n    # TODO: implementar la lógica central para 「{ctx}」\n    pasar\n\nsi __nombre__ == \"__principal__\":\n    principal()\n```\n\n## Notas\n\n1. **Enfoque**:…\n2. **Funciones clave**:…\n3. **Cómo ejecutar**:…\n\n⚠️ Ajústese a su entorno. ¿Quiere agregar pruebas unitarias o manejo de errores?",
+          "学习辅导": "¡Feliz de enseñar como {role}! Utilicemos el método de Feynman.\n\n## 📖 Idea central\n\n**Analogía**: Piénsalo como...\n\n## 🔍 Profundizando\n\nDe 「{ctx}」:\n\n1. Capa 1: definición\n2. Capa 2: cómo funciona\n3. Capa 3: uso real\n\n## ❌ Errores comunes\n- Error 1:…\n- Error 2:…\n\n## ✅ Compruébalo tú mismo\n**P1**:…\n**A1**:…\n\n¿Quieres más preguntas del cuestionario o un subtema más profundo?",
+          "数据分析": "## Informe de análisis\n\n**Objetivo**: {output}\n**Datos**: {ctx}\n\n### 1. Descripción general\n- Tamaño de la muestra:…\n- Rango de tiempo:…\n- Media/mediana de la métrica clave:…\n\n### 2. Hallazgos\n🔹 **Tendencia 1**:…\n🔹 **Tendencia 2**:…\n🔹 **Anomalía**:…\n\n### 3. Ideas de gráficos\n- Gráfico de líneas para tendencias.\n- Gráfico de barras para categorías.\n\n### 4. Recomendaciones\n1.…\n2.…\n3.…\n\n¿Necesita generar código de gráfico?",
+          "创意策划": "## Conceptos creativos 🎯\n\n**Escenario**: {ctx}\n**Objetivo**: {output}\n\n### Planifique A｜Seguro\n- Idea central:…\n- Ejecución:…\n- Impacto esperado:…\n\n### Planificar por ｜ Negrita\n- Idea central:…\n- Diferenciador:…\n\n### Plan C｜Lean\n- Versión mínima viable:…\n\n**Elija**: Plan B porque…\n\n({tone}) ¿Quiere un plan de implementación completo para una opción?",
+          "翻译润色": "## Traducción / polaco\n\n**Resumen de fuente**: {ctx}\n\n### Texto pulido\n\n[Versión final en tono {tone}, natural para el público objetivo.]\n\n### Notas\n1. 「…」→「…」(frase local)\n2. 「…」→「…」(modificación cultural)\n\n¿Quieres una versión de estilo alternativo?",
+          "会议纪要": "## Actas de la reunión\n\n**Tema**: [del contexto]\n**Antecedentes**: {ctx}\n\n### Decisiones\n1.…\n2.…\n\n### Elementos de acción\n| Artículo | Propietario | Vencimiento |\n|------|-------|-----|\n| … | … | … |\n\n### Preguntas abiertas\n-…\n\n---\nResumen estructurado ({tone}). ¿Necesita agregar asistentes?",
+          "竞品调研": "## Informe del competidor\n\n**Alcance**: {ctx}\n**Entregable**: {output}\n\n### Jugadores clave\n| Jugador | Fuerza | Diferencia |\n|--------|----------|------------|\n| Un | … | … |\n| B | … | … |\n\n### FODA (nuestra opinión)\n- **S** Fortalezas:…\n- **W** Debilidades:…\n- **O** Oportunidades:…\n- **T** Amenazas:…\n\n### Diferenciación\n1.…\n2.…\n\n⚠️ Marcar cifras no verificadas para verificación manual.",
+          "简历优化": "## Reanudar el pulido\n\n**Contexto del rol objetivo**: {ctx}\n\n### Viñetas de experiencia reescritas\n\n> [Viñetas centradas en logros alineadas con el JD]\n\n**Cambios**:\n- Genérico → basado en resultados\n- Se agregaron palabras clave coincidentes\n- Impacto cuantificado cuando sea posible\n\n### Borrador de carta de presentación (~200 palabras)\n\n[{tone} borrador de tono]\n\n¿Quieres otra versión para un rol diferente?",
+          __default__: "Entendido, te ayudaré como {role}.\n\nDe 「{ctx}」, aquí está {output}:\n\n[Salida estructurada en tono {tone}.]\n\nSolicite ajustes en cualquier momento."
+        },
+        followupPatterns: [
+          {
+            match: "简洁|简短|精简|短一点|más corto|breve|conciso",
+            response: "Aquí hay una versión más ajustada:\n\n**Puntos clave**:\n1.…\n2.…\n3.…\n\n**Una sola línea**:…\n\n¿Lo necesitas aún más corto?"
+          },
+          {
+            match: "表格|tabla|列表|lista",
+            response: "Convertido a una mesa:\n\n| Artículo | Detalle | Prioridad |\n|------|--------|----------|\n| … | … | Alto |\n| … | … | Medio |\n\n¿Agregar o eliminar columnas?"
+          },
+          {
+            match: "Detalles|展开|更多|补充|detalle|expandir|más",
+            response: "Detalle ampliado:\n\n### Más profundidad\n\nDe 「{ctx}」:\n\n1.…\n2.…\n3.…\n\n¿Qué más debo profundizar?"
+          },
+          {
+            match: "英文|inglés|翻译|traducir",
+            response: "Aquí está la versión en inglés:\n\n[Contenido traducido en tono {tone}]\n\nDime si quieres ajustes."
+          },
+          {
+            match: ".",
+            response: "Recibí tu seguimiento: 「{followup}」\n\nSalida actualizada:\n\n[Contenido revisado en tono {tone}]\n\nSiga iterando o copie esta estructura en su herramienta real."
+          }
+        ],
         cases: [
           {
             id: "weekly-report",

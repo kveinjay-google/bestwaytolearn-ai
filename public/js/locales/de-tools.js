@@ -754,6 +754,15 @@
         "搜索研究": "Suchen und recherchieren",
         "Agent 自动化": "Agentenautomatisierung"
       },
+      handsOnUi: {
+        countShown: "{visible} / {total} angezeigt",
+        emptyHint: "Keine Fälle in dieser Kategorie. Versuchen Sie es mit einem anderen Tag.",
+        resultLabel: "Sie erhalten:",
+        tipsLabel: "Tipps:",
+        commandPrompt: "Befehl/Eingabeaufforderung",
+        copyToSoftware: "Nach {software} kopieren",
+        openWebsite: "Öffnen Sie die {software}-Website"
+      },
       handsOnCases: [
         {
           title: "Erstellen Sie einen Webrechner mit Cursor Codex",
@@ -1273,6 +1282,11 @@
         "数据营销": "Daten & Marketing",
         "翻译法务": "Übersetzung & Recht"
       },
+      practiceUi: {
+        countShown: "{visible} / {total} angezeigt",
+        emptyHint: "Keine Vorlagen in dieser Kategorie. Versuchen Sie es mit einem anderen Tag.",
+        promptTplLabel: "Prompt-Vorlage"
+      },
       practices: [
         {
           title: "Listen Sie Arbeitshighlights als Aufzählungszeichen auf. KI erweitert sich in strukturierte Wochenberichte oder professionelle E-Mails.",
@@ -1632,8 +1646,48 @@
             "Öffnen Sie ChatGPT oder Claude und starten Sie einen neuen Chat",
             "Fügen Sie die Eingabeaufforderung ein und ersetzen Sie den Kontext durch Ihr reales Szenario",
             "Iterieren Sie die Antwort: „kürzer“, „als Tabelle“, „Daten hinzufügen“"
-          ]
+          ],
+          stepPrefix: "Schritt",
+          stepSuffix: "",
+          simError: "Die Simulation ist fehlgeschlagen. Aktualisieren Sie die Seite und versuchen Sie es erneut. Wenn es weiterhin besteht, führen Sie eine harte Aktualisierung durch (Befehl+Umschalt+R), um den Cache zu leeren.",
+          caseDataError: "Falldaten konnten nicht geladen werden. Aktualisieren Sie die Seite hart (Befehl+Umschalt+R).",
+          copyPromptLabel: "Eingabeaufforderung kopieren"
         },
+        simulatedResponses: {
+          "内容写作": "Verstanden – ich werde als {role} schreiben.\n\n## Entwurf\n\nBasierend auf Ihrem Kontext 「{ctx}」 ist hier {output}:\n\n---\n\n[Der Text wird hier im {tone}-Ton mit klaren Überschriften und Listen erweitert.]\n\n1. Mit der Kernspitze öffnen\n2. Unterstützen Sie mit Beweisen und Beispielen\n3. Schließen Sie mit umsetzbaren nächsten Schritten ab\n\n---\n\n💡 Sagen Sie mir, wenn Sie eine andere Länge, einen anderen Ton oder mehr Beispiele wünschen.",
+          "问题分析": "Als {role} ist hier meine Analyse:\n\n## Problem-Framing\n「{ctx}」\n\n## Kernanalyse\n\n**1. Wichtige Spannungen**\nUrsachen aus mehreren Blickwinkeln…\n\n**2. Treiber**\n- Intern: …\n- Extern: …\n\n**3. Optionen**\n| Option | Oben | Risiko |\n|--------|--------|------|\n| A | … | … |\n| B | … | … |\n\n## Empfehlung\nBevorzugen Sie Option A, weil…\n\n({tone} · Zielausgabe: {output})",
+          "代码开发": "„Python\n# {output}\n# Beispielcode aus Ihren Anforderungen\n\ndef main():\n    # TODO: Kernlogik für „{ctx}“ implementieren\n    passieren\n\nif __name__ == \"__main__\":\n    main()\n„\n\n## Notizen\n\n1. **Ansatz**: …\n2. **Schlüsselfunktionen**: …\n3. **Wie man läuft**: …\n\n⚠️ Passen Sie sich Ihrer Umgebung an. Möchten Sie Unit-Tests oder Fehlerbehandlung hinzufügen?",
+          "学习辅导": "Gerne unterrichte ich als {role}! Lassen Sie uns die Feynman-Methode verwenden.\n\n## 📖 Kernidee\n\n**Analogie**: Stellen Sie sich das so vor ...\n\n## 🔍In die Tiefe gehen\n\nVon 「{ctx}」:\n\n1. Ebene 1: Definition\n2. Schicht 2: So funktioniert es\n3. Schicht 3: tatsächliche Nutzung\n\n## ❌ Häufige Fehler\n- Fehler 1: …\n- Fehler 2: …\n\n## ✅ Überprüfe dich selbst\n**F1**: …\n**A1**: …\n\nMöchten Sie weitere Quizfragen oder ein tiefergehendes Unterthema?",
+          "数据分析": "## Analysebericht\n\n**Ziel**: {output}\n**Daten**: {ctx}\n\n### 1. Übersicht\n- Stichprobengröße: …\n- Zeitbereich: …\n- Schlüsselmetrik-Mittelwert/Median: …\n\n### 2. Erkenntnisse\n🔹 **Trend 1**: …\n🔹 **Trend 2**: …\n🔹 **Anomalie**: …\n\n### 3. Diagrammideen\n- Liniendiagramm für Trends\n- Balkendiagramm für Kategorien\n\n### 4. Empfehlungen\n1. …\n2. …\n3. …\n\nMuss Diagrammcode generiert werden?",
+          "创意策划": "## Kreative Konzepte 🎯\n\n**Szenario**: {ctx}\n**Ziel**: {output}\n\n### Plan A｜Sicher\n- Kernidee: …\n- Ausführung: …\n- Erwartete Auswirkungen: …\n\n### Plan B｜Bold\n- Kernidee: …\n- Unterscheidungsmerkmal: …\n\n### Plan C｜Lean\n- Mindestlebensfähige Version: …\n\n**Auswahl**: Plan B, weil…\n\n({tone}) Möchten Sie einen vollständigen Rollout-Plan für eine Option?",
+          "翻译润色": "## Übersetzung / Polnisch\n\n**Quellenzusammenfassung**: {ctx}\n\n### Polierter Text\n\n[Endgültige Version im {tone}-Ton, natürlich für die Zielgruppe.]\n\n### Notizen\n1. 「…」→「…」(lokale Formulierung)\n2. 「…」→「…」(kulturelle Veränderung)\n\nMöchten Sie eine alternative Stilversion?",
+          "会议纪要": "## Sitzungsprotokoll\n\n**Thema**: [aus Kontext]\n**Hintergrund**: {ctx}\n\n### Entscheidungen\n1. …\n2. …\n\n### Aktionselemente\n| Artikel | Eigentümer | Fällig |\n|------|-------|-----|\n| … | … | … |\n\n### Offene Fragen\n- …\n\n---\nStrukturierte Zusammenfassung ({tone}). Brauchen Sie Teilnehmer hinzugefügt?",
+          "竞品调研": "## Kurzbeschreibung des Wettbewerbers\n\n**Umfang**: {ctx}\n**Lieferbar**: {output}\n\n### Schlüsselspieler\n| Spieler | Stärke | Unterschied |\n|--------|----------|------------|\n| A | … | … |\n| B | … | … |\n\n### SWOT (unsere Meinung)\n- **S** Stärken: …\n- **W** Schwächen: …\n- **O** Möglichkeiten: …\n- **T** Bedrohungen: …\n\n### Differenzierung\n1. …\n2. …\n\n⚠️ Markieren Sie nicht überprüfte Zahlen zur manuellen Überprüfung.",
+          "简历优化": "## Politur fortsetzen\n\n**Zielrollenkontext**: {ctx}\n\n### Erlebnisaufzählungen neu geschrieben\n\n> [Leistungsorientierte Aufzählungszeichen, abgestimmt auf die JD]\n\n**Änderungen**:\n- Generisch → ergebnisorientiert\n- Passende Schlüsselwörter hinzugefügt\n- Quantifizierte Auswirkungen, soweit möglich\n\n### Entwurf eines Anschreibens (~200 Wörter)\n\n[{tone} Tonentwurf]\n\nMöchten Sie eine andere Version für eine andere Rolle?",
+          __default__: "Verstanden – ich helfe als {role}.\n\nAus 「{ctx}」 ist hier {output}:\n\n[Strukturierte Ausgabe im {tone}-Ton.]\n\nBitten Sie jederzeit um Anpassungen."
+        },
+        followupPatterns: [
+          {
+            match: "简洁|简短|精简|短一点|kürzer|kurz|prägnant",
+            response: "Hier ist eine engere Version:\n\n**Wichtige Punkte**:\n1. …\n2. …\n3. …\n\n**Einzeiler**: …\n\nBrauchen Sie es noch kürzer?"
+          },
+          {
+            match: "表格|table|列表|list",
+            response: "In eine Tabelle umgewandelt:\n\n| Artikel | Detail | Priorität |\n|------|--------|----------|\n| … | … | Hoch |\n| … | … | Mittel |\n\nSpalten hinzufügen oder entfernen?"
+          },
+          {
+            match: "详细|展开|更多|补充|detail|erweitern|mehr",
+            response: "Erweitertes Detail:\n\n### Mehr Tiefe\n\nVon 「{ctx}」:\n\n1. …\n2. …\n3. …\n\nWas sollte ich noch vertiefen?"
+          },
+          {
+            match: "英文|englisch|翻译|übersetzen",
+            response: "Hier ist die englische Version:\n\n[Übersetzter Inhalt im {tone}-Ton]\n\nSagen Sie es mir, wenn Sie Optimierungen wünschen."
+          },
+          {
+            match: ".",
+            response: "Habe dein Follow-up erhalten: 「{followup}」\n\nAktualisierte Ausgabe:\n\n[Überarbeiteter Inhalt im {tone}-Ton]\n\nIterieren Sie diese Struktur weiter oder kopieren Sie sie in Ihr echtes Tool."
+          }
+        ],
         cases: [
           {
             id: "weekly-report",

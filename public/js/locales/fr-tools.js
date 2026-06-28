@@ -754,6 +754,15 @@
         "搜索研究": "Recherche et recherche",
         "Agent 自动化": "Automatisation des agents"
       },
+      handsOnUi: {
+        countShown: "Vous obtiendrez :",
+        emptyHint: "Vous obtiendrez :",
+        resultLabel: "Vous obtiendrez :",
+        tipsLabel: "Conseils:",
+        commandPrompt: "Commande/invite",
+        copyToSoftware: "Copier vers {software}",
+        openWebsite: "Ouvrir le site Web {software}"
+      },
       handsOnCases: [
         {
           title: "Créez une calculatrice Web avec Cursor Codex",
@@ -1273,6 +1282,11 @@
         "数据营销": "Données et marketing",
         "翻译法务": "Traduction & juridique"
       },
+      practiceUi: {
+        countShown: "Vous obtiendrez :",
+        emptyHint: "Aucun modèle dans cette catégorie. Essayez une autre balise.",
+        promptTplLabel: "Modèle d'invite"
+      },
       practices: [
         {
           title: "Répertoriez les points forts du travail sous forme de puces ; L'IA se développe dans des rapports hebdomadaires structurés ou des e-mails professionnels.",
@@ -1632,8 +1646,48 @@
             "Ouvrez ChatGPT ou Claude et démarrez une nouvelle discussion",
             "Collez l'invite et remplacez le contexte par votre scénario réel",
             "Itérer sur la réponse : \"plus court\", \"sous forme de tableau\", \"ajouter des données\""
-          ]
+          ],
+          stepPrefix: "Étape",
+          stepSuffix: "",
+          simError: "La simulation a échoué. Actualisez la page et réessayez. Si le problème persiste, actualisez matériellement (Cmd+Shift+R) pour vider le cache.",
+          caseDataError: "Les données du cas n'ont pas pu être chargées. Actualisez la page (Cmd+Shift+R).",
+          copyPromptLabel: "Copier l'invite"
         },
+        simulatedResponses: {
+          "内容写作": "Compris : j'écrirai sous la forme {role}.\n\n## Brouillon\n\nEn fonction de votre contexte 「{ctx}」, voici {output} :\n\n---\n\n[Le corps se développe ici sur un ton {tone} avec des titres et des listes claires.]\n\n1. Ouvrir avec le point central\n2. Support avec des preuves et des exemples\n3. Terminez avec les prochaines étapes réalisables\n\n---\n\n💡 Dites-moi si vous voulez une longueur, un ton différent ou plus d'exemples.",
+          "问题分析": "En tant que {role}, voici mon analyse :\n\n## Définition du problème\n« {ctx} »\n\n## Analyse de base\n\n**1. Principales tensions**\nLes causes profondes sous plusieurs angles…\n\n**2. Chauffeurs**\n- Interne : …\n- Externe : …\n\n**3. Options**\n| Options | À l’envers | Risque |\n|--------|--------|------|\n| Un | … | … |\n| B | … | … |\n\n## Recommandation\nPréférez l’option A car…\n\n({tone} · Résultat cible : {output})",
+          "代码开发": "```python\n# {output}\n# Exemple de code de vos besoins\n\ndef main() :\n    # À FAIRE : implémenter la logique de base pour 「{ctx}」\n    passer\n\nsi __name__ == \"__main__\":\n    principal()\n```\n\n## Remarques\n\n1. **Approche** : …\n2. **Fonctions clés** : …\n3. **Comment courir** : …\n\n⚠️ Adaptez-vous à votre environnement. Voulez-vous ajouter des tests unitaires ou une gestion des erreurs ?",
+          "学习辅导": "Heureux d'enseigner en tant que {role} ! Utilisons la méthode Feynman.\n\n## 📖 Idée de base\n\n**Analogie** : pensez-y comme…\n\n## 🔍 Aller plus loin\n\nDe 「{ctx}」 :\n\n1. Couche 1 : définition\n2. Couche 2 : comment ça marche\n3. Couche 3 : utilisation réelle\n\n## ❌ Erreurs courantes\n- Erreur 1 : …\n- Erreur 2 : …\n\n## ✅ Vérifiez-vous\n**T1** : …\n**A1** : …\n\nVous voulez plus de questions de quiz ou un sous-thème plus approfondi ?",
+          "数据分析": "## Rapport d'analyse\n\n**Objectif** : {output}\n**Données** : {ctx}\n\n### 1. Aperçu\n- Taille de l'échantillon : …\n- Plage horaire : …\n- Moyenne/médiane des indicateurs clés : …\n\n### 2. Résultats\n🔹 **Tendance 1** : …\n🔹 **Tendance 2** : …\n🔹 **Anomalie** : …\n\n### 3. Idées de graphiques\n- Graphique linéaire pour les tendances\n- Graphique à barres pour les catégories\n\n### 4. Recommandations\n1.…\n2.…\n3.…\n\nBesoin de générer du code graphique ?",
+          "创意策划": "## Concepts créatifs 🎯\n\n**Scénario** : {ctx}\n**Objectif** : {output}\n\n### Plan A｜Sûr\n- Idée de base : …\n- Exécution : …\n- Impact attendu : …\n\n### Plan B｜Gras\n- Idée de base : …\n- Différenciateur : …\n\n### Plan C｜Lean\n- Version minimale viable : …\n\n**Choisissez** : Plan B parce que…\n\n({tone}) Vous souhaitez un plan de déploiement complet pour une option ?",
+          "翻译润色": "## Traduction / polonais\n\n**Résumé source** : {ctx}\n\n### Texte raffiné\n\n[Version finale sur le ton {tone}, naturel pour le public cible.]\n\n### Remarques\n1. 「…」→「…」(phrase locale)\n2. 「…」→「…」(ajustement culturel)\n\nVous voulez une version de style alternatif ?",
+          "会议纪要": "## Compte-rendu de la réunion\n\n**Sujet** : [à partir du contexte]\n**Contexte** : {ctx}\n\n### Décisions\n1.…\n2.…\n\n### Éléments d'action\n| Article | Propriétaire | À payer |\n|------|-------|-----|\n| … | … | … |\n\n### Questions ouvertes\n-…\n\n---\nSommaire structuré ({tone}). Besoin d'ajouter des participants ?",
+          "竞品调研": "## Brief du concurrent\n\n**Portée** : {ctx}\n**Livrable** : {output}\n\n### Acteurs clés\n| Joueur | Force | Différence |\n|--------|----------|------------|\n| Un | … | … |\n| B | … | … |\n\n### SWOT (notre point de vue)\n- **S** Points forts : …\n- **W** Faiblesses : …\n- **O** Opportunités : …\n- **T** Menaces : …\n\n### Différenciation\n1.…\n2.…\n\n⚠️ Marquez les chiffres non vérifiés pour une vérification manuelle.",
+          "简历优化": "## Reprendre le polissage\n\n**Contexte du rôle cible** : {ctx}\n\n### Puces d'expérience réécrites\n\n> [Puces axées sur les réalisations alignées sur le JD]\n\n**Modifications** :\n- Générique → axé sur les résultats\n- Ajout de mots-clés correspondants\n- Impact quantifié lorsque cela est possible\n\n### Brouillon de lettre de motivation (~ 200 mots)\n\n[Brouillon de tonalité {tone}]\n\nVous voulez une autre version pour un rôle différent ?",
+          __default__: "Compris : je vais vous aider en tant que {role}.\n\nDe 「{ctx}」, voici {output} :\n\n[Sortie structurée sur le ton {tone}.]\n\nDemandez des ajustements à tout moment."
+        },
+        followupPatterns: [
+          {
+            match: "简洁|简短|精简|短一点|plus court|bref|concis",
+            response: "Voici une version plus serrée :\n\n**Points clés** :\n1.…\n2.…\n3.…\n\n**One-liner** : …\n\nBesoin d'encore plus court ?"
+          },
+          {
+            match: "tableau|table|tableau|liste",
+            response: "Converti en tableau :\n\n| Article | Détail | Priorité |\n|------|--------|--------------|\n| … | … | Élevé |\n| … | … | Moyen |\n\nAjouter ou supprimer des colonnes ?"
+          },
+          {
+            match: "详细|展开|更多|补充|détail|développer|plus",
+            response: "Détail développé :\n\n### Plus de profondeur\n\nDe 「{ctx}」 :\n\n1.…\n2.…\n3.…\n\nQue dois-je approfondir d’autre ?"
+          },
+          {
+            match: "英文|anglais|翻译|traduire",
+            response: "Voici la version anglaise :\n\n[Contenu traduit sur le ton {tone}]\n\nDis-moi si tu veux des ajustements."
+          },
+          {
+            match: ".",
+            response: "Vous avez votre suivi : 「{followup}」\n\nSortie mise à jour :\n\n[Contenu révisé sur le ton {tone}]\n\nContinuez à itérer ou copiez cette structure dans votre véritable outil."
+          }
+        ],
         cases: [
           {
             id: "weekly-report",
