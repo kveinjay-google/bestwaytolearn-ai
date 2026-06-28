@@ -569,6 +569,15 @@ main {
   display: none;
 }
 
+.welcome-overlay.nickname-only .welcome-step:not([data-step="3"]) {
+  display: none;
+}
+
+.welcome-overlay.nickname-only .welcome-dots,
+.welcome-overlay.nickname-only #welcome-prev {
+  display: none;
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }

@@ -14,6 +14,9 @@ const USER_KEY = 'bwtl-ai-user';
 migrateStorageKey('synapse-ai-progress', STORAGE_KEY);
 migrateStorageKey('synapse-ai-user', USER_KEY);
 const WELCOME_STEPS = 5;
+const LEARNING_TAB_IDS = new Set(['learn', 'tools', 'practice', 'validate']);
+let nicknamePromptCallback = null;
+let nicknamePromptActive = false;
 function getTeacherName() {
   return typeof I18n !== 'undefined' ? I18n.getTeacherName() : '凯文';
 }
@@ -839,7 +842,65 @@ function switchPhaseTab(tabId, { scrollToId, behavior = 'smooth', save = true } 
   });
 }
 
+function needsNicknamePrompt() {
+  return !currentUser.name?.trim();
+}
+
+function isLearningHash(hash) {
+  const id = (hash || '#roadmap').replace(/^#/, '') || 'roadmap';
+  if (['', 'hero', 'roadmap'].includes(id)) return false;
+  return LEARNING_TAB_IDS.has(resolvePhaseTabFromHash(`#${id}`));
+}
+
+function showNicknamePrompt(onComplete) {
+  const overlay = document.getElementById('welcome-overlay');
+  if (!overlay) {
+    onComplete?.();
+    return;
+  }
+  nicknamePromptCallback = onComplete;
+  nicknamePromptActive = true;
+  overlay.classList.remove('hidden');
+  overlay.classList.add('nickname-only');
+  setWelcomeOpen(true);
+  overlay.querySelectorAll('.welcome-step').forEach(s => {
+    s.classList.toggle('active', s.dataset.step === '3');
+  });
+  const nameInput = document.getElementById('welcome-name');
+  const nameError = document.getElementById('welcome-name-error');
+  nameError?.classList.add('hidden');
+  if (nameInput) {
+    nameInput.value = currentUser.name || '';
+    setTimeout(() => nameInput.focus(), 200);
+  }
+  const nextBtn = document.getElementById('welcome-next');
+  if (nextBtn) {
+    nextBtn.textContent = typeof I18n !== 'undefined' ? I18n.t('welcome.start') : '开始学习';
+  }
+}
+
+function hideNicknamePrompt() {
+  const overlay = document.getElementById('welcome-overlay');
+  overlay?.classList.add('hidden');
+  overlay?.classList.remove('nickname-only');
+  setWelcomeOpen(false);
+  nicknamePromptActive = false;
+  nicknamePromptCallback = null;
+}
+
+function promptNicknameBeforeLearning(onReady) {
+  if (!needsNicknamePrompt()) {
+    onReady();
+    return;
+  }
+  showNicknamePrompt(onReady);
+}
+
 function navigateToHash(hash, { behavior = 'smooth', updateHistory = true } = {}) {
+  if (isLearningHash(hash) && needsNicknamePrompt()) {
+    promptNicknameBeforeLearning(() => navigateToHash(hash, { behavior, updateHistory }));
+    return;
+  }
   const raw = hash || '#roadmap';
   let id = raw.replace(/^#/, '') || 'roadmap';
   if (id === 'path' || id === 'phase-path') id = 'roadmap';
@@ -4044,13 +4105,22 @@ function initUserProfile() {
   });
 }
 
+function completeNicknameSetup(name, { showJoinedMessage = true } = {}) {
+  const trimmed = name.trim();
+  saveUser({ name: trimmed, welcomed: true });
+  applyPersonalization(trimmed);
+  if (showJoinedMessage) {
+    showTeacherMessage(uiT('welcome.joined', '{name}，欢迎加入！先从首页「学习地图」看清四阶段路径，按顺序进入各阶段学习即可。', { name: trimmed }));
+  }
+}
+
 function finishWelcome(name) {
-  saveUser({ name: name.trim(), welcomed: true });
-  applyPersonalization(name);
-  document.getElementById('welcome-overlay')?.classList.add('hidden');
+  completeNicknameSetup(name);
+  const overlay = document.getElementById('welcome-overlay');
+  overlay?.classList.add('hidden');
+  overlay?.classList.remove('nickname-only');
   setWelcomeOpen(false);
   navigateToHash('#roadmap', { behavior: 'smooth', updateHistory: true });
-  showTeacherMessage(uiT('welcome.joined', '{name}，欢迎加入！先从首页「学习地图」看清四阶段路径，按顺序进入各阶段学习即可。', { name: name.trim() }));
   initTeacherCoachObserver({ skipInitial: ['hero', 'roadmap'] });
 }
 
@@ -4065,7 +4135,8 @@ function initWelcome() {
   const nameInput = document.getElementById('welcome-name');
   const nameError = document.getElementById('welcome-name-error');
   const resetBtn = document.getElementById('reset-welcome');
-  let step = 0;
+  let tourStep = 0;
+  let tourActive = false;
 
   if (dotsEl) {
     dotsEl.innerHTML = Array.from({ length: WELCOME_STEPS }, (_, i) =>
@@ -4073,25 +4144,54 @@ function initWelcome() {
     ).join('');
   }
 
-  function goToStep(n) {
-    step = Math.max(0, Math.min(WELCOME_STEPS - 1, n));
-    steps.forEach(s => s.classList.toggle('active', parseInt(s.dataset.step, 10) === step));
+  function goToTourStep(n) {
+    tourStep = Math.max(0, Math.min(WELCOME_STEPS - 1, n));
+    steps.forEach(s => s.classList.toggle('active', parseInt(s.dataset.step, 10) === tourStep));
     dotsEl?.querySelectorAll('.welcome-dot').forEach(d =>
-      d.classList.toggle('active', parseInt(d.dataset.dot, 10) === step)
+      d.classList.toggle('active', parseInt(d.dataset.dot, 10) === tourStep)
     );
-    if (prevBtn) prevBtn.disabled = step === 0;
+    if (prevBtn) prevBtn.disabled = tourStep === 0;
     if (nextBtn) {
-      nextBtn.textContent = step === WELCOME_STEPS - 1 ? I18n.t('welcome.start') : I18n.t('welcome.next');
+      nextBtn.textContent = tourStep === WELCOME_STEPS - 1 ? I18n.t('welcome.start') : I18n.t('welcome.next');
     }
-    if (step === WELCOME_STEPS - 1 && nameInput?.value.trim()) {
+    if (tourStep === WELCOME_STEPS - 1 && nameInput?.value.trim()) {
       applyPersonalization(nameInput.value.trim());
     }
-    if (step === 3) setTimeout(() => nameInput?.focus(), 300);
+    if (tourStep === 3) setTimeout(() => nameInput?.focus(), 300);
   }
 
-  prevBtn?.addEventListener('click', () => goToStep(step - 1));
+  function startWelcomeTour() {
+    tourActive = true;
+    nicknamePromptActive = false;
+    nicknamePromptCallback = null;
+    overlay.classList.remove('hidden', 'nickname-only');
+    setWelcomeOpen(true);
+    if (currentUser.name) nameInput.value = currentUser.name;
+    goToTourStep(0);
+  }
+
+  prevBtn?.addEventListener('click', () => {
+    if (nicknamePromptActive) return;
+    if (tourActive) goToTourStep(tourStep - 1);
+  });
+
   nextBtn?.addEventListener('click', () => {
-    if (step === 3) {
+    if (nicknamePromptActive) {
+      const name = nameInput?.value.trim() || '';
+      if (!name) {
+        nameError?.classList.remove('hidden');
+        nameInput?.focus();
+        return;
+      }
+      nameError?.classList.add('hidden');
+      completeNicknameSetup(name);
+      const cb = nicknamePromptCallback;
+      hideNicknamePrompt();
+      cb?.();
+      return;
+    }
+    if (!tourActive) return;
+    if (tourStep === 3) {
       const name = nameInput?.value.trim() || '';
       if (!name) {
         nameError?.classList.remove('hidden');
@@ -4101,47 +4201,36 @@ function initWelcome() {
       nameError?.classList.add('hidden');
       applyPersonalization(name);
     }
-    if (step < WELCOME_STEPS - 1) goToStep(step + 1);
-    else finishWelcome(nameInput?.value.trim() || getUserName());
+    if (tourStep < WELCOME_STEPS - 1) goToTourStep(tourStep + 1);
+    else {
+      tourActive = false;
+      finishWelcome(nameInput?.value.trim() || getUserName());
+    }
   });
 
   nameInput?.addEventListener('input', () => nameError?.classList.add('hidden'));
   nameInput?.addEventListener('keydown', e => {
-    if (e.key === 'Enter' && step === 3) nextBtn?.click();
-  });
-
-  resetBtn?.addEventListener('click', () => {
-    overlay.classList.remove('hidden');
-    setWelcomeOpen(true);
-    if (currentUser.name) nameInput.value = currentUser.name;
-    goToStep(0);
-  });
-
-  if (currentUser.welcomed) {
-    if (currentUser.name) {
-      applyPersonalization(currentUser.name);
-      showTeacherMessage(uiT('welcome.welcomeBack', '{name}，欢迎回来！上次学到哪儿了？我们从学习地图继续吧。', { name: currentUser.name }));
-    } else {
-      clearPersonalization();
-      showTeacherMessage(uiT('welcome.welcomeBackNoName', '欢迎回来！点击右上角或页脚「管理我的昵称」可以设置站内称呼。'));
+    if (e.key === 'Enter') {
+      if (nicknamePromptActive || (tourActive && tourStep === 3)) nextBtn?.click();
     }
-    overlay.classList.add('hidden');
-    setWelcomeOpen(false);
-    initTeacherCoachObserver({ skipInitial: ['hero'] });
-    return;
-  }
+  });
 
-  if (isDeepLinkEntry()) {
-    overlay.classList.add('hidden');
-    setWelcomeOpen(false);
-    showTeacherMessage(uiT('welcome.deepLink', '已进入学习模块。完成欢迎引导后，我会记住你的昵称并在各阶段陪伴你。'));
-    initTeacherCoachObserver({ skipInitial: ['hero'] });
-    return;
-  }
+  resetBtn?.addEventListener('click', startWelcomeTour);
 
-  overlay.classList.remove('hidden');
-  setWelcomeOpen(true);
-  goToStep(0);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && nicknamePromptActive) {
+      hideNicknamePrompt();
+    }
+  });
+
+  overlay.classList.add('hidden');
+  setWelcomeOpen(false);
+  if (currentUser.name?.trim()) {
+    applyPersonalization(currentUser.name.trim());
+  } else {
+    clearPersonalization();
+  }
+  initTeacherCoachObserver({ skipInitial: ['hero'] });
 }
 
 const COACH_QUICK_NAV = [
@@ -4732,10 +4821,15 @@ function refreshLocaleUI() {
   updateAllProgress();
 
   const nextBtn = document.getElementById('welcome-next');
-  if (nextBtn && document.getElementById('welcome-overlay') && !document.getElementById('welcome-overlay').classList.contains('hidden')) {
-    const steps = document.querySelectorAll('.welcome-step');
-    const active = [...steps].findIndex(s => s.classList.contains('active'));
-    if (active >= 0) nextBtn.textContent = active === WELCOME_STEPS - 1 ? I18n.t('welcome.start') : I18n.t('welcome.next');
+  const welcomeOverlay = document.getElementById('welcome-overlay');
+  if (nextBtn && welcomeOverlay && !welcomeOverlay.classList.contains('hidden')) {
+    if (nicknamePromptActive || welcomeOverlay.classList.contains('nickname-only')) {
+      nextBtn.textContent = I18n.t('welcome.start');
+    } else {
+      const steps = document.querySelectorAll('.welcome-step');
+      const active = [...steps].findIndex(s => s.classList.contains('active'));
+      if (active >= 0) nextBtn.textContent = active === WELCOME_STEPS - 1 ? I18n.t('welcome.start') : I18n.t('welcome.next');
+    }
   }
 }
 
