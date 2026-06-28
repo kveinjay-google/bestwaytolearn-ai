@@ -3173,11 +3173,12 @@ function setActiveCaseCard(caseId) {
 }
 
 function fillPromptForm(caseData) {
+  const tone = typeof I18n !== 'undefined' ? I18n.normalizePromptToneKey(caseData.tone) : caseData.tone;
   document.getElementById('prompt-task').value = caseData.task;
   document.getElementById('prompt-role').value = caseData.role;
   document.getElementById('prompt-context').value = caseData.context;
   document.getElementById('prompt-output').value = caseData.output;
-  document.getElementById('prompt-tone').value = caseData.tone;
+  document.getElementById('prompt-tone').value = tone;
 }
 
 function applyTaskPreset(task) {
@@ -3465,7 +3466,10 @@ function appendSimMessage(role, text, animate = false) {
   if (!container) return Promise.resolve();
   const msg = document.createElement('div');
   msg.className = `sim-msg sim-msg-${role}`;
-  const label = role === 'user' ? '你' : 'AI 助手';
+  const ui = typeof I18n !== 'undefined' ? I18n.getPromptLabUi() : {};
+  const label = role === 'user'
+    ? (ui.userLabel || '你')
+    : (ui.aiLabel || 'AI 助手');
   const useAnimate = animate && role === 'ai';
 
   if (useAnimate) {
@@ -3577,6 +3581,7 @@ function getPromptForm() {
 
 function refreshPromptLabChrome() {
   const ui = typeof I18n !== 'undefined' ? I18n.getPromptLabUi() : {};
+  const activeCaseId = promptLabActiveCase?.id;
   const taskSelect = document.getElementById('prompt-task');
   const tasks = getPromptTasksData();
   if (taskSelect && Object.keys(tasks).length) {
@@ -3588,7 +3593,9 @@ function refreshPromptLabChrome() {
   }
   const toneSelect = document.getElementById('prompt-tone');
   if (toneSelect) {
-    const currentTone = toneSelect.value;
+    const currentTone = typeof I18n !== 'undefined'
+      ? I18n.normalizePromptToneKey(toneSelect.value)
+      : toneSelect.value;
     [...toneSelect.options].forEach(opt => {
       opt.textContent = typeof I18n !== 'undefined' ? I18n.getPromptToneLabel(opt.value) : opt.value;
     });
@@ -3622,14 +3629,47 @@ function refreshPromptLabChrome() {
   if (sendBtn && ui.send) sendBtn.textContent = ui.send;
   const disclaimer = document.querySelector('.sim-disclaimer');
   if (disclaimer && ui.disclaimer) disclaimer.textContent = ui.disclaimer;
-  const simBadge = document.getElementById('sim-case-badge');
-  if (simBadge && ui.selectCaseStart && !promptLabActiveCase) simBadge.textContent = ui.selectCaseStart;
-  restoreSimEmpty();
   const guideTitle = document.querySelector('#prompt-guide h4');
-  if (guideTitle && ui.guideTitle) guideTitle.innerHTML = guideTitle.innerHTML.replace(/模拟完成.*$/, '').trim() + ' ' + ui.guideTitle;
+  if (guideTitle && ui.guideTitle) {
+    const icon = guideTitle.querySelector('img');
+    guideTitle.innerHTML = `${icon ? `${icon.outerHTML} ` : ''}${ui.guideTitle}`;
+  }
   const guideToolsLabel = document.querySelector('.guide-tools-label');
   if (guideToolsLabel && ui.guideToolsLabel) guideToolsLabel.textContent = ui.guideToolsLabel;
   renderPromptCases();
+
+  if (activeCaseId) {
+    const caseData = getPromptCasesData().find(c => c.id === activeCaseId);
+    if (caseData) {
+      promptLabActiveCase = caseData;
+      fillPromptForm(caseData);
+      promptLabState = getPromptForm();
+      promptLabState.lastPrompt = buildPrompt(promptLabState);
+      updateSimBadge(`${ui.casePrefix || '案例：'}${caseData.title}`);
+      setActiveCaseCard(activeCaseId);
+      if (document.getElementById('sim-messages')?.querySelector('.sim-msg')) {
+        runSimulation({ scroll: false });
+      } else {
+        restoreSimEmpty();
+      }
+      return;
+    }
+  }
+
+  const simBadge = document.getElementById('sim-case-badge');
+  if (simBadge) {
+    if (promptLabActiveCase) {
+      simBadge.textContent = `${ui.casePrefix || '案例：'}${promptLabActiveCase.title}`;
+    } else if (ui.selectCaseStart) {
+      simBadge.textContent = ui.selectCaseStart;
+    }
+  }
+  if (taskSelect?.value) {
+    applyTaskPreset(taskSelect.value);
+    promptLabState = getPromptForm();
+    promptLabState.lastPrompt = buildPrompt(promptLabState);
+  }
+  restoreSimEmpty();
 }
 
 function initPromptLab() {

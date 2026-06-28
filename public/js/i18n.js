@@ -138,6 +138,7 @@ const I18n = (function () {
       strings: strings ? deepMerge(existing.strings || {}, strings) : (existing.strings || {}),
       data: deepMerge(existing.data || {}, rest),
     };
+    promptToneLabelToKey = null;
   }
 
   function interpolate(template, vars = {}) {
@@ -972,13 +973,101 @@ const I18n = (function () {
     return mapCategoryLabel(cat, getData('practiceCategories'));
   }
 
+  const PROMPT_TONE_KEYS = ['专业严谨', '通俗易懂', '创意发散', '简洁直接'];
+  const PROMPT_TONE_TRADITIONAL = {
+    '專業嚴謹': '专业严谨',
+    '創意發散': '创意发散',
+  };
+
+  const PROMPT_LAB_UI_DEFAULTS = {
+    casesLabel: '实战案例',
+    selectCaseStart: '选择案例开始',
+    copyPrompt: '复制提示词',
+    configTitle: '提示词配置',
+    taskType: '任务类型',
+    role: '角色设定',
+    rolePlaceholder: '例：资深产品经理',
+    context: '背景信息',
+    contextPlaceholder: '描述具体场景、受众、约束…',
+    output: '期望输出',
+    outputPlaceholder: '例：一份 500 字 PRD 大纲',
+    tone: '语气风格',
+    generateSimulate: '生成并模拟',
+    chatTitle: '提示词与回复 · 同屏模拟',
+    resetSim: '重新模拟',
+    simEmptyTitle: '尚未开始模拟',
+    simEmptyDesc: '点击上方案例，或编辑左侧配置后点「生成并模拟」。提示词、AI 回复与操作引导都在此窗口展示。',
+    guideTitle: '模拟完成 · 去真实环境操作',
+    guideToolsLabel: '推荐工具：',
+    followupPlaceholder: '继续追问，如「请更简洁」…',
+    send: '发送',
+    disclaimer: '本地预置演示，帮助理解提示词结构。真实效果请复制提示词到推荐工具验证。',
+    tryFollowup: '试试追问：',
+    taskPrefix: '任务：',
+    casePrefix: '案例：',
+    customScene: '自定义场景',
+    defaultRole: '资深专家',
+    defaultContext: '[请补充具体背景]',
+    defaultOutput: '[请描述期望输出]',
+    userLabel: '你',
+    aiLabel: 'AI 助手',
+    systemLabel: '系统',
+    buildPrompt: {
+      roleHeader: '# 角色',
+      rolePrefix: '你是一位',
+      taskHeader: '# 任务',
+      contextHeader: '# 背景信息',
+      outputHeader: '# 期望输出',
+      requirementsHeader: '# 要求',
+      toneLine: '- 语气风格：',
+      clarifyLine: '- 信息不足时先列出需确认的 2-3 个关键问题',
+      structureLine: '- 输出结构清晰，使用标题和列表',
+      uncertainLine: '- 不确定的内容明确标注，不要编造事实',
+    },
+    defaultGuideSteps: [
+      '点击工具栏「复制提示词」',
+      '打开 ChatGPT 或通义千问，新建对话',
+      '粘贴提示词并发送，将背景替换为你的真实场景',
+      '根据回复迭代：「更简洁」「换成表格」「补充数据」',
+    ],
+    stepPrefix: '第',
+    stepSuffix: ' 步',
+    simError: '模拟出错，请刷新页面后重试。若仍失败，请强制刷新（Cmd+Shift+R）清除缓存。',
+    caseDataError: '案例数据未加载，请强制刷新页面（Cmd+Shift+R）。',
+    copyPromptLabel: '复制提示词',
+  };
+
+  let promptToneLabelToKey = null;
+
+  function buildPromptToneLabelToKey() {
+    if (promptToneLabelToKey) return promptToneLabelToKey;
+    const map = { ...PROMPT_TONE_TRADITIONAL };
+    SUPPORTED_LOCALES.forEach(code => {
+      const tones = bundles[code]?.data?.promptLab?.tones;
+      if (!tones) return;
+      Object.entries(tones).forEach(([key, label]) => {
+        if (typeof label === 'string') map[label] = key;
+      });
+    });
+    promptToneLabelToKey = map;
+    return map;
+  }
+
+  function normalizePromptToneKey(tone) {
+    if (!tone || PROMPT_TONE_KEYS.includes(tone)) return tone;
+    return buildPromptToneLabelToKey()[tone] || tone;
+  }
+
   function getPromptCases() {
     if (typeof PROMPT_CASES === 'undefined') return [];
     if (usesChineseSourceContent()) return PROMPT_CASES;
     const overlay = getData('promptLab.cases') || [];
     return PROMPT_CASES.map(c => {
       const o = overlay.find(x => x.id === c.id);
-      return o ? { ...c, ...o } : c;
+      if (!o) return c;
+      const merged = { ...c, ...o };
+      if (o.tone != null) merged.tone = normalizePromptToneKey(o.tone);
+      return merged;
     });
   }
 
@@ -995,6 +1084,9 @@ const I18n = (function () {
     const out = { ...PROMPT_TASK_PRESETS };
     Object.keys(overlay).forEach(key => {
       out[key] = { ...PROMPT_TASK_PRESETS[key], ...overlay[key] };
+      if (overlay[key]?.tone != null) {
+        out[key].tone = normalizePromptToneKey(overlay[key].tone);
+      }
     });
     return out;
   }
@@ -1016,7 +1108,7 @@ const I18n = (function () {
   }
 
   function getPromptLabUi() {
-    return getData('promptLab.ui') || {};
+    return deepMerge(PROMPT_LAB_UI_DEFAULTS, getData('promptLab.ui') || {});
   }
 
   function getHandsOnUi() {
@@ -1224,6 +1316,7 @@ const I18n = (function () {
     getPromptTools,
     getPromptTaskLabel,
     getPromptToneLabel,
+    normalizePromptToneKey,
     getPromptLabUi,
     getHandsOnUi,
     getPracticeUi,

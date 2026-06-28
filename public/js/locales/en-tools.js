@@ -235,6 +235,8 @@
           uncertainLine: '- Mark uncertain content clearly; do not invent facts',
         },
         systemLabel: 'System',
+        userLabel: 'You',
+        aiLabel: 'AI Assistant',
         simulating: 'Simulating…',
         promptSent: 'Prompt sent',
         aiReply: 'AI reply',

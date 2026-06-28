@@ -2109,6 +2109,8 @@
             uncertainLine: "- 不確定的內容明確標註，不要編造事實"
           },
           systemLabel: "系統",
+          userLabel: "你",
+          aiLabel: "AI 助手",
           simulating: "模擬中…",
           promptSent: "提示詞已傳送",
           aiReply: "AI 回覆",
