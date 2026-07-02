@@ -829,6 +829,31 @@ function scrollToPhaseTarget(targetId, { behavior = 'smooth' } = {}) {
   window.scrollTo({ top: Math.max(0, top), behavior });
 }
 
+function hydrateVisibleImages(root = document) {
+  const scope = root instanceof Element ? root : document;
+  scope.querySelectorAll('img').forEach(img => {
+    if (!img.isConnected) return;
+
+    const style = window.getComputedStyle(img);
+    const hasBox = img.getClientRects().length > 0;
+    const isVisible = hasBox && style.display !== 'none' && style.visibility !== 'hidden';
+    if (!isVisible) return;
+
+    if (img.loading === 'lazy') img.loading = 'eager';
+
+    const rawSrc = img.getAttribute('src');
+    if (rawSrc && (!img.complete || img.naturalWidth === 0)) {
+      const rawSrcset = img.getAttribute('srcset');
+      img.src = rawSrc;
+      if (rawSrcset) img.srcset = rawSrcset;
+    }
+
+    if (typeof img.decode === 'function') {
+      img.decode().catch(() => {});
+    }
+  });
+}
+
 function switchPhaseTab(tabId, { scrollToId, behavior = 'smooth', save = true } = {}) {
   if (!PHASE_TAB_CONFIG[tabId]) tabId = 'map';
   currentPhaseTab = tabId;
@@ -846,11 +871,13 @@ function switchPhaseTab(tabId, { scrollToId, behavior = 'smooth', save = true } 
   requestAnimationFrame(() => {
     scrollToPhaseTarget(scrollTarget, { behavior });
     const panel = getPhasePanel(tabId);
+    hydrateVisibleImages(panel);
     panel?.querySelectorAll('.reveal:not(.visible)').forEach((el, i) => {
       setTimeout(() => el.classList.add('visible'), i * 50);
     });
     if (tabId !== 'map') updatePhaseBridges();
   });
+  setTimeout(() => hydrateVisibleImages(getPhasePanel(tabId)), 250);
 }
 
 function needsNicknamePrompt() {
