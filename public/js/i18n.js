@@ -1242,7 +1242,7 @@ const I18n = (function () {
   }
 
   function getSiteUrl() {
-    return t('brand.url') || 'https://bestwaytolearn.ai/';
+    return t('brand.url') || 'https://www.bestwaytolearn.ai/';
   }
 
   function getSiteDomain() {

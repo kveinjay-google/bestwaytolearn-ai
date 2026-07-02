@@ -3,7 +3,7 @@ I18n.registerLocale('fr', {
       brand: {
         name: "BestWayToLearn.AI",
         logoHtml: "BestWayToLearn<em>.AI</em>",
-        url: "https://bestwaytolearn.ai/",
+        url: "https://www.bestwaytolearn.ai/",
         domain: "bestwaytolearn.ai",
         ariaLabel: "BestWayToLearn.AI — bestwaytolearn.ai"
       },

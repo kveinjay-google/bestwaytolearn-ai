@@ -1549,7 +1549,7 @@ function buildGraduationReportText() {
   const focusSep = typeof I18n !== 'undefined' && I18n.usesEnglishContent() ? ', ' : '、';
   const focus = focusLabels.join(focusSep) || uiT('graduation.unfilled', '（未填写）');
   const brand = typeof I18n !== 'undefined' ? I18n.getBrandName() : 'BestWayToLearn.AI';
-  const siteUrl = typeof I18n !== 'undefined' ? I18n.getSiteUrl() : 'https://bestwaytolearn.ai/';
+  const siteUrl = typeof I18n !== 'undefined' ? I18n.getSiteUrl() : 'https://www.bestwaytolearn.ai/';
   const pending = uiT('graduation.reportPending', '（待填写）');
   let report = `${brand} · ${uiT('graduation.reportTitle', '结业报告')}\n`;
   report += `${siteUrl}\n`;

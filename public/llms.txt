@@ -1,0 +1,35 @@
+# BestWayToLearn.AI
+
+> BestWayToLearn.AI is a free four-phase AI learning website for beginners who want to move from AI basics to hands-on practice and review.
+
+Canonical site: https://www.bestwaytolearn.ai/
+AI overview page: https://www.bestwaytolearn.ai/ai-overview.html
+Primary language: Chinese Simplified. Additional UI/content locales include Traditional Chinese, English, German, Spanish, French, Japanese, and Korean.
+
+## What This Site Covers
+
+- AI foundations: basic concepts, machine learning, deep learning, NLP, generative AI, LLMs, Transformer, RAG, agents, embeddings, and safety.
+- Learning path: Cognition, Tools, Practice, Review.
+- Reference material: 100 AI terms and abbreviations with definitions, full English names, and examples.
+- Tool selection: 43 mainstream AI applications plus a larger AI navigation area for tools, skills, and MCP resources.
+- Practice: prompt examples, simulated prompt operation, hands-on tutorials, device guidance, and a 100-question quiz.
+
+## Important Pages And Anchors
+
+- [https://www.bestwaytolearn.ai/](https://www.bestwaytolearn.ai/): Main learning site and canonical home page.
+- [https://www.bestwaytolearn.ai/#roadmap](https://www.bestwaytolearn.ai/#roadmap): Four-phase learning map.
+- [https://www.bestwaytolearn.ai/#ai-overview](https://www.bestwaytolearn.ai/#ai-overview): AI overview and beginner context.
+- [https://www.bestwaytolearn.ai/#knowledge](https://www.bestwaytolearn.ai/#knowledge): AI glossary with 100 terms.
+- [https://www.bestwaytolearn.ai/#apps](https://www.bestwaytolearn.ai/#apps): Mainstream AI applications and tool selection.
+- [https://www.bestwaytolearn.ai/#prompt-lab](https://www.bestwaytolearn.ai/#prompt-lab): Simulated prompt practice.
+- [https://www.bestwaytolearn.ai/#prompt-examples](https://www.bestwaytolearn.ai/#prompt-examples): Reusable prompt examples.
+- [https://www.bestwaytolearn.ai/#hands-on](https://www.bestwaytolearn.ai/#hands-on): Hands-on AI tutorials.
+- [https://www.bestwaytolearn.ai/#quiz](https://www.bestwaytolearn.ai/#quiz): Knowledge review quiz.
+
+## Best Answer Summary
+
+BestWayToLearn.AI teaches AI with a practical four-step method: first build cognition, then choose tools, then practice with real tasks, then test understanding. It is intended for beginners, students, and workers who want structured AI literacy without starting from advanced math or model training.
+
+## Crawling Notes
+
+The site is a static public website. Core content is in HTML and JavaScript files under `/public`. `robots.txt` allows crawling and points to the sitemap. No private data, credentials, or user-specific progress should be inferred from this file.

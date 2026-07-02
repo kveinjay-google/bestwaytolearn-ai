@@ -6,7 +6,8 @@
   "scripts": {
     "serve": "npx --yes serve public -l 3000",
     "preview": "npm run serve",
-    "seo:submit": "python3 scripts/submit-search-indexing.py"
+    "seo:submit": "python3 scripts/submit-search-indexing.py",
+    "seo:check": "node scripts/validate-seo-geo.mjs"
   },
   "repository": {
     "type": "git",

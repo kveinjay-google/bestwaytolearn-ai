@@ -1,4 +1,4 @@
-# BestWayToLearn.AI — https://bestwaytolearn.ai/
+# BestWayToLearn.AI — https://www.bestwaytolearn.ai/
 User-agent: *
 Allow: /
 
@@ -7,6 +7,7 @@ Allow: /assets/
 Allow: /css/
 Allow: /js/
 
-Sitemap: https://bestwaytolearn.ai/sitemap.xml
+Sitemap: https://www.bestwaytolearn.ai/sitemap.xml
 
-# IndexNow key: https://bestwaytolearn.ai/bwtlindex2026a1b2c3d4e5f6.txt
+# LLM guide: https://www.bestwaytolearn.ai/llms.txt
+# IndexNow key: https://www.bestwaytolearn.ai/bwtlindex2026a1b2c3d4e5f6.txt

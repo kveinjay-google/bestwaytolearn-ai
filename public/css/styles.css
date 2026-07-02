@@ -7240,3 +7240,38 @@ main {
   line-height: 1.45;
   color: var(--text-muted);
 }
+
+.seo-faq-section {
+  max-width: 1120px;
+  margin: 0 auto 4rem;
+}
+
+.seo-faq-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.seo-faq-item {
+  border: 1px solid var(--border, rgba(255, 255, 255, 0.12));
+  border-radius: 8px;
+  padding: 1rem;
+  background: var(--surface, rgba(255, 255, 255, 0.04));
+}
+
+.seo-faq-item h3 {
+  margin: 0 0 0.55rem;
+  font-size: 1rem;
+}
+
+.seo-faq-item p {
+  margin: 0;
+  color: var(--text-secondary, #8b9cb3);
+  line-height: 1.65;
+}
+
+@media (max-width: 860px) {
+  .seo-faq-list {
+    grid-template-columns: 1fr;
+  }
+}
