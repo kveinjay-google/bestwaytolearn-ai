@@ -15,6 +15,17 @@ I18n.registerLocale('en', {
       partial: '',
       partialEn: '',
     },
+    seoFaq: {
+      tag: 'FAQ',
+      title: 'Frequently asked questions',
+      desc: 'Help search engines and AI assistants understand who BestWayToLearn.AI is for, how the learning path works, and how people can access it.',
+      q1: 'Who is BestWayToLearn.AI for?',
+      a1: 'It is for AI beginners, working professionals, students, and anyone who wants a structured way to learn mainstream AI tools. The course starts with fundamentals and does not require programming or machine learning experience.',
+      q2: 'What learning path does this website use?',
+      a2: 'The site is organized into four stages: foundations, tools, practice, and review. It covers AI principles, terminology, tool selection, prompt practice, hands-on tutorials, and knowledge quizzes.',
+      q3: 'Is BestWayToLearn.AI free?',
+      a3: 'The on-site course content is free to access. Learning progress is saved locally in your browser, and no account registration is required.',
+    },
     settings: {
       title: 'Display settings',
       language: 'Language',

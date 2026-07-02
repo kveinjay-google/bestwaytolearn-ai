@@ -11,6 +11,17 @@ I18n.registerLocale('es', {
         title: "BestWayToLearn.AI | Aprende IA — De cero a la práctica",
         description: "BestWayToLearn.AI — Aprendizaje de IA en 4 fases: bases, herramientas, práctica y quiz. 100 términos, 43 apps, simulación práctica, tutoriales reales."
       },
+      seoFaq: {
+        tag: "FAQ",
+        title: "Preguntas frecuentes",
+        desc: "Ayuda a los buscadores y asistentes de IA a entender para quién es BestWayToLearn.AI, cómo funciona la ruta de aprendizaje y cómo acceder al sitio.",
+        q1: "¿Para quién es BestWayToLearn.AI?",
+        a1: "Es para principiantes en IA, profesionales, estudiantes y cualquier persona que quiera aprender las principales herramientas de IA de forma estructurada. El curso empieza con conceptos básicos y no requiere experiencia en programación ni aprendizaje automático.",
+        q2: "¿Qué ruta de aprendizaje usa este sitio?",
+        a2: "El sitio se organiza en cuatro etapas: fundamentos, herramientas, práctica y revisión. Incluye principios de IA, terminología, selección de herramientas, práctica de prompts, tutoriales prácticos y cuestionarios de conocimiento.",
+        q3: "¿BestWayToLearn.AI es gratis?",
+        a3: "El contenido del curso del sitio es gratuito. El progreso de aprendizaje se guarda localmente en el navegador y no se requiere crear una cuenta."
+      },
       settings: {
         title: "Ajustes de visualización",
         language: "Idioma",

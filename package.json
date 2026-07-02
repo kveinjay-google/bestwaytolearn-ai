@@ -8,7 +8,8 @@
     "preview": "npm run serve",
     "seo:submit": "python3 scripts/submit-search-indexing.py",
     "seo:check": "node scripts/validate-seo-geo.mjs",
-    "assets:check": "node scripts/validate-visible-image-hydration.mjs"
+    "assets:check": "node scripts/validate-visible-image-hydration.mjs",
+    "faq:check": "node scripts/validate-faq-i18n.mjs"
   },
   "repository": {
     "type": "git",

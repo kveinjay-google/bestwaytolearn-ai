@@ -11,6 +11,17 @@ I18n.registerLocale('fr', {
         title: "BestWayToLearn.AI | Apprendre l'IA — De zéro à la pratique",
         description: "BestWayToLearn.AI — Apprentissage IA en 4 phases : bases, outils, pratique et quiz. 100 termes, 43 apps, labo de prompts, tutoriels réels."
       },
+      seoFaq: {
+        tag: "FAQ",
+        title: "Questions fréquentes",
+        desc: "Aider les moteurs de recherche et les assistants IA à comprendre à qui s'adresse BestWayToLearn.AI, comment fonctionne le parcours et comment y accéder.",
+        q1: "À qui s’adresse BestWayToLearn.AI ?",
+        a1: "Le site s’adresse aux débutants en IA, aux professionnels, aux étudiants et à toute personne souhaitant apprendre les principaux outils d’IA de manière structurée. Le cours commence par les bases et ne nécessite aucune expérience en programmation ou en machine learning.",
+        q2: "Quel parcours d’apprentissage ce site propose-t-il ?",
+        a2: "Le site est organisé en quatre étapes : bases, outils, pratique et révision. Il couvre les principes de l’IA, le vocabulaire, le choix des outils, les exercices de prompts, les tutoriels pratiques et les quiz de connaissances.",
+        q3: "BestWayToLearn.AI est-il gratuit ?",
+        a3: "Le contenu du cours sur le site est accessible gratuitement. La progression est enregistrée localement dans votre navigateur et aucune création de compte n’est requise."
+      },
       settings: {
         title: "Paramètres d'affichage",
         language: "Langue",

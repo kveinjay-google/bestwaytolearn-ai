@@ -11,6 +11,17 @@ I18n.registerLocale('de', {
         title: "BestWayToLearn.AI | KI lernen — Von null zur Praxis",
         description: "BestWayToLearn.AI — Vierphasiges KI-Lernen: Grundlagen, Tools, Praxis und Quiz. 100 Begriffe, 43 Apps, Prompt-Lab, echte Tutorials."
       },
+      seoFaq: {
+        tag: "FAQ",
+        title: "Häufig gestellte Fragen",
+        desc: "Hilft Suchmaschinen und KI-Assistenten zu verstehen, für wen BestWayToLearn.AI gedacht ist, wie der Lernpfad funktioniert und wie man darauf zugreift.",
+        q1: "Für wen ist BestWayToLearn.AI geeignet?",
+        a1: "Die Website richtet sich an KI-Einsteiger, Berufstätige, Studierende und alle, die gängige KI-Tools strukturiert lernen möchten. Der Kurs beginnt mit den Grundlagen und erfordert keine Programmier- oder Machine-Learning-Erfahrung.",
+        q2: "Welchen Lernpfad nutzt diese Website?",
+        a2: "Die Website ist in vier Phasen organisiert: Grundlagen, Tools, Praxis und Wiederholung. Sie behandelt KI-Prinzipien, Begriffe, Tool-Auswahl, Prompt-Übungen, praktische Tutorials und Wissensquizze.",
+        q3: "Ist BestWayToLearn.AI kostenlos?",
+        a3: "Die Kursinhalte auf der Website sind kostenlos zugänglich. Der Lernfortschritt wird lokal im Browser gespeichert, und es ist keine Kontoerstellung erforderlich."
+      },
       settings: {
         title: "Anzeigeeinstellungen",
         language: "Sprache",

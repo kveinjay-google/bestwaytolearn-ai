@@ -15,6 +15,17 @@ I18n.registerLocale('zh-CN', {
       partial: '',
       partialEn: '',
     },
+    seoFaq: {
+      tag: 'FAQ',
+      title: '常见问题',
+      desc: '帮助搜索引擎和 AI 助手理解 BestWayToLearn.AI 的学习对象、路径和访问方式。',
+      q1: 'BestWayToLearn.AI 适合谁？',
+      a1: '适合 AI 初学者、职场学习者、学生和想系统掌握主流 AI 工具的人。课程从基础概念开始，不要求编程或机器学习背景。',
+      q2: '这个网站的学习路径是什么？',
+      a2: '网站按认知、工具、实战、检验四个阶段组织内容，包含 AI 原理、术语、工具选型、提示词练习、实操教程和知识测验。',
+      q3: 'BestWayToLearn.AI 是否免费？',
+      a3: '站内课程内容可免费访问，学习进度保存在浏览器本地，不需要注册账号。',
+    },
     settings: {
       title: '显示设置',
       language: '语言',

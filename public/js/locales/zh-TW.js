@@ -15,6 +15,17 @@ I18n.registerLocale('zh-TW', {
         partial: "介面為繁體中文，部分教學內容仍為簡體中文。",
         partialEn: ""
       },
+      seoFaq: {
+        tag: "FAQ",
+        title: "常見問題",
+        desc: "幫助搜尋引擎和 AI 助手理解 BestWayToLearn.AI 的學習對象、路徑和存取方式。",
+        q1: "BestWayToLearn.AI 適合誰？",
+        a1: "適合 AI 初學者、職場學習者、學生，以及想系統掌握主流 AI 工具的人。課程從基礎概念開始，不需要程式設計或機器學習背景。",
+        q2: "這個網站的學習路徑是什麼？",
+        a2: "網站按認知、工具、實戰、檢驗四個階段組織內容，包含 AI 原理、術語、工具選型、提示詞練習、實操教學和知識測驗。",
+        q3: "BestWayToLearn.AI 是否免費？",
+        a3: "站內課程內容可免費存取，學習進度保存在瀏覽器本機，不需要註冊帳號。"
+      },
       settings: {
         title: "顯示設定",
         language: "語言",
