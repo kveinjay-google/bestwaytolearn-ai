@@ -55,7 +55,10 @@ I18n.registerLocale('es', {
         toggle: "Ajustes de visualización",
         fontToggle: "Tamaño de fuente",
         installApp: "Instalar app",
-        installHint: "Abrir a pantalla completa como una app; navegar contenido en caché sin conexión"
+        installHint: "Abrir a pantalla completa como una app; navegar contenido en caché sin conexión",
+        installIosLead: "Añadir a la pantalla de inicio en Safari:",
+        installIos1: "Toca Compartir abajo <span class=\"pwa-install-share-icon\" aria-hidden=\"true\">↑</span>",
+        installIos2: "Elige «Añadir a pantalla de inicio»"
       },
       pwa: {
         offline: "Sin conexión — el contenido en caché sigue disponible"

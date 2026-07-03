@@ -60,6 +60,9 @@ I18n.registerLocale('zh-CN', {
       fontToggle: '字体大小',
       installApp: '安装到主屏幕',
       installHint: '像 App 一样全屏打开，支持离线浏览已缓存内容',
+      installIosLead: '在 Safari 中添加到主屏幕：',
+      installIos1: '点击底部分享按钮 <span class="pwa-install-share-icon" aria-hidden="true">↑</span>',
+      installIos2: '选择「添加到主屏幕」',
     },
     pwa: {
       offline: '当前离线 · 已缓存内容仍可浏览',

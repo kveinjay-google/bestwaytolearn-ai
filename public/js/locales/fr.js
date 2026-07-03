@@ -55,7 +55,10 @@ I18n.registerLocale('fr', {
         toggle: "Paramètres d'affichage",
         fontToggle: "Taille de police",
         installApp: "Installer l'app",
-        installHint: "Ouvrir en plein écran comme une app ; parcourir le contenu mis en cache hors ligne"
+        installHint: "Ouvrir en plein écran comme une app ; parcourir le contenu mis en cache hors ligne",
+        installIosLead: "Ajouter à l'écran d'accueil dans Safari :",
+        installIos1: "Appuyez sur Partager en bas <span class=\"pwa-install-share-icon\" aria-hidden=\"true\">↑</span>",
+        installIos2: "Choisissez « Sur l'écran d'accueil »"
       },
       pwa: {
         offline: "Hors ligne — le contenu mis en cache reste disponible"

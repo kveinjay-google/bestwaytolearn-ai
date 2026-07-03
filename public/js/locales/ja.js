@@ -55,7 +55,10 @@ I18n.registerLocale('ja', {
         toggle: "表示設定",
         fontToggle: "文字サイズ",
         installApp: "アプリをインストール",
-        installHint: "アプリのように全画面で開き、キャッシュ済みコンテンツをオフラインで閲覧できます"
+        installHint: "アプリのように全画面で開き、キャッシュ済みコンテンツをオフラインで閲覧できます",
+        installIosLead: "Safari でホーム画面に追加：",
+        installIos1: "下部の共有ボタン <span class=\"pwa-install-share-icon\" aria-hidden=\"true\">↑</span> をタップ",
+        installIos2: "「ホーム画面に追加」を選択"
       },
       pwa: {
         offline: "オフライン — キャッシュ済みコンテンツは引き続き利用できます"

@@ -55,7 +55,10 @@ I18n.registerLocale('de', {
         toggle: "Anzeigeeinstellungen",
         fontToggle: "Schriftgröße",
         installApp: "App installieren",
-        installHint: "Vollbild wie eine App öffnen; zwischengespeicherte Inhalte offline nutzen"
+        installHint: "Vollbild wie eine App öffnen; zwischengespeicherte Inhalte offline nutzen",
+        installIosLead: "In Safari zum Home-Bildschirm hinzufügen:",
+        installIos1: "Unten auf Teilen tippen <span class=\"pwa-install-share-icon\" aria-hidden=\"true\">↑</span>",
+        installIos2: "„Zum Home-Bildschirm“ wählen"
       },
       pwa: {
         offline: "Offline — zwischengespeicherte Inhalte sind verfügbar"

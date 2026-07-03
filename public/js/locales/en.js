@@ -60,6 +60,9 @@ I18n.registerLocale('en', {
       fontToggle: 'Font size',
       installApp: 'Install app',
       installHint: 'Open fullscreen like a native app; browse cached content offline',
+      installIosLead: 'Add to Home Screen in Safari:',
+      installIos1: 'Tap the Share button at the bottom <span class="pwa-install-share-icon" aria-hidden="true">↑</span>',
+      installIos2: 'Choose "Add to Home Screen"',
     },
     pwa: {
       offline: 'Offline — cached content is still available',

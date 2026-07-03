@@ -59,7 +59,10 @@ I18n.registerLocale('zh-TW', {
         toggle: "顯示設定",
         fontToggle: "字型大小",
         installApp: "安裝到主螢幕",
-        installHint: "像 App 一樣全屏開啟，支援離線瀏覽已快取內容"
+        installHint: "像 App 一樣全屏開啟，支援離線瀏覽已快取內容",
+        installIosLead: "在 Safari 中新增到主畫面：",
+        installIos1: "點擊底部分享按鈕 <span class=\"pwa-install-share-icon\" aria-hidden=\"true\">↑</span>",
+        installIos2: "選擇「加入主畫面」"
       },
       pwa: {
         offline: "當前離線 · 已快取內容仍可瀏覽"

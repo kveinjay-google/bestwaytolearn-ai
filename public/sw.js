@@ -1,5 +1,5 @@
 /* BestWayToLearn.AI — Service Worker (PWA offline shell) */
-const CACHE_NAME = 'bwtl-pwa-v2';
+const CACHE_NAME = 'bwtl-pwa-v3';
 const OFFLINE_URL = '/index.html';
 
 const PRECACHE_URLS = [

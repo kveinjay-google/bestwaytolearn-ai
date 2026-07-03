@@ -2,6 +2,17 @@
 const PWA = (() => {
   let deferredPrompt = null;
 
+  function isStandalone() {
+    return window.matchMedia('(display-mode: standalone)').matches
+      || window.navigator.standalone === true;
+  }
+
+  function isIosDevice() {
+    const ua = window.navigator.userAgent;
+    return /iPad|iPhone|iPod/i.test(ua)
+      || (window.navigator.platform === 'MacIntel' && window.navigator.maxTouchPoints > 1);
+  }
+
   function registerServiceWorker() {
     if (!('serviceWorker' in navigator)) return;
     window.addEventListener('load', () => {
@@ -46,22 +57,55 @@ const PWA = (() => {
     setState();
   }
 
+  function setInstallMode(field, { ios = false, android = false } = {}) {
+    const btn = document.getElementById('pwa-install-btn');
+    const iosGuide = document.getElementById('pwa-install-ios');
+    const hint = document.getElementById('pwa-install-hint');
+    if (!field) return;
+
+    if (ios) {
+      if (btn) btn.hidden = true;
+      if (iosGuide) iosGuide.hidden = false;
+      if (hint) hint.hidden = true;
+      field.classList.remove('hidden');
+      return;
+    }
+
+    if (android) {
+      if (btn) btn.hidden = false;
+      if (iosGuide) iosGuide.hidden = true;
+      if (hint) hint.hidden = false;
+      field.classList.remove('hidden');
+      return;
+    }
+
+    field.classList.add('hidden');
+  }
+
   function bindInstallButton() {
     const field = document.getElementById('pwa-install-field');
     const btn = document.getElementById('pwa-install-btn');
     if (!field || !btn) return;
 
-    const show = () => {
-      if (deferredPrompt) field.classList.remove('hidden');
-    };
     const hide = () => field.classList.add('hidden');
+    const showAndroid = () => setInstallMode(field, { android: true });
+    const showIos = () => setInstallMode(field, { ios: true });
 
-    document.addEventListener('bwtl:pwa-installable', show);
+    document.addEventListener('bwtl:pwa-installable', showAndroid);
     document.addEventListener('bwtl:pwa-installed', hide);
     btn.addEventListener('click', () => { PWA.promptInstall(); });
 
-    if (deferredPrompt) show();
-    if (window.matchMedia('(display-mode: standalone)').matches) hide();
+    if (isStandalone()) {
+      hide();
+      return;
+    }
+
+    if (isIosDevice()) {
+      showIos();
+      return;
+    }
+
+    if (deferredPrompt) showAndroid();
   }
 
   async function promptInstall() {
@@ -83,7 +127,7 @@ const PWA = (() => {
     bindInstallButton();
   }
 
-  return { init, promptInstall, canInstall };
+  return { init, promptInstall, canInstall, isStandalone, isIosDevice };
 })();
 
 if (document.readyState === 'loading') {
