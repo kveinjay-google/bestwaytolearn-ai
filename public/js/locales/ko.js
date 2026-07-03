@@ -59,7 +59,11 @@ I18n.registerLocale('ko', {
         toggle: "디스플레이 설정",
         fontToggle: "글꼴 크기",
         installApp: "앱 설치",
+        installShort: "설치",
         installHint: "기본 앱처럼 전체 화면을 엽니다. 캐시된 콘텐츠를 오프라인으로 탐색",
+        installClose: "닫기",
+        installOpenSafari: "먼저 Safari에서 이 페이지를 연 다음 홈 화면에 추가하세요.",
+        installAndroidManual: "브라우저 메뉴에서 \"홈 화면에 추가\" 또는 \"앱 설치\"를 선택하세요.",
         installIosLead: "Safari에서 홈 화면에 추가:",
         installIos1: "하단 공유 버튼 <span class=\"pwa-install-share-icon\" aria-hidden=\"true\">↑</span> 을 탭하세요",
         installIos2: "\"홈 화면에 추가\"를 선택하세요"

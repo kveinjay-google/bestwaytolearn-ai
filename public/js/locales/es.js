@@ -55,7 +55,11 @@ I18n.registerLocale('es', {
         toggle: "Ajustes de visualización",
         fontToggle: "Tamaño de fuente",
         installApp: "Instalar app",
+        installShort: "Instalar",
         installHint: "Abrir a pantalla completa como una app; navegar contenido en caché sin conexión",
+        installClose: "Cerrar",
+        installOpenSafari: "Abre esta página primero en Safari y luego añádela a la pantalla de inicio.",
+        installAndroidManual: "Abre el menú del navegador y elige «Añadir a pantalla de inicio» o «Instalar aplicación».",
         installIosLead: "Añadir a la pantalla de inicio en Safari:",
         installIos1: "Toca Compartir abajo <span class=\"pwa-install-share-icon\" aria-hidden=\"true\">↑</span>",
         installIos2: "Elige «Añadir a pantalla de inicio»"

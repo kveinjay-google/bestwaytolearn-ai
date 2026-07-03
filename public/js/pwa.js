@@ -1,6 +1,7 @@
 /* BestWayToLearn.AI — PWA install & service worker */
 const PWA = (() => {
   let deferredPrompt = null;
+  let installMode = null;
 
   function isStandalone() {
     return window.matchMedia('(display-mode: standalone)').matches
@@ -11,6 +12,37 @@ const PWA = (() => {
     const ua = window.navigator.userAgent;
     return /iPad|iPhone|iPod/i.test(ua)
       || (window.navigator.platform === 'MacIntel' && window.navigator.maxTouchPoints > 1);
+  }
+
+  function isAndroid() {
+    return /Android/i.test(window.navigator.userAgent);
+  }
+
+  function isIosSafari() {
+    if (!isIosDevice()) return false;
+    const ua = window.navigator.userAgent;
+    return /Safari/i.test(ua)
+      && !/CriOS|FxiOS|EdgiOS|OPiOS|MicroMessenger|baiduboxapp|QQ\//i.test(ua);
+  }
+
+  function isMobileViewport() {
+    return window.matchMedia('(max-width: 1024px)').matches;
+  }
+
+  function shouldOfferInstall() {
+    if (isStandalone()) return false;
+    if (isMobileViewport()) return true;
+    return Boolean(deferredPrompt);
+  }
+
+  function resolveInstallMode() {
+    if (isStandalone()) return null;
+    if (isAndroid() && deferredPrompt) return 'android';
+    if (isIosSafari()) return 'ios';
+    if (isIosDevice()) return 'safari';
+    if (deferredPrompt) return 'android';
+    if (isMobileViewport()) return 'manual';
+    return null;
   }
 
   function registerServiceWorker() {
@@ -37,11 +69,13 @@ const PWA = (() => {
       e.preventDefault();
       deferredPrompt = e;
       document.dispatchEvent(new CustomEvent('bwtl:pwa-installable'));
+      refreshInstallUI();
     });
 
     window.addEventListener('appinstalled', () => {
       deferredPrompt = null;
       document.dispatchEvent(new CustomEvent('bwtl:pwa-installed'));
+      refreshInstallUI();
     });
   }
 
@@ -57,62 +91,84 @@ const PWA = (() => {
     setState();
   }
 
-  function setInstallMode(field, { ios = false, android = false } = {}) {
-    const btn = document.getElementById('pwa-install-btn');
-    const iosGuide = document.getElementById('pwa-install-ios');
-    const hint = document.getElementById('pwa-install-hint');
-    if (!field) return;
-
-    if (ios) {
-      if (btn) btn.hidden = true;
-      if (iosGuide) iosGuide.hidden = false;
-      if (hint) hint.hidden = true;
-      field.classList.remove('hidden');
-      return;
-    }
-
-    if (android) {
-      if (btn) btn.hidden = false;
-      if (iosGuide) iosGuide.hidden = true;
-      if (hint) hint.hidden = false;
-      field.classList.remove('hidden');
-      return;
-    }
-
-    field.classList.add('hidden');
+  function setVisible(el, visible) {
+    if (!el) return;
+    el.classList.toggle('hidden', !visible);
   }
 
-  function bindInstallButton() {
-    const field = document.getElementById('pwa-install-field');
-    const btn = document.getElementById('pwa-install-btn');
-    if (!field || !btn) return;
+  function applyInstallMode(mode) {
+    installMode = mode;
+    ['android', 'ios', 'safari', 'manual'].forEach((name) => {
+      setVisible(document.getElementById(`pwa-install-mode-${name}`), mode === name);
+    });
+  }
 
-    const hide = () => field.classList.add('hidden');
-    const showAndroid = () => setInstallMode(field, { android: true });
-    const showIos = () => setInstallMode(field, { ios: true });
+  function refreshInstallUI() {
+    const offer = shouldOfferInstall();
+    const mode = offer ? resolveInstallMode() : null;
 
-    document.addEventListener('bwtl:pwa-installable', showAndroid);
-    document.addEventListener('bwtl:pwa-installed', hide);
-    btn.addEventListener('click', () => { PWA.promptInstall(); });
+    setVisible(document.getElementById('header-install-btn'), offer);
+    setVisible(document.getElementById('pwa-install-settings-divider'), offer);
+    setVisible(document.getElementById('pwa-install-settings-entry'), offer);
 
-    if (isStandalone()) {
-      hide();
+    if (!offer || !mode) {
+      closeInstallSheet();
       return;
     }
 
-    if (isIosDevice()) {
-      showIos();
-      return;
-    }
+    applyInstallMode(mode);
+  }
 
-    if (deferredPrompt) showAndroid();
+  function openInstallSheet() {
+    const sheet = document.getElementById('pwa-install-sheet');
+    if (!sheet || !shouldOfferInstall()) return;
+    refreshInstallUI();
+    sheet.classList.remove('hidden');
+    sheet.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('pwa-install-sheet-open');
+    document.getElementById('pwa-install-sheet-close')?.focus();
+  }
+
+  function closeInstallSheet() {
+    const sheet = document.getElementById('pwa-install-sheet');
+    if (!sheet) return;
+    sheet.classList.add('hidden');
+    sheet.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('pwa-install-sheet-open');
+  }
+
+  function bindInstallUI() {
+    const headerBtn = document.getElementById('header-install-btn');
+    const settingsLink = document.getElementById('pwa-install-settings-link');
+    const sheetBtn = document.getElementById('pwa-install-sheet-btn');
+    const closeBtn = document.getElementById('pwa-install-sheet-close');
+    const backdrop = document.getElementById('pwa-install-sheet-backdrop');
+
+    headerBtn?.addEventListener('click', openInstallSheet);
+    settingsLink?.addEventListener('click', openInstallSheet);
+    closeBtn?.addEventListener('click', closeInstallSheet);
+    backdrop?.addEventListener('click', closeInstallSheet);
+    sheetBtn?.addEventListener('click', () => { PWA.promptInstall(); });
+
+    document.addEventListener('bwtl:pwa-installable', refreshInstallUI);
+    document.addEventListener('bwtl:pwa-installed', refreshInstallUI);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeInstallSheet();
+    });
+
+    window.addEventListener('resize', refreshInstallUI);
+    refreshInstallUI();
   }
 
   async function promptInstall() {
-    if (!deferredPrompt) return false;
+    if (!deferredPrompt) {
+      openInstallSheet();
+      return false;
+    }
     deferredPrompt.prompt();
     await deferredPrompt.userChoice;
     deferredPrompt = null;
+    refreshInstallUI();
     return true;
   }
 
@@ -124,10 +180,20 @@ const PWA = (() => {
     registerServiceWorker();
     bindInstallPrompt();
     bindOfflineIndicator();
-    bindInstallButton();
+    bindInstallUI();
   }
 
-  return { init, promptInstall, canInstall, isStandalone, isIosDevice };
+  return {
+    init,
+    promptInstall,
+    canInstall,
+    openInstallSheet,
+    closeInstallSheet,
+    isStandalone,
+    isIosDevice,
+    shouldOfferInstall,
+    resolveInstallMode,
+  };
 })();
 
 if (document.readyState === 'loading') {

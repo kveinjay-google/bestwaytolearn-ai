@@ -55,7 +55,11 @@ I18n.registerLocale('ja', {
         toggle: "表示設定",
         fontToggle: "文字サイズ",
         installApp: "アプリをインストール",
+        installShort: "インストール",
         installHint: "アプリのように全画面で開き、キャッシュ済みコンテンツをオフラインで閲覧できます",
+        installClose: "閉じる",
+        installOpenSafari: "まず Safari でこのページを開いてから、ホーム画面に追加してください。",
+        installAndroidManual: "ブラウザメニューから「ホーム画面に追加」または「アプリをインストール」を選択してください。",
         installIosLead: "Safari でホーム画面に追加：",
         installIos1: "下部の共有ボタン <span class=\"pwa-install-share-icon\" aria-hidden=\"true\">↑</span> をタップ",
         installIos2: "「ホーム画面に追加」を選択"

@@ -395,6 +395,40 @@ main {
   white-space: nowrap;
 }
 
+.header-install {
+  display: none;
+  align-items: center;
+  gap: 0.28rem;
+  flex-shrink: 0;
+  order: 8;
+  padding: 0.32rem 0.62rem;
+  background: var(--accent-teal-dim);
+  border: 1px solid rgba(45, 212, 191, 0.35);
+  border-radius: 100px;
+  color: var(--accent-teal);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.header-install:not(.hidden) {
+  display: inline-flex;
+}
+
+.header-install:hover,
+.header-install:focus-visible {
+  background: rgba(45, 212, 191, 0.18);
+  border-color: rgba(45, 212, 191, 0.5);
+  color: var(--text-primary);
+}
+
+.header-install-icon {
+  font-size: 0.78rem;
+  line-height: 1;
+}
+
 .header-prefs {
   position: relative;
   flex-shrink: 0;
@@ -6920,13 +6954,18 @@ main {
     text-overflow: ellipsis;
   }
 
-  .header-prefs {
+  .header-install:not(.hidden) {
     order: 2;
     margin-left: auto;
   }
 
-  .header-lang {
+  .header-prefs {
     order: 3;
+    margin-left: 0;
+  }
+
+  .header-lang {
+    order: 4;
   }
 
   .nav-toggle {
@@ -7052,11 +7091,15 @@ main {
     flex-direction: column;
   }
 
-  .pwa-install-field {
+  .pwa-install-settings-entry {
     order: -1;
     margin-bottom: 0.85rem;
     padding-bottom: 0.85rem;
     border-bottom: 1px solid var(--border);
+  }
+
+  .pwa-install-settings-divider {
+    order: -2;
   }
 
   .hero {
@@ -7274,10 +7317,114 @@ main {
   pointer-events: none;
 }
 
-.pwa-install-field {
+.pwa-install-settings-entry,
+.pwa-install-mode {
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
+}
+
+.pwa-install-link {
+  width: 100%;
+  padding: 0.55rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: left;
+  background: var(--accent-teal-dim);
+  border: 1px solid rgba(45, 212, 191, 0.35);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.pwa-install-link:hover {
+  background: rgba(45, 212, 191, 0.18);
+  border-color: rgba(45, 212, 191, 0.5);
+}
+
+.pwa-install-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 10050;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.pwa-install-sheet:not(.hidden) {
+  pointer-events: auto;
+}
+
+.pwa-install-sheet.hidden {
+  display: none !important;
+}
+
+body.pwa-install-sheet-open {
+  overflow: hidden;
+}
+
+.pwa-install-sheet-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(2, 6, 12, 0.72);
+  cursor: pointer;
+}
+
+.pwa-install-sheet-panel {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 28rem);
+  max-height: min(78dvh, calc(100dvh - 1.5rem));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 max(0.75rem, env(safe-area-inset-right, 0px)) max(0.75rem, env(safe-area-inset-bottom, 0px)) max(0.75rem, env(safe-area-inset-left, 0px));
+  padding: 1rem 1rem 1.15rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  box-shadow: var(--shadow-glow);
+}
+
+.pwa-install-sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.pwa-install-sheet-header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.pwa-install-sheet-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.pwa-install-callout {
+  margin: 0;
+  padding: 0.65rem 0.75rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--accent-amber);
+  background: var(--accent-amber-dim);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: var(--radius-sm);
 }
 
 .pwa-install-btn {
@@ -7305,14 +7452,7 @@ main {
   color: var(--text-muted);
 }
 
-.pwa-install-ios {
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-}
-
-.pwa-install-ios[hidden],
-.pwa-install-btn[hidden] {
+.pwa-install-mode.hidden {
   display: none !important;
 }
 

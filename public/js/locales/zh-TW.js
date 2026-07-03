@@ -59,7 +59,11 @@ I18n.registerLocale('zh-TW', {
         toggle: "顯示設定",
         fontToggle: "字型大小",
         installApp: "安裝到主螢幕",
+        installShort: "安裝",
         installHint: "像 App 一樣全屏開啟，支援離線瀏覽已快取內容",
+        installClose: "關閉",
+        installOpenSafari: "請先用 Safari 開啟此頁面，再新增到主畫面。",
+        installAndroidManual: "點擊瀏覽器選單，選擇「加入主畫面」或「安裝應用程式」。",
         installIosLead: "在 Safari 中新增到主畫面：",
         installIos1: "點擊底部分享按鈕 <span class=\"pwa-install-share-icon\" aria-hidden=\"true\">↑</span>",
         installIos2: "選擇「加入主畫面」"

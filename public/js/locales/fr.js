@@ -55,7 +55,11 @@ I18n.registerLocale('fr', {
         toggle: "Paramètres d'affichage",
         fontToggle: "Taille de police",
         installApp: "Installer l'app",
+        installShort: "Installer",
         installHint: "Ouvrir en plein écran comme une app ; parcourir le contenu mis en cache hors ligne",
+        installClose: "Fermer",
+        installOpenSafari: "Ouvrez d'abord cette page dans Safari, puis ajoutez-la à l'écran d'accueil.",
+        installAndroidManual: "Ouvrez le menu du navigateur et choisissez « Ajouter à l'écran d'accueil » ou « Installer l'application ».",
         installIosLead: "Ajouter à l'écran d'accueil dans Safari :",
         installIos1: "Appuyez sur Partager en bas <span class=\"pwa-install-share-icon\" aria-hidden=\"true\">↑</span>",
         installIos2: "Choisissez « Sur l'écran d'accueil »"

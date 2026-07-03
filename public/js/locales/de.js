@@ -55,7 +55,11 @@ I18n.registerLocale('de', {
         toggle: "Anzeigeeinstellungen",
         fontToggle: "Schriftgröße",
         installApp: "App installieren",
+        installShort: "Installieren",
         installHint: "Vollbild wie eine App öffnen; zwischengespeicherte Inhalte offline nutzen",
+        installClose: "Schließen",
+        installOpenSafari: "Öffnen Sie diese Seite zuerst in Safari und fügen Sie sie dann zum Home-Bildschirm hinzu.",
+        installAndroidManual: "Öffnen Sie das Browsermenü und wählen Sie „Zum Home-Bildschirm“ oder „App installieren“.",
         installIosLead: "In Safari zum Home-Bildschirm hinzufügen:",
         installIos1: "Unten auf Teilen tippen <span class=\"pwa-install-share-icon\" aria-hidden=\"true\">↑</span>",
         installIos2: "„Zum Home-Bildschirm“ wählen"

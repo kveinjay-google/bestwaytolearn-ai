@@ -292,12 +292,48 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=20260703a">
+  <link rel="stylesheet" href="css/styles.css?v=20260703b">
   <link rel="stylesheet" href="css/themes.css?v=20260627c">
 </head>
 <body>
   <div class="pwa-offline-bar" id="pwa-offline-bar" role="status" aria-live="polite" hidden>
     <span data-i18n="pwa.offline">当前离线 · 已缓存内容仍可浏览</span>
+  </div>
+
+  <div class="pwa-install-sheet hidden" id="pwa-install-sheet" aria-hidden="true">
+    <button class="pwa-install-sheet-backdrop" id="pwa-install-sheet-backdrop" type="button" data-i18n-aria="settings.installClose" aria-label="关闭"></button>
+    <div class="pwa-install-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="pwa-install-sheet-title">
+      <header class="pwa-install-sheet-header">
+        <h3 id="pwa-install-sheet-title" data-i18n="settings.installApp">安装到主屏幕</h3>
+        <button type="button" class="pwa-install-sheet-close" id="pwa-install-sheet-close" data-i18n-aria="settings.installClose" aria-label="关闭">×</button>
+      </header>
+      <div class="pwa-install-sheet-body">
+        <div class="pwa-install-mode hidden" id="pwa-install-mode-android">
+          <button type="button" class="pwa-install-btn" id="pwa-install-sheet-btn" data-i18n="settings.installApp">安装到主屏幕</button>
+          <p class="pwa-install-hint" data-i18n="settings.installHint">像 App 一样全屏打开，支持离线浏览已缓存内容</p>
+        </div>
+        <div class="pwa-install-mode hidden" id="pwa-install-mode-ios">
+          <p class="pwa-install-hint" data-i18n="settings.installIosLead">在 Safari 中添加到主屏幕：</p>
+          <ol class="pwa-install-steps">
+            <li data-i18n-html="settings.installIos1">点击底部分享按钮 <span class="pwa-install-share-icon" aria-hidden="true">↑</span></li>
+            <li data-i18n="settings.installIos2">选择「添加到主屏幕」</li>
+          </ol>
+          <p class="pwa-install-hint" data-i18n="settings.installHint">像 App 一样全屏打开，支持离线浏览已缓存内容</p>
+        </div>
+        <div class="pwa-install-mode hidden" id="pwa-install-mode-safari">
+          <p class="pwa-install-callout" data-i18n="settings.installOpenSafari">请先用 Safari 打开此页面，再添加到主屏幕。</p>
+          <p class="pwa-install-hint" data-i18n="settings.installIosLead">在 Safari 中添加到主屏幕：</p>
+          <ol class="pwa-install-steps">
+            <li data-i18n-html="settings.installIos1">点击底部分享按钮 <span class="pwa-install-share-icon" aria-hidden="true">↑</span></li>
+            <li data-i18n="settings.installIos2">选择「添加到主屏幕」</li>
+          </ol>
+        </div>
+        <div class="pwa-install-mode hidden" id="pwa-install-mode-manual">
+          <p class="pwa-install-hint" data-i18n="settings.installAndroidManual">点击浏览器菜单，选择「添加到主屏幕」或「安装应用」。</p>
+          <p class="pwa-install-hint" data-i18n="settings.installHint">像 App 一样全屏打开，支持离线浏览已缓存内容</p>
+        </div>
+      </div>
+    </div>
   </div>
   <canvas id="neural-canvas" aria-hidden="true"></canvas>
 
@@ -425,6 +461,10 @@
         <a href="#ai-mcp-nav" role="tab" data-nav-tab="aiMcpNav" data-i18n="nav.mcpNav">MCP导航</a>
         <a href="#prompt-examples" role="tab" data-nav-tab="prompts" data-i18n="nav.prompts">Prompt提示词</a>
       </nav>
+      <button class="header-install hidden" id="header-install-btn" type="button" data-i18n-aria="settings.installApp" data-i18n-title="settings.installApp" title="安装到主屏幕">
+        <span class="header-install-icon" aria-hidden="true">⬇</span>
+        <span class="header-install-label" data-i18n="settings.installShort">安装</span>
+      </button>
       <div class="header-prefs" id="header-prefs">
         <button class="header-prefs-toggle" id="header-prefs-toggle" type="button" aria-expanded="false" aria-controls="header-prefs-panel" data-i18n-aria="settings.toggle" data-i18n-title="settings.toggle" title="显示设置">
           <span class="header-prefs-icon header-prefs-icon--theme" aria-hidden="true">◐</span>
@@ -486,17 +526,9 @@
               <button type="button" class="pref-font-btn" data-size="xl" aria-pressed="false" data-i18n="settings.fontXl">特大</button>
             </div>
           </div>
-          <div class="header-prefs-divider" aria-hidden="true"></div>
-          <div class="header-prefs-field pwa-install-field hidden" id="pwa-install-field">
-            <button type="button" class="pwa-install-btn" id="pwa-install-btn" data-i18n="settings.installApp">安装到主屏幕</button>
-            <div class="pwa-install-ios hidden" id="pwa-install-ios">
-              <p class="pwa-install-hint" data-i18n="settings.installIosLead">在 Safari 中添加到主屏幕：</p>
-              <ol class="pwa-install-steps">
-                <li data-i18n-html="settings.installIos1">点击底部分享按钮 <span class="pwa-install-share-icon" aria-hidden="true">↑</span></li>
-                <li data-i18n="settings.installIos2">选择「添加到主屏幕」</li>
-              </ol>
-            </div>
-            <p class="pwa-install-hint" id="pwa-install-hint" data-i18n="settings.installHint">像 App 一样全屏打开，支持离线浏览已缓存内容</p>
+          <div class="header-prefs-divider pwa-install-settings-divider hidden" id="pwa-install-settings-divider" aria-hidden="true"></div>
+          <div class="header-prefs-field pwa-install-settings-entry hidden" id="pwa-install-settings-entry">
+            <button type="button" class="pwa-install-link" id="pwa-install-settings-link" data-i18n="settings.installApp">安装到主屏幕</button>
           </div>
         </div>
       </div>
@@ -1261,7 +1293,7 @@
   <script src="js/ai-skills-nav.js?v=20260707a"></script>
   <script src="js/ai-mcp-nav.js?v=20260708d"></script>
   <script src="js/terms.js?v=20260627a"></script>
-  <script src="js/pwa.js?v=20260703a"></script>
+  <script src="js/pwa.js?v=20260703b"></script>
   <script src="js/theme.js?v=20260627c"></script>
   <script src="js/app.js?v=20260709a"></script>
 </body>
