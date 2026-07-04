@@ -8,6 +8,7 @@ const LATEST_TUTORIAL_META = {
   emptyHint: '该分类下暂无教程，试试其他标签。',
   newBadge: '最新',
   illustratedBadge: '手把手',
+  backToList: '返回教程列表',
 };
 
 const LATEST_TUTORIAL_ITEMS = [

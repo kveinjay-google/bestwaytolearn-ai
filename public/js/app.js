@@ -888,6 +888,9 @@ function switchPhaseTab(tabId, { scrollToId, behavior = 'smooth', save = true } 
   updatePhaseTabNavUI(tabId);
   if (save) localStorage.setItem(PHASE_TAB_KEY, tabId);
 
+  if (tabId === 'aiBriefing') syncAiBriefingView(scrollToId);
+  if (tabId === 'latestTutorials') syncLatestTutorialsView(scrollToId);
+
   const scrollTarget = scrollToId || PHASE_TAB_CONFIG[tabId].navHash;
   requestAnimationFrame(() => {
     scrollToPhaseTarget(scrollTarget, { behavior });
@@ -3139,6 +3142,152 @@ function renderLatestTutorialSteps(item) {
   return `<ol class="hands-on-steps">${(item.steps || []).map(s => `<li>${escapeHtml(s)}</li>`).join('')}</ol>`;
 }
 
+function parseAiBriefingDetailId(targetId) {
+  if (!targetId || !targetId.startsWith('ai-briefing-')) return null;
+  const itemId = targetId.slice('ai-briefing-'.length);
+  if (!itemId || itemId === 'section') return null;
+  return itemId;
+}
+
+function parseLatestTutorialDetailId(targetId) {
+  if (!targetId || !targetId.startsWith('latest-tutorial-')) return null;
+  const itemId = targetId.slice('latest-tutorial-'.length);
+  return itemId || null;
+}
+
+function findAiBriefingItem(itemId) {
+  return getAiBriefingData().find(item => item.id === itemId) || null;
+}
+
+function findLatestTutorialItem(itemId) {
+  return getLatestTutorialsData().find(item => item.id === itemId) || null;
+}
+
+function buildDailyFeedBackLink(href, label) {
+  return `<a class="daily-feed-back" href="${escapeHtml(href)}">← ${escapeHtml(label)}</a>`;
+}
+
+function buildLatestTutorialDetailHtml(item, itemIndex) {
+  const meta = typeof LATEST_TUTORIAL_META !== 'undefined' ? LATEST_TUTORIAL_META : {};
+  const copyLabel = typeof I18n !== 'undefined' ? I18n.t('common.copy') : '一键复制';
+  const resultLabel = '完成后你将得到：';
+  const tipsLabel = '小贴士：';
+  const openTitle = `打开 ${item.software} 官网`;
+  const items = getLatestTutorialsData();
+  const isNew = item.date === items[0]?.date;
+  const illustratedBadge = item.illustrated
+    ? `<span class="daily-feed-illustrated-badge">${escapeHtml(meta.illustratedBadge || '手把手')}</span>`
+    : '';
+
+  return `
+    ${buildDailyFeedBackLink('#latest-tutorials', meta.backToList || '返回教程列表')}
+    <article class="hands-on-item latest-tutorial-item daily-feed-card daily-feed-detail-card ${item.illustrated ? 'latest-tutorial-illustrated' : ''}" id="latest-tutorial-${escapeHtml(item.id)}">
+      <div class="hands-on-header">
+        <time class="daily-feed-date" datetime="${escapeHtml(item.date)}">${formatDailyFeedDate(item.date)}</time>
+        ${isNew ? `<span class="daily-feed-new-badge">${escapeHtml(meta.newBadge || '最新')}</span>` : ''}
+        ${illustratedBadge}
+        <div class="hands-on-meta">
+          <a class="hands-on-software" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(openTitle)}">
+            ${renderIcon({ image: iconPathForApp(item.software, item.emoji), emoji: item.emoji, className: 'theme-icon theme-icon-inline', size: 24, alt: item.software })} ${escapeHtml(item.software)}
+          </a>
+          <span class="hands-on-cat-tag">${escapeHtml(item.category)}</span>
+          <span class="hands-on-badge">${escapeHtml(item.difficulty)}</span>
+          <span class="hands-on-badge hands-on-badge-time">${escapeHtml(item.duration)}</span>
+        </div>
+      </div>
+      <h3>${escapeHtml(item.title)}</h3>
+      <p class="hands-on-desc">${escapeHtml(item.desc)}</p>
+      ${renderLatestTutorialSteps(item)}
+      <div class="hands-on-result"><strong>${resultLabel}</strong>${escapeHtml(item.result)}</div>
+      ${item.tips ? `<p class="hands-on-tips"><strong>${tipsLabel}</strong>${escapeHtml(item.tips)}</p>` : ''}
+      <div class="practice-prompt-block hands-on-prompt-block">
+        <div class="practice-prompt-header">
+          <span>复制到 ${escapeHtml(item.software)}</span>
+          <button class="btn-copy practice-copy-btn latest-tutorial-copy-btn" type="button" data-idx="${itemIndex}" aria-label="复制教程提示词">${copyLabel}</button>
+        </div>
+        <pre class="practice-prompt">${escapeHtml(item.prompt)}</pre>
+      </div>
+    </article>`;
+}
+
+function buildAiBriefingDetailHtml(item) {
+  const meta = typeof AI_BRIEFING_META !== 'undefined' ? AI_BRIEFING_META : {};
+  const readMore = meta.readMore || '阅读原文';
+  const sourceLabel = meta.sourceLabel || '来源';
+
+  return `
+    ${buildDailyFeedBackLink('#ai-briefing', meta.backToList || '返回资讯列表')}
+    <article class="daily-feed-card ai-briefing-card daily-feed-detail-card" id="ai-briefing-${escapeHtml(item.id)}">
+      <header class="daily-feed-card-header">
+        <time class="daily-feed-date" datetime="${escapeHtml(item.date)}">${formatDailyFeedDate(item.date)}</time>
+        <span class="daily-feed-category">${escapeHtml(item.category)}</span>
+      </header>
+      <h3 class="daily-feed-title">${escapeHtml(item.title)}</h3>
+      <p class="daily-feed-summary">${escapeHtml(item.summary)}</p>
+      <div class="daily-feed-tags">${(item.tags || []).map(t => `<span class="daily-feed-tag">#${escapeHtml(t)}</span>`).join('')}</div>
+      <footer class="daily-feed-card-footer">
+        <span class="daily-feed-source">${escapeHtml(sourceLabel)}：${escapeHtml(item.source)}</span>
+        <a class="daily-feed-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(readMore)} →</a>
+      </footer>
+    </article>`;
+}
+
+function syncAiBriefingView(targetId) {
+  const listView = document.getElementById('ai-briefing-list-view');
+  const detailEl = document.getElementById('ai-briefing-detail');
+  if (!listView || !detailEl) return;
+
+  const itemId = parseAiBriefingDetailId(targetId);
+  const item = itemId ? findAiBriefingItem(itemId) : null;
+
+  if (item) {
+    listView.hidden = true;
+    detailEl.hidden = false;
+    detailEl.classList.remove('hidden');
+    detailEl.innerHTML = buildAiBriefingDetailHtml(item);
+    requestAnimationFrame(() => hydrateVisibleImages(detailEl));
+    return;
+  }
+
+  listView.hidden = false;
+  detailEl.hidden = true;
+  detailEl.classList.add('hidden');
+  detailEl.innerHTML = '';
+}
+
+function syncLatestTutorialsView(targetId) {
+  const listView = document.getElementById('latest-tutorials-list-view');
+  const detailEl = document.getElementById('latest-tutorials-detail');
+  if (!listView || !detailEl) return;
+
+  const itemId = parseLatestTutorialDetailId(targetId);
+  const items = getLatestTutorialsData();
+  const item = itemId ? findLatestTutorialItem(itemId) : null;
+  const itemIndex = item ? items.findIndex(entry => entry.id === item.id) : -1;
+
+  if (item && itemIndex >= 0) {
+    listView.hidden = true;
+    detailEl.hidden = false;
+    detailEl.classList.remove('hidden');
+    detailEl.innerHTML = buildLatestTutorialDetailHtml(item, itemIndex);
+    detailEl.querySelectorAll('.latest-tutorial-copy-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.dataset.idx, 10);
+        const text = getLatestTutorialsData()[idx]?.prompt;
+        const copyLabel = typeof I18n !== 'undefined' ? I18n.t('common.copy') : '一键复制';
+        if (text) copyToClipboard(text, btn, copyLabel);
+      });
+    });
+    requestAnimationFrame(() => hydrateVisibleImages(detailEl));
+    return;
+  }
+
+  listView.hidden = false;
+  detailEl.hidden = true;
+  detailEl.classList.add('hidden');
+  detailEl.innerHTML = '';
+}
+
 function renderAiBriefing() {
   const fc = document.getElementById('ai-briefing-filter');
   if (fc) {
@@ -3162,6 +3311,7 @@ function renderAiBriefing() {
   }
   if (statEl && items.length) statEl.textContent = `${items.length} 条`;
   renderAiBriefingList();
+  syncAiBriefingView((location.hash || '').replace(/^#/, ''));
 }
 
 function renderAiBriefingList() {
@@ -3185,21 +3335,15 @@ function renderAiBriefingList() {
     return;
   }
 
-  const readMore = meta.readMore || '阅读原文';
-  const sourceLabel = meta.sourceLabel || '来源';
   container.innerHTML = visible.map(item => `
-    <article class="daily-feed-card ai-briefing-card" id="ai-briefing-${escapeHtml(item.id)}">
-      <header class="daily-feed-card-header">
+    <article class="daily-feed-preview-card ai-briefing-preview-card">
+      <div class="daily-feed-preview-meta">
         <time class="daily-feed-date" datetime="${escapeHtml(item.date)}">${formatDailyFeedDate(item.date)}</time>
         <span class="daily-feed-category">${escapeHtml(item.category)}</span>
-      </header>
-      <h3 class="daily-feed-title">${escapeHtml(item.title)}</h3>
-      <p class="daily-feed-summary">${escapeHtml(item.summary)}</p>
-      <div class="daily-feed-tags">${(item.tags || []).map(t => `<span class="daily-feed-tag">#${escapeHtml(t)}</span>`).join('')}</div>
-      <footer class="daily-feed-card-footer">
-        <span class="daily-feed-source">${escapeHtml(sourceLabel)}：${escapeHtml(item.source)}</span>
-        <a class="daily-feed-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(readMore)} →</a>
-      </footer>
+      </div>
+      <h3 class="daily-feed-preview-title">
+        <a class="daily-feed-title-link" href="#ai-briefing-${escapeHtml(item.id)}">${escapeHtml(item.title)}</a>
+      </h3>
     </article>
   `).join('');
 }
@@ -3227,6 +3371,7 @@ function renderLatestTutorials() {
   }
   if (statEl && items.length) statEl.textContent = `${items.length} 篇`;
   renderLatestTutorialsList();
+  syncLatestTutorialsView((location.hash || '').replace(/^#/, ''));
 }
 
 function renderLatestTutorialsList() {
@@ -3250,54 +3395,27 @@ function renderLatestTutorialsList() {
     return;
   }
 
-  const copyLabel = typeof I18n !== 'undefined' ? I18n.t('common.copy') : '一键复制';
-  const resultLabel = '完成后你将得到：';
-  const tipsLabel = '小贴士：';
   const newestDate = items[0]?.date;
 
-  container.innerHTML = items.map((item, i) => {
+  container.innerHTML = items.map(item => {
     const show = latestTutorialCategory === '全部' || item.category === latestTutorialCategory;
     const isNew = item.date === newestDate;
-    const openTitle = `打开 ${item.software} 官网`;
-    const illustratedBadge = item.illustrated ? `<span class="daily-feed-illustrated-badge">${escapeHtml(meta.illustratedBadge || '手把手')}</span>` : '';
+    const illustratedBadge = item.illustrated
+      ? `<span class="daily-feed-illustrated-badge">${escapeHtml(meta.illustratedBadge || '手把手')}</span>`
+      : '';
     return `
-    <article class="hands-on-item latest-tutorial-item daily-feed-card ${item.illustrated ? 'latest-tutorial-illustrated' : ''} ${show ? '' : 'hidden-practice-item'}" id="latest-tutorial-${escapeHtml(item.id)}">
-      <div class="hands-on-header">
+    <article class="daily-feed-preview-card latest-tutorial-preview-card ${show ? '' : 'hidden-practice-item'}">
+      <div class="daily-feed-preview-meta">
         <time class="daily-feed-date" datetime="${escapeHtml(item.date)}">${formatDailyFeedDate(item.date)}</time>
+        <span class="daily-feed-category">${escapeHtml(item.category)}</span>
         ${isNew ? `<span class="daily-feed-new-badge">${escapeHtml(meta.newBadge || '最新')}</span>` : ''}
         ${illustratedBadge}
-        <div class="hands-on-meta">
-          <a class="hands-on-software" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(openTitle)}">
-            ${renderIcon({ image: iconPathForApp(item.software, item.emoji), emoji: item.emoji, className: 'theme-icon theme-icon-inline', size: 24, alt: item.software })} ${escapeHtml(item.software)}
-          </a>
-          <span class="hands-on-cat-tag">${escapeHtml(item.category)}</span>
-          <span class="hands-on-badge">${escapeHtml(item.difficulty)}</span>
-          <span class="hands-on-badge hands-on-badge-time">${escapeHtml(item.duration)}</span>
-        </div>
       </div>
-      <h3>${escapeHtml(item.title)}</h3>
-      <p class="hands-on-desc">${escapeHtml(item.desc)}</p>
-      ${renderLatestTutorialSteps(item)}
-      <div class="hands-on-result"><strong>${resultLabel}</strong>${escapeHtml(item.result)}</div>
-      ${item.tips ? `<p class="hands-on-tips"><strong>${tipsLabel}</strong>${escapeHtml(item.tips)}</p>` : ''}
-      <div class="practice-prompt-block hands-on-prompt-block">
-        <div class="practice-prompt-header">
-          <span>复制到 ${escapeHtml(item.software)}</span>
-          <button class="btn-copy practice-copy-btn latest-tutorial-copy-btn" type="button" data-idx="${i}" aria-label="复制教程提示词">${copyLabel}</button>
-        </div>
-        <pre class="practice-prompt">${escapeHtml(item.prompt)}</pre>
-      </div>
+      <h3 class="daily-feed-preview-title">
+        <a class="daily-feed-title-link" href="#latest-tutorial-${escapeHtml(item.id)}">${escapeHtml(item.title)}</a>
+      </h3>
     </article>`;
   }).join('');
-
-  container.querySelectorAll('.latest-tutorial-copy-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const idx = parseInt(btn.dataset.idx, 10);
-      const sorted = getLatestTutorialsData();
-      const text = sorted[idx]?.prompt;
-      if (text) copyToClipboard(text, btn, copyLabel);
-    });
-  });
 }
 
 function renderPracticeList() {

@@ -8,6 +8,7 @@ const AI_BRIEFING_META = {
   emptyHint: '该分类下暂无资讯，试试其他标签。',
   readMore: '阅读原文',
   sourceLabel: '来源',
+  backToList: '返回资讯列表',
 };
 
 const AI_BRIEFING_ITEMS = [
