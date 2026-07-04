@@ -3,6 +3,7 @@ import {
   handleOptions,
   json,
   normalizeTargetId,
+  normalizeGuestName,
   nowSec,
   uuid,
   checkRateLimit,
@@ -82,9 +83,9 @@ async function handleComments(env, request, segments, ip) {
     if (!target) return json({ ok: false, error: '缺少 target 参数' }, 400);
 
     const rows = await env.DB.prepare(`
-      SELECT c.id, c.body, c.created_at, u.display_name
+      SELECT c.id, c.body, c.created_at, c.guest_name, u.display_name
       FROM comments c
-      JOIN users u ON u.id = c.user_id
+      LEFT JOIN users u ON u.id = c.user_id
       WHERE c.target_id = ? AND c.status = 'approved'
       ORDER BY c.created_at DESC
       LIMIT 80
@@ -96,7 +97,8 @@ async function handleComments(env, request, segments, ip) {
         id: r.id,
         body: r.body,
         createdAt: r.created_at,
-        displayName: r.display_name,
+        displayName: r.display_name || r.guest_name || '匿名',
+        isAnonymous: !r.display_name,
       })),
     });
   }
@@ -104,7 +106,6 @@ async function handleComments(env, request, segments, ip) {
   if (request.method !== 'POST') return json({ ok: false, error: 'Method not allowed' }, 405);
 
   const user = await getSessionUser(env.DB, request);
-  if (!user) return json({ ok: false, error: '请先登录后再留言' }, 401);
 
   let body = {};
   try {
@@ -116,23 +117,51 @@ async function handleComments(env, request, segments, ip) {
   const target = normalizeTargetId(body.target || body.targetId);
   const text = String(body.body || '').trim();
   const honeypot = String(body._hp_url || body.website || '').trim();
+  const guestName = normalizeGuestName(body.guestName || body.guest_name);
 
   if (!target) return json({ ok: false, error: '留言目标无效' }, 400);
 
-  const userLimit = await checkRateLimit(env.DB, `cmt:user:${user.id}`, 8, 3600);
-  const ipLimit = await checkRateLimit(env.DB, `cmt:ip:${ip}`, 15, 3600);
-  if (!userLimit || !ipLimit) {
+  const isAnonymous = !user;
+  if (isAnonymous && guestName.length < 2) {
+    return json({ ok: false, error: '匿名留言请填写昵称（至少 2 个字符）' }, 400);
+  }
+
+  const ipLimit = await checkRateLimit(
+    env.DB,
+    isAnonymous ? `cmt:anon:ip:${ip}` : `cmt:ip:${ip}`,
+    isAnonymous ? 6 : 15,
+    3600,
+  );
+  if (!ipLimit) {
     return json({ ok: false, error: '留言过于频繁，请稍后再试' }, 429);
   }
 
-  const dup = await env.DB.prepare(`
-    SELECT id FROM comments
-    WHERE user_id = ? AND body = ? AND created_at > ?
-    LIMIT 1
-  `).bind(user.id, text, nowSec() - 3600).first();
-  if (dup) return json({ ok: false, error: '请勿重复发送相同留言' }, 409);
+  if (user) {
+    const userLimit = await checkRateLimit(env.DB, `cmt:user:${user.id}`, 8, 3600);
+    if (!userLimit) {
+      return json({ ok: false, error: '留言过于频繁，请稍后再试' }, 429);
+    }
 
-  const spam = analyzeComment(text, { userEmail: user.email, honeypot });
+    const dup = await env.DB.prepare(`
+      SELECT id FROM comments
+      WHERE user_id = ? AND body = ? AND created_at > ?
+      LIMIT 1
+    `).bind(user.id, text, nowSec() - 3600).first();
+    if (dup) return json({ ok: false, error: '请勿重复发送相同留言' }, 409);
+  } else {
+    const dup = await env.DB.prepare(`
+      SELECT id FROM comments
+      WHERE user_id IS NULL AND guest_name = ? AND body = ? AND created_at > ?
+      LIMIT 1
+    `).bind(guestName, text, nowSec() - 3600).first();
+    if (dup) return json({ ok: false, error: '请勿重复发送相同留言' }, 409);
+  }
+
+  const spam = analyzeComment(text, {
+    userEmail: user?.email || '',
+    honeypot,
+    isAnonymous,
+  });
   if (spam.action === 'reject') {
     return json({ ok: false, error: mapSpamError(spam.reasons), spamScore: spam.score }, 422);
   }
@@ -140,13 +169,15 @@ async function handleComments(env, request, segments, ip) {
   const status = spam.action === 'pending' ? 'pending' : 'approved';
   const commentId = uuid();
   const created = nowSec();
+  const displayName = user?.displayName || guestName;
 
   await env.DB.prepare(`
-    INSERT INTO comments (id, user_id, target_id, body, status, spam_score, spam_reason, created_at)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO comments (id, user_id, guest_name, target_id, body, status, spam_score, spam_reason, created_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
   `).bind(
     commentId,
-    user.id,
+    user?.id || null,
+    isAnonymous ? guestName : null,
     target,
     text,
     status,
@@ -169,7 +200,8 @@ async function handleComments(env, request, segments, ip) {
       id: commentId,
       body: text,
       createdAt: created,
-      displayName: user.displayName,
+      displayName,
+      isAnonymous,
     },
   });
 }

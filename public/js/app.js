@@ -3252,7 +3252,7 @@ function syncAiBriefingView(targetId) {
     commentsHost.id = `comments-ai-briefing-${item.id}`;
     detailEl.appendChild(commentsHost);
     if (typeof BwtlComments !== 'undefined') {
-      BwtlComments.mount(commentsHost, `ai-briefing:${item.id}`, { compact: true });
+      BwtlComments.mount(commentsHost, `ai-briefing:${item.id}`);
     }
     requestAnimationFrame(() => hydrateVisibleImages(detailEl));
     return;
@@ -3292,7 +3292,7 @@ function syncLatestTutorialsView(targetId) {
     commentsHost.id = `comments-latest-tutorial-${item.id}`;
     detailEl.appendChild(commentsHost);
     if (typeof BwtlComments !== 'undefined') {
-      BwtlComments.mount(commentsHost, `latest-tutorial:${item.id}`, { compact: true });
+      BwtlComments.mount(commentsHost, `latest-tutorial:${item.id}`);
     }
     requestAnimationFrame(() => hydrateVisibleImages(detailEl));
     return;

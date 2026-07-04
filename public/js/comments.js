@@ -26,6 +26,10 @@ const BwtlComments = (function () {
       .replace(/"/g, '&quot;');
   }
 
+  function safeId(target) {
+    return String(target).replace(/[^a-zA-Z0-9_-]/g, '-');
+  }
+
   function formatTime(ts) {
     if (!ts) return '';
     const d = new Date(ts * 1000);
@@ -47,12 +51,12 @@ const BwtlComments = (function () {
     return data.comments || [];
   }
 
-  async function postComment(target, body, honeypot = '') {
+  async function postComment(target, payload) {
     const res = await fetch(API, {
       method: 'POST',
       credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ target, body, _hp_url: honeypot }),
+      body: JSON.stringify(payload),
     });
     const data = await res.json().catch(() => ({ ok: false, error: t('comments.networkError', '网络错误，请稍后重试') }));
     return { res, data };
@@ -67,42 +71,51 @@ const BwtlComments = (function () {
       return;
     }
 
-    list.innerHTML = comments.map(c => `
+    list.innerHTML = comments.map(c => {
+      const anonBadge = c.isAnonymous
+        ? `<span class="comments-anon-badge">${escapeHtml(t('comments.anonBadge', '匿名'))}</span>`
+        : '';
+      return `
       <li class="comments-item">
         <div class="comments-item-head">
-          <span class="comments-author">${escapeHtml(c.displayName || t('comments.anonymous', '学员'))}</span>
+          <span class="comments-author">${escapeHtml(c.displayName || t('comments.anonymous', '匿名'))}${anonBadge}</span>
           <time class="comments-time" datetime="${c.createdAt}">${escapeHtml(formatTime(c.createdAt))}</time>
         </div>
         <p class="comments-body">${escapeHtml(c.body)}</p>
-      </li>
-    `).join('');
+      </li>`;
+    }).join('');
   }
 
-  function buildShell(target, { compact = false } = {}) {
+  function buildShell(target) {
     const loggedIn = typeof BwtlAuth !== 'undefined' && BwtlAuth.isLoggedIn();
     const user = typeof BwtlAuth !== 'undefined' ? BwtlAuth.getUser() : null;
+    const inputId = `comments-input-${safeId(target)}`;
+    const guestId = `comments-guest-${safeId(target)}`;
 
-    const sectionTitle = compact
-      ? `<h4 class="comments-section-title">${escapeHtml(t('comments.sectionTitle', '读者留言'))}</h4>`
-      : '';
+    const guestFields = loggedIn ? '' : `
+      <label class="comments-guest-field">
+        <span>${escapeHtml(t('comments.guestName', '昵称'))}</span>
+        <input type="text" id="${guestId}" class="comments-guest-input" maxlength="20" autocomplete="nickname" placeholder="${escapeHtml(t('comments.guestNamePlaceholder', '匿名昵称，如：路人甲'))}">
+      </label>`;
+
+    const modeHint = loggedIn
+      ? `<p class="comments-mode-hint">${escapeHtml(t('comments.loggedInAs', '以 {name} 身份留言', { name: user?.displayName || '' }))}</p>`
+      : `<p class="comments-mode-hint">${escapeHtml(t('comments.anonHint', '未登录将以匿名身份留言，也可右上角注册账号。'))}</p>`;
 
     return `
-      <div class="comments-panel${compact ? ' comments-panel--compact' : ''}" data-target="${escapeHtml(target)}">
-        ${sectionTitle}
-        <div class="comments-compose${loggedIn ? '' : ' comments-compose--locked'}">
-          ${loggedIn ? `
-            <label class="sr-only" for="comments-input-${escapeHtml(target)}">${escapeHtml(t('comments.placeholder', '写下你的想法…'))}</label>
-            <textarea id="comments-input-${escapeHtml(target)}" class="comments-input" rows="3" maxlength="800" placeholder="${escapeHtml(t('comments.placeholder', '写下你的想法…'))}"></textarea>
-            <input type="text" class="comments-hp" name="_hp_url" tabindex="-1" autocomplete="off" aria-hidden="true">
-            <div class="comments-compose-actions">
-              <p class="comments-hint">${escapeHtml(t('comments.hint', '请勿发布广告、外链或重复内容，留言将自动审核。'))}</p>
-              <button type="button" class="btn btn-primary comments-submit">${escapeHtml(t('comments.submit', '发表留言'))}</button>
-            </div>
-            <p class="comments-status hidden" role="status"></p>
-          ` : `
-            <p class="comments-login-prompt">${escapeHtml(t('comments.loginPrompt', '登录后即可留言交流。'))}</p>
-            <button type="button" class="btn btn-primary comments-login-btn">${escapeHtml(t('comments.loginBtn', '登录 / 注册'))}</button>
-          `}
+      <div class="comments-panel comments-panel--detail" data-target="${escapeHtml(target)}">
+        <h4 class="comments-section-title">${escapeHtml(t('comments.sectionTitle', '读者留言'))}</h4>
+        <div class="comments-compose">
+          ${modeHint}
+          ${guestFields}
+          <label class="sr-only" for="${inputId}">${escapeHtml(t('comments.placeholder', '写下你的想法…'))}</label>
+          <textarea id="${inputId}" class="comments-input" rows="3" maxlength="800" placeholder="${escapeHtml(t('comments.placeholder', '写下你的想法…'))}"></textarea>
+          <input type="text" class="comments-hp" name="_hp_url" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="comments-compose-actions">
+            <p class="comments-hint">${escapeHtml(t('comments.hint', '请勿发布广告、外链或重复内容，留言将自动审核。'))}</p>
+            <button type="button" class="btn btn-primary comments-submit">${escapeHtml(t('comments.submit', '发表留言'))}</button>
+          </div>
+          <p class="comments-status hidden" role="status"></p>
         </div>
         <ul class="comments-list" aria-live="polite"></ul>
       </div>`;
@@ -129,18 +142,13 @@ const BwtlComments = (function () {
     container.dataset.commentsBound = '1';
 
     container.addEventListener('click', async e => {
-      const loginBtn = e.target.closest('.comments-login-btn');
-      if (loginBtn) {
-        if (typeof BwtlAuth !== 'undefined') BwtlAuth.openLogin();
-        return;
-      }
-
       const submitBtn = e.target.closest('.comments-submit');
       if (!submitBtn) return;
 
       const panel = container.querySelector('.comments-panel');
       const target = panel?.dataset.target;
       const input = container.querySelector('.comments-input');
+      const guestInput = container.querySelector('.comments-guest-input');
       const status = container.querySelector('.comments-status');
       const hp = container.querySelector('.comments-hp');
       if (!target || !input) return;
@@ -156,10 +164,24 @@ const BwtlComments = (function () {
 
       if (hp?.value) return;
 
+      const loggedIn = typeof BwtlAuth !== 'undefined' && BwtlAuth.isLoggedIn();
+      const guestName = guestInput?.value?.trim() || '';
+      if (!loggedIn && guestName.length < 2) {
+        if (status) {
+          status.textContent = t('comments.guestNameRequired', '匿名留言请填写昵称（至少 2 个字符）');
+          status.classList.remove('hidden');
+        }
+        guestInput?.focus();
+        return;
+      }
+
       submitBtn.setAttribute('disabled', 'disabled');
       if (status) status.classList.add('hidden');
 
-      const { data } = await postComment(target, body, hp?.value || '');
+      const payload = { target, body, _hp_url: hp?.value || '' };
+      if (!loggedIn) payload.guestName = guestName;
+
+      const { data } = await postComment(target, payload);
       submitBtn.removeAttribute('disabled');
 
       if (!data.ok) {
@@ -171,6 +193,7 @@ const BwtlComments = (function () {
       }
 
       input.value = '';
+      if (guestInput) guestInput.value = '';
       if (status) {
         status.textContent = data.pending
           ? (data.message || t('comments.pending', '留言已提交，正在审核中'))
@@ -185,20 +208,17 @@ const BwtlComments = (function () {
     const panel = container.querySelector('.comments-panel');
     if (!panel) return;
     const target = panel.dataset.target;
-    const compact = panel.classList.contains('comments-panel--compact');
     const listHtml = panel.querySelector('.comments-list')?.outerHTML || '<ul class="comments-list" aria-live="polite"></ul>';
-    const shell = buildShell(target, { compact });
-    container.innerHTML = shell;
+    container.innerHTML = buildShell(target);
     const newList = container.querySelector('.comments-list');
     const oldList = new DOMParser().parseFromString(listHtml, 'text/html').querySelector('.comments-list');
     if (newList && oldList) newList.innerHTML = oldList.innerHTML;
     bindEvents(container);
   }
 
-  function mount(el, target, options = {}) {
+  function mount(el, target) {
     if (!el || !target) return;
-    const compact = !!options.compact;
-    el.innerHTML = buildShell(target, { compact });
+    el.innerHTML = buildShell(target);
     bindEvents(el);
     mounts.set(el, target);
     refresh(el);
@@ -212,9 +232,6 @@ const BwtlComments = (function () {
   }
 
   function init() {
-    const guestbook = document.getElementById('guestbook-comments');
-    if (guestbook) mount(guestbook, 'site:guestbook');
-
     if (typeof BwtlAuth !== 'undefined') {
       BwtlAuth.onChange(() => {
         mounts.forEach((target, el) => remountCompose(el));

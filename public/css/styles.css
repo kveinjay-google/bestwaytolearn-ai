@@ -243,6 +243,45 @@ main {
   font-weight: 600;
 }
 
+.header-auth {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.header-auth-guest {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.header-auth-guest.hidden { display: none; }
+
+.header-auth-btn {
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.header-auth-btn:hover {
+  border-color: var(--accent-teal);
+  color: var(--accent-teal);
+}
+
+.header-auth-register {
+  border-color: var(--accent-teal);
+  color: var(--accent-teal);
+  background: var(--accent-teal-dim);
+}
+
 .header-user {
   display: flex;
   align-items: center;
@@ -257,6 +296,8 @@ main {
   cursor: pointer;
   transition: var(--transition);
 }
+
+.header-user.hidden { display: none; }
 
 .header-user:hover {
   border-color: var(--accent-teal);
@@ -496,10 +537,47 @@ main {
 
 .comments-status.hidden { display: none; }
 
-.comments-login-prompt {
-  font-size: 0.9rem;
+.comments-mode-hint {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin: 0 0 0.65rem;
+  line-height: 1.45;
+}
+
+.comments-guest-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.65rem;
+  font-size: 0.82rem;
   color: var(--text-secondary);
-  margin-bottom: 0.75rem;
+}
+
+.comments-guest-input {
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+}
+
+.comments-guest-input:focus {
+  outline: none;
+  border-color: var(--accent-teal);
+}
+
+.comments-anon-badge {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.1rem 0.4rem;
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  vertical-align: middle;
 }
 
 .comments-list {
@@ -813,6 +891,7 @@ main {
   flex-shrink: 0;
 }
 
+.header-auth,
 .header-user,
 .nav-toggle {
   flex-shrink: 0;
@@ -7280,7 +7359,7 @@ main {
   .phase-progress { margin-left: 0; }
   .header-progress { display: none; }
   .header-continue { display: none; }
-  .header-user { display: none; }
+  .header-auth { display: none; }
   .teacher-coach { left: 1rem; right: 1rem; max-width: none; bottom: 1rem; }
   .teacher-coach.collapsed { left: auto; right: 1rem; width: auto; }
 

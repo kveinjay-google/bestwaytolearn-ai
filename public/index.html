@@ -292,7 +292,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=20260704c">
+  <link rel="stylesheet" href="css/styles.css?v=20260704d">
   <link rel="stylesheet" href="css/themes.css?v=20260627c">
 </head>
 <body>
@@ -583,10 +583,16 @@
         <ul class="header-lang-menu hidden" id="header-lang-menu" role="listbox" data-i18n-aria="settings.chooseLanguage" aria-label="选择语言"></ul>
       </div>
       <a href="#phase-learn" class="header-continue" id="header-continue" data-i18n="nav.continue" data-i18n-title="nav.continue" title="继续未完成的学习">继续学习 →</a>
-      <button class="header-user" id="header-user" type="button" data-i18n-title="auth.accountBtn" title="账号" aria-haspopup="dialog" aria-expanded="false" aria-controls="user-profile-panel">
-        <img class="header-user-avatar" src="assets/icons/bwtl-mark.png" width="20" height="20" alt="">
-        <span class="header-user-name" id="header-user-name" data-i18n="user.defaultName">学员</span>
-      </button>
+      <div class="header-auth" id="header-auth">
+        <div class="header-auth-guest" id="header-auth-guest">
+          <button class="header-auth-btn header-auth-login" id="header-auth-login" type="button" data-i18n="auth.tabLogin">登录</button>
+          <button class="header-auth-btn header-auth-register" id="header-auth-register" type="button" data-i18n="auth.tabRegister">注册</button>
+        </div>
+        <button class="header-user hidden" id="header-user" type="button" data-i18n-title="auth.accountBtn" title="账号" aria-haspopup="dialog" aria-expanded="false" aria-controls="user-profile-panel">
+          <img class="header-user-avatar" src="assets/icons/bwtl-mark.png" width="20" height="20" alt="">
+          <span class="header-user-name" id="header-user-name" data-i18n="user.defaultName">学员</span>
+        </button>
+      </div>
       <div class="header-progress" id="header-progress" data-i18n-title="nav.progress" title="学习进度">0%</div>
       <button class="nav-toggle" data-i18n-aria="nav.menuOpen" aria-label="打开菜单" aria-expanded="false">
         <span></span><span></span>
@@ -1279,15 +1285,6 @@
       </section>
     </div>
 
-    <section class="section guestbook-section" id="guestbook" aria-labelledby="guestbook-title">
-      <div class="section-header section-header-compact">
-        <span class="section-tag" data-i18n="guestbook.tag">社区</span>
-        <h2 id="guestbook-title" data-i18n="guestbook.title">留言板</h2>
-        <p data-i18n="guestbook.desc">注册登录后即可留言。系统会自动过滤广告、外链和重复垃圾内容，共建友好学习社区。</p>
-      </div>
-      <div id="guestbook-comments" class="comments-mount"></div>
-    </section>
-
     <section class="section seo-faq-section" id="faq" aria-labelledby="faq-title">
       <div class="section-header section-header-compact">
         <span class="section-tag" data-i18n="seoFaq.tag">FAQ</span>
@@ -1415,8 +1412,8 @@
   <script src="js/terms.js?v=20260627a"></script>
   <script src="js/pwa.js?v=20260703b"></script>
   <script src="js/theme.js?v=20260627c"></script>
-  <script src="js/auth.js?v=20260704c"></script>
-  <script src="js/comments.js?v=20260704c"></script>
-  <script src="js/app.js?v=20260704c"></script>
+  <script src="js/auth.js?v=20260704d"></script>
+  <script src="js/comments.js?v=20260704d"></script>
+  <script src="js/app.js?v=20260704d"></script>
 </body>
 </html>

@@ -62,13 +62,20 @@ const BwtlAuth = (function () {
   }
 
   function updateHeader() {
+    const guestBar = document.getElementById('header-auth-guest');
+    const userBtn = document.getElementById('header-user');
     const headerName = document.getElementById('header-user-name');
-    if (!headerName) return;
-    if (user?.displayName) {
-      headerName.textContent = user.displayName;
+
+    if (user) {
+      guestBar?.classList.add('hidden');
+      userBtn?.classList.remove('hidden');
+      if (headerName) headerName.textContent = user.displayName || '';
       return;
     }
-    if (typeof getUserName === 'function') {
+
+    guestBar?.classList.remove('hidden');
+    userBtn?.classList.add('hidden');
+    if (headerName && typeof getUserName === 'function') {
       headerName.textContent = getUserName();
     }
   }
@@ -258,13 +265,25 @@ const BwtlAuth = (function () {
     return () => listeners.delete(fn);
   }
 
+  function openRegister() {
+    panelTab = 'register';
+    setPanelOpen(true);
+  }
+
+  function bindHeaderAuth() {
+    if (document.getElementById('header-auth')?.dataset.authBound) return;
+    document.getElementById('header-auth')?.setAttribute('data-auth-bound', '1');
+
+    document.getElementById('header-auth-login')?.addEventListener('click', () => openLogin());
+    document.getElementById('header-auth-register')?.addEventListener('click', () => openRegister());
+
+    const headerBtn = document.getElementById('header-user');
+    headerBtn?.addEventListener('click', () => setPanelOpen(true));
+  }
+
   async function init() {
     bindPanel();
-    const headerBtn = document.getElementById('header-user');
-    if (headerBtn && !headerBtn.dataset.authClick) {
-      headerBtn.dataset.authClick = '1';
-      headerBtn.addEventListener('click', () => setPanelOpen(true));
-    }
+    bindHeaderAuth();
     try {
       await fetchMe();
     } catch {
@@ -292,6 +311,7 @@ const BwtlAuth = (function () {
     logout,
     onChange,
     openLogin,
+    openRegister,
     setPanelOpen,
     escapeHtml,
   };

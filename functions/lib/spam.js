@@ -17,7 +17,7 @@ const SUSPICIOUS = [
   /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/gi,
 ];
 
-export function analyzeComment(body, { userEmail = '', honeypot = '' } = {}) {
+export function analyzeComment(body, { userEmail = '', honeypot = '', isAnonymous = false } = {}) {
   const reasons = [];
   let score = 0;
   const text = String(body || '').trim();
@@ -78,15 +78,20 @@ export function analyzeComment(body, { userEmail = '', honeypot = '' } = {}) {
     reasons.push('pattern_repeat');
   }
 
-  const freeMailOk = normalizeEmail(userEmail);
-  if (!freeMailOk) {
-    score += 5;
+  if (isAnonymous) {
+    score += 12;
     reasons.push('anonymous');
+  } else {
+    const freeMailOk = normalizeEmail(userEmail);
+    if (!freeMailOk) {
+      score += 5;
+      reasons.push('no_email');
+    }
   }
 
   let action = 'approve';
   if (score >= 55) action = 'reject';
-  else if (score >= 22) action = 'pending';
+  else if (score >= 22 || (isAnonymous && score >= 12)) action = 'pending';
 
   return { score, reasons, action };
 }

@@ -44,6 +44,10 @@ export function normalizeDisplayName(name) {
   return String(name || '').trim().slice(0, 32);
 }
 
+export function normalizeGuestName(name) {
+  return String(name || '').trim().replace(/\s+/g, ' ').slice(0, 20);
+}
+
 export function normalizeTargetId(target) {
   const t = String(target || '').trim().slice(0, 120);
   if (!/^[\w:.@-]+$/.test(t)) return '';
