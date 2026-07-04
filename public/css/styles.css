@@ -315,6 +315,251 @@ main {
 
 .user-profile-actions .btn { flex: 1; min-width: 100px; }
 
+.account-modal { max-width: 440px; }
+
+.account-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.account-tab-btn {
+  flex: 1;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.account-tab-btn.active,
+.account-tab-btn[aria-selected="true"] {
+  border-color: var(--accent-teal);
+  color: var(--accent-teal);
+  background: rgba(45, 212, 191, 0.08);
+}
+
+.account-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.account-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.account-field input {
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+}
+
+.account-field input:focus {
+  outline: none;
+  border-color: var(--accent-teal);
+}
+
+.account-form-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.account-form-error {
+  font-size: 0.82rem;
+  color: #f87171;
+  margin: 0;
+}
+
+.account-form-error.hidden { display: none; }
+
+.account-submit { width: 100%; margin-top: 0.25rem; }
+
+.account-close-guest {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.account-signed-in {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.account-user-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  margin-bottom: 0.25rem;
+}
+
+.account-user-email {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  word-break: break-all;
+}
+
+.guestbook-section {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.comments-mount { margin-top: 1rem; }
+
+.comments-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+}
+
+.comments-panel--compact {
+  margin-top: 1.5rem;
+  padding: 1rem;
+}
+
+.comments-section-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  margin: 0 0 0.85rem;
+  color: var(--text-secondary);
+}
+
+.comments-compose { margin-bottom: 1.25rem; }
+
+.comments-input {
+  width: 100%;
+  min-height: 5rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.comments-input:focus {
+  outline: none;
+  border-color: var(--accent-teal);
+}
+
+.comments-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.comments-compose-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.65rem;
+}
+
+.comments-hint {
+  flex: 1;
+  min-width: 180px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.comments-status {
+  font-size: 0.82rem;
+  color: var(--accent-teal);
+  margin-top: 0.5rem;
+}
+
+.comments-status.hidden { display: none; }
+
+.comments-login-prompt {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.comments-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.comments-item {
+  padding: 0.85rem 1rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.comments-item-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.comments-author {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent-teal);
+}
+
+.comments-time {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.comments-body {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text-primary);
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.comments-empty,
+.comments-error {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  padding: 0.5rem 0;
+}
+
+.comments-mount--detail .comments-panel {
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
 .header-lang {
   position: relative;
   display: flex;

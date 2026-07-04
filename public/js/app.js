@@ -49,6 +49,8 @@ function saveUser(data) {
 }
 
 function getUserName() {
+  const accountName = typeof BwtlAuth !== 'undefined' ? BwtlAuth.getUser()?.displayName?.trim() : '';
+  if (accountName) return accountName;
   const name = currentUser.name?.trim();
   const fallback = typeof I18n !== 'undefined' ? I18n.getDefaultUserName() : '学员';
   return isPlaceholderUserName(name) ? fallback : (name || fallback);
@@ -3245,6 +3247,13 @@ function syncAiBriefingView(targetId) {
     detailEl.hidden = false;
     detailEl.classList.remove('hidden');
     detailEl.innerHTML = buildAiBriefingDetailHtml(item);
+    const commentsHost = document.createElement('div');
+    commentsHost.className = 'comments-mount comments-mount--detail';
+    commentsHost.id = `comments-ai-briefing-${item.id}`;
+    detailEl.appendChild(commentsHost);
+    if (typeof BwtlComments !== 'undefined') {
+      BwtlComments.mount(commentsHost, `ai-briefing:${item.id}`, { compact: true });
+    }
     requestAnimationFrame(() => hydrateVisibleImages(detailEl));
     return;
   }
@@ -3278,6 +3287,13 @@ function syncLatestTutorialsView(targetId) {
         if (text) copyToClipboard(text, btn, copyLabel);
       });
     });
+    const commentsHost = document.createElement('div');
+    commentsHost.className = 'comments-mount comments-mount--detail';
+    commentsHost.id = `comments-latest-tutorial-${item.id}`;
+    detailEl.appendChild(commentsHost);
+    if (typeof BwtlComments !== 'undefined') {
+      BwtlComments.mount(commentsHost, `latest-tutorial:${item.id}`, { compact: true });
+    }
     requestAnimationFrame(() => hydrateVisibleImages(detailEl));
     return;
   }
@@ -4358,11 +4374,11 @@ function getDefaultPersonalization() {
 }
 
 function applyLocalePersonalization() {
-  if (currentUser.name?.trim() && !isPlaceholderUserName(currentUser.name)) {
-    applyPersonalization(currentUser.name.trim());
-  } else {
-    clearPersonalization();
-  }
+  const accountName = typeof BwtlAuth !== 'undefined' ? BwtlAuth.getUser()?.displayName?.trim() : '';
+  const localName = currentUser.name?.trim();
+  const name = accountName || (isPlaceholderUserName(localName) ? '' : localName);
+  if (name) applyPersonalization(name);
+  else clearPersonalization();
 }
 
 function clearPersonalization() {
@@ -4524,38 +4540,8 @@ function clearProfileName() {
 }
 
 function initUserProfile() {
-  const panel = document.getElementById('user-profile-panel');
-  if (!panel) return;
-
-  const open = () => setProfilePanelOpen(true);
-  const close = () => setProfilePanelOpen(false);
-
-  document.getElementById('header-user')?.addEventListener('click', open);
-  document.getElementById('profile-manage-footer')?.addEventListener('click', open);
-  document.getElementById('profile-close')?.addEventListener('click', close);
-
-  panel.addEventListener('click', e => {
-    if (e.target === panel) close();
-  });
-
-  document.getElementById('profile-save')?.addEventListener('click', () => {
-    const input = document.getElementById('profile-name-input');
-    saveProfileName(input?.value || '');
-  });
-
-  document.getElementById('profile-clear')?.addEventListener('click', clearProfileName);
-
-  const input = document.getElementById('profile-name-input');
-  input?.addEventListener('input', () => {
-    document.getElementById('profile-name-error')?.classList.add('hidden');
-  });
-  input?.addEventListener('keydown', e => {
-    if (e.key === 'Enter') document.getElementById('profile-save')?.click();
-    if (e.key === 'Escape') close();
-  });
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && !panel.classList.contains('hidden')) close();
+  document.getElementById('profile-manage-footer')?.addEventListener('click', () => {
+    if (typeof BwtlAuth !== 'undefined') BwtlAuth.setPanelOpen(true);
   });
 }
 
@@ -5344,6 +5330,8 @@ document.addEventListener('DOMContentLoaded', () => {
   renderQuizPrelude();
   initPhaseTabs();
   initWelcome();
+  if (typeof BwtlAuth !== 'undefined') BwtlAuth.init();
+  if (typeof BwtlComments !== 'undefined') BwtlComments.init();
   initUserProfile();
   initTeacherCoach();
   const quizCounter = document.getElementById('quiz-counter');

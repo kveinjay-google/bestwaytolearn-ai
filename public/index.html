@@ -292,7 +292,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=20260704b">
+  <link rel="stylesheet" href="css/styles.css?v=20260704c">
   <link rel="stylesheet" href="css/themes.css?v=20260627c">
 </head>
 <body>
@@ -406,19 +406,60 @@
     </div>
   </div>
 
-  <!-- 学员昵称管理 -->
+  <!-- 账号登录 / 注册 -->
   <div class="user-profile-overlay hidden" id="user-profile-panel" role="dialog" aria-modal="true" aria-labelledby="user-profile-title">
-    <div class="user-profile-modal">
-      <h2 id="user-profile-title" data-i18n="profile.title">管理我的昵称</h2>
-      <p class="user-profile-desc" data-i18n="profile.desc">仅用于站内称呼，不收集真实姓名。设置后凯文会用昵称陪你学习，可随时修改或清除。</p>
-      <label class="sr-only" for="profile-name-input">昵称</label>
-      <input type="text" id="profile-name-input" class="welcome-name-input" data-i18n-placeholder="welcome.namePlaceholder" placeholder="输入昵称，如：小明" maxlength="20" autocomplete="nickname">
-      <p class="welcome-name-error hidden" id="profile-name-error" data-i18n="profile.nameError">请至少输入 1 个字符</p>
-      <div class="user-profile-actions">
-        <button class="btn btn-primary" id="profile-save" type="button" data-i18n="profile.save">保存昵称</button>
-        <button class="btn btn-ghost" id="profile-clear" type="button" data-i18n="profile.clear">清除昵称</button>
-        <button class="btn btn-ghost" id="profile-close" type="button" data-i18n="profile.close">关闭</button>
+    <div class="user-profile-modal account-modal">
+      <h2 id="user-profile-title" data-i18n="auth.loginTitle">登录账号</h2>
+
+      <div id="account-guest-view">
+        <div class="account-tabs" role="tablist" data-i18n-aria="auth.tabList" aria-label="账号">
+          <button type="button" class="account-tab-btn active" data-tab="login" role="tab" aria-selected="true" data-i18n="auth.tabLogin">登录</button>
+          <button type="button" class="account-tab-btn" data-tab="register" role="tab" aria-selected="false" data-i18n="auth.tabRegister">注册</button>
+        </div>
+
+        <form id="account-login-form" class="account-form" autocomplete="on">
+          <label class="account-field">
+            <span data-i18n="auth.email">邮箱</span>
+            <input type="email" name="email" required autocomplete="email" inputmode="email" data-i18n-placeholder="auth.emailPlaceholder" placeholder="you@example.com">
+          </label>
+          <label class="account-field">
+            <span data-i18n="auth.password">密码</span>
+            <input type="password" name="password" required minlength="8" autocomplete="current-password" data-i18n-placeholder="auth.passwordPlaceholder" placeholder="至少 8 位">
+          </label>
+          <p class="account-form-error hidden" id="account-login-error" role="alert"></p>
+          <button class="btn btn-primary account-submit" type="submit" data-i18n="auth.loginBtn">登录</button>
+        </form>
+
+        <form id="account-register-form" class="account-form" hidden autocomplete="on">
+          <label class="account-field">
+            <span data-i18n="auth.displayName">昵称</span>
+            <input type="text" name="displayName" required minlength="2" maxlength="32" autocomplete="nickname" data-i18n-placeholder="auth.displayNamePlaceholder" placeholder="显示名称，如：小明">
+          </label>
+          <label class="account-field">
+            <span data-i18n="auth.email">邮箱</span>
+            <input type="email" name="email" required autocomplete="email" inputmode="email" data-i18n-placeholder="auth.emailPlaceholder" placeholder="you@example.com">
+          </label>
+          <label class="account-field">
+            <span data-i18n="auth.password">密码</span>
+            <input type="password" name="password" required minlength="8" autocomplete="new-password" data-i18n-placeholder="auth.passwordPlaceholder" placeholder="至少 8 位">
+          </label>
+          <p class="account-form-desc" data-i18n="auth.registerDesc">注册后可留言交流。我们会对留言进行自动审核，拦截广告与垃圾信息。</p>
+          <p class="account-form-error hidden" id="account-register-error" role="alert"></p>
+          <button class="btn btn-primary account-submit" type="submit" data-i18n="auth.registerBtn">注册</button>
+        </form>
       </div>
+
+      <div id="account-user-view" hidden>
+        <p class="account-signed-in" data-i18n="auth.signedIn">已登录为</p>
+        <p class="account-user-name" id="account-display-name"></p>
+        <p class="account-user-email" id="account-email"></p>
+        <div class="user-profile-actions">
+          <button class="btn btn-ghost" id="account-logout" type="button" data-i18n="auth.logout">退出登录</button>
+          <button class="btn btn-ghost" id="profile-close" type="button" data-i18n="profile.close">关闭</button>
+        </div>
+      </div>
+
+      <button class="btn btn-ghost account-close-guest" id="profile-close-guest" type="button" data-i18n="profile.close">关闭</button>
     </div>
   </div>
 
@@ -542,7 +583,7 @@
         <ul class="header-lang-menu hidden" id="header-lang-menu" role="listbox" data-i18n-aria="settings.chooseLanguage" aria-label="选择语言"></ul>
       </div>
       <a href="#phase-learn" class="header-continue" id="header-continue" data-i18n="nav.continue" data-i18n-title="nav.continue" title="继续未完成的学习">继续学习 →</a>
-      <button class="header-user" id="header-user" type="button" data-i18n-title="user.manage" title="管理我的昵称" aria-haspopup="dialog" aria-expanded="false" aria-controls="user-profile-panel">
+      <button class="header-user" id="header-user" type="button" data-i18n-title="auth.accountBtn" title="账号" aria-haspopup="dialog" aria-expanded="false" aria-controls="user-profile-panel">
         <img class="header-user-avatar" src="assets/icons/bwtl-mark.png" width="20" height="20" alt="">
         <span class="header-user-name" id="header-user-name" data-i18n="user.defaultName">学员</span>
       </button>
@@ -1238,6 +1279,15 @@
       </section>
     </div>
 
+    <section class="section guestbook-section" id="guestbook" aria-labelledby="guestbook-title">
+      <div class="section-header section-header-compact">
+        <span class="section-tag" data-i18n="guestbook.tag">社区</span>
+        <h2 id="guestbook-title" data-i18n="guestbook.title">留言板</h2>
+        <p data-i18n="guestbook.desc">注册登录后即可留言。系统会自动过滤广告、外链和重复垃圾内容，共建友好学习社区。</p>
+      </div>
+      <div id="guestbook-comments" class="comments-mount"></div>
+    </section>
+
     <section class="section seo-faq-section" id="faq" aria-labelledby="faq-title">
       <div class="section-header section-header-compact">
         <span class="section-tag" data-i18n="seoFaq.tag">FAQ</span>
@@ -1255,7 +1305,7 @@
         </article>
         <article class="seo-faq-item">
           <h3 data-i18n="seoFaq.q3">BestWayToLearn.AI 是否免费？</h3>
-          <p data-i18n="seoFaq.a3">站内课程内容可免费访问，学习进度保存在浏览器本地，不需要注册账号。</p>
+          <p data-i18n="seoFaq.a3">站内课程内容可免费访问，学习进度保存在浏览器本地。注册账号后可参与留言讨论，无需付费。</p>
         </article>
       </div>
     </section>
@@ -1365,6 +1415,8 @@
   <script src="js/terms.js?v=20260627a"></script>
   <script src="js/pwa.js?v=20260703b"></script>
   <script src="js/theme.js?v=20260627c"></script>
-  <script src="js/app.js?v=20260704b"></script>
+  <script src="js/auth.js?v=20260704c"></script>
+  <script src="js/comments.js?v=20260704c"></script>
+  <script src="js/app.js?v=20260704c"></script>
 </body>
 </html>

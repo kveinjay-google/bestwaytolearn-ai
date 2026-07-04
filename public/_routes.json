@@ -1,5 +1,5 @@
 {
   "version": 1,
-  "include": ["/baidu_verify_codeva-vahRik1FaY.html"],
+  "include": ["/api/*", "/baidu_verify_codeva-vahRik1FaY.html"],
   "exclude": []
 }
