@@ -5,7 +5,7 @@ pages_build_output_dir = "public"
 [[d1_databases]]
 binding = "DB"
 database_name = "bwtl-community"
-database_id = "00000000-0000-0000-0000-000000000000"
+database_id = "7ba5d4b5-efbe-406a-871e-466c717b3784"
 
 [vars]
 # Set JWT_SECRET and TURNSTILE_SECRET in Cloudflare Pages dashboard (Production/Preview).
