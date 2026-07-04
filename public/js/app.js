@@ -4530,18 +4530,9 @@ function setWelcomeOpen(open) {
 }
 
 function setProfilePanelOpen(open) {
-  const panel = document.getElementById('user-profile-panel');
-  const headerBtn = document.getElementById('header-user');
-  const input = document.getElementById('profile-name-input');
-  const error = document.getElementById('profile-name-error');
-  if (!panel) return;
-  panel.classList.toggle('hidden', !open);
-  headerBtn?.setAttribute('aria-expanded', open ? 'true' : 'false');
-  if (open) {
-    if (input) input.value = currentUser.name || '';
-    error?.classList.add('hidden');
-    setTimeout(() => input?.focus(), 200);
-  }
+  if (typeof BwtlAuth === 'undefined') return;
+  if (open) BwtlAuth.setPanelOpen(true);
+  else BwtlAuth.closeAllPanels?.();
 }
 
 function saveProfileName(name) {

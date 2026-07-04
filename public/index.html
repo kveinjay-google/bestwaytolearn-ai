@@ -292,7 +292,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=20260704f">
+  <link rel="stylesheet" href="css/styles.css?v=20260704g">
   <link rel="stylesheet" href="css/themes.css?v=20260627c">
 </head>
 <body>
@@ -406,60 +406,90 @@
     </div>
   </div>
 
-  <!-- 账号登录 / 注册 -->
-  <div class="user-profile-overlay hidden" id="user-profile-panel" role="dialog" aria-modal="true" aria-labelledby="user-profile-title">
-    <div class="user-profile-modal account-modal">
-      <h2 id="user-profile-title" data-i18n="auth.loginTitle">登录账号</h2>
-
-      <div id="account-guest-view">
-        <div class="account-tabs" role="tablist" data-i18n-aria="auth.tabList" aria-label="账号">
-          <button type="button" class="account-tab-btn active" data-tab="login" role="tab" aria-selected="true" data-i18n="auth.tabLogin">登录</button>
-          <button type="button" class="account-tab-btn" data-tab="register" role="tab" aria-selected="false" data-i18n="auth.tabRegister">注册</button>
-        </div>
-
-        <form id="account-login-form" class="account-form" autocomplete="on">
-          <label class="account-field">
-            <span data-i18n="auth.email">邮箱</span>
-            <input type="email" name="email" required autocomplete="email" inputmode="email" data-i18n-placeholder="auth.emailPlaceholder" placeholder="you@example.com">
-          </label>
-          <label class="account-field">
-            <span data-i18n="auth.password">密码</span>
-            <input type="password" name="password" required minlength="8" autocomplete="current-password" data-i18n-placeholder="auth.passwordPlaceholder" placeholder="至少 8 位">
-          </label>
-          <p class="account-form-error hidden" id="account-login-error" role="alert"></p>
-          <button class="btn btn-primary account-submit" type="submit" data-i18n="auth.loginBtn">登录</button>
-        </form>
-
-        <form id="account-register-form" class="account-form" hidden autocomplete="on">
-          <label class="account-field">
-            <span data-i18n="auth.displayName">昵称</span>
-            <input type="text" name="displayName" required minlength="2" maxlength="32" autocomplete="nickname" data-i18n-placeholder="auth.displayNamePlaceholder" placeholder="显示名称，如：小明">
-          </label>
-          <label class="account-field">
-            <span data-i18n="auth.email">邮箱</span>
-            <input type="email" name="email" required autocomplete="email" inputmode="email" data-i18n-placeholder="auth.emailPlaceholder" placeholder="you@example.com">
-          </label>
-          <label class="account-field">
-            <span data-i18n="auth.password">密码</span>
-            <input type="password" name="password" required minlength="8" autocomplete="new-password" data-i18n-placeholder="auth.passwordPlaceholder" placeholder="至少 8 位">
-          </label>
-          <p class="account-form-desc" data-i18n="auth.registerDesc">注册后可留言交流。我们会对留言进行自动审核，拦截广告与垃圾信息。</p>
-          <p class="account-form-error hidden" id="account-register-error" role="alert"></p>
-          <button class="btn btn-primary account-submit" type="submit" data-i18n="auth.registerBtn">注册</button>
-        </form>
+  <!-- 登录页 -->
+  <div class="auth-overlay hidden" id="auth-login-panel" role="dialog" aria-modal="true" aria-labelledby="auth-login-title">
+    <div class="auth-modal auth-modal--login">
+      <button class="auth-modal-close" type="button" id="auth-login-close" data-i18n-aria="auth.close" aria-label="关闭">×</button>
+      <div class="auth-modal-brand">
+        <img src="assets/icons/bwtl-mark.png" width="36" height="36" alt="">
+        <span class="auth-modal-brand-name">BestWayToLearn.AI</span>
       </div>
+      <h2 id="auth-login-title" data-i18n="auth.loginTitle">登录账号</h2>
+      <p class="auth-modal-desc" data-i18n="auth.loginDesc">登录后可同步昵称、在文章下方留言交流。</p>
+      <form id="account-login-form" class="auth-form" autocomplete="on">
+        <label class="auth-field">
+          <span data-i18n="auth.email">邮箱</span>
+          <input type="email" name="email" required autocomplete="email" inputmode="email" data-i18n-placeholder="auth.emailPlaceholder" placeholder="you@example.com">
+        </label>
+        <label class="auth-field">
+          <span data-i18n="auth.password">密码</span>
+          <input type="password" name="password" required minlength="8" autocomplete="current-password" data-i18n-placeholder="auth.passwordPlaceholder" placeholder="至少 8 位">
+        </label>
+        <p class="auth-form-error hidden" id="account-login-error" role="alert"></p>
+        <button class="btn btn-primary auth-submit" type="submit" data-i18n="auth.loginBtn">登录</button>
+      </form>
+      <p class="auth-modal-switch">
+        <span data-i18n="auth.noAccount">还没有账号？</span>
+        <button type="button" class="auth-link-btn" id="auth-goto-register" data-i18n="auth.gotoRegister">立即注册</button>
+      </p>
+    </div>
+  </div>
 
-      <div id="account-user-view" hidden>
-        <p class="account-signed-in" data-i18n="auth.signedIn">已登录为</p>
-        <p class="account-user-name" id="account-display-name"></p>
-        <p class="account-user-email" id="account-email"></p>
-        <div class="user-profile-actions">
-          <button class="btn btn-ghost" id="account-logout" type="button" data-i18n="auth.logout">退出登录</button>
-          <button class="btn btn-ghost" id="profile-close" type="button" data-i18n="profile.close">关闭</button>
-        </div>
+  <!-- 注册页 -->
+  <div class="auth-overlay hidden" id="auth-register-panel" role="dialog" aria-modal="true" aria-labelledby="auth-register-title">
+    <div class="auth-modal auth-modal--register">
+      <button class="auth-modal-close" type="button" id="auth-register-close" data-i18n-aria="auth.close" aria-label="关闭">×</button>
+      <div class="auth-modal-brand">
+        <img src="assets/icons/bwtl-mark.png" width="36" height="36" alt="">
+        <span class="auth-modal-brand-name">BestWayToLearn.AI</span>
       </div>
+      <h2 id="auth-register-title" data-i18n="auth.registerTitle">创建账号</h2>
+      <p class="auth-modal-desc" data-i18n="auth.registerDesc">免费注册，参与时讯与教程讨论，与学习者交流心得。</p>
+      <ul class="auth-register-perks" aria-hidden="true">
+        <li data-i18n="auth.perkComment">在文章下方留言讨论</li>
+        <li data-i18n="auth.perkNickname">专属昵称与学习陪伴</li>
+        <li data-i18n="auth.perkFree">课程内容始终免费</li>
+      </ul>
+      <form id="account-register-form" class="auth-form" autocomplete="on">
+        <label class="auth-field">
+          <span data-i18n="auth.displayName">昵称</span>
+          <input type="text" name="displayName" required minlength="2" maxlength="32" autocomplete="nickname" data-i18n-placeholder="auth.displayNamePlaceholder" placeholder="显示名称，如：小明">
+        </label>
+        <label class="auth-field">
+          <span data-i18n="auth.email">邮箱</span>
+          <input type="email" name="email" required autocomplete="email" inputmode="email" data-i18n-placeholder="auth.emailPlaceholder" placeholder="you@example.com">
+        </label>
+        <label class="auth-field">
+          <span data-i18n="auth.password">密码</span>
+          <input type="password" name="password" required minlength="8" autocomplete="new-password" data-i18n-placeholder="auth.passwordPlaceholder" placeholder="至少 8 位">
+        </label>
+        <p class="auth-form-note" data-i18n="auth.registerNote">注册即表示同意站内留言规范，广告与违规内容将被自动拦截。</p>
+        <p class="auth-form-error hidden" id="account-register-error" role="alert"></p>
+        <button class="btn btn-primary auth-submit" type="submit" data-i18n="auth.registerBtn">创建账号</button>
+      </form>
+      <p class="auth-modal-switch">
+        <span data-i18n="auth.hasAccount">已有账号？</span>
+        <button type="button" class="auth-link-btn" id="auth-goto-login" data-i18n="auth.gotoLogin">去登录</button>
+      </p>
+    </div>
+  </div>
 
-      <button class="btn btn-ghost account-close-guest" id="profile-close-guest" type="button" data-i18n="profile.close">关闭</button>
+  <!-- 我的账号 -->
+  <div class="auth-overlay hidden" id="auth-account-panel" role="dialog" aria-modal="true" aria-labelledby="auth-account-title">
+    <div class="auth-modal auth-modal--account">
+      <button class="auth-modal-close" type="button" id="auth-account-close" data-i18n-aria="auth.close" aria-label="关闭">×</button>
+      <h2 id="auth-account-title" data-i18n="auth.accountTitle">我的账号</h2>
+      <div class="auth-account-card">
+        <div class="auth-account-avatar" aria-hidden="true">
+          <img src="assets/icons/bwtl-mark.png" width="40" height="40" alt="">
+        </div>
+        <p class="auth-account-label" data-i18n="auth.signedIn">已登录为</p>
+        <p class="auth-account-name" id="account-display-name"></p>
+        <p class="auth-account-email" id="account-email"></p>
+      </div>
+      <div class="auth-account-actions">
+        <button class="btn btn-ghost" id="account-logout" type="button" data-i18n="auth.logout">退出登录</button>
+      </div>
     </div>
   </div>
 
@@ -588,7 +618,7 @@
           <button class="header-auth-btn header-auth-login" id="header-auth-login" type="button" data-i18n="auth.tabLogin">登录</button>
           <button class="header-auth-btn header-auth-register" id="header-auth-register" type="button" data-i18n="auth.tabRegister">注册</button>
         </div>
-        <button class="header-user hidden" id="header-user" type="button" data-i18n-title="auth.accountBtn" title="账号" aria-haspopup="dialog" aria-expanded="false" aria-controls="user-profile-panel">
+        <button class="header-user hidden" id="header-user" type="button" data-i18n-title="auth.accountBtn" title="账号" aria-haspopup="dialog" aria-expanded="false" aria-controls="auth-account-panel">
           <img class="header-user-avatar" src="assets/icons/bwtl-mark.png" width="20" height="20" alt="">
           <span class="header-user-name" id="header-user-name" data-i18n="user.defaultName">学员</span>
         </button>
@@ -1322,7 +1352,7 @@
 
   <script src="js/icon-map.js?v=20260702c"></script>
   <script src="js/i18n.js?v=20260709a"></script>
-  <script src="js/locales/zh-CN.js?v=20260709b"></script>
+  <script src="js/locales/zh-CN.js?v=20260704g"></script>
   <script src="js/locales/zh-TW.js?v=20260709b"></script>
   <script src="js/locales/zh-TW-terms.js?v=20260629a"></script>
   <script src="js/locales/zh-TW-quiz.js?v=20260629a"></script>
@@ -1333,7 +1363,7 @@
   <script src="js/locales/zh-TW-skills-nav.js?v=20260629a"></script>
   <script src="js/locales/zh-TW-mcp-nav.js?v=20260629a"></script>
   <script src="js/locales/zh-TW-prompt-examples.js?v=20260628c"></script>
-  <script src="js/locales/en.js?v=20260709b"></script>
+  <script src="js/locales/en.js?v=20260704g"></script>
   <script src="js/locales/en-terms.js?v=20260630a"></script>
   <script src="js/locales/en-quiz.js?v=20260709a"></script>
   <script src="js/locales/en-curriculum.js?v=20260701a"></script>
@@ -1412,7 +1442,7 @@
   <script src="js/terms.js?v=20260627a"></script>
   <script src="js/pwa.js?v=20260703b"></script>
   <script src="js/theme.js?v=20260627c"></script>
-  <script src="js/auth.js?v=20260704d"></script>
+  <script src="js/auth.js?v=20260704g"></script>
   <script src="js/comments.js?v=20260704e"></script>
   <script src="js/app.js?v=20260704f"></script>
 </body>
