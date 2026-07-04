@@ -292,7 +292,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=20260703b">
+  <link rel="stylesheet" href="css/styles.css?v=20260702a">
   <link rel="stylesheet" href="css/themes.css?v=20260627c">
 </head>
 <body>
@@ -454,6 +454,8 @@
       </a>
       <nav class="main-nav" role="tablist" data-i18n-aria="nav.mainLabel" aria-label="学习阶段">
         <a href="#roadmap" role="tab" data-nav-tab="map" data-i18n="nav.home" aria-selected="true">AI学习</a>
+        <a href="#ai-briefing" role="tab" data-nav-tab="aiBriefing" data-i18n="nav.aiBriefing">AI时讯</a>
+        <a href="#latest-tutorials" role="tab" data-nav-tab="latestTutorials" data-i18n="nav.latestTutorials">最新教程</a>
         <a href="#monetize" role="tab" data-nav-tab="monetize" data-i18n="nav.monetize">变现</a>
         <a href="#devices" role="tab" data-nav-tab="devices" data-i18n="nav.devices">设备</a>
         <a href="#ai-nav" role="tab" data-nav-tab="aiToolsNav" data-i18n="nav.toolsNav">AI导航</a>
@@ -785,6 +787,66 @@
             </div>
           </div>
         </div>
+      </section>
+    </div>
+
+    <!-- ═══ AI 时讯 ═══ -->
+    <div class="phase-view" id="phase-view-ai-briefing" data-phase-tab="aiBriefing" hidden>
+      <div class="phase-banner phase-banner-sky has-page-poster">
+        <div class="page-poster-bg" aria-hidden="true">
+          <img data-theme-poster="tools" src="assets/posters/poster-tools-neural.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+          <div class="page-poster-overlay page-poster-overlay-sky"></div>
+        </div>
+        <span class="phase-num">◉</span>
+        <div class="phase-banner-text">
+          <h2 data-i18n="aiBriefingPage.bannerTitle">AI时讯</h2>
+          <p data-i18n="aiBriefingPage.bannerSubtitle">每日更新 · 行业要闻速览</p>
+        </div>
+        <span class="phase-progress" id="ai-briefing-banner-stat">每日更新</span>
+      </div>
+
+      <section class="section ai-briefing-section" id="ai-briefing">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="aiBriefingPage.tag">资讯</span>
+          <h2 data-i18n="aiBriefingPage.title">AI 行业时讯</h2>
+          <p id="ai-briefing-lead"></p>
+          <p class="daily-feed-updated" id="ai-briefing-updated"></p>
+        </div>
+        <div class="practice-filter-bar">
+          <div class="practice-filter" id="ai-briefing-filter" role="tablist" aria-label="资讯分类"></div>
+          <span class="practice-filter-count" id="ai-briefing-count"></span>
+        </div>
+        <div class="daily-feed-list" id="ai-briefing-list"></div>
+      </section>
+    </div>
+
+    <!-- ═══ 最新教程 ═══ -->
+    <div class="phase-view" id="phase-view-latest-tutorials" data-phase-tab="latestTutorials" hidden>
+      <div class="phase-banner phase-banner-violet has-page-poster">
+        <div class="page-poster-bg" aria-hidden="true">
+          <img data-theme-poster="practice" src="assets/posters/poster-practice-neural.svg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+          <div class="page-poster-overlay page-poster-overlay-violet"></div>
+        </div>
+        <span class="phase-num">▶</span>
+        <div class="phase-banner-text">
+          <h2 data-i18n="latestTutorialsPage.bannerTitle">最新教程</h2>
+          <p data-i18n="latestTutorialsPage.bannerSubtitle">每日更新 · 跟着做就能出成果</p>
+        </div>
+        <span class="phase-progress" id="latest-tutorials-banner-stat">每日更新</span>
+      </div>
+
+      <section class="section latest-tutorials-section" id="latest-tutorials">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="latestTutorialsPage.tag">教程</span>
+          <h2 data-i18n="latestTutorialsPage.title">最新上手教程</h2>
+          <p id="latest-tutorials-lead"></p>
+          <p class="daily-feed-updated" id="latest-tutorials-updated"></p>
+        </div>
+        <div class="practice-filter-bar">
+          <div class="practice-filter" id="latest-tutorials-filter" role="tablist" aria-label="教程分类"></div>
+          <span class="practice-filter-count" id="latest-tutorials-count"></span>
+        </div>
+        <div class="latest-tutorials-list" id="latest-tutorials-list"></div>
       </section>
     </div>
 
@@ -1292,9 +1354,11 @@
   <script src="js/ai-tools-nav.js?v=20260703b"></script>
   <script src="js/ai-skills-nav.js?v=20260707a"></script>
   <script src="js/ai-mcp-nav.js?v=20260708d"></script>
+  <script src="js/ai-briefing.js?v=20260702a"></script>
+  <script src="js/latest-tutorials.js?v=20260702a"></script>
   <script src="js/terms.js?v=20260627a"></script>
   <script src="js/pwa.js?v=20260703b"></script>
   <script src="js/theme.js?v=20260627c"></script>
-  <script src="js/app.js?v=20260709a"></script>
+  <script src="js/app.js?v=20260702a"></script>
 </body>
 </html>

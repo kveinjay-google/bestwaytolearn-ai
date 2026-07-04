@@ -71,8 +71,22 @@ I18n.registerLocale('zh-CN', {
     pwa: {
       offline: '当前离线 · 已缓存内容仍可浏览',
     },
+    aiBriefingPage: {
+      bannerTitle: 'AI时讯',
+      bannerSubtitle: '每日更新 · 行业要闻速览',
+      tag: '资讯',
+      title: 'AI 行业时讯',
+    },
+    latestTutorialsPage: {
+      bannerTitle: '最新教程',
+      bannerSubtitle: '每日更新 · 跟着做就能出成果',
+      tag: '教程',
+      title: '最新上手教程',
+    },
     nav: {
       home: 'AI学习',
+      aiBriefing: 'AI时讯',
+      latestTutorials: '最新教程',
       path: '学习计划',
       learn: '认知',
       tools: '工具',

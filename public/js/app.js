@@ -632,6 +632,18 @@ const PHASE_TAB_CONFIG = {
     panelSelector: '#phase-view-map',
     hashes: ['', 'top', 'hero', 'roadmap'],
   },
+  aiBriefing: {
+    label: 'AI时讯',
+    navHash: 'ai-briefing',
+    panelSelector: '#phase-view-ai-briefing',
+    hashes: ['ai-briefing', 'ai-briefing-section'],
+  },
+  latestTutorials: {
+    label: '最新教程',
+    navHash: 'latest-tutorials',
+    panelSelector: '#phase-view-latest-tutorials',
+    hashes: ['latest-tutorials', 'latest-tutorials-section'],
+  },
   monetize: {
     label: '变现指南',
     navHash: 'monetize',
@@ -744,6 +756,12 @@ function buildHashToPhaseTabMap() {
   if (typeof PROMPT_EXAMPLES !== 'undefined') {
     PROMPT_EXAMPLES.forEach((ex, i) => { map[`prompt-example-${i}`] = 'prompts'; map[`prompt-example-${ex.id}`] = 'prompts'; });
   }
+  if (typeof AI_BRIEFING_ITEMS !== 'undefined') {
+    AI_BRIEFING_ITEMS.forEach(item => { map[`ai-briefing-${item.id}`] = 'aiBriefing'; });
+  }
+  if (typeof LATEST_TUTORIAL_ITEMS !== 'undefined') {
+    LATEST_TUTORIAL_ITEMS.forEach(item => { map[`latest-tutorial-${item.id}`] = 'latestTutorials'; });
+  }
   return map;
 }
 
@@ -758,6 +776,8 @@ function resolvePhaseTabFromHash(hash) {
   if (id.startsWith('mcp-nav-cat-')) return 'aiMcpNav';
   if (id.startsWith('skills-nav-cat-')) return 'aiSkillsNav';
   if (id.startsWith('tools-nav-cat-')) return 'aiToolsNav';
+  if (id.startsWith('ai-briefing-')) return 'aiBriefing';
+  if (id.startsWith('latest-tutorial-')) return 'latestTutorials';
   return 'map';
 }
 
@@ -766,6 +786,7 @@ function getNavTabLabels() {
   return typeof I18n !== 'undefined' ? I18n.getNavLabels() : {
     map: 'AI学习', learn: '认知', tools: '工具', prompts: 'Prompt提示词',
     practice: '实战', validate: '检验', monetize: '变现', devices: '设备',
+    aiBriefing: 'AI时讯', latestTutorials: '最新教程',
     aiToolsNav: 'AI导航', aiSkillsNav: 'SKILL推荐', aiMcpNav: 'MCP导航',
   };
 }
@@ -3074,6 +3095,188 @@ function renderPromptExamplesList() {
   });
 }
 
+let aiBriefingCategory = '全部';
+let latestTutorialCategory = '全部';
+
+function getAiBriefingData() {
+  return typeof AI_BRIEFING_ITEMS !== 'undefined' ? [...AI_BRIEFING_ITEMS].sort((a, b) => b.date.localeCompare(a.date)) : [];
+}
+
+function getLatestTutorialsData() {
+  return typeof LATEST_TUTORIAL_ITEMS !== 'undefined' ? [...LATEST_TUTORIAL_ITEMS].sort((a, b) => b.date.localeCompare(a.date)) : [];
+}
+
+function getDailyFeedMeta(meta, items) {
+  const latestDate = items[0]?.date || '';
+  return { ...meta, latestDate };
+}
+
+function formatDailyFeedDate(dateStr) {
+  if (!dateStr) return '';
+  const [y, m, d] = dateStr.split('-').map(Number);
+  if (!y || !m || !d) return dateStr;
+  return `${y}年${m}月${d}日`;
+}
+
+function renderAiBriefing() {
+  const fc = document.getElementById('ai-briefing-filter');
+  if (fc) {
+    delete fc.dataset.rendered;
+    delete fc.dataset.bound;
+  }
+  const categories = typeof AI_BRIEFING_CATEGORIES !== 'undefined' ? AI_BRIEFING_CATEGORIES : ['全部'];
+  initPracticeFilterBar('ai-briefing-filter', categories, () => aiBriefingCategory, cat => {
+    aiBriefingCategory = cat;
+    renderAiBriefingList();
+  });
+  const items = getAiBriefingData();
+  const meta = getDailyFeedMeta(typeof AI_BRIEFING_META !== 'undefined' ? AI_BRIEFING_META : {}, items);
+  const leadEl = document.getElementById('ai-briefing-lead');
+  const updatedEl = document.getElementById('ai-briefing-updated');
+  const statEl = document.getElementById('ai-briefing-banner-stat');
+  if (leadEl) leadEl.textContent = meta.lead || '';
+  if (updatedEl && meta.latestDate) {
+    const label = (meta.updatedLabel || '最近更新：{date}').replace('{date}', formatDailyFeedDate(meta.latestDate));
+    updatedEl.textContent = label;
+  }
+  if (statEl && items.length) statEl.textContent = `${items.length} 条`;
+  renderAiBriefingList();
+}
+
+function renderAiBriefingList() {
+  const container = document.getElementById('ai-briefing-list');
+  if (!container) return;
+  const items = getAiBriefingData();
+  const meta = typeof AI_BRIEFING_META !== 'undefined' ? AI_BRIEFING_META : {};
+  const visible = items.filter(item => aiBriefingCategory === '全部' || item.category === aiBriefingCategory);
+  const countEl = document.getElementById('ai-briefing-count');
+  const countText = (meta.countShown || '显示 {visible} / {total} 条')
+    .replace('{visible}', visible.length)
+    .replace('{total}', items.length);
+  if (countEl) countEl.textContent = countText;
+
+  document.querySelectorAll('#ai-briefing-filter .filter-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.cat === aiBriefingCategory);
+  });
+
+  if (!visible.length) {
+    container.innerHTML = `<p class="empty-hint">${meta.emptyHint || '该分类下暂无资讯，试试其他标签。'}</p>`;
+    return;
+  }
+
+  const readMore = meta.readMore || '阅读原文';
+  const sourceLabel = meta.sourceLabel || '来源';
+  container.innerHTML = visible.map(item => `
+    <article class="daily-feed-card ai-briefing-card" id="ai-briefing-${escapeHtml(item.id)}">
+      <header class="daily-feed-card-header">
+        <time class="daily-feed-date" datetime="${escapeHtml(item.date)}">${formatDailyFeedDate(item.date)}</time>
+        <span class="daily-feed-category">${escapeHtml(item.category)}</span>
+      </header>
+      <h3 class="daily-feed-title">${escapeHtml(item.title)}</h3>
+      <p class="daily-feed-summary">${escapeHtml(item.summary)}</p>
+      <div class="daily-feed-tags">${(item.tags || []).map(t => `<span class="daily-feed-tag">#${escapeHtml(t)}</span>`).join('')}</div>
+      <footer class="daily-feed-card-footer">
+        <span class="daily-feed-source">${escapeHtml(sourceLabel)}：${escapeHtml(item.source)}</span>
+        <a class="daily-feed-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(readMore)} →</a>
+      </footer>
+    </article>
+  `).join('');
+}
+
+function renderLatestTutorials() {
+  const fc = document.getElementById('latest-tutorials-filter');
+  if (fc) {
+    delete fc.dataset.rendered;
+    delete fc.dataset.bound;
+  }
+  const categories = typeof LATEST_TUTORIAL_CATEGORIES !== 'undefined' ? LATEST_TUTORIAL_CATEGORIES : ['全部'];
+  initPracticeFilterBar('latest-tutorials-filter', categories, () => latestTutorialCategory, cat => {
+    latestTutorialCategory = cat;
+    renderLatestTutorialsList();
+  });
+  const items = getLatestTutorialsData();
+  const meta = getDailyFeedMeta(typeof LATEST_TUTORIAL_META !== 'undefined' ? LATEST_TUTORIAL_META : {}, items);
+  const leadEl = document.getElementById('latest-tutorials-lead');
+  const updatedEl = document.getElementById('latest-tutorials-updated');
+  const statEl = document.getElementById('latest-tutorials-banner-stat');
+  if (leadEl) leadEl.textContent = meta.lead || '';
+  if (updatedEl && meta.latestDate) {
+    const label = (meta.updatedLabel || '最近更新：{date}').replace('{date}', formatDailyFeedDate(meta.latestDate));
+    updatedEl.textContent = label;
+  }
+  if (statEl && items.length) statEl.textContent = `${items.length} 篇`;
+  renderLatestTutorialsList();
+}
+
+function renderLatestTutorialsList() {
+  const container = document.getElementById('latest-tutorials-list');
+  if (!container) return;
+  const items = getLatestTutorialsData();
+  const meta = typeof LATEST_TUTORIAL_META !== 'undefined' ? LATEST_TUTORIAL_META : {};
+  const visible = items.filter(item => latestTutorialCategory === '全部' || item.category === latestTutorialCategory);
+  const countEl = document.getElementById('latest-tutorials-count');
+  const countText = (meta.countShown || '显示 {visible} / {total} 篇')
+    .replace('{visible}', visible.length)
+    .replace('{total}', items.length);
+  if (countEl) countEl.textContent = countText;
+
+  document.querySelectorAll('#latest-tutorials-filter .filter-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.cat === latestTutorialCategory);
+  });
+
+  if (!visible.length) {
+    container.innerHTML = `<p class="empty-hint">${meta.emptyHint || '该分类下暂无教程，试试其他标签。'}</p>`;
+    return;
+  }
+
+  const copyLabel = typeof I18n !== 'undefined' ? I18n.t('common.copy') : '一键复制';
+  const resultLabel = '完成后你将得到：';
+  const tipsLabel = '小贴士：';
+  const newestDate = items[0]?.date;
+
+  container.innerHTML = items.map((item, i) => {
+    const show = latestTutorialCategory === '全部' || item.category === latestTutorialCategory;
+    const isNew = item.date === newestDate;
+    const openTitle = `打开 ${item.software} 官网`;
+    return `
+    <article class="hands-on-item latest-tutorial-item daily-feed-card ${show ? '' : 'hidden-practice-item'}" id="latest-tutorial-${escapeHtml(item.id)}">
+      <div class="hands-on-header">
+        <time class="daily-feed-date" datetime="${escapeHtml(item.date)}">${formatDailyFeedDate(item.date)}</time>
+        ${isNew ? `<span class="daily-feed-new-badge">${escapeHtml(meta.newBadge || '最新')}</span>` : ''}
+        <div class="hands-on-meta">
+          <a class="hands-on-software" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(openTitle)}">
+            ${renderIcon({ image: iconPathForApp(item.software, item.emoji), emoji: item.emoji, className: 'theme-icon theme-icon-inline', size: 24, alt: item.software })} ${escapeHtml(item.software)}
+          </a>
+          <span class="hands-on-cat-tag">${escapeHtml(item.category)}</span>
+          <span class="hands-on-badge">${escapeHtml(item.difficulty)}</span>
+          <span class="hands-on-badge hands-on-badge-time">${escapeHtml(item.duration)}</span>
+        </div>
+      </div>
+      <h3>${escapeHtml(item.title)}</h3>
+      <p class="hands-on-desc">${escapeHtml(item.desc)}</p>
+      <ol class="hands-on-steps">${item.steps.map(s => `<li>${escapeHtml(s)}</li>`).join('')}</ol>
+      <div class="hands-on-result"><strong>${resultLabel}</strong>${escapeHtml(item.result)}</div>
+      ${item.tips ? `<p class="hands-on-tips"><strong>${tipsLabel}</strong>${escapeHtml(item.tips)}</p>` : ''}
+      <div class="practice-prompt-block hands-on-prompt-block">
+        <div class="practice-prompt-header">
+          <span>复制到 ${escapeHtml(item.software)}</span>
+          <button class="btn-copy practice-copy-btn latest-tutorial-copy-btn" type="button" data-idx="${i}" aria-label="复制教程提示词">${copyLabel}</button>
+        </div>
+        <pre class="practice-prompt">${escapeHtml(item.prompt)}</pre>
+      </div>
+    </article>`;
+  }).join('');
+
+  container.querySelectorAll('.latest-tutorial-copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.dataset.idx, 10);
+      const sorted = getLatestTutorialsData();
+      const text = sorted[idx]?.prompt;
+      if (text) copyToClipboard(text, btn, copyLabel);
+    });
+  });
+}
+
 function renderPracticeList() {
   const container = document.getElementById('practice-list');
   if (!container) return;
@@ -4354,6 +4557,8 @@ const COACH_QUICK_NAV = [
   { label: '实操案例', href: '#hands-on' },
   { label: '实战场景', href: '#practice' },
   { label: '知识测验', href: '#quiz' },
+  { label: 'AI时讯', href: '#ai-briefing' },
+  { label: '最新教程', href: '#latest-tutorials' },
   { label: '变现指南', href: '#monetize' },
   { label: '设备选购', href: '#devices' },
   { label: 'AI导航', href: '#ai-nav' },
@@ -4372,6 +4577,8 @@ const SITE_NAV_ENTRIES = [
   { type: '模块', title: '实战场景', subtitle: '16 个提示词模板', href: '#practice', keywords: '实战 场景 模板' },
   { type: '模块', title: '知识测验', subtitle: '100 道精选题', href: '#quiz', keywords: '测验 考试 题目 quiz' },
   { type: '模块', title: '结业报告', subtitle: '四阶段学习总结与 30 天计划', href: '#graduation', keywords: '结业 毕业 报告 成就 证书' },
+  { type: '模块', title: 'AI时讯', subtitle: '每日更新的 AI 行业要闻', href: '#ai-briefing', keywords: 'AI时讯 资讯 新闻 日报 行业 动态 briefing news' },
+  { type: '模块', title: '最新教程', subtitle: '每日更新的上手教程与提示词', href: '#latest-tutorials', keywords: '最新教程 教程 每日 更新 tutorial 上手' },
   { type: '模块', title: 'AI 技能变现指南', subtitle: '30 个可落地的副业与接单方向', href: '#monetize', keywords: '变现 赚钱 副业 接单 收入 项目 创业 自由职业 monetize' },
   { type: '模块', title: '设备选购指南', subtitle: 'Windows/macOS、内存、显卡与推荐配置', href: '#devices', keywords: '设备 电脑 笔记本 台式机 内存 显卡 GPU RAM mac windows 苹果 配置 选购 硬件' },
   { type: '模块', title: 'AI导航', subtitle: '100+ AI 工具大全', href: '#ai-nav', keywords: 'AI导航 工具导航 大全 hao123 链接 官网 目录 directory' },
@@ -4518,6 +4725,26 @@ function buildSiteSearchIndex() {
       subtitle: `${ex.software} · ${ex.category}`,
       keywords: [ex.title, ex.software, ex.category, ex.scenario, ex.prompt, ...(ex.tags || [])].filter(Boolean).join(' '),
       href: `#prompt-example-${i}`,
+    });
+  });
+
+  getAiBriefingData().forEach(item => {
+    entries.push({
+      type: getSearchTypeLabel('module'),
+      title: item.title,
+      subtitle: `${item.category} · ${formatDailyFeedDate(item.date)}`,
+      keywords: [item.title, item.summary, item.category, item.source, ...(item.tags || [])].filter(Boolean).join(' '),
+      href: `#ai-briefing-${item.id}`,
+    });
+  });
+
+  getLatestTutorialsData().forEach(item => {
+    entries.push({
+      type: getSearchTypeLabel('case'),
+      title: item.title,
+      subtitle: `${item.software} · ${item.category}`,
+      keywords: [item.title, item.software, item.category, item.desc, item.prompt].filter(Boolean).join(' '),
+      href: `#latest-tutorial-${item.id}`,
     });
   });
 
@@ -4888,6 +5115,8 @@ function refreshLocaleUI() {
   renderHandsOnCases();
   renderPractices();
   renderPromptExamples();
+  renderAiBriefing();
+  renderLatestTutorials();
   refreshPromptLabChrome();
   renderDevices();
   renderQuizPrelude();
@@ -4964,6 +5193,8 @@ document.addEventListener('DOMContentLoaded', () => {
   renderHandsOnCases();
   renderPractices();
   renderPromptExamples();
+  renderAiBriefing();
+  renderLatestTutorials();
   initPracticeCopyButtons();
   renderGlossary();
   initPromptLab();

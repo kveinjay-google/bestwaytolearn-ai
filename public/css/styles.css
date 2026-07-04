@@ -7416,6 +7416,131 @@ body.pwa-install-sheet-open {
   cursor: pointer;
 }
 
+.daily-feed-updated {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: var(--accent-teal);
+  font-weight: 500;
+}
+
+.daily-feed-list,
+.latest-tutorials-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.daily-feed-card {
+  padding: 1.15rem 1.2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+}
+
+.daily-feed-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-glow);
+}
+
+.daily-feed-card-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.55rem;
+}
+
+.daily-feed-date {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent-teal);
+  font-weight: 600;
+}
+
+.daily-feed-category {
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 0.18rem 0.5rem;
+  border-radius: 100px;
+  color: var(--text-secondary);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+}
+
+.daily-feed-new-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: 100px;
+  color: var(--accent-amber);
+  background: var(--accent-amber-dim);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.daily-feed-title {
+  margin: 0 0 0.55rem;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.daily-feed-summary {
+  margin: 0 0 0.75rem;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.daily-feed-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.daily-feed-tag {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  padding: 0.15rem 0.45rem;
+  border-radius: 100px;
+  background: var(--bg-elevated);
+}
+
+.daily-feed-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--border);
+}
+
+.daily-feed-source {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.daily-feed-link {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent-teal);
+  text-decoration: none;
+}
+
+.daily-feed-link:hover {
+  color: var(--text-primary);
+}
+
+.latest-tutorial-item .hands-on-header {
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.latest-tutorial-item .daily-feed-date {
+  margin-right: 0.25rem;
+}
+
 .pwa-install-callout {
   margin: 0;
   padding: 0.65rem 0.75rem;

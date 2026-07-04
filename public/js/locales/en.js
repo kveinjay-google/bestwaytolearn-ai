@@ -71,8 +71,22 @@ I18n.registerLocale('en', {
     pwa: {
       offline: 'Offline — cached content is still available',
     },
+    aiBriefingPage: {
+      bannerTitle: 'AI Briefing',
+      bannerSubtitle: 'Daily industry news digest',
+      tag: 'News',
+      title: 'AI Industry Briefing',
+    },
+    latestTutorialsPage: {
+      bannerTitle: 'Latest Tutorials',
+      bannerSubtitle: 'Updated daily · Learn by doing',
+      tag: 'Tutorials',
+      title: 'Latest Hands-on Tutorials',
+    },
     nav: {
       home: 'AI Learning',
+      aiBriefing: 'AI Briefing',
+      latestTutorials: 'Tutorials',
       path: 'Learning plan',
       learn: 'Learn',
       tools: 'Tools',
