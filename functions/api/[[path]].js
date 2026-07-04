@@ -157,16 +157,12 @@ async function handleComments(env, request, segments, ip) {
     if (dup) return json({ ok: false, error: '请勿重复发送相同留言' }, 409);
   }
 
-  const spam = analyzeComment(text, {
-    userEmail: user?.email || '',
-    honeypot,
-    isAnonymous,
-  });
+  const spam = analyzeComment(text, { honeypot });
   if (spam.action === 'reject') {
     return json({ ok: false, error: mapSpamError(spam.reasons), spamScore: spam.score }, 422);
   }
 
-  const status = spam.action === 'pending' ? 'pending' : 'approved';
+  const status = 'approved';
   const commentId = uuid();
   const created = nowSec();
   const displayName = user?.displayName || guestName;
@@ -185,14 +181,6 @@ async function handleComments(env, request, segments, ip) {
     spam.reasons.join(','),
     created,
   ).run();
-
-  if (status === 'pending') {
-    return json({
-      ok: true,
-      pending: true,
-      message: '留言已提交，正在审核中，通过后将会显示',
-    });
-  }
 
   return json({
     ok: true,

@@ -144,7 +144,7 @@ I18n.registerLocale('zh-CN', {
     },
     comments: {
       placeholder: '写下你的想法…',
-      hint: '请勿发布广告、外链或重复内容，留言将自动审核。',
+      hint: '请勿发布广告或违规内容，命中关键词将被拦截。',
       submit: '发表留言',
       empty: '还没有留言，来做第一个吧！',
       anonymous: '匿名',

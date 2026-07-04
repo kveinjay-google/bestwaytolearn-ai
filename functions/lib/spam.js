@@ -1,4 +1,4 @@
-import { MAX_BODY_LEN, MIN_BODY_LEN, normalizeEmail } from './utils.js';
+import { MAX_BODY_LEN, MIN_BODY_LEN } from './utils.js';
 
 const BLOCKLIST = [
   /加微|加v|加V|微信|vx|VX|qq群|QQ群|电报群|tg群/i,
@@ -10,16 +10,22 @@ const BLOCKLIST = [
   /crypto\s*airdrop|telegram\.me|t\.me\//i,
 ];
 
-const SUSPICIOUS = [
+const LINK_PATTERNS = [
   /https?:\/\//gi,
   /www\./gi,
-  /\.(com|cn|net|org|xyz|top|shop|vip)\b/gi,
-  /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/gi,
 ];
 
-export function analyzeComment(body, { userEmail = '', honeypot = '', isAnonymous = false } = {}) {
+function countLinks(text) {
+  let hits = 0;
+  for (const re of LINK_PATTERNS) {
+    const matches = text.match(re);
+    if (matches) hits += matches.length;
+  }
+  return hits;
+}
+
+export function analyzeComment(body, { honeypot = '' } = {}) {
   const reasons = [];
-  let score = 0;
   const text = String(body || '').trim();
 
   if (honeypot) {
@@ -33,67 +39,21 @@ export function analyzeComment(body, { userEmail = '', honeypot = '', isAnonymou
     return { score: 100, reasons: ['too_long'], action: 'reject' };
   }
 
-  const repeatedChar = /(.)\1{7,}/.test(text);
-  if (repeatedChar) {
-    score += 35;
-    reasons.push('repeated_chars');
-  }
-
-  const uppercaseRatio = (text.replace(/[^A-Z]/g, '').length) / Math.max(text.length, 1);
-  if (uppercaseRatio > 0.55 && text.length > 20) {
-    score += 20;
-    reasons.push('shouting');
-  }
-
   for (const re of BLOCKLIST) {
     if (re.test(text)) {
-      score += 45;
-      reasons.push('blocklist');
-      break;
+      return { score: 100, reasons: ['blocklist'], action: 'reject' };
     }
   }
 
-  let urlHits = 0;
-  for (const re of SUSPICIOUS) {
-    const matches = text.match(re);
-    if (matches) urlHits += matches.length;
-  }
-  if (urlHits >= 3) {
-    score += 50;
-    reasons.push('too_many_links');
-  } else if (urlHits >= 1) {
-    score += 18;
-    reasons.push('has_link');
+  if (countLinks(text) >= 3) {
+    return { score: 80, reasons: ['too_many_links'], action: 'reject' };
   }
 
-  const dupWords = text.split(/\s+/).filter(Boolean);
-  const unique = new Set(dupWords.map(w => w.toLowerCase()));
-  if (dupWords.length >= 8 && unique.size <= 3) {
-    score += 30;
-    reasons.push('repetitive');
+  if (/(.)\1{9,}/.test(text)) {
+    return { score: 60, reasons: ['repeated_chars'], action: 'reject' };
   }
 
-  if (/(.{6,})\1{2,}/.test(text)) {
-    score += 25;
-    reasons.push('pattern_repeat');
-  }
-
-  if (isAnonymous) {
-    score += 12;
-    reasons.push('anonymous');
-  } else {
-    const freeMailOk = normalizeEmail(userEmail);
-    if (!freeMailOk) {
-      score += 5;
-      reasons.push('no_email');
-    }
-  }
-
-  let action = 'approve';
-  if (score >= 55) action = 'reject';
-  else if (score >= 22 || (isAnonymous && score >= 12)) action = 'pending';
-
-  return { score, reasons, action };
+  return { score: 0, reasons, action: 'approve' };
 }
 
 export function mapSpamError(reasons) {
@@ -101,5 +61,6 @@ export function mapSpamError(reasons) {
   if (reasons.includes('too_many_links')) return '留言中链接过多，请精简后重试';
   if (reasons.includes('blocklist')) return '留言包含疑似广告或违规内容';
   if (reasons.includes('too_short') || reasons.includes('too_long')) return '留言长度不符合要求';
+  if (reasons.includes('repeated_chars')) return '留言包含异常重复字符';
   return '留言未通过审核，请修改后重试';
 }

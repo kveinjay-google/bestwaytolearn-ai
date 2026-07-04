@@ -112,7 +112,7 @@ const BwtlComments = (function () {
           <textarea id="${inputId}" class="comments-input" rows="3" maxlength="800" placeholder="${escapeHtml(t('comments.placeholder', '写下你的想法…'))}"></textarea>
           <input type="text" class="comments-hp" name="_hp_url" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="comments-compose-actions">
-            <p class="comments-hint">${escapeHtml(t('comments.hint', '请勿发布广告、外链或重复内容，留言将自动审核。'))}</p>
+            <p class="comments-hint">${escapeHtml(t('comments.hint', '请勿发布广告或违规内容，命中关键词将被拦截。'))}</p>
             <button type="button" class="btn btn-primary comments-submit">${escapeHtml(t('comments.submit', '发表留言'))}</button>
           </div>
           <p class="comments-status hidden" role="status"></p>

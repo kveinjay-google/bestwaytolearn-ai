@@ -144,7 +144,7 @@ I18n.registerLocale('en', {
     },
     comments: {
       placeholder: 'Share your thoughts…',
-      hint: 'No ads, link spam, or duplicate posts. Comments are moderated automatically.',
+      hint: 'No ads or blocked keywords. Clean comments appear immediately.',
       submit: 'Post comment',
       empty: 'No comments yet — be the first!',
       anonymous: 'Anonymous',
