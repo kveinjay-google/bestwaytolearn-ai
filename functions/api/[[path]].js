@@ -26,7 +26,7 @@ export async function onRequest(context) {
   }
 
   const url = new URL(request.url);
-  const segments = (context.params.path || '').split('/').filter(Boolean);
+  const segments = parsePathSegments(context.params.path);
   const ip = getClientIp(request);
 
   try {
@@ -176,4 +176,9 @@ async function handleComments(env, request, segments, ip) {
 
 function urlTarget(request) {
   return new URL(request.url).searchParams.get('target');
+}
+
+function parsePathSegments(pathParam) {
+  if (Array.isArray(pathParam)) return pathParam.filter(Boolean);
+  return String(pathParam || '').split('/').filter(Boolean);
 }
