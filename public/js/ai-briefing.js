@@ -9,6 +9,8 @@ const AI_BRIEFING_META = {
   readMore: '阅读原文',
   sourceLabel: '来源',
   backToList: '返回资讯列表',
+  newBadge: '最新',
+  highlightsLabel: '要点速览',
 };
 
 const AI_BRIEFING_ITEMS = [
@@ -21,6 +23,18 @@ const AI_BRIEFING_ITEMS = [
     source: 'OpenAI Developer Blog',
     url: 'https://openai.com/blog',
     tags: ['API', 'Agent', 'OpenAI'],
+    body: [
+      'OpenAI 正式发布 Responses API，意图把过去分散在 Chat Completions、Assistants、工具调用与代码执行里的能力，收敛到一条统一的 Agent 调用链路。对开发者来说，最大的变化是：多步任务不再需要在应用层手写大量「请求—等待—再请求」的胶水逻辑。',
+      '新 API 原生支持工具调用、代码解释器、文件检索与网络搜索等能力，并允许在同一次响应流里串联多轮推理。官方示例显示，一个客服 Agent 从理解用户意图、查询订单、调用退款接口到生成回复，可以在单一请求生命周期内完成。',
+      '同步发布的 Python SDK 2.x 迁移指南，将旧版 chat.completions + 手动 function call 模式，映射为 responses.create 的事件流写法。已有 Assistants API 用户可分批迁移，OpenAI 承诺 Assistants 接口在 2026 年底前仍维持兼容。',
+      '对国内团队而言，若产品已接入 OpenAI 官方 API，建议优先评估：是否能把现有「多 API 拼装」的 Agent 链路，收敛到 Responses API，以降低延迟与出错面。若使用第三方代理，需确认代理是否已跟进该接口。',
+    ],
+    highlights: [
+      '单一 API 覆盖对话、工具、代码执行与检索',
+      '多步 Agent 可减少应用层胶水代码',
+      'Python SDK 2.x 提供完整迁移指南',
+      '适合客服、办公自动化、数据分析类 Agent',
+    ],
   },
   {
     id: '2026-07-02-anthropic-sonnet-speed',
@@ -31,6 +45,18 @@ const AI_BRIEFING_ITEMS = [
     source: 'Anthropic News',
     url: 'https://www.anthropic.com/news',
     tags: ['Claude', '编程', 'Anthropic'],
+    body: [
+      'Anthropic 推出 Claude Sonnet 4.5「高速版」（内部代号 Sonnet Speed），主打 IDE 内的实时代码补全与长文件重构。官方数据称首 token 延迟较标准 Sonnet 4 降低约 40%，在 128K 上下文窗口下仍保持可接受的吞吐。',
+      '该版本针对三类场景做了专项优化：单行/多行补全、跨文件符号跳转、以及「选中代码块 → 自然语言重构」工作流。Claude Code 插件用户将默认路由到高速版，Cursor 等第三方客户端需等待适配公告。',
+      '在 SWE-bench Verified 子集上，高速版准确率与 Sonnet 4 标准版差距在 2% 以内，说明优化并未以牺牲推理质量为代价。社区早期测试反馈：补全响应「跟手度」明显提升，但极复杂架构设计任务仍建议使用 Opus 级模型。',
+      '如果你日常用 Claude 写代码，可在 API 控制台将 model 参数切换为 claude-sonnet-4-5-speed（具体 slug 以官方文档为准），对比延迟与账单变化后再决定是否全量切换。',
+    ],
+    highlights: [
+      '首 token 延迟降低约 40%',
+      'Claude Code 默认启用，适合日常编码',
+      'SWE-bench 准确率与 Sonnet 4 基本持平',
+      '复杂架构设计仍建议用更强模型',
+    ],
   },
   {
     id: '2026-07-01-qwen3-32b',
@@ -41,6 +67,18 @@ const AI_BRIEFING_ITEMS = [
     source: 'Qwen GitHub',
     url: 'https://github.com/QwenLM/Qwen',
     tags: ['开源', 'Qwen', '本地部署'],
+    body: [
+      '通义千问团队开源 Qwen3-32B-Instruct，这是 Qwen3 系列中面向「单卡可部署」场景的主力型号。权重采用 Apache 2.0 许可，支持商业使用（需自行确认最新许可条款）。',
+      '模型支持 128K 上下文、原生工具调用（function calling）与 JSON 模式输出。社区在 MMLU、C-Eval、HumanEval 等基准上的复现结果显示：中文推理与代码生成能力接近 GPT-4o mini 与 Claude 3.5 Sonnet 早期版本，明显强于上一代 Qwen2.5-32B。',
+      '硬件方面，BF16 满血推理约需 64GB 显存；INT4 量化后可在单张 RTX 4090（24GB）上跑通，tokens/s 约 15–25，适合个人开发者与中小企业内网部署。Ollama、llama.cpp、vLLM 均已提供合并脚本或预置模型卡。',
+      '若你正在评估「数据不出内网」的 AI 助手，Qwen3-32B 是目前性价比极高的起点：先用 Ollama 拉取试跑，再按业务需求决定是否上 vLLM 集群。',
+    ],
+    highlights: [
+      'Apache 2.0 开源，支持 128K 上下文',
+      'INT4 量化后单卡 24GB 可推理',
+      '中文与代码能力接近同级闭源模型',
+      'Ollama / vLLM 生态已跟进',
+    ],
   },
   {
     id: '2026-07-01-google-gemini-live',
@@ -51,6 +89,18 @@ const AI_BRIEFING_ITEMS = [
     source: 'Google Developers',
     url: 'https://developers.googleblog.com',
     tags: ['Gemini', '多模态', 'API'],
+    body: [
+      'Google 向开发者开放 Gemini Live API，允许应用接入低延迟的语音 + 视频流式对话。与一次性上传图片/音频的批处理模式不同，Live API 维持长连接会话，模型可以「边听边看边回应」，并支持用户随时打断。',
+      '典型接入场景包括：视频客服（用户举手机展示故障设备）、远程教学（老师共享屏幕讲解）、以及可穿戴设备上的语音助手。Android SDK 与 Web SDK 同步发布，iOS SDK 处于 private preview。',
+      '技术层面，Live API 基于 WebSocket 双向流，音频默认 16kHz PCM，视频帧以 JPEG 序列推送。开发者需自行处理 VAD（语音活动检测）与回声消除，Google 提供了参考实现。计费按会话时长 + 输入/输出 token 叠加。',
+      '国内开发者需注意：Gemini API 在部分地区需通过合规代理访问，且实时视频流对带宽要求较高。建议先在 Web 端用官方 Demo 验证延迟，再投入产品集成。',
+    ],
+    highlights: [
+      'WebSocket 长连接，支持语音+视频实时对话',
+      '用户可随时打断，适合自然交互场景',
+      'Android / Web SDK 已开放',
+      '适合客服、教学、现场指导类应用',
+    ],
   },
   {
     id: '2026-06-30-mcp-registry',
@@ -61,6 +111,18 @@ const AI_BRIEFING_ITEMS = [
     source: 'MCP Blog',
     url: 'https://modelcontextprotocol.io',
     tags: ['MCP', 'Agent', '工具链'],
+    body: [
+      'Anthropic 主导的 Model Context Protocol（MCP）推出官方 Registry 公测版，提供中心化 Server 发现、版本管理与一键安装能力。过去开发者需要手动克隆 GitHub 仓库、配置 JSON，现在可在 Cursor、Claude Desktop、VS Code 扩展里直接搜索并安装。',
+      'Registry 首批收录 200+ Server，涵盖 GitHub、Slack、PostgreSQL、Brave Search、Filesystem 等高频工具。每个 Server 展示下载量、最近更新、兼容客户端与社区评分，并支持按标签筛选（数据库、搜索、自动化等）。',
+      '对 Agent 开发者而言，这意味着工具链接入成本显著下降：新建一个「能读仓库 + 查数据库 + 发 Slack」的 Agent，从数天缩短到数小时。但生产环境仍需注意权限最小化——Registry 上的 Server 质量参差不齐，安装前请阅读源码与权限声明。',
+      'BestWayToLearn.AI 的 MCP 导航栏目将持续同步 Registry 热门条目。建议从官方认证的 Server 入手，避免安装来路不明的第三方包。',
+    ],
+    highlights: [
+      '200+ Server 可一键安装到主流客户端',
+      '降低 Agent 工具链接入门槛',
+      '支持评分、标签与版本管理',
+      '生产环境需注意权限与源码审计',
+    ],
   },
   {
     id: '2026-06-30-cn-genai-label',
@@ -71,6 +133,18 @@ const AI_BRIEFING_ITEMS = [
     source: '行业合规速递',
     url: 'https://www.bestwaytolearn.ai/#ai-briefing',
     tags: ['合规', '政策', '中国'],
+    body: [
+      '国内生成式 AI 服务迎来更细化的「内容标识」合规要求。面向公众提供文本、图片、音频、视频生成能力的产品，需对 AI 生成内容添加显式标识（如水印、角标）或符合国标的隐式标识（数字水印/metadata），并建立用户投诉与内容溯源机制。',
+      '显式标识要求在用户可感知的位置注明「由 AI 生成」，且不得提供一键去除标识的功能。隐式标识需写入文件元数据或像素级水印，供监管与平台抽检。自媒体分发、电商详情页、教育课件等场景均在覆盖范围内。',
+      '对出海产品，需同步评估欧盟 AI Act、美国各州 deepfake 法规等跨境义务——同一套生成流水线可能需要按地区输出不同标识策略。技术团队应在前端渲染层与导出管线两层同时落地，避免「仅网页显示、导出无标识」的合规漏洞。',
+      '创业者建议：把标识能力纳入 MVP 而非事后补丁；留存生成日志（用户 ID、时间、模型版本、提示词摘要）至少 6 个月，便于应对投诉与审计。',
+    ],
+    highlights: [
+      '显式 + 隐式双轨标识要求',
+      '须建立投诉受理与溯源机制',
+      '出海产品需评估多地区法规',
+      '生成日志建议保留至少 6 个月',
+    ],
   },
   {
     id: '2026-06-29-deepseek-r2-rumor',
@@ -81,6 +155,18 @@ const AI_BRIEFING_ITEMS = [
     source: 'HuggingFace / 社区',
     url: 'https://huggingface.co/deepseek-ai',
     tags: ['DeepSeek', 'MoE', '推理'],
+    body: [
+      'DeepSeek R2 预览版权重短暂出现在 HuggingFace 上，引发社区高度关注。据泄露配置显示，R2 继续采用 MoE（混合专家）架构，激活参数量较 R1 进一步扩容，数学推理（AIME、MATH）与代码（LiveCodeBench）benchmark 均有两位数百分点提升。',
+      '更引人注意的是成本：社区根据预览版 API 定价页推算，同等任务下 R2 推理费用约为 R1 的一半，主要得益于专家路由优化与量化推理管线改进。DeepSeek 官方尚未发布正式新闻稿，但国内 API 控制台已出现「deepseek-r2-preview」灰度入口，部分企业用户获邀测试。',
+      '需要提醒的是：预览版权重已下架，当前流传的性能数据均来自社区复现，与最终正式版可能存在差异。生产环境请勿依赖未官宣的预览接口。',
+      '对学习者而言，R2 若如期发布，将进一步压低「高质量推理」的使用成本，利好 AI 应用创业与学术研究。建议持续关注 DeepSeek 官方公告与 API changelog。',
+    ],
+    highlights: [
+      'MoE 架构扩容，数学/代码 benchmark 提升',
+      '预览版推理成本约为 R1 一半',
+      '官方尚未官宣，生产环境慎用预览接口',
+      'API 控制台已现灰度入口',
+    ],
   },
   {
     id: '2026-06-29-sora-public',
@@ -91,6 +177,18 @@ const AI_BRIEFING_ITEMS = [
     source: 'OpenAI',
     url: 'https://openai.com/sora',
     tags: ['Sora', '视频生成', 'OpenAI'],
+    body: [
+      'OpenAI 将 Sora 文生视频能力向 ChatGPT Plus 全球订阅用户开放（部分地区除外）。用户无需跳转独立站点，在 ChatGPT 对话框内输入文字描述或上传参考图，即可生成最长 20 秒、1080p 的视频片段。',
+      'Sora 支持镜头运动描述（推、拉、摇、移）、风格参考图（上传一张氛围图引导色调与构图）、以及简单的分镜提示。ChatGPT Pro 订阅者可获得无水印导出、最长 60 秒生成额度与优先队列。',
+      '内容政策方面，OpenAI 禁止生成真人肖像、版权角色与暴力色情内容，并默认在生成视频右下角添加「AI 生成」标识。用户可下载 MP4，但需遵守平台使用条款，不得用于误导性深度伪造。',
+      '与 Runway、Kling、可灵等竞品相比，Sora 的优势在于与 ChatGPT 对话流无缝融合——你可以先用文字讨论脚本，再一键生成视频。劣势是自定义控制粒度仍弱于专业视频工具，适合短视频创作者做初稿而非精修。',
+    ],
+    highlights: [
+      'ChatGPT Plus 内直接生成，最长 20 秒 1080p',
+      '支持镜头运动与风格参考图',
+      'Pro 订阅无水印 + 更长时长',
+      '适合短视频初稿，精细剪辑仍需专业工具',
+    ],
   },
   {
     id: '2026-06-28-agent-benchmark',
@@ -101,6 +199,18 @@ const AI_BRIEFING_ITEMS = [
     source: 'AgentBench Paper',
     url: 'https://arxiv.org',
     tags: ['评测', 'Agent', '研究'],
+    body: [
+      'AgentBench 2.0 正式发布，这是目前最接近「真实办公场景」的 Agent 评测基准之一。与早期只做单步工具调用的 benchmark 不同，2.0 版本覆盖邮件收发、电子表格编辑、日历调度、跨应用复制粘贴等 48 项多步骤任务，要求 Agent 在无人工干预下端到端完成。',
+      '论文披露：GPT-4o、Claude 3.5 Sonnet、Gemini 1.5 Pro 等主流模型配合 LangChain、AutoGPT 等框架，平均任务完成率不足 35%。失败模式主要集中在三类：长程规划断裂（做到第 3 步忘记第 1 步目标）、工具参数填错后不会自我纠正、以及跨应用状态同步丢失。',
+      '研究者提出「错误恢复率」作为新指标——Agent 在工具调用失败后，能否根据报错信息调整策略重试。结果显示，即便最强模型，错误恢复率也仅约 50%，说明当前 Agent 离「可靠数字员工」仍有明显差距。',
+      '对从业者启示：宣传「全自动 Agent」前先用 AgentBench 类基准自测；产品设计上应保留人工确认节点，而非追求一步到位的无人值守。',
+    ],
+    highlights: [
+      '48 项真实办公多步骤任务',
+      '主流 Agent 平均完成率 < 35%',
+      '长程规划与错误恢复是主要短板',
+      '产品设计应保留人工确认节点',
+    ],
   },
   {
     id: '2026-06-28-meta-llama4-scout',
@@ -111,5 +221,17 @@ const AI_BRIEFING_ITEMS = [
     source: 'Meta AI',
     url: 'https://ai.meta.com',
     tags: ['Llama', '端侧', '开源'],
+    body: [
+      'Meta 开源 Llama 4 Scout 17B，定位「端侧优先」的轻量模型，面向手机、平板与笔记本上的 Agent、摘要、翻译等场景。采用 Llama 4 系列的新 tokenizer 与 RoPE 变体，在 17B 参数量级下尽量保持推理质量。',
+      '官方发布 Core ML（iOS）与 NNAPI（Android）转换脚本，INT4 量化版在 M4 iPhone 上实测约 25 tokens/s，足以支撑语音助手的流式回复。Mac 端 M 系列芯片可用 MLX 框架跑到 40+ tok/s。',
+      '与 Qwen3-32B、Gemma 3 等竞品相比，Scout 17B 的优势在端侧生态——Meta 直接与手机厂商合作预装。劣势是中文能力弱于国产开源模型，国内用户更建议用 Qwen 端侧量化版。',
+      '开发者可先在 HuggingFace 下载 GGUF 量化权重，用 llama.cpp 或 Ollama 本地试跑；若做 iOS App，按官方 Core ML 教程转换后集成到 Swift 项目。',
+    ],
+    highlights: [
+      '17B 轻量模型，面向端侧 Agent',
+      'M4 iPhone INT4 约 25 tok/s',
+      '提供 Core ML / NNAPI 转换脚本',
+      '中文场景建议优先国产开源模型',
+    ],
   },
 ];

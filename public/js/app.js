@@ -3212,20 +3212,47 @@ function buildLatestTutorialDetailHtml(item, itemIndex) {
     </article>`;
 }
 
+function renderAiBriefingBodyHtml(item) {
+  const meta = typeof AI_BRIEFING_META !== 'undefined' ? AI_BRIEFING_META : {};
+  const highlightsLabel = meta.highlightsLabel || '要点速览';
+  const paragraphs = Array.isArray(item.body) ? item.body : [];
+  let inner = '';
+
+  if (paragraphs.length) {
+    inner = paragraphs.map(p => `<p class="daily-feed-body-p">${escapeHtml(p)}</p>`).join('');
+  } else if (item.summary) {
+    inner = `<p class="daily-feed-body-p">${escapeHtml(item.summary)}</p>`;
+  }
+
+  const highlights = Array.isArray(item.highlights) ? item.highlights : [];
+  const highlightsHtml = highlights.length
+    ? `<aside class="daily-feed-body-highlights">
+        <h4 class="daily-feed-body-highlights-title">${escapeHtml(highlightsLabel)}</h4>
+        <ul class="daily-feed-body-highlights-list">${highlights.map(h => `<li>${escapeHtml(h)}</li>`).join('')}</ul>
+      </aside>`
+    : '';
+
+  return `<div class="daily-feed-body">${inner}${highlightsHtml}</div>`;
+}
+
 function buildAiBriefingDetailHtml(item) {
   const meta = typeof AI_BRIEFING_META !== 'undefined' ? AI_BRIEFING_META : {};
   const readMore = meta.readMore || '阅读原文';
   const sourceLabel = meta.sourceLabel || '来源';
+  const items = getAiBriefingData();
+  const isNew = item.date === items[0]?.date;
 
   return `
     ${buildDailyFeedBackLink('#ai-briefing', meta.backToList || '返回资讯列表')}
     <article class="daily-feed-card ai-briefing-card daily-feed-detail-card" id="ai-briefing-${escapeHtml(item.id)}">
       <header class="daily-feed-card-header">
         <time class="daily-feed-date" datetime="${escapeHtml(item.date)}">${formatDailyFeedDate(item.date)}</time>
+        ${isNew ? `<span class="daily-feed-new-badge">${escapeHtml(meta.newBadge || '最新')}</span>` : ''}
         <span class="daily-feed-category">${escapeHtml(item.category)}</span>
       </header>
-      <h3 class="daily-feed-title">${escapeHtml(item.title)}</h3>
-      <p class="daily-feed-summary">${escapeHtml(item.summary)}</p>
+      <h2 class="daily-feed-detail-title">${escapeHtml(item.title)}</h2>
+      <p class="daily-feed-lead">${escapeHtml(item.summary)}</p>
+      ${renderAiBriefingBodyHtml(item)}
       <div class="daily-feed-tags">${(item.tags || []).map(t => `<span class="daily-feed-tag">#${escapeHtml(t)}</span>`).join('')}</div>
       <footer class="daily-feed-card-footer">
         <span class="daily-feed-source">${escapeHtml(sourceLabel)}：${escapeHtml(item.source)}</span>
