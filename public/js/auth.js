@@ -10,6 +10,7 @@ const BwtlAuth = (function () {
 
   let user = null;
   let activePanel = null;
+  let googleEnabled = false;
   const listeners = new Set();
 
   function t(key, fallback, vars) {
@@ -39,6 +40,60 @@ const BwtlAuth = (function () {
       data = { ok: false, error: t('auth.networkError', '网络错误，请稍后重试') };
     }
     return { res, data };
+  }
+
+  function mapAuthError(code) {
+    const map = {
+      google_not_configured: t('auth.errGoogleNotConfigured', 'Google 登录尚未配置，请使用邮箱登录'),
+      invalid_state: t('auth.errInvalidState', '登录状态已过期，请重试'),
+      google_failed: t('auth.errGoogleFailed', 'Google 登录失败，请重试'),
+      account_disabled: t('auth.errAccountDisabled', '账号已被停用'),
+      rate_limited: t('auth.errRateLimited', '操作过于频繁，请稍后再试'),
+      access_denied: t('auth.errAccessDenied', '你已取消 Google 授权'),
+    };
+    return map[code] || t('auth.errGoogleFailed', 'Google 登录失败，请重试');
+  }
+
+  function toggleGoogleButtons(show) {
+    googleEnabled = !!show;
+    document.querySelectorAll('[data-auth-google-wrap]').forEach(el => {
+      el.classList.toggle('hidden', !googleEnabled);
+    });
+  }
+
+  async function loadProviders() {
+    try {
+      const { data } = await api('/providers', { method: 'GET' });
+      toggleGoogleButtons(data.ok && data.providers?.google);
+    } catch {
+      toggleGoogleButtons(false);
+    }
+  }
+
+  async function handleAuthRedirect() {
+    const params = new URLSearchParams(location.search);
+    const auth = params.get('auth');
+    const err = params.get('auth_error');
+    if (!auth && !err) return;
+
+    const cleanUrl = location.pathname + location.hash;
+    history.replaceState(null, '', cleanUrl);
+
+    if (auth === 'google_ok') {
+      await fetchMe();
+      if (user && typeof saveUser === 'function') {
+        saveUser({ name: user.displayName, welcomed: true });
+      }
+      if (user && typeof showTeacherMessage === 'function') {
+        showTeacherMessage(t('auth.googleWelcome', '{name}，已通过 Google 登录成功！', { name: user.displayName }));
+      }
+      return;
+    }
+
+    if (err) {
+      openLogin();
+      showFormError('account-login-error', mapAuthError(err));
+    }
   }
 
   function notify() {
@@ -292,8 +347,10 @@ const BwtlAuth = (function () {
   async function init() {
     bindPanels();
     bindHeaderAuth();
+    await handleAuthRedirect();
+    await loadProviders();
     try {
-      await fetchMe();
+      if (!user) await fetchMe();
     } catch {
       user = null;
       notify();

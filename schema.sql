@@ -7,9 +7,12 @@ CREATE TABLE IF NOT EXISTS users (
   password_hash TEXT NOT NULL,
   password_salt TEXT NOT NULL,
   display_name TEXT NOT NULL,
+  google_id TEXT,
   status TEXT NOT NULL DEFAULT 'active',
   created_at INTEGER NOT NULL
 );
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_users_google_id ON users(google_id);
 
 CREATE TABLE IF NOT EXISTS sessions (
   id TEXT PRIMARY KEY,

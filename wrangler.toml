@@ -8,5 +8,8 @@ database_name = "bwtl-community"
 database_id = "7ba5d4b5-efbe-406a-871e-466c717b3784"
 
 [vars]
-# Set JWT_SECRET and TURNSTILE_SECRET in Cloudflare Pages dashboard (Production/Preview).
+# Set in Cloudflare Pages dashboard → Settings → Environment variables (Secrets):
+#   GOOGLE_CLIENT_ID     — Google Cloud OAuth 2.0 Web client ID
+#   GOOGLE_CLIENT_SECRET — Google Cloud OAuth 2.0 client secret
+# Optional: GOOGLE_REDIRECT_URI (defaults to {origin}/api/auth/google/callback)
 SITE_NAME = "BestWayToLearn.AI"

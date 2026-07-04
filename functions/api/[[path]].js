@@ -16,6 +16,11 @@ import {
   handleRegister,
   logoutResponse,
 } from '../lib/auth.js';
+import {
+  handleGoogleCallback,
+  isGoogleAuthConfigured,
+  startGoogleOAuth,
+} from '../lib/google-auth.js';
 import { analyzeComment, mapSpamError } from '../lib/spam.js';
 
 export async function onRequest(context) {
@@ -46,10 +51,31 @@ export async function onRequest(context) {
 
 async function handleAuth(env, request, segments, ip) {
   const action = segments[1] || '';
+  const sub = segments[2] || '';
 
   if (request.method === 'GET' && action === 'me') {
     const user = await getSessionUser(env.DB, request);
     return json({ ok: true, user });
+  }
+
+  if (request.method === 'GET' && action === 'providers') {
+    return json({
+      ok: true,
+      providers: { google: isGoogleAuthConfigured(env) },
+    });
+  }
+
+  if (request.method === 'GET' && action === 'google' && sub === 'callback') {
+    return handleGoogleCallback(request, env, ip);
+  }
+
+  if (request.method === 'GET' && action === 'google') {
+    return startGoogleOAuth(request, env);
+  }
+
+  if (request.method === 'POST' && action === 'logout') {
+    await handleLogout(env.DB, request);
+    return logoutResponse();
   }
 
   if (request.method !== 'POST') return json({ ok: false, error: 'Method not allowed' }, 405);
@@ -68,10 +94,6 @@ async function handleAuth(env, request, segments, ip) {
   if (action === 'login') {
     const result = await handleLogin(env.DB, body, ip);
     return authResponse(result);
-  }
-  if (action === 'logout') {
-    await handleLogout(env.DB, request);
-    return logoutResponse();
   }
 
   return json({ ok: false, error: 'Not found' }, 404);

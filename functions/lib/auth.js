@@ -12,6 +12,7 @@ import {
   SESSION_DAYS,
   uuid,
 } from './utils.js';
+import { isOAuthOnlyUser } from './google-auth.js';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -82,6 +83,10 @@ export async function handleLogin(db, body, ip) {
 
   const row = await db.prepare('SELECT * FROM users WHERE email = ?').bind(email).first();
   if (!row || row.status !== 'active') return { error: '邮箱或密码错误', status: 401 };
+
+  if (isOAuthOnlyUser(row)) {
+    return { error: '该账号绑定了 Google，请使用 Google 登录', status: 401 };
+  }
 
   const hash = await hashPassword(password, row.password_salt);
   if (hash !== row.password_hash) return { error: '邮箱或密码错误', status: 401 };
