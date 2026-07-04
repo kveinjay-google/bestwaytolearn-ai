@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="创建抠图项目">
+  <rect width="720" height="400" rx="12" fill="#0b1118"/>
+  <rect x="24" y="24" width="672" height="352" rx="8" fill="#111820" stroke="#2d3a4d" stroke-width="1.5"/>
+  <text x="48" y="58" fill="#8b9cb3" font-family="system-ui,sans-serif" font-size="13">步骤 1 · 新建 bg-remove 项目</text>
+  <rect x="48" y="84" width="280" height="250" rx="8" fill="#0d1520" stroke="#334155"/>
+  <text x="68" y="114" fill="#5eead4" font-size="12" font-weight="600">项目结构</text>
+  <text x="68" y="144" fill="#e8edf4" font-size="12">📁 bg-remove/</text>
+  <text x="88" y="170" fill="#8b9cb3" font-size="11">├─ app.py</text>
+  <text x="88" y="192" fill="#8b9cb3" font-size="11">├─ requirements.txt</text>
+  <text x="88" y="214" fill="#8b9cb3" font-size="11">├─ static/index.html</text>
+  <text x="88" y="236" fill="#8b9cb3" font-size="11">└─ uploads/ (空)</text>
+  <rect x="360" y="84" width="312" height="250" rx="8" fill="#132a28" stroke="#2dd4bf"/>
+  <text x="380" y="114" fill="#2dd4bf" font-size="13" font-weight="600">环境准备</text>
+  <text x="380" y="148" fill="#e8edf4" font-size="12">Python 3.10+ 已安装</text>
+  <text x="380" y="176" fill="#e8edf4" font-size="12">Cursor 打开 bg-remove 文件夹</text>
+  <text x="380" y="204" fill="#e8edf4" font-size="12">终端执行：</text>
+  <rect x="380" y="214" width="260" height="56" rx="6" fill="#0b1118"/>
+  <text x="392" y="236" fill="#a78bfa" font-size="11" font-family="monospace">python -m venv .venv</text>
+  <text x="392" y="256" fill="#a78bfa" font-size="11" font-family="monospace">pip install rembg flask</text>
+</svg>

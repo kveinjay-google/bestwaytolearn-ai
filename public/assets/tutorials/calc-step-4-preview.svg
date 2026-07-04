@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="浏览器预览计算器">
+  <rect width="720" height="400" rx="12" fill="#0b1118"/>
+  <rect x="24" y="24" width="672" height="352" rx="8" fill="#111820" stroke="#2d3a4d" stroke-width="1.5"/>
+  <text x="48" y="58" fill="#8b9cb3" font-family="system-ui,sans-serif" font-size="13">步骤 4 · 浏览器打开并预览</text>
+  <rect x="120" y="88" width="480" height="260" rx="10" fill="#0a0f16" stroke="#475569"/>
+  <rect x="120" y="88" width="480" height="32" rx="10" fill="#1e293b"/>
+  <circle cx="140" cy="104" r="6" fill="#ef4444"/><circle cx="160" cy="104" r="6" fill="#f59e0b"/><circle cx="180" cy="104" r="6" fill="#22c55e"/>
+  <text x="300" y="109" fill="#94a3b8" font-size="11">index.html — 本地文件</text>
+  <rect x="220" y="148" width="280" height="180" rx="16" fill="#151d2b" stroke="#2dd4bf" stroke-width="2"/>
+  <rect x="240" y="164" width="240" height="44" rx="8" fill="#0b1118" stroke="#334155"/>
+  <text x="452" y="192" fill="#2dd4bf" font-size="22" font-family="monospace" text-anchor="end">128</text>
+  <g fill="#1e293b" stroke="#475569">
+    <rect x="240" y="220" width="52" height="40" rx="8"/><rect x="300" y="220" width="52" height="40" rx="8"/><rect x="360" y="220" width="52" height="40" rx="8"/><rect x="420" y="220" width="52" height="40" rx="8"/>
+    <rect x="240" y="268" width="52" height="40" rx="8"/><rect x="300" y="268" width="52" height="40" rx="8"/><rect x="360" y="268" width="52" height="40" rx="8"/><rect x="420" y="268" width="52" height="40" rx="8" fill="#134e4a" stroke="#2dd4bf"/>
+  </g>
+  <text x="266" y="246" fill="#e2e8f0" font-size="14">7</text><text x="326" y="246" fill="#e2e8f0" font-size="14">8</text><text x="386" y="246" fill="#e2e8f0" font-size="14">9</text><text x="446" y="246" fill="#2dd4bf" font-size="14">÷</text>
+  <text x="160" y="368" fill="#2dd4bf" font-size="12">双击 index.html 或用 Live Server 打开</text>
+</svg>

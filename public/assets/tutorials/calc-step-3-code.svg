@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="AI 生成的计算器代码">
+  <rect width="720" height="400" rx="12" fill="#0b1118"/>
+  <rect x="24" y="24" width="672" height="352" rx="8" fill="#111820" stroke="#2d3a4d" stroke-width="1.5"/>
+  <text x="48" y="58" fill="#8b9cb3" font-family="system-ui,sans-serif" font-size="13">步骤 3 · 检查 AI 生成的 index.html</text>
+  <rect x="48" y="76" width="180" height="280" rx="6" fill="#0d1520" stroke="#334155"/>
+  <text x="64" y="104" fill="#5eead4" font-size="11">EXPLORER</text>
+  <rect x="64" y="116" width="148" height="22" rx="3" fill="#243044"/>
+  <text x="76" y="131" fill="#2dd4bf" font-size="11">📄 index.html</text>
+  <rect x="248" y="76" width="424" height="280" rx="6" fill="#0a0f16" stroke="#334155"/>
+  <text x="264" y="104" fill="#f472b6" font-size="11">&lt;!DOCTYPE html&gt;</text>
+  <text x="264" y="126" fill="#8b9cb3" font-size="11">&lt;style&gt; /* 深色主题按钮 */ &lt;/style&gt;</text>
+  <text x="264" y="148" fill="#8b9cb3" font-size="11">&lt;div class="display"&gt;0&lt;/div&gt;</text>
+  <text x="264" y="170" fill="#8b9cb3" font-size="11">&lt;button&gt;7&lt;/button&gt; &lt;button&gt;8&lt;/button&gt; …</text>
+  <text x="264" y="192" fill="#a78bfa" font-size="11">&lt;script&gt; // 四则运算逻辑 &lt;/script&gt;</text>
+  <rect x="264" y="220" width="380" height="48" rx="6" fill="#132a28" stroke="#2dd4bf"/>
+  <text x="280" y="242" fill="#2dd4bf" font-size="12">✓ 确认包含 HTML 结构 + CSS 样式 + JS 逻辑</text>
+  <text x="280" y="260" fill="#8b9cb3" font-size="11">如有缺失，追问：「请补全计算逻辑」</text>
+</svg>

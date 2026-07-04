@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="AI 处理抠图">
+  <rect width="720" height="400" rx="12" fill="#0b1118"/>
+  <rect x="24" y="24" width="672" height="352" rx="8" fill="#111820" stroke="#2d3a4d" stroke-width="1.5"/>
+  <text x="48" y="58" fill="#8b9cb3" font-family="system-ui,sans-serif" font-size="13">步骤 4 · 本地 AI 模型自动抠图</text>
+  <rect x="60" y="100" width="240" height="220" rx="10" fill="#1e293b" stroke="#475569"/>
+  <rect x="80" y="120" width="200" height="160" rx="8" fill="#38bdf8" opacity="0.25"/>
+  <circle cx="180" cy="180" r="50" fill="#f472b6"/>
+  <text x="180" y="300" fill="#94a3b8" font-size="12" text-anchor="middle">原图（人像）</text>
+  <text x="360" y="200" fill="#2dd4bf" font-size="28" text-anchor="middle">→</text>
+  <rect x="420" y="100" width="240" height="220" rx="10" fill="#0d1520" stroke="#2dd4bf"/>
+  <rect x="440" y="120" width="200" height="160" rx="8" fill="url(#checker)"/>
+  <circle cx="540" cy="180" r="50" fill="#f472b6"/>
+  <text x="540" y="300" fill="#2dd4bf" font-size="12" text-anchor="middle">透明背景 PNG</text>
+  <defs>
+    <pattern id="checker" width="16" height="16" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="#1e293b"/><rect x="8" y="8" width="8" height="8" fill="#1e293b"/>
+      <rect x="8" width="8" height="8" fill="#0f172a"/><rect y="8" width="8" height="8" fill="#0f172a"/>
+    </pattern>
+  </defs>
+  <text x="360" y="340" fill="#8b9cb3" font-size="12" text-anchor="middle">rembg 在本地 GPU/CPU 推理，约 2–8 秒完成</text>
+</svg>

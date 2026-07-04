@@ -7541,6 +7541,112 @@ body.pwa-install-sheet-open {
   margin-right: 0.25rem;
 }
 
+.daily-feed-illustrated-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: 100px;
+  color: var(--accent-violet);
+  background: rgba(167, 139, 250, 0.12);
+  border: 1px solid rgba(167, 139, 250, 0.35);
+}
+
+.latest-tutorial-illustrated {
+  border-color: rgba(167, 139, 250, 0.22);
+}
+
+.tutorial-illustrated-steps {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.tutorial-illustrated-step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.tutorial-step-text {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.tutorial-step-num {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: 50%;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent-violet);
+  background: rgba(167, 139, 250, 0.12);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+}
+
+.tutorial-step-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.tutorial-step-title {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.tutorial-step-copy p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+  line-height: 1.65;
+}
+
+.tutorial-step-caption {
+  margin-top: 0.45rem !important;
+  font-size: 0.78rem !important;
+  color: var(--text-muted) !important;
+  font-style: italic;
+}
+
+.tutorial-step-figure {
+  margin: 0;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-deep);
+}
+
+.tutorial-step-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  .tutorial-illustrated-step {
+    padding: 0.85rem;
+  }
+
+  .tutorial-step-text {
+    flex-direction: row;
+  }
+}
+
 .pwa-install-callout {
   margin: 0;
   padding: 0.65rem 0.75rem;

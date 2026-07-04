@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="新建项目文件夹">
+  <rect width="720" height="400" rx="12" fill="#0b1118"/>
+  <rect x="24" y="24" width="672" height="352" rx="8" fill="#111820" stroke="#2d3a4d" stroke-width="1.5"/>
+  <text x="48" y="58" fill="#8b9cb3" font-family="system-ui,sans-serif" font-size="13">步骤 1 · 新建项目文件夹</text>
+  <rect x="48" y="80" width="200" height="260" rx="6" fill="#0d1520" stroke="#2d3a4d"/>
+  <text x="64" y="108" fill="#5eead4" font-family="system-ui,sans-serif" font-size="12" font-weight="600">资源管理器</text>
+  <rect x="64" y="124" width="168" height="28" rx="4" fill="#1a2433"/>
+  <text x="76" y="143" fill="#e8edf4" font-size="12">📁 calc-demo</text>
+  <rect x="64" y="160" width="168" height="24" rx="4" fill="#243044" stroke="#2dd4bf" stroke-width="1.5"/>
+  <text x="76" y="176" fill="#2dd4bf" font-size="11">  空文件夹，准备开始</text>
+  <rect x="280" y="120" width="380" height="200" rx="8" fill="#0d1520" stroke="#334155"/>
+  <text x="300" y="152" fill="#e8edf4" font-size="14" font-weight="600">操作指引</text>
+  <text x="300" y="182" fill="#8b9cb3" font-size="13">1. 桌面新建文件夹 calc-demo</text>
+  <text x="300" y="208" fill="#8b9cb3" font-size="13">2. 打开 Cursor → File → Open Folder</text>
+  <text x="300" y="234" fill="#8b9cb3" font-size="13">3. 选中 calc-demo 文件夹</text>
+  <text x="300" y="268" fill="#2dd4bf" font-size="12">✓ 左侧应显示空项目，无其他文件</text>
+</svg>

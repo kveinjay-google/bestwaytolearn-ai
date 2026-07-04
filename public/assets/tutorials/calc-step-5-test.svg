@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="测试计算器功能">
+  <rect width="720" height="400" rx="12" fill="#0b1118"/>
+  <rect x="24" y="24" width="672" height="352" rx="8" fill="#111820" stroke="#2d3a4d" stroke-width="1.5"/>
+  <text x="48" y="58" fill="#8b9cb3" font-family="system-ui,sans-serif" font-size="13">步骤 5 · 逐项测试并反馈修复</text>
+  <rect x="48" y="84" width="300" height="240" rx="8" fill="#132a28" stroke="#2dd4bf"/>
+  <text x="68" y="114" fill="#2dd4bf" font-size="14" font-weight="600">测试清单</text>
+  <text x="68" y="144" fill="#e8edf4" font-size="13">✓ 12 + 8 = 20</text>
+  <text x="68" y="170" fill="#e8edf4" font-size="13">✓ 15 × 4 = 60</text>
+  <text x="68" y="196" fill="#e8edf4" font-size="13">✓ 按 C 清零显示 0</text>
+  <text x="68" y="222" fill="#fbbf24" font-size="13">△ 连续按 + 号？需修复</text>
+  <text x="68" y="256" fill="#8b9cb3" font-size="11">有问题就选中代码追问 AI</text>
+  <rect x="372" y="84" width="300" height="240" rx="8" fill="#0d1520" stroke="#334155"/>
+  <text x="392" y="114" fill="#a78bfa" font-size="12" font-weight="600">追问示例</text>
+  <rect x="392" y="130" width="260" height="80" rx="6" fill="#111820" stroke="#a78bfa"/>
+  <text x="408" y="156" fill="#e8edf4" font-size="12">按钮点击没反应，</text>
+  <text x="408" y="178" fill="#e8edf4" font-size="12">请修复运算符逻辑</text>
+  <text x="392" y="240" fill="#2dd4bf" font-size="12">→ AI 自动修补并重测</text>
+  <text x="392" y="280" fill="#8b9cb3" font-size="11">完成：可运行的四则运算计算器</text>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="向 AI 描述抠图工具需求">
+  <rect width="720" height="400" rx="12" fill="#0b1118"/>
+  <rect x="24" y="24" width="672" height="352" rx="8" fill="#111820" stroke="#2d3a4d" stroke-width="1.5"/>
+  <text x="48" y="58" fill="#8b9cb3" font-family="system-ui,sans-serif" font-size="13">步骤 2 · 用自然语言描述完整需求</text>
+  <rect x="48" y="80" width="624" height="270" rx="8" fill="#0a0f16" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="68" y="110" fill="#a78bfa" font-size="12" font-weight="600">Cursor Agent 提示词（教程底部可复制）</text>
+  <text x="68" y="142" fill="#e8edf4" font-size="12">做一个本地运行的抠图小工具：</text>
+  <text x="68" y="166" fill="#8b9cb3" font-size="11">· Flask 后端 + rembg 去背景</text>
+  <text x="68" y="188" fill="#8b9cb3" font-size="11">· 网页拖拽上传 JPG/PNG</text>
+  <text x="68" y="210" fill="#8b9cb3" font-size="11">· 返回透明背景 PNG 下载</text>
+  <text x="68" y="232" fill="#8b9cb3" font-size="11">· 全部本地处理，不上传云端</text>
+  <rect x="68" y="252" width="160" height="36" rx="18" fill="#a78bfa"/>
+  <text x="100" y="275" fill="#1e1033" font-size="13" font-weight="700">一键生成 →</text>
+  <text x="240" y="275" fill="#8b9cb3" font-size="12">AI 生成 app.py + 前端页面</text>
+</svg>

@@ -3118,6 +3118,27 @@ function formatDailyFeedDate(dateStr) {
   return `${y}年${m}月${d}日`;
 }
 
+function renderLatestTutorialSteps(item) {
+  if (item.illustratedSteps?.length) {
+    return `<ol class="tutorial-illustrated-steps">${item.illustratedSteps.map((step, idx) => `
+      <li class="tutorial-illustrated-step">
+        <div class="tutorial-step-text">
+          <span class="tutorial-step-num" aria-hidden="true">${idx + 1}</span>
+          <div class="tutorial-step-copy">
+            <strong class="tutorial-step-title">${escapeHtml(step.title)}</strong>
+            <p>${escapeHtml(step.text)}</p>
+            ${step.caption ? `<p class="tutorial-step-caption">${escapeHtml(step.caption)}</p>` : ''}
+          </div>
+        </div>
+        <figure class="tutorial-step-figure">
+          <img src="${escapeHtml(step.image)}" alt="${escapeHtml(step.alt || step.title)}" width="720" height="400" loading="lazy" decoding="async">
+        </figure>
+      </li>
+    `).join('')}</ol>`;
+  }
+  return `<ol class="hands-on-steps">${(item.steps || []).map(s => `<li>${escapeHtml(s)}</li>`).join('')}</ol>`;
+}
+
 function renderAiBriefing() {
   const fc = document.getElementById('ai-briefing-filter');
   if (fc) {
@@ -3238,11 +3259,13 @@ function renderLatestTutorialsList() {
     const show = latestTutorialCategory === '全部' || item.category === latestTutorialCategory;
     const isNew = item.date === newestDate;
     const openTitle = `打开 ${item.software} 官网`;
+    const illustratedBadge = item.illustrated ? `<span class="daily-feed-illustrated-badge">${escapeHtml(meta.illustratedBadge || '手把手')}</span>` : '';
     return `
-    <article class="hands-on-item latest-tutorial-item daily-feed-card ${show ? '' : 'hidden-practice-item'}" id="latest-tutorial-${escapeHtml(item.id)}">
+    <article class="hands-on-item latest-tutorial-item daily-feed-card ${item.illustrated ? 'latest-tutorial-illustrated' : ''} ${show ? '' : 'hidden-practice-item'}" id="latest-tutorial-${escapeHtml(item.id)}">
       <div class="hands-on-header">
         <time class="daily-feed-date" datetime="${escapeHtml(item.date)}">${formatDailyFeedDate(item.date)}</time>
         ${isNew ? `<span class="daily-feed-new-badge">${escapeHtml(meta.newBadge || '最新')}</span>` : ''}
+        ${illustratedBadge}
         <div class="hands-on-meta">
           <a class="hands-on-software" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(openTitle)}">
             ${renderIcon({ image: iconPathForApp(item.software, item.emoji), emoji: item.emoji, className: 'theme-icon theme-icon-inline', size: 24, alt: item.software })} ${escapeHtml(item.software)}
@@ -3254,7 +3277,7 @@ function renderLatestTutorialsList() {
       </div>
       <h3>${escapeHtml(item.title)}</h3>
       <p class="hands-on-desc">${escapeHtml(item.desc)}</p>
-      <ol class="hands-on-steps">${item.steps.map(s => `<li>${escapeHtml(s)}</li>`).join('')}</ol>
+      ${renderLatestTutorialSteps(item)}
       <div class="hands-on-result"><strong>${resultLabel}</strong>${escapeHtml(item.result)}</div>
       ${item.tips ? `<p class="hands-on-tips"><strong>${tipsLabel}</strong>${escapeHtml(item.tips)}</p>` : ''}
       <div class="practice-prompt-block hands-on-prompt-block">
