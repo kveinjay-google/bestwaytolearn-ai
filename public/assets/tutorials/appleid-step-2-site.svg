@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="打开注册入口">
+  <rect width="720" height="400" rx="12" fill="#0b1118"/>
+  <rect x="24" y="24" width="672" height="352" rx="8" fill="#111820" stroke="#2d3a4d" stroke-width="1.5"/>
+  <text x="48" y="58" fill="#8b9cb3" font-family="system-ui,sans-serif" font-size="13">步骤 2 · 打开 Apple ID 注册页</text>
+
+  <!-- Browser chrome -->
+  <rect x="48" y="80" width="624" height="40" rx="6" fill="#151d2b"/>
+  <circle cx="68" cy="100" r="5" fill="#ff5f57"/>
+  <circle cx="86" cy="100" r="5" fill="#febc2e"/>
+  <circle cx="104" cy="100" r="5" fill="#28c840"/>
+  <rect x="138" y="88" width="520" height="24" rx="4" fill="#0a0f16" stroke="#2d3a4d"/>
+  <text x="156" y="104" fill="#e8edf4" font-size="11">🔒 appleid.apple.com/account/create</text>
+
+  <!-- Apple-style page -->
+  <rect x="48" y="120" width="624" height="240" rx="8" fill="#ffffff"/>
+  <text x="360" y="158" fill="#1d1d1f" font-family="-apple-system,system-ui,sans-serif" font-size="22" font-weight="600" text-anchor="middle">Create Your Apple ID</text>
+  <text x="360" y="184" fill="#6e6e73" font-family="-apple-system,system-ui,sans-serif" font-size="12" text-anchor="middle">One Apple ID is all you need to access all of Apple.</text>
+
+  <rect x="148" y="218" width="424" height="40" rx="8" fill="#ffffff" stroke="#d2d2d7" stroke-width="1"/>
+  <text x="166" y="244" fill="#1d1d1f" font-size="12">📧 Email · 邮箱地址</text>
+
+  <rect x="148" y="266" width="424" height="40" rx="8" fill="#ffffff" stroke="#d2d2d7" stroke-width="1"/>
+  <text x="166" y="292" fill="#1d1d1f" font-size="12">🔒 Password · 至少 8 位含字母数字</text>
+
+  <!-- Country selector -->
+  <rect x="148" y="314" width="204" height="36" rx="8" fill="#ffffff" stroke="#d2d2d7" stroke-width="1"/>
+  <text x="166" y="338" fill="#1d1d1f" font-size="12">🇺🇸 United States</text>
+
+  <text x="360" y="338" fill="#5e5e63" font-size="11" text-anchor="middle">▾</text>
+
+  <!-- arrow annotation -->
+  <text x="572" y="330" fill="#2dd4bf" font-size="11" font-weight="600">← 改成「美国」</text>
+  <line x1="568" y1="324" x2="572" y2="328" stroke="#2dd4bf" stroke-width="1.5"/>
+</svg>
