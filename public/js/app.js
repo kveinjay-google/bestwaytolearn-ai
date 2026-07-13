@@ -13,7 +13,7 @@ const STORAGE_KEY = 'bwtl-ai-progress';
 const USER_KEY = 'bwtl-ai-user';
 migrateStorageKey('synapse-ai-progress', STORAGE_KEY);
 migrateStorageKey('synapse-ai-user', USER_KEY);
-const WELCOME_STEPS = 5;
+const WELCOME_STEPS = 6;
 const LEARNING_TAB_IDS = new Set(['learn', 'tools', 'practice', 'validate']);
 let nicknamePromptCallback = null;
 let nicknamePromptActive = false;
@@ -57,11 +57,17 @@ function getUserName() {
 }
 
 function loadProgress() {
+  if (typeof LearningCore !== 'undefined') return LearningCore.load();
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || { completedDays: [] }; }
   catch { return { completedDays: [] }; }
 }
 
 function saveProgress(data) {
+  if (typeof LearningCore !== 'undefined') {
+    LearningCore.save(data);
+    document.dispatchEvent(new CustomEvent('bwtl:progress-save'));
+    return;
+  }
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 }
 
@@ -283,6 +289,9 @@ function getSearchTypeLabel(key) {
     toolsNav: ['search.typeToolsNav', 'AI工具'],
     skillsNav: ['search.typeSkillsNav', 'SKILL推荐'],
     mcpNav: ['search.typeMcpNav', 'MCP'],
+    briefing: ['search.typeBriefing', '时讯'],
+    tutorial: ['search.typeTutorial', '教程'],
+    pathDay: ['search.typeDay', '学习日'],
   };
   const [k, fb] = map[key] || ['search.typeModule', '模块'];
   return uiT(k, fb);
@@ -1215,7 +1224,14 @@ function updatePhaseBridges() {
         ${statusHtml}
         ${statusHtml && nextHtml ? '<div class="phase-bridge-divider" role="presentation"></div>' : ''}
         ${nextHtml}
+        <div class="phase-bridge-day-extras" data-phase-extras="${phaseNum}"></div>
       </div>`;
+    const extrasEl = bridge.querySelector('[data-phase-extras]');
+    if (extrasEl && typeof LearningPath !== 'undefined') {
+      const dayIdx = (PHASE_DAY_MAP[phaseNum] || []).find(i => !loadProgress().completedDays.includes(i));
+      if (dayIdx != null) LearningPath.renderDayExtras(extrasEl, dayIdx);
+      else extrasEl.innerHTML = '';
+    }
   });
 }
 
@@ -1324,6 +1340,12 @@ function getPhaseStartHref(phaseNum) {
 }
 
 function getContinueLearningTarget() {
+  const base = getContinueLearningTargetCore();
+  if (typeof LearningPath !== 'undefined') return LearningPath.enhanceContinueTarget(base);
+  return base;
+}
+
+function getContinueLearningTargetCore() {
   if (isGraduated()) {
     return {
       type: 'graduation',
@@ -1470,6 +1492,7 @@ function updateAllProgress() {
   updatePhaseBridges();
   updateContinueLearningCTA();
   updateGraduationUI();
+  if (typeof LearningPlan30 !== 'undefined') LearningPlan30.render();
 }
 
 function renderGraduationStats() {
@@ -1487,8 +1510,11 @@ function renderGraduationStats() {
       <span class="graduation-stat-label">${uiT('graduation.statQuiz', '测验最佳（/{total}）', { total: getQuizData().length })}</span>
     </div>
     <div class="graduation-stat">
-      <span class="graduation-stat-num">100+</span>
-      <span class="graduation-stat-label">${uiT('graduation.statContent', '术语与案例')}</span>
+      <span class="graduation-stat-num">${(() => {
+        const m = typeof LearningCore !== 'undefined' ? LearningCore.getModuleProgressSummary() : { done: 0 };
+        return m.done || '100+';
+      })()}</span>
+      <span class="graduation-stat-label">${uiT('graduation.statContent', '模块与内容')}</span>
     </div>`;
 
   const title = document.getElementById('graduation-title');
@@ -1653,6 +1679,7 @@ function updateGraduationUI() {
   if (graduated) {
     renderGraduationStats();
     loadPracticePlanForm();
+    if (typeof LearningPlan30 !== 'undefined') LearningPlan30.render();
     const bannerMsg = document.getElementById('graduation-banner-msg');
     if (bannerMsg) {
       bannerMsg.textContent = uiT('graduation.bannerMsg', '{name}，你已完成四阶段学习与知识测验，正式结业！', { name: getUserName() });
@@ -3104,11 +3131,21 @@ let aiBriefingCategory = '全部';
 let latestTutorialCategory = '全部';
 
 function getAiBriefingData() {
-  return typeof AI_BRIEFING_ITEMS !== 'undefined' ? [...AI_BRIEFING_ITEMS].sort((a, b) => b.date.localeCompare(a.date)) : [];
+  const items = typeof I18n !== 'undefined' ? I18n.getAiBriefingItems() : (typeof AI_BRIEFING_ITEMS !== 'undefined' ? AI_BRIEFING_ITEMS : []);
+  return [...items].sort((a, b) => b.date.localeCompare(a.date));
 }
 
 function getLatestTutorialsData() {
-  return typeof LATEST_TUTORIAL_ITEMS !== 'undefined' ? [...LATEST_TUTORIAL_ITEMS].sort((a, b) => b.date.localeCompare(a.date)) : [];
+  const items = typeof I18n !== 'undefined' ? I18n.getLatestTutorialItems() : (typeof LATEST_TUTORIAL_ITEMS !== 'undefined' ? LATEST_TUTORIAL_ITEMS : []);
+  return [...items].sort((a, b) => b.date.localeCompare(a.date));
+}
+
+function getAiBriefingMetaData() {
+  return typeof I18n !== 'undefined' ? I18n.getAiBriefingMeta() : (typeof AI_BRIEFING_META !== 'undefined' ? AI_BRIEFING_META : {});
+}
+
+function getLatestTutorialsMetaData() {
+  return typeof I18n !== 'undefined' ? I18n.getLatestTutorialsMeta() : (typeof LATEST_TUTORIAL_META !== 'undefined' ? LATEST_TUTORIAL_META : {});
 }
 
 function getDailyFeedMeta(meta, items) {
@@ -3170,7 +3207,7 @@ function buildDailyFeedBackLink(href, label) {
 }
 
 function buildLatestTutorialDetailHtml(item, itemIndex) {
-  const meta = typeof LATEST_TUTORIAL_META !== 'undefined' ? LATEST_TUTORIAL_META : {};
+  const meta = getLatestTutorialsMetaData();
   const copyLabel = typeof I18n !== 'undefined' ? I18n.t('common.copy') : '一键复制';
   const resultLabel = '完成后你将得到：';
   const tipsLabel = '小贴士：';
@@ -3192,7 +3229,7 @@ function buildLatestTutorialDetailHtml(item, itemIndex) {
           <a class="hands-on-software" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(openTitle)}">
             ${renderIcon({ image: iconPathForApp(item.software, item.emoji), emoji: item.emoji, className: 'theme-icon theme-icon-inline', size: 24, alt: item.software })} ${escapeHtml(item.software)}
           </a>
-          <span class="hands-on-cat-tag">${escapeHtml(item.category)}</span>
+          <span class="hands-on-cat-tag">${escapeHtml(typeof I18n !== 'undefined' ? I18n.getLatestTutorialsCategoryLabel(item.category) : item.category)}</span>
           <span class="hands-on-badge">${escapeHtml(item.difficulty)}</span>
           <span class="hands-on-badge hands-on-badge-time">${escapeHtml(item.duration)}</span>
         </div>
@@ -3213,7 +3250,7 @@ function buildLatestTutorialDetailHtml(item, itemIndex) {
 }
 
 function renderAiBriefingBodyHtml(item) {
-  const meta = typeof AI_BRIEFING_META !== 'undefined' ? AI_BRIEFING_META : {};
+  const meta = getAiBriefingMetaData();
   const highlightsLabel = meta.highlightsLabel || '要点速览';
   const paragraphs = Array.isArray(item.body) ? item.body : [];
   let inner = '';
@@ -3236,7 +3273,7 @@ function renderAiBriefingBodyHtml(item) {
 }
 
 function buildAiBriefingDetailHtml(item) {
-  const meta = typeof AI_BRIEFING_META !== 'undefined' ? AI_BRIEFING_META : {};
+  const meta = getAiBriefingMetaData();
   const readMore = meta.readMore || '阅读原文';
   const sourceLabel = meta.sourceLabel || '来源';
   const items = getAiBriefingData();
@@ -3248,7 +3285,7 @@ function buildAiBriefingDetailHtml(item) {
       <header class="daily-feed-card-header">
         <time class="daily-feed-date" datetime="${escapeHtml(item.date)}">${formatDailyFeedDate(item.date)}</time>
         ${isNew ? `<span class="daily-feed-new-badge">${escapeHtml(meta.newBadge || '最新')}</span>` : ''}
-        <span class="daily-feed-category">${escapeHtml(item.category)}</span>
+        <span class="daily-feed-category">${escapeHtml(typeof I18n !== 'undefined' ? I18n.getAiBriefingCategoryLabel(item.category) : item.category)}</span>
       </header>
       <h2 class="daily-feed-detail-title">${escapeHtml(item.title)}</h2>
       <p class="daily-feed-lead">${escapeHtml(item.summary)}</p>
@@ -3338,12 +3375,13 @@ function renderAiBriefing() {
     delete fc.dataset.bound;
   }
   const categories = typeof AI_BRIEFING_CATEGORIES !== 'undefined' ? AI_BRIEFING_CATEGORIES : ['全部'];
+  const briefingLabelFor = cat => (typeof I18n !== 'undefined' ? I18n.getAiBriefingCategoryLabel(cat) : cat);
   initPracticeFilterBar('ai-briefing-filter', categories, () => aiBriefingCategory, cat => {
     aiBriefingCategory = cat;
     renderAiBriefingList();
-  });
+  }, briefingLabelFor);
   const items = getAiBriefingData();
-  const meta = getDailyFeedMeta(typeof AI_BRIEFING_META !== 'undefined' ? AI_BRIEFING_META : {}, items);
+  const meta = getDailyFeedMeta(getAiBriefingMetaData(), items);
   const leadEl = document.getElementById('ai-briefing-lead');
   const updatedEl = document.getElementById('ai-briefing-updated');
   const statEl = document.getElementById('ai-briefing-banner-stat');
@@ -3361,7 +3399,7 @@ function renderAiBriefingList() {
   const container = document.getElementById('ai-briefing-list');
   if (!container) return;
   const items = getAiBriefingData();
-  const meta = typeof AI_BRIEFING_META !== 'undefined' ? AI_BRIEFING_META : {};
+  const meta = getAiBriefingMetaData();
   const visible = items.filter(item => aiBriefingCategory === '全部' || item.category === aiBriefingCategory);
   const countEl = document.getElementById('ai-briefing-count');
   const countText = (meta.countShown || '显示 {visible} / {total} 条')
@@ -3382,7 +3420,7 @@ function renderAiBriefingList() {
     <article class="daily-feed-preview-card ai-briefing-preview-card">
       <div class="daily-feed-preview-meta">
         <time class="daily-feed-date" datetime="${escapeHtml(item.date)}">${formatDailyFeedDate(item.date)}</time>
-        <span class="daily-feed-category">${escapeHtml(item.category)}</span>
+        <span class="daily-feed-category">${escapeHtml(typeof I18n !== 'undefined' ? I18n.getAiBriefingCategoryLabel(item.category) : item.category)}</span>
       </div>
       <h3 class="daily-feed-preview-title">
         <a class="daily-feed-title-link" href="#ai-briefing-${escapeHtml(item.id)}">${escapeHtml(item.title)}</a>
@@ -3398,12 +3436,13 @@ function renderLatestTutorials() {
     delete fc.dataset.bound;
   }
   const categories = typeof LATEST_TUTORIAL_CATEGORIES !== 'undefined' ? LATEST_TUTORIAL_CATEGORIES : ['全部'];
+  const tutorialLabelFor = cat => (typeof I18n !== 'undefined' ? I18n.getLatestTutorialsCategoryLabel(cat) : cat);
   initPracticeFilterBar('latest-tutorials-filter', categories, () => latestTutorialCategory, cat => {
     latestTutorialCategory = cat;
     renderLatestTutorialsList();
-  });
+  }, tutorialLabelFor);
   const items = getLatestTutorialsData();
-  const meta = getDailyFeedMeta(typeof LATEST_TUTORIAL_META !== 'undefined' ? LATEST_TUTORIAL_META : {}, items);
+  const meta = getDailyFeedMeta(getLatestTutorialsMetaData(), items);
   const leadEl = document.getElementById('latest-tutorials-lead');
   const updatedEl = document.getElementById('latest-tutorials-updated');
   const statEl = document.getElementById('latest-tutorials-banner-stat');
@@ -3421,7 +3460,7 @@ function renderLatestTutorialsList() {
   const container = document.getElementById('latest-tutorials-list');
   if (!container) return;
   const items = getLatestTutorialsData();
-  const meta = typeof LATEST_TUTORIAL_META !== 'undefined' ? LATEST_TUTORIAL_META : {};
+  const meta = getLatestTutorialsMetaData();
   const visible = items.filter(item => latestTutorialCategory === '全部' || item.category === latestTutorialCategory);
   const countEl = document.getElementById('latest-tutorials-count');
   const countText = (meta.countShown || '显示 {visible} / {total} 篇')
@@ -3450,7 +3489,7 @@ function renderLatestTutorialsList() {
     <article class="daily-feed-preview-card latest-tutorial-preview-card ${show ? '' : 'hidden-practice-item'}">
       <div class="daily-feed-preview-meta">
         <time class="daily-feed-date" datetime="${escapeHtml(item.date)}">${formatDailyFeedDate(item.date)}</time>
-        <span class="daily-feed-category">${escapeHtml(item.category)}</span>
+        <span class="daily-feed-category">${escapeHtml(typeof I18n !== 'undefined' ? I18n.getLatestTutorialsCategoryLabel(item.category) : item.category)}</span>
         ${isNew ? `<span class="daily-feed-new-badge">${escapeHtml(meta.newBadge || '最新')}</span>` : ''}
         ${illustratedBadge}
       </div>
@@ -4241,6 +4280,9 @@ function selectAnswer(idx) {
   else if (!quizState.wrongIndices.includes(quizState.currentQIdx)) {
     quizState.wrongIndices.push(quizState.currentQIdx);
   }
+  if (typeof LearningQuiz !== 'undefined') {
+    LearningQuiz.recordAnswer(quizState.currentQIdx, correct, q.topic);
+  }
   document.querySelectorAll('.quiz-option').forEach((btn, i) => {
     btn.disabled = true;
     if (i === q.answer) btn.classList.add('correct');
@@ -4303,6 +4345,15 @@ function showQuizResult() {
     saveProgress(prog);
     updatePhaseBridges();
     updateContinueLearningCTA();
+  }
+  if (typeof LearningQuiz !== 'undefined') {
+    LearningQuiz.recordQuizRun({
+      score,
+      total,
+      mode: quizState.mode,
+      wrongIndices: quizState.wrongIndices,
+    });
+    LearningQuiz.renderExtras();
   }
   const pct = total ? Math.round((score / total) * 100) : 0;
   document.getElementById('result-score').textContent = `${score} / ${total}`;
@@ -4615,6 +4666,9 @@ function initWelcome() {
     if (tourStep === WELCOME_STEPS - 1 && nameInput?.value.trim()) {
       applyPersonalization(nameInput.value.trim());
     }
+    if (tourStep === 4 && typeof LearningPath !== 'undefined') {
+      LearningPath.renderRolePicker(document.getElementById('welcome-role-grid'));
+    }
     if (tourStep === 3) setTimeout(() => nameInput?.focus(), 300);
   }
 
@@ -4666,7 +4720,36 @@ function initWelcome() {
     }
   });
 
-  nameInput?.addEventListener('input', () => nameError?.classList.add('hidden'));
+  // Clicking the wrapper focuses the input (so the click target is the whole card)
+  const nameCard = document.getElementById('welcome-name-card');
+  const namePreview = document.getElementById('welcome-name-preview');
+  const namePreviewText = document.getElementById('welcome-name-preview-text');
+  nameCard?.addEventListener('click', e => {
+    if (e.target === nameCard) nameInput?.focus();
+  });
+  nameCard?.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      nameInput?.focus();
+    }
+  });
+
+  function updateNicknamePreview(value) {
+    const trimmed = value.trim();
+    if (nameCard) nameCard.classList.toggle('has-value', trimmed.length > 0);
+    if (!namePreview || !namePreviewText) return;
+    if (!trimmed) {
+      namePreview.classList.add('hidden');
+      return;
+    }
+    namePreview.classList.remove('hidden');
+    namePreviewText.innerHTML = `已设置：<strong>${escapeHtml(trimmed)}</strong>`;
+  }
+
+  nameInput?.addEventListener('input', () => {
+    nameError?.classList.add('hidden');
+    updateNicknamePreview(nameInput.value);
+  });
   nameInput?.addEventListener('keydown', e => {
     if (e.key === 'Enter') {
       if (nicknamePromptActive || (tourActive && tourStep === 3)) nextBtn?.click();
@@ -5359,6 +5442,12 @@ document.addEventListener('DOMContentLoaded', () => {
   initConceptSearch();
   initGlossarySearch();
   initKnowledgeViewToggle();
+  if (typeof LearningSearch !== 'undefined') LearningSearch.init();
+  if (typeof LearningCore !== 'undefined') LearningCore.init();
+  if (typeof LearningPath !== 'undefined') LearningPath.init();
+  if (typeof LearningQuiz !== 'undefined') LearningQuiz.init();
+  if (typeof LearningPlan30 !== 'undefined') LearningPlan30.init();
+  if (typeof LearningAnalytics !== 'undefined') LearningAnalytics.init();
   updateContinueLearningCTA();
   applyLocalePersonalization();
 });

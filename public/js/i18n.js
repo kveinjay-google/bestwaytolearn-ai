@@ -751,6 +751,7 @@ const I18n = (function () {
     steps.forEach((content, i) => {
       const step = document.querySelector(`.welcome-step[data-step="${i}"]`);
       if (!step || !content) return;
+      if (step.hasAttribute('data-i18n-skip')) return;
       if (content.title) {
         const h2 = step.querySelector('h2');
         if (h2) h2.textContent = content.title;
@@ -784,7 +785,7 @@ const I18n = (function () {
       }
     });
     const nameErr = document.getElementById('welcome-name-error');
-    if (nameErr) nameErr.textContent = t('welcome.nameError');
+    if (nameErr && !nameErr.hasAttribute('data-i18n-skip')) nameErr.textContent = t('welcome.nameError');
     const profileErr = document.getElementById('profile-name-error');
     if (profileErr) profileErr.textContent = t('profile.nameError');
   }
@@ -1153,6 +1154,53 @@ const I18n = (function () {
     return getData('promptExamplesUi') || {};
   }
 
+  function mergeFeedItem(base, overlay) {
+    if (!overlay) return base;
+    const merged = { ...base, ...overlay };
+    if (overlay.body) merged.body = overlay.body;
+    if (overlay.highlights) merged.highlights = overlay.highlights;
+    if (overlay.steps) merged.steps = overlay.steps;
+    if (overlay.illustratedSteps) merged.illustratedSteps = overlay.illustratedSteps;
+    if (overlay.tags) merged.tags = overlay.tags;
+    return merged;
+  }
+
+  function getAiBriefingMeta() {
+    if (usesChineseSourceContent() && typeof AI_BRIEFING_META !== 'undefined') return AI_BRIEFING_META;
+    const overlay = getData('aiBriefing')?.meta || {};
+    return typeof AI_BRIEFING_META !== 'undefined' ? { ...AI_BRIEFING_META, ...overlay } : overlay;
+  }
+
+  function getAiBriefingCategoryLabel(cat) {
+    return mapCategoryLabel(cat, getData('aiBriefing')?.categories);
+  }
+
+  function getAiBriefingItems() {
+    if (typeof AI_BRIEFING_ITEMS === 'undefined') return [];
+    if (usesChineseSourceContent()) return AI_BRIEFING_ITEMS;
+    const overlay = getData('aiBriefing')?.items || [];
+    const byId = Object.fromEntries(overlay.filter(o => o?.id).map(o => [o.id, o]));
+    return AI_BRIEFING_ITEMS.map(item => mergeFeedItem(item, byId[item.id]));
+  }
+
+  function getLatestTutorialsMeta() {
+    if (usesChineseSourceContent() && typeof LATEST_TUTORIAL_META !== 'undefined') return LATEST_TUTORIAL_META;
+    const overlay = getData('latestTutorials')?.meta || {};
+    return typeof LATEST_TUTORIAL_META !== 'undefined' ? { ...LATEST_TUTORIAL_META, ...overlay } : overlay;
+  }
+
+  function getLatestTutorialsCategoryLabel(cat) {
+    return mapCategoryLabel(cat, getData('latestTutorials')?.categories);
+  }
+
+  function getLatestTutorialItems() {
+    if (typeof LATEST_TUTORIAL_ITEMS === 'undefined') return [];
+    if (usesChineseSourceContent()) return LATEST_TUTORIAL_ITEMS;
+    const overlay = getData('latestTutorials')?.items || [];
+    const byId = Object.fromEntries(overlay.filter(o => o?.id).map(o => [o.id, o]));
+    return LATEST_TUTORIAL_ITEMS.map(item => mergeFeedItem(item, byId[item.id]));
+  }
+
   function getPromptSimulatedResponses() {
     if (usesChineseSourceContent()) return null;
     return getData('promptLab.simulatedResponses') || null;
@@ -1341,6 +1389,12 @@ const I18n = (function () {
     getPromptExamples,
     getPromptExampleCategoryLabel,
     getPromptExamplesUi,
+    getAiBriefingMeta,
+    getAiBriefingCategoryLabel,
+    getAiBriefingItems,
+    getLatestTutorialsMeta,
+    getLatestTutorialsCategoryLabel,
+    getLatestTutorialItems,
     getPromptSimulatedResponses,
     getPromptFollowupPatterns,
     renderPromptTemplate,
