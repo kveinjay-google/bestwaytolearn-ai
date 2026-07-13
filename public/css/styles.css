@@ -7987,6 +7987,31 @@ main {
     .hero-desc { font-size: 1rem; }
   }
 
+  /* Lang menu: fix overflow off-screen on small viewports */
+  .header-lang-menu {
+    position: fixed;
+    top: 50%;
+    left: max(0.75rem, env(safe-area-inset-left, 0px));
+    right: max(0.75rem, env(safe-area-inset-right, 0px));
+    transform: translateY(-50%);
+    z-index: 1000;
+    max-height: min(80dvh, calc(100dvh - 2rem));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    background: var(--bg-card);
+    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.55);
+    padding: 0.5rem;
+  }
+  .header-lang-menu::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+    pointer-events: none;
+  }
+
   .fundamentals-grid { grid-template-columns: 1fr; }
   .path-day { grid-template-columns: 1fr; gap: 0.75rem; }
   .path-check { justify-self: start; }
