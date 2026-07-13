@@ -311,7 +311,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=20260710a">
+  <link rel="stylesheet" href="css/styles.css?v=20260713c">
   <link rel="stylesheet" href="css/themes.css?v=20260627c">
 </head>
 <body>
@@ -574,16 +574,36 @@
         <img class="logo-mark" src="assets/icons/bwtl-mark.png" width="24" height="24" alt="">
         <span class="logo-text" data-i18n-html="brand.logoHtml">BestWayToLearn<em>.AI</em></span>
       </a>
-      <nav class="main-nav" role="tablist" data-i18n-aria="nav.mainLabel" aria-label="学习阶段">
-        <a href="#roadmap" role="tab" data-nav-tab="map" data-i18n="nav.home" aria-selected="true">AI学习</a>
-        <a href="#ai-briefing" role="tab" data-nav-tab="aiBriefing" data-i18n="nav.aiBriefing">AI时讯</a>
-        <a href="#latest-tutorials" role="tab" data-nav-tab="latestTutorials" data-i18n="nav.latestTutorials">最新教程</a>
-        <a href="#monetize" role="tab" data-nav-tab="monetize" data-i18n="nav.monetize">变现</a>
-        <a href="#devices" role="tab" data-nav-tab="devices" data-i18n="nav.devices">设备</a>
-        <a href="#ai-nav" role="tab" data-nav-tab="aiToolsNav" data-i18n="nav.toolsNav">AI导航</a>
-        <a href="#ai-skills-nav" role="tab" data-nav-tab="aiSkillsNav" data-i18n="nav.skillsRecommend">SKILL推荐</a>
-        <a href="#ai-mcp-nav" role="tab" data-nav-tab="aiMcpNav" data-i18n="nav.mcpNav">MCP导航</a>
-        <a href="#prompt-examples" role="tab" data-nav-tab="prompts" data-i18n="nav.prompts">Prompt提示词</a>
+      <nav class="main-nav" id="main-nav" role="navigation" data-i18n-aria="nav.mainLabel" aria-label="学习阶段">
+        <div class="main-nav-section">
+          <h3 class="main-nav-section-title" data-i18n="nav.sectionLearn">学习</h3>
+          <a href="#roadmap" role="tab" data-nav-tab="map" data-i18n="nav.home" aria-selected="true">学习地图</a>
+          <a href="#fundamentals" role="tab" data-nav-tab="fundamentals">AI 原理</a>
+          <a href="#knowledge" role="tab" data-nav-tab="knowledge">AI 知识库</a>
+          <a href="#apps" role="tab" data-nav-tab="apps">主流应用</a>
+          <a href="#prompt-lab" role="tab" data-nav-tab="promptLab">提示词实验</a>
+          <a href="#practice" role="tab" data-nav-tab="practice">实战应用</a>
+          <a href="#quiz" role="tab" data-nav-tab="quiz">知识测验</a>
+        </div>
+        <div class="main-nav-section">
+          <h3 class="main-nav-section-title" data-i18n="nav.sectionBriefing">动态</h3>
+          <a href="#ai-briefing" role="tab" data-nav-tab="aiBriefing" data-i18n="nav.aiBriefing">AI 时讯</a>
+          <a href="#latest-tutorials" role="tab" data-nav-tab="latestTutorials" data-i18n="nav.latestTutorials">最新教程</a>
+        </div>
+        <div class="main-nav-section">
+          <h3 class="main-nav-section-title" data-i18n="nav.sectionResources">资源</h3>
+          <a href="#prompt-examples" role="tab" data-nav-tab="prompts" data-i18n="nav.prompts">Prompt 提示词</a>
+          <a href="#devices" role="tab" data-nav-tab="devices" data-i18n="nav.devices">设备选购</a>
+          <a href="#monetize" role="tab" data-nav-tab="monetize" data-i18n="nav.monetize">变现指南</a>
+          <a href="#ai-skills-nav" role="tab" data-nav-tab="aiSkillsNav" data-i18n="nav.skillsRecommend">SKILL 推荐</a>
+          <a href="#ai-mcp-nav" role="tab" data-nav-tab="aiMcpNav" data-i18n="nav.mcpNav">MCP 导航</a>
+          <a href="#ai-nav" role="tab" data-nav-tab="aiToolsNav" data-i18n="nav.toolsNav">AI 导航</a>
+        </div>
+        <div class="main-nav-section main-nav-section--account">
+          <h3 class="main-nav-section-title" data-i18n="nav.sectionAccount">账户</h3>
+          <a href="#" id="main-nav-account-link" data-nav-tab="account">账号设置</a>
+          <a href="#" id="main-nav-install-link" class="hidden" data-nav-tab="install">安装到主屏</a>
+        </div>
       </nav>
       <button class="header-install hidden" id="header-install-btn" type="button" data-i18n-aria="settings.installApp" data-i18n-title="settings.installApp" title="安装到主屏幕">
         <span class="header-install-icon" aria-hidden="true">⬇</span>
@@ -675,8 +695,8 @@
         </button>
       </div>
       <div class="header-progress" id="header-progress" data-i18n-title="nav.progress" title="学习进度">0%</div>
-      <button class="nav-toggle" data-i18n-aria="nav.menuOpen" aria-label="打开菜单" aria-expanded="false">
-        <span></span><span></span>
+      <button class="nav-toggle" id="nav-toggle" data-i18n-aria="nav.menuOpen" aria-label="打开菜单" aria-expanded="false" aria-controls="main-nav">
+        <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
       </button>
     </div>
   </header>
@@ -1506,7 +1526,7 @@
   <script src="js/ai-skills-nav.js?v=20260708a"></script>
   <script src="js/ai-mcp-nav.js?v=20260708e"></script>
   <script src="js/ai-briefing.js?v=20260704h"></script>
-  <script src="js/latest-tutorials.js?v=20260704c"></script>
+  <script src="js/latest-tutorials.js?v=20260713a"></script>
   <script src="js/terms.js?v=20260627a"></script>
   <script src="js/pwa.js?v=20260703b"></script>
   <script src="js/theme.js?v=20260627c"></script>
@@ -1519,5 +1539,27 @@
   <script src="js/learning-analytics.js?v=20260710a"></script>
   <script src="js/learning-search.js?v=20260710a"></script>
   <script src="js/app.js?v=20260710a"></script>
+  <!-- Mobile bottom tab bar (visible ≤ 768px) -->
+  <nav class="bottom-tab-bar" id="bottom-tab-bar" role="navigation" data-i18n-aria="nav.tabBarLabel" aria-label="快速导航">
+    <a href="#roadmap" class="bottom-tab" data-bottom-tab="map" data-i18n-aria="nav.home" aria-label="AI学习">
+      <span class="bottom-tab-icon" aria-hidden="true">🏠</span>
+      <span class="bottom-tab-label" data-i18n="nav.home">学习</span>
+    </a>
+    <a href="#ai-briefing" class="bottom-tab" data-bottom-tab="aiBriefing" data-i18n-aria="nav.aiBriefing" aria-label="AI时讯">
+      <span class="bottom-tab-icon" aria-hidden="true">📰</span>
+      <span class="bottom-tab-label" data-i18n="nav.aiBriefing">时讯</span>
+    </a>
+    <a href="#latest-tutorials" class="bottom-tab" data-bottom-tab="latestTutorials" data-i18n-aria="nav.latestTutorials" aria-label="最新教程">
+      <span class="bottom-tab-icon" aria-hidden="true">📚</span>
+      <span class="bottom-tab-label" data-i18n="nav.latestTutorials">教程</span>
+    </a>
+    <a href="#monetize" class="bottom-tab" data-bottom-tab="monetize" data-i18n-aria="nav.monetize" aria-label="变现指南">
+      <span class="bottom-tab-icon" aria-hidden="true">💰</span>
+      <span class="bottom-tab-label" data-i18n="nav.monetize">变现</span>
+    </a>
+  </nav>
+
+  <!-- Drawer scrim (only visible when .main-nav is open) -->
+  <div class="main-nav-scrim" id="main-nav-scrim" hidden></div>
 </body>
 </html>

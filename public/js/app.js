@@ -5257,13 +5257,88 @@ function initScrollReveal() {
 }
 
 function initNav() {
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.querySelector('.main-nav');
+  const toggle = document.getElementById('nav-toggle');
+  const nav = document.getElementById('main-nav');
+  const scrim = document.getElementById('main-nav-scrim');
   if (!toggle || !nav) return;
+
+  const openDrawer = () => {
+    nav.classList.add('open');
+    scrim?.classList.add('is-open');
+    toggle.classList.add('is-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('drawer-open');
+  };
+  const closeDrawer = () => {
+    nav.classList.remove('open');
+    scrim?.classList.remove('is-open');
+    toggle.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('drawer-open');
+  };
+
   toggle.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', open);
+    if (nav.classList.contains('open')) closeDrawer();
+    else openDrawer();
   });
+
+  // Click outside (scrim) closes drawer
+  scrim?.addEventListener('click', closeDrawer);
+
+  // Click any link inside the drawer → close after a tick (lets navigation start)
+  nav.addEventListener('click', e => {
+    const link = e.target.closest('a[href]');
+    if (!link || !nav.contains(link)) return;
+    // Don't close for the account/install links (they're action triggers, not navigations).
+    if (link.dataset.navTab === 'account' || link.dataset.navTab === 'install') {
+      closeDrawer();
+      return;
+    }
+    setTimeout(closeDrawer, 60);
+  });
+
+  // ESC closes the drawer
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && nav.classList.contains('open')) closeDrawer();
+  });
+
+  // Account link inside drawer opens the account panel
+  const accountLink = document.getElementById('main-nav-account-link');
+  accountLink?.addEventListener('click', e => {
+    e.preventDefault();
+    closeDrawer();
+    document.getElementById('header-user')?.click();
+  });
+}
+
+function initBottomTabs() {
+  const tabs = document.querySelectorAll('.bottom-tab');
+  if (!tabs.length) return;
+
+  // Map each bottom-tab hash -> the section anchors it activates
+  // (so /#ai-briefing can highlight the "aiBriefing" tab, etc.)
+  const tabHashes = new Map();
+  tabs.forEach(tab => {
+    const hash = (tab.getAttribute('href') || '').replace(/^#/, '');
+    if (hash) tabHashes.set(hash.toLowerCase(), tab);
+  });
+
+  function highlightActive() {
+    const hash = (window.location.hash || '#roadmap').replace(/^#/, '').toLowerCase();
+    let active = tabHashes.get(hash);
+    if (!active) {
+      // Try matching by data-bottom-tab attribute
+      tabs.forEach(tab => {
+        if (tab.dataset.bottomTab && tab.dataset.bottomTab.toLowerCase() === hash) {
+          active = tab;
+        }
+      });
+    }
+    tabs.forEach(tab => tab.classList.toggle('active', tab === active));
+  }
+
+  highlightActive();
+  window.addEventListener('hashchange', highlightActive);
 }
 
 let conceptCategory = DEFAULT_TERM_CATEGORY;
@@ -5439,6 +5514,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (quizCounter) quizCounter.textContent = `1 / ${getQuizData().length}`;
   initScrollReveal();
   initNav();
+  initBottomTabs();
   initConceptSearch();
   initGlossarySearch();
   initKnowledgeViewToggle();
