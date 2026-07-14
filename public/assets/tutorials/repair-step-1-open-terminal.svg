@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="打开 Terminal 终端">
+  <rect width="720" height="400" rx="12" fill="#0b1118"/>
+  <rect x="24" y="24" width="672" height="352" rx="8" fill="#111820" stroke="#2d3a4d" stroke-width="1.5"/>
+  <text x="48" y="58" fill="#8b9cb3" font-family="system-ui,sans-serif" font-size="13">步骤 2 · 打开 Terminal 终端</text>
+
+  <!-- Left: explanation -->
+  <rect x="48" y="80" width="280" height="280" rx="8" fill="#0a0f16" stroke="#334155"/>
+  <text x="68" y="108" fill="#fb923c" font-size="13" font-weight="600">📍 三种打开方式</text>
+
+  <text x="68" y="138" fill="#e8edf4" font-size="12" font-weight="600">方式 1：Spotlight（最快）</text>
+  <text x="88" y="158" fill="#8b9cb3" font-size="11">⌘ + 空格，输入「terminal」</text>
+  <text x="88" y="176" fill="#8b9cb3" font-size="11">回车启动</text>
+
+  <text x="68" y="206" fill="#e8edf4" font-size="12" font-weight="600">方式 2：Finder 路径</text>
+  <text x="88" y="226" fill="#8b9cb3" font-size="11">应用程序 → 实用工具</text>
+  <text x="88" y="244" fill="#8b9cb3" font-size="11">→ 终端 Terminal</text>
+
+  <text x="68" y="274" fill="#e8edf4" font-size="12" font-weight="600">方式 3：Dock 启动台</text>
+  <text x="88" y="294" fill="#8b9cb3" font-size="11">启动台 → 其他 → 终端</text>
+
+  <text x="68" y="328" fill="#a78bfa" font-size="11">💡 推荐放到 Dock 常驻</text>
+
+  <!-- Right: Spotlight search mock -->
+  <rect x="352" y="80" width="320" height="280" rx="10" fill="#0a0f16" stroke="#334155"/>
+  <rect x="352" y="80" width="320" height="28" rx="10" fill="#1a1f2e"/>
+  <circle cx="368" cy="94" r="5" fill="#ff5f57"/>
+  <circle cx="384" cy="94" r="5" fill="#febc2e"/>
+  <circle cx="400" cy="94" r="5" fill="#28c840"/>
+
+  <!-- Top menu bar -->
+  <rect x="352" y="108" width="320" height="22" fill="#0a0f16"/>
+  <text x="368" y="124" fill="#e8edf4" font-size="11" font-weight="600"></text>
+  <circle cx="612" cy="119" r="4" fill="#fb923c"/>
+  <circle cx="624" cy="119" r="4" fill="#8b9cb3"/>
+  <circle cx="636" cy="119" r="4" fill="#8b9cb3"/>
+
+  <!-- Spotlight search bar -->
+  <rect x="402" y="138" width="220" height="32" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <text x="416" y="159" fill="#e8edf4" font-size="13" font-family="ui-monospace,monospace">terminal</text>
+  <rect x="612" y="144" width="6" height="20" rx="2" fill="#fb923c"/>
+
+  <!-- Spotlight result -->
+  <rect x="402" y="180" width="220" height="48" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <rect x="412" y="190" width="28" height="28" rx="4" fill="#0a0f16"/>
+  <text x="426" y="210" fill="#fb923c" font-size="16" text-anchor="middle">▶_</text>
+  <text x="450" y="200" fill="#e8edf4" font-size="12" font-weight="600">终端</text>
+  <text x="450" y="216" fill="#8b9cb3" font-size="10">应用程序</text>
+
+  <text x="512" y="340" fill="#5eead4" font-size="11" text-anchor="middle" font-family="ui-monospace,monospace">⌘ + 空格</text>
+</svg>
