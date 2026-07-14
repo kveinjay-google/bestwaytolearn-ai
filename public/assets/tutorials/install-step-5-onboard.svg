@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="运行 onboard 安装守护进程">
+  <rect width="720" height="400" rx="12" fill="#0b1118"/>
+  <rect x="24" y="24" width="672" height="352" rx="8" fill="#111820" stroke="#2d3a4d" stroke-width="1.5"/>
+  <text x="48" y="58" fill="#8b9cb3" font-family="system-ui,sans-serif" font-size="13">步骤 5 · 启动 OpenClaw 后台服务</text>
+
+  <!-- Left: explain -->
+  <rect x="48" y="80" width="240" height="280" rx="8" fill="#0a0f16" stroke="#334155"/>
+  <text x="68" y="108" fill="#fb923c" font-size="13" font-weight="600">🚀 引导式安装</text>
+
+  <text x="68" y="138" fill="#e8edf4" font-size="11">推荐用 onboard（向导）：</text>
+
+  <rect x="68" y="150" width="200" height="28" rx="4" fill="#0f1620" stroke="#334155"/>
+  <text x="78" y="169" fill="#fb923c" font-family="ui-monospace,monospace" font-size="10">openclaw onboard</text>
+  <text x="190" y="169" fill="#5eead4" font-family="ui-monospace,monospace" font-size="10">--install-daemon</text>
+
+  <text x="68" y="200" fill="#8b9cb3" font-size="10">这会：</text>
+  <text x="68" y="216" fill="#5eead4" font-size="10">• 把 OpenClaw 注册为后台服务</text>
+  <text x="68" y="232" fill="#5eead4" font-size="10">• macOS 开机自动启动</text>
+  <text x="68" y="248" fill="#5eead4" font-size="10">• 跟着提示选就行（默认 = 选回车）</text>
+
+  <text x="68" y="280" fill="#a78bfa" font-size="11">⚡ 一行命令快速装：</text>
+  <rect x="68" y="290" width="200" height="36" rx="4" fill="#0f1620" stroke="#334155"/>
+  <text x="78" y="306" fill="#5eead4" font-family="ui-monospace,monospace" font-size="9">curl -fsSL</text>
+  <text x="78" y="320" fill="#fb923c" font-family="ui-monospace,monospace" font-size="9">https://openclaw.ai/install.sh</text>
+</svg>

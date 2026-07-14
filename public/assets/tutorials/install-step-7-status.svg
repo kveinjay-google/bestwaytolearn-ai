@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="配置模型和 API key">
+  <rect width="720" height="400" rx="12" fill="#0b1118"/>
+  <rect x="24" y="24" width="672" height="352" rx="8" fill="#111820" stroke="#2d3a4d" stroke-width="1.5"/>
+  <text x="48" y="58" fill="#8b9cb3" font-family="system-ui,sans-serif" font-size="13">步骤 7 · 配置 AI 模型和 API Key</text>
+
+  <!-- Left: explain -->
+  <rect x="48" y="80" width="240" height="280" rx="8" fill="#0a0f16" stroke="#334155"/>
+  <text x="68" y="108" fill="#fb923c" font-size="13" font-weight="600">🔑 配置模型</text>
+
+  <text x="68" y="136" fill="#e8edf4" font-size="11">Dashboard 顶部 → Settings</text>
+  <text x="68" y="152" fill="#e8edf4" font-size="11">→ Models → Add provider</text>
+
+  <text x="68" y="186" fill="#5eead4" font-size="11" font-weight="600">最少要配 1 个：</text>
+  <text x="68" y="204" fill="#8b9cb3" font-size="10">• OpenAI（gpt-4 / gpt-5）</text>
+  <text x="68" y="220" fill="#8b9cb3" font-size="10">• Anthropic（claude-3.5 / 4）</text>
+  <text x="68" y="236" fill="#8b9cb3" font-size="10">• Google（gemini-2.5）</text>
+  <text x="68" y="252" fill="#8b9cb3" font-size="10">• 本地 Ollama（免费离线）</text>
+
+  <text x="68" y="282" fill="#a78bfa" font-size="11">💡 配多个模型做 fallback</text>
+  <text x="68" y="298" fill="#a78bfa" font-size="10">主模型挂了自动切备用</text>
+
+  <text x="68" y="332" fill="#8b9cb3" font-size="10">填写后点 Test 验证连通</text>
+
+  <!-- Right: dashboard settings mockup -->
+  <rect x="304" y="80" width="368" height="280" rx="10" fill="#0a0f16" stroke="#334155" stroke-width="1.5"/>
+  <text x="320" y="106" fill="#fb923c" font-size="13" font-weight="700">🦞 Settings · Models</text>
+
+  <rect x="320" y="124" width="336" height="48" rx="6" fill="#111820" stroke="#334155"/>
+  <text x="332" y="142" fill="#5eead4" font-size="11" font-weight="600">OpenAI</text>
+  <text x="332" y="158" fill="#8b9cb3" font-size="10">API key: sk-····························</text>
+  <text x="332" y="170" fill="#22c55e" font-size="10">● active · gpt-4-turbo</text>
+
+  <rect x="320" y="180" width="336" height="48" rx="6" fill="#111820" stroke="#334155"/>
+  <text x="332" y="198" fill="#5eead4" font-size="11" font-weight="600">Anthropic</text>
+  <text x="332" y="214" fill="#8b9cb3" font-size="10">API key: sk-ant-·························</text>
+  <text x="332" y="226" fill="#22c55e" font-size="10">● active · claude-sonnet-4-5</text>
+
+  <rect x="320" y="236" width="336" height="48" rx="6" fill="#111820" stroke="#334155"/>
+  <text x="332" y="254" fill="#5eead4" font-size="11" font-weight="600">Google</text>
+  <text x="332" y="270" fill="#8b9cb3" font-size="10">API key: AIzaSy··························</text>
+  <text x="332" y="282" fill="#22c55e" font-size="10">● active · gemini-2.5-pro</text>
+
+  <rect x="320" y="294" width="336" height="48" rx="6" fill="#1a1f2e" stroke="#fb923c" stroke-dasharray="3 3"/>
+  <text x="332" y="312" fill="#fb923c" font-size="11" font-weight="600">+ Add provider</text>
+  <text x="332" y="328" fill="#8b9cb3" font-size="10">Ollama (local) · DeepSeek · Mistral ...</text>
+</svg>

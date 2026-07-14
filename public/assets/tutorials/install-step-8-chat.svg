@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="第一次发消息和连接聊天渠道">
+  <rect width="720" height="400" rx="12" fill="#0b1118"/>
+  <rect x="24" y="24" width="672" height="352" rx="8" fill="#111820" stroke="#2d3a4d" stroke-width="1.5"/>
+  <text x="48" y="58" fill="#8b9cb3" font-family="system-ui,sans-serif" font-size="13">步骤 8 · 第一次聊天 + 连接渠道</text>
+
+  <!-- Left: explain -->
+  <rect x="48" y="80" width="240" height="280" rx="8" fill="#0a0f16" stroke="#334155"/>
+  <text x="68" y="108" fill="#fb923c" font-size="13" font-weight="600">💬 先在 Dashboard 测试</text>
+
+  <text x="68" y="138" fill="#e8edf4" font-size="11">输入框发：</text>
+  <rect x="68" y="148" width="200" height="26" rx="4" fill="#0f1620" stroke="#334155"/>
+  <text x="78" y="165" fill="#5eead4" font-family="ui-monospace,monospace" font-size="10">你好，介绍一下自己</text>
+
+  <text x="68" y="194" fill="#8b9cb3" font-size="10">看到 AI 回复就 OK</text>
+
+  <text x="68" y="226" fill="#fb923c" font-size="12" font-weight="600">📲 接入聊天软件</text>
+  <text x="68" y="244" fill="#8b9cb3" font-size="10">Dashboard → Channels</text>
+  <text x="68" y="260" fill="#8b9cb3" font-size="10">选择你要接入的平台：</text>
+  <text x="68" y="276" fill="#5eead4" font-size="10">• WeChat（推荐，扫码配对）</text>
+  <text x="68" y="290" fill="#5eead4" font-size="10">• Telegram / Signal / Slack</text>
+  <text x="68" y="304" fill="#5eead4" font-size="10">• Discord / WhatsApp / iMessage</text>
+
+  <text x="68" y="332" fill="#a78bfa" font-size="10">💡 配对后随时随地发消息</text>
+
+  <!-- Right: chat mockup -->
+  <rect x="304" y="80" width="368" height="280" rx="10" fill="#0a0f16" stroke="#334155" stroke-width="1.5"/>
+  <text x="320" y="106" fill="#fb923c" font-size="13" font-weight="700">🦞 Chat · main session</text>
+
+  <!-- user bubble -->
+  <rect x="320" y="124" width="280" height="32" rx="6" fill="#1e3a5f"/>
+  <text x="328" y="144" fill="#e8edf4" font-size="11">你好，介绍一下你自己</text>
+
+  <!-- ai bubble -->
+  <rect x="320" y="166" width="320" height="84" rx="6" fill="#1a2433"/>
+  <text x="332" y="186" fill="#fb923c" font-size="11" font-weight="600">🦞 你好！我是 OpenClaw 🦞</text>
+  <text x="332" y="206" fill="#e8edf4" font-size="10">一个跑在你电脑上的 AI 助理。</text>
+  <text x="332" y="220" fill="#e8edf4" font-size="10">我可以读代码、写文件、跑命令、</text>
+  <text x="332" y="234" fill="#e8edf4" font-size="10">查资料、记事情，还能接入微信、</text>
+  <text x="332" y="246" fill="#e8edf4" font-size="10">Telegram、Signal 等聊天软件。</text>
+
+  <!-- WeChat pairing hint -->
+  <rect x="320" y="266" width="336" height="50" rx="6" fill="#0a1f12" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="332" y="286" fill="#22c55e" font-size="11" font-weight="600">✓ 准备就绪！</text>
+  <text x="332" y="302" fill="#5eead4" font-size="10">到 Channels → 选 WeChat → 扫码配对</text>
+
+  <rect x="320" y="328" width="280" height="20" rx="4" fill="#0f1620" stroke="#334155"/>
+  <text x="328" y="342" fill="#8b9cb3" font-family="ui-monospace,monospace" font-size="10">给蒂亚戈发个任务试试...</text>
+</svg>

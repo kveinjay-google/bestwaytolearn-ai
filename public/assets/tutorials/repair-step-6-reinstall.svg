@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="强制重装 gateway 服务">
+  <rect width="720" height="400" rx="12" fill="#0b1118"/>
+  <rect x="24" y="24" width="672" height="352" rx="8" fill="#111820" stroke="#2d3a4d" stroke-width="1.5"/>
+  <text x="48" y="58" fill="#8b9cb3" font-family="system-ui,sans-serif" font-size="13">步骤 6 · 强制重装 Gateway 服务</text>
+
+  <!-- Left: explain -->
+  <rect x="48" y="80" width="240" height="280" rx="8" fill="#0a0f16" stroke="#334155"/>
+  <text x="68" y="108" fill="#ef4444" font-size="13" font-weight="600">⚠ 实在修不好才用这步</text>
+
+  <text x="68" y="138" fill="#e8edf4" font-size="12" font-weight="600">症状：</text>
+  <text x="68" y="156" fill="#8b9cb3" font-size="10">· 反复重启失败</text>
+  <text x="68" y="172" fill="#8b9cb3" font-size="10">· doctor 报「split brain」</text>
+  <text x="68" y="188" fill="#8b9cb3" font-size="10">· 多个 openclaw 版本冲突</text>
+
+  <text x="68" y="218" fill="#fb923c" font-size="12" font-weight="600">核武器：</text>
+  <rect x="68" y="230" width="200" height="28" rx="4" fill="#0f1620" stroke="#334155"/>
+  <text x="78" y="249" fill="#fb923c" font-family="ui-monospace,monospace" font-size="10">openclaw gateway install</text>
+  <text x="78" y="263" fill="#fb923c" font-family="ui-monospace,monospace" font-size="10">--force</text>
+
+  <text x="68" y="290" fill="#a78bfa" font-size="11">效果：</text>
+  <text x="68" y="306" fill="#a78bfa" font-size="10">· 重新注册 LaunchAgent</text>
+  <text x="68" y="322" fill="#a78bfa" font-size="10">· 覆盖所有冲突文件</text>
+
+  <text x="68" y="350" fill="#ef4444" font-size="10">⚠ 不会删你的配置/记忆</text>
+
+  <!-- Right: terminal mockup -->
+  <rect x="304" y="80" width="368" height="280" rx="10" fill="#0a0f16" stroke="#334155" stroke-width="1.5"/>
+  <rect x="304" y="80" width="368" height="28" rx="10" fill="#1a1f2e"/>
+  <circle cx="320" cy="94" r="5" fill="#ff5f57"/>
+  <circle cx="336" cy="94" r="5" fill="#febc2e"/>
+  <circle cx="352" cy="94" r="5" fill="#28c840"/>
+  <text x="488" y="98" fill="#8b9cb3" font-size="11" text-anchor="middle" font-family="ui-monospace,monospace">zsh — terminal</text>
+
+  <text x="320" y="130" fill="#5eead4" font-family="ui-monospace,monospace" font-size="11">$</text>
+  <text x="336" y="130" fill="#e8edf4" font-family="ui-monospace,monospace" font-size="11">openclaw gateway install --force</text>
+
+  <text x="320" y="158" fill="#fb923c" font-family="ui-monospace,monospace" font-size="10">◇ Uninstalling old daemon...</text>
+  <text x="320" y="172" fill="#5eead4" font-family="ui-monospace,monospace" font-size="10">  ✓ Removed LaunchAgent plist</text>
+
+  <text x="320" y="196" fill="#fb923c" font-family="ui-monospace,monospace" font-size="10">◇ Installing new daemon...</text>
+  <text x="320" y="210" fill="#5eead4" font-family="ui-monospace,monospace" font-size="10">  ✓ Wrote ~/Library/LaunchAgents/</text>
+  <text x="338" y="222" fill="#5eead4" font-family="ui-monospace,monospace" font-size="10">    ai.openclaw.gateway.plist</text>
+
+  <text x="320" y="244" fill="#fb923c" font-family="ui-monospace,monospace" font-size="10">◇ Bootstrapping service...</text>
+  <text x="320" y="258" fill="#5eead4" font-family="ui-monospace,monospace" font-size="10">  ✓ launchctl bootstrap gui/$(id -u)</text>
+
+  <text x="320" y="280" fill="#fb923c" font-family="ui-monospace,monospace" font-size="10">◇ Starting service...</text>
+  <text x="320" y="294" fill="#5eead4" font-family="ui-monospace,monospace" font-size="10">  ✓ Started (pid 8901)</text>
+
+  <rect x="320" y="312" width="336" height="36" rx="6" fill="#0a1f12" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="338" y="332" fill="#22c55e" font-size="11" font-weight="600">✓ 服务重装完成</text>
+  <text x="338" y="346" fill="#5eead4" font-size="9">→ 验证 step 7</text>
+</svg>

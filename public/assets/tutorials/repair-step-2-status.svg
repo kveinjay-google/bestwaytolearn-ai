@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="运行 openclaw status 诊断">
+  <rect width="720" height="400" rx="12" fill="#0b1118"/>
+  <rect x="24" y="24" width="672" height="352" rx="8" fill="#111820" stroke="#2d3a4d" stroke-width="1.5"/>
+  <text x="48" y="58" fill="#8b9cb3" font-family="system-ui,sans-serif" font-size="13">步骤 2 · 第一诊断命令：openclaw status</text>
+
+  <!-- Left: explain -->
+  <rect x="48" y="80" width="220" height="280" rx="8" fill="#0a0f16" stroke="#334155"/>
+  <text x="68" y="108" fill="#fb923c" font-size="13" font-weight="600">🔍 60 秒快速诊断</text>
+
+  <text x="68" y="138" fill="#e8edf4" font-size="11">在 Terminal 跑：</text>
+  <rect x="68" y="150" width="180" height="28" rx="4" fill="#0f1620" stroke="#334155"/>
+  <text x="78" y="169" fill="#fb923c" font-family="ui-monospace,monospace" font-size="11">openclaw status</text>
+
+  <text x="68" y="200" fill="#8b9cb3" font-size="10">看 3 个关键指标：</text>
+  <text x="68" y="218" fill="#5eead4" font-size="10">1. Gateway 状态（active?）</text>
+  <text x="68" y="234" fill="#5eead4" font-size="10">2. Channels 状态（OK?）</text>
+  <text x="68" y="250" fill="#5eead4" font-size="10">3. 任何 ✗ 红色错误</text>
+
+  <text x="68" y="280" fill="#a78bfa" font-size="11">⚡ 看不清？用 --all 看完整</text>
+  <rect x="68" y="290" width="180" height="26" rx="4" fill="#0f1620" stroke="#334155"/>
+  <text x="78" y="307" fill="#fb923c" font-family="ui-monospace,monospace" font-size="10">openclaw status --all</text>
+
+  <text x="68" y="332" fill="#8b9cb3" font-size="10">💡 截图发给 AI 助理看</text>
+
+  <!-- Right: terminal mockup with status output -->
+  <rect x="284" y="80" width="388" height="280" rx="10" fill="#0a0f16" stroke="#334155" stroke-width="1.5"/>
+  <rect x="284" y="80" width="388" height="28" rx="10" fill="#1a1f2e"/>
+  <circle cx="300" cy="94" r="5" fill="#ff5f57"/>
+  <circle cx="316" cy="94" r="5" fill="#febc2e"/>
+  <circle cx="332" cy="94" r="5" fill="#28c840"/>
+  <text x="478" y="98" fill="#8b9cb3" font-size="11" text-anchor="middle" font-family="ui-monospace,monospace">zsh — terminal</text>
+
+  <text x="300" y="130" fill="#5eead4" font-family="ui-monospace,monospace" font-size="11">$</text>
+  <text x="316" y="130" fill="#e8edf4" font-family="ui-monospace,monospace" font-size="11">openclaw status</text>
+
+  <text x="300" y="158" fill="#22c55e" font-family="ui-monospace,monospace" font-size="10">● Gateway: local · running</text>
+  <text x="300" y="172" fill="#8b9cb3" font-family="ui-monospace,monospace" font-size="10">  ws://127.0.0.1:18789 · ok 23ms</text>
+  <text x="300" y="192" fill="#22c55e" font-family="ui-monospace,monospace" font-size="10">● Channels:</text>
+  <text x="318" y="206" fill="#ef4444" font-family="ui-monospace,monospace" font-size="10">  ✗ weixin  disconnected  ← 看这里</text>
+  <text x="318" y="220" fill="#22c55e" font-family="ui-monospace,monospace" font-size="10">  ✓ telegram  works</text>
+  <text x="300" y="244" fill="#8b9cb3" font-family="ui-monospace,monospace" font-size="10">● Models: 3 configured · 2 active</text>
+  <text x="300" y="258" fill="#8b9cb3" font-family="ui-monospace,monospace" font-size="10">● Sessions: 21 active</text>
+  <text x="300" y="278" fill="#8b9cb3" font-family="ui-monospace,monospace" font-size="10">● Tasks: 0 active · 48 issues</text>
+
+  <rect x="300" y="298" width="356" height="48" rx="6" fill="#3a1a1a" stroke="#ef4444" stroke-width="1"/>
+  <text x="316" y="318" fill="#ef4444" font-family="ui-monospace,monospace" font-size="10" font-weight="600">★ 关键信号：渠道 ✗</text>
+  <text x="316" y="334" fill="#fca5a5" font-family="ui-monospace,monospace" font-size="9">→ 继续看 step 3 doctor --fix</text>
+</svg>

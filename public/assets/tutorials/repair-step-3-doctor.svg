@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="openclaw doctor 自动修复">
+  <rect width="720" height="400" rx="12" fill="#0b1118"/>
+  <rect x="24" y="24" width="672" height="352" rx="8" fill="#111820" stroke="#2d3a4d" stroke-width="1.5"/>
+  <text x="48" y="58" fill="#8b9cb3" font-family="system-ui,sans-serif" font-size="13">步骤 3 · openclaw doctor —fix 自动修复</text>
+
+  <!-- Left: explain -->
+  <rect x="48" y="80" width="220" height="280" rx="8" fill="#0a0f16" stroke="#334155"/>
+  <text x="68" y="108" fill="#fb923c" font-size="13" font-weight="600">🩺 Doctor 自动诊断</text>
+
+  <text x="68" y="138" fill="#e8edf4" font-size="11">让 OpenClaw 自我体检：</text>
+  <rect x="68" y="150" width="180" height="28" rx="4" fill="#0f1620" stroke="#334155"/>
+  <text x="78" y="169" fill="#fb923c" font-family="ui-monospace,monospace" font-size="11">openclaw doctor</text>
+
+  <text x="68" y="200" fill="#5eead4" font-size="11" font-weight="600">找到问题后加 --fix</text>
+  <text x="68" y="216" fill="#8b9cb3" font-size="10">自动修复能修的（不破坏配置）</text>
+
+  <rect x="68" y="234" width="180" height="28" rx="4" fill="#0f1620" stroke="#334155"/>
+  <text x="78" y="253" fill="#fb923c" font-family="ui-monospace,monospace" font-size="11">openclaw doctor --fix</text>
+
+  <text x="68" y="288" fill="#a78bfa" font-size="11">🔬 仍找不到？用 --deep</text>
+  <text x="68" y="304" fill="#a78bfa" font-size="10">看更深层（plugin 状态/权限）</text>
+
+  <text x="68" y="332" fill="#8b9cb3" font-size="10">⚠ --fix 不会删你的配置/记忆</text>
+
+  <!-- Right: doctor output -->
+  <rect x="284" y="80" width="388" height="280" rx="10" fill="#0a0f16" stroke="#334155" stroke-width="1.5"/>
+  <rect x="284" y="80" width="388" height="28" rx="10" fill="#1a1f2e"/>
+  <circle cx="300" cy="94" r="5" fill="#ff5f57"/>
+  <circle cx="316" cy="94" r="5" fill="#febc2e"/>
+  <circle cx="332" cy="94" r="5" fill="#28c840"/>
+  <text x="478" y="98" fill="#8b9cb3" font-size="11" text-anchor="middle" font-family="ui-monospace,monospace">zsh — terminal</text>
+
+  <text x="300" y="130" fill="#5eead4" font-family="ui-monospace,monospace" font-size="11">$</text>
+  <text x="316" y="130" fill="#e8edf4" font-family="ui-monospace,monospace" font-size="11">openclaw doctor --fix</text>
+
+  <text x="300" y="158" fill="#fb923c" font-family="ui-monospace,monospace" font-size="10" font-weight="600">◇ Doctor checks</text>
+  <text x="300" y="176" fill="#22c55e" font-family="ui-monospace,monospace" font-size="10">  ✓ Node version ok</text>
+  <text x="300" y="190" fill="#22c55e" font-family="ui-monospace,monospace" font-size="10">  ✓ Config readable</text>
+  <text x="300" y="204" fill="#ef4444" font-family="ui-monospace,monospace" font-size="10">  ✗ Gateway service: not loaded</text>
+  <text x="300" y="218" fill="#22c55e" font-family="ui-monospace,monospace" font-size="10">    → applying fix: install-daemon</text>
+  <text x="300" y="236" fill="#22c55e" font-family="ui-monospace,monospace" font-size="10">  ✓ Stale OAuth profile removed</text>
+  <text x="300" y="250" fill="#22c55e" font-family="ui-monospace,monospace" font-size="10">  ✓ Plugin install index ok</text>
+  <text x="300" y="264" fill="#22c55e" font-family="ui-monospace,monospace" font-size="10">  ✓ Workspace skills ok</text>
+
+  <rect x="300" y="280" width="356" height="60" rx="6" fill="#0a1f12" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="316" y="302" fill="#22c55e" font-family="ui-monospace,monospace" font-size="10" font-weight="600">● 2 issues fixed · 0 remaining</text>
+  <text x="316" y="318" fill="#5eead4" font-family="ui-monospace,monospace" font-size="9">→ 仍有问题？继续 step 4</text>
+  <text x="316" y="332" fill="#5eead4" font-family="ui-monospace,monospace" font-size="9">→ service 仍 down？step 6 重装</text>
+</svg>

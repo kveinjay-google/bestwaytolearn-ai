@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="启动浏览器控制台">
+  <rect width="720" height="400" rx="12" fill="#0b1118"/>
+  <rect x="24" y="24" width="672" height="352" rx="8" fill="#111820" stroke="#2d3a4d" stroke-width="1.5"/>
+  <text x="48" y="58" fill="#8b9cb3" font-family="system-ui,sans-serif" font-size="13">步骤 6 · 打开浏览器控制台</text>
+
+  <!-- Left: explain -->
+  <rect x="48" y="80" width="220" height="280" rx="8" fill="#0a0f16" stroke="#334155"/>
+  <text x="68" y="108" fill="#fb923c" font-size="13" font-weight="600">🌐 打开 Dashboard</text>
+
+  <text x="68" y="138" fill="#e8edf4" font-size="11">Terminal 输入：</text>
+
+  <rect x="68" y="150" width="180" height="28" rx="4" fill="#0f1620" stroke="#334155"/>
+  <text x="78" y="169" fill="#fb923c" font-family="ui-monospace,monospace" font-size="11">openclaw dashboard</text>
+
+  <text x="68" y="200" fill="#8b9cb3" font-size="10">会自动启动浏览器</text>
+
+  <text x="68" y="226" fill="#e8edf4" font-size="11">或手动访问：</text>
+  <rect x="68" y="238" width="180" height="24" rx="4" fill="#0f1620" stroke="#334155"/>
+  <text x="78" y="254" fill="#5eead4" font-family="ui-monospace,monospace" font-size="10">http://127.0.0.1:18789</text>
+
+  <text x="68" y="286" fill="#a78bfa" font-size="11">首次需要 auth token：</text>
+  <text x="68" y="302" fill="#a78bfa" font-size="10">从终端输出复制粘贴</text>
+
+  <text x="68" y="332" fill="#8b9cb3" font-size="10">💡 同 WiFi 也可从手机/平板访问</text>
+
+  <!-- Right: browser mockup -->
+  <rect x="284" y="80" width="388" height="280" rx="10" fill="#0a0f16" stroke="#334155" stroke-width="1.5"/>
+  <rect x="284" y="80" width="388" height="28" rx="10" fill="#1a1f2e"/>
+  <circle cx="300" cy="94" r="5" fill="#ff5f57"/>
+  <circle cx="316" cy="94" r="5" fill="#febc2e"/>
+  <circle cx="332" cy="94" r="5" fill="#28c840"/>
+
+  <!-- URL bar -->
+  <rect x="296" y="118" width="364" height="22" rx="4" fill="#1a1f2e" stroke="#334155"/>
+  <text x="308" y="133" fill="#22c55e" font-size="10">🔒</text>
+  <text x="322" y="133" fill="#e8edf4" font-family="ui-monospace,monospace" font-size="10">http://127.0.0.1:18789/</text>
+
+  <!-- Page content -->
+  <text x="312" y="172" fill="#fb923c" font-size="18" font-weight="700">🦞 OpenClaw</text>
+  <text x="312" y="192" fill="#8b9cb3" font-size="11">Local dashboard</text>
+
+  <rect x="312" y="210" width="340" height="60" rx="6" fill="#111820" stroke="#334155"/>
+  <text x="324" y="230" fill="#22c55e" font-size="11" font-weight="600">● Gateway running</text>
+  <text x="324" y="248" fill="#8b9cb3" font-size="10">runtime: ok · uptime: 3m · version 2026.7.1</text>
+  <text x="324" y="262" fill="#8b9cb3" font-size="10">channels: weixin (ON, OK) · sessions: 21</text>
+
+  <rect x="312" y="282" width="166" height="58" rx="6" fill="#111820" stroke="#334155"/>
+  <text x="324" y="302" fill="#5eead4" font-size="11" font-weight="600">Sessions</text>
+  <text x="324" y="322" fill="#8b9cb3" font-size="10">21 active · main · cron</text>
+
+  <rect x="486" y="282" width="166" height="58" rx="6" fill="#111820" stroke="#334155"/>
+  <text x="498" y="302" fill="#5eead4" font-size="11" font-weight="600">Memory</text>
+  <text x="498" y="322" fill="#8b9cb3" font-size="10">enabled · 96 entries</text>
+</svg>

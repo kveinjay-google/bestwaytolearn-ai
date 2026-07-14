@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="检查 Node.js 是否已安装">
+  <rect width="720" height="400" rx="12" fill="#0b1118"/>
+  <rect x="24" y="24" width="672" height="352" rx="8" fill="#111820" stroke="#2d3a4d" stroke-width="1.5"/>
+  <text x="48" y="58" fill="#8b9cb3" font-family="system-ui,sans-serif" font-size="13">步骤 1 · 检查 Node.js 是否已安装</text>
+
+  <!-- Left: explanation card -->
+  <rect x="48" y="80" width="280" height="280" rx="8" fill="#0a0f16" stroke="#334155"/>
+  <text x="68" y="108" fill="#fb923c" font-size="13" font-weight="600">🦞 OpenClaw 依赖</text>
+  <text x="68" y="134" fill="#e8edf4" font-size="13" font-weight="500">需要 Node.js：</text>
+  <text x="68" y="156" fill="#8b9cb3" font-size="11">• Node 24.15+（推荐）</text>
+  <text x="68" y="174" fill="#8b9cb3" font-size="11">• Node 22.22.3+（LTS 兼容）</text>
+  <text x="68" y="192" fill="#8b9cb3" font-size="11">• Node 25.9+</text>
+
+  <text x="68" y="226" fill="#5eead4" font-size="12" font-weight="600">检测命令：</text>
+  <rect x="68" y="234" width="240" height="26" rx="4" fill="#0f1620" stroke="#334155"/>
+  <text x="78" y="252" fill="#fb923c" font-family="ui-monospace,monospace" font-size="12">node -v</text>
+
+  <text x="68" y="282" fill="#a78bfa" font-size="11">💡 没装？自动安装脚本会顺带装</text>
+  <text x="68" y="300" fill="#a78bfa" font-size="11">   否则用 brew 或 nvm 手动装</text>
+
+  <text x="68" y="332" fill="#8b9cb3" font-size="11">Mac 自带 Terminal 在「应用程序 / 实用工具」</text>
+
+  <!-- Right: Terminal window mockup -->
+  <rect x="352" y="80" width="320" height="280" rx="10" fill="#0a0f16" stroke="#334155" stroke-width="1.5"/>
+  <rect x="352" y="80" width="320" height="28" rx="10" fill="#1a1f2e"/>
+  <circle cx="368" cy="94" r="5" fill="#ff5f57"/>
+  <circle cx="384" cy="94" r="5" fill="#febc2e"/>
+  <circle cx="400" cy="94" r="5" fill="#28c840"/>
+  <text x="512" y="98" fill="#8b9cb3" font-size="11" text-anchor="middle" font-family="ui-monospace,monospace">zsh — terminal</text>
+
+  <text x="370" y="138" fill="#5eead4" font-family="ui-monospace,monospace" font-size="13">$</text>
+  <text x="386" y="138" fill="#e8edf4" font-family="ui-monospace,monospace" font-size="13">node -v</text>
+
+  <text x="370" y="170" fill="#fb923c" font-family="ui-monospace,monospace" font-size="13">v24.15.0</text>
+
+  <text x="370" y="200" fill="#8b9cb3" font-family="ui-monospace,monospace" font-size="11">↑ 看到这个版本号就 OK</text>
+
+  <text x="370" y="234" fill="#5eead4" font-family="ui-monospace,monospace" font-size="13">$</text>
+  <text x="386" y="234" fill="#e8edf4" font-family="ui-monospace,monospace" font-size="13">npm -v</text>
+
+  <text x="370" y="262" fill="#fb923c" font-family="ui-monospace,monospace" font-size="13">10.9.2</text>
+
+  <text x="370" y="296" fill="#8b9cb3" font-family="ui-monospace,monospace" font-size="11">同时检查 npm 是否可用</text>
+
+  <rect x="370" y="316" width="40" height="14" rx="3" fill="#0f1620"/>
+  <text x="390" y="327" fill="#fb923c" font-family="ui-monospace,monospace" font-size="11" text-anchor="middle">▌</text>
+</svg>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="验证修复完成">
+  <rect width="720" height="400" rx="12" fill="#0b1118"/>
+  <rect x="24" y="24" width="672" height="352" rx="8" fill="#111820" stroke="#2d3a4d" stroke-width="1.5"/>
+  <text x="48" y="58" fill="#8b9cb3" font-family="system-ui,sans-serif" font-size="13">步骤 7 · 验证修复完成</text>
+
+  <!-- Top success banner -->
+  <rect x="48" y="80" width="624" height="56" rx="8" fill="#0a1f12" stroke="#22c55e" stroke-width="2"/>
+  <text x="80" y="108" fill="#22c55e" font-size="20" font-weight="700">🎉 修复完成！</text>
+  <text x="80" y="128" fill="#5eead4" font-size="11">下面 3 个验证都过 = 真的修好了</text>
+
+  <!-- 3 verification checks -->
+  <rect x="48" y="150" width="200" height="170" rx="8" fill="#0a0f16" stroke="#334155"/>
+  <text x="64" y="174" fill="#fb923c" font-size="12" font-weight="600">① 状态绿灯</text>
+  <text x="64" y="194" fill="#8b9cb3" font-size="10">Terminal 跑：</text>
+  <rect x="64" y="204" width="168" height="22" rx="3" fill="#0f1620" stroke="#334155"/>
+  <text x="72" y="219" fill="#fb923c" font-family="ui-monospace,monospace" font-size="9">openclaw status</text>
+  <text x="64" y="246" fill="#22c55e" font-size="10">✓ Gateway running</text>
+  <text x="64" y="262" fill="#22c55e" font-size="10">✓ Channels ok</text>
+  <text x="64" y="278" fill="#22c55e" font-size="10">✓ Models active</text>
+  <text x="64" y="304" fill="#8b9cb3" font-size="10">看到 ✗ = 没修好</text>
+
+  <rect x="260" y="150" width="200" height="170" rx="8" fill="#0a0f16" stroke="#334155"/>
+  <text x="276" y="174" fill="#fb923c" font-size="12" font-weight="600">② 网页能开</text>
+  <text x="276" y="194" fill="#8b9cb3" font-size="10">浏览器访问：</text>
+  <rect x="276" y="204" width="168" height="22" rx="3" fill="#0f1620" stroke="#334155"/>
+  <text x="284" y="219" fill="#5eead4" font-family="ui-monospace,monospace" font-size="9">127.0.0.1:18789</text>
+  <text x="276" y="246" fill="#22c55e" font-size="10">✓ Dashboard 加载</text>
+  <text x="276" y="262" fill="#22c55e" font-size="10">✓ 显示 sessions 21</text>
+  <text x="276" y="278" fill="#22c55e" font-size="10">✓ 可发消息给 AI</text>
+  <text x="276" y="304" fill="#8b9cb3" font-size="10">空白页 = token 错</text>
+
+  <rect x="472" y="150" width="200" height="170" rx="8" fill="#0a0f16" stroke="#334155"/>
+  <text x="488" y="174" fill="#fb923c" font-size="12" font-weight="600">③ 渠道在线</text>
+  <text x="488" y="194" fill="#8b9cb3" font-size="10">在渠道发消息：</text>
+  <rect x="488" y="204" width="168" height="22" rx="3" fill="#0f1620" stroke="#334155"/>
+  <text x="496" y="219" fill="#5eead4" font-family="ui-monospace,monospace" font-size="9">「ping」</text>
+  <text x="488" y="246" fill="#22c55e" font-size="10">✓ AI 几秒内回复</text>
+  <text x="488" y="262" fill="#22c55e" font-size="10">✓ 内容相关</text>
+  <text x="488" y="278" fill="#22c55e" font-size="10">✓ 工具调用正常</text>
+  <text x="488" y="304" fill="#8b9cb3" font-size="10">无回复 = 渠道仍断</text>
+
+  <!-- Bottom: still broken? -->
+  <rect x="48" y="332" width="624" height="32" rx="6" fill="#3a1a1a" stroke="#ef4444" stroke-width="1"/>
+  <text x="64" y="352" fill="#ef4444" font-size="11" font-weight="600">❌ 还有问题？</text>
+  <text x="170" y="352" fill="#fca5a5" font-size="11">把 `openclaw status --all` 输出截图发给 AI 助理看</text>
+</svg>

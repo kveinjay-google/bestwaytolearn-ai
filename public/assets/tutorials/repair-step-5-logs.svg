@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="看日志定位根因">
+  <rect width="720" height="400" rx="12" fill="#0b1118"/>
+  <rect x="24" y="24" width="672" height="352" rx="8" fill="#111820" stroke="#2d3a4d" stroke-width="1.5"/>
+  <text x="48" y="58" fill="#8b9cb3" font-family="system-ui,sans-serif" font-size="13">步骤 5 · 看日志定位根因</text>
+
+  <!-- Left: explain -->
+  <rect x="48" y="80" width="220" height="280" rx="8" fill="#0a0f16" stroke="#334155"/>
+  <text x="68" y="108" fill="#fb923c" font-size="13" font-weight="600">📜 日志怎么看</text>
+
+  <text x="68" y="138" fill="#e8edf4" font-size="11">实时跟踪日志：</text>
+  <rect x="68" y="150" width="180" height="28" rx="4" fill="#0f1620" stroke="#334155"/>
+  <text x="78" y="169" fill="#fb923c" font-family="ui-monospace,monospace" font-size="11">openclaw logs --follow</text>
+
+  <text x="68" y="200" fill="#e8edf4" font-size="11">退出：Ctrl+C</text>
+
+  <text x="68" y="226" fill="#5eead4" font-size="11" font-weight="600">关键词：</text>
+  <text x="68" y="244" fill="#8b9cb3" font-size="10">· error / fatal — 找红字</text>
+  <text x="68" y="260" fill="#8b9cb3" font-size="10">· 401 / 403 / 429 — 限流/权限</text>
+  <text x="68" y="276" fill="#8b9cb3" font-size="10">· reconnect — 反复重连是断网</text>
+
+  <text x="68" y="306" fill="#a78bfa" font-size="11">💡 找到错误信息复制下来</text>
+  <text x="68" y="322" fill="#a78bfa" font-size="10">贴到 AI 助理让 ta 解释</text>
+
+  <text x="68" y="346" fill="#8b9cb3" font-size="10">日志文件：~/.openclaw/logs/</text>
+
+  <!-- Right: log output -->
+  <rect x="284" y="80" width="388" height="280" rx="10" fill="#0a0f16" stroke="#334155" stroke-width="1.5"/>
+  <rect x="284" y="80" width="388" height="28" rx="10" fill="#1a1f2e"/>
+  <circle cx="300" cy="94" r="5" fill="#ff5f57"/>
+  <circle cx="316" cy="94" r="5" fill="#febc2e"/>
+  <circle cx="332" cy="94" r="5" fill="#28c840"/>
+  <text x="478" y="98" fill="#8b9cb3" font-size="11" text-anchor="middle" font-family="ui-monospace,monospace">zsh — terminal</text>
+
+  <text x="300" y="130" fill="#5eead4" font-family="ui-monospace,monospace" font-size="11">$</text>
+  <text x="316" y="130" fill="#e8edf4" font-family="ui-monospace,monospace" font-size="11">openclaw logs --follow</text>
+
+  <text x="300" y="156" fill="#8b9cb3" font-family="ui-monospace,monospace" font-size="9">[14:23:01] INF  gateway probe ok</text>
+  <text x="300" y="170" fill="#8b9cb3" font-family="ui-monospace,monospace" font-size="9">[14:23:05] INF  channels ready</text>
+  <text x="300" y="184" fill="#8b9cb3" font-family="ui-monospace,monospace" font-size="9">[14:23:12] INF  weixin auth code received</text>
+  <text x="300" y="198" fill="#ef4444" font-family="ui-monospace,monospace" font-size="9">[14:23:13] ERR  weixin login fail: signature</text>
+  <text x="300" y="212" fill="#ef4444" font-family="ui-monospace,monospace" font-size="9">[14:23:13] ERR  retry 1/3 in 5s</text>
+  <text x="300" y="226" fill="#8b9cb3" font-family="ui-monospace,monospace" font-size="9">[14:23:18] INF  reconnecting...</text>
+  <text x="300" y="240" fill="#22c55e" font-family="ui-monospace,monospace" font-size="9">[14:23:21] INF  weixin online (uid=...a6b6)</text>
+  <text x="300" y="254" fill="#8b9cb3" font-family="ui-monospace,monospace" font-size="9">[14:23:25] INF  session main ready</text>
+
+  <rect x="300" y="276" width="356" height="64" rx="6" fill="#0f1620" stroke="#334155" stroke-width="1"/>
+  <text x="316" y="296" fill="#fb923c" font-family="ui-monospace,monospace" font-size="10" font-weight="600">★ 解读：</text>
+  <text x="316" y="312" fill="#5eead4" font-family="ui-monospace,monospace" font-size="9">weixin login 失败 1 次后</text>
+  <text x="316" y="324" fill="#5eead4" font-family="ui-monospace,monospace" font-size="9">重连成功 → 当前已恢复 ✓</text>
+  <text x="316" y="340" fill="#8b9cb3" font-family="ui-monospace,monospace" font-size="9">如果 ERR 持续 → step 6 重装</text>
+</svg>
