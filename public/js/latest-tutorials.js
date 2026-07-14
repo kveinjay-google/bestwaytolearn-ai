@@ -22,8 +22,8 @@ const LATEST_TUTORIAL_ITEMS = [
     difficulty: '入门',
     duration: '约 10 分钟',
     illustrated: true,
-    title: '手把手：修复 OpenClaw · 8 步救回你的 AI 助理',
-    desc: 'OpenClaw 罢工了？看不到 dashboard、微信不回复、模型 401？跟着 8 步走（小白也能看懂）：先打开 Terminal → 识别症状 → 诊断 status → 自动修复 doctor → 重启服务 → 看日志定位 → 强制重装 → 验证。',
+    title: '手把手：修复 OpenClaw · 9 步救回你的 AI 助理',
+    desc: 'OpenClaw 罢工了？看不到 dashboard、微信不回复、模型 401？跟着 9 步走（小白也能看懂）：先打开 Terminal → 识别症状 → 诊断 status → 自动修复 doctor → 重启服务 → 看日志定位 → 强制重装 → 打开龙虾面板确认 → 最终验证。',
     illustratedSteps: [
       {
         title: '打开 Terminal 终端（Terminal = 输命令的窗口）',
@@ -72,13 +72,20 @@ const LATEST_TUTORIAL_ITEMS = [
         caption: '这一招能解决 95% 的「split brain」版本冲突和顽固 LaunchAgent 问题。',
       },
       {
+        title: '打开龙虾外部面板（Dashboard）确认正常',
+        text: '点 Terminal 让光标闪烁，粘贴 `openclaw dashboard`，按回车。这个命令会自动用默认浏览器打开 OpenClaw 的「龙虾面板」（一个网页控制台，地址是 http://127.0.0.1:18789）。看到页面打开 = 服务正常。如果浏览器没自动弹出，自己打开 Chrome / Safari，地址栏输入 http://127.0.0.1:18789 手动访问。面板顶部会显示 Gateway 状态（绿点 = 正常）、Channels 列表（绿灯 = 已连接）、Sessions 数量，能看到 AI 跟你聊过的所有会话。',
+        image: 'assets/tutorials/repair-step-7-verified.svg',
+        alt: '运行 openclaw dashboard 打开龙虾外部面板',
+        caption: '龙虾面板 = 你的 AI 助理控制中心，能看到所有运行状态、会话、记忆。',
+      },
+      {
         title: '3 步验证修复完成',
-        text: '别只看 status 觉得修了，最后一定要做 3 步验证：① Terminal 跑 `openclaw status` 全部绿灯；② 浏览器打开 127.0.0.1:18789 看到 Dashboard；③ 在 WeChat/Telegram 实际发一条消息「ping」，AI 几秒内回复 = 真的修好了。如果还有问题，把 `openclaw status --all` 输出截图发给 AI 助理，TA 接手处理。',
+        text: '看到面板后做 3 步最终验证：① 点 Terminal 跑 `openclaw status` 全部绿灯；② 浏览器面板顶部 status 是 ● running + channels 全部 OK；③ 拿手机打开 WeChat 或 Telegram，给 OpenClaw 实际发一条消息「ping」，AI 几秒内回复 = 真的修好了。如果还有问题，把 `openclaw status --all` 输出截图发给 AI 助理，TA 接手处理。',
         image: 'assets/tutorials/repair-step-7-verified.svg',
         alt: '3 步验证 OpenClaw 修复完成',
       },
     ],
-    prompt: '请根据本教程手把手 8 步，对照修复你的 OpenClaw。完成后回答：\n\n1. 我用 ⌘+空格 打开了 Terminal（是/否）\n2. 我识别了哪种症状（5 种之一）\n3. openclaw status 输出里有没有 ✗\n4. openclaw doctor --fix 自动修了几条\n5. 重启后 Gateway probe 是否可达\n6. 看日志找到的根因是什么（一句话）\n7. 3 步验证全过了吗\n\n如果哪步卡住，回头看那一步的截图，或把 `openclaw status --all` 输出贴回来。',
+    prompt: '请根据本教程手把手 9 步，对照修复你的 OpenClaw。完成后回答：\n\n1. 我用 ⌘+空格 打开了 Terminal（是/否）\n2. 我识别了哪种症状（5 种之一）\n3. openclaw status 输出里有没有 ✗\n4. openclaw doctor --fix 自动修了几条\n5. 重启后 Gateway probe 是否可达\n6. 看日志找到的根因是什么（一句话）\n7. 跑 `openclaw dashboard` 打开了龙虾面板吗\n8. 3 步验证全过了吗\n\n如果哪步卡住，回头看那一步的截图，或把 `openclaw status --all` 输出贴回来。',
     result: '能独立诊断并修复 OpenClaw 的常见故障（连接失败、渠道无响应、模型 401、配置分裂），掌握 `status` / `doctor --fix` / `gateway restart` / `logs --follow` / `install --force` 五件套的适用场景，以及最基本的 Terminal 操作（打开/粘贴/回车）。',
     tips: '修复前先备份：`cp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.bak-$(date +%Y%m%d)`。修复后用 `openclaw status` 定期体检（建议每周一次）。'
   },
