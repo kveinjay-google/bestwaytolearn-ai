@@ -1,5 +1,6 @@
 import {
   checkRateLimit,
+  getEnvString,
   normalizeDisplayName,
   normalizeEmail,
   nowSec,
@@ -17,7 +18,7 @@ const GOOGLE_TOKEN_URL = 'https://oauth2.googleapis.com/token';
 const GOOGLE_USERINFO_URL = 'https://www.googleapis.com/oauth2/v3/userinfo';
 
 export function isGoogleAuthConfigured(env) {
-  return !!(env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRET);
+  return !!(getEnvString(env, 'GOOGLE_CLIENT_ID') && getEnvString(env, 'GOOGLE_CLIENT_SECRET'));
 }
 
 function getOrigin(request) {
@@ -26,7 +27,7 @@ function getOrigin(request) {
 }
 
 function getRedirectUri(request, env) {
-  const override = env.GOOGLE_REDIRECT_URI?.trim();
+  const override = getEnvString(env, 'GOOGLE_REDIRECT_URI');
   if (override) return override;
   return `${getOrigin(request)}/api/auth/google/callback`;
 }
@@ -57,7 +58,7 @@ export function startGoogleOAuth(request, env) {
 
   const state = crypto.randomUUID();
   const params = new URLSearchParams({
-    client_id: env.GOOGLE_CLIENT_ID,
+    client_id: getEnvString(env, 'GOOGLE_CLIENT_ID'),
     redirect_uri: getRedirectUri(request, env),
     response_type: 'code',
     scope: 'openid email profile',
@@ -76,8 +77,8 @@ async function fetchGoogleProfile(code, request, env) {
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: new URLSearchParams({
       code,
-      client_id: env.GOOGLE_CLIENT_ID,
-      client_secret: env.GOOGLE_CLIENT_SECRET,
+      client_id: getEnvString(env, 'GOOGLE_CLIENT_ID'),
+      client_secret: getEnvString(env, 'GOOGLE_CLIENT_SECRET'),
       redirect_uri: redirectUri,
       grant_type: 'authorization_code',
     }),

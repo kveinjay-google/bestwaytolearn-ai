@@ -1,5 +1,5 @@
 /* BestWayToLearn.AI — Service Worker (PWA offline shell) */
-const CACHE_NAME = 'bwtl-pwa-v5';
+const CACHE_NAME = 'bwtl-pwa-v6';
 const OFFLINE_URL = '/index.html';
 
 const PRECACHE_URLS = [
@@ -49,6 +49,15 @@ async function cachePut(request, response) {
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   if (request.method !== 'GET' || !isSameOrigin(request)) return;
+
+  let pathname = '/';
+  try {
+    pathname = new URL(request.url).pathname;
+  } catch {
+    return;
+  }
+  // Never cache auth/API — stale provider flags hide Google sign-in.
+  if (pathname.startsWith('/api/')) return;
 
   if (request.mode === 'navigate') {
     event.respondWith(

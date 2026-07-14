@@ -20,7 +20,11 @@ I18n.registerLocale('fr', {
         q2: "Quel parcours d’apprentissage ce site propose-t-il ?",
         a2: "Le site est organisé en quatre étapes : bases, outils, pratique et révision. Il couvre les principes de l’IA, le vocabulaire, le choix des outils, les exercices de prompts, les tutoriels pratiques et les quiz de connaissances.",
         q3: "BestWayToLearn.AI est-il gratuit ?",
-        a3: "Le contenu du cours sur le site est accessible gratuitement. La progression est enregistrée localement dans votre navigateur et aucune création de compte n’est requise."
+        a3: "Le contenu du cours est gratuit et la progression est enregistrée localement. Créez un compte gratuit pour participer aux discussions.",
+        q4: "Quelles langues sont prises en charge ?",
+        a4: "L'interface et les contenus prennent en charge le chinois simplifié, traditionnel, l'anglais, l'allemand, l'espagnol, le français, le japonais et le coréen. Changez la langue dans les paramètres.",
+        q5: "BestWayToLearn.AI prend-il en charge la connexion Google ?",
+        a5: "Oui. Connectez-vous ou inscrivez-vous avec Google, ou créez un compte e-mail gratuit."
       },
       settings: {
         title: "Paramètres d'affichage",

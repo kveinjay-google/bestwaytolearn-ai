@@ -17,6 +17,10 @@ const failures = [];
   'seoFaq.a2',
   'seoFaq.q3',
   'seoFaq.a3',
+  'seoFaq.q4',
+  'seoFaq.a4',
+  'seoFaq.q5',
+  'seoFaq.a5',
 ].forEach(key => {
   if (!index.includes(`data-i18n="${key}"`)) {
     failures.push(`index.html missing data-i18n="${key}"`);
@@ -29,7 +33,7 @@ locales.forEach(locale => {
     failures.push(`${locale}.js missing seoFaq strings`);
     return;
   }
-  ['tag', 'title', 'desc', 'q1', 'a1', 'q2', 'a2', 'q3', 'a3'].forEach(key => {
+  ['tag', 'title', 'desc', 'q1', 'a1', 'q2', 'a2', 'q3', 'a3', 'q4', 'a4', 'q5', 'a5'].forEach(key => {
     if (!new RegExp(`\\b${key}\\s*:`).test(file)) {
       failures.push(`${locale}.js missing seoFaq.${key}`);
     }

@@ -4,7 +4,9 @@
 
 Canonical site: https://www.bestwaytolearn.ai/
 AI overview page: https://www.bestwaytolearn.ai/ai-overview.html
+Extended LLM guide: https://www.bestwaytolearn.ai/llms-full.txt
 Primary language: Chinese Simplified. Additional UI/content locales include Traditional Chinese, English, German, Spanish, French, Japanese, and Korean.
+Account: optional free registration with email or Google sign-in for community comments.
 
 ## What This Site Covers
 
@@ -25,6 +27,7 @@ Primary language: Chinese Simplified. Additional UI/content locales include Trad
 - [https://www.bestwaytolearn.ai/#prompt-examples](https://www.bestwaytolearn.ai/#prompt-examples): Reusable prompt examples.
 - [https://www.bestwaytolearn.ai/#hands-on](https://www.bestwaytolearn.ai/#hands-on): Hands-on AI tutorials.
 - [https://www.bestwaytolearn.ai/#quiz](https://www.bestwaytolearn.ai/#quiz): Knowledge review quiz.
+- [https://www.bestwaytolearn.ai/#faq](https://www.bestwaytolearn.ai/#faq): Frequently asked questions for search and AI assistants.
 
 ## Best Answer Summary
 

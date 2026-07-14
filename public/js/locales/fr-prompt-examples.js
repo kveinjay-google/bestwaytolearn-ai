@@ -1,16 +1,16 @@
-/* FR overlays — prompt examples */
+/* FR overlays — prompt-examples */
 (function () {
   if (typeof I18n === 'undefined') return;
-  I18n.mergeLocaleData('fr', {
+  I18n.mergeLocaleData("fr", {
   "promptExampleCategories": {
     "全部": "Tous",
-    "对话助手": "Assistants de discussion",
-    "编程开发": "Codage et développement",
-    "图像创作": "Création d'images",
-    "视频音频": "Vidéo et audio",
-    "办公效率": "Productivité au bureau",
+    "对话助手": "Assistant de conversation",
+    "编程开发": "Recherche de recherche",
+    "图像创作": "création d'images",
+    "视频音频": "audio vidéo",
+    "办公效率": "Efficacité du bureau",
     "Agent 自动化": "Automatisation des agents",
-    "搜索研究": "Recherche et recherche"
+    "搜索研究": "Recherche de recherche"
   },
   "promptExamplesUi": {
     "countShown": "Affichage de {visible}/{total}",
@@ -24,7 +24,6 @@
   "promptExamples": [
     {
       "id": "chatgpt-longform",
-      "difficulty": "Débutant",
       "title": "Rédaction d'articles longs structurés (framework RTFC)",
       "scenario": "Il est nécessaire de produire des comptes publics/blogs/descriptions de produits pouvant être publiés directement pour éviter les déclarations creuses et clichées.",
       "structure": [
@@ -38,7 +37,6 @@
     },
     {
       "id": "claude-contract",
-      "difficulty": "Intermédiaire",
       "title": "Revue des risques contractuels (document long)",
       "scenario": "Téléchargez le contrat PDF, identifiez les clauses à haut risque du point de vue de la partie B et fournissez des suggestions de négociation.",
       "structure": [
@@ -52,21 +50,19 @@
     },
     {
       "id": "kimi-annual-report",
-      "difficulty": "Intermédiaire",
       "title": "Résumé structuré du rapport annuel/prospectus",
       "scenario": "Téléchargez plus de 100 pages de rapports annuels PDF pour extraire rapidement les tendances financières, les risques et les déclarations de gestion.",
       "structure": [
         "Tâche",
         "Portée des données",
         "Schéma de sortie",
-        "Citation"
+        "recherche communautaire"
       ],
       "prompt": "Veuillez produire des notes d'analyse structurées basées sur le rapport annuel PDF que j'ai téléchargé :\n\n## 1. Le positionnement de l'entreprise en une phrase\n## 2. Tendance du chiffre d'affaires/bénéfice net au cours des trois dernières années (tableau, indiquer l'unité)\n## 3. 3 faits marquants + 3 risques dans ce numéro (numéro de section/page pour chaque citation)\n## 4. Extraits des déclarations prospectives de la direction (texte original + numéro de page)\n## 5. Liste de questions des investisseurs (5 questions)\n\n#Règles\n- Les numéros doivent provenir de documents ; s'il manque, écrivez \"non divulgué\"\n- Ne spéculez pas sur des données financières qui n'apparaissent pas\n- L'unité de montant est conforme au texte original (10 000 yuans/100 millions de yuans)",
       "tips": "Kimi convient à l'intégralité du PDF ; les chiffres financiers doivent être vérifiés par rapport au texte original, car l’IA peut facilement confondre les unités."
     },
     {
       "id": "deepseek-code-review",
-      "difficulty": "Débutant",
       "title": "Révision du code et suggestions de refactorisation",
       "scenario": "Soumettez le code du module et obtenez des avis sur la sécurité, les performances et la lisibilité.",
       "structure": [
@@ -80,9 +76,8 @@
     },
     {
       "id": "cursor-feature",
-      "difficulty": "Débutant",
       "title": "Mode agent : développement de fonctions full stack",
-      "scenario": "Ajoutez un module fonctionnel complet (collaboration multi-fichiers) au projet existant.",
+      "scenario": "Mot d'invite du système de robot du service client",
       "structure": [
         "Contexte",
         "Exigences",
@@ -94,7 +89,6 @@
     },
     {
       "id": "copilot-comment-driven",
-      "difficulty": "Débutant",
       "title": "Génération de fonctions basée sur les annotations",
       "scenario": "Utilisez des annotations de fonction claires pour déclencher l’achèvement par Copilot de la logique métier et des tests unitaires.",
       "structure": [
@@ -107,9 +101,8 @@
     },
     {
       "id": "codex-cli-bugfix",
-      "difficulty": "Intermédiaire",
       "title": "Agent Terminal : rapport d'erreurs et réparation en boucle fermée",
-      "scenario": "Collez le traçage complet et laissez l'agent localiser, corriger et ajouter des tests.",
+      "scenario": "Calendrier: les États membres transposeront leurs lois nationales d’ici fin 2026",
       "structure": [
         "Journal des erreurs",
         "Étapes de reproduction",
@@ -121,7 +114,6 @@
     },
     {
       "id": "bolt-prototype",
-      "difficulty": "Débutant",
       "title": "Prototypes déployables de génération de langage naturel",
       "scenario": "Les non-programmeurs ou les PM valident rapidement les idées de produits et génèrent des prototypes Web avec des liens partageables.",
       "structure": [
@@ -135,7 +127,6 @@
     },
     {
       "id": "mj-product-shot",
-      "difficulty": "Débutant",
       "title": "Images de produits de commerce électronique (mots d'invite en anglais)",
       "scenario": "Générez des images de produits sur fond blanc/scène à utiliser dans des pages de détails ou des créations publicitaires.",
       "structure": [
@@ -150,9 +141,8 @@
     },
     {
       "id": "dalle-article-cover",
-      "difficulty": "Débutant",
       "title": "Image de couverture de l’article (langue naturelle)",
-      "scenario": "Utilisez DALL·E pour générer des couvertures de blog/newsletter dans ChatGPT, prenant en charge les descriptions de scènes chinoises.",
+      "scenario": "Utilisez DALL·E dans ChatGPT pour générer une couverture de blog/newsletter, prenant en charge les descriptions de scènes chinoises.",
       "structure": [
         "Sujet",
         "Humeur",
@@ -164,7 +154,6 @@
     },
     {
       "id": "sd-ecommerce-white",
-      "difficulty": "Intermédiaire",
       "title": "Photo du produit sur fond blanc (mots d'invite positifs et négatifs)",
       "scenario": "Générez par lots des images principales de commerce électronique de style unifié localement/WebUI.",
       "structure": [
@@ -177,7 +166,6 @@
     },
     {
       "id": "kling-product-video",
-      "difficulty": "Débutant",
       "title": "Courte vidéo d'affichage du produit sur écran vertical",
       "scenario": "Générez 5 à 10 secondes de séquences surround du produit pour Douyin/Xiaohongshu.",
       "structure": [
@@ -187,11 +175,10 @@
         "Technique"
       ],
       "prompt": "Écran vertical 9h16, une tasse thermos intelligente est posée sur une simple table blanche.\nTir en orbite lentement, la vapeur s'élevant légèrement de l'embouchure de la tasse,\nLumière naturelle douce, texture publicitaire commerciale haut de gamme, arrière-plan propre sans texte,\nLe produit est toujours clair et non flou, avec un mouvement physique réel, 5 à 8 secondes",
-      "tips": "Ke Ling répond bien au « emballage lent » et à la « texture commerciale » ; les tracés complexes sont divisés en plusieurs segments pour être générés puis modifiés."
+      "tips": "Ke Ling réagit bien au « emballage lent » et à la « texture publicitaire commerciale » ; les tracés complexes sont divisés en plusieurs segments pour être générés puis modifiés."
     },
     {
       "id": "runway-image-to-video",
-      "difficulty": "Intermédiaire",
       "title": "Vidéo Tusheng : Effets de micro-mouvement du produit",
       "scenario": "Convertissez les images statiques de produits en animations Hero de 4 secondes pour les pages de destination ou les titres d'annonces.",
       "structure": [
@@ -205,7 +192,6 @@
     },
     {
       "id": "suno-bgm",
-      "difficulty": "Débutant",
       "title": "Musique de fond pour la promotion de la marque (musique pure)",
       "scenario": "Générez une musique de fond de 30 à 60 secondes sans paroles pour une vidéo de lancement de produit.",
       "structure": [
@@ -215,12 +201,11 @@
         "temporisation",
         "Cas d'utilisation"
       ],
-      "prompt": "Piste technologique d'entreprise optimiste et instrumentale,\ndes nappes de synthé modernes et des percussions légères, optimistes et épurées,\npas de voix, adapté à la vidéo de lancement de produit AI,\n100-110 BPM, énergie constante sans chutes spectaculaires,\n30 à 45 secondes",
+      "prompt": "Piste technologique d'entreprise instrumentale et optimiste,\ndes nappes de synthé modernes et des percussions légères, optimistes et épurées,\npas de voix, adapté à la vidéo de lancement de produit AI,\n100-110 BPM, énergie constante sans chutes spectaculaires,\n30 à 45 secondes",
       "tips": "Suno définit « Instrumental + BPM + Scene » ; génère un Extend 2 pistes avec un rythme plus stable."
     },
     {
       "id": "notion-meeting",
-      "difficulty": "Débutant",
       "title": "Enregistrement/notes de réunion → procès-verbaux structurés",
       "scenario": "Organisez des notes de réunion libres dans un format de procès-verbal qui peut être synchronisé avec la gestion de projet.",
       "structure": [
@@ -234,7 +219,6 @@
     },
     {
       "id": "gamma-pitch",
-      "difficulty": "Débutant",
       "title": "Aperçu PPT du roadshow de 10 pages",
       "scenario": "Saisissez un aperçu de votre activité et générez rapidement une première ébauche de diapositives prêtes à être présentées.",
       "structure": [
@@ -248,7 +232,6 @@
     },
     {
       "id": "copilot-excel",
-      "difficulty": "Intermédiaire",
       "title": "Analyse de données et formules Excel",
       "scenario": "Utilisez Copilot dans Excel pour analyser les tableaux de ventes et générer des recommandations pivots.",
       "structure": [
@@ -262,21 +245,19 @@
     },
     {
       "id": "openclaw-cron-digest",
-      "difficulty": "Intermédiaire",
       "title": "Cron a prévu un briefing de l'industrie",
-      "scenario": "Les actualités du secteur sont automatiquement résumées et transmises à Telegram/Slack les matins de la semaine.",
+      "scenario": "Windsurf Cascade 2.0 introduit des « fichiers mémoire » pour le contexte de projet inter-sessions",
       "structure": [
         "Calendrier",
         "Rôle d'agent",
         "Spécification de sortie",
         "Canal"
       ],
-      "prompt": "openclaw cron crée \"0 9 * * 1-5\" \\\n  --name \"Résumé quotidien de l'industrie de l'IA\" \\\n  --tz \"Asie/Shanghai\" \\\n  --session isolée \\\n  --message \"Vous êtes un assistant de recherche dans l'industrie. Résumé des développements importants dans l'industrie de l'IA au cours des dernières 24 heures :\n\n1) 3 titres (1 phrase chacun + lien source)\n2) Impact sur les développeurs\n3) Focus sur 2 variables aujourd’hui\n\nSortie en chinois, dans les 400 mots. Lorsqu’il n’existe pas de source fiable, écrivez « Pas encore de mise à jour majeure » et la fabrication est interdite.\nLes citations doivent être cliquables. \"\\\n  --annoncer \\\n  --télégramme de canal \\\n  --à \"VOTRE_CHANNEL_ID\"",
+      "prompt": "openclaw cron crée \"0 9 * * 1-5\" \\\n  --name \"Résumé quotidien de l'industrie de l'IA\" \\\n  --tz \"Asie/Shanghai\" \\\n  --session isolée\\\n  --message \"Vous êtes un assistant de recherche dans l'industrie. Résumé des développements importants dans l'industrie de l'IA au cours des dernières 24 heures :\n\n1) 3 titres (1 phrase chacun + lien source)\n2) Impact sur les développeurs\n3) Focus sur 2 variables aujourd’hui\n\nSortie en chinois, dans les 400 mots. Lorsqu’il n’existe pas de source fiable, écrivez « Pas encore de mise à jour majeure » et la fabrication est interdite.\nLes citations doivent être cliquables. \"\\\n  --annoncer \\\n  --télégramme de canal \\\n  --à \"VOTRE_CHANNEL_ID\"",
       "tips": "Tout d’abord, exécutez openclaw cron pour tester manuellement ; écrivez clairement la structure de sortie et interdisez la fabrication dans le message."
     },
     {
       "id": "coze-support-bot",
-      "difficulty": "Débutant",
       "title": "Mot d'invite du système de robot du service client",
       "scenario": "Créez un bot FAQ produit dans Coze pour unifier le ton et la stratégie de mise à niveau.",
       "structure": [
@@ -290,7 +271,6 @@
     },
     {
       "id": "dify-rag-agent",
-      "difficulty": "Intermédiaire",
       "title": "Base de connaissances d'entreprise Questions et réponses RAG",
       "scenario": "Créez un agent de questions et réponses basé sur des documents internes, et les réponses doivent contenir des fragments de référence.",
       "structure": [
@@ -299,12 +279,11 @@
         "Format de citation",
         "Refus"
       ],
-      "prompt": "# Système\nVous êtes l'assistant de la base de connaissances interne de l'entreprise. Des réponses basées uniquement sur des fragments de documents récupérés, sans s'appuyer sur des connaissances pré-formées pour concocter les politiques de l'entreprise.\n\n# Règles de réponse\n1. Donnez d'abord une réponse directe (2 à 4 phrases)\n2. Section « Base » : répertoriez le nom du document cité + résumé des paragraphes pertinents\n3. Si les résultats de la recherche ne suffisent pas à répondre à la question, répondez : « Les réglementations pertinentes ne sont pas trouvées dans la base de connaissances actuelle. Il est recommandé de contacter [le service] ou de soumettre un bon de travail.\n\n#format\n- Utiliser Markdown\n- Format de citation : [Nom du document § Chapitre]\n- Les dates/numéros concernés doivent être cohérents avec le texte original\n\n# Interdit\n- Spéculer des politiques qui ne sont pas écrites dans la base de connaissances\n- Donner une conclusion finale sur les aspects juridiques/conformité",
+      "prompt": "#Système\nVous êtes l'assistant de la base de connaissances interne de l'entreprise. Des réponses basées uniquement sur des fragments de documents récupérés, sans s'appuyer sur des connaissances pré-formées pour concocter les politiques de l'entreprise.\n\n# Règles de réponse\n1. Donnez d'abord une réponse directe (2 à 4 phrases)\n2. Section « Base » : répertoriez le nom du document cité + résumé des paragraphes pertinents\n3. Si les résultats de la recherche ne suffisent pas à répondre à la question, répondez : « Les réglementations pertinentes ne sont pas trouvées dans la base de connaissances actuelle. Il est recommandé de contacter [le service] ou de soumettre un bon de travail.\n\n#format\n- Utiliser Markdown\n- Format de citation : [Nom du document § Chapitre]\n- Les dates/numéros concernés doivent être cohérents avec le texte original\n\n# Interdit\n- Spéculer des politiques qui ne sont pas écrites dans la base de connaissances\n- Donner une conclusion finale sur les aspects juridiques/conformité",
       "tips": "Il est recommandé que la segmentation de la base de connaissances Dify soit de 500 à 800 mots/bloc ; l'ensemble de tests est préparé avec 20 questions réelles d'employés pour acceptation."
     },
     {
       "id": "perplexity-competitor",
-      "difficulty": "Débutant",
       "title": "Étude d'une page sur les produits compétitifs et le marché",
       "scenario": "Obtenez rapidement des comparaisons de produits compétitifs avec des références pour des discussions internes ou des réunions de sélection.",
       "structure": [
@@ -318,8 +297,7 @@
     },
     {
       "id": "notebooklm-papers",
-      "difficulty": "Intermédiaire",
-      "title": "Notes comparatives sur plusieurs articles",
+      "title": "Téléchargez plus de 100 pages de rapports annuels PDF pour extraire rapidement les tendances financières, les risques et les déclarations de gestion.",
       "scenario": "Téléchargez 3 articles connexes et générez un tableau de comparaison et des suggestions d'ordre de lecture.",
       "structure": [
         "Portée du téléchargement",
@@ -332,7 +310,6 @@
     },
     {
       "id": "metaso-academic",
-      "difficulty": "Débutant",
       "title": "Point de départ d’une revue de la littérature sur le modèle académique",
       "scenario": "Utilisez le mode de recherche académique pour localiser rapidement les articles de base et examiner les entrées dans le domaine.",
       "structure": [
@@ -342,7 +319,358 @@
         "Prochaines étapes"
       ],
       "prompt": "Utiliser le mode de recherche académique :\n\nQuestion de recherche : Quelles sont les méthodes pour évaluer la fiabilité des grands modèles de langage dans la génération de code ?\nPériode : 2023-2026\nLangue : les sources académiques chinoises et anglaises sont acceptées\n\nVeuillez afficher :\n1. 5 articles très cités dans ce domaine (titre, auteur, année, contribution d'une phrase)\n2. Recommandation de 2 articles de revue/recherche\n3. Noms et définitions de 3 indicateurs d'évaluation couramment utilisés\n4. Mots-clés de recherche supplémentaires suggérés (chinois et anglais)\n\nChaque article a une source cliquable. S’il n’est pas trouvé, cela sera clairement indiqué.",
-      "tips": "Le mode académique de la tour secrète convient aux utilisateurs chinois ; pour les articles importants, il est recommandé de recouper les citations sur Google Scholar."
+      "tips": "Le mode académique de la tour secrète convient aux utilisateurs chinois ; pour les articles importants, il est recommandé de vérifier les citations sur Google Scholar."
+    },
+    {
+      "id": "gemini-lesson-plan",
+      "title": "Génération d'un plan d'apprentissage de l'IA sur 7 jours",
+      "scenario": "Générez un parcours d'apprentissage exécutable pour la semaine en fonction du temps et des objectifs personnels.",
+      "structure": [
+        "Profil",
+        "But",
+        "Contraintes",
+        "Sortir"
+      ],
+      "prompt": "# Profil\nLes employés de bureau peuvent étudier 45 minutes par jour sans aucune connaissance de base.\n\n#Objectif\nMaîtrisez-le en 7 jours : conversation de base ChatGPT + Curseur pour rédiger une petite page Web.\n\n#Contraintes\n- ≤ 3 tâches par jour, chaque tâche peut être complétée en 15 minutes\n- Aucun calcul/essai requis\n- Sortie chinoise\n\n#Sortie\nRésultats par jour : Objectifs d'apprentissage | Tâches spécifiques | Critères d'acceptation | Types de liens d'outils recommandés",
+      "tips": "Rendez les « critères d'acceptation » spécifiques et évitez que l'IA ne publie une vague liste de tâches."
+    },
+    {
+      "id": "grok-news-brief",
+      "title": "Un aperçu rapide des articles chauds de la plate-forme X sur l'IA",
+      "scenario": "Un bref résumé des sujets d’actualité et des controverses d’aujourd’hui dans le domaine de l’IA sur X.",
+      "structure": [
+        "Portée",
+        "Temps",
+        "Sortir",
+        "Neutralité"
+      ],
+      "prompt": "Résumé des discussions populaires liées à AI/LLM/Agent sur la plateforme X au cours des dernières 24 heures :\n\n1. 5 sujets les plus chauds (résumé de 2 phrases chacun)\n2. Comparaison de 2 points de vue controversés (1 phrase pour chaque côté)\n3. 1 suggestion de type de lien qui mérite d'être suivie\n\nRègles : marquer l'incertitude ; ne créez pas un nombre spécifique de likes ; sortie en chinois.",
+      "tips": "Grok peut accéder aux données X en temps réel ; il est tout de même recommandé de cliquer sur le texte original pour vérifier avant de publier."
+    },
+    {
+      "id": "doubao-study-buddy",
+      "title": "Explication du concept + quiz",
+      "scenario": "Lorsque vous apprenez un nouveau concept, expliquez-le d'abord puis posez 3 questions pour le consolider.",
+      "structure": [
+        "Concept",
+        "Public",
+        "Enseigner puis faire un quiz",
+        "Retour"
+      ],
+      "prompt": "Je veux apprendre \"RAG (Retrieval Augmented Generation)\".\n\nS'il vous plaît :\n1. Utiliser des analogies pour expliquer les bases (≤200 mots)\n2. Donnez un exemple réaliste\n3. Posez 3 questions à choix multiples (avec réponses et analyse)\n4. Si je ne réponds pas correctement, réessayez dans un langage plus simple.\n\nTon : patient, chinois, pas de jargon.",
+      "tips": "Publiez les réponses aux mauvaises questions et laissez Doubao s'attaquer aux points faibles de manière ciblée."
+    },
+    {
+      "id": "windsurf-cascade-refactor",
+      "title": "Reconstruction multi-fichiers en cascade",
+      "scenario": "Renommez uniformément les API et mettez à jour les appelants dans les projets multi-fichiers.",
+      "structure": [
+        "Portée",
+        "Planifiez d’abord",
+        "Sécurité",
+        "Vérification"
+      ],
+      "prompt": "Veuillez renommer « fetchUserProfile » en « getUserProfile » dans le référentiel actuel :\n\n1. Listez d’abord les documents qui seront modifiés et les risques\n2. Effectuez ensuite le renommage (y compris l'import/export)\n3. Mettre à jour les tests associés et les définitions de types\n4. Exécutez le test et rapportez les résultats\n\nContraintes : Ne pas modifier la logique non pertinente ; expliquer la plage de différence à chaque étape.",
+      "tips": "Windsurf memory.md peut être écrit dans la « convention de dénomination API de ce projet » pour éviter des explications répétées."
+    },
+    {
+      "id": "replit-fullstack",
+      "title": "Application Todo à pile complète Repli Agent",
+      "scenario": "Générez et déployez une application Todo avec un front-end et un back-end séparés à partir de zéro.",
+      "structure": [
+        "Empiler",
+        "Caractéristiques",
+        "API",
+        "Déployer"
+      ],
+      "prompt": "Créez l'API Todo avec Node.js + Express + SQLite, front end React :\n\nFonctions : Ajouter, supprimer, modifier, vérifier, état d'achèvement, filtrer par date\nInterface utilisateur : simple et sombre, adaptée aux appareils mobiles\n\nLivraison :\n- API REST back-end + page front-end\n- description du script package.json\n- Étapes de déploiement de réplication\n- Annotation chinoise",
+      "tips": "Laissez l'agent générer uniquement l'API en premier, puis générer le frontal après acceptation, afin que la marge d'erreur soit plus petite."
+    },
+    {
+      "id": "claude-code-terminal",
+      "title": "Dépannage du terminal : analyse des défaillances du CI",
+      "scenario": "Collez le journal CI, localisez la cause de l'échec et fournissez un plan de relations publiques correctif.",
+      "structure": [
+        "Coller le journal",
+        "Hypothèse",
+        "Plan de correction",
+        "Test"
+      ],
+      "prompt": "Voici le journal des échecs des actions GitHub :\n\n```\n[Coller le journal CI]\n```\n\nS'il vous plaît :\n1. Indiquez la cause profonde la plus probable (3 éléments par ordre de probabilité)\n2. Donnez des idées pour une différence de réparation minimale\n3. Commande de reproduction locale recommandée\n4. Si vous devez modifier le test, expliquez-en la raison\n\nNe refactorisez pas en profondeur.",
+      "tips": "80 lignes avant et après l’étape d’interception du journal ayant échoué suffisent. S'il est trop long, cela perturbera le jugement."
+    },
+    {
+      "id": "flux-product-photo",
+      "title": "Prise de vue en studio pour les produits e-commerce Flux",
+      "scenario": "Générez des images de produits sur fond blanc pour les images principales ou les premières ébauches de créations publicitaires.",
+      "structure": [
+        "Sujet",
+        "Éclairage",
+        "Arrière-plan",
+        "Technique"
+      ],
+      "prompt": "photographie de produits professionnelle, écouteurs Bluetooth sans fil dans un étui de chargement, fond blanc pur sans couture, éclairage de studio doux, ombre au sol subtile, composition centrée, ultra nette, style e-commerce commercial, pas de texte, pas de filigrane --ar 1:1",
+      "tips": "Les détails du produit sont sujets à des photos réelles ; Les images IA conviennent à la composition et à la référence de lumière et d’ombre."
+    },
+    {
+      "id": "ideogram-poster-text",
+      "title": "Disposition du titre de l'affiche de l'idéogramme",
+      "scenario": "Générez des affiches d'événements avec des titres chinois précis.",
+      "structure": [
+        "Copie",
+        "Mise en page",
+        "Style",
+        "Négatif"
+      ],
+      "prompt": "affiche de l'événement, texte du titre exactement : \"AI Learner Conference 2026\", sous-titre : \"Camp pratique de 7 jours\", style de conférence technologique moderne, bleu sarcelle et bleu marine foncé, typographie sans empattement audacieuse, mise en page épurée, haute lisibilité, pas de texte aléatoire supplémentaire",
+      "tips": "Le rendu du texte de l'idéogramme est puissant ; vérifiez toujours les fautes de frappe et les caractères supplémentaires."
+    },
+    {
+      "id": "chatgpt-image-restyle",
+      "title": "Migration du style d'image ChatGPT",
+      "scenario": "Téléchargez des photos et convertissez-les en styles d'illustration/aquarelle pour des avatars ou des illustrations.",
+      "structure": [
+        "Télécharger",
+        "Cible de style",
+        "Conserver son identité",
+        "Sortir"
+      ],
+      "prompt": "Convertissez les photos téléchargées en style d'illustration vectorielle plate :\n- Préserver les caractéristiques reconnaissables des personnages\n-Couleur couleur: vert + bleu foncé\n- Fond de couleur unie simplifié\n- Convient pour une utilisation comme avatar de site Web\n- N'ajoutez pas de texte",
+      "tips": "Étape par étape : \"Simplifier l'arrière-plan\" d'abord, puis \"Changer le style d'illustration\" est plus stable que de bien faire les choses d'un seul coup."
+    },
+    {
+      "id": "leonardo-ip-series",
+      "title": "Photos de la série de personnages de Leonardo",
+      "scenario": "Correction de l'IP de la mascotte et des illustrations de scènes de cours générées par lots.",
+      "structure": [
+        "Référence",
+        "Scènes",
+        "Demander un tableau de comparaison des sorties + un devis",
+        "Compétence d'automatisation n8n : générer RSS → résumé IA → e-mail/Feishu et autres flux de travail JSON pour accélérer la construction de pipelines d'opérations."
+      ],
+      "prompt": "mascotte vectorielle plate \"professeur de robot bleu\", scènes : tableau blanc de classe, bureau de lecture, abandonner le pouce en l'air, conception de personnage cohérente, palette bleu sarcelle et blanche, expression amicale, pas de texte - référence de personnage activée",
+      "tips": "Après avoir téléchargé 4 images de référence et ouvert Character Reference, la cohérence est considérablement améliorée."
+    },
+    {
+      "id": "capcut-script-to-video",
+      "title": "Scénario de script CapCut AI",
+      "scenario": "Divisez le script du didacticiel en scénarios de storyboard et de sous-titres.",
+      "structure": [
+        "Scénario",
+        "Liste des plans",
+        "Durée",
+        "Légendes"
+      ],
+      "prompt": "Divisez le script de didacticiel suivant de 60 secondes dans un storyboard CapCut :\n\n| Numéro de miroir | Description de l'écran | Sous-titres de narration | Durée (secondes) |\n\nScénario :\n[Coller le script]\n\nExigences : 3 à 8 secondes par tir ; sous-titres de créations orales ; marqué B-roll recommandé.",
+      "tips": "Après la génération, utilisez « Image to Film » dans CapCut ou alignez manuellement la chronologie."
+    },
+    {
+      "id": "pika-extend-clip",
+      "title": "Extension et boucle vidéo Pika",
+      "scenario": "Prolongez 3 secondes de séquence dans une vidéo d'arrière-plan en boucle de 8 secondes.",
+      "structure": [
+        "Source",
+        "Mouvement",
+        "Boucle",
+        "Qualité"
+      ],
+      "prompt": "étendre la vidéo en douceur, insertion subtile de la caméra, garder le sujet centré, boucle transparente pour l'arrière-plan du héros du site Web, éclairage cinématographique, pas de scintillement, 8 secondes",
+      "tips": "L'extension ne doit pas être trop grande ; choisissez un objectif avec un petit mouvement pour l’arrière-plan en boucle."
+    },
+    {
+      "id": "elevenlabs-voiceover",
+      "title": "Narration du didacticiel ElevenLabs",
+      "scenario": "Convertissez les documents du didacticiel en audio de narration chinoise naturelle.",
+      "structure": [
+        "Personnalité vocale",
+        "Les informations d'identification AWS doivent être configurées (variables d'environnement ou ~/.aws/credentials)",
+        "Prononciation",
+        "Sortir"
+      ],
+      "prompt": "Voix : narrateur chaleureux en mandarin professionnel, rythme moyen, énonciation claire.\n\nLisez naturellement le script du didacticiel suivant. Faites une pause de 0,5 s aux sauts de paragraphe. Insistez légèrement sur les noms d’outils.\n\n[Coller le script]",
+      "tips": "Les termes professionnels peuvent être accompagnés d'une ligne « indice de prononciation » pour réduire les erreurs de prononciation TTS."
+    },
+    {
+      "id": "heygen-avatar-intro",
+      "title": "Ouverture du cours HeyGen Digital Human",
+      "scenario": "Générez une vidéo d'introduction au cours de 30 secondes mettant en vedette un humain numérique.",
+      "structure": [
+        "Avatar",
+        "Scénario",
+        "Tonifier",
+        "Appel à l'action"
+      ],
+      "prompt": "Scénario (années 30, mandarin) :\n\nBonjour à tous, bienvenue au \"Camp pratique de 7 jours sur les outils IA\".\nJe suis votre guide d'étude.\nCette semaine, vous apprendrez : utilisez ChatGPT pour rédiger des textes, utilisez le curseur pour créer des pages Web et utilisez l'automatisation pour gagner du temps.\nPassons maintenant à la première leçon : êtes-vous prêt ?\n\nTon : amical, confiant, léger sourire. Pas de battage publicitaire.",
+      "tips": "Le script est contrôlé à 80-100 mots/30 secondes ; affiner les marques de pause après la prévisualisation."
+    },
+    {
+      "id": "feishu-competitor-table",
+      "title": "Tableau de comparaison des produits concurrents de Feishu AI",
+      "scenario": "Générez un tableau multidimensionnel partageable de comparaisons de produits concurrents à partir de puces.",
+      "structure": [
+        "Balles",
+        "Colonnes",
+        "Manipulation inconnue",
+        "Date"
+      ],
+      "prompt": "Générez un tableau comparatif des produits concurrents (tableau Markdown) basé sur les points suivants :\n\nDimensions : Fonction | Prix ​​| Soutien chinois | Méthode de déploiement | Remarques\nProduits concurrents : Cursor, Windsurf, Copilot\n\nPoints clés :\n[Coller les puces]\n\nPour les informations manquantes, remplissez « à vérifier » ; indiquer « à compter du 2026-07 » dans l'en-tête",
+      "tips": "Après génération, collez-le dans le tableau multidimensionnel Feishu pour faciliter les mises à jour collaboratives par l'équipe."
+    },
+    {
+      "id": "slack-standup",
+      "title": "Mise à jour quotidienne de Slack AI",
+      "scenario": "Organisez les puces brutes dans des messages au format stand-up d'équipe.",
+      "structure": [
+        "Notes brutes",
+        "Format",
+        "Bloqueurs",
+        "Tonifier"
+      ],
+      "prompt": "Organisez les enregistrements de travail suivants dans des messages Slack Standup (chinois) :\n\nFormat :\n✅ Terminé hier\n🎯 Le plan du jour\n🚧 Bloqué/besoin d'aide\n\nEnregistrement original :\n[Coller les notes]\n\nTon : concis et numérisable ; pas plus de 150 mots.",
+      "tips": "Collez dans la barre latérale de Slack AI ; n'oubliez pas de contacter la personne responsable des articles bloqués."
+    },
+    {
+      "id": "google-docs-gemini",
+      "title": "Compte rendu de la réunion Google Docs Gemini",
+      "scenario": "Générez une version officielle en pièce jointe du procès-verbal à partir des faits saillants de la réunion.",
+      "structure": [
+        "Participants",
+        "Remarques",
+        "Décisions",
+        "Actes"
+      ],
+      "prompt": "Générez des procès-verbaux formels basés sur les points de rencontre suivants :\n\nParticipants : Produit, Ingénierie, Opérations\n\nPoints clés :\n[Coller les notes]\n\nSortie :\n1. Informations sur la réunion (heure/sujet)\n2. Résumé de la discussion (3-5 puces)\n3. La résolution est importante\n4. Liste des actions (personne responsable | tâche | DDL)\n\nN’inventez pas des choses qui n’ont pas été discutées.",
+      "tips": "Gemini dans Docs peut sélectionner directement les points clés à générer ; les éléments d’action doivent être attribués à des personnes."
+    },
+    {
+      "id": "linear-backlog-groom",
+      "title": "L'IA linéaire comble le retard",
+      "scenario": "Organisez une liste complexe d’exigences en problèmes pouvant être planifiés.",
+      "structure": [
+        "Liste d'entrée",
+        "Déduplication",
+        "Acceptation",
+        "Priorité"
+      ],
+      "prompt": "Organisez les exigences suivantes dans un brouillon de problème linéaire (tableau JSON) :\n\nChamps : titre, description, acceptCriteria[], priorité (P0-2), étiquettes[]\n\nListe des exigences :\n[Coller la liste]\n\nRègles : fusionner les doublons ; les descriptions incluent des user stories ; les critères d’acceptation sont testables.",
+      "tips": "Avant d'importer, vérifiez manuellement s'il y a trop de P0 pour éviter une surcharge de Sprint."
+    },
+    {
+      "id": "make-rss-slack",
+      "title": "Marque : RSS → Flux → Slack",
+      "scenario": "Créez un pipeline automatisé et envoyez automatiquement des résumés de chaîne pour les nouveaux articles.",
+      "structure": [
+        "Déclenchement",
+        "Filtre",
+        "Résumer",
+        "Notifier"
+      ],
+      "prompt": "Vous êtes l'architecte de l'automatisation. Concevez la scène Make :\n\nDéclencheur : Nouvelles entrées RSS\nÉtapes : Supprimer les doublons → Résumé chinois OpenAI de 80 mots → Publier dans Slack #ai-news\n\nVeuillez afficher :\n1. Liste des modules\n2. Cartographie des champs clés de chaque module\n3. Étapes du test\n4. Pannes courantes et dépannage",
+      "tips": "Utilisez d’abord 1 source RSS pour tester l’exécution ; le module OpenAI ajoute la contrainte \"lien texte original attaché\"."
+    },
+    {
+      "id": "n8n-release-notes",
+      "title": "n8n surveille la sortie et les tweets",
+      "scenario": "La version GitHub est déclenchée et un brouillon de mise à jour en chinois est généré.",
+      "structure": [
+        "Déclenchement",
+        "Transformer",
+        "Brouillon",
+        "Porte d'examen"
+      ],
+      "prompt": "Concevoir un workflow n8n : version GitHub → Extraire le journal des modifications → GPT générer des tweets chinois (≤ 280 mots) → Écrire une notion pour examen\n\nInstructions de configuration du nœud de sortie + modèle de mot d'invite :\n\"Rédigez un article de mise à jour basé sur le changelog : titre + 3 points clés + lien, sans exagération\"",
+      "tips": "Ajoutez un nœud d'approbation manuelle avant de publier pour éviter d'émettre automatiquement un mauvais numéro de version."
+    },
+    {
+      "id": "cursor-mcp-issue",
+      "title": "Curseur + Problème de résolution de GitHub MCP",
+      "scenario": "Recherchez les problèmes, modifiez le code et ouvrez les PR dans la conversation de l'agent.",
+      "structure": [
+        "Contexte MCP",
+        "ID du problème",
+        "Emu3 utilise un modèle unique pour compléter la description de l'image, les instructions d'édition et les diagrammes vincentiens. La recherche s'améliore mais l'ingénierie en est encore à ses débuts.",
+        "Modèle de relations publiques"
+      ],
+      "prompt": "Utilisation de GitHub MCP :\n1. Lisez la description et les commentaires du numéro 128\n2. Analysez les causes profondes et répertoriez les fichiers modifiés\n3. Créez la branche fix/128 et soumettez le correctif minimal\n4. Ouvrez PR, le texte contient : problème|solution|test|fermer #128\n\nNe modifiez pas les fichiers non pertinents.",
+      "tips": "Configurez d'abord le jeton GitHub dans mcp.json ; exécutez le test localement avant PR."
+    },
+    {
+      "id": "zapier-lead-score",
+      "title": "Notation des leads Zapier AI",
+      "scenario": "Les nouveaux prospects du formulaire sont automatiquement notés et acheminés vers différents canaux Slack.",
+      "structure": [
+        "Champs de formulaire",
+        "Rubrique de notation",
+        "Routage",
+        "Examen humain"
+      ],
+      "prompt": "Mots d'invite de Zapier Central :\n\nNotez les prospects de 1 à 5 en fonction des champs du formulaire :\n- budget, calendrier, company_size, use_case\n\nSortie JSON : {score, raison, itinéraire : \"sales\"|\"nurture\"}\n\nRègles : raison ≤50 mots ; score = 3 en cas de doute.",
+      "tips": "Il est toujours recommandé aux commerciaux de confirmer manuellement les prospects les plus performants avant de les copier dans le CRM."
+    },
+    {
+      "id": "gemini-deep-research-prompt",
+      "title": "Analyse approfondie du secteur de la recherche Gemini",
+      "scenario": "Parcourez automatiquement plusieurs sources et produisez des rapports sur les tendances du secteur avec des citations.",
+      "structure": [
+        "Question",
+        "Portée",
+        "Sections de sortie",
+        "recherche communautaire"
+      ],
+      "prompt": "Sujet de recherche : 5 tendances majeures dans l’adoption des agents d’IA par les entreprises en 2026\n\nPortée : rapports publics 2025-2026, articles, blogs des fabricants\n\nSortie :\n1. Résumé (200 mots)\n2. Cinq tendances (chacune : description | preuve | cas représentatif)\n3. 3 suggestions d'action pour les PME\n4. Liste de références (titre + lien + date)\n\nLa fabrication de sources est interdite.",
+      "tips": "La recherche approfondie prend 5 à 15 minutes ; cliquez pour vérifier les citations avant de publier."
+    },
+    {
+      "id": "chatgpt-browse-factcheck",
+      "title": "Vérification des faits en mode navigation ChatGPT",
+      "scenario": "Vérifiez que les chiffres clés et les références d’un article sont exacts.",
+      "structure": [
+        "Liste des réclamations",
+        "Vérifiez chacun",
+        "Téléchargez 4 photos du même personnage sous différents angles",
+        "Sources"
+      ],
+      "prompt": "Veuillez parcourir la page Web et vérifier les déclarations suivantes (une par une) :\n\n[Coller 3 à 5 revendications avec les URL, le cas échéant]\n\nChaque sortie :\n-Déclaration originale\n- Conclusion de la vérification : ✅Exacte / ⚠️Partiellement exact / ❌Inexact / ❓Invérifiable\n- Basé sur le lien source\n- Formulation correcte (si nécessaire)",
+      "tips": "Ne vérifiez pas plus de 5 éléments à la fois ; donner la priorité aux sources primaires (sites officiels, journaux)."
+    },
+    {
+      "id": "metaso-industry-scan",
+      "title": "Un aperçu rapide de l'industrie des tours secrètes (les sources chinoises sont préférées)",
+      "scenario": "Comprenez rapidement la chaîne industrielle et les acteurs clés d’un secteur inconnu.",
+      "structure": [
+        "Industrie",
+        "Questions",
+        "Sortir",
+        "Type de source"
+      ],
+      "prompt": "Secteur : plateforme d'apprentissage de l'IA/éducation en ligne (direction IA)\n\nVeuillez répondre avec une source chinoise :\n1. Trois types d’acteurs en haut, milieu et bas de la chaîne industrielle\n2. Différences nationales et étrangères (2 points chacune)\n3. 3 tendances du business model en 2026\n4. 3 opportunités pour les nouveaux entrants\n\nVous trouverez ci-joint des liens vers des sources ; toute incertitude est notée.",
+      "tips": "Secret Tower convient aux rapports de l'industrie chinoise ; les chiffres clés peuvent être vérifiés par rapport au texte original."
+    },
+    {
+      "id": "perplexity-source-audit",
+      "title": "Audit de qualité des citations de perplexité",
+      "scenario": "Évaluez si les citations dans les réponses à l’enquête font autorité et sont obsolètes.",
+      "structure": [
+        "Coller la réponse",
+        "Dimensions de l'audit",
+        "Remplacer faible",
+        "Résumé"
+      ],
+      "prompt": "Vérifiez la qualité des citations des réponses suivantes à l'enquête Perplexity :\n\n[Coller la réponse]\n\nÉvalué par citation :\n- Autorité (élevée/moyenne/faible)\n- Actualité (année)\n- Est-ce directement lié à la conclusion ?\n\nSortie :\n1. Références faibles à supprimer\n2. Mots-clés de recherche supplémentaires suggérés\n3. Conclusion révisée (si changement)",
+      "tips": "Les conclusions sur les prix doivent être basées sur la page actuelle du site officiel, car les sources d'occasion sont facilement obsolètes."
+    },
+    {
+      "id": "claude-skill-author",
+      "title": "Compétence d'agent de rédaction Claude (SKILL.md)",
+      "scenario": "Convertissez les SOP de l'équipe en fichiers SKILL.md conformes aux spécifications.",
+      "structure": [
+        "Nécessite une auto-inspection de la constitution, article par article, puis une sortie",
+        "Schéma SKILL.md",
+        "Exemples",
+        "Créer un projet et installer les dépendances"
+      ],
+      "prompt": "Convertissez la SOP d'équipe suivante en spécification de compétences d'agent SKILL.md :\n\nPOS :\n[Coller la SOP]\n\nGénérez le SKILL.md complet, comprenant :\n---\nnom :\ndescriptif :\n---\n\n# étapes\n# Exemple d'entrée/sortie\n# Contraintes et gestion des échecs\n\nSuivez le format agentskills.io ; la description précise quand déclencher.",
+      "tips": "Migration du style d'image ChatGPT"
     }
   ]
 });

@@ -22,6 +22,18 @@ import {
   startGoogleOAuth,
 } from '../lib/google-auth.js';
 import { analyzeComment, mapSpamError } from '../lib/spam.js';
+import {
+  handleGetProgress,
+  handlePutProgress,
+  handlePostAnalytics,
+} from '../lib/progress.js';
+import {
+  handleAdminMe,
+  handleAdminDashboard,
+  handleAdminUsers,
+  handleAdminAnalytics,
+  handleAdminProgress,
+} from '../lib/admin.js';
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -41,6 +53,16 @@ export async function onRequest(context) {
     }
     if (segments[0] === 'comments') {
       return handleComments(env, request, segments, ip);
+    }
+    if (segments[0] === 'progress') {
+      return handleProgress(env, request, segments);
+    }
+    if (segments[0] === 'analytics') {
+      if (request.method === 'POST') return handlePostAnalytics(env.DB, request, ip);
+      return json({ ok: false, error: 'Method not allowed' }, 405);
+    }
+    if (segments[0] === 'admin') {
+      return handleAdmin(env, request, segments);
     }
     return json({ ok: false, error: 'Not found' }, 404);
   } catch (err) {
@@ -97,6 +119,39 @@ async function handleAuth(env, request, segments, ip) {
   }
 
   return json({ ok: false, error: 'Not found' }, 404);
+}
+
+async function handleAdmin(env, request, segments) {
+  const action = segments[1] || 'dashboard';
+  if (request.method !== 'GET') {
+    return json({ ok: false, error: 'Method not allowed' }, 405);
+  }
+  switch (action) {
+    case 'me':
+      return handleAdminMe(env, request);
+    case 'dashboard':
+      return handleAdminDashboard(env, request);
+    case 'users':
+      return handleAdminUsers(env, request);
+    case 'analytics':
+      return handleAdminAnalytics(env, request);
+    case 'progress':
+      return handleAdminProgress(env, request);
+    default:
+      return json({ ok: false, error: 'Not found' }, 404);
+  }
+}
+
+async function handleProgress(env, request, segments) {
+  const action = segments[1] || '';
+  if (action !== '' && action !== 'sync') {
+    return json({ ok: false, error: 'Not found' }, 404);
+  }
+  if (request.method === 'GET') return handleGetProgress(env.DB, request);
+  if (request.method === 'PUT' || request.method === 'POST') {
+    return handlePutProgress(env.DB, request);
+  }
+  return json({ ok: false, error: 'Method not allowed' }, 405);
 }
 
 async function handleComments(env, request, segments, ip) {

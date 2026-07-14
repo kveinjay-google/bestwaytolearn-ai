@@ -20,7 +20,11 @@ I18n.registerLocale('de', {
         q2: "Welchen Lernpfad nutzt diese Website?",
         a2: "Die Website ist in vier Phasen organisiert: Grundlagen, Tools, Praxis und Wiederholung. Sie behandelt KI-Prinzipien, Begriffe, Tool-Auswahl, Prompt-Übungen, praktische Tutorials und Wissensquizze.",
         q3: "Ist BestWayToLearn.AI kostenlos?",
-        a3: "Die Kursinhalte auf der Website sind kostenlos zugänglich. Der Lernfortschritt wird lokal im Browser gespeichert, und es ist keine Kontoerstellung erforderlich."
+        a3: "Die Kursinhalte sind kostenlos zugänglich. Der Fortschritt wird lokal im Browser gespeichert. Ein kostenloses Konto ermöglicht Diskussionen in Kommentaren.",
+        q4: "Welche Sprachen werden unterstützt?",
+        a4: "Oberfläche und Lerninhalte unterstützen Vereinfachtes Chinesisch, Traditionelles Chinesisch, Englisch, Deutsch, Spanisch, Französisch, Japanisch und Koreanisch. Sprache in den Einstellungen wechseln.",
+        q5: "Unterstützt BestWayToLearn.AI Google-Anmeldung?",
+        a5: "Ja. Mit Google anmelden oder registrieren, oder ein kostenloses E-Mail-Konto erstellen."
       },
       settings: {
         title: "Anzeigeeinstellungen",

@@ -42,8 +42,10 @@ const LEARNING_PATH = [
       '阅读「AI 全景入门」全部 5 个板块（建议 20 分钟）',
       '阅读「AI 原理」模块：人工智能、生成式 AI',
       '翻转 5 张核心概念卡：AI、ML、DL、LLM、GenAI',
-      '写下 1 个你想用 AI 解决的真实问题（工作/学习/生活）'
+      '写下 1 个你想用 AI 解决的真实问题（工作/学习/生活）',
+      '（可选）阅读 1 条 AI 时讯，了解行业最新动态'
     ],
+    linkedContent: ['briefing', 'fundamentals'],
     milestone: '学完后你能向他人清晰解释「AI 是什么」以及日常所说的 AI 主要指什么。'
   },
   {
@@ -111,9 +113,11 @@ const LEARNING_PATH = [
     tasks: [
       '完成至少 2 个「真实软件实操」教程（建议：Codex 计算器 + 一项你最好奇的）',
       '再选 1 个实战场景模板，用提示词完成一项真实工作任务',
+      '跟做 1 篇「最新教程」，安装 1 个推荐 Skill',
       '总结：哪些环节 AI 节省了大量时间？哪些必须人工把关？',
       '建立个人 AI 工作流 SOP（标准操作流程）文档'
     ],
+    linkedContent: ['handsOn', 'tutorials', 'skills'],
     milestone: '学完后你已在真实工作中成功使用 AI 至少 2 次。'
   },
   {

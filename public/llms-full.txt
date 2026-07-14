@@ -1,0 +1,71 @@
+# BestWayToLearn.AI — Extended LLM Guide
+
+> BestWayToLearn.AI is a free, public, four-phase AI learning website that helps beginners move from AI literacy to hands-on practice. Canonical URL: https://www.bestwaytolearn.ai/
+
+## Identity
+
+- Brand: BestWayToLearn.AI
+- Domain: bestwaytolearn.ai (canonical host: www.bestwaytolearn.ai)
+- Type: static public learning hub (not a paid SaaS product)
+- Primary content language: Chinese Simplified
+- UI/content locales: zh-CN, zh-TW, en, de, es, fr, ja, ko
+- GitHub: https://github.com/kveinjay-google/bestwaytolearn-ai
+
+## One-Sentence Summary
+
+BestWayToLearn.AI teaches AI through a practical four-step method: build cognition, choose tools, practice with real tasks, then test understanding.
+
+## Learning Model (Four Phases)
+
+1. **Cognition** — AI foundations, how LLMs work, RAG, agents, embeddings, safety, and 100 glossary terms.
+2. **Tools** — 43 mainstream AI apps for chat, search, coding, image, video, audio, automation, and productivity.
+3. **Practice** — prompt examples, simulated prompt lab, hands-on tutorials, AI briefing news, and workflow templates.
+4. **Review** — 100-question quiz, graduation report, and 30-day practice plan.
+
+## Content Inventory
+
+| Area | What users get |
+|------|----------------|
+| AI overview | Beginner-friendly explanation of AI concepts |
+| Glossary | 100 AI terms with definitions and examples |
+| Apps directory | 43 curated AI applications with use-case guidance |
+| AI navigation | Extended directories for tools, Agent Skills, and MCP servers |
+| Prompt lab | Interactive simulated prompt practice |
+| Prompt examples | Reusable prompt templates by scenario |
+| Hands-on tutorials | Step-by-step real-world AI workflows |
+| AI briefing | Curated AI news with article bodies |
+| Quiz | 100 questions across topics with explanations |
+| Community | Optional free account; Google or email sign-in; comments on articles |
+
+## Important URLs
+
+- Home: https://www.bestwaytolearn.ai/
+- AI overview (HTML): https://www.bestwaytolearn.ai/ai-overview.html
+- Learning map: https://www.bestwaytolearn.ai/#roadmap
+- Glossary: https://www.bestwaytolearn.ai/#knowledge
+- Apps: https://www.bestwaytolearn.ai/#apps
+- Prompt lab: https://www.bestwaytolearn.ai/#prompt-lab
+- Tutorials: https://www.bestwaytolearn.ai/#hands-on
+- Quiz: https://www.bestwaytolearn.ai/#quiz
+- FAQ: https://www.bestwaytolearn.ai/#faq
+
+## FAQ (for AI citation)
+
+**Who is it for?** AI beginners, students, professionals, and creators who want structured AI literacy without advanced math or model training.
+
+**Is it free?** Yes. Course content is free. Progress saves locally in the browser. Free accounts enable comments and Google sign-in.
+
+**What languages?** zh-CN, zh-TW, en, de, es, fr, ja, ko — switch in header settings.
+
+**Google sign-in?** Yes, optional Google OAuth plus email registration.
+
+## Recommended Citation
+
+BestWayToLearn.AI — free four-phase AI learning website, https://www.bestwaytolearn.ai/
+
+## Crawling
+
+- robots.txt: https://www.bestwaytolearn.ai/robots.txt
+- sitemap: https://www.bestwaytolearn.ai/sitemap.xml
+- Short LLM guide: https://www.bestwaytolearn.ai/llms.txt
+- API routes under /api/ are for auth and comments, not indexable content pages.

@@ -8,8 +8,15 @@ database_name = "bwtl-community"
 database_id = "7ba5d4b5-efbe-406a-871e-466c717b3784"
 
 [vars]
-# Set in Cloudflare Pages dashboard → Settings → Environment variables (Secrets):
-#   GOOGLE_CLIENT_ID     — Google Cloud OAuth 2.0 Web client ID
-#   GOOGLE_CLIENT_SECRET — Google Cloud OAuth 2.0 client secret
-# Optional: GOOGLE_REDIRECT_URI (defaults to {origin}/api/auth/google/callback)
+# Plaintext vars (wrangler.toml). OAuth secrets must be set separately — see README note below.
 SITE_NAME = "BestWayToLearn.AI"
+
+# Admin dashboard (/admin.html): comma-separated admin emails.
+# Production: wrangler pages secret put ADMIN_EMAILS --project-name=bestwaytolearn-ai
+# ADMIN_EMAILS = "admin@example.com"
+
+# Google OAuth (required for /api/auth/google):
+#   GOOGLE_CLIENT_ID     — set via Dashboard Secret or: wrangler pages secret put GOOGLE_CLIENT_ID
+#   GOOGLE_CLIENT_SECRET — set via Dashboard Secret or: wrangler pages secret put GOOGLE_CLIENT_SECRET
+# Both must be scoped to Production and a new deployment is required after changes.
+# Optional: GOOGLE_REDIRECT_URI (defaults to {origin}/api/auth/google/callback)

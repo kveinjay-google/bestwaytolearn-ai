@@ -20,7 +20,11 @@ I18n.registerLocale('es', {
         q2: "¿Qué ruta de aprendizaje usa este sitio?",
         a2: "El sitio se organiza en cuatro etapas: fundamentos, herramientas, práctica y revisión. Incluye principios de IA, terminología, selección de herramientas, práctica de prompts, tutoriales prácticos y cuestionarios de conocimiento.",
         q3: "¿BestWayToLearn.AI es gratis?",
-        a3: "El contenido del curso del sitio es gratuito. El progreso de aprendizaje se guarda localmente en el navegador y no se requiere crear una cuenta."
+        a3: "El contenido del curso es gratuito y el progreso se guarda localmente. Crea una cuenta gratuita para participar en los comentarios.",
+        q4: "¿Qué idiomas admite?",
+        a4: "La interfaz y el contenido admiten chino simplificado, chino tradicional, inglés, alemán, español, francés, japonés y coreano. Cambia el idioma en los ajustes.",
+        q5: "¿Admite inicio de sesión con Google?",
+        a5: "Sí. Inicia sesión o regístrate con Google, o crea una cuenta de correo gratuita."
       },
       settings: {
         title: "Ajustes de visualización",

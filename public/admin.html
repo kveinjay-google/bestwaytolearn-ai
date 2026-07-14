@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>管理后台 · BestWayToLearn.AI</title>
+  <link rel="stylesheet" href="css/admin.css?v=20260710b">
+</head>
+<body class="admin-body">
+  <div id="admin-login" class="admin-login-wrap">
+    <div class="admin-login-card">
+      <h1>BestWayToLearn.AI</h1>
+      <p>管理后台 — 请使用管理员账号登录</p>
+      <form id="admin-login-form">
+        <label class="admin-field">
+          <span>邮箱</span>
+          <input type="email" name="email" required autocomplete="email">
+        </label>
+        <label class="admin-field">
+          <span>密码</span>
+          <input type="password" name="password" required autocomplete="current-password">
+        </label>
+        <p class="admin-error" id="admin-login-error"></p>
+        <button type="submit" class="admin-btn admin-btn-primary" style="width:100%;margin-top:0.5rem">登录</button>
+      </form>
+      <p style="margin-top:1rem;font-size:0.8rem;color:var(--adm-muted)">
+        <a href="/" style="color:var(--adm-accent)">返回主站</a>
+      </p>
+    </div>
+  </div>
+
+  <div id="admin-forbidden" class="admin-forbidden admin-hidden">
+    <h2>无访问权限</h2>
+    <p id="admin-forbidden-msg"></p>
+    <p style="margin-top:1rem"><a href="/" class="admin-btn admin-btn-ghost">返回主站</a></p>
+  </div>
+
+  <div id="admin-app" class="admin-app admin-hidden">
+    <header class="admin-header">
+      <div>
+        <h1>管理后台</h1>
+        <div class="admin-header-meta">BestWayToLearn.AI · 用户 / 访问 / 学习数据</div>
+      </div>
+      <div class="admin-header-actions">
+        <span class="admin-header-meta" id="admin-user-label"></span>
+        <button type="button" class="admin-btn admin-btn-ghost" id="admin-refresh">刷新</button>
+        <button type="button" class="admin-btn admin-btn-ghost" id="admin-logout">退出</button>
+        <a href="/" class="admin-btn admin-btn-ghost">主站</a>
+      </div>
+    </header>
+
+    <nav class="admin-tabs">
+      <button type="button" class="admin-tab is-active" data-tab="overview">概览</button>
+      <button type="button" class="admin-tab" data-tab="users">注册用户</button>
+      <button type="button" class="admin-tab" data-tab="analytics">访问分析</button>
+      <button type="button" class="admin-tab" data-tab="progress">学习进度</button>
+    </nav>
+
+    <section class="admin-panel is-active" data-panel="overview">
+      <div class="admin-stats" id="admin-stats"></div>
+      <div class="admin-grid-2">
+        <div class="admin-card">
+          <h3>7 日热门页面</h3>
+          <div id="admin-top-pages"></div>
+        </div>
+        <div class="admin-card">
+          <h3>30 日注册趋势</h3>
+          <div id="admin-reg-chart"></div>
+        </div>
+        <div class="admin-card">
+          <h3>7 日事件分布</h3>
+          <div id="admin-event-breakdown"></div>
+        </div>
+        <div class="admin-card">
+          <h3>学习角色分布</h3>
+          <div id="admin-role-breakdown"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="admin-panel" data-panel="users">
+      <div class="admin-card" id="admin-users-table"></div>
+    </section>
+
+    <section class="admin-panel" data-panel="analytics">
+      <div style="margin-bottom:1rem">
+        <label style="font-size:0.85rem;color:var(--adm-muted)">
+          时间范围
+          <select id="admin-analytics-days" style="margin-left:0.5rem;padding:0.35rem 0.5rem;border-radius:6px;background:var(--adm-surface);color:var(--adm-text);border:1px solid var(--adm-border)">
+            <option value="7" selected>近 7 天</option>
+            <option value="14">近 14 天</option>
+            <option value="30">近 30 天</option>
+            <option value="90">近 90 天</option>
+          </select>
+        </label>
+      </div>
+      <div class="admin-grid-2">
+        <div class="admin-card">
+          <h3>每日访问会话</h3>
+          <div id="admin-sessions-chart"></div>
+        </div>
+        <div class="admin-card">
+          <h3>语言分布</h3>
+          <div id="admin-lang-chart"></div>
+        </div>
+      </div>
+      <div class="admin-card" style="margin-top:1rem">
+        <h3>最近事件（100 条）</h3>
+        <div id="admin-events-table"></div>
+      </div>
+    </section>
+
+    <section class="admin-panel" data-panel="progress">
+      <div class="admin-card" id="admin-progress-table"></div>
+    </section>
+  </div>
+
+  <script src="js/admin.js?v=20260710b"></script>
+</body>
+</html>

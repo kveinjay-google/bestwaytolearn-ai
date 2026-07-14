@@ -30,6 +30,7 @@ const BwtlAuth = (function () {
   async function api(path, options = {}) {
     const res = await fetch(`${API}${path}`, {
       credentials: 'include',
+      cache: 'no-store',
       headers: { 'Content-Type': 'application/json', ...(options.headers || {}) },
       ...options,
     });
@@ -272,8 +273,10 @@ const BwtlAuth = (function () {
       }
       form.reset();
       closeAllPanels();
+      if (typeof LearningCore !== 'undefined') await LearningCore.pullFromServer();
+      if (typeof updateAllProgress === 'function') updateAllProgress();
       if (typeof showTeacherMessage === 'function') {
-        showTeacherMessage(t('auth.welcomeBack', '{name}，欢迎回来！登录后可以留言交流。', { name: result.user.displayName }));
+        showTeacherMessage(t('auth.welcomeBack', '{name}，欢迎回来！学习进度已同步，可以留言交流。', { name: result.user.displayName }));
       }
     });
 
@@ -295,8 +298,10 @@ const BwtlAuth = (function () {
       }
       form.reset();
       closeAllPanels();
+      if (typeof LearningCore !== 'undefined') await LearningCore.pullFromServer();
+      if (typeof updateAllProgress === 'function') updateAllProgress();
       if (typeof showTeacherMessage === 'function') {
-        showTeacherMessage(t('auth.registered', '{name}，注册成功！现在可以留言、参与社区讨论。', { name: result.user.displayName }));
+        showTeacherMessage(t('auth.registered', '{name}，注册成功！学习进度已云端同步，可以留言、参与社区讨论。', { name: result.user.displayName }));
       }
     });
 
@@ -331,11 +336,13 @@ const BwtlAuth = (function () {
 
   function openLogin() {
     clearFormErrors();
+    loadProviders();
     openPanel('login');
   }
 
   function openRegister() {
     clearFormErrors();
+    loadProviders();
     openPanel('register');
   }
 

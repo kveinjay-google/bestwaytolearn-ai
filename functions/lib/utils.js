@@ -36,6 +36,14 @@ export function nowSec() {
   return Math.floor(Date.now() / 1000);
 }
 
+/** Resolve env vars even when dashboard binding names have accidental whitespace. */
+export function getEnvString(env, name) {
+  const direct = env?.[name];
+  if (direct != null && String(direct).trim()) return String(direct).trim();
+  const key = Object.keys(env || {}).find(k => k.trim() === name);
+  return key && env[key] != null ? String(env[key]).trim() : '';
+}
+
 export function normalizeEmail(email) {
   return String(email || '').trim().toLowerCase();
 }

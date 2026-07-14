@@ -1041,6 +1041,305 @@ const AI_MCP_NAV_ITEMS = [
     configNote: '需本地 kubectl 已配置并可访问目标集群',
     source: 'github',
   },
+
+  // 2026-07 扩充
+  {
+    name: 'MCP Registry',
+    category: 'MCP 入门',
+    clients: ['Cursor', 'Claude Desktop', 'Cline', 'Windsurf'],
+    transport: 'Registry',
+    desc: 'Model Context Protocol 官方注册表，浏览、评分与一键安装社区 MCP Server，降低 Agent 工具发现成本。',
+    url: 'https://registry.modelcontextprotocol.io',
+    config: '',
+    source: 'official',
+    featured: true,
+  },
+  {
+    name: 'Smithery',
+    category: 'MCP 入门',
+    clients: ['Cursor', 'Claude Desktop', 'Claude Code'],
+    transport: 'stdio',
+    desc: 'MCP Server 发现与托管平台，搜索高星 Server 并生成 Cursor / Claude Desktop 配置，支持远程 SSE 连接。',
+    url: 'https://github.com/smithery-ai/sdk',
+    config: `{
+  "mcpServers": {
+    "smithery": {
+      "url": "https://server.smithery.ai/@smithery-ai/fetch/mcp"
+    }
+  }
+}`,
+    configNote: '部分 Server 需 Smithery API Key；详见 smithery.ai 文档',
+    source: 'github',
+    featured: true,
+  },
+  {
+    name: 'Pinecone',
+    category: '知识库与文档',
+    clients: ['Cursor', 'Claude Desktop', 'Cline'],
+    transport: 'stdio',
+    desc: '向量数据库 MCP：索引查询、命名空间管理与 RAG 检索，适合企业知识库与长文档问答。',
+    url: 'https://github.com/pinecone-io/pinecone-mcp',
+    config: `{
+  "mcpServers": {
+    "pinecone": {
+      "command": "npx",
+      "args": ["-y", "@pinecone-database/mcp"],
+      "env": { "PINECONE_API_KEY": "<YOUR_KEY>" }
+    }
+  }
+}`,
+    source: 'github',
+  },
+  {
+    name: 'Qdrant',
+    category: '知识库与文档',
+    clients: ['Cursor', 'Claude Desktop'],
+    transport: 'stdio',
+    desc: 'Qdrant 向量库 MCP：集合创建、向量写入与语义搜索，可自托管或使用 Qdrant Cloud。',
+    url: 'https://github.com/qdrant/mcp-server-qdrant',
+    config: `{
+  "mcpServers": {
+    "qdrant": {
+      "command": "uvx",
+      "args": ["mcp-server-qdrant"],
+      "env": { "QDRANT_URL": "http://localhost:6333" }
+    }
+  }
+}`,
+    source: 'github',
+  },
+  {
+    name: 'Redis',
+    category: '数据库',
+    clients: ['Cursor', 'Claude Desktop'],
+    transport: 'stdio',
+    desc: 'Redis 键值操作 MCP：缓存读写、发布订阅与数据结构查询，适合会话状态与任务队列调试。',
+    url: 'https://github.com/redis/mcp-redis',
+    config: `{
+  "mcpServers": {
+    "redis": {
+      "command": "npx",
+      "args": ["-y", "@redis/mcp-redis"],
+      "env": { "REDIS_URL": "redis://localhost:6379" }
+    }
+  }
+}`,
+    source: 'github',
+  },
+  {
+    name: 'Prisma',
+    category: '数据库',
+    clients: ['Cursor', 'Claude Desktop', 'Windsurf'],
+    transport: 'stdio',
+    desc: 'Prisma ORM MCP：Schema 探索、迁移建议与类型安全查询生成，加速全栈项目数据库层开发。',
+    url: 'https://github.com/prisma/mcp-server-prisma',
+    config: `{
+  "mcpServers": {
+    "prisma": {
+      "command": "npx",
+      "args": ["-y", "prisma-mcp"]
+    }
+  }
+}`,
+    configNote: '需在含 schema.prisma 的项目目录下使用',
+    source: 'github',
+  },
+  {
+    name: 'ClickHouse',
+    category: '数据库',
+    clients: ['Cursor', 'Claude Desktop'],
+    transport: 'stdio',
+    desc: 'ClickHouse 分析库 MCP：OLAP 查询、表结构探索与指标聚合，适合日志与行为数据分析。',
+    url: 'https://github.com/ClickHouse/mcp-clickhouse',
+    config: `{
+  "mcpServers": {
+    "clickhouse": {
+      "command": "uvx",
+      "args": ["mcp-clickhouse"],
+      "env": {
+        "CLICKHOUSE_HOST": "localhost",
+        "CLICKHOUSE_USER": "default"
+      }
+    }
+  }
+}`,
+    source: 'github',
+  },
+  {
+    name: 'Grafana',
+    category: '开发工具',
+    clients: ['Cursor', 'Claude Desktop'],
+    transport: 'stdio',
+    desc: 'Grafana 可观测性 MCP：Dashboard 查询、告警状态与 Loki/Prometheus 指标检索，辅助线上排障。',
+    url: 'https://github.com/grafana/mcp-grafana',
+    config: `{
+  "mcpServers": {
+    "grafana": {
+      "command": "npx",
+      "args": ["-y", "@grafana/mcp-grafana"],
+      "env": {
+        "GRAFANA_URL": "https://your-grafana.example.com",
+        "GRAFANA_API_KEY": "<YOUR_KEY>"
+      }
+    }
+  }
+}`,
+    source: 'github',
+  },
+  {
+    name: 'Semgrep',
+    category: '开发工具',
+    clients: ['Cursor', 'Claude Desktop', 'Cline'],
+    transport: 'stdio',
+    desc: '静态代码安全扫描 MCP：按规则集扫描漏洞、SAST 结果解读与修复建议，适合 PR 安全门禁。',
+    url: 'https://github.com/semgrep/mcp-server-semgrep',
+    config: `{
+  "mcpServers": {
+    "semgrep": {
+      "command": "uvx",
+      "args": ["mcp-server-semgrep"]
+    }
+  }
+}`,
+    source: 'github',
+  },
+  {
+    name: 'LangSmith',
+    category: '开发工具',
+    clients: ['Cursor', 'Claude Desktop'],
+    transport: 'stdio',
+    desc: 'LangChain LangSmith MCP：追踪 Agent 调用链、评估数据集与提示词版本对比，适合 LLM 应用调试。',
+    url: 'https://github.com/langchain-ai/langsmith-mcp',
+    config: `{
+  "mcpServers": {
+    "langsmith": {
+      "command": "npx",
+      "args": ["-y", "@langchain/langsmith-mcp"],
+      "env": {
+        "LANGCHAIN_API_KEY": "<YOUR_KEY>",
+        "LANGCHAIN_PROJECT": "default"
+      }
+    }
+  }
+}`,
+    source: 'github',
+  },
+  {
+    name: 'HubSpot',
+    category: '办公协作',
+    clients: ['Cursor', 'Claude Desktop'],
+    transport: 'stdio',
+    desc: 'HubSpot CRM MCP：联系人、公司与交易管道查询更新，适合销售与市场 Agent 自动化。',
+    url: 'https://github.com/hubspot/mcp-hubspot',
+    config: `{
+  "mcpServers": {
+    "hubspot": {
+      "command": "npx",
+      "args": ["-y", "@hubspot/mcp-hubspot"],
+      "env": { "HUBSPOT_ACCESS_TOKEN": "<YOUR_TOKEN>" }
+    }
+  }
+}`,
+    source: 'github',
+  },
+  {
+    name: 'Salesforce',
+    category: '办公协作',
+    clients: ['Cursor', 'Claude Desktop'],
+    transport: 'stdio',
+    desc: 'Salesforce MCP：SOQL 查询、线索与商机更新，企业 CRM 与销售助手场景。',
+    url: 'https://github.com/salesforce/mcp-server-salesforce',
+    config: `{
+  "mcpServers": {
+    "salesforce": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-salesforce"],
+      "env": {
+        "SF_USERNAME": "<USER>",
+        "SF_PASSWORD": "<PASS>",
+        "SF_SECURITY_TOKEN": "<TOKEN>"
+      }
+    }
+  }
+}`,
+    configNote: '生产环境建议使用 OAuth 连接方式',
+    source: 'github',
+  },
+  {
+    name: 'Zapier',
+    category: '办公协作',
+    clients: ['Cursor', 'Claude Desktop'],
+    transport: 'SSE',
+    desc: 'Zapier MCP：触发 7000+ 应用自动化，让 Agent 创建 Zaps、查询运行历史与测试动作。',
+    url: 'https://github.com/zapier/zapier-mcp',
+    config: `{
+  "mcpServers": {
+    "zapier": {
+      "url": "https://mcp.zapier.com/sse",
+      "headers": { "Authorization": "Bearer <YOUR_ZAPIER_MCP_TOKEN>" }
+    }
+  }
+}`,
+    source: 'github',
+  },
+  {
+    name: 'Cloudinary',
+    category: '多媒体',
+    clients: ['Cursor', 'Claude Desktop'],
+    transport: 'stdio',
+    desc: 'Cloudinary 媒体 MCP：图片/视频上传、变换 URL 生成与资源库搜索，适合内容运营与电商素材。',
+    url: 'https://github.com/cloudinary/mcp-server-cloudinary',
+    config: `{
+  "mcpServers": {
+    "cloudinary": {
+      "command": "npx",
+      "args": ["-y", "@cloudinary/mcp"],
+      "env": {
+        "CLOUDINARY_CLOUD_NAME": "<NAME>",
+        "CLOUDINARY_API_KEY": "<KEY>",
+        "CLOUDINARY_API_SECRET": "<SECRET>"
+      }
+    }
+  }
+}`,
+    source: 'github',
+  },
+  {
+    name: 'DeepWiki',
+    category: '搜索检索',
+    clients: ['Cursor', 'Claude Desktop', 'Cline'],
+    transport: 'stdio',
+    desc: 'Devin DeepWiki MCP：读取 GitHub 仓库 Wiki 式文档与代码结构，快速理解陌生开源项目。',
+    url: 'https://github.com/cognition-ai/deepwiki-mcp',
+    config: `{
+  "mcpServers": {
+    "deepwiki": {
+      "command": "npx",
+      "args": ["-y", "mcp-deepwiki"]
+    }
+  }
+}`,
+    source: 'github',
+    featured: true,
+  },
+  {
+    name: 'Raycast',
+    category: '开发工具',
+    clients: ['Raycast', 'Cursor'],
+    transport: 'stdio',
+    desc: 'Raycast MCP 扩展：在 macOS 启动器内调用 MCP 工具，快速执行脚本、搜索与系统操作。',
+    url: 'https://github.com/raycast/mcp',
+    config: `{
+  "mcpServers": {
+    "raycast": {
+      "command": "npx",
+      "args": ["-y", "@raycast/mcp"]
+    }
+  }
+}`,
+    configNote: '需安装 Raycast 并开启 MCP 扩展',
+    source: 'github',
+  },
 ];
 
 /** 星数与功能点（按 GitHub Star 与社区热度整理） */
@@ -1099,6 +1398,22 @@ const AI_MCP_NAV_ENRICHMENT = {
   'PubMed': { stars: 680, features: ['生物医学文献', '摘要检索', '临床研究'] },
   'Weather': { stars: 76000, features: ['天气预报', '免费 Open-Meteo', '无需 API Key'] },
   'Time': { stars: 76000, features: ['时区转换', '当前时间', '跨国协作'] },
+  'MCP Registry': { stars: 76000, features: ['Server 发现与评分', '一键安装', '版本管理'] },
+  'Smithery': { stars: 4200, features: ['远程 MCP 托管', '配置生成', '高星 Server 精选'] },
+  'Pinecone': { stars: 1800, features: ['向量检索', '命名空间管理', 'RAG 问答'] },
+  'Qdrant': { stars: 2100, features: ['自托管向量库', '语义搜索', '集合管理'] },
+  'Redis': { stars: 3200, features: ['缓存读写', 'Pub/Sub', '会话状态'] },
+  'Prisma': { stars: 1500, features: ['Schema 探索', '迁移建议', '类型安全查询'] },
+  'ClickHouse': { stars: 1200, features: ['OLAP 分析', '日志聚合', '指标查询'] },
+  'Grafana': { stars: 2400, features: ['Dashboard 查询', '告警状态', 'Loki/Prometheus'] },
+  'Semgrep': { stars: 1100, features: ['SAST 扫描', '规则集匹配', '漏洞修复建议'] },
+  'LangSmith': { stars: 980, features: ['调用链追踪', '评估数据集', 'Prompt 版本对比'] },
+  'HubSpot': { stars: 850, features: ['CRM 联系人', '交易管道', '销售自动化'] },
+  'Salesforce': { stars: 720, features: ['SOQL 查询', '线索商机', '企业 CRM'] },
+  'Zapier': { stars: 1400, features: ['7000+ 应用', 'Zap 创建', '运行历史'] },
+  'Cloudinary': { stars: 680, features: ['媒体上传', '变换 URL', '资源库搜索'] },
+  'DeepWiki': { stars: 3500, features: ['仓库文档化', '代码结构速览', '开源项目理解'] },
+  'Raycast': { stars: 4200, features: ['macOS 启动器', 'MCP 扩展', '快捷系统操作'] },
 };
 
 function getAiMcpNavCategorySlug(category) {

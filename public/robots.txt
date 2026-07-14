@@ -7,7 +7,12 @@ Allow: /assets/
 Allow: /css/
 Allow: /js/
 
+# API routes are not public content pages
+Disallow: /api/
+
 Sitemap: https://www.bestwaytolearn.ai/sitemap.xml
 
+# LLM / GEO guides
 # LLM guide: https://www.bestwaytolearn.ai/llms.txt
+# Extended LLM guide: https://www.bestwaytolearn.ai/llms-full.txt
 # IndexNow key: https://www.bestwaytolearn.ai/bwtlindex2026a1b2c3d4e5f6.txt
