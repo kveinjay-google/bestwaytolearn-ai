@@ -955,6 +955,33 @@ const AI_SKILLS_NAV_ITEMS = [
     github: "https://github.com/hesreallyhim/awesome-claude-code",
     install: "npx skills add hesreallyhim/awesome-claude-code -g -y",
   },
+  {
+    name: "agentic-awesome-skills",
+    category: "Skill 安装与合集",
+    agents: ["Cursor", "Claude Code", "Codex", "Gemini CLI"],
+    stars: 43311,
+    desc: "Installable GitHub library of 1,900+ agentic skills for Claude Code, Cursor, Codex CLI, Autohand Code, Gemini CLI, Antigravity, and more. Includes specialized plugins, installer CL",
+    github: "https://github.com/sickn33/agentic-awesome-skills",
+    install: "npx skills add sickn33/agentic-awesome-skills -g -y",
+  },
+  {
+    name: "academic-research-skills",
+    category: "Skill 安装与合集",
+    agents: ["Cursor", "Claude Code", "Codex", "Gemini CLI"],
+    stars: 37947,
+    desc: "Academic Research Skills for Claude Code: research → write → review → revise → finalize",
+    github: "https://github.com/Imbad0202/academic-research-skills",
+    install: "npx skills add Imbad0202/academic-research-skills -g -y",
+  },
+  {
+    name: "garden-skills",
+    category: "Skill 安装与合集",
+    agents: ["Cursor", "Claude Code", "Codex", "Gemini CLI"],
+    stars: 9530,
+    desc: "ConardLi's open-source Skills collection, featuring web design, knowledge retrieval, image generation, and more.",
+    github: "https://github.com/ConardLi/garden-skills",
+    install: "npx skills add ConardLi/garden-skills -g -y",
+  },
 ];
 
 function getAiSkillsNavCategorySlug(category) {
