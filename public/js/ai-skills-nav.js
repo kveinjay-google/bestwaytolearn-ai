@@ -982,6 +982,15 @@ const AI_SKILLS_NAV_ITEMS = [
     github: "https://github.com/ConardLi/garden-skills",
     install: "npx skills add ConardLi/garden-skills -g -y",
   },
+  {
+    name: "Anthropic-Cybersecurity-Skills",
+    category: "Skill 安装与合集",
+    agents: ["Cursor", "Claude Code", "Codex", "Gemini CLI"],
+    stars: 25773,
+    desc: "817 structured cybersecurity skills for AI agents · Mapped to 6 frameworks: MITRE ATT&CK, NIST CSF 2.0, MITRE ATLAS, D3FEND, NIST AI RMF & MITRE F3 (Fight Fraud) · agentskills.io s",
+    github: "https://github.com/mukul975/Anthropic-Cybersecurity-Skills",
+    install: "npx skills add mukul975/Anthropic-Cybersecurity-Skills -g -y",
+  },
 ];
 
 function getAiSkillsNavCategorySlug(category) {
