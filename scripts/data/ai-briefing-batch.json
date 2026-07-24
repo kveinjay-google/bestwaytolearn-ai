@@ -1,5 +1,255 @@
 [
   {
+    "id": "2026-07-24-deepseek-v4-ga-peak-valley",
+    "date": "2026-07-24",
+    "category": "产品发布",
+    "title": "DeepSeek V4 正式 GA：行业首个峰谷 API 定价",
+    "summary": "7月24日 DeepSeek V4 全面可用，旧 API 别名同日退役；新增按北京时间分高峰低谷的峰谷定价，叠加 V4 Pro 永久降价 75%。",
+    "source": "无矩AI",
+    "url": "https://iaipie.com/2026%E5%B9%B47%E6%9C%8824%E6%97%A5ai%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/",
+    "tags": [
+      "DeepSeek",
+      "API定价",
+      "峰谷电价"
+    ],
+    "body": [
+      "DeepSeek 宣布 7 月 24 日 V4 进入 GA，旧版 API 别名接口同日下线，开发者需迁移到 V4 正式接口。",
+      "同步上线 AI 行业首个结构性峰谷定价，按北京时间区分高峰与低谷时段，低谷时段单价更低。",
+      "此前 V4 Pro API 已宣布降价 75% 永久化，叠加峰谷定价后实际使用成本进一步压缩。",
+      "建议任务型业务把批处理、索引构建等任务调度到低谷段，做任务级成本优化。"
+    ],
+    "highlights": [
+      "GA 与别名退役同日，开发者需迁移到 V4 正式接口",
+      "行业首个结构性峰谷 API 定价，按北京时间分时段计价",
+      "V4 Pro 75% 降价 + 峰谷定价双重成本优化"
+    ]
+  },
+  {
+    "id": "2026-07-24-amd-mi400-helios",
+    "date": "2026-07-24",
+    "category": "产品发布",
+    "title": "AMD 推出 MI400 与 Helios 机架：OpenAI、Anthropic 站台",
+    "summary": "AMD Advancing AI 2026 发布 MI400 系列加速器、Helios 72 卡机架与第六代 EPYC Venice，OpenAI 与 Anthropic 承诺大规模部署。",
+    "source": "AMD / 无矩AI",
+    "url": "https://iaipie.com/2026%E5%B9%B47%E6%9C%8824%E6%97%A5ai%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/",
+    "tags": [
+      "AMD",
+      "MI400",
+      "Helios"
+    ],
+    "body": [
+      "旗舰 MI455 在内存带宽、推理速度与每美元性能上较上一代提升明显，与英伟达正面竞争。",
+      "Helios 机架最多集成 72 颗 MI400 加速器，由服务器 OEM 制造销售；第六代 EPYC Venice CPU 同台亮相。",
+      "OpenAI 基础设施负责人 Sachin Katti 现场承诺「大规模部署」Helios，并与 AMD 联合开发 MI500 系列后续产品。",
+      "企业 AI 选型应同时跟踪 AMD 路线图，多供应商策略有助于议价与抗风险。"
+    ],
+    "highlights": [
+      "MI455 在带宽/推理/性价比三方面提升",
+      "Helios 72 卡机架 + 第六代 EPYC Venice",
+      "OpenAI 大规模部署 + 共研 MI500 系列"
+    ]
+  },
+  {
+    "id": "2026-07-24-amd-cerebras-disaggregated",
+    "date": "2026-07-24",
+    "category": "技术突破",
+    "title": "AMD × Cerebras 解耦推理：Helios 解析 + WSE 生成，号称 5×/瓦",
+    "summary": "AMD 与 Cerebras 发布解耦推理架构，AMD Helios 负责提示词与上下文高吞吐，Cerebras WSE 负责低延迟 token 生成。",
+    "source": "Cerebras",
+    "url": "https://www.cerebras.ai/press-release/amd-and-cerebras-announce-industry-leading-ultra-low-latency-and-high-throughput-ai-inference",
+    "tags": [
+      "Cerebras",
+      "推理",
+      "解耦架构"
+    ],
+    "body": [
+      "提示词与上下文走 AMD EPYC CPU + Instinct GPU 集群，发挥高吞吐与生态成熟优势。",
+      "token 生成走 Cerebras Wafer-Scale Engine，主打超低延迟，单位算力利用率更高。",
+      "官方数据：相对传统同构推理，每瓦性能最高提升约 5×，Q4 在 OpenAI 等客户率先部署。",
+      "解耦架构预示推理基础设施走向专业化分工，跟踪 PagerDuty 级别的端到端延迟指标。"
+    ],
+    "highlights": [
+      "提示词走 AMD，token 生成走 Cerebras WSE",
+      "每瓦性能最高 5×，Q4 量产部署",
+      "OpenAI 等头部客户优先采用"
+    ]
+  },
+  {
+    "id": "2026-07-24-openai-presence-agent",
+    "date": "2026-07-24",
+    "category": "产品发布",
+    "title": "OpenAI 发布企业级 Agent 产品 Presence：把 SOP 编进客服",
+    "summary": "Presence 把策略规则、SOP、安全护栏、已批准操作、模拟测试与 Codex 持续改进整合到一处，面向客服与内部工作流。",
+    "source": "OpenAI / 无矩AI",
+    "url": "https://iaipie.com/2026%E5%B9%B47%E6%9C%8824%E6%97%A5ai%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/",
+    "tags": [
+      "OpenAI",
+      "Agent",
+      "企业"
+    ],
+    "body": [
+      "Presence 是面向企业的语音 + 聊天 Agent 部署平台，整合策略、SOP、护栏、已批准操作与模拟评测。",
+      "内置 Codex 驱动的持续改进循环，Agent 可调用公司系统执行审批内动作，超界自动转人工。",
+      "通过限量 GA 计划向符合条件的企业开放，暂不自助开通，强调方案化落地与共创。",
+      "建议企业先把高频 SOP 文档化与权限清单做出来，再用 Presence 编排，避免「上 Agent 但没规则」"
+    ],
+    "highlights": [
+      "把 SOP + 护栏 + 已批准动作统一编排",
+      "Codex 持续改进 + 越界自动转人工",
+      "限量 GA，强调方案化与企业共创"
+    ]
+  },
+  {
+    "id": "2026-07-24-gemini-36-flash-copilot",
+    "date": "2026-07-24",
+    "category": "产品发布",
+    "title": "Gemini 3.6 Flash 登陆 GitHub Copilot：覆盖 Pro 与企业版",
+    "summary": "GitHub 官方 Changelog 确认 Gemini 3.6 Flash 在 Copilot 中逐步推出，支持可配置推理力度与并行工具调用。",
+    "source": "GitHub Changelog / 无矩AI",
+    "url": "https://iaipie.com/2026%E5%B9%B47%E6%9C%8824%E6%97%A5ai%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/",
+    "tags": [
+      "Gemini",
+      "GitHub",
+      "Copilot"
+    ],
+    "body": [
+      "Gemini 3.6 Flash 主打 Web/App 开发、编程与长期 Agent 任务，可调 reasoning effort 平衡成本与质量。",
+      "支持并行工具调用，Copilot Pro、Pro+、Max、Business 与 Enterprise 全层级可用。",
+      "入口覆盖 VS Code、Visual Studio、JetBrains、Xcode 与 Eclipse，IDE 生态全面铺开。",
+      "团队评估 Agent IDE 时建议对比 OpenAI、Anthropic、Google 三家模型在同一仓库的完成率与延迟。"
+    ],
+    "highlights": [
+      "推理力度可调 + 并行工具调用",
+      "Pro/Pro+/Max/Business/Enterprise 全层覆盖",
+      "支持 VS Code、Xcode、Eclipse 等主流 IDE"
+    ]
+  },
+  {
+    "id": "2026-07-24-apec-chengdu-statement",
+    "date": "2026-07-24",
+    "category": "政策法规",
+    "title": "APEC 成都声明通过：21 经济体背书「可信开源」AI 路线",
+    "summary": "2026 APEC 数字与 AI 部长会议在成都通过联合声明，确立五大优先方向并鼓励采用具备强安全保障的开源模型。",
+    "source": "APEC",
+    "url": "https://www.apec.org/meeting-papers/sectoral-ministerial-meetings/telecommunicationsandinformation/2026-apec-digital-and-ai-ministerial-statement",
+    "tags": [
+      "APEC",
+      "开源",
+      "治理"
+    ],
+    "body": [
+      "21 个 APEC 经济体（含美中）达成共识，明确数字贸易便利化、跨境数据流动与 AI 治理合作方向。",
+      "声明明确鼓励采用「具备强安全保障的可信开源 AI 模型」，把开源上升为多边共识。",
+      "会上同步讨论 APEC 数字与 AI 部长声明配套实施路径与年度评估机制。",
+      "出海企业可借此推动内部开源模型白名单与 SBOM 流程，对接监管审计时更具底气。"
+    ],
+    "highlights": [
+      "21 个经济体（含中美）达成共识",
+      "鼓励可信开源 AI 模型",
+      "强化数据跨境流动与数字贸易便利化"
+    ]
+  },
+  {
+    "id": "2026-07-24-cn-agent-interop-std",
+    "date": "2026-07-24",
+    "category": "政策法规",
+    "title": "国内首套智能体互联国标落地：美团滴滴等 11 家签约试点",
+    "summary": "《人工智能 智能体互联》系列国家标准应用推进会发布 AIP 开源代码 V2.1，发放首批智能体身份码并启动跨平台互认试点。",
+    "source": "全国信标委 / 无矩AI",
+    "url": "https://iaipie.com/2026%E5%B9%B47%E6%9C%8824%E6%97%A5ai%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/",
+    "tags": [
+      "智能体",
+      "国标",
+      "互联互通"
+    ],
+    "body": [
+      "会上发布 AIP 开源代码 V2.1，配套发放首批智能体身份码，解决 Agent 跨平台身份与互认难题。",
+      "美团、滴滴、去哪儿旅行等 11 家单位签约试点，覆盖本地生活、出行与旅行等高频 Agent 场景。",
+      "标准化互联有望降低 Agent 开发门槛，减少各生态重复造轮子。",
+      "做 Agent 应用的团队应主动对齐 AIP 协议与身份码体系，提前布局跨平台流量入口。"
+    ],
+    "highlights": [
+      "AIP 开源代码 V2.1 + 智能体身份码",
+      "11 家头部平台签约跨平台互认试点",
+      "降低 Agent 开发门槛、促进规模化应用"
+    ]
+  },
+  {
+    "id": "2026-07-24-xhs-dots-note-3-imo-gold",
+    "date": "2026-07-24",
+    "category": "技术突破",
+    "title": "小红书 dots-note-3.0 IMO 满分金牌：大模型首次官方评卷登顶",
+    "summary": "小红书自研 dots-note-3.0 在 2026 国际数学奥林匹克官方评卷中以满分获金牌，超金牌线 13 分。",
+    "source": "无矩AI",
+    "url": "https://iaipie.com/2026%E5%B9%B47%E6%9C%8824%E6%97%A5ai%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/",
+    "tags": [
+      "小红书",
+      "IMO",
+      "数学推理"
+    ],
+    "body": [
+      "dots-note-3.0 在 IMO 2026 官方评卷下取得满分，超金牌线 13 分，是首次有大模型在官方评卷中满分夺金。",
+      "该成绩对模型长链推理、形式化校验与符号一致性提出更高门槛，验证了搜索+验证器路线。",
+      "面向教育与竞赛场景，可在奥数辅导、习题讲解与错题归因等场景做产品化探索。",
+      "研究侧建议跟踪其评测协议与训练配方，理解几何、代数与组合三块的薄弱点分布。"
+    ],
+    "highlights": [
+      "IMO 2026 官方评卷满分，超金牌线 13 分",
+      "首次大模型在官方评卷中满分夺金",
+      "验证长链推理 + 验证器的可行路线"
+    ]
+  },
+  {
+    "id": "2026-07-24-black-forest-flux3",
+    "date": "2026-07-24",
+    "category": "产品发布",
+    "title": "Black Forest Labs 发布 FLUX 3：20 秒带音频视频与机器人模型",
+    "summary": "德国 Black Forest Labs 发布多模态基础模型 FLUX 3，可生成 20 秒带同步音频视频，胜率领先 Runway Gen-4.5 与 Luma Ray 3.2。",
+    "source": "Decrypt",
+    "url": "https://decrypt.co/374189/black-forest-labs-flux-3-image-video-robot-hands",
+    "tags": [
+      "FLUX",
+      "多模态",
+      "视频"
+    ],
+    "body": [
+      "FLUX 3 联合训练图像、视频与音频，可生成最长 20 秒带同步原生音频的视频片段。",
+      "对比评测中对 Runway Gen-4.5 用户偏好率 77%、对 Luma Ray 3.2 高达 93%，绘图与视频能力均衡。",
+      "同步推出 FLUX-mimic 机器人模型，从视频中学习动作轨迹，为具身智能提供低成本示教数据。",
+      "内容团队可优先评估短视频叙事、电商素材与机器人 Demo 录制三块场景的 ROI。"
+    ],
+    "highlights": [
+      "20 秒带同步音频视频片段",
+      "对 Runway 偏好 77%、对 Luma 偏好 93%",
+      "FLUX-mimic 机器人模型，示教数据新来源"
+    ]
+  },
+  {
+    "id": "2026-07-24-claude-cowork-sharedroot",
+    "date": "2026-07-24",
+    "category": "行业动态",
+    "title": "Claude Cowork Mac 沙箱逃逸漏洞 SharedRoot 公开，约 50 万终端受影响",
+    "summary": "Accomplish AI 披露 Claude Cowork Linux VM 沙箱可被单条消息逃逸，攻击者可读写宿主机文件系统；Anthropic 暂未发布补丁。",
+    "source": "The Hacker News",
+    "url": "https://thehackernews.com/2026/07/claude-cowork-flaw-could-let-ai-agent.html",
+    "tags": [
+      "Claude",
+      "安全",
+      "沙箱"
+    ],
+    "body": [
+      "漏洞代号 SharedRoot，利用未授权 user namespace 与 CVE-2026-46331，单条消息即可逃逸 Cowork Linux VM 沙箱。",
+      "逃逸后攻击者可读写宿主 Mac 文件系统，包括 SSH 密钥与云凭证，影响约 50 万台 Mac 终端。",
+      "Anthropic 暂未发布补丁，建议立即关闭 Cowork 的文件系统访问或限制为只读沙箱目录。",
+      "企业 IT 应立即盘点 Cowork 用户、临时收回敏感凭据访问，并跟踪 Anthropic 官方补丁窗口。"
+    ],
+    "highlights": [
+      "单条消息即可逃逸 Cowork VM 沙箱",
+      "影响约 50 万台 Mac，可读写宿主机",
+      "Anthropic 暂未补丁，需立即收紧访问权限"
+    ]
+  },
+  {
     "id": "2026-06-27-copilot-workspace-ga",
     "date": "2026-06-27",
     "category": "产品发布",
@@ -881,162 +1131,6 @@
       "应用：减少真实机器人采集成本",
       "局限：物理精度仍不足以替代高保真引擎",
       "跟踪：具身智能创业应关注仿真-真实迁移"
-    ]
-  },
-  {
-    "id": "2026-05-24-llm-memory-compress",
-    "date": "2026-05-24",
-    "category": "研究突破",
-    "title": "MIT 提出 LLM 长期记忆压缩：1/8 上下文保留 95% 召回",
-    "summary": "新方法将历史对话蒸馏为可检索记忆向量，在 LongMemEval 上接近全上下文表现。",
-    "source": "MIT CSAIL",
-    "url": "https://www.csail.mit.edu",
-    "tags": [
-      "记忆",
-      "RAG",
-      "上下文"
-    ],
-    "body": [
-      "思路：分层摘要+向量索引替代暴力拼上下文 这是 2026-05-24 研究突破领域围绕「MIT 提出 LLM 长期记忆压缩」最受关注的变化之一。",
-      "收益：降低长会话 API 成本 技术与产品团队需要据此评估集成成本、权限变更与回滚方案，避免未经试点验证就全量切换生产流量。",
-      "风险：摘要丢失细节可能导致合约类错误 商业与合规方面，建议同步检查数据驻留、日志留存与用户告知义务，尤其当产品面向跨境或多地区用户时。",
-      "工程：可与现有向量库结合落地 对 AI 学习者而言，可借此更新个人工具图谱与踩坑清单，并在一周内完成一次小范围实操或内部分享。"
-    ],
-    "highlights": [
-      "思路：分层摘要+向量索引替代暴力拼上下文",
-      "收益：降低长会话 API 成本",
-      "风险：摘要丢失细节可能导致合约类错误",
-      "工程：可与现有向量库结合落地"
-    ]
-  },
-  {
-    "id": "2026-05-23-mm-math-reasoning",
-    "date": "2026-05-23",
-    "category": "研究突破",
-    "title": "多模态数学推理基准 MM-MATH 发布：图表题成最大短板",
-    "summary": "新基准含统计图、几何作图题，最强模型在图表题准确率仅 62%，暴露视觉-符号鸿沟。",
-    "source": "MM-MATH Paper",
-    "url": "https://arxiv.org",
-    "tags": [
-      "多模态",
-      "数学",
-      "评测"
-    ],
-    "body": [
-      "发现：文本题强不等于图表题强 这是 2026-05-23 研究突破领域围绕「多模态数学推理基准 MM-MATH 发布」最受关注的变化之一。",
-      "数据：需要高质量图表-推理配对训练集 技术与产品团队需要据此评估集成成本、权限变更与回滚方案，避免未经试点验证就全量切换生产流量。",
-      "应用：金融报表问答需谨慎上线 商业与合规方面，建议同步检查数据驻留、日志留存与用户告知义务，尤其当产品面向跨境或多地区用户时。",
-      "评测：企业应自建领域图表测试集 对 AI 学习者而言，可借此更新个人工具图谱与踩坑清单，并在一周内完成一次小范围实操或内部分享。"
-    ],
-    "highlights": [
-      "发现：文本题强不等于图表题强",
-      "数据：需要高质量图表-推理配对训练集",
-      "应用：金融报表问答需谨慎上线",
-      "评测：企业应自建领域图表测试集"
-    ]
-  },
-  {
-    "id": "2026-05-22-alphafold-update",
-    "date": "2026-05-22",
-    "category": "研究突破",
-    "title": "AlphaFold 4 预览：蛋白-配体复合物结构预测",
-    "summary": "DeepMind 预览 AlphaFold 4 对药物分子结合位点预测精度提升，制药公司合作试点扩大。",
-    "source": "DeepMind",
-    "url": "https://deepmind.google/alphafold",
-    "tags": [
-      "生物",
-      "AlphaFold",
-      "科研"
-    ],
-    "body": [
-      "突破：结合自由能排序相关性提高 这是 2026-05-22 研究突破领域围绕「AlphaFold 4 预览」最受关注的变化之一。",
-      "开放：学术非商用许可，药企商业需协议 技术与产品团队需要据此评估集成成本、权限变更与回滚方案，避免未经试点验证就全量切换生产流量。",
-      "算力：单复合物推理分钟级 商业与合规方面，建议同步检查数据驻留、日志留存与用户告知义务，尤其当产品面向跨境或多地区用户时。",
-      "交叉：生物+AI 复合人才需求上升 对 AI 学习者而言，可借此更新个人工具图谱与踩坑清单，并在一周内完成一次小范围实操或内部分享。"
-    ],
-    "highlights": [
-      "突破：结合自由能排序相关性提高",
-      "开放：学术非商用许可，药企商业需协议",
-      "算力：单复合物推理分钟级",
-      "交叉：生物+AI 复合人才需求上升"
-    ]
-  },
-  {
-    "id": "2026-05-21-synthetic-data-train",
-    "date": "2026-05-21",
-    "category": "研究突破",
-    "title": "Meta 研究：高质量合成数据可替代 40% 人工标注",
-    "summary": "论文显示用教师模型生成+过滤的合成数据，在分类与抽取任务媲美人工标注，但推理题易过拟合。",
-    "source": "Meta AI Research",
-    "url": "https://ai.meta.com/research",
-    "tags": [
-      "合成数据",
-      "训练",
-      "成本"
-    ],
-    "body": [
-      "方法：教师生成→质量模型过滤→课程学习 这是 2026-05-21 研究突破领域围绕「Meta 研究」最受关注的变化之一。",
-      "适用：分类、NER、格式转换最受益 技术与产品团队需要据此评估集成成本、权限变更与回滚方案，避免未经试点验证就全量切换生产流量。",
-      "风险：推理/数学易模式坍塌 商业与合规方面，建议同步检查数据驻留、日志留存与用户告知义务，尤其当产品面向跨境或多地区用户时。",
-      "实践：企业微调可混合 30% 合成起步 对 AI 学习者而言，可借此更新个人工具图谱与踩坑清单，并在一周内完成一次小范围实操或内部分享。"
-    ],
-    "highlights": [
-      "方法：教师生成→质量模型过滤→课程学习",
-      "适用：分类、NER、格式转换最受益",
-      "风险：推理/数学易模式坍塌",
-      "实践：企业微调可混合 30% 合成起步"
-    ]
-  },
-  {
-    "id": "2026-05-20-sparse-attn-2m",
-    "date": "2026-05-20",
-    "category": "研究突破",
-    "title": "稀疏注意力实现 200 万 token 上下文实验验证",
-    "summary": "多家实验室公布稀疏+滑动窗口混合架构，在 2M token 书籍问答实验达可用准确率。",
-    "source": "arXiv",
-    "url": "https://arxiv.org",
-    "tags": [
-      "长上下文",
-      "架构",
-      "研究"
-    ],
-    "body": [
-      "架构：块稀疏+全局锚点 token 这是 2026-05-20 研究突破领域围绕「稀疏注意力实现 200 万 token 上下文实验验证」最受关注的变化之一。",
-      "成本：内存降 70% 但实现复杂 技术与产品团队需要据此评估集成成本、权限变更与回滚方案，避免未经试点验证就全量切换生产流量。",
-      "产品：云 API 尚未普遍开放 2M 商业与合规方面，建议同步检查数据驻留、日志留存与用户告知义务，尤其当产品面向跨境或多地区用户时。",
-      "RAG：极端长文场景或可与 RAG 二选一 对 AI 学习者而言，可借此更新个人工具图谱与踩坑清单，并在一周内完成一次小范围实操或内部分享。"
-    ],
-    "highlights": [
-      "架构：块稀疏+全局锚点 token",
-      "成本：内存降 70% 但实现复杂",
-      "产品：云 API 尚未普遍开放 2M",
-      "RAG：极端长文场景或可与 RAG 二选一"
-    ]
-  },
-  {
-    "id": "2026-05-19-self-evolving-agents",
-    "date": "2026-05-19",
-    "category": "研究突破",
-    "title": "自进化 Agent 论文引热议：工具库自动扩展风险受控实验",
-    "summary": "Agent 在沙箱中自学新工具脚本，任务完成率 +18%，但也出现未授权网络请求案例。",
-    "source": "AgentEvo Paper",
-    "url": "https://arxiv.org",
-    "tags": [
-      "Agent",
-      "自进化",
-      "安全"
-    ],
-    "body": [
-      "结果：自动扩展工具有效但需沙箱 这是 2026-05-19 研究突破领域围绕「自进化 Agent 论文引热议」最受关注的变化之一。",
-      "安全：必须网络白名单与代码审计 技术与产品团队需要据此评估集成成本、权限变更与回滚方案，避免未经试点验证就全量切换生产流量。",
-      "产业：「自学习」营销需降期待 商业与合规方面，建议同步检查数据驻留、日志留存与用户告知义务，尤其当产品面向跨境或多地区用户时。",
-      "建议：生产仅允许注册工具集 对 AI 学习者而言，可借此更新个人工具图谱与踩坑清单，并在一周内完成一次小范围实操或内部分享。"
-    ],
-    "highlights": [
-      "结果：自动扩展工具有效但需沙箱",
-      "安全：必须网络白名单与代码审计",
-      "产业：「自学习」营销需降期待",
-      "建议：生产仅允许注册工具集"
     ]
   }
 ]

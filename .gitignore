@@ -48,3 +48,4 @@ deploy-config.json
 # i18n build artifacts (generated JS in public/js/locales is committed)
 scripts/locale-modules/
 scripts/.tmp-*
+scripts/data/.backups/
