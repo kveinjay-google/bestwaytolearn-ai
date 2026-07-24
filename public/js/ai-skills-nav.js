@@ -991,6 +991,33 @@ const AI_SKILLS_NAV_ITEMS = [
     github: "https://github.com/mukul975/Anthropic-Cybersecurity-Skills",
     install: "npx skills add mukul975/Anthropic-Cybersecurity-Skills -g -y",
   },
+  {
+    name: "web-search-exa",
+    category: "Skill 安装与合集",
+    agents: ["OpenClaw", "Claude Code", "Cursor", "Codex"],
+    stars: 0,
+    desc: "Neural web search, content extraction, company and people research, code search, and deep research via the Exa MCP server. Use when you need to: (1) search the web with semantic un",
+    github: "https://github.com/exa-labs/exa-mcp-server",
+    install: "openclaw skill: web-search-exa",
+  },
+  {
+    name: "xiaohongshu-cn",
+    category: "Skill 安装与合集",
+    agents: ["OpenClaw", "Claude Code", "Cursor", "Codex"],
+    stars: 0,
+    desc: "",
+    github: "https://github.com/Big-Buffer/XiaohongshuSpider",
+    install: "openclaw skill: xiaohongshu-cn",
+  },
+  {
+    name: "xiaohongshu-deep-research",
+    category: "Skill 安装与合集",
+    agents: ["OpenClaw", "Claude Code", "Cursor", "Codex"],
+    stars: 0,
+    desc: "",
+    github: "https://github.com/xpzouying/xiaohongshu-mcp",
+    install: "openclaw skill: xiaohongshu-deep-research",
+  },
 ];
 
 function getAiSkillsNavCategorySlug(category) {

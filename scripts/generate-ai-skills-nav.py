@@ -838,15 +838,12 @@ def is_curated_local(t: tuple) -> bool:
     and adds them to RAW with stars=0. They are real, hand-picked entries —
     not noise — so they bypass the MIN_STARS gate.
 
-    Self-made OpenClaw skills (no GitHub URL, install command starts with
-    'openclaw skill:') are intentionally kept OUT of the public showcase, so
-    they remain subject to the star filter and will be skipped.
+    Self-made OpenClaw skills have no GitHub URL (they were never cloned
+    from a public repo), so they remain subject to the star filter and stay
+    out of the public showcase.
     """
     github = t[5]
-    install = t[6]
-    if install.startswith('openclaw skill:'):
-        return False  # self-made → keep filter
-    return bool(github and github.startswith('http'))
+    return bool(github and (github.startswith('http://') or github.startswith('https://')))
 
 
 def main() -> None:
