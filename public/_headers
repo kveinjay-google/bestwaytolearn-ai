@@ -23,4 +23,9 @@
 
 /ai-overview.html
   Content-Type: text/html; charset=utf-8
+  X-Robots-Tag: noindex, follow
+  Cache-Control: public, max-age=3600
+
+/404.html
+  X-Robots-Tag: noindex, follow
   Cache-Control: public, max-age=3600
