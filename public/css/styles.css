@@ -4535,6 +4535,14 @@ main {
   flex-wrap: wrap;
   gap: 0.55rem;
   margin-bottom: 2rem;
+  justify-content: center;
+}
+
+@media (min-width: 769px) {
+  /* Desktop: keep left-aligned under section header */
+  .tools-nav-jump {
+    justify-content: flex-start;
+  }
 }
 
 .tools-nav-jump-btn {
@@ -8966,8 +8974,10 @@ body.pwa-install-sheet-open {
     filter: drop-shadow(0 0 5px rgba(45, 212, 191, 0.4));
   }
   .bottom-tab-icon {
-    font-size: 1.05rem;
+    width: 1.25rem;
+    height: 1.25rem;
     line-height: 1;
+    display: block;
   }
 
   /* Body padding-bottom so content isn't covered by tab bar */
@@ -8991,7 +9001,7 @@ body.pwa-install-sheet-open {
 @media (max-width: 380px) {
   /* Tiny phones - keep compact */
   .bottom-tab-label { font-size: 0.58rem; }
-  .bottom-tab-icon { font-size: 0.98rem; }
+  .bottom-tab-icon { width: 1.15rem; height: 1.15rem; }
 }
 
 /* Reduced motion: kill drawer/tab transitions */

@@ -706,6 +706,15 @@ RAW: list[tuple] = [
     ('media-pipeline-pro', 'Skill 安装与合集', ['OpenClaw', 'Claude Code', 'Cursor', 'Codex'], 0,
      '下载 X/Twitter/YouTube/TikTok/Douyin 视频、提取音频、下载字幕、本地 ffmpeg 处理',
      '', 'openclaw skill: media-pipeline-pro', None),
+    ('web-search-exa', 'Skill 安装与合集', ['OpenClaw', 'Claude Code', 'Cursor', 'Codex'], 0,
+     'Neural web search, content extraction, company and people research, code search, and deep research via the Exa MCP server. Use when you need to: (1) search the web with semantic un',
+     'https://github.com/exa-labs/exa-mcp-server', 'openclaw skill: web-search-exa', None),
+    ('xiaohongshu-cn', 'Skill 安装与合集', ['OpenClaw', 'Claude Code', 'Cursor', 'Codex'], 0,
+     '',
+     'https://github.com/Big-Buffer/XiaohongshuSpider', 'openclaw skill: xiaohongshu-cn', None),
+    ('xiaohongshu-deep-research', 'Skill 安装与合集', ['OpenClaw', 'Claude Code', 'Cursor', 'Codex'], 0,
+     '',
+     'https://github.com/xpzouying/xiaohongshu-mcp', 'openclaw skill: xiaohongshu-deep-research', None),
 ]      
 
 
@@ -823,11 +832,28 @@ EN_AGENTS = {
 }
 
 
+def is_curated_local(t: tuple) -> bool:
+    """Curated local install: has a real GitHub URL (proof of upstream) but 0
+    stars in our DB. The cron-script discovers these from `~/.openclaw/skills/`
+    and adds them to RAW with stars=0. They are real, hand-picked entries —
+    not noise — so they bypass the MIN_STARS gate.
+
+    Self-made OpenClaw skills (no GitHub URL, install command starts with
+    'openclaw skill:') are intentionally kept OUT of the public showcase, so
+    they remain subject to the star filter and will be skipped.
+    """
+    github = t[5]
+    install = t[6]
+    if install.startswith('openclaw skill:'):
+        return False  # self-made → keep filter
+    return bool(github and github.startswith('http'))
+
+
 def main() -> None:
-    filtered = [t for t in RAW if t[3] >= MIN_STARS]
+    filtered = [t for t in RAW if t[3] >= MIN_STARS or is_curated_local(t)]
     skipped = len(RAW) - len(filtered)
     if skipped:
-        print(f'⚠ filtered out {skipped} entries below {MIN_STARS} stars')
+        print(f'⚠ filtered out {skipped} entries below {MIN_STARS} stars (and no GitHub URL)')
 
     items = [item_to_dict(t) for t in filtered]
     seen: set[str] = set()

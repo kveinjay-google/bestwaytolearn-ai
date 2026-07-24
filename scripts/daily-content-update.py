@@ -57,30 +57,42 @@ def read_text(p: Path) -> str:
     return p.read_text(encoding="utf-8")
 
 def already_published() -> tuple[set[str], set[str]]:
-    """Pull already-published (github urls, names) from ai-skills-nav.js."""
-    text = read_text(JS_SKILLS)
-    githubs = set(re.findall(r'github:\s*"([^"]+)"', text))
-    names = set(re.findall(r'name:\s*"([^"]+)"', text))
+    """Pull already-published (github urls, names).
+
+    Sources scanned (union, dedup):
+      - ai-skills-nav.js (the live output, what users actually see)
+      - generate-ai-skills-nav.py RAW list (pending entries waiting for next
+        regeneration; needed because filtered-out self-made skills may not yet
+        be in the JS file but should still be considered "already published"
+        to prevent the same entry from being appended again and again).
+    """
+    js_text = read_text(JS_SKILLS)
+    githubs = set(re.findall(r'github:\s*"([^"]+)"', js_text))
+    names = set(re.findall(r'name:\s*"([^"]+)"', js_text))
+
+    raw_text = read_text(RAW_PY)
+    # Tuples look like ('name', 'category', [...], stars, ...)
+    raw_names = set(re.findall(r"\(\s*'((?:[^'\\]|\\.)*)',\s*'", raw_text))
+    names |= raw_names
     return githubs, names
 
 
 def is_self_made(text: str) -> bool:
-    """Heuristic: self-made if `metadata.openclaw:` block has both emoji and category.
+    """Heuristic: an OpenClaw skill is self-made (Kevin's own) iff it has NO
+    GitHub URL anywhere in its SKILL.md.
 
-    Why: user Kevin's own OpenClaw skills consistently declare emoji+category
-    in frontmatter, while GitHub-installed skills use plain YAML frontmatter
-    (version, author, tags) and rarely include the `metadata.openclaw`
-    substructure.
+    Why this works: skills installed from GitHub via `npx skills add <repo>`
+    keep the upstream repo URL in their frontmatter or body. Skills Kevin
+    authored locally have no GitHub URL because they were never cloned from
+    a public repo. The previous heuristic (require both `emoji:` and
+    `category:` inside `metadata.openclaw:`) was too narrow — many of Kevin's
+    skills use plain YAML or JSON-style metadata that don't match the
+    pattern, so they slipped through as 'not self-made' and got published as
+    if they were real GitHub skills.
     """
-    m = re.match(r"---\n(.*?)\n---", text, re.DOTALL)
-    if not m:
-        return True
-    fm = m.group(1)
-    if "metadata:" not in fm or "openclaw:" not in fm:
+    if re.search(r"https?://github\.com/[\w\-./]+", text):
         return False
-    has_emoji = bool(re.search(r"\bemoji:\s*['\"]", fm))
-    has_category = bool(re.search(r"\bcategory:\s*['\"]", fm))
-    return has_emoji and has_category
+    return True
 
 
 def discover_local_skills(published_gh: set[str], published_names: set[str]) -> list[dict]:
