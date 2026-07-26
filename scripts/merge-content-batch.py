@@ -72,7 +72,7 @@ def merge_items(js_path: Path, array_name: str, new_items: list, to_js) -> int:
         raise SystemExit(f"Cannot find {array_name} in {js_path}")
 
     existing = m.group(2).strip()
-    existing_ids = set(re.findall(r"id: '([^']+)'", existing))
+    existing_ids = set(re.findall(r"id:\s*['\"]([^'\"]+)['\"]", existing))
     deduped = [i for i in new_items if i["id"] not in existing_ids]
     if not deduped:
         print(f"No new items for {array_name}")
