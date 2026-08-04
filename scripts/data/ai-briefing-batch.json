@@ -1,5 +1,83 @@
 [
   {
+    "id": "2026-08-03-alibaba-qwen38-max-ga-2-4t",
+    "date": "2026-08-03",
+    "category": "产品发布",
+    "title": "阿里通义千问 Qwen3.8-Max 正式发布：2.4 万亿参数、激活 95B",
+    "summary": "阿里巴巴 8 月 3 日正式发布 Qwen3.8-Max，总参数 2.4T、激活约 95B，编码与办公双线升级，开放权重下周放出，港股阿里当日涨 5.4%。",
+    "source": "SCMP",
+    "url": "https://www.scmp.com/tech/article/3362738/alibabas-ai-model-qwen38-max-made-widely-accessible-ahead-open-weights-release",
+    "tags": [
+      "阿里",
+      "Qwen3.8",
+      "开源",
+      "2.4T参数"
+    ],
+    "body": [
+      "阿里巴巴 8 月 3 日面向全球用户正式开放 Qwen3.8-Max，总参数 2.4 万亿，采用 MoE 稀疏激活架构，激活参数约 95B，是 Qwen 家族迄今规模最大的模型，也是全球开源模型中第二个参数规模突破 2T 的版本。",
+      "官方主打两个方向：编码（Coding）与专业办公（Cowork）。第三方盲测榜单上 Qwen3.8-Max 紧随 Claude 之后，自主编程可连续运行 16 天以上；同时整合进 Qwen Office 代理，主打跨应用文档处理。",
+      "API 已通过阿里云百炼、Qoder 与 QoderWork 三平台对外开放，模型 ID 为 qwen3.8-max；阿里承诺下周放出开源权重，并随后开源 Qwen3.8-27B 等更小尺寸变体。",
+      "对 AI 工程师，开源 + 2.4T 巨模的组合首次把超大规模 MoE 的本地化部署门槛拉低到可承受区间，建议跟踪 HuggingFace / ModelScope 上的权重发布与首批社区微调成果，编程 Agent 与企业办公 SaaS 都是可直接受益的场景。"
+    ],
+    "highlights": [
+      "2.4T 总参 / 95B 激活参数，编码与办公双方向升级",
+      "API 全球开放，开源权重下周发布",
+      "第三方榜单仅次于 Claude，港股阿里当日涨 5.4%"
+    ]
+  },
+  {
+    "id": "2026-08-03-microsoft-project-perception-public-preview",
+    "date": "2026-08-03",
+    "category": "产品发布",
+    "title": "微软 Project Perception 公测：自研网络安全模型 MAI-Cyber-1-Flash",
+    "summary": "微软 8 月 3 日开放 Project Perception 公开预览，搭载首颗自研网络安全模型 MAI-Cyber-1-Flash，部署红、蓝、绿三类 AI 代理协同防御，并明确人工保留最终决策权。",
+    "source": "Microsoft Security",
+    "url": "https://www.microsoft.com/en-us/security/business/ai-powered-cybersecurity/project-perception-agentic-system",
+    "tags": [
+      "微软",
+      "网络安全",
+      "Agent",
+      "MAI-Cyber"
+    ],
+    "body": [
+      "微软 8 月 3 日正式把 Project Perception 推到公开预览阶段，这是微软首个端到端的 agentic security 系统，搭载自研网络安全模型 MAI-Cyber-1-Flash，也是微软首次公开自家安全垂直模型。",
+      "Perception 把红队（攻击模拟）、蓝队（威胁检测与响应）、绿队（合规与策略）三类 AI 代理协同工作，连续推理用户的安全数据、工具和工作流，主动暴露漏洞、调查威胁并自动修复。",
+      "设计上强调「机器速度推理 + 人类决策保留」——AI 负责海量告警的优先级与初步响应，关键操作仍需人工审核；可与 Microsoft Defender、Sentinel 等现有产品集成。",
+      "对安全从业者，Perception 标志着传统杀软/SIEM 厂商正式进入 agentic 时代，建议评估其与现有 SOC 流程的集成成本，并把代理决策的可解释性作为采购时的硬指标。"
+    ],
+    "highlights": [
+      "8 月 3 日公测，自研 MAI-Cyber-1-Flash 同步亮相",
+      "红/蓝/绿三类 AI 代理协同，覆盖漏洞、调查、修复全流程",
+      "机器速度推理 + 人工最终决策权，集成 Defender / Sentinel"
+    ]
+  },
+  {
+    "id": "2026-08-03-datavolt-nvidia-central-asia-datacenter",
+    "date": "2026-08-03",
+    "category": "行业动态",
+    "title": "中亚 AI 数据中心竞赛开打：DataVolt 乌兹别克 12MW + Nvidia 哈萨克 10 万 GPU",
+    "summary": "沙特背景的 DataVolt 推进乌兹别克斯坦塔什干 12MW 绿色 AI 数据中心，预计年底完工；英伟达背书的哈萨克斯坦 125MW 园区将于 2027 年投运，部署 10 万张 GPU，标志中亚成为美中之外的「主权相邻」算力新区。",
+    "source": "Nikkei Asia",
+    "url": "https://asia.nikkei.com/business/technology/artificial-intelligence/starting-gun-for-central-asia-data-center-race-triggered",
+    "tags": [
+      "中亚",
+      "数据中心",
+      "DataVolt",
+      "Nvidia"
+    ],
+    "body": [
+      "据 Nikkei 8 月 3 日报道，中亚正在成为继美国、欧盟之后的第三大 AI 算力聚集区：沙特支持的 DataVolt 在乌兹别克斯坦首都塔什干推进的 TAS-1 数据中心一期 12MW 容量预计今年年内完工，初期定位为中亚首批「AI 就绪」绿色数据中心。",
+      "同期，英伟达背书的哈萨克斯坦 125MW AI 园区计划于 2027 年投运，部署规模约 10 万张 Nvidia GPU；两项目总投资约 1.5 亿美元（DataVolt 部分来自国际发展金融机构 non-recourse 融资）。",
+      "中亚的吸引力来自三方面：避开美中出口管制节点、电力与土地成本优势、地缘政治上对中、欧、海湾资本同时开放。这与布鲁克菲尔德 / NextEra 在美国本土的超大园区形成「离岸 + 主权相邻」的互补格局。",
+      "对 AI Infra 学习者，中亚赛道是观察「小型新兴市场如何承接 AI 算力外溢」的窗口，建议跟踪 DataVolt 的 PPA（购电协议）结构、Nvidia 哈萨克项目的网络互联细节，以及乌兹别克 / 哈萨克两国对训练数据合规的本地化要求。"
+    ],
+    "highlights": [
+      "DataVolt 塔什干 12MW 园区预计 2026 年底完工",
+      "Nvidia 哈萨克 125MW 园区 2027 年投运，部署 10 万 GPU",
+      "中亚成为美中之外的「主权相邻」算力新区"
+    ]
+  },
+  {
     "id": "2026-08-02-eu-ai-act-enforcement-august",
     "date": "2026-08-02",
     "category": "政策法规",
@@ -2279,58 +2357,6 @@
       "变现：订阅+按次生成混合计费成主流",
       "合规：未成年人模式与内容标识成上架必查项",
       "产品：纯聊天增长放缓，工具型功能更粘"
-    ]
-  },
-  {
-    "id": "2026-06-03-eu-ai-act-highrisk",
-    "date": "2026-06-03",
-    "category": "政策监管",
-    "title": "欧盟 AI Act 高风险清单细则征求意见：招聘与信贷模型在列",
-    "summary": "欧委会公布高风险 AI 场景附录草案，要求招聘筛选、信贷评分系统做一致性测试与人工申诉通道。",
-    "source": "European Commission",
-    "url": "https://digital-strategy.ec.europa.eu",
-    "tags": [
-      "欧盟",
-      "AI Act",
-      "合规"
-    ],
-    "body": [
-      "范围：招聘、教育评分、信贷、关键基础设施纳入高风险 这是 2026-06-03 政策监管领域围绕「欧盟 AI Act 高风险清单细则征求意见」最受关注的变化之一。",
-      "义务：数据治理文档、日志留存、人在环中 技术与产品团队需要据此评估集成成本、权限变更与回滚方案，避免未经试点验证就全量切换生产流量。",
-      "时间线：2026 年底前成员国转化国内法 商业与合规方面，建议同步检查数据驻留、日志留存与用户告知义务，尤其当产品面向跨境或多地区用户时。",
-      "出海：面向欧盟用户的 SaaS 需提前做 DPIA 对 AI 学习者而言，可借此更新个人工具图谱与踩坑清单，并在一周内完成一次小范围实操或内部分享。"
-    ],
-    "highlights": [
-      "范围：招聘、教育评分、信贷、关键基础设施纳入高风险",
-      "义务：数据治理文档、日志留存、人在环中",
-      "时间线：2026 年底前成员国转化国内法",
-      "出海：面向欧盟用户的 SaaS 需提前做 DPIA"
-    ]
-  },
-  {
-    "id": "2026-06-02-us-ai-safety-eo",
-    "date": "2026-06-02",
-    "category": "政策监管",
-    "title": "美国更新 AI 行政令：基础模型需提交红队摘要",
-    "summary": "联邦机构要求超大规模基础模型提供商向 NIST 提交安全评估摘要，含 CBRN 与网络滥用测试结果。",
-    "source": "White House",
-    "url": "https://www.whitehouse.gov",
-    "tags": [
-      "美国",
-      "安全",
-      "监管"
-    ],
-    "body": [
-      "对象：训练算力超阈值的模型开发商 这是 2026-06-02 政策监管领域围绕「美国更新 AI 行政令」最受关注的变化之一。",
-      "内容：红队报告、滥用缓解措施、版本变更通知 技术与产品团队需要据此评估集成成本、权限变更与回滚方案，避免未经试点验证就全量切换生产流量。",
-      "影响：API 提供商可能要求客户用途声明 商业与合规方面，建议同步检查数据驻留、日志留存与用户告知义务，尤其当产品面向跨境或多地区用户时。",
-      "企业：采购时需索要模型安全白皮书 对 AI 学习者而言，可借此更新个人工具图谱与踩坑清单，并在一周内完成一次小范围实操或内部分享。"
-    ],
-    "highlights": [
-      "对象：训练算力超阈值的模型开发商",
-      "内容：红队报告、滥用缓解措施、版本变更通知",
-      "影响：API 提供商可能要求客户用途声明",
-      "企业：采购时需索要模型安全白皮书"
     ]
   }
 ]
