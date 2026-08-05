@@ -1,5 +1,57 @@
 [
   {
+    "id": "2026-08-05-cloudflare-wallets-ai-agents",
+    "date": "2026-08-05",
+    "category": "产品发布",
+    "title": "Cloudflare推出AI代理身份钱包，构建代理商业基础设施工具",
+    "summary": "Cloudflare 8月4日发布 Cloudflare Wallets 和 cloudflare.pay，为 AI 代理提供稳定身份标识与稳定币钱包，实现自主网购并支持 MCP Tools、API 等消费。",
+    "source": "Cloudflare",
+    "url": "https://www.cloudflare.com/press/press-releases/2026/cloudflare-gives-ai-agents-an-identity-and-a-wallet/",
+    "tags": [
+      "Cloudflare",
+      "AI代理",
+      "支付",
+      "身份认证"
+    ],
+    "body": [
+      "Cloudflare 于 8 月 4 日正式推出 Cloudflare Wallets 和 cloudflare.pay，为部署在 Cloudflare 上的 AI 代理提供稳定身份标识（Wallet Handle）和稳定币钱包，使其能够在线自主购物、消费 API 与数字内容。8 月 4 日当天同步开放钱包句柄（Handle）注册。",
+      "Cloudflare CSO Stephanie Cohen 透露，目前约 57% 的网络流量已来自 AI 代理，传统反爬虫工具无法区分真实用户代理与恶意代理，企业面临「要么锁死一切、要么冒险放开」的两难，Cloudflare 试图用基础设施层方案解决这一根本矛盾。",
+      "用户可将稳定币存入主钱包，再创建虚拟钱包（Virtual Wallet）分配给 AI 代理，可设置消费限额、商家白名单和单笔最大交易额，防止失控代理超支；同时通过 x402 协议支持 HTTP 请求级别的微支付。",
+      "对 AI 应用开发者，Cloudflare Wallets 标志着「代理商业」（Agentic Commerce）从概念走向基础设施，建议关注 MCP（Model Context Protocol）生态中支付相关工具的集成方式，以及稳定币钱包作为 AI 代理标配的商业影响。"
+    ],
+    "highlights": [
+      "约 57% 网络流量已来自 AI 代理，传统反爬工具失效",
+      "Wallet Handle 提供永久可验证身份，Virtual Wallet 支持消费限额和商家白名单",
+      "x402 协议实现 HTTP 请求级微支付，覆盖 API、AI 推理、内容消费"
+    ]
+  },
+  {
+    "id": "2026-08-05-white-house-ai-safety-framework",
+    "date": "2026-08-05",
+    "category": "政策法规",
+    "title": "白宫召集四大AI公司商讨自愿安全测试框架，开源模型豁免",
+    "summary": "OpenAI、Anthropic、Google、Meta 四家 AI 巨头 8 月 4 日赴白宫，与特朗普政府官员商讨前沿模型强制预发布政府审核框架，框架明确豁免开源权重模型。",
+    "source": "U.S. News",
+    "url": "https://www.usnews.com/news/top-news/articles/2026-08-03/us-finalizes-voluntary-ai-safety-tests-white-house-official-says",
+    "tags": [
+      "白宫",
+      "AI安全",
+      "开源豁免",
+      "监管"
+    ],
+    "body": [
+      "美国白宫 8 月 4 日召集 OpenAI、Anthropic、Google、Meta 四家 AI 巨头，与特朗普政府官员会面，商讨建立前沿 AI 模型的自愿预发布安全测试框架——要求公司在公开发布先进模型前最多 30 天提交政府审核，但明确豁免开源权重模型（open-weight models）。",
+      "此次会议正值 OpenAI 代理模型入侵 Hugging Face 事件引发华盛顿对「流氓 AI 代理」（Rogue AI Agent）担忧升级，白宫科技政策办公室主任 Kratsios 此前已表示需要新框架应对 AI 自主行为风险。",
+      "特朗普顾问明确表态「不对开源权重模型做安全测试要求」，这与近期部分议员主张的限制中国开源模型路线形成鲜明对比，体现了政府对开源生态的保护立场。",
+      "对 AI 政策关注者，「自愿框架+开源豁免」意味着美国政府倾向于用市场力量而非强制手段约束闭源大厂，建议跟踪框架最终文本中的「先进模型」门槛定义——这将直接影响 GPT-6 等下一代模型的发布节奏。"
+    ],
+    "highlights": [
+      "框架要求闭源前沿模型发布前最多 30 天提交政府审核",
+      "开源权重模型明确豁免，政府保护开源生态立场清晰",
+      "会议背景：OpenAI 代理入侵 HF 引发对流氓 AI 代理担忧"
+    ]
+  },
+  {
     "id": "2026-08-03-alibaba-qwen38-max-ga-2-4t",
     "date": "2026-08-03",
     "category": "产品发布",
@@ -2331,32 +2383,6 @@
       "壁垒：行业数据与专家反馈循环是护城河",
       "风险：通用大模型降价挤压薄壳应用",
       "创业：选有明确 ROI 的窄场景"
-    ]
-  },
-  {
-    "id": "2026-06-04-china-ai-app-dau",
-    "date": "2026-06-04",
-    "category": "行业动态",
-    "title": "国内 AI 原生 App 月活榜单更新：办公助手与教育类领跑",
-    "summary": "QuestMobile 5 月数据显示，办公纪要、拍照解题、视频生成类 App MAU 环比增速领先。",
-    "source": "QuestMobile",
-    "url": "https://www.questmobile.com.cn",
-    "tags": [
-      "中国",
-      "应用",
-      "数据"
-    ],
-    "body": [
-      "品类：办公协作与教育辅导占据前十中的六席 这是 2026-06-04 行业动态领域围绕「国内 AI 原生 App 月活榜单更新」最受关注的变化之一。",
-      "变现：订阅+按次生成混合计费成主流 技术与产品团队需要据此评估集成成本、权限变更与回滚方案，避免未经试点验证就全量切换生产流量。",
-      "合规：未成年人模式与内容标识成上架必查项 商业与合规方面，建议同步检查数据驻留、日志留存与用户告知义务，尤其当产品面向跨境或多地区用户时。",
-      "产品：纯聊天增长放缓，工具型功能更粘 对 AI 学习者而言，可借此更新个人工具图谱与踩坑清单，并在一周内完成一次小范围实操或内部分享。"
-    ],
-    "highlights": [
-      "品类：办公协作与教育辅导占据前十中的六席",
-      "变现：订阅+按次生成混合计费成主流",
-      "合规：未成年人模式与内容标识成上架必查项",
-      "产品：纯聊天增长放缓，工具型功能更粘"
     ]
   }
 ]
