@@ -15,6 +15,27 @@ const AI_BRIEFING_META = {
 
 const AI_BRIEFING_ITEMS = [
   {
+    id: "2026-08-14-gemini-37-flash-google-release",
+    date: "2026-08-14",
+    category: "产品发布",
+    title: "Google 发布 Gemini 3.7 Flash：代码/智能体能力大幅跃升",
+    summary: "Google 于 8 月 13 日发布 Gemini 3.7 Flash，DeepSWE 代码基准 65.3%（比上代提升 33%），$0.75/1M 输入限时优惠，1M 上下文、多模态覆盖。",
+    source: "AI Release Tracker",
+    url: "https://aireleasetracker.com/model/google/gemini-3.7-flash",
+    tags: ["Google", "Gemini", "Flash", "产品发布"],
+    body: [
+      "Gemini 3.7 Flash 于 8 月 13 日发布，仅距 3.6 三周，定位 Google 最强代码与智能体主力模型。DeepSWE v1.1 达 65.3%（3.6 为 49.0%，提升 33%），FrontierCode 1.1 主 split 43.6%，发布对比中最高，超越 Claude Sonnet 5 和 GPT-5.6 Terra。",
+      "企业级能力全面提升：AutomationBench 从 17.0% 升至 30.4%，GDP.PDF 长文档理解从 22.0% 升至 34.0%，Harvey 法律基准 90.7% 为全模型最高分，MRCR v2 128k 检索 97% 刷新纪录。终端智能体 Terminal-Bench 3.0 14.9% 和 OSWorld 2.0 38.1% 仍落后 GPT-5.6 Terra。",
+      "定价走量贩档：$0.75/1M 输入、$3.75/1M 输出（2026 年底前有效），比 3.6 发布时降价 50%，明年 1 月恢复 $1.50/$7.50。1M 上下文窗口，多模态覆盖图片、视频、音频、PDF，通过 Gemini API、AI Studio、Antigravity、Android Studio 及 Gemini Enterprise 供给。",
+      "对开发者：Gemini 3.7 Flash 已是代码/工作流自动化性价比最优的 Flash 级别选择，建议在 2026 年底优惠价窗口期锁定用量；1M 上下文 + 多模态适合长文档处理、复杂代码库分析和多步骤工作流自动化，可直接用于替换 Claude Sonnet 5 进行 POC。",
+    ],
+    highlights: [
+      "DeepSWE 65.3%，比 3.6 Flash 提升 33%，代码/智能体主力模型",
+      "$0.75/1M 输入限时优惠（2026 年底），比 3.6 发布价低 50%，1M 上下文",
+      "Harvey 法律基准 90.7% 全模型最高，MRCR v2 128k 检索 97% 刷新纪录",
+    ],
+  },
+{
     id: "2026-08-13-deepseek-v4-pro-0813-ga",
     date: "2026-08-13",
     category: "产品发布",
