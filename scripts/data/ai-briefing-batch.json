@@ -1,5 +1,167 @@
 [
   {
+    "id": "2026-08-18-stripe-70b-openrouter-acquisition",
+    "date": "2026-08-18",
+    "category": "行业动态",
+    "title": "Stripe 70亿美元收购 OpenRouter：AI调用「收费站」易主",
+    "summary": "Stripe以超70亿美元收购全球最大AI模型中转平台OpenRouter，5月估值才13亿美元，82天暴涨5倍。平台每周处理Token已超55万亿，2026年全年预计近2600万亿。",
+    "source": "AITNT / Bloomberg",
+    "url": "https://www.aitntnews.com/newDetail.html?newId=28311",
+    "tags": [
+      "Stripe",
+      "OpenRouter",
+      "收购",
+      "模型路由",
+      "AI基础设施"
+    ],
+    "body": [
+      "8月16日彭博社爆料，Stripe已敲定收购OpenRouter，价格超过70亿美元。OpenRouter5月26日刚完成1.13亿美元B轮融资估值13亿美元，到8月16日仅隔82天估值暴涨5倍，华尔街日报曾报道其可能卖到100亿美元仍有不止一家巨头在考虑出手。",
+      "OpenRouter通过统一API接入400+AI模型，为1000多万开发者提供自动路由服务，挑选最便宜、最快、最稳定的模型执行。截至8月10日平台周处理Token超55万亿，预计2026全年近2600万亿Token，经手模型包括GPT、Claude、Gemini、DeepSeek等几乎所有主流模型。",
+      "Stripe拿下OpenRouter后，将占据Agent和模型厂商之间的「计量口」，无论人花钱还是AI花钱都得经过其支付系统。Stripe同时还在洽谈以530亿美元收购PayPal，两笔交易叠加意图清晰：布局人花钱和Agent花钱的全面支付基础设施。",
+      "对AI开发者和投资人：OpenRouter被收购验证了「多模型路由」赛道的战略价值；其公开排行榜已成行业「温度计」，Stripe入主后API稳定性有望提升但生态独立性需观察；建议关注收购完成后的定价策略变化和独立API条款。"
+    ],
+    "highlights": [
+      "收购价超70亿美元，82天内估值从13亿涨至70亿+美元",
+      "周处理Token超55万亿，全年预计2600万亿，覆盖400+模型",
+      "Stripe目标：人花钱和Agent花钱都经过其支付基础设施"
+    ]
+  },
+  {
+    "id": "2026-08-18-codex-1m-context-gpt-56-sol",
+    "date": "2026-08-18",
+    "category": "产品发布",
+    "title": "Codex 开放 1M 上下文：Tibo 三行配置解除 GPT-5.6 Sol 封印",
+    "summary": "OpenAI研究员Tibo通过三行config配置，让Codex用户解锁GPT-5.6 Sol的1M上下文，约90万token时自动压缩历史。但超默认窗口后token消耗翻倍，512K-1M区间性能从91.5%降至73.8%。",
+    "source": "AITNT / 量子位",
+    "url": "https://www.aitntnews.com/newDetail.html?newId=28318",
+    "tags": [
+      "Codex",
+      "OpenAI",
+      "GPT-5.6",
+      "长上下文",
+      "产品发布"
+    ],
+    "body": [
+      "Tibo在社交媒体发布三行config咒语，在Codex的config.toml文件开头添加 model = \"gpt-5.6-sol\"、model_context_window = 1000000、model_auto_compact_token_limit = 900000，重启后即可解锁GPT-5.6 Sol的1M上下文窗口。约90万token时模型自动启动历史压缩。",
+      "OpenAI研究员Noam Brown提醒：超出默认上下文窗口后，Codex里模型token消耗会直接翻倍。OpenAI自己公布的长上下文评测中，MRCR v2上GPT-5.6 Sol处理256K-512K上下文时得分91.5%，512K-1M区间降至73.8%，性能衰减明显。",
+      "Tibo同时透露Codex确定会上Astra——即OpenAI下一代模型「GPT-6」。Codex默认策略背后的逻辑是：Agent运行越久，历史记录中真正需要原样保留的信息占比未必越高，通过压缩把旧信息浓缩后继续运行比保留全部历史更高效。",
+      "对开发者：1M上下文是把双刃剑——适合需要保持大量代码/对话历史的长期项目，但成本和性能衰减需权衡；建议先用默认配置跑通任务，有真实需求再切换到1M窗口，同时关注Tibo后续的Astra集成公告。"
+    ],
+    "highlights": [
+      "三行config解锁GPT-5.6 Sol的1M上下文，约90万token时自动压缩",
+      "超默认窗口token消耗翻倍，512K-1M性能从91.5%降至73.8%",
+      "Codex确定将集成Astra（GPT-6），OpenAI下一代旗舰模型"
+    ]
+  },
+  {
+    "id": "2026-08-18-xiaomi-super-xiaoai-2-agent",
+    "date": "2026-08-18",
+    "category": "产品发布",
+    "title": "超级小爱2.0：小米把语音助手做成 AI Agent，覆盖人车家全生态",
+    "summary": "小米澎湃OS 4 Beta隐藏超级小爱2.0，从被动语音助手升级为能理解意图并主动执行的AI Agent，支持跨端记忆云同步和跨端执行，已接入十多家第三方服务。",
+    "source": "AITNT",
+    "url": "https://www.aitntnews.com/newDetail.html?newId=28308",
+    "tags": [
+      "小米",
+      "超级小爱",
+      "AI Agent",
+      "人车家生态",
+      "MiMo"
+    ],
+    "body": [
+      "超级小爱2.0核心升级：AI架构全面重构，深度集成小米自研MiMo大模型，从「听得懂的对话框」升级为「做得到的协作者」。用户只需说出最终需求（如「找身份证照片」），AI自动规划路径、调用应用、执行任务，无需一步步教它怎么做。",
+      "小米的独特优势是人车家全生态覆盖：手机、汽车、电视、音箱、手表、智能家居数百款设备每天产生大量用户行为数据。这些跨端上下文让AI Agent对用户的理解深度远超单一App竞品，且小米与各互联网服务无竞争关系，可中立接入支付宝、高德等十多家第三方服务。",
+      "跨端记忆云同步是另一核心能力：在手机告诉小爱喜欢冰美式，换到平板车机后它仍知道你的偏好；早上在家设日程，出门上车车机自动规划路线，到机场手机弹出登机牌——整个过程用户只说一句话。",
+      "对AI产品经理：超级小爱2.0验证了「终端厂商做Agent」的差异化路径——有设备才有上下文，有上下文才有真正个性化的AI；建议关注其生态开放程度和API接口政策，这可能是国内最值得接入的本地化Agent平台之一。"
+    ],
+    "highlights": [
+      "从被动响应升级为主动执行，用户说目标AI规划完整路径",
+      "人车家全生态跨端记忆同步，换设备不换脑",
+      "小米MiMo模型调用量在OpenRouter平台排名前列，已验证模型能力"
+    ]
+  },
+  {
+    "id": "2026-08-18-hidream-o1-world-interactive-world-model",
+    "date": "2026-08-18",
+    "category": "技术突破",
+    "title": "HiDream-O1-World：首款原生全模态交互式世界模型登顶 WBench",
+    "summary": "智象未来发布全球首款原生全模态交互式世界模型HiDream-O1-World，基于自研UiT架构，WBench评测Nav i分榜第一，物理维度得分73.3全榜第一，一致性得分88.0综合第一。",
+    "source": "AITNT",
+    "url": "https://www.aitntnews.com/newDetail.html?newId=28316",
+    "tags": [
+      "HiDream",
+      "世界模型",
+      "UiT架构",
+      "多模态",
+      "交互式生成"
+    ],
+    "body": [
+      "智象未来发布HiDream-O1-World，基于自研原生全模态UiT（Unified Transformer）架构，将图像像素、文本Token、视频体素、音频、动作指令、空间坐标等所有原始信号统一映射到同一共享Token空间，在同一Transformer网络内完成交互、理解与生成。",
+      "在美团LongCat与复旦大学联合推出的交互式世界模型评测基准WBench中，HiDream-O1-World首次参评即登顶Navi分榜，物理维度（Physical）得分73.3全榜第一，一致性维度（Consistency）得分88.0综合第一，超越腾讯混元1.5、阿里Happy Oyster等模型。",
+      "核心能力：用户可在生成的世界中以第一/第三人称自由漫游，可实时编辑角色动作（抓取、奔跑、下蹲、跳跃）和触发环境变化（降雨、物体坠落），且保持长时空一致性和物理因果正确性。支持写实城市、自然地貌、二次元卡通、3A游戏渲染等多元风格。",
+      "对研究者和创作者：UiT架构用统一Token空间替代传统拼接式多模态，从根本上解决了跨模态因果逻辑在翻译中丢失的问题；该方向可能是世界模型从「渲染画面」走向「构造可交互世界」的关键突破，建议关注代码开源进度。"
+    ],
+    "highlights": [
+      "UiT统一Token空间架构，图像/文本/视频/动作/空间坐标同网络处理",
+      "WBench物理维度73.3分、一致性88.0分双项第一，超越腾讯混元1.5",
+      "用户可漫游、实时编辑角色动作和环境变化，保持物理和时空一致性"
+    ]
+  },
+  {
+    "id": "2026-08-18-tensorcast-pku-stepfun-ttft-93-percent",
+    "date": "2026-08-18",
+    "category": "技术突破",
+    "title": "北大×阶跃星辰 TensorCast：统一张量管理层，推理首字延迟降低93.2%",
+    "summary": "北京大学、阶跃星辰、北邮联合提出TensorCast，在计算引擎、网络与存储之间引入统一可编程的张量生命周期管理抽象层，高并发多轮Agent场景TTFT最高降低93.2%，模型启动速度提升228.6倍。",
+    "source": "Second Talent / Pandaily",
+    "url": "https://pandaily.com/tensorcast-pku-stepfun-bupt-tensor-management-llm-ttft-93-percent-aug2026",
+    "tags": [
+      "北京大学",
+      "阶跃星辰",
+      "TensorCast",
+      "LLM推理",
+      "Infra优化"
+    ],
+    "body": [
+      "TensorCast由北京大学、阶跃星辰与北京邮电大学联合提出，在计算引擎、网络与存储之间引入统一可编程的张量生命周期管理抽象层，将模型权重、KV Cache等张量状态从具体系统中解耦，使不同工作负载能复用统一的张量管理能力。",
+      "通过Identify、Place、Move、Transform、Materialize五类生命周期原语的组合，开发者可灵活实现跨组件优化。实验结果显示，高并发多轮Agent场景下TTFT（Time To First Token，首字延迟）最高降低93.2%，模型启动速度最高提升228.6倍。",
+      "该技术的核心价值在于：大模型推理的瓶颈往往不在计算本身，而在于张量在GPU显存、跨节点网络、HBM/SSD存储之间的调度效率。TensorCast把这层调度抽象为可编程原语，让Infra工程师无需深入每个硬件细节即可做全局优化。",
+      "对LLM Infra从业者：93.2%的TTFT降低是非常显著的数字，尤其对长对话多轮Agent场景；建议关注该工作的正式论文和开源实现，在模型推理引擎和网络调度两层之间还有大量优化空间，TensorCast提供了一条可复用的抽象路径。"
+    ],
+    "highlights": [
+      "TTFT最高降低93.2%，模型启动速度提升228.6倍",
+      "统一张量生命周期管理抽象，解耦权重/KV Cache与具体系统",
+      "北京大学+阶跃星辰+北邮联合研究，产学研结合的LLM Infra突破"
+    ]
+  },
+  {
+    "id": "2026-08-18-fable-5-ai-autonomous-research-prime-intellect",
+    "date": "2026-08-18",
+    "category": "研究前沿",
+    "title": "Fable 5 逼近人类科研极限：全球18大AI模型断网8天挑战nanoGPT优化",
+    "summary": "Prime Intellect公布全球最大规模AI自主科研实验：18个模型断网8天挑战nanoGPT优化，Fable 5以2726步追平人类2600步纪录的82%，OpenAI和Anthropic均预测2028年AI将实现自我改进。",
+    "source": "AITNT",
+    "url": "https://www.aitntnews.com/newDetail.html?newId=28295",
+    "tags": [
+      "Fable",
+      "AI自主科研",
+      "Prime Intellect",
+      "RSI",
+      "模型进化"
+    ],
+    "body": [
+      "Prime Intellect公布全球最大规模AI自主科研实验结果：18个AI模型在断网环境下用8天时间挑战nanoGPT优化任务，Fable 5以2726步追平人类研究员2600步基准纪录的82%，差距仅126步，这是首次量化AI科研能力的公开基准测试。",
+      "OpenAI和Anthropic均预测AI将在2028年实现自我改进（RSI，Recursive Self-Improvement）。本次实验中Kimi K3借助DeepSeek Harness框架逼近Claude Opus 5水平，印证了开源社区在Agent能力上与闭源前沿的差距正在快速收窄。",
+      "实验设计：18个模型在完全断网环境中只能访问代码仓库、编译器、实验日志，不能搜索互联网或请教外部专家，考验模型独立解决真实工程问题的能力。Fable 5表现最接近人类基线，但仍未超越。",
+      "对AI研究者：AI科研能力接近人类基线（82%）是重要信号，表明在特定受限场景下AI已能独立完成有价值的工程优化；建议关注RSI时间表和企业应用路径——当AI能自主优化AI本身时，模型迭代速度将远超人类监督下的传统研发流程。"
+    ],
+    "highlights": [
+      "Fable 5达人类基线的82%（2726步 vs 2600步），差距仅126步",
+      "18个模型断网8天挑战nanoGPT优化，首次量化AI科研能力",
+      "OpenAI和Anthropic均预测2028年AI将实现RSI自我改进"
+    ]
+  },
+  {
     "id": "2026-08-17-ai-education-talent-training",
     "date": "2026-08-17",
     "category": "政策法规",
@@ -2883,32 +3045,6 @@
       "许可：Gemma 许可允许商用但需遵守使用政策",
       "量化：Ollama 提供 Q4_K_M，16GB 内存机器可试跑",
       "局限：中文能力弱于 Qwen 同级模型"
-    ]
-  },
-  {
-    "id": "2026-06-17-sd3-medium-open",
-    "date": "2026-06-17",
-    "category": "开源模型",
-    "title": "Stable Diffusion 3 Medium 权重开源：商用友好图像生成",
-    "summary": "Stability AI 开源 SD3 Medium，6B 参数，文字渲染与构图较 SDXL 改善；ComfyUI 节点同日更新。",
-    "source": "Stability AI",
-    "url": "https://stability.ai/news",
-    "tags": [
-      "SD3",
-      "图像",
-      "开源"
-    ],
-    "body": [
-      "质量：小字海报可用性提升，仍建议后期 PS 修字 这是 2026-06-17 开源模型领域围绕「Stable Diffusion 3 Medium 权重开源」最受关注的变化之一。",
-      "硬件：12GB 显存可 1024 生成，批量需更高 VRAM 技术与产品团队需要据此评估集成成本、权限变更与回滚方案，避免未经试点验证就全量切换生产流量。",
-      "合规：禁止生成特定名人肖像，需本地过滤提示词 商业与合规方面，建议同步检查数据驻留、日志留存与用户告知义务，尤其当产品面向跨境或多地区用户时。",
-      "工作流：与 ControlNet Union 组合可精准控构图 对 AI 学习者而言，可借此更新个人工具图谱与踩坑清单，并在一周内完成一次小范围实操或内部分享。"
-    ],
-    "highlights": [
-      "质量：小字海报可用性提升，仍建议后期 PS 修字",
-      "硬件：12GB 显存可 1024 生成，批量需更高 VRAM",
-      "合规：禁止生成特定名人肖像，需本地过滤提示词",
-      "工作流：与 ControlNet Union 组合可精准控构图"
     ]
   }
 ]
