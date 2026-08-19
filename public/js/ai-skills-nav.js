@@ -1018,6 +1018,15 @@ const AI_SKILLS_NAV_ITEMS = [
     github: "https://github.com/xpzouying/xiaohongshu-mcp",
     install: "openclaw skill: xiaohongshu-deep-research",
   },
+  {
+    name: "reverse-skill",
+    category: "Skill 安装与合集",
+    agents: ["Cursor", "Claude Code", "Codex", "Gemini CLI"],
+    stars: 26632,
+    desc: "Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base  Su",
+    github: "https://github.com/zhaoxuya520/reverse-skill",
+    install: "npx skills add zhaoxuya520/reverse-skill -g -y",
+  },
 ];
 
 function getAiSkillsNavCategorySlug(category) {

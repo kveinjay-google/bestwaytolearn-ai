@@ -715,6 +715,9 @@ RAW: list[tuple] = [
     ('xiaohongshu-deep-research', 'Skill 安装与合集', ['OpenClaw', 'Claude Code', 'Cursor', 'Codex'], 0,
      '',
      'https://github.com/xpzouying/xiaohongshu-mcp', 'openclaw skill: xiaohongshu-deep-research', None),
+    ('reverse-skill', 'Skill 安装与合集', ['Cursor', 'Claude Code', 'Codex', 'Gemini CLI'], 26632,
+     'Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base  Su',
+     'https://github.com/zhaoxuya520/reverse-skill', 'npx skills add zhaoxuya520/reverse-skill -g -y', None),
 ]      
 
 
