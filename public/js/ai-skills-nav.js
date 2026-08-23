@@ -1027,6 +1027,15 @@ const AI_SKILLS_NAV_ITEMS = [
     github: "https://github.com/zhaoxuya520/reverse-skill",
     install: "npx skills add zhaoxuya520/reverse-skill -g -y",
   },
+  {
+    name: "awesome-agent-skills",
+    category: "Skill 安装与合集",
+    agents: ["Cursor", "Claude Code", "Codex", "Gemini CLI"],
+    stars: 5002,
+    desc: "Agent Skills 终极指南：快速入门、资源推荐、精选技能与实用工具 ｜The Ultimate Guide to Agent Skills: QuickStart, Resources, Features&Toolkit",
+    github: "https://github.com/libukai/awesome-agent-skills",
+    install: "npx skills add libukai/awesome-agent-skills -g -y",
+  },
 ];
 
 function getAiSkillsNavCategorySlug(category) {

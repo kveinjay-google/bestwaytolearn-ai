@@ -1,5 +1,247 @@
 [
   {
+    "id": "2026-08-23-generalist-gen-15-embodied-foundation",
+    "date": "2026-08-23",
+    "category": "技术突破",
+    "title": "Generalist AI发布GEN-1.5：具身foundation model一览成学",
+    "summary": "GEN-1.5通过3-12秒演示实现59%一步成功学，10步梯度后达83%，无需显式任务训练即涌现物理技能。",
+    "source": "HeadsUpAI",
+    "url": "https://headsupai.io/updates/generalist-ai-launches-gen-1-5-embodied-foundation-model",
+    "tags": [
+      "具身AI",
+      "GEN-1.5",
+      "Generalist AI",
+      "物理任务"
+    ],
+    "body": [
+      "Generalist AI于8月22日发布GEN-1.5，这是一款具身foundation model，能从3-12秒的人类演示视频中学习物理任务，在一步上下文学习（one-shot）下达到59%成功率，10步梯度更新后提升至83%。",
+      "核心创新在于连续8个月大规模物理交互数据预训练，而非显式任务特定训练，使技能从数据中自然涌现。模型可泛化到训练中未见过的任务类别，实现真正的少样本具身智能。",
+      "该方法相比传统机器人模仿学习需要数十至数百条演示，大幅降低数据需求；相比强化学习需要大量环境交互，效率提升一到两个数量级。",
+      "对AI+机器人研究者：GEN-1.5证明了「大规模预训练+少样本微调」路线在具身智能的可行性；建议在自有机器人平台用3-5条演示做few-shot评估，关注模型对物体重量、纹理、关节顺从性的泛化能力。"
+    ],
+    "highlights": [
+      "3-12秒演示一步学习59%成功率，10步后83%，数据效率远超传统模仿/强化学习",
+      "8个月物理交互数据预训练，无需显式任务特定训练即可涌现技能",
+      "具身AI从「大量数据」向「少样本泛化」转变的里程碑验证"
+    ]
+  },
+  {
+    "id": "2026-08-23-byteplus-dreamina-seedance-25-1080p",
+    "date": "2026-08-23",
+    "category": "产品发布",
+    "title": "BytePlus Dreamina Seedance 2.5原生1080P：10-bit色+纹理增强",
+    "summary": "BytePlus为Dreamina Seedance 2.5新增原生1080P输出，支持10-bit色彩、锐化纹理和改进光照，API同步上线限时8折。",
+    "source": "HeadsUpAI",
+    "url": "https://headsupai.io/updates/byteplus-adds-native-1080p-support-dreamina-seedance-2-5-model",
+    "tags": [
+      "BytePlus",
+      "Seedance",
+      "视频生成",
+      "1080P",
+      "Dreamina"
+    ],
+    "body": [
+      "BytePlus于8月22日在Dreamina应用中推出Seedance 2.5原生1080P输出支持，带来10-bit色彩深度、更锐化的纹理细节和改进的光照渲染质量，显著提升视频成片质感。",
+      "BytePlus API于8月17日同步更新，限时8折优惠，1080P视频生成约0.41美元/输出秒。企业客户可通过统一API接入，自动扩展。",
+      "Seedance 2.5定位对标Runway GEN-3和OpenAI Sora，1080P升级使其在企业制作场景更具竞争力，支持品牌广告、社交媒体内容、在线课程等高质量视频需求。",
+      "对视频内容创作者：1080P升级对商业制作意义重大，建议在当前限时优惠窗口期（8折）评估Seedance 2.5与企业工作流的集成；关注与Pika、Sora的实际画质对比测试结果再做选型决策。"
+    ],
+    "highlights": [
+      "原生1080P输出+10-bit色彩+纹理增强，成片质感对标Runway GEN-3",
+      "API限时8折约0.41美元/输出秒，8月17日已上线",
+      "BytePlus统一API支持自动扩展，企业制作场景竞争力提升"
+    ]
+  },
+  {
+    "id": "2026-08-23-google-gemini-free-year-students-2026",
+    "date": "2026-08-23",
+    "category": "产品发布",
+    "title": "Google为大学生提供一年免费Gemini高级版",
+    "summary": "Google向美国及140+国家大学生提供一年免费Gemini高级订阅，含语音Deep Research等学习工具，限2026年底前申请。",
+    "source": "HeadsUpAI",
+    "url": "https://headsupai.io/updates/google-offers-free-one-year-gemini-plans-new-study-tools",
+    "tags": [
+      "Google",
+      "Gemini",
+      "学生优惠",
+      "AI教育",
+      "Deep Research"
+    ],
+    "body": [
+      "Google于8月22日宣布为美国符合条件的大学生提供一年免费Google AI Pro订阅，并为140+国家用户提供Google AI Plus免费订阅，同时向Gemini应用新增全球学习工具。",
+      "新增学习功能包括：Gemini Live语音驱动Deep Research（口语提问即生成研究报告）、学生中心、学习笔记本和交互可视化工具，专注提升学术场景下的AI辅助效率。",
+      "该优惠至2026年12月31日截止，旨在在ChatGPT Edu之后进一步抢占教育市场。Google通过免费高级功能培养未来付费用户的使用习惯。",
+      "对AI学习者：在读大学生应优先申请该优惠（美国学生申请AI Pro，海外学生申请AI Plus）；语音Deep Research功能对文献综述和学期论文特别有帮助，是目前口语交互研究助手的较强免费选项。"
+    ],
+    "highlights": [
+      "美国学生免费一年AI Pro，140+国家学生免费AI Plus，含语音Deep Research",
+      "Gemini Live新增语音驱动Deep Research，口语提问生成研究报告",
+      "限2026年底前申请，Google抢占教育市场的重要动作"
+    ]
+  },
+  {
+    "id": "2026-08-23-cursor-origin-code-hosting-github-sync",
+    "date": "2026-08-23",
+    "category": "产品发布",
+    "title": "Cursor推出Origin代码托管平台：beta版支持GitHub同步",
+    "summary": "Cursor推出Origin代码托管平台（beta测试阶段），提供仓库托管、Pull Request和GitHub实时同步，集成Vercel/Buildkite/Depot支持预览部署。",
+    "source": "HeadsUpAI",
+    "url": "https://headsupai.io/updates/cursor-launches-origin-code-hosting-platform-with-github-sync",
+    "tags": [
+      "Cursor",
+      "Origin",
+      "代码托管",
+      "GitHub",
+      "AI编程"
+    ],
+    "body": [
+      "Cursor于8月22日发布Origin，这是一款代码托管平台，目前处于beta测试阶段，仅对付费计划用户开放。核心功能包括仓库托管、Pull Request和与GitHub的实时同步。",
+      "平台集成Vercel、Buildkite和Depot，支持预览部署和CI工作流。计划中的Agent原生功能将面向自主编码任务优化，使AI Agent能在平台内独立完成代码审查、修复和合并。",
+      "Cursor通过Origin进入GitHub和GitLab主导的代码托管市场，差异化在于深度AI集成。其AI代码编辑器用户可直接在平台内完成编码→托管→部署全流程。",
+      "对AI编程开发者：Origin的GitHub实时同步降低了迁移门槛，建议已有Cursor订阅的用户试用；同时关注Agent原生功能正式上线时间——这可能是首个将AI编程和代码托管深度融合的平台。"
+    ],
+    "highlights": [
+      "仓库托管+PR+GitHub实时同步，付费用户beta可用",
+      "集成Vercel/Buildkite/Depot支持预览部署和CI工作流",
+      "计划推出Agent原生功能，AI编程和代码托管深度融合的首个平台"
+    ]
+  },
+  {
+    "id": "2026-08-23-harvey-tenet-legal-model-kimi-k3",
+    "date": "2026-08-23",
+    "category": "产品发布",
+    "title": "Harvey发布Tenet法律专用模型：基于Kimi K3，成本降75%",
+    "summary": "Harvey联合Fireworks AI推出Tenet，基于Kimi K3后训练，法律基准所有通过率提升82%，成本降至顶级基础模型的1/4以下。",
+    "source": "HeadsUpAI",
+    "url": "https://headsupai.io/updates/harvey-launches-tenet-legal-specialized-model-built-on-kimi-k3",
+    "tags": [
+      "Harvey",
+      "Tenet",
+      "法律AI",
+      "Kimi K3",
+      "Fireworks AI"
+    ],
+    "body": [
+      "Harvey于8月22日发布Tenet，这是一款专用于法律场景的后训练模型，基于Kimi K3由Fireworks AI提供推理支持。LAB基准测试显示所有通过率提升82%，成本降至顶级基础模型的1/4以下。",
+      "同步发布三个法律子Agent专用模型：M&A尽职调查文档审查、律所知识管理和企业合同审查，专注法律工作流中高频重复任务。",
+      "Harvey此前以法律LLM闻名，Tenet的发布标志着垂直领域微调模型从「定制开发」走向「成熟产品化」，成本和性能双重优势可能加速法律AI普及。",
+      "对法律科技从业者：Tenet验证了「顶级开源基座+垂直领域后训练」路线的可行性；建议有法律AI需求的机构在当前成本优势窗口期做POC，重点评估尽职调查和合同审查场景的准确率与 hallucinations率。"
+    ],
+    "highlights": [
+      "LAB基准所有通过率提升82%，成本降至顶级基础模型的1/4以下",
+      "三个子Agent模型：M&A尽职调查、文档审查、律所知识管理",
+      "垂直领域后训练从定制走向产品化，法律AI普及成本门槛大幅降低"
+    ]
+  },
+  {
+    "id": "2026-08-23-replit-free-mode-gpt-56-luna",
+    "date": "2026-08-23",
+    "category": "产品发布",
+    "title": "Replit推出Free Mode：GPT-5.6 Luna驱动，聊天ideating不限量",
+    "summary": "Replit上线Free Mode，由GPT-5.6 Luna驱动，移除日常聊天和ideating的用量限制，付费订阅享30倍创作容量和每月30小时聊天。",
+    "source": "HeadsUpAI",
+    "url": "https://headsupai.io/updates/replit-launches-free-mode-powered-by-openai-gpt-5-6-luna-2",
+    "tags": [
+      "Replit",
+      "GPT-5.6",
+      "Luna",
+      "AI编程",
+      "免费"
+    ],
+    "body": [
+      "Replit于8月22日推出Free Mode，由OpenAI GPT-5.6 Luna驱动，移除了日常聊天和ideating阶段的用量限制，降低AI编程入门门槛。付费订阅用户享有30倍创作容量和每月30小时聊天额度。",
+      "同时推出重新设计的界面，简化从简单聊天到复杂项目构建的切换流程。Free Mode适合AI编程初学者做入门体验，付费档适合专业开发者日常使用。",
+      "GPT-5.6 Luna是OpenAI最新编程优化模型，此次Free Mode发布进一步扩大其开发者覆盖面，也是Replit应对Cursor和GitHub Copilot竞争的重要防御手段。",
+      "对AI编程入门者：Free Mode是体验GPT-5.6 Luna编程能力的零成本入口，建议先用Free Mode完成3-5个小项目（如个人网站、爬虫、自动化脚本）评估能力边界，再决定是否升级付费档。"
+    ],
+    "highlights": [
+      "Free Mode移除聊天和ideating用量限制，GPT-5.6 Luna驱动",
+      "付费档30倍创作容量+每月30小时聊天，界面重新设计",
+      "Replit扩大开发者覆盖，应对Cursor/GitHub Copilot竞争"
+    ]
+  },
+  {
+    "id": "2026-08-23-nvidia-rubin-blackwell-15-percent-price-hike",
+    "date": "2026-08-23",
+    "category": "行业动态",
+    "title": "Nvidia警告2027年 Rubin、Blackwell系统涨价15%以上",
+    "summary": "Nvidia合同服务器制造商告知微软、Google、Oracle将于2027年初开始对旗舰Vera Rubin和Grace Blackwell配置涨价超15%，主因是三星/SK海力士/美光 DRAM成本上涨。",
+    "source": "Fortune / Bloomberg",
+    "url": "https://fortune.com/2026/08/22/nvidia-customers-ai-related-price-hikes-15-percent-vera-rubin-grace-blackwell-chips/",
+    "tags": [
+      "Nvidia",
+      "Rubin",
+      "Blackwell",
+      "GPU涨价",
+      "AI基础设施"
+    ],
+    "body": [
+      "Nvidia通过合同服务器制造商告知微软、Google、Oracle，将于2027年初出货的AI服务器系统涨价超15%，涉及旗舰Vera Rubin和Grace Blackwell配置。这是Rubin时代首次面向超大规模厂商的全面涨价。",
+      "涨价驱动因素：三星、SK海力士和美光的DRAM成本持续上涨，Nvidia即使在75%毛利率下也无法继续吸收，被迫向下游传递成本压力。涨价幅度15%起步，部分配置可能更高。",
+      "对AI基础设施规划的影响：15%的GPU采购成本上涨将传导至云厂商定价，企业AI推理成本随之上升。以GB300 NVL72为例，涨价后单节点年运维成本将显著增加。",
+      "对AI基础设施团队：2027年预算规划需考虑GPU涨价因素，建议在2026年底前完成2027年全年算力需求评估并锁定供应合同；同时评估AMD MI350和自研芯片（如Google TPU v7、Meta MTIA）作为替代方案的可行性。"
+    ],
+    "highlights": [
+      "2027年初出货的Vera Rubin和Grace Blackwell涨价15%以上，Rubin时代首次全面涨价",
+      "DRAM成本上涨（三星/SK海力士/美光）是主因，Nvidia无法继续在75%毛利率下吸收",
+      "企业AI推理成本将随之上升，2026年底前锁定供应合同成关键"
+    ]
+  },
+  {
+    "id": "2026-08-23-freetoken-rtx5090-deeps-v4-flash",
+    "date": "2026-08-23",
+    "category": "技术突破",
+    "title": "FreeToken开源：单卡RTX5090跑满血DeepSeek V4Flash",
+    "summary": "UC Berkeley、MIT等联合团队开源FreeToken系统，让RTX 4060跑Qwen3.6-35B（39.3 token/s），RTX 5090跑DeepSeek-V4-Flash 284B，首Token延迟降低42-58%。",
+    "source": "机器之心",
+    "url": "https://www.aitntnews.com/newDetail.html?newId=28504",
+    "tags": [
+      "FreeToken",
+      "端侧部署",
+      "DeepSeek",
+      "MoE",
+      "开源"
+    ],
+    "body": [
+      "UC Berkeley、MIT等机构联合团队本周五（8月21日）发布FreeToken开源系统，专注于MoE大模型在消费级硬件上的端侧部署。RTX 4060可跑Qwen3.6-35B达39.3 token/s，RTX 5090可跑DeepSeek-V4-Flash 284B满血模型，均为单卡运行。",
+      "核心技术为带宽自适应混合调度（Bandwidth-Adaptive Execution）：运行时实时探测PCIe带宽与CPU算力，动态计算最优分流比率，将GPU LRU缓存未命中Expert智能分流至CPU并行计算，在PCIe 3.0/4.0/5.0各规格下均收敛至理论最大吞吐。",
+      "针对Agent工具循环交互场景（如Claude Code、OpenClaw），FreeToken在特殊Token边界设置轻量检查点，多轮交互TTFT减少65-80%；显存不足时自动收缩GPU LRU Cache，将未命中Expert转交CPU计算，保证服务平滑降级而不触发OOM崩溃。",
+      "对AI学习者：FreeToken证明了开源模型权重+端侧软件协同设计可大幅降低大模型使用门槛；建议关注GitHub（FlashML-org/FreeToken）及论文arXiv abs/2608.16157，了解动态带宽感知调度的工程实现细节，可尝试在个人PC上部署Qwen3.6-35B体验本地Agent开发。"
+    ],
+    "highlights": [
+      "RTX 4060跑Qwen3.6-35B达39.3 token/s，RTX 5090跑DeepSeek-V4-Flash 284B满血",
+      "首Token延迟降低42-58%，多轮Agent交互TTFT减少65-80%",
+      "消费级硬件单卡即可跑顶尖MoE模型，开源权重+端侧调度双重降低门槛"
+    ]
+  },
+  {
+    "id": "2026-08-23-yinhe-robots-astra-tennis-autonomous",
+    "date": "2026-08-23",
+    "category": "技术突破",
+    "title": "银河通用实现全球首次人形机器人自主网球赛",
+    "summary": "银河通用在北京国家速滑馆完成全球首次人形机器人自主网球全程直播，展示匹敌人类的实时感知、高速决策与精准运动控制能力，标志具身智能进入物理世界执行新阶段。",
+    "source": "RadarAI",
+    "url": "https://www.bestblogs.dev/article/6938273ac3",
+    "tags": [
+      "银河通用",
+      "人形机器人",
+      "具身智能",
+      "网球",
+      "自主决策"
+    ],
+    "body": [
+      "银河通用于2026年8月23日在北京国家速滑馆完成全球首次人形机器人自主网球赛全程直播，代号「AstraTennis时刻」，展现匹敌人类的实时感知、高速决策与精准运动控制的完整闭环能力。",
+      "该事件被RadarAI评价为AI从工具层向物理世界执行层纵深渗透的标志性节点，意味着真实物理场景下的感知-决策-行动（Perception-Decision-Action）闭环已在实验室之外得到验证。",
+      "同场速报还涉及AI原生组织转型（安克、出门问问等案例验证用AI重构协作逻辑而非仅提升个体效率）以及「假余华」「假鲁迅」等AI生成伪名言泛滥问题，人民日报呼吁平台强化作者溯源与内容核验机制。",
+      "对AI学习者：AstraTennis事件标志着具身智能进入物理执行新阶段，建议关注机器人实时感知与运动控制的最新论文，以及多模型协同的「神经多样性」如何在物理任务中体现；内容可信性基建（溯源/水印）将是下一阶段AI治理的重要方向。"
+    ],
+    "highlights": [
+      "全球首次人形机器人自主网球全程直播，验证物理世界感知-决策-行动闭环",
+      "「AstraTennis时刻」标志具身智能从实验室走向真实物理场景",
+      "AI原生组织与内容可信基建同步成为行业焦点"
+    ]
+  },
+  {
     "id": "2026-08-22-openai-pause-gpt6-rl-training",
     "date": "2026-08-22",
     "category": "政策法规",
@@ -3505,32 +3747,6 @@
       "版权策略：训练数据声明不含未授权真人肖像；导出带 Content Credentials",
       "与竞品：控制粒度优于纯网页生成器，但时长仍偏短片段",
       "建议：先用于预告片空镜，再与实拍素材调色统一"
-    ]
-  },
-  {
-    "id": "2026-06-22-apple-intelligence-cn",
-    "date": "2026-06-22",
-    "category": "产品发布",
-    "title": "Apple Intelligence 中国大陆版开启灰度：本地摘要+写作工具",
-    "summary": "灰度用户可在备忘录与邮件中使用本地模型做摘要、润色与优先通知；云端增强功能分批开放。",
-    "source": "Apple Newsroom",
-    "url": "https://www.apple.com/newsroom",
-    "tags": [
-      "Apple",
-      "端侧",
-      "中国"
-    ],
-    "body": [
-      "本地优先：摘要与写作改写默认在设备 NPU 完成，降低隐私顾虑 这是 2026-06-22 产品发布领域围绕「Apple Intelligence 中国大陆版开启灰度」最受关注的变化之一。",
-      "分批开放：图生图与跨 App Agent 尚未全量，需关注系统更新公告 技术与产品团队需要据此评估集成成本、权限变更与回滚方案，避免未经试点验证就全量切换生产流量。",
-      "生态：开发者可通过 App Intents 接入写作 API 商业与合规方面，建议同步检查数据驻留、日志留存与用户告知义务，尤其当产品面向跨境或多地区用户时。",
-      "用户提示：旧设备需确认 Neural Engine 代际是否支持 对 AI 学习者而言，可借此更新个人工具图谱与踩坑清单，并在一周内完成一次小范围实操或内部分享。"
-    ],
-    "highlights": [
-      "本地优先：摘要与写作改写默认在设备 NPU 完成，降低隐私顾虑",
-      "分批开放：图生图与跨 App Agent 尚未全量，需关注系统更新公告",
-      "生态：开发者可通过 App Intents 接入写作 API",
-      "用户提示：旧设备需确认 Neural Engine 代际是否支持"
     ]
   }
 ]

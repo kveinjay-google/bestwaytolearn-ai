@@ -718,6 +718,9 @@ RAW: list[tuple] = [
     ('reverse-skill', 'Skill 安装与合集', ['Cursor', 'Claude Code', 'Codex', 'Gemini CLI'], 26632,
      'Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base  Su',
      'https://github.com/zhaoxuya520/reverse-skill', 'npx skills add zhaoxuya520/reverse-skill -g -y', None),
+    ('awesome-agent-skills', 'Skill 安装与合集', ['Cursor', 'Claude Code', 'Codex', 'Gemini CLI'], 5002,
+     'Agent Skills 终极指南：快速入门、资源推荐、精选技能与实用工具 ｜The Ultimate Guide to Agent Skills: QuickStart, Resources, Features&Toolkit',
+     'https://github.com/libukai/awesome-agent-skills', 'npx skills add libukai/awesome-agent-skills -g -y', None),
 ]      
 
 
