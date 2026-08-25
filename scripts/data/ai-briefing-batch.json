@@ -1,5 +1,187 @@
 [
   {
+    "id": "2026-08-25-nvidia-groq3-lpx-mass-production",
+    "date": "2026-08-25",
+    "category": "技术突破",
+    "title": "英伟达Groq 3 LPX推理加速器全面量产",
+    "summary": "8月25日英伟达宣布Groq 3 LPX交互式推理加速器全面量产，作为Vera Rubin平台延伸，专注高响应智能体系统的超快速令牌生成。",
+    "source": "无矩AI",
+    "url": "https://iaipie.com/2026%E5%B9%B48%E6%9C%8825%E6%97%A5ai%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/",
+    "tags": [
+      "英伟达",
+      "推理芯片",
+      "Groq",
+      "Vera Rubin"
+    ],
+    "body": [
+      "8月25日，英伟达宣布其交互式AI推理加速器NVIDIA Groq 3 LPX已正式进入全面量产阶段，这是Vera Rubin平台在推理侧的关键延伸产品。Groq 3 LPX通过超快速令牌生成，专为高响应智能体系统打造，目标场景覆盖AI智能体、实时推理和低延迟交互应用。",
+      "随着AI智能体应用爆发，低延迟高吞吐的推理需求急剧增长，推理芯片正成为算力竞争的新战场。Groq 3 LPX量产意味着英伟达在推理侧不再只依赖GPU通用算力，而是通过专用加速器进一步降低延迟并提升token生成速度。",
+      "对开发者而言，未来基于Vera Rubin平台的智能体系统能获得更稳定的实时响应能力，对话类、客服类、代码助手类产品都将受益。这与英伟达在8月初警告Rubin和Blackwell系统2027年涨价15%以上的信号相呼应——算力成本继续上行，但性能侧的提升也在加速。",
+      "学习者提示：关注推理优化技术的演进对Agent开发范式的影响，理解硬件加速、模型蒸馏、KV cache管理如何共同决定生产环境中的端到端体验。"
+    ],
+    "highlights": [
+      "Groq 3 LPX 8月25日全面量产，定位Vera Rubin平台的推理侧延伸",
+      "专为高响应智能体系统设计，主打超快速令牌生成",
+      "智能体应用爆发驱动推理芯片成为算力竞争新战场"
+    ]
+  },
+  {
+    "id": "2026-08-25-spacexai-vera-cpu-starmind-satellite",
+    "date": "2026-08-25",
+    "category": "技术突破",
+    "title": "SpaceXAI部署Vera CPU，首代Starmind卫星将算力送上太空",
+    "summary": "SpaceXAI正在部署首款专为AI智能体打造的NVIDIA Vera CPU，并计划基于Vera Rubin NVL72优化版打造Starmind AI卫星，2027年第四季度送入轨道。",
+    "source": "无矩AI",
+    "url": "https://iaipie.com/2026%E5%B9%B48%E6%9C%8825%E6%97%A5ai%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/",
+    "tags": [
+      "SpaceXAI",
+      "NVIDIA",
+      "太空算力",
+      "Vera CPU"
+    ],
+    "body": [
+      "SpaceXAI正在部署NVIDIA Vera，这是首款专为AI智能体打造的CPU，负责处理模型推理过程中的工具编排、代码执行和数据处理等CPU密集型任务。Vera面向从吉瓦级AI工厂到边缘场景的完整部署谱系。",
+      "更具想象力的是Starmind AI卫星计划——首代卫星将基于优化的Vera Rubin NVL72系统，2026年底目标部署超2吉瓦算力，2027年底地面+轨道合计约10吉瓦。客户包括NYSE、Anthropic、OpenAI、字节跳动等。",
+      "太空算力的核心逻辑是：Vera Rubin架构在每瓦token数和推理成本方面的改进，在太空环境中尤为关键——轨道上的电力和冷却资源极其昂贵。如果2027年Q4成功入轨，可能开启太空AI推理新纪元。",
+      "学习者提示：太空AI不是噱头，本质是算力供给侧的空间拓展。当地面数据中心面临能源和散热瓶颈时，轨道部署可能成为下一轮算力扩张的方向。"
+    ],
+    "highlights": [
+      "Vera CPU是首款专为AI智能体设计的CPU，处理编排/代码/数据任务",
+      "Starmind AI卫星基于Vera Rubin NVL72，2027Q4送入轨道",
+      "2027年底地面+轨道算力目标合计约10吉瓦"
+    ]
+  },
+  {
+    "id": "2026-08-25-openai-gpt56-sol-second-price-cut",
+    "date": "2026-08-25",
+    "category": "产品发布",
+    "title": "OpenAI再降GPT-5.6 Sol价格，一个月内第二次降价",
+    "summary": "OpenAI宣布GPT-5.6 Sol API定价自8月25日起下调，输入降20%、输出降33%，促销至少维持至11月21日，为不到一个月内的第二次降价。",
+    "source": "无矩AI",
+    "url": "https://iaipie.com/2026%E5%B9%B48%E6%9C%8825%E6%97%A5ai%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/",
+    "tags": [
+      "OpenAI",
+      "GPT-5.6",
+      "降价",
+      "API定价"
+    ],
+    "body": [
+      "OpenAI宣布下调GPT-5.6 Sol API定价，新促销价格自2026年8月25日起生效：输入每1M tokens从5美元降至4美元（-20%），输出从30美元降至20美元（-33%）。该促销将至少维持至2026年11月21日，是GPT-5.6系列不到一个月内的第二次降价。",
+      "横向看整个GPT-5.6系列：Terra降至输入2美元/输出12美元（-20%），Luna降至输入0.20美元/输出1.20美元（-80%）。从7月底Luna大幅降价80%，到8月Sol再降33%，OpenAI正以激进定价策略应对DeepSeek、Claude等竞品的成本压力。",
+      "模型价格快速下行对AI应用层是显著利好——创业公司Token成本曲线明显改善，但同时也压缩整个行业利润空间。头部厂商用价格换市场份额，中小厂商面临被动跟随或差异化竞争的两难选择。",
+      "学习者提示：在做产品成本测算时，按促销期和正价期分别建模，关注11月21日之后的定价切换点，避免成本误判。"
+    ],
+    "highlights": [
+      "GPT-5.6 Sol输入降20%、输出降33%，促销至11月21日",
+      "Luna端降幅高达80%，OpenAI全线承压降价",
+      "应用层Token成本红利持续，开发者应按促销/正价双轨测算"
+    ]
+  },
+  {
+    "id": "2026-08-25-nvidia-perplexity-30b-investment-talk",
+    "date": "2026-08-25",
+    "category": "行业动态",
+    "title": "英伟达洽谈投资Perplexity，估值或超300亿美元",
+    "summary": "英伟达正与AI搜索公司Perplexity洽谈投资，新一轮融资估值可能超过300亿美元，此前曾考虑支付数十亿美元获取其技术授权。",
+    "source": "无矩AI",
+    "url": "https://iaipie.com/2026%E5%B9%B48%E6%9C%8825%E6%97%A5ai%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/",
+    "tags": [
+      "英伟达",
+      "Perplexity",
+      "AI搜索",
+      "融资"
+    ],
+    "body": [
+      "据The Information报道，英伟达正与AI搜索初创公司Perplexity洽谈投资事宜，该轮股权融资对Perplexity的估值可能超过300亿美元。谈判仍在进行中，具体金额和条款未披露。",
+      "在投资洽谈之前，英伟达曾考虑向Perplexity支付数十亿美元以获得部分技术授权并聘用部分员工，反映出英伟达对AI搜索赛道的强烈兴趣。Perplexity作为AI原生搜索引擎的代表，正处于流量和商业化双高速增长阶段。",
+      "英伟达持续布局AI应用层，强化生态话语权——从单纯卖算力，到投资下游应用，既锁定客户又分散风险。Perplexity拿到英伟达背书，对抗OpenAI搜索整合、Google AI Overview的底气更足。",
+      "学习者提示：AI搜索赛道格局仍不稳定，关注大厂整合（OpenAI+SearchGPT、Google AI Overview）和独立玩家（Perplexity）的双线竞争，对做SEO/SEM和内容分发的同学有直接影响。"
+    ],
+    "highlights": [
+      "Perplexity本轮估值或超300亿美元",
+      "英伟达此前考虑数十亿美元获取技术授权+招揽员工",
+      "英伟达从卖算力到投资应用层，强化生态绑定"
+    ]
+  },
+  {
+    "id": "2026-08-25-meta-hatch-watermelon-consumer-ai",
+    "date": "2026-08-25",
+    "category": "产品发布",
+    "title": "Meta计划推出Hatch AI助手，10月发布Watermelon模型",
+    "summary": "Meta最快未来几周推出消费者AI助手Hatch，并计划10月发布最新模型Watermelon，扎克伯格推动AI投资变现并拓展广告外收入。",
+    "source": "无矩AI",
+    "url": "https://iaipie.com/2026%E5%B9%B48%E6%9C%8825%E6%97%A5ai%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/",
+    "tags": [
+      "Meta",
+      "AI助手",
+      "Watermelon",
+      "扎克伯格"
+    ],
+    "body": [
+      "Meta Platforms计划最早在未来几周内推出其面向消费者的AI助手（内部代号Hatch），并计划于10月推出最新AI模型Watermelon。Hatch是扎克伯格AI战略的核心组成部分，目标是AI投资变现并拓展广告以外的多元化收入。",
+      "Meta正从开源模型提供商（Llama系列）向消费级AI产品运营商转型，直接与OpenAI（ChatGPT）、Anthropic（Claude.ai）在C端市场竞争。这意味着Meta不再只做底层模型供应商，而是要在用户停留时长和订阅收入上正面交锋。",
+      "Watermelon模型作为Hatch的底座，10月发布后将承担Meta消费级AI的核心能力。Meta的优势在于已有的WhatsApp/Instagram/Facebook庞大用户基础，Hatch很可能会深度嵌入现有产品矩阵。",
+      "学习者提示：Meta在C端AI上后发，但用户基数和分发渠道是最大杠杆。关注Hatch是否绑定WhatsApp/Instagram入口，这会决定其能否快速获得规模化用户。"
+    ],
+    "highlights": [
+      "Hatch是Meta首款消费级AI助手，最快数周内发布",
+      "Watermelon模型计划10月推出",
+      "Meta从开源模型商转型为消费级AI运营商"
+    ]
+  },
+  {
+    "id": "2026-08-25-nvidia-sol-engine-h3-video-speedup",
+    "date": "2026-08-25",
+    "category": "技术突破",
+    "title": "NVIDIA Sol Engine加速MiniMax H3视频生成提速27倍",
+    "summary": "MiniMax AI与NVIDIA SANA团队合作的Sol Engine在MiniMax H3上实现突破，10秒768p视频生成延迟从414秒降至14.93秒，加速27.7倍。",
+    "source": "无矩AI",
+    "url": "https://iaipie.com/2026%E5%B9%B48%E6%9C%8825%E6%97%A5ai%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/",
+    "tags": [
+      "NVIDIA",
+      "MiniMax",
+      "视频生成",
+      "推理加速"
+    ],
+    "body": [
+      "MiniMax AI宣布与NVIDIA SANA团队合作的Sol Engine在MiniMax H3模型上取得重大加速。方案将生成过程拆分为4步低分辨率H3草稿加3步目标分辨率LTX细化（采用Sol-Attn），在单个NVIDIA GB200上10秒768p视频生成延迟从414秒降至14.93秒。",
+      "横向对比：5秒视频从152.3秒降至6.85秒（22.2倍），10秒768p视频从414秒降至14.93秒（27.7倍）。这一成果远超此前3-4倍的优化水平，标志着AI视频生成效率取得突破性进展。",
+      "视频生成速度的大幅提升将显著降低内容创作成本，推动短视频、广告、游戏等领域的AI应用普及。从'分钟级生成'到'十秒级生成'，意味着视频AI有可能进入实时工作流。",
+      "学习者提示：硬件+推理框架+模型架构的协同优化空间巨大，关注NVIDIA Sol-Attn等新机制如何影响开源视频模型的部署成本。"
+    ],
+    "highlights": [
+      "10秒768p视频生成从414秒降至14.93秒，加速27.7倍",
+      "方案：4步H3草稿+3步LTX细化（Sol-Attn）",
+      "远超此前3-4倍水平，视频AI进入十秒级生成时代"
+    ]
+  },
+  {
+    "id": "2026-08-25-vetta-framework-long-task-cost-down",
+    "date": "2026-08-25",
+    "category": "技术突破",
+    "title": "Vetta框架长周期Agent任务成本降至Claude Code三分之一",
+    "summary": "Vetta框架在相同模型与任务下，单任务成本仅0.298美元，约为Claude Code的0.34倍、Hermes的0.27倍，同时保持最高任务完成率。",
+    "source": "无矩AI",
+    "url": "https://iaipie.com/2026%E5%B9%B48%E6%9C%8825%E6%97%A5ai%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/",
+    "tags": [
+      "Agent框架",
+      "Vetta",
+      "成本优化",
+      "Claude Code"
+    ],
+    "body": [
+      "Vetta是一个面向长周期Agent任务的高效框架，在相同模型与任务条件下，仅更换框架即可显著降低任务完成成本：Vetta单任务成本0.298美元，Claude Code为0.872美元（约2.9倍），Hermes为1.095美元（约3.7倍）。",
+      "Vetta不仅成本最低，还宣称拥有最高的任务完成率。这一数据凸显框架本身对Agent性能与成本的重要影响——在AI智能体应用快速发展的今天，框架效率优化与模型能力同样关键。",
+      "对Agent开发者的启示：选择框架比选择模型更能决定生产环境的总成本。Vetta类框架通过优化token使用、上下文管理、工具调用路径，将单任务成本压到通用框架的三分之一。",
+      "学习者提示：评估Agent系统时，不要只看模型benchmark，要把框架成本纳入TCO测算。同一模型+不同框架，单任务成本可能差3倍以上。"
+    ],
+    "highlights": [
+      "Vetta单任务成本0.298美元，约为Claude Code的三分之一",
+      "在最低成本的同时保持最高任务完成率",
+      "框架选择对Agent TCO的影响与模型同等重要"
+    ]
+  },
+  {
     "id": "2026-08-23-generalist-gen-15-embodied-foundation",
     "date": "2026-08-23",
     "category": "技术突破",
@@ -3695,58 +3877,6 @@
       "审计轨迹：每次 AI 修改保留 diff，可一键回滚到上一版数据库结构",
       "协作场景：适合运营看板、招聘管道、课程排期等结构化协作",
       "注意点：复杂跨库公式仍需人工核对边界条件"
-    ]
-  },
-  {
-    "id": "2026-06-24-perplexity-pages",
-    "date": "2026-06-24",
-    "category": "产品发布",
-    "title": "Perplexity Pages 团队版：可引用来源的调研页一键发布",
-    "summary": "团队可共建带脚注的调研专题页，支持嵌入图表与定期自动刷新段落；适合市场与投研小组对外分享。",
-    "source": "Perplexity Blog",
-    "url": "https://www.perplexity.ai/hub/blog",
-    "tags": [
-      "Perplexity",
-      "调研",
-      "协作"
-    ],
-    "body": [
-      "发布形态：生成公开或密码保护的专题页，保留可追溯引用链接 这是 2026-06-24 产品发布领域围绕「Perplexity Pages 团队版」最受关注的变化之一。",
-      "刷新策略：可对指定段落设置每周自动更新，减少手工维护 技术与产品团队需要据此评估集成成本、权限变更与回滚方案，避免未经试点验证就全量切换生产流量。",
-      "权限：团队管理员控制编辑者与对外域名白名单 商业与合规方面，建议同步检查数据驻留、日志留存与用户告知义务，尤其当产品面向跨境或多地区用户时。",
-      "学习者用法：把课程阅读清单做成可分享专题页 对 AI 学习者而言，可借此更新个人工具图谱与踩坑清单，并在一周内完成一次小范围实操或内部分享。"
-    ],
-    "highlights": [
-      "发布形态：生成公开或密码保护的专题页，保留可追溯引用链接",
-      "刷新策略：可对指定段落设置每周自动更新，减少手工维护",
-      "权限：团队管理员控制编辑者与对外域名白名单",
-      "学习者用法：把课程阅读清单做成可分享专题页"
-    ]
-  },
-  {
-    "id": "2026-06-23-adobe-firefly-video",
-    "date": "2026-06-23",
-    "category": "产品发布",
-    "title": "Adobe Firefly Video 公测：Premiere 内文生视频剪辑轨",
-    "summary": "Firefly Video 生成片段可直接落入 Premiere 时间线，支持 Extend、Inpaint 与风格匹配现有素材。",
-    "source": "Adobe News",
-    "url": "https://news.adobe.com",
-    "tags": [
-      "Adobe",
-      "视频",
-      "Firefly"
-    ],
-    "body": [
-      "工作流：在 Premiere 侧边栏输入分镜描述，生成 B-roll 填补空镜 这是 2026-06-23 产品发布领域围绕「Adobe Firefly Video 公测」最受关注的变化之一。",
-      "版权策略：训练数据声明不含未授权真人肖像；导出带 Content Credentials 技术与产品团队需要据此评估集成成本、权限变更与回滚方案，避免未经试点验证就全量切换生产流量。",
-      "与竞品：控制粒度优于纯网页生成器，但时长仍偏短片段 商业与合规方面，建议同步检查数据驻留、日志留存与用户告知义务，尤其当产品面向跨境或多地区用户时。",
-      "建议：先用于预告片空镜，再与实拍素材调色统一 对 AI 学习者而言，可借此更新个人工具图谱与踩坑清单，并在一周内完成一次小范围实操或内部分享。"
-    ],
-    "highlights": [
-      "工作流：在 Premiere 侧边栏输入分镜描述，生成 B-roll 填补空镜",
-      "版权策略：训练数据声明不含未授权真人肖像；导出带 Content Credentials",
-      "与竞品：控制粒度优于纯网页生成器，但时长仍偏短片段",
-      "建议：先用于预告片空镜，再与实拍素材调色统一"
     ]
   }
 ]
