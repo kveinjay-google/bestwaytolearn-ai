@@ -1,5 +1,269 @@
 [
   {
+    "id": "2026-08-26-openai-jalapeno-chip-gb300",
+    "date": "2026-08-26",
+    "category": "技术突破",
+    "title": "OpenAI自研Jalapeño芯片性能公布：多项指标跑赢英伟达GB300",
+    "summary": "OpenAI首款自研推理芯片Jalapeño性能数据出炉，每瓦性能提升1.5-1.9倍，延迟降低1.7-3.6倍；第二代芯片已接近流片。",
+    "source": "无矩AI",
+    "url": "https://iaipie.com/2026%E5%B9%B48%E6%9C%8826%E6%97%A5ai%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/",
+    "tags": [
+      "OpenAI",
+      "Jalapeño",
+      "自研芯片",
+      "推理芯片"
+    ],
+    "body": [
+      "8月25日OpenAI公布首款自研AI推理芯片Jalapeño的首批性能测试结果，该芯片由OpenAI与博通（Broadcom）共同开发，专为大语言模型推理设计。测试数据显示：每瓦工作量提升1.5-1.9倍，响应延迟降低1.7-3.6倍，交互式工作负载性能最高提升4.1倍，全面超越英伟达GB300。",
+      "Jalapeño的设计亮点在于AI产品、模型、芯片和内存从一开始就协同设计，芯片设计过程同样借助了AI辅助。第二代芯片已接近流片阶段，第三代芯片研发工作已启动。应用价值在于实现更快的ChatGPT响应、更灵敏的Codex会话和智能体。",
+      "OpenAI从「用芯片」走向「造芯片」，标志着AI巨头开始向上游算力层渗透，英伟达在推理芯片领域的垄断地位面临新的挑战者。这是AI行业算力自主可控的重要里程碑。",
+      "对AI从业者：Jalapeño性能数据若后续在更大规模验证中持续领先，将动摇英伟达在AI推理市场的绝对优势；建议关注OpenAI是否向第三方开放该芯片，以及第二代芯片的实际量产时间线。"
+    ],
+    "highlights": [
+      "每瓦工作量提升1.5-1.9倍，延迟降低1.7-3.6倍，交互负载性能最高提升4.1倍",
+      "第二代芯片接近流片，第三代已启动，OpenAI从「用芯片」走向「造芯片」",
+      "英伟达在推理芯片领域的垄断面临新挑战者，算力竞争进入新阶段"
+    ]
+  },
+  {
+    "id": "2026-08-26-openai-bel-10t-pretraining-agi",
+    "date": "2026-08-26",
+    "category": "技术突破",
+    "title": "OpenAI完成Bel超10T参数预训练，剑指AGI",
+    "summary": "OpenAI近期完成代号Bel的大型预训练，总参数量超10T，被视为冲击AGI的关键节点；该消息尚未得到官方确认。",
+    "source": "无矩AI",
+    "url": "https://iaipie.com/2026%E5%B9%B48%E6%9C%8826%E6%97%A5ai%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/",
+    "tags": [
+      "OpenAI",
+      "Bel",
+      "AGI",
+      "大模型预训练"
+    ],
+    "body": [
+      "据消息人士爆料，OpenAI近期完成了代号为Bel的大型预训练，总参数量超过10T（万亿），规模与GPT-4.5相当。Bel被视为此前代号Doug模型的直接继任者，预计将作为Astra和GPT-6（经进一步强化学习后）的基础模型。有观点认为其甚至可能达到AGI阈值。",
+      "该消息尚未得到OpenAI官方证实，但其战略意义在于：10T参数级别的预训练若属实，将是截至目前规模最大的语言模型预训练之一，标志着前沿模型规模仍在快速攀升，AGI不再是遥远的概念而是具体的工程目标。",
+      "结合OpenAI Jalapeño自研芯片的消息，OpenAI正在构建从底层算力到上层模型的完全自主技术栈，大幅降低对英伟达等第三方算力的依赖。",
+      "对AI研究者：关注该消息的后续验证；若Bel确实达到AGI阈值，将对整个AI行业的安全对齐工作提出更高要求。建议跟踪OpenAI后续官方公告和Astra/GPT-6的安全评估报告。"
+    ],
+    "highlights": [
+      "Bel超10T参数预训练完成，规模与GPT-4.5相当，或将作为Astra和GPT-6基础",
+      "有观点认为该模型可能达到AGI阈值，但消息尚未获官方证实",
+      "OpenAI同步推进自研芯片+超大模型，算力-模型全栈自主战略清晰"
+    ]
+  },
+  {
+    "id": "2026-08-26-ilya-ssi-model-a16z-praise",
+    "date": "2026-08-26",
+    "category": "技术突破",
+    "title": "Ilya新模型即将发布，a16z称今年最重要",
+    "summary": "a16z合伙人Martin Casado预告Ilya Sutskever离开OpenAI后创立SSI公司的首款模型，称其为\"今年最重要的模型发布\"。",
+    "source": "无矩AI",
+    "url": "https://iaipie.com/2026%E5%B9%B48%E6%9C%8826%E6%97%A5ai%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/",
+    "tags": [
+      "Ilya Sutskever",
+      "SSI",
+      "Safe Superintelligence",
+      "a16z"
+    ],
+    "body": [
+      "a16z合伙人Martin Casado发布预告，称刚刚获得了一个新模型的访问权限，并表示\"这将是今年最重要的模型发布，甚至可以去掉之一\"。业内普遍猜测这是Ilya Sutskever离开OpenAI后创立的Safe Superintelligence（SSI）公司的首款模型产品。",
+      "Ilya Sutskever作为OpenAI联合创始人和前首席科学家，其离开OpenAI后的动向一直备受关注。SSI以\"安全超级智能\"为目标，此次新模型发布将是验证其技术路线的重要窗口。",
+      "Casado同时表示，AI初创企业正以极快速度增长，因为AI已让初创企业与微软、Meta等现有巨头站在同一起跑线上。他观察到计算领域正从以工程为主导转向以资本为主导，二十人团队如今即可有效运用十亿美元资金。",
+      "对AI从业者：Ilya SSI新模型是2026年最受期待的技术发布之一，其在安全对齐和性能上的平衡策略将影响行业对AGI路径的判断；建议关注模型发布后的安全评估报告和基准测试结果。"
+    ],
+    "highlights": [
+      "a16z合伙人称Ilya SSI新模型是\"今年最重要的模型发布，甚至可以去掉之一\"",
+      "Ilya Sutskever创立SSI后首款模型即将发布，目标是安全超级智能",
+      "AI让初创公司与巨头站上同一起跑线，资本密集度上升而工程密度下降"
+    ]
+  },
+  {
+    "id": "2026-08-26-alibaba-wan30-document-video",
+    "date": "2026-08-26",
+    "category": "产品发布",
+    "title": "阿里万相Wan3.0公测：30秒视频+文档直生视频",
+    "summary": "阿里云万相Wan3.0开启公测，首次支持doc/xls/ppt/pdf/md等文档直接生成视频，单次最长30秒（上一代15秒），30fps输出。",
+    "source": "无矩AI",
+    "url": "https://iaipie.com/2026%E5%B9%B48%E6%9C%8826%E6%97%A5ai%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/",
+    "tags": [
+      "阿里云",
+      "万相Wan3.0",
+      "视频生成",
+      "文档生视频"
+    ],
+    "body": [
+      "阿里云万相Wan3.0开启公测，这是通义万相家族第一次把\"文档\"作为一等输入模态的视频生成模型。单次可生成30秒视频（上一代为15秒），输出帧率30fps，支持480P/720P/1080P三种分辨率，以及文生视频、图生视频、参考生视频等多种生成方式。",
+      "核心突破是首次支持doc/xls/ppt/pdf/md等文档格式直接生成视频，用户只需上传一份PPT或Word即可自动生成配套视频内容，大幅降低企业视频制作门槛，实现从\"生成一个镜头\"到\"讲述一段完整故事\"的跨越。",
+      "视频延长功能支持延展故事走向与剧情发展，可将短片段连贯成长叙事。智能时长功能可根据提示词自动推荐合适时长，降低用户的创作决策负担。",
+      "对视频内容创作者：Wan3.0的文档直生视频功能对企业培训、营销视频制作有直接价值；建议在公测期间评估与现有工作流的集成成本，关注实际生成质量（特别是PPT转视频的版式保留效果）。"
+    ],
+    "highlights": [
+      "文档(doc/xls/ppt/pdf/md)首次成为视频生成一等输入模态",
+      "单次视频时长从15秒提升至30秒，30fps输出，支持480P-1080P",
+      "从「生成镜头」到「讲述完整故事」，企业视频制作门槛大幅降低"
+    ]
+  },
+  {
+    "id": "2026-08-26-ox-alpha-openrouter-largest-launch",
+    "date": "2026-08-26",
+    "category": "行业动态",
+    "title": "Ox Alpha登顶OpenRouter：3天处理11.6万亿tokens",
+    "summary": "Ox Alpha成为OpenRouter史上最大规模模型发布，发布后前3天处理11.6万亿tokens，是第二大模型发布量的2.6倍。",
+    "source": "无矩AI",
+    "url": "https://iaipie.com/2026%E5%B9%B48%E6%9C%8826%E6%97%A5ai%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/",
+    "tags": [
+      "Ox Alpha",
+      "OpenRouter",
+      "模型发布",
+      "tokens"
+    ],
+    "body": [
+      "Ox Alpha已成为OpenRouter历史上规模最大的模型发布。发布后前3个完整天内，该模型处理了11.6万亿tokens，是OpenRouter上第二大模型发布量的2.6倍，单日峰值近6万亿tokens/天。用户可通过编码代理中的ori工具使用该模型。",
+      "这一数据说明：模型发布规模不再只取决于基准测试分数，社区接受度、实际调用量和生态集成速度同样是衡量模型成功的关键指标。Ox Alpha在发布密度和实际使用量两个维度同时创下了OpenRouter的历史记录。",
+      "对开发者的直接启示：OpenRouter作为全球最大模型聚合平台，其流量数据是判断模型实际影响力的重要参考。11.6万亿tokens/3天的数字意味着该模型已被大规模生产使用，而非仅仅停留在基准测试刷分阶段。",
+      "对AI应用开发者：关注Ox Alpha在实际编码、推理等任务中的表现与GPT-5.6、Claude系列的差异；可尝试通过ori工具接入评估其实力，用于模型选型的补充参考。"
+    ],
+    "highlights": [
+      "前3天处理11.6万亿tokens，是OpenRouter第二大模型发布量的2.6倍",
+      "单日峰值近6万亿tokens/天，OpenRouter史上规模最大的模型发布",
+      "模型成功不只看基准测试，社区接受度和实际调用量同样关键"
+    ]
+  },
+  {
+    "id": "2026-08-26-gpt-56-sol-microsoft-foundry-sept1",
+    "date": "2026-08-26",
+    "category": "产品发布",
+    "title": "GPT-5.6 Sol 9月1日登陆Microsoft Foundry",
+    "summary": "微软Azure宣布GPT-5.6 Sol将于9月1日上线Microsoft Foundry平台，输入$4/M tokens、输出$20/M tokens，有效期至11月30日。",
+    "source": "无矩AI",
+    "url": "https://iaipie.com/2026%E5%B9%B48%E6%9C%8826%E6%97%A5ai%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/",
+    "tags": [
+      "OpenAI",
+      "GPT-5.6 Sol",
+      "Microsoft Foundry",
+      "Azure"
+    ],
+    "body": [
+      "微软Azure宣布GPT-5.6 Sol将于2026年9月1日在Microsoft Foundry平台上线，这是继OpenAI发布以来GPT-5.6系列再次登陆主流云平台。定价为每100万输入token 4美元、每100万输出token 20美元，价格有效期至少持续至2026年11月30日。",
+      "模型支持高级编码、智能体工作流及100万token上下文窗口，并内置企业级治理能力。Microsoft Foundry作为微软的AI模型服务平台，为企业提供了直接调用GPT-5.6 Sol的合规渠道，结合Azure的安全与合规体系，降低企业采用门槛。",
+      "与OpenAI direct API相比，Microsoft Foundry提供更完整的企业级治理、审计和合规能力，适合对数据安全有高要求的金融机构、医疗和政府部门。这也是微软在AI模型分发领域与OpenAI深度绑定的最新动作。",
+      "对企业在AI平台选型时，Microsoft Foundry适合需要强合规和治理能力的大型组织；但若已有OpenAI direct API渠道且成本敏感，可比较两者TCO再做决策。建议关注9月1日上线后的实际可用性和初始容量情况。"
+    ],
+    "highlights": [
+      "9月1日上线Microsoft Foundry，输入$4/M、输出$20/M，有效期至11月30日",
+      "100万token上下文+企业级治理能力，适合金融、医疗、政府等高合规需求场景",
+      "微软与OpenAI深度绑定，Foundry提供合规渠道vs direct API的差异化定位"
+    ]
+  },
+  {
+    "id": "2026-08-26-nvidia-hot-chips-2026-fullstack-ai",
+    "date": "2026-08-26",
+    "category": "技术突破",
+    "title": "英伟达Hot Chips 2026全栈AI平台出击",
+    "summary": "Hot Chips 2026大会上，英伟达展示全栈AI平台，核心主题为极致协同设计，主打Vera CPU、Groq 3 LPX推理加速器和Spectrum-X网络。",
+    "source": "无矩AI",
+    "url": "https://iaipie.com/2026%E5%B9%B48%E6%9C%8826%E6%97%A5ai%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/",
+    "tags": [
+      "英伟达",
+      "Hot Chips",
+      "Vera CPU",
+      "Groq 3 LPX",
+      "全栈AI"
+    ],
+    "body": [
+      "在Hot Chips 2026大会上，英伟达提出\"极致协同设计\"（Extreme Co-Design）作为本届大会的核心主题，目标加速Agentic工作负载，英伟达称其为\"历史上最复杂的工作负载\"。会上展示了从芯片到网络的全栈AI平台。",
+      "全栈展示包括：Vera CPU专为AI智能体打造，Vera Rubin新一代AI计算平台，Groq 3 LPX交互式推理加速器已全面投产，Spectrum-X Multiplane AI网络解决方案，以及BlueField-4 Scale-In数据处理单元（DPU）。",
+      "就在同一天，OpenAI发布了自研Jalapeño芯片的性能数据，两大玩家在AI算力赛道的竞争愈发激烈——英伟达展示全栈防御，OpenAI向上游渗透，算力竞争进入双线作战新阶段。",
+      "对AI基础设施团队：英伟达全栈方案在系统级整合上仍有优势，但OpenAI自研芯片的威胁不容忽视；建议持续关注Vera Rubin平台的实际部署案例和性价比评估，以及整体方案与AMD MI350的对比。"
+    ],
+    "highlights": [
+      "极致协同设计成Hot Chips 2026核心主题，Agentic工作负载被定义为历史最难",
+      "全栈AI平台亮相：Vera CPU + Groq 3 LPX + Spectrum-X + BlueField-4",
+      "OpenAI Jalapeño与英伟达全栈同日发布，算力竞争进入双线作战"
+    ]
+  },
+  {
+    "id": "2026-08-26- accelerated-understanding-physical-ai",
+    "date": "2026-08-26",
+    "category": "行业动态",
+    "title": "两研究员拒Bezos职位创公司，发布物理世界建模系统",
+    "summary": "两位AI研究员婉拒Jeff Bezos支持的Project Prometheus领导职位，创立Accelerated Understanding并发布物理世界建模AI系统，加州理工Anima Anandkumar参与。",
+    "source": "无矩AI",
+    "url": "https://iaipie.com/2026%E5%B9%B48%E6%9C%8826%E6%97%A5ai%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/",
+    "tags": [
+      "物理AI",
+      "Accelerated Understanding",
+      "Bezos",
+      "Anima Anandkumar",
+      "创业"
+    ],
+    "body": [
+      "两位AI研究员婉拒了Jeff Bezos支持的Project Prometheus提供的领导职位，转而离职创立新公司Accelerated Understanding，并发布了一款用于物理世界建模的AI系统。该公司由加州理工学院教授Anima Anandkumar参与创立。",
+      "两位研究员的选择说明：即便有顶级资本支持，AI研究者在选择研究方向上仍追求更高的自主权。物理世界建模（Physical AI）正在成为新的创业热点方向，专注于让AI理解和建模真实物理环境。",
+      "Anima Anandkumar作为AI领域的知名学者，其参与使Accelerated Understanding的技术背景更具说服力。该公司选择物理世界建模而非纯语言模型，反映了AI从数字世界向物理世界渗透的大趋势。",
+      "对AI创业者：物理AI是2026年新兴的创业方向，两位研究员放弃 Bezos 项目选择自主创业的案例说明：顶级资本背书不等于最优研究环境；关注Accelerated Understanding后续的技术发布和融资进展。"
+    ],
+    "highlights": [
+      "两位研究员婉拒Bezos Project Prometheus领导职位，创立Accelerated Understanding",
+      "发布物理世界建模AI系统，Anima Anandkumar参与创立",
+      "物理AI成新创业热点，AI从数字世界向物理世界渗透趋势加速"
+    ]
+  },
+  {
+    "id": "2026-08-26-apple-m6-m5-ultra-2nm-launch",
+    "date": "2026-08-26",
+    "category": "产品发布",
+    "title": "苹果发布M6与M5 Ultra：首款2nm芯片，AI算力达M3的4.5倍",
+    "summary": "Apple于8月26日发布首款2nm制程M6与四芯片封装的M5 Ultra；M6搭载12核CPU+12核GPU+双16核Neural Engine，M5 Ultra达36核CPU+80核GPU+512GB统一内存。",
+    "source": "Apple Newsroom",
+    "url": "https://www.apple.com/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
+    "tags": [
+      "苹果",
+      "M6",
+      "M5 Ultra",
+      "2nm",
+      "Apple Silicon"
+    ],
+    "body": [
+      "Apple于2026年8月26日正式发布两款M系列芯片：首款采用2纳米制程的M6与首款四芯片封装的M5 Ultra。M6配备12核CPU、12核GPU、双16核Neural Engine、最高32GB统一内存（带宽170GB/s）；M5 Ultra最高支持36核CPU、80核GPU、512GB统一内存（带宽1.2TB/s）。",
+      "Apple官方宣称M6的峰值GPU AI算力较M3提升约30%；M5 Ultra以四芯片封装把桌面级Apple Silicon AI性能推至新高，可与工作站级GPU正面对抗。Apple同步在macOS中扩展Core ML与Foundation Models框架对M5 Ultra张量核心的支持。",
+      "2nm制程与四芯片封装是Apple Silicon路线图的关键节点：M6是消费级Mac首批2nm芯片，M5 Ultra则把单台Mac的AI推理/微调能力提升到可在本地运行7B-13B参数模型的水平。",
+      "对开发者：建议立即评估Core ML 9与Foundation Models 4在M5 Ultra上的本地推理速度与能耗表现，特别是RAG、Agent工作流与本地语音合成场景；如果M5 Ultra能在32B以内模型上跑出可接受TTFT，将明显改变Mac在AI工作站的定位。"
+    ],
+    "highlights": [
+      "M6为Apple首款2nm芯片，CPU/GPU/Neural Engine全面升级，AI算力较M3提升约30%",
+      "M5 Ultra四芯片封装：36核CPU+80核GPU+512GB统一内存，带宽1.2TB/s",
+      "本地运行7B-13B模型成为可能，重塑Mac在AI工作站的定位"
+    ]
+  },
+  {
+    "id": "2026-08-26-skild-ai-s1-single-video-robot",
+    "date": "2026-08-26",
+    "category": "研究前沿",
+    "title": "Skild AI发布S1机器人基础模型：单视频学习10分钟任务",
+    "summary": "Skild AI于8月26日发布S1机器人基础模型，可从单个人类演示视频直接执行最长10分钟的复杂任务，无需微调；在未见任务上达到66%成功率，是同规模VLAs的9%水平的7.3倍。",
+    "source": "Skild AI Blog",
+    "url": "https://www.skild.ai/blogs/s1",
+    "tags": [
+      "Skild AI",
+      "机器人",
+      "具身智能",
+      "视频提示",
+      "基础模型"
+    ],
+    "body": [
+      "Skild AI于2026年8月26日正式发布S1机器人基础模型（robotics foundation model），核心能力是从单个人类演示视频中学习并执行最长10分钟的复杂任务，且全程无需微调。模型在10万小时训练规模下，对未见过的新任务达到66%成功率，作为对比同规模语言提示VLAs仅9%。",
+      "S1的关键突破在于视频理解与机器人控制的无缝衔接：模型直接消费第一人称或第三人称演示视频流，从中抽取任务分解、动作序列和环境反馈的隐式表示，进而在真实机器人上执行长时段操作。这是首个把「单视频演示→长时段任务执行」链路完整打通的机器人基础模型。",
+      "Skild AI此前已发布Skild Brain、Obstacle Avoidance等多款机器人模型，S1是其面向长时段任务的旗舰产品。该路线与Generalist AI的GEN-1.5（3-12秒演示）形成对照：GEN-1.5侧重一步学习的极短任务，S1专注10分钟级长程任务，二者构成具身智能的两条互补路径。",
+      "对具身智能研究者：66% vs 9%的差距说明视频演示数据比纯语言提示更适合机器人任务定义；建议关注S1的开放API与论文细节，评估在自家机器人平台上的零样本迁移效果，特别是工业装配、家用服务和复杂物流场景。"
+    ],
+    "highlights": [
+      "单视频演示直接执行最长10分钟任务，全程无需微调",
+      "未见过任务成功率66% vs VLAs 9%，10万小时训练规模下提升7.3倍",
+      "与Generalist GEN-1.5（3-12秒）形成极短/长程任务互补路径"
+    ]
+  },
+  {
     "id": "2026-08-25-nvidia-groq3-lpx-mass-production",
     "date": "2026-08-25",
     "category": "技术突破",
@@ -3851,32 +4115,6 @@
       "安全机制：默认只读 token，写操作需用户逐步 Accept；企业版可强制代码扫描门禁",
       "适用边界：适合修 bug、补测试、文档同步；架构级重构仍建议人工主导",
       "团队实践：把 Issue 模板写好验收标准，Agent 完成率可提升 20–30%"
-    ]
-  },
-  {
-    "id": "2026-06-25-notion-ai-3",
-    "date": "2026-06-25",
-    "category": "产品发布",
-    "title": "Notion AI 3.0 发布「数据库 Agent」：自然语言改视图与公式",
-    "summary": "用户可用口语描述筛选、分组、rollup 需求，AI 直接生成并解释公式；支持跨页关联与批量属性填充。",
-    "source": "Notion Release Notes",
-    "url": "https://www.notion.so/releases",
-    "tags": [
-      "Notion",
-      "办公",
-      "Agent"
-    ],
-    "body": [
-      "核心能力：一句话创建 Kanban/日历视图并自动补全关联字段 这是 2026-06-25 产品发布领域围绕「Notion AI 3.0 发布「数据库 Agent」」最受关注的变化之一。",
-      "审计轨迹：每次 AI 修改保留 diff，可一键回滚到上一版数据库结构 技术与产品团队需要据此评估集成成本、权限变更与回滚方案，避免未经试点验证就全量切换生产流量。",
-      "协作场景：适合运营看板、招聘管道、课程排期等结构化协作 商业与合规方面，建议同步检查数据驻留、日志留存与用户告知义务，尤其当产品面向跨境或多地区用户时。",
-      "注意点：复杂跨库公式仍需人工核对边界条件 对 AI 学习者而言，可借此更新个人工具图谱与踩坑清单，并在一周内完成一次小范围实操或内部分享。"
-    ],
-    "highlights": [
-      "核心能力：一句话创建 Kanban/日历视图并自动补全关联字段",
-      "审计轨迹：每次 AI 修改保留 diff，可一键回滚到上一版数据库结构",
-      "协作场景：适合运营看板、招聘管道、课程排期等结构化协作",
-      "注意点：复杂跨库公式仍需人工核对边界条件"
     ]
   }
 ]
