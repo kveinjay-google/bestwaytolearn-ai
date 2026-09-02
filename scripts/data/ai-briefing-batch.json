@@ -182,6 +182,84 @@
     ]
   },
   {
+    "id": "2026-09-01-manus-regain-independence-meta-deal-blocked",
+    "date": "2026-09-01",
+    "category": "行业动态",
+    "title": "Manus 恢复独立运营，Meta 20亿美元收购案因合规审查终止",
+    "summary": "Anthropic 联合创始人创立、曾被称全球首款通用 AI 代理实验室的 Manus，恢复独立运营；Meta 约20亿美元收购案因国内监管否决于8月中旬完成拆分。",
+    "source": "AITOP100",
+    "url": "https://www.aitop100.cn/infomation/details/34595.html",
+    "tags": [
+      "Manus",
+      "Meta",
+      "AI代理",
+      "合规审查"
+    ],
+    "body": [
+      "知名通用 AI 代理实验室 Manus 正式恢复独立运营。Meta 于2025年12月计划斥资约20亿美元收购 Manus，目标将智能体技术整合进 Meta AI 产品线；2026年4月国内监管机构依据外资安全审查相关规定否决该收购。",
+      "8月中旬两家企业完成数据迁移与业务流程拆分，逐步恢复平台服务稳定性。独立之后 Manus 公布新产品方向：强化 AI 代理融入工作流程、对接现实世界、自主代为执行任务的能力。",
+      "作为曾经被称作全球首款通用智能体的项目，Manus 独立之后意味着失去 Meta 的算力与流量加持，技术研发、商业化都依靠自身团队推进，但同时保留了更独立的产品路线。",
+      "对 AI 行业观察者：跨境 AI 收购交易的数据合规、国家安全审查已成不可绕开的变量；Manus 独立后能否在自主规划、复杂任务执行方向实现突破，值得持续跟踪。"
+    ],
+    "highlights": [
+      "Meta 约20亿美元收购案被监管否决，8月中旬完成数据拆分",
+      "Manus 恢复独立运营，团队重新接管全部运营工作",
+      "跨境 AI 收购数据合规审查成关键变量，行业参考案例"
+    ]
+  },
+  {
+    "id": "2026-09-01-iflytek-xfyun-x25-million-token-opensource",
+    "date": "2026-09-01",
+    "category": "技术突破",
+    "title": "讯飞星火 X2.5 双子星开源，端侧首次下放百万 Token 上下文",
+    "summary": "科大讯飞开源星火 X2.5-4B、X2.5-1.7B 两款端侧模型，端侧首次原生支持100万 Token 长上下文，兼容英伟达、华为等主流硬件和 vLLM、llama.cpp 推理框架。",
+    "source": "AITOP100",
+    "url": "https://www.aitop100.cn/infomation/details/34595.html",
+    "tags": [
+      "讯飞星火",
+      "端侧模型",
+      "百万Token",
+      "开源"
+    ],
+    "body": [
+      "9月1日科大讯飞旗下星火开源星火 X2.5-4B、星火 X2.5-1.7B 两款端侧大模型，这是端侧模型里首次原生支持100万 Token 长上下文的模型，模型权重、代码、部署文档全部对外公开，整套训练流程跑在国产算力集群之上。",
+      "两款模型采用混合注意力架构，重点优化智能体、代码、数学、指令跟随能力。4B 版本代码能力能够对标参数高出2-3倍的云端模型；1.7B 版本智能家居测试集指令执行正确率90.3%，响应仅0.85秒。",
+      "适配性上，模型兼容英伟达、华为、海光、后摩硬件，vLLM、llama.cpp 等主流推理框架，借助 Ollama 可快速本地部署，也支持二次增量训练。模型权重已上传至 GitHub 和 Hugging Face，MaaS 平台 API 限时免费开放。",
+      "对端侧 AI 开发者：百万 Token 上下文意味着本地小模型也可以完整读取整本文档，建议在售后手册分析、长文档问答等场景测试 4B 版本表现，关注9月7日云端旗舰星火 X2.5 的发布动态。"
+    ],
+    "highlights": [
+      "端侧首次原生支持100万 Token 上下文，4B 版本代码能力对标2-3倍参数的云端模型",
+      "兼容英伟达/华为/海光/后摩硬件+vLLM/llama.cpp，Ollama 可快速部署",
+      "国产算力集群训练，MaaS API 限时免费，9月7日还将发布云端旗舰"
+    ]
+  },
+  {
+    "id": "2026-09-01-anthropic-claude-fable-51-ga-cost-down-45pct",
+    "date": "2026-09-01",
+    "category": "产品发布",
+    "title": "Anthropic Claude Fable 5.1 正式发布：典型负载成本降低25%，智能体场景降低45%",
+    "summary": "Anthropic 于9月1日正式发布 Claude Fable 5.1，输入输出定价与 Fable 5 持平（$10/$50 per 1M tokens），缓存读取定价大幅下调75%至$0.25，自汇报 Terminal-Bench-Science 分数达52.6。",
+    "source": "The Verge",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/987830/anthropic-claude-fable-mythos-5-1",
+    "tags": [
+      "Anthropic",
+      "Claude",
+      "Fable 5.1",
+      "产品发布"
+    ],
+    "body": [
+      "Anthropic 于2026年9月1日正式发布 Claude Fable 5.1（暨 Claude Fable 5.1 GA），定价为输入 $10/1M tokens、输出 $50/1M tokens，与 Fable 5 持平不变，缓存读取定价下调75%至 $0.25/1M tokens。",
+      "Fable 5.1 在典型负载下成本比 Fable 5 低约25%，在高度智能体化工作负载下成本降低高达45%；Anthropic 官方自汇报 Terminal-Bench-Science 分数达52.6，相比 Fable 5 的24.7有显著提升。",
+      "Claude Mythos 5.1 作为信任访问版本同步发布，同样于9月1日 GA。两款模型主打编程、知识工作和长程问题解决能力，Anthropic 宣称 Fable 5.1 \"为编码、知识工作和长程任务设立了新标准\"。",
+      "对开发者：Fable 5.1 加量（能力提升）不加价（定价不变），缓存成本大降，对使用大量上下文填充的智能体应用是直接利好；建议评估其与 GPT-5.6 Sol 在编程任务上的性价比差异。"
+    ],
+    "highlights": [
+      "Fable 5.1 定价 $10/$50 per 1M tokens（与 Fable 5 持平），缓存读取降价75%至 $0.25",
+      "典型负载成本降25%，智能体场景成本降45%；Terminal-Bench-Science 自报52.6（vs Fable 5 的24.7）",
+      "Claude Mythos 5.1 同步 GA，定位信任访问版"
+    ]
+  },
+  {
     "id": "2026-08-31-claude-sonnet-5-no-price-hike",
     "date": "2026-08-31",
     "category": "产品发布",
