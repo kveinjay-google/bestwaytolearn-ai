@@ -721,6 +721,9 @@ RAW: list[tuple] = [
     ('awesome-agent-skills', 'Skill 安装与合集', ['Cursor', 'Claude Code', 'Codex', 'Gemini CLI'], 5002,
      'Agent Skills 终极指南：快速入门、资源推荐、精选技能与实用工具 ｜The Ultimate Guide to Agent Skills: QuickStart, Resources, Features&Toolkit',
      'https://github.com/libukai/awesome-agent-skills', 'npx skills add libukai/awesome-agent-skills -g -y', None),
+    ('book-to-skill', 'Skill 安装与合集', ['Cursor', 'Claude Code', 'Codex', 'Gemini CLI'], 28922,
+     'Turn any technical book PDF into a Claude Code skill — ready to study, reference, and use while you work.',
+     'https://github.com/virgiliojr94/book-to-skill', 'npx skills add virgiliojr94/book-to-skill -g -y', None),
 ]      
 
 

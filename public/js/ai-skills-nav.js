@@ -1036,6 +1036,15 @@ const AI_SKILLS_NAV_ITEMS = [
     github: "https://github.com/libukai/awesome-agent-skills",
     install: "npx skills add libukai/awesome-agent-skills -g -y",
   },
+  {
+    name: "book-to-skill",
+    category: "Skill 安装与合集",
+    agents: ["Cursor", "Claude Code", "Codex", "Gemini CLI"],
+    stars: 28922,
+    desc: "Turn any technical book PDF into a Claude Code skill — ready to study, reference, and use while you work.",
+    github: "https://github.com/virgiliojr94/book-to-skill",
+    install: "npx skills add virgiliojr94/book-to-skill -g -y",
+  },
 ];
 
 function getAiSkillsNavCategorySlug(category) {
