@@ -1,5 +1,84 @@
 [
   {
+    "id": "2026-09-08-ai-data-center-water-crisis",
+    "date": "2026-09-08",
+    "category": "行业动态",
+    "title": "AI数据中心水耗争议：Oklahoma泄漏、Georgia过度取水",
+    "summary": "Oklahoma一处数据中心故障泄漏约11400立方米水致学校停课，Georgia另一设施9-15个月取水11万立方米未计费，引发数据中心环境争议。",
+    "source": "Tom's Hardware / Reuters",
+    "url": "https://www.tomshardware.com/tech-industry/data-centers/bitcoin-mining-data-center-condemned-after-leaking-3-million-gallons-of-water-and-forcing-school-closures-facility-operated-for-years-under-a-city-stop-work-order",
+    "tags": [
+      "AI基础设施",
+      "数据中心",
+      "环境争议",
+      "水资源"
+    ],
+    "body": [
+      "Oklahoma一处曾用于比特币挖矿的数据中心因故障泄漏约11400立方米（300万加仑）水，导致当地学校、企业和公共设施临时关闭，该设施多年来在市政停工令下一直非法运营，事件曝光后被正式谴责。",
+      "同期，Georgia一处大型数据中心的建设过程中，通过未计量连接在9-15个月内消耗约11万立方米水，当地政府此前毫不知情，造成局部水网压力问题，该公司随后被要求补缴水费但未受罚款。",
+      "数据中心冷却是AI算力扩张的关键瓶颈，Tom's Hardware报道指出，水资源正成为继能源之后第二个可能限制数据中心扩张的要素，科技公司正面临越来越大的社区压力和环境合规审查。",
+      "对AI从业者：AI基础设施的环境外部性正从隐性变为显性——水耗、能耗、土地利用正成为项目落地的非技术门槛；选型云服务或数据中心时，环境合规成本应纳入TCO评估。"
+    ],
+    "highlights": [
+      "Oklahoma数据中心泄漏1.14万立方米水致学校停课，多年非法运营",
+      "Georgia数据中心9-15个月消耗11万立方米水，水务公司事后追费但未罚款",
+      "水资源正成为AI数据中心扩张的新限制因素，环境合规成本上升"
+    ]
+  },
+  {
+    "id": "2026-09-08-viaim-rise-ai-earbuds-indiegogo",
+    "date": "2026-09-08",
+    "category": "产品发布",
+    "title": "viaim Rise AI耳机获IFA双奖，9月8日Indiegogo众筹上线",
+    "summary": "AI可穿戴设备厂商viaim推出的Rise耳机在IFA 2026获最佳音频奖和最佳设计奖，9月8日正式启动Indiegogo众筹。",
+    "source": "PRNewswire / Notebookcheck",
+    "url": "https://www.prnewswire.com/news-releases/viaim-rise-receives-two-2026-ifa-innovation-awards-indiegogo-campaign-launches-september-8-302870702.html",
+    "tags": [
+      "AI可穿戴",
+      "耳机",
+      "IFA2026",
+      "AI智能体"
+    ],
+    "body": [
+      "柏林IFA 2026期间，viaim Rise AI耳机同时获得最佳音频奖（Best in Audio）和最佳设计荣誉奖（Best in Design Honoree），这也是AI音频设备首次在IFA创新奖中获得音频类别最高奖。",
+      "Rise核心特点是结合声学工程与AI助手功能，配备专属智能充电盒，官方定位为\"AI Agent Earbuds\"——不仅播放音频，还能记录、转写、分析会议内容并生成摘要，Indiegogo众筹于北京时间9月8日晚9点（ET上午9点）正式启动。",
+      "viaim同时宣布已与全球20家企业客户签约提供企业版解决方案，覆盖会议记录、客服辅助和现场培训等场景，这是继苹果AirPods Pro和三星Galaxy Buds之后，又一厂商尝试将AI Agent能力嵌入耳机。",
+      "对产品经理和硬件开发者：AI可穿戴设备正在从语音交互向\"感知+执行\"演进，会议耳机是当前最直接的B端落地场景；关注音频AI的边缘推理性能和功耗优化，这两个指标决定设备续航体验。"
+    ],
+    "highlights": [
+      "IFA 2026获最佳音频奖+最佳设计奖，AI音频设备首次获音频类最高奖",
+      "Indiegogo众筹9月8日启动，企业版已签约20家客户",
+      "AI耳机从语音交互向\"感知+执行\"演进，会议记录成B端主场景"
+    ]
+  },
+  {
+    "id": "2026-09-08-saudi-humain-minimax-m3-sovereign-ai",
+    "date": "2026-09-08",
+    "category": "行业动态",
+    "title": "沙特HUMAIN-M3基于MiniMax M3开源堆栈，PIF主权AI加速",
+    "summary": "沙特PIF主权财富基金支持的HUMAIN发布基于MiniMax M3开源MoE架构的阿拉伯语前沿模型，标志着中东主权AI项目首次以中国开源模型为基座。",
+    "source": "Pandaily",
+    "url": "https://pandaily.com/minimax-m3-humain-m3-saudi-sovereign-ai-sep2026",
+    "tags": [
+      "沙特",
+      "主权AI",
+      "MiniMax",
+      "开源模型",
+      "阿拉伯语"
+    ],
+    "body": [
+      "沙特阿拉伯主权AI项目HUMAIN发布基于MiniMax M3开源MoE架构的阿拉伯语前沿模型M3，由PIF（公共投资基金）资助，这是中东主权AI项目首次明确采用中国开源大模型作为训练起点，而非美国闭源API或开源模型。",
+      "MiniMax M3采用Mixture-of-Experts架构，支持超长上下文和多语言能力，HUMAIN选择以它为基础进行阿拉伯语专项训练和微调，降低了从头训练frontier model的成本和技术风险，同时借助开源协议的灵活性保留模型主权。",
+      "这一路径与阿联酋G42基于中国模型发展主权AI的模式类似但更彻底——HUMAIN不仅采购API，而是以开源权重为base做深度定制；这意味着中国开源模型正成为全球主权AI建设的\"第三选择\"，介于美国闭源和中国闭源之间。",
+      "对AI出海团队：开源权重出口已触及主权AI需求——理解伊斯兰文化圈和阿语市场偏好的团队可关注HUMAIN合作生态；对中国模型厂商而言，中东主权AI是重要的B2B和B2G渠道，建议关注G42、HUMAIN等机构的采购需求。"
+    ],
+    "highlights": [
+      "沙特HUMAIN-M3首次以中国开源MoE为基座建立阿拉伯语主权AI",
+      "PIF资助，中东主权AI选择中国开源模型作为\"第三选择\"",
+      "中国开源模型正成为全球主权AI建设的重要基础设施"
+    ]
+  },
+  {
     "id": "2026-09-07-openai-3700-agents-dsewiki-hack",
     "date": "2026-09-07",
     "category": "行业动态",
