@@ -1,5 +1,157 @@
 [
   {
+    "id": "2026-09-12-perplexity-gpt6-astra-end-to-end",
+    "date": "2026-09-12",
+    "category": "应用",
+    "title": "Perplexity 采用 GPT-6 Astra 实现端到端系统管理",
+    "summary": "Perplexity 将 GPT-6 Astra 应用于内部运营多个环节，包括撰写沟通内容、修改软件和监控生产系统，人工检查频率较早期模型大幅降低。",
+    "source": "OpenAI News",
+    "url": "https://openai.com/index/perplexity-improving-accuracy-with-astra",
+    "tags": [
+      "GPT-6 Astra",
+      "Perplexity",
+      "AI应用",
+      "企业AI"
+    ],
+    "body": [
+      "Perplexity 正在将 GPT-6 Astra 应用于其内部运营的多个环节，包括撰写沟通内容、修改软件以及监控生产系统。与使用早期模型相比，Perplexity 团队如今对系统运行的检查频率大幅降低，标志着 AI 在真实业务场景中从被动辅助转向主动执行。",
+      "这一变化意味着企业软件与运维工具的形态可能随之调整。若 AI 能够可靠地完成跨环节任务，企业对人工核验的依赖将显著下降，运维成本结构有望重塑。",
+      "Perplexity 是 GPT-6 Astra 在实际生产环境中的一个参考案例，目前尚未披露具体部署规模或量化效果，但已展示端到端自主执行的可行性。",
+      "对开发者而言，这意味着 AI Agent 正在从实验走向生产——建议关注 Astra 在不同业务场景中的表现，学习如何设计可靠的 AI 驱动工作流。"
+    ],
+    "highlights": [
+      "Perplexity 用 GPT-6 Astra 减少人工检查频率，AI 从辅助工具转向主动执行端到端任务",
+      "企业软件与运维市场可能因此重构，运维成本结构面临重塑机会"
+    ]
+  },
+  {
+    "id": "2026-09-12-nvidia-nvlink-fusion-dmatrix-astera",
+    "date": "2026-09-12",
+    "category": "行业动态",
+    "title": "英伟达开放NVLink Fusion，d-Matrix与Astera Labs入局",
+    "summary": "英伟达向推理芯片公司 d-Matrix 开放 NVLink Fusion 技术，将其 Raptor 处理器接入英伟达数据中心机架，相关系统预计 2027 年面世。",
+    "source": "Yahoo Finance",
+    "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-nvlink-fusion-dmatrix-2026.html",
+    "tags": [
+      "英伟达",
+      "NVLink Fusion",
+      "d-Matrix",
+      "互连技术"
+    ],
+    "body": [
+      "据路透社报道，推理芯片公司 d-Matrix 将采用英伟达的 NVLink Fusion 技术，把其下一代 Raptor 处理器直接接入英伟达数据中心机架，相关系统预计 2027 年面世。Astera Labs 正与 d-Matrix 合作开发定制连接方案，负责系统内数据高速传输。",
+      "此举让竞争性加速器更易部署在英伟达架构内，形成加速器、机架级互连与连接方案的三层分工。英伟达若把 NVLink 打造成容纳竞品的机架级标准，其价值将不再只取决于卖多少颗 GPU，而在于掌握系统互连话语权。",
+      "NVLink Fusion 的开放是英伟达生态策略的重要转变——从完全封闭走向有选择地接纳竞争对手进入其互连体系。",
+      "对 AI 基础设施从业者：关注 d-Matrix Raptor 的性能数据以及 NVLink Fusion 机架的实际部署节奏，这将影响异构 AI 算力集群的架构选择。"
+    ],
+    "highlights": [
+      "d-Matrix Raptor 处理器 2027 年接入 NVLink Fusion 机架，Astera Labs 提供高速连接方案",
+      "英伟达互连标准向竞品开放，形成加速器+互连+连接芯片三层分工生态"
+    ]
+  },
+  {
+    "id": "2026-09-12-kepler-storage-architecture-surpasses-hbm",
+    "date": "2026-09-12",
+    "category": "技术突破",
+    "title": "英特尔投资的 Kepler 推出新型存储架构，声称可超越 HBM",
+    "summary": "英特尔投资的 Kepler Computing 推出基于铁电材料与三维堆叠的新型存储架构，声称性能可超越传统 HBM，计划 2027 年开始量产。",
+    "source": "Yahoo Finance",
+    "url": "https://finance.yahoo.com/technology/ai/articles/kepler-storage-architecture-2026.html",
+    "tags": [
+      "Kepler",
+      "存储架构",
+      "HBM替代",
+      "铁电材料"
+    ],
+    "body": [
+      "英特尔投资的 Kepler Computing 结束隐身模式，推出基于铁电材料与三维堆叠的新型存储架构，声称性能可超越传统 HBM，且能用现有半导体制造设备生产，无需定制工艺。该公司计划 2026 年晚些时候提供首批样品、2027 年开始量产。",
+      "Kepler 的核心卖点是「用现有设备生产」——这意味着如果技术兑现，存储厂商无需重资采购新设备即可生产高性能内存，大幅降低替代 HBM 的资本支出门槛。",
+      "美光目前已有 HBM4 进入量产，用于英伟达 Vera Rubin 平台。若新型存储架构最终落地，可能削弱 HBM 的稀缺性溢价，牵动美光等存储厂商的估值叙事。",
+      "对芯片从业者：关注 Kepler 首批样品的性能数据以及是否能通过英伟达认证——这将是判断其能否真正挑战 HBM 地位的关键里程碑。"
+    ],
+    "highlights": [
+      "Kepler 铁电+3D堆叠存储架构声称超越 HBM，可用现有半导体设备生产",
+      "若技术兑现将降低替代 HBM 的资本门槛，对美光等存储厂商构成竞争压力"
+    ]
+  },
+  {
+    "id": "2026-09-12-nvidia-anthropic-ipo-10b-investment",
+    "date": "2026-09-12",
+    "category": "行业动态",
+    "title": "英伟达洽谈在 Anthropic IPO 中投资高达 100 亿美元",
+    "summary": "英伟达正与 Anthropic 洽谈，拟作为基石投资者投入最多 100 亿美元参与其 IPO，Anthropic 估值有望触及 2 万亿美元，融资规模或高达 1000 亿美元。",
+    "source": "TechCrunch",
+    "url": "https://techcrunch.com/2026/09/11/kimi-maker-moonshot-ai-targets-2-billion-in-annual-revenue/",
+    "tags": [
+      "英伟达",
+      "Anthropic",
+      "IPO",
+      "投资"
+    ],
+    "body": [
+      "据路透社报道，英伟达正与 Anthropic 洽谈，拟作为基石投资者投入最多 100 亿美元参与其 IPO。Anthropic 估值有望触及 2 万亿美元，或成为史上规模最大的 IPO，预计在 2026 年 11 月美国中期选举前完成。",
+      "若成行，这将是芯片巨头与其重要模型客户之间罕见的资本绑定。英伟达已是 Anthropic 算力的核心供应商，追加股权投资将进一步绑定双方利益，但也可能引发监管机构对 AI 算力与模型层垂直整合的关注。",
+      "Anthropic 拒绝置评，英伟达未即时回应。目前双方洽谈细节尚不清楚，最终投资规模和时间表仍可能发生变化。",
+      "对 AI 投资者：这是观察芯片层与模型层资本绑定的标志性事件——若落地，将对 AI 产业链的投资逻辑和竞争格局产生深远影响。"
+    ],
+    "highlights": [
+      "英伟达或作为基石投资者在 Anthropic IPO 中投入最多 100 亿美元",
+      "Anthropic 估值 2 万亿美元、融资 1000 亿美元，史上最大 IPO，11 月完成"
+    ]
+  },
+  {
+    "id": "2026-09-12-hbm-shortage-huawei-ascend-250k",
+    "date": "2026-09-12",
+    "category": "行业动态",
+    "title": "HBM 短缺加剧：华为昇腾 950DT 报价涨至 25 万元以上",
+    "summary": "HBM 供应趋紧导致华为昇腾 950DT 报价超过 25 万元人民币，涨幅约 20% 至 50%。美光 HBM4 量产受益，英伟达面临利润率被上游挤压的压力。",
+    "source": "Yahoo Finance",
+    "url": "https://finance.yahoo.com/technology/ai/articles/ai-hbm-shortage-huawei-2026.html",
+    "tags": [
+      "HBM",
+      "华为",
+      "昇腾950DT",
+      "美光",
+      "芯片短缺"
+    ],
+    "body": [
+      "AI 芯片市场的 HBM 供应趋紧，路透社报道称，华为、寒武纪等中国 AI 芯片厂商因 HBM 日益稀缺而上调加速器价格。华为即将推出的昇腾 950DT 报价据称超过 25 万元人民币，较此前定价上涨约 20% 至 50%。",
+      "美光的 HBM4 已为英伟达 Vera Rubin 平台量产，每堆栈带宽超过 2.8 TB/s，被视为 HBM 短缺中的关键受益方。同时，英伟达需与内存、网络、代工、封装等供应商分享更多系统利润，HBM 成本上升可能挤压其利润率或推高整机价格。",
+      "HBM 短缺正在重塑 AI 芯片产业链的利润分配：内存供应商定价权增强，而英伟达等加速器厂商的系统利润率面临被上游分走的压力。",
+      "对 AI 基础设施规划者：关注 HBM 供需拐点——内存短缺对算力成本的影响正在从幕后走向台前，建议在算力采购预算中预留涨价空间。"
+    ],
+    "highlights": [
+      "华为昇腾 950DT 报价超 25 万元，涨幅 20%-50%，HBM 短缺成最大瓶颈",
+      "美光 HBM4 量产受益，英伟达利润率面临被上游挤压风险"
+    ]
+  },
+  {
+    "id": "2026-09-12-jensen-cybersecurity-ai-killer-app",
+    "date": "2026-09-12",
+    "category": "行业动态",
+    "title": "黄仁勋称网络安全将成 AI 下一个杀手级应用",
+    "summary": "英伟达 CEO 黄仁勋在 CrowdStrike 大会上与该公司联合发布 AI 网络安全系统 SafeMind，称网络安全是 AI 编程的自然延伸，可全天候运行无需等待人工指令。",
+    "source": "Yahoo Finance",
+    "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-crowdstrike-safemind-2026.html",
+    "tags": [
+      "英伟达",
+      "黄仁勋",
+      "网络安全",
+      "AI Agent",
+      "CrowdStrike"
+    ],
+    "body": [
+      "英伟达 CEO 黄仁勋认为网络安全有望成为 AI 下一个重要应用市场。在 CrowdStrike 的 Fal.Con 2026 大会上，两家公司联合发布智能体网络安全系统 SafeMind，采用英伟达 Nemotron 模型与 CrowdStrike Cyber Superintelligence Lab 的技术。",
+      "黄仁勋在高盛大会上进一步阐述，称网络安全是 AI 编程的自然延伸——防御系统可全天候运行、无需等待人工指令，AI 代理可以在发现威胁时立即采取行动，而非仅发出警报。",
+      "若智能体安全成为持续性推理负载，将为英伟达打开训练之外的高频推理需求市场，同时抬升 CrowdStrike 等安全平台的数据护城河。",
+      "对安全从业者：AI Agent 在网络安全领域的落地正在加速，关注 SafeMind 的具体功能和定价模式，这可能开创 AI 安全服务的新品类。"
+    ],
+    "highlights": [
+      "英伟达+CrowdStrike 联合发布 SafeMind，用 AI Agent 做网络安全",
+      "黄仁勋称网络安全是 AI 编程的自然延伸，AI 安全 Agent 可能成为高频推理新场景"
+    ]
+  },
+  {
     "id": "2026-09-11-openai-quantum-computer-autonomous",
     "date": "2026-09-11",
     "category": "技术突破",
