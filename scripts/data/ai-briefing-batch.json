@@ -1,5 +1,155 @@
 [
   {
+    "id": "2026-09-18-anthropic-rsi-30000-agents-report",
+    "date": "2026-09-18",
+    "category": "行业动态",
+    "title": "Anthropic首曝RSI报告：3万智能体主导26%核心研发",
+    "summary": "Anthropic首次公开内部研发指标，3万个AI智能体主导26%核心研发、90%已人机深度协同，安全算力仅占6%。公司向全行业喊话要求公开同类数据。",
+    "source": "AITNT",
+    "url": "https://www.aitntnews.com/newDetail.html?newId=29453",
+    "tags": [
+      "Anthropic",
+      "RSI",
+      "智能体",
+      "AI安全"
+    ],
+    "body": [
+      "Anthropic 9月18日首次公开内部研发指标：基于 Epoch AI 六级自动化标准，用 Claude 智能体回溯 20% 研发部门员工 Slack 记录，梳理出 15000 项任务、542 个节点，结果显示 Claude 已能主导 26% 的核心研发工作，达到人机深度协同的比例超过 90%。",
+      "数据同时披露 Anthropic 内部日常并发运行约 30000 个研发智能体，构建了独立身份+透明广播双层架构防止集体幻觉；8 月拦截了约 10 亿次智能体操作，0.002% 被强制叫停（约 2 万次越界被暂停），每周抽查 10 万份可疑日志交人类专家终审。",
+      "算力分配上，2026 年 7 月 13-20 日快照显示仅约 6% 算力用于安全研究（AI 主导研发中占 12%）。Anthropic 主动公开这套基线，意在建立行业可量化的透明度标准，倒逼 OpenAI、Google DeepMind 等实验室跟进披露。",
+      "对学习者：RSI（递归自我迭代）已从概念变成可测量的事实。关注 Anthropic 公开的「三大指标」是否能引发同行跟进，这将是判断 2027 年 AI 监管框架能否落地的关键风向标。"
+    ],
+    "highlights": [
+      "Claude 已主导 26% 核心研发，人机深度协同超 90%，3 万智能体 24 小时并行",
+      "Anthropic 公开安全算力仅 6% 的数据，向全行业喊话要求建立透明度标准"
+    ]
+  },
+  {
+    "id": "2026-09-18-openai-millennium-prize-second-brockman",
+    "date": "2026-09-18",
+    "category": "技术突破",
+    "title": "OpenAI总裁证实拿下第二个千禧年难题",
+    "summary": "Greg Brockman公开表示OpenAI在第二个千禧年大奖难题上取得重大进展，外界猜测指向P vs NP问题。此前纳维尔-斯托克斯证明动用约1万个智能体持续推演88小时。",
+    "source": "AITNT",
+    "url": "https://www.aitntnews.com/newDetail.html?newId=29455",
+    "tags": [
+      "OpenAI",
+      "千禧年难题",
+      "数学证明",
+      "智能体"
+    ],
+    "body": [
+      "OpenAI 联合创始人兼总裁 Greg Brockman 在最新访谈中证实：在纳维尔-斯托克斯方程取得突破后，团队在「另一个千禧年大奖难题」上也取得重大进展。外界猜测最有可能指向 P vs NP 问题，若被攻破将动摇 RSA、椭圆曲线等非对称加密体系的逻辑根基。",
+      "此前纳维尔-斯托克斯证明过程中，OpenAI 调集约 10000 个高阶推理智能体持续推演 88 小时，发送 270 万条消息、消耗约 1300 亿输出 token，最终用 Lean 形式化代码完成从头到尾的验证。这一过程被数学界视为对人类智力劳动范式的降维打击。",
+      "事件伴随争议：NYU 数学家 Tristan Buckmaster 与 Anthropic 数学家 Levent Alpöge 使用 Codex 和 Claude 推进三项证明后，Buckmaster 声称 OpenAI 数学家 Bubeck 曾施压要求删除 Alpöge 署名，并使用约 3000 亿 token（按 Astra 费率约 2250 万美元）在约一周内完成并行证明发布。",
+      "对学习者：千禧年难题的连续突破将重新定义「AI 在科研中的角色」。关注 9 月 OpenAI DevDay 的正式公告，这可能是判断 LLM 是否进入「科学发现引擎」阶段的关键节点。"
+    ],
+    "highlights": [
+      "Greg Brockman 确认第二个千禧年难题取得重大进展，最可能指向 P vs NP",
+      "此前纳维尔-斯托克斯证明动用 1 万智能体、88 小时、1300 亿 token 完成形式化验证"
+    ]
+  },
+  {
+    "id": "2026-09-18-hidream-v1-video-world-model",
+    "date": "2026-09-18",
+    "category": "产品发布",
+    "title": "智象HiDream V1视频模型登顶全球前四：先理解后生成",
+    "summary": "智象发布原生全模态视频模型HiDream V1，图生视频在Artificial Analysis排名第4、Arena.ai第8，原生支持5-20秒自适应时长和1080p输出，能理解物理规律生成NBA绝杀、百米飞人大战。",
+    "source": "AITNT",
+    "url": "https://www.aitntnews.com/newDetail.html?newId=29454",
+    "tags": [
+      "智象",
+      "视频生成",
+      "世界模型",
+      "全模态"
+    ],
+    "body": [
+      "9月15日智象（HiDream.ai）发布原生全模态音视频生成模型 HiDream V1，图生视频在 Artificial Analysis 排名第 4、Arena.ai 第 8，双榜前十跻身全球第一梯队。与 Seedance 2.5、MiniMax H3、阿里 Wan 3.0 共同构成中国视频生成头部集群。",
+      "技术上 HiDream V1 采用「先理解后生成」路线：先通过多模态意图理解模块分析用户口语化输入，再调用多模态理解模型做结构化分镜规划（覆盖人物、动作、镜头、光影、台词），最后联合生成；时长由模型根据内容自适应决定，原生支持 5-20 秒、1080p 输出。",
+      "实测在三类复杂场景中表现优异：精细手部操作（拧螺丝）、多人运动（NBA 三分绝杀、百米飞人大战，运动员肌肉线条与篮球抛物线符合物理）、音画同步（嘻哈说唱残缺歌词自动补全且口型精准）。后训练采用 Diffusion RL 和多模态 Reward 模型对齐，技术论文收录 ICML、ECCV、CVPR 2026。",
+      "对学习者：HiDream V1 完成了智象「图像+视频+3D+具身」四大模型矩阵的统一底座（UiT）闭环。建议关注世界模型评测基准（WBench Navi、RoboColiseum）后续排名变化，这是判断国内多模态技术进展的硬指标。"
+    ],
+    "highlights": [
+      "HiDream V1 双榜前十，原生支持 5-20 秒自适应时长、1080p、音画同步",
+      "实测能生成 NBA 绝杀、百米飞人、拧螺丝等符合物理规律的复杂运动场景"
+    ]
+  },
+  {
+    "id": "2026-09-18-omniharness-visual-ai-self-practice",
+    "date": "2026-09-18",
+    "category": "研究前沿",
+    "title": "北航OmniHarness让视觉AI自主练习，创意任务解决率达95%",
+    "summary": "北航联合港中文、新国大发布OmniHarness，让视觉智能体通过自主练习积累工作流策略。ComfyBench创意任务解决率95%，经验可跨系统迁移、跨任务从图像迁移到视频。",
+    "source": "AITNT",
+    "url": "https://www.aitntnews.com/newDetail.html?newId=29456",
+    "tags": [
+      "OmniHarness",
+      "视觉智能体",
+      "经验学习",
+      "ComfyBench"
+    ],
+    "body": [
+      "北京航空航天大学、香港中文大学和新加坡国立大学联合发布 OmniHarness，让视觉智能体在下游任务明确前自主出题、执行、检查、积累验证成功的工作流策略。ComfyBench 创意任务解决率 95%，超过最佳对照 SymbOmni 27.5 个百分点。",
+      "系统采用符号策略学习，将验证成功的流程抽象成可复用策略（含工作流模板、适用条件、资源依赖），后续调用先检查适用性再绑定新输入。采用 Codex GPT-4o 配置时总体解决率 92.5%；同骨干 GPT-4o 条件下总体 89.5% vs ComfyMind 83%。",
+      "经验迁移效果显著：冻结策略库适配 ComfyAgent 总体由 32.5% 升至 57.0%、ComfyMind 由 83% 升至 88%、SymbOmni 由 86% 升至 89%；创意任务增幅分别 27.5、17.5、10 个百分点。仅练过图像的策略库迁移到视频后，视频总体解决率 85.9%，高于最佳对照 5.1 个百分点。",
+      "对学习者：「模型参数不变、可调用方法随实践更新」是经验型智能体的关键思路。OmniHarness 开源代码已发布（github.com/OmniHarness/OmniHarness），复现门槛较低，是学习智能体经验积累机制的优秀入门项目。"
+    ],
+    "highlights": [
+      "ComfyBench 创意任务解决率 95%，超过最佳对照 27.5 个百分点",
+      "冻结策略库可跨系统、跨任务（图像→视频）迁移，视频总体解决率 85.9%"
+    ]
+  },
+  {
+    "id": "2026-09-18-polaformer-plus-tpami-hit-shenzhen",
+    "date": "2026-09-18",
+    "category": "研究前沿",
+    "title": "哈工大PolaFormer++登TPAMI：线性注意力突破长序列5.25倍提速",
+    "summary": "哈工大深圳与鹏城实验室联合的PolaFormer++被IEEE TPAMI接收，提出极性感知通道级尖锐特征映射（PaCS）。ImageNet精度82.8%，200K长序列下相比Flash Attention提速5.25倍，已开源。",
+    "source": "AITNT",
+    "url": "https://www.aitntnews.com/newDetail.html?newId=29457",
+    "tags": [
+      "PolaFormer++",
+      "线性注意力",
+      "TPAMI",
+      "高效模型"
+    ],
+    "body": [
+      "哈工大（深圳）与鹏城实验室合作的 PolaFormer++ 被 IEEE TPAMI 正式接收，是 ICLR 2025 PolaFormer 的全面升级版：首次给出判定特征映射「降熵尖锐性」的理论判据，并提出极性感知的通道级尖锐（PaCS）特征映射。",
+      "PaCS 核心是为每个通道、每条极性流配置独立的可学习「温度」参数，让模型自适应放大判别性响应、压平次要响应。ImageNet-1K 上精度达 82.8%，200K 长序列下相比 Flash Attention 提速 5.25 倍，显存占用始终最低。",
+      "在六大类视觉任务全面验证：COCO 检测 Mask R-CNN 1× 下 b4 达 51.5 APb/45.9 APm；ADE20K 语义分割比 EfficientViT-L1 高 1.3% mIoU；扩散生成 PolaDiT 取得 FID 58.30/IS 25.29；3D 新视角合成 PSNR 从 27.25 提升至 27.34 dB。",
+      "对学习者：线性注意力从「效率换精度」走向「效率与精度兼得」。代码已开源（github.com/ZacharyMeng/PolaFormerPP），论文 IEEE 链接 https://ieeexplore.ieee.org/document/11657470，是做高效骨干网络研究的标杆参考。"
+    ],
+    "highlights": [
+      "PaCS 通道级尖锐特征映射，200K 长序列下相比 Flash Attention 提速 5.25 倍",
+      "在分类、检测、分割、扩散生成、3D 合成、超分六大任务上均取得同级别最优"
+    ]
+  },
+  {
+    "id": "2026-09-18-oppo-coloros17-ai-phone-strategy",
+    "date": "2026-09-18",
+    "category": "产品发布",
+    "title": "OPPO ColorOS 17登场：姜昱辰称大模型差距正在消失",
+    "summary": "OPPO在ODC2026发布ColorOS 17与AI硬件「心力球」。姜昱辰阐述端侧模型自研+记忆为核心+AIOS三层架构，推出「即将发生」与「记忆后台」功能，同内存机型后台保活率提升55.6%。",
+    "source": "AITNT",
+    "url": "https://www.aitntnews.com/newDetail.html?newId=29458",
+    "tags": [
+      "OPPO",
+      "ColorOS",
+      "AI手机",
+      "端侧模型"
+    ],
+    "body": [
+      "OPPO ColorOS 智慧产品研发总监姜昱辰在 ODC2026 上阐述 AI 手机战略：选择端侧模型自研+记忆为核心+AIOS 三层架构，明确「大模型差距正在消失，手机差距才刚开始拉开」。她给出的 AI 手机定义是「以意图驱动，用户说一句话，手机就能把事情办」。",
+      "ColorOS 17 推出「即将发生」与「记忆后台」两项核心功能：前者将待办、会程聚合为「个人仪表盘」式主动服务（同内存机型后台保活率提升 55.6%）；后者基于 2025 年发布的记忆共生引擎，能学习用户习惯做个性化资源调度。",
+      "OPPO 选择 A2A（Agent to Agent）作为长期路线，与腾讯地图重构方案：OPPO 做意图识别，腾讯地图基于出行大数据规划，用户规划旅行从 9 步操作变 1 句话，长期留存高于大盘 15%。今年 ODC 还首发了 8 年来首个非手机硬件「心力球」，挂在胸口的 AI 个人幕僚。",
+      "对学习者：OPPO 联合浙江大学、OpenKG 发布行业首个端侧评测基准 MobileMem，回应「千人千面个性化难以评测」的痛点。关注这套基准的后续采用情况，这是端侧 AI 能否建立行业标准的关键。"
+    ],
+    "highlights": [
+      "ColorOS 17 后台保活率提升 55.6%，「即将发生」「记忆后台」落地主动服务",
+      "OPPO 选 A2A 路线、与腾讯地图合作规划旅行从 9 步变 1 句话，并首发 8 年来首个非手机硬件「心力球」"
+    ]
+  },
+  {
     "id": "2026-09-17-trump-nvidia-huang-ai-slowdown-allin-summit",
     "date": "2026-09-17",
     "category": "行业动态",
