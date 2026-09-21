@@ -1,5 +1,83 @@
 [
   {
+    "id": "2026-09-21-scaleout-autonomous-kill-chain-drone-nato",
+    "date": "2026-09-21",
+    "category": "技术突破",
+    "title": "瑞典Scaleout展示完全自主攻击无人机，无人操控可独立打击目标",
+    "summary": "瑞典AI初创公司Scaleout在BAE Systems NATO演示中展示完全自主杀伤链无人机，搭载Nvidia Jetson Orin Nano，无需人类输入和外部通信即可独立选择和打击目标。",
+    "source": "Tom's Hardware",
+    "url": "https://www.tomshardware.com/tech-industry/drones/autonomous-strike-drone-uses-nvidia-jetson-orin-nano-to-independently-pick-and-bomb-targets-swedish-startups-attack-drones-run-small-ai-model-require-no-human-input-and-zero-external-comms",
+    "tags": [
+      "自主武器",
+      "无人机",
+      "AI军事",
+      "NATO",
+      "Scaleout"
+    ],
+    "body": [
+      "瑞典AI初创公司Scaleout Systems（来自乌普萨拉大学、NATO DIANA加速器成员）在BAE Systems的ALMA（可负担徘徊式弹药）冬季演示2026中，运行了完全自主的杀伤链。无人机使用机载Nvidia Jetson Orin Nano进行目标检测、地理定位和打击，无需人类输入和外部通信。",
+      "该无人机运行一个小尺寸AI模型即可完成自主任务，标志着边缘AI在国防领域的实际应用突破。Scaleout作为NATO DIANA加速器成员，其技术旨在为盟国提供可负担的智能弹药解决方案，降低人员风险和作战成本。",
+      "Tom's Hardware报道称，这类小型AI模型的军事应用正在快速扩展，从侦察扩展到精确打击领域。完全自主武器系统的 ethical 和法律问题持续引发国际社会讨论，但技术发展已走在监管前面。",
+      "对学习者：自主武器系统是AI军事化的前沿领域。关注NATO DIANA加速器孵化的其他AI国防初创公司，这是观察AI+国防技术落地的重要窗口。"
+    ],
+    "highlights": [
+      "瑞典Scaleout在NATO演示中展示完全自主打击能力，Jetson Orin Nano机载，无需人类操控",
+      "小型AI模型驱动边缘自主决策，AI军事应用从侦察扩展到精确打击"
+    ]
+  },
+  {
+    "id": "2026-09-21-openai-ad-pixel-privacy-tracking",
+    "date": "2026-09-21",
+    "category": "行业动态",
+    "title": "安全研究人员揭露OpenAI通过广告追踪器关联用户全网行为",
+    "summary": "安全研究人员发现OpenAI在ChatGPT中植入广告追踪代码（__obi cookie），可将用户在外部网站的浏览行为与其ChatGPT账户绑定，追踪周期长达一年。",
+    "source": "Buchodi",
+    "url": "https://www.buchodi.com/chatgpt-now-knows-what-you-do-on-other-websites-via-ad-collector/",
+    "tags": [
+      "OpenAI",
+      "隐私",
+      "广告追踪",
+      "Cookie",
+      "数据安全"
+    ],
+    "body": [
+      "安全研究人员揭露OpenAI通过bzr.openai.com的广告追踪SDK，在ChatGPT用户浏览其他网站时收集用户行为数据。当用户在ChatGPT登录后，会生成一个绑定账户的JWT令牌，其中包含64字符账户标识符，该标识符以cookie形式（__obi）存储在.openai.com域，有效期一年。",
+      "当用户访问嵌入了OpenAI追踪代码的广告商网站时，浏览器会在跨站请求中自动携带__obi cookie，从而将用户在广告商网站的浏览行为（产品搜索、文章阅读、购买行为等）与ChatGPT账户关联。",
+      "追踪SDK还从网页表单和标签管理器中抓取邮箱、电话、姓名等个人身份信息，进行SHA-256哈希后上传。观察到的事件中，从页面抓取的 identity 信息（685条）远超广告商主动提供的信息（255条）。",
+      "对用户：这是隐私保护的重要提醒——即使不使用ChatGPT，AI公司的追踪代码也可能通过广告网络收集用户数据。建议使用广告拦截器和隐私浏览模式，减少跨站追踪。"
+    ],
+    "highlights": [
+      "OpenAI的__obi cookie有效期一年，可将外部网站浏览行为与ChatGPT账户绑定",
+      "追踪SDK从网页抓取邮箱电话等PII信息进行哈希后上传，隐私风险超出用户预期"
+    ]
+  },
+  {
+    "id": "2026-09-21-openai-anthropic-singapore-office-expansion",
+    "date": "2026-09-21",
+    "category": "行业动态",
+    "title": "OpenAI与Anthropic新加坡扩张导致当地写字楼租金飙升",
+    "summary": "OpenAI与Anthropic扩张新加坡办公室导致当地写字楼市场紧张。OpenAI正谈判租赁Shaw Tower约10万平方英尺，Anthropic将于10月开设第五个亚太办公室。",
+    "source": "Financial Times",
+    "url": "https://www.ft.com/content/c1ba743f-7330-4419-bc8d-a8b5ce4420a0",
+    "tags": [
+      "OpenAI",
+      "Anthropic",
+      "新加坡",
+      "亚太扩张",
+      "房地产市场"
+    ],
+    "body": [
+      "据Financial Times报道，OpenAI和Anthropic的新加坡扩张正在推高当地写字楼租金。OpenAI在超出CapitaSpring的100个联合办公工位后，正谈判租赁Shaw Tower约10万平方英尺；Anthropic将于10月开设其第五个亚太办公室（此前已有东京、班加罗尔、首尔和悉尼办公室），新加坡人均Claude使用率在全球名列前茅。",
+      "两家公司都响应了新加坡政府成为地区AI中心的邀请。Anthropic国际董事总经理Chris Ciauri表示，新加坡是扩展亚太业务的重要战略位置，将满足该地区企业对其Claude模型的强劲需求。",
+      "AI公司对高质量办公空间的竞争正在改变新加坡商业地产格局。优质写字楼供应趋紧，可租赁面积减少，租金上涨压力持续。这反映了AI企业在全球主要城市扩张的普遍趋势。",
+      "对观察者：新加坡正在成为AI公司亚太总部的首选地，这与其政府积极招商引资、数据隐私法律相对宽松、以及作为东南亚门户的地理位置有关。关注这一趋势对其他亚洲城市（如香港、东京）吸引AI投资的溢出效应。"
+    ],
+    "highlights": [
+      "OpenAI谈判租赁Shaw Tower 10万平方英尺，Anthropic 10月开设第五个亚太办公室",
+      "新加坡人均Claude使用率全球领先，AI公司亚太扩张推高当地写字楼租金"
+    ]
+  },
+  {
     "id": "2026-09-18-anthropic-rsi-30000-agents-report",
     "date": "2026-09-18",
     "category": "行业动态",
