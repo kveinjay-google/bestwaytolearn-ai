@@ -15,6 +15,46 @@ const AI_BRIEFING_META = {
 
 const AI_BRIEFING_ITEMS = [
   {
+    id: "2026-09-29-china-nvidia-rtx-pro-5500-bytedance-alibaba",
+    date: "2026-09-29",
+    category: "行业动态",
+    title: "中国为字节阿里放行Nvidia RTX Pro 5500，每季度50万颗",
+    summary: "中国工信部向字节跳动、阿里巴巴等大型科技公司放行购买Nvidia RTX Pro 5500，ByteDance考虑订购约100万颗，单价约9万元，Nvidia计划12月起每季度供50万颗。",
+    source: "The Dong-A Ilbo / The Information",
+    url: "https://www.donga.com/en/article/all/20260929/6401092/1",
+    tags: ["Nvidia", "中国", "GPU", "字节跳动", "阿里巴巴"],
+    body: [
+      "据The Dong-A Ilbo 9月29日报道，中国工信部已向字节跳动、阿里等大型科技公司放行购买Nvidia RTX Pro 5500图形处理器。The Information 9月27日首次披露：工信部要求企业提交采购数量及使用方案，并告知部分企业的采购申请将获批准。",
+      "字节跳动考虑订购约100万颗芯片，单颗在中国市场售价高达9万元人民币（约1.26万美元），按此计算订单总额最高约合18万亿元韩元（约129亿美元）。Nvidia计划从12月起每季度向中国供应50万颗芯片，意味着全年理论上限约200万颗。",
+      "此次政策松动距2025年9月中国限制采购Nvidia RTX Pro 6000D约一年，距2025年12月美国批准H200出口后中国进口冻结也接近一年。Nvidia CEO黄仁勋2025年10月曾公开表示，公司在华AI芯片市场份额从95%跌至零。这次重新开闸意味着Nvidia重返中国市场迈出实质步伐，但任何销售仍需逐案获美方批准。",
+      "对开发者：RTX Pro 5500采用GDDR7显存，将利好三星电子、SK海力士等存储供应商；同时国内昇腾、寒武纪等替代厂商面临的算力压力将部分缓解。建议关注后续真实采购量与定价博弈——百万元级别的单笔订单在中国云厂商历史上罕见，可能反映国内AI训练与推理需求结构性短缺。",
+    ],
+    highlights: [
+      "中国为字节、阿里开绿灯采购Nvidia RTX Pro 5500，ByteDance拟订购约100万颗",
+      "单颗约9万元、Nvidia从12月起每季度供50万颗；三星、SK海力士因GDDR7显存受益",
+    ],
+  },
+  {
+    id: "2026-09-29-llm-jacking-underground-economy-google-gtig",
+    date: "2026-09-29",
+    category: "政策法规",
+    title: "LLM jacking黑产崛起：Google报告称AI账号黑市价格翻倍",
+    summary: "Google威胁情报小组9月报告：AI账号黑市价格年内翻倍以上，主流厂商账号仍以官方价97%折扣出售，\"访问担保\"服务出现，企业AI基础设施正成为黑客隐身沃土。",
+    source: "The Dong-A Ilbo / Google GTIG",
+    url: "https://www.donga.com/en/article/all/20260929/6401128/1",
+    tags: ["AI安全", "LLM jacking", "网络犯罪", "Google GTIG"],
+    body: [
+      "据The Dong-A Ilbo 9月29日报道，Google威胁情报小组（GTIG）首席分析师John Hultquist披露：\"LLM jacking\"——一种窃取AI账号或云服务器以免费使用昂贵AI模型的网络犯罪——今年大幅增长，正在形成围绕AI访问的\"庞大地下经济\"。Financial Times 9月26日引用Hultquist观点首报此事。",
+      "GTIG本月报告披露了三个量化事实：黑市上AI账号的平均价格年内翻倍以上；尽管涨价，Anthropic、Google、OpenAI等主流厂商的账号仍能以官方价97%折扣购得；部分卖家还提供\"访问担保\"——账号被封后免费替换。报告还描述了黑客入侵企业云系统并秘密运行自己AI模型的案例，类似于早期的加密挖矿劫持。",
+      "对企业AI安全的冲击是结构性的：当企业大规模部署AI时，单纯算力使用量激增不再能可靠区分正常负载与恶意活动，黑客可以\"藏在噪声里\"。Hultquist直言，AI基础设施的快速扩张给了攻击者更多隐蔽空间，账单失控与品牌声誉风险都在累积。",
+      "对安全从业者：建议把AI账号访问管理与传统IAM体系对齐——启用MFA、最小权限原则、异常API调用告警、模型输出内容审查（CSPM + AI workload audit）。对采购AI API的企业而言，账号泄露造成的代币账单与品牌声誉损失可能远超想象，可考虑在CSP中加挂AI API专用异常行为基线。",
+    ],
+    highlights: [
+      "GTIG报告：AI账号黑市价格翻倍，主流厂商账号仍以官方价97%折扣售卖",
+      "企业AI部署让黑客\"藏在噪声里\"，账号滥用正成为新型IT支出失控源",
+    ],
+  },
+{
     id: "2026-09-27-openai-agent-dns-sandbox-escape-training-pause",
     date: "2026-09-27",
     category: "安全事件",
