@@ -15,6 +15,66 @@ const AI_BRIEFING_META = {
 
 const AI_BRIEFING_ITEMS = [
   {
+    id: "2026-10-01-kimi-k3-openai-codex-baseten",
+    date: "2026-10-01",
+    category: "产品发布",
+    title: "中国大模型首次！Kimi K3 进入 OpenAI 企业付费结算体系",
+    summary: "美国AI基础设施公司Baseten 10月1日宣布，企业用户可在OpenAI编程工具Codex中调用Kimi K3，费用计入OpenAI采购额度——这是中国开源模型首次进入OpenAI企业主流付费通道。",
+    source: "快科技",
+    url: "https://news.mydrivers.com/1/1154/1154994.htm",
+    tags: ["Kimi", "月之暗面", "OpenAI", "Codex"],
+    body: [
+      "快科技10月1日报道：美国AI基础设施公司Baseten宣布，企业用户现在可以在OpenAI编程工具Codex中使用月之暗面的Kimi K3，调用产生的费用直接计入企业已有的OpenAI采购承诺额度，无需新增供应商采购流程。这是中国开源模型首次进入OpenAI企业客户的主流付费结算通道，标志国产大模型在全球主流开发工具链中实现商业化落地。",
+      "Kimi K3是月之暗面今年7月发布的旗舰开源模型，参数规模达2.8万亿，是当时全球参数最大的开源模型，原生支持视觉理解、100万Token上下文窗口，针对软件工程、知识工作、深度研究和多模态理解等场景优化。发布数小时即登顶AI代码工具评测榜单Arena，成为首个拿下该榜单榜首的中国大模型，连Elon Musk也在相关报道下留言\"Impressive\"。",
+      "在此之前，Kimi K3已接入亚马逊云旗下Amazon Bedrock平台，Kimi与海外云厂商的收入分成合作正式落地，使中国大模型公司首次以分成模式向全球头部云厂商输出模型能力。叠加本次进入OpenAI企业付费通道，Kimi K3同时打通了海外云+海外开发者工具两条商业化通路。",
+      "对开发者：如果你已经在使用Codex，Kimi K3现已可以通过Baseten以OpenAI的额度直接调用，无需单独采购。在Anthropic Claude和OpenAI之外的\"第三路径\"已经成型；建议优先评估在长上下文（百万Token级）、代码生成场景中的表现。对国内大模型从业者：海外分发通路一旦跑通，意味着开源模型出海不只是品牌建设，而是有真实付费订单。",
+    ],
+    highlights: [
+      "中国开源大模型首次进入OpenAI企业客户主流付费通道，Kimi K3通过Baseten接入Codex",
+      "Kimi K3同时接入Amazon Bedrock和Codex，海外云+海外开发者工具两条通路跑通",
+    ],
+  },
+  {
+    id: "2026-10-01-google-pays-publishers-ai-overviews",
+    date: "2026-10-01",
+    category: "行业动态",
+    title: "Google 启动 AI 出版商付费试点，约 100 家分成",
+    summary: "Google 10月1日披露正试行向约100家出版商付费，根据其内容被AI Overviews、AI Mode和Gemini使用的情况分成；早期参与者最高已年入超百万美元。",
+    source: "MediaPost",
+    url: "https://www.mediapost.com/publications/article/418403/google-experimental-pilot-pays-publishers-for-ai-o.html",
+    tags: ["Google", "AI Overviews", "出版商", "变现"],
+    body: [
+      "MediaPost 10月1日报道：Google正在运行一项实验性付费试点，向约100家出版商支付报酬，参照其内容在AI Overviews、AI Mode与Gemini等AI驱动回答和其他产品中的贡献度。这是Google在AI搜索产品严重挤压出版商流量背景下，首次建立明确的\"AI引用分成\"机制。",
+      "The Information引述一名接近Google的人士披露：付费因参与方而异。数月前加入的一家出版商累计已获得约5万至6万美元；早期参与者中有一家年入超过100万美元，占其收入可观比例；较小的站点数月内累计不足1000美元。Google另一独立新闻AI试点项目目前已覆盖200+家出版商，Google News Showcase已与33个国家、2800+出版商达成协议。",
+      "行业数据印证流量分流：Tinuiti 8月数据显示，2026年Q2电商网站在AI引用中的占比为14%，7月跌至12%；Amazon在Microsoft Copilot引用中占14%，但在ChatGPT仅占0.1%、在Gemini为0%；Reddit在Perplexity的引用占比从Q1的20%骤降至7月的2%。Google自家生态份额上升——YouTube在AI Mode/AI Overviews/Gemini引用中份额全面走高，google.com在AI Mode引用占比从2025年末近乎零升至7月的4%。",
+      "对开发者/出版商：AI引用分成时代已来——以SEO思维做\"AI SEO\"将成为新刚需，结构化数据、权威事实片段、可被LLM抽取的语义标注将直接影响变现。建议把内容AI可读性指标（schema覆盖率、问答型段落密度、引文友好度）纳入编辑部考核。",
+    ],
+    highlights: [
+      "Google向约100家出版商试行按贡献付费，AI引用分成从概念走向生产",
+      "早期参与者最高年入超100万美元；Reddit在Perplexity引用占比从20%跌至2%，google.com从近零升至4%",
+    ],
+  },
+  {
+    id: "2026-10-01-project-tapestry-sovereign-ai-un-assembly",
+    date: "2026-10-01",
+    category: "技术突破",
+    title: "Project Tapestry 联合国大会周推首个联合训练里程碑",
+    summary: "AI Alliance 10月1日宣布Project Tapestry完成首个技术节点，两个跨站点分布式训练PoC验证\"协作训练不集中数据\"，并与越南、印度扩大主权AI合作。",
+    source: "TNGlobal / AI Alliance",
+    url: "https://technode.global/prnasia/project-tapestry-gains-momentum-for-sovereign-ai-during-un-general-assembly-week/",
+    tags: ["主权AI", "AI Alliance", "联合国", "越南", "印度"],
+    body: [
+      "AI Alliance 10月1日在纽约联合国大会周宣布Project Tapestry首个重大技术里程碑：两个分布式训练PoC协调4个地理分散站点联合训练模型，同时各参与方训练数据保留在本地。团队还展示了\"文化对齐\"——修改大语言模型以更好理解印度与越南独特的社会与语言特征。",
+      "越南侧进展：AI Alliance与Project Tapestry领导层会见越南总书记与高级政府部长，推进符合越南国家AI战略的主权AI模型合作（覆盖越南语言、文化、知识与国家级用例）。越南自早期即参与Project Tapestry，本次升级为国家级主权AI开发。印度侧进展：印度总领事Binaya Srikanta Pradhan在纽约接见项目组；BharatGen（印度政府支持的开源基础模型栈）在首个里程碑中与澳大利亚Monash大学跨印度—澳大利亚联合训练，数据保留在各自国家。",
+      "技术意义：里程碑验证了\"不需要集中算力或数据到单一机构即可协作构建更强AI\"——这是当前全球AI训练的核心假设之一。Tapestry贡献者还在ACM HCOMP 2026\"主权AI工作坊\"（由台湾中研院组织）上发表了论文《Sovereignty Through Interdependence》。",
+      "对开发者：联合训练+数据本地化是联邦学习、多中心训练、机密计算等技术的工程化落地信号。如果研究计划的下一步是行业联盟落地，可关注10月15日孟买工作坊。对主权AI观察者：越南—印度双线合作是中国/美国之外的第三条AI路径实验，未来GSAI（Global south AI）研究坐标值得持续跟踪。",
+    ],
+    highlights: [
+      "AI Alliance Project Tapestry完成首个联合训练里程碑，验证\"不集中数据即可协作训练\"",
+      "与越南、印度扩大主权AI合作；首个PoC由印度BharatGen与Monash大学跨印—澳完成",
+    ],
+  },
+{
     id: "2026-09-29-trump-johnson-white-house-ai-ceos-meeting",
     date: "2026-09-29",
     category: "政策法规",
