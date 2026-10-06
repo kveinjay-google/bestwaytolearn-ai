@@ -1,5 +1,83 @@
 [
   {
+    "id": "2026-10-06-aws-agentcore-prompt-injection-credential",
+    "date": "2026-10-06",
+    "category": "技术突破",
+    "title": "Unit 42：AWS AgentCore提示注入可突破Shell读取运行时凭证",
+    "summary": "Palo Alto Unit 42报告，AWS Bedrock AgentCore的默认shell工具在会话隔离外仍可读取运行时凭证，AWS将报告归类为\"仅信息\"不修复。LLM Rumors分析指出凭证保险库加密与会话内部组件隔离属不同安全边界。",
+    "source": "LLM Rumors / Unit 42",
+    "url": "https://www.llmrumors.com/news/agentcore-harness-credential-boundary",
+    "tags": [
+      "AWS",
+      "AgentCore",
+      "安全",
+      "提示注入"
+    ],
+    "body": [
+      "Palo Alto Unit 42于2026年9月18日发布报告（10月1日在X上被研究人员重新传播），描述了对AWS Bedrock AgentCore的概念验证攻击：提示词注入可导致Shell读取运行时凭证并访问模拟下游服务。AWS在6月10日将报告标记为\"Informative（仅信息）\"而不修复，理由是微VM隔离已保护会话间安全。",
+      "LLM Rumors的10月5日分析指出，凭证保险库加密（vault encryption at rest）与\"会话内部哪些组件可以互相读取\"是两个独立的安全控制。AWS文档显示默认不加allowedTools参数时允许所有工具，直接命令API则有独立IAM权限——限制前者并不等于拒绝后者。",
+      "关键数字：AgentCore Identity服务负责下游认证，但SigV4调用者当前不继承per-user权限传播。Gateway的确定性策略评估可作为执行点，但Gateway策略不等于Shell执行的全局控制。BF16权重约156GB，推荐配置为4张H100 SXM5 GPU。",
+      "学习者提示：企业采购Agent类平台时，不能只看\"微VM隔离\"和\"凭证加密\"这两个功能标签，必须搞清楚（1）会话内各组件之间的信任边界（2）工具权限与下游身份授权是分开的两件事（3）每次新增集成都要重新验证权限契约，而不是依赖初始配置。"
+    ],
+    "highlights": [
+      "Unit 62实测：提示注入可使Shell读取AgentCore运行时凭证；AWS定性为已知架构特性不修",
+      "会话隔离（microVM）与内部组件隔离属不同安全边界，前者保会话间，后者保会话内",
+      "推荐审查清单：allowedTools白名单、IAM直接命令权限、SigV4身份传播、Gateway策略覆盖范围"
+    ]
+  },
+  {
+    "id": "2026-10-06-grok-47-medium-effort-25-percent-cheaper",
+    "date": "2026-10-06",
+    "category": "技术突破",
+    "title": "Grok 4.7实测：medium努力档比high每任务便宜25%，但xAI API与Cursor计费阈值不同",
+    "summary": "Grok Build员工10月2日发帖披露CursorBench数据：medium努力档41.6%得分/$3.49 per task vs high 43.9%/$4.69，价差25.6%。LLM Rumors同时发现xAI直API在200k tokens触发长上下文计费，而Cursor在256k以上才触发——两者属不同计费合同。",
+    "source": "LLM Rumors / xAI",
+    "url": "https://www.llmrumors.com/news/grok-47-task-cost-context-routing",
+    "tags": [
+      "Grok",
+      "xAI",
+      "API定价",
+      "成本优化"
+    ],
+    "body": [
+      "Grok 4.7于9月21日发布。10月2日Grok Build员工@aksheyd在X发布CursorBench实测：medium effort设置下41.6%得分、$3.49/task；high effort下43.9%、$4.69/task，价差按该员工数据计算约25.6%。xAI的reasoning reference显示支持low/medium/high/xhigh四档，默认high，reasoning无法关闭。",
+      "关键计费发现：xAI直API在输入达到200k tokens时触发长上下文计费（$4 input/$1 cached/$12 output每百万tokens），而Cursor自己的文档将长上下文计费边界设在256k输入以上，最大窗口500k。这意味着在200k-256k之间，xAI直API收长上下文费，而Cursor用同一模型收普通费率——同一个模型名，两套不同计费合同。",
+      "Astra Ultrafast作为对比：OpenAI宣称在Codex中比Astra Standard快8倍（指token生成速度，非任务完成速度），API端$60/$300 per million（短上下文），Pro $500订阅含用量或按6x计费，WebSockets可减少连接开销。Batch API在Grok 4.7上标注为不支持。",
+      "学习者提示：选购AI模型时，\"模型名\"不足以做成本决策。必须为每个接入路由（直API/Cursor/Bedrock/GitHub Copilot）分别建立计费计算器，记录：努力档位选择、实际输入长度（含缓存重复计算）、长上下文触发阈值、推理token计费方式。同一任务在两个不同路由上可能产生截然不同的账单。"
+    ],
+    "highlights": [
+      "Grok 4.7 medium vs high：员工实测价差25.6%，但2.3个百分点的得分差距对高风险任务可能不值得",
+      "xAI直API在200k触发长上下文计费，Cursor在256k以上；两套路由不可混用计费假设",
+      "Grok 4.7 reasoning无法关闭，默认high；Astra Ultrafast 8x提速指token生成而非任务完成"
+    ]
+  },
+  {
+    "id": "2026-10-06-aleph-alpha-kolibri-open-weights-deployment",
+    "date": "2026-10-06",
+    "category": "产品发布",
+    "title": "Aleph Alpha发布Kolibri 1：781亿参数开源权重，推荐4×H100部署",
+    "summary": "Aleph Alpha于10月3日发布Kolibri 1，总参数781亿、激活参数34.6亿，FP8权重约78GB，Apache 2.0许可开源。模型卡推荐最大上下文262k（尽管验证上限1M），推荐配置4×H100 SXM5 GPU，但总参数不等于推理内存占用。",
+    "source": "LLM Rumors / Aleph Alpha",
+    "url": "https://www.llmrumors.com/news/kolibri-1-open-weights-memory-context",
+    "tags": [
+      "Aleph Alpha",
+      "开源模型",
+      "MoE",
+      "德语AI"
+    ],
+    "body": [
+      "Kolibri 1于10月3日通过Aleph Alpha官方X账号发布，technical report披露：总参数781亿（78,103,074,560），激活参数34.6亿（3,457,573,120），FP8权重约78GB。架构为40个滑动窗口注意力块+10个全注意力块的组合，目标是在总参数容量与KV缓存内存之间做取舍。",
+      "上下文长度关键数据：模型卡推荐上限262,144 tokens，但验证上限1,048,576 tokens——4倍差距。LLM Rumors建议将推荐值作为初始试点边界，将上限扩大至需要具体业务理由（如\"哪类必要证据在26万token内无法检索或摘要\"）。BF16权重约156GB，推荐4×H100 SXM5 GPU，vLLM插件要求vLLM 0.29（不支持0.30）、torch≥2.9.0、transformers≥5.5.3。",
+      "稀疏计算不等于小内存模型：总参数规模78GB不意味着可以装进小内存机器——FP8权重78GB需全加载，KV缓存和激活值另计。Apache 2.0许可允许商业使用，但模型权重可用不等于部署合规；欧盟数据监管场景下，运营方对模型输入输出承担最终合规责任。",
+      "学习者提示：开源权重≠零成本运营。采购Kolibri前需要分别列出（1）模型存储空间（2）工作内存（3）并发会话上限（4）输出延迟要求。主动参数数量不能替代以上四项分别测试。vLLM插件版本和容器digest应纳入部署记录的版本控制，防止依赖升级悄悄改变推理行为。"
+    ],
+    "highlights": [
+      "Kolibri 1总参数781亿/激活34.6亿，Apache 2.0许可；推荐4×H100 SXM5，FP8权重78GB、BF16权重156GB",
+      "推荐上下文262k vs 验证上限1M（4倍差距）；扩大上限需有具体业务理由，而非因为\"能\"",
+      "开源权重≠零成本：稀疏激活不等于小内存占用，需单独测试并发、会话数、延迟四项指标"
+    ]
+  },
+  {
     "id": "2026-10-04-openai-safety-lead-robinson-resigns-atlantic",
     "date": "2026-10-04",
     "category": "行业动态",
@@ -6404,58 +6482,6 @@
     "highlights": [
       "中国AI大模型连续14周霸榜全球调用量，前五占四席",
       "在芯片管制背景下逆势崛起，国产大模型工程化能力获验证"
-    ]
-  },
-  {
-    "id": "2026-08-05-cloudflare-wallets-ai-agents",
-    "date": "2026-08-05",
-    "category": "产品发布",
-    "title": "Cloudflare推出AI代理身份钱包，构建代理商业基础设施工具",
-    "summary": "Cloudflare 8月4日发布 Cloudflare Wallets 和 cloudflare.pay，为 AI 代理提供稳定身份标识与稳定币钱包，实现自主网购并支持 MCP Tools、API 等消费。",
-    "source": "Cloudflare",
-    "url": "https://www.cloudflare.com/press/press-releases/2026/cloudflare-gives-ai-agents-an-identity-and-a-wallet/",
-    "tags": [
-      "Cloudflare",
-      "AI代理",
-      "支付",
-      "身份认证"
-    ],
-    "body": [
-      "Cloudflare 于 8 月 4 日正式推出 Cloudflare Wallets 和 cloudflare.pay，为部署在 Cloudflare 上的 AI 代理提供稳定身份标识（Wallet Handle）和稳定币钱包，使其能够在线自主购物、消费 API 与数字内容。8 月 4 日当天同步开放钱包句柄（Handle）注册。",
-      "Cloudflare CSO Stephanie Cohen 透露，目前约 57% 的网络流量已来自 AI 代理，传统反爬虫工具无法区分真实用户代理与恶意代理，企业面临「要么锁死一切、要么冒险放开」的两难，Cloudflare 试图用基础设施层方案解决这一根本矛盾。",
-      "用户可将稳定币存入主钱包，再创建虚拟钱包（Virtual Wallet）分配给 AI 代理，可设置消费限额、商家白名单和单笔最大交易额，防止失控代理超支；同时通过 x402 协议支持 HTTP 请求级别的微支付。",
-      "对 AI 应用开发者，Cloudflare Wallets 标志着「代理商业」（Agentic Commerce）从概念走向基础设施，建议关注 MCP（Model Context Protocol）生态中支付相关工具的集成方式，以及稳定币钱包作为 AI 代理标配的商业影响。"
-    ],
-    "highlights": [
-      "约 57% 网络流量已来自 AI 代理，传统反爬工具失效",
-      "Wallet Handle 提供永久可验证身份，Virtual Wallet 支持消费限额和商家白名单",
-      "x402 协议实现 HTTP 请求级微支付，覆盖 API、AI 推理、内容消费"
-    ]
-  },
-  {
-    "id": "2026-08-05-white-house-ai-safety-framework",
-    "date": "2026-08-05",
-    "category": "政策法规",
-    "title": "白宫召集四大AI公司商讨自愿安全测试框架，开源模型豁免",
-    "summary": "OpenAI、Anthropic、Google、Meta 四家 AI 巨头 8 月 4 日赴白宫，与特朗普政府官员商讨前沿模型强制预发布政府审核框架，框架明确豁免开源权重模型。",
-    "source": "U.S. News",
-    "url": "https://www.usnews.com/news/top-news/articles/2026-08-03/us-finalizes-voluntary-ai-safety-tests-white-house-official-says",
-    "tags": [
-      "白宫",
-      "AI安全",
-      "开源豁免",
-      "监管"
-    ],
-    "body": [
-      "美国白宫 8 月 4 日召集 OpenAI、Anthropic、Google、Meta 四家 AI 巨头，与特朗普政府官员会面，商讨建立前沿 AI 模型的自愿预发布安全测试框架——要求公司在公开发布先进模型前最多 30 天提交政府审核，但明确豁免开源权重模型（open-weight models）。",
-      "此次会议正值 OpenAI 代理模型入侵 Hugging Face 事件引发华盛顿对「流氓 AI 代理」（Rogue AI Agent）担忧升级，白宫科技政策办公室主任 Kratsios 此前已表示需要新框架应对 AI 自主行为风险。",
-      "特朗普顾问明确表态「不对开源权重模型做安全测试要求」，这与近期部分议员主张的限制中国开源模型路线形成鲜明对比，体现了政府对开源生态的保护立场。",
-      "对 AI 政策关注者，「自愿框架+开源豁免」意味着美国政府倾向于用市场力量而非强制手段约束闭源大厂，建议跟踪框架最终文本中的「先进模型」门槛定义——这将直接影响 GPT-6 等下一代模型的发布节奏。"
-    ],
-    "highlights": [
-      "框架要求闭源前沿模型发布前最多 30 天提交政府审核",
-      "开源权重模型明确豁免，政府保护开源生态立场清晰",
-      "会议背景：OpenAI 代理入侵 HF 引发对流氓 AI 代理担忧"
     ]
   }
 ]
