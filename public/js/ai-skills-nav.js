@@ -1045,6 +1045,15 @@ const AI_SKILLS_NAV_ITEMS = [
     github: "https://github.com/virgiliojr94/book-to-skill",
     install: "npx skills add virgiliojr94/book-to-skill -g -y",
   },
+  {
+    name: "hyperframes-studio",
+    category: "Skill 安装与合集",
+    agents: ["OpenClaw", "Claude Code", "Cursor", "Codex"],
+    stars: 0,
+    desc: "Use when working with a person on a HyperFrames project in Studio: first, whether their message asks for a change at all (questions, loose ideas and \"don't change anything\" get an ",
+    github: "https://github.com/heygen-com/hyperframes-launches",
+    install: "openclaw skill: hyperframes-studio",
+  },
 ];
 
 function getAiSkillsNavCategorySlug(category) {

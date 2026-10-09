@@ -724,6 +724,9 @@ RAW: list[tuple] = [
     ('book-to-skill', 'Skill 安装与合集', ['Cursor', 'Claude Code', 'Codex', 'Gemini CLI'], 28922,
      'Turn any technical book PDF into a Claude Code skill — ready to study, reference, and use while you work.',
      'https://github.com/virgiliojr94/book-to-skill', 'npx skills add virgiliojr94/book-to-skill -g -y', None),
+    ('hyperframes-studio', 'Skill 安装与合集', ['OpenClaw', 'Claude Code', 'Cursor', 'Codex'], 0,
+     'Use when working with a person on a HyperFrames project in Studio: first, whether their message asks for a change at all (questions, loose ideas and "don\'t change anything" get an ',
+     'https://github.com/heygen-com/hyperframes-launches', 'openclaw skill: hyperframes-studio', None),
 ]      
 
 
