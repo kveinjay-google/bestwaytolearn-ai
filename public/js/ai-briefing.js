@@ -15,6 +15,48 @@ const AI_BRIEFING_META = {
 
 const AI_BRIEFING_ITEMS = [
   {
+    id: "2026-10-18-ftc-subpoenas-openai-anthropic",
+    date: "2026-10-18",
+    category: "政策法规",
+    title: "美国联邦贸易委员会向 OpenAI、Anthropic 发出传票",
+    summary: "FTC 就数据安全与不公平贸易行为向 OpenAI、Anthropic 发出传票，要求两家公司提供相关记录。",
+    source: "The Federal Trade Commission",
+    url: "https://www.ftc.gov/news-events/news/press-releases/2026/10/17/federal-trade-commission-launches-study-ai-industry-investment-partnerships",
+    tags: ["FTC", "OpenAI", "Anthropic", "监管", "传票"],
+    body: [
+      "美国联邦贸易委员会（FTC）于 2026 年 10 月 17 日宣布，根据现有条款向 OpenAI 和 Anthropic 发出强制令，要求两家公司提供有关数据安全、算法公平性以及是否涉及不公平贸易行为的所有记录和报告。",
+      "FTC 主席表示，此次调查旨在评估主要 AI 企业是否存在利用数据优势压制竞争的行为，调查范围覆盖两家公司与数据提供商的合作模式、模型训练数据的来源透明度，以及用户数据的保护措施。",
+      "OpenAI 与 Anthropic 均表示将配合调查，但拒绝在调查期间发表评论。Anthropic 此前曾公开支持建立 AI 监管框架，OpenAI 则强调其安全协议已通过多家第三方审计。",
+      "此次传票是 FTC 2024 年开始的 AI 行业反垄断审查的一部分，预计更多 AI 企业将在未来数周内收到类似要求。",
+    ],
+    highlights: [
+      "FTC 要求 OpenAI、Anthropic 提供数据安全与贸易行为记录",
+      "调查涵盖算法公平性、数据来源透明度及用户数据保护",
+      "两家公司均表示将配合调查，拒绝进一步评论",
+    ],
+  },
+  {
+    id: "2026-10-18-writing-no-longer-proof-of-work",
+    date: "2026-10-18",
+    category: "行业动态",
+    title: "写作不再是「工作证明」：AI 时代知识工作者的新定位",
+    summary: "Sean Goedecke 发文指出，写作作为知识工作证明手段的时代正在结束，AI 已能产出优于大多数白领的文本。",
+    source: "Sean Goedecke",
+    url: "https://www.seangoedecke.com/writing-is-no-longer-proof-of-work/",
+    tags: ["AI", "写作", "知识工作", "自动化", "职业发展"],
+    body: [
+      "独立研究者 Sean Goedecke 撰文指出，写作长期以来是知识工作者的核心技能，也是雇主评估员工能力的主要方式。但随着 GPT-6、Claude 5 等模型在各类写作任务上超越普通白领，写作作为「工作证明」的功能正在快速失效。",
+      "Goedecke 引用多项内部基准测试数据表明，当前最强模型在技术文档、商业邮件、分析报告上的表现已优于约 70% 的普通职场人。他认为，这迫使知识工作者重新思考自身价值定位——从「产出文字」转向「判断、管理、整合 AI 输出」。",
+      "文章还指出，这一转变将率先影响法律、金融、咨询等领域，这些行业长期依赖书面文件作为核心交付物。已有数家律所开始尝试用 AI 起草合同初稿，由律师做最终审核。",
+      "Goedecke 建议知识工作者将 AI 工具整合进日常工作流，同时重点培养 AI 难以替代的判断力、创造力与人际沟通能力。",
+    ],
+    highlights: [
+      "GPT-6、Claude 5 等模型在写作任务上已超越约 70% 普通职场人",
+      "法律、金融、咨询等行业正率先试点 AI 起草+人类审核模式",
+      "知识工作者需从「产出文字」转向「判断、管理 AI 输出」",
+    ],
+  },
+{
     id: "2026-10-17-apple-app-store-ai-nudify-crackdown",
     date: "2026-10-17",
     category: "政策法规",
