@@ -1,5 +1,166 @@
 [
   {
+    "id": "2026-10-21-fal-flux3max-video-generation",
+    "date": "2026-10-21",
+    "category": "产品发布",
+    "title": "fal发布FLUX 3 Max，图生视频并列第一",
+    "summary": "fal后训练的FLUX 3 Max图生视频盲测达1139 Elo，与Seedance 2.5并列第一；生成10秒视频仅需12.45秒，是Seedance的1/22倍。",
+    "source": "AI工具宝箱",
+    "url": "https://www.aitoollab.cn/news/2026-10-21/",
+    "tags": [
+      "视频生成",
+      "FLUX",
+      "图像转视频",
+      "实时生成"
+    ],
+    "body": [
+      "fal.ai正式发布FLUX 3 Max，这是一款后训练的图生视频模型，在盲测中取得1139 Elo分数，与字节Seedance 2.5并列图生视频质量榜首。",
+      "真正拉开差距的是速度：FLUX 3 Max生成10秒视频仅需12.45秒，而Seedance 2.5需要277.8秒——相差约22倍，视频模型首次把抽卡做到接近实时生成。",
+      "工作流因此从「挑一条成品」变成连拍二十条再剪辑。需注意此为preliminary榜单，提示集与样本量尚未公开，数据稳定性待验证。",
+      "学习提示：关注视频生成模型的速度指标——当生成速度超过实时播放，分水岭意义远大于质量榜单名次。可在fal.ai官网免费试用，评估实际工作流效率。"
+    ],
+    "highlights": [
+      "图生视频盲测1139 Elo与Seedance 2.5并列第一",
+      "10秒视频生成仅12.45秒，速度是竞品的1/22",
+      "视频生成从质量竞争转向速度竞争"
+    ]
+  },
+  {
+    "id": "2026-10-21-deepseek-deepinfer-opensource",
+    "date": "2026-10-21",
+    "category": "技术突破",
+    "title": "DeepSeek开源DeepInfer推理框架，支撑V4.1-Flash低成本运行",
+    "summary": "DeepSeek以Apache 2.0开源推理框架DeepInfer，含MoE专家并行、批次不变性、确定性采样，在离线条件下可复现V4.1-Flash官方吞吐量。",
+    "source": "The Decoder",
+    "url": "https://the-decoder.com/deepseek-open-sources-deepinfer-inference-engine/",
+    "tags": [
+      "DeepSeek",
+      "开源",
+      "推理框架",
+      "MoE",
+      "V4.1-Flash"
+    ],
+    "body": [
+      "DeepSeek正式开源内部推理框架DeepInfer，采用Apache 2.0许可，核心组件包括MoE专家并行（EPLB）、批次不变性、确定性采样等，旨在把V4.1-Flash的官方服务能力复现到离线环境。",
+      "EPLB（Expert-Level Parallelism Balancer）实现多专家负载均衡，批次不变性保证相同输入在不同批次下输出一致，确定性采样则让推理结果可复现——三者组合是线上服务稳定性的基础。",
+      "开源版本侧重离线推理吞吐，不含在线调度与多租户隔离等内部系统。对自建推理集群的团队，这是把V4.1-Flash单位成本压到官方水准最近的一条路。",
+      "学习提示：推理框架的开源让小团队也能复现前沿模型的推理效率。重点关注EPLB和确定性采样模块的实现，它们对部署质量影响最大。DeepInfer已可在GitHub获取。"
+    ],
+    "highlights": [
+      "DeepInfer以Apache 2.0开源，含MoE并行、批次不变性、确定性采样",
+      "可复现V4.1-Flash官方吞吐量，单位成本大幅降低",
+      "在线调度与多租户隔离仍保留在内部系统"
+    ]
+  },
+  {
+    "id": "2026-10-21-google-meta-torchtpu-pytorch",
+    "date": "2026-10-21",
+    "category": "产品发布",
+    "title": "Google与Meta联合发布TorchTPU，PyTorch原生支持TPU",
+    "summary": "Google与Meta联合发布TorchTPU，这是TPU的原生PyTorch后端，迁移代码只需改一行.to(\"tpu\")，运行时不依赖JAX，标志着TPU从定制框架正式走向标准PyTorch生态。",
+    "source": "PyTorch Blog",
+    "url": "https://pytorch.org/blog/introducing-torchtpu/",
+    "tags": [
+      "TPU",
+      "PyTorch",
+      "Google",
+      "Meta",
+      "硬件生态"
+    ],
+    "body": [
+      "TorchTPU由Google与Meta联合发布，是TPU的原生PyTorch原生后端，迁移成本极低：现有代码只需把设备参数从.cuda()或.to(\"cuda\")改为.to(\"tpu\")，运行时不依赖JAX/Lazy Tensor。",
+      "TPU此前必须通过JAX框架使用，对习惯PyTorch的开发者存在较高切换成本。TorchTPU让TPU成为标准PyTorch设备，动态形状、eager模式调试等特性向GPU看齐。",
+      "竞争格局正在改变：AWS同周发布的TorchNeuron支持英伟达以外的加速器，非NVIDIA硬件的竞争正从芯片层转向编译器层，PyTorch的设备抽象层成为争夺焦点。",
+      "学习提示：对在TPU上训练模型的团队，TorchTPU大幅降低了迁移门槛。重点关注PyTorch博客中的迁移指南和已知限制列表，当前算子覆盖度是最大变量。"
+    ],
+    "highlights": [
+      "TPU成为标准PyTorch设备，迁移仅需改一行代码",
+      "放弃Lazy Tensor换eager模式，动态形状与调试向GPU看齐",
+      "非NVIDIA硬件竞争从芯片转向编译器层"
+    ]
+  },
+  {
+    "id": "2026-10-21-spacex-q3-ai-revenue-52-percent",
+    "date": "2026-10-21",
+    "category": "行业动态",
+    "title": "SpaceX三季度AI业务占比52%，Q3净利润44亿美元",
+    "summary": "SpaceX三季度营收146亿美元、净利润44亿美元，AI业务（含Cursor、Grok）占总收入52%，算力规模达1.7GW；但剔除12亿一次性股权补偿后经营利润仅4.31亿美元。",
+    "source": "TechCrunch",
+    "url": "https://techcrunch.com/2026/10/20/spacexs-ai-business-is-beating-expectations/",
+    "tags": [
+      "SpaceX",
+      "AI营收",
+      "算力",
+      "人形机器人",
+      "Q3财报"
+    ],
+    "body": [
+      "SpaceX 2026年Q3财报显示：营收146亿美元、同比增161%，净利润44亿美元（去年同期亏损10亿）。AI业务占总收入52%，含Cursor和Grok等应用，算力规模1.7GW。",
+      "收入结构改善明显，但利润质量存疑：AI业务75亿收入中含12亿一次性股权补偿，剔除后经营利润仅4.31亿美元；同期资本开支196亿美元，四季度预计再投350-400亿美元。",
+      "马斯克在电话会上给出激进扩张指引：2026年底算力预计达2.5-3 GW，2027年新增10 GW，并可能因电力基础设施提前布局而超过20 GW；公司预计2027年底ARR达5000亿至1万亿美元。",
+      "学习提示：AI业务占比过半说明SpaceX已从火箭公司转型为AI基础设施公司。但高扩张与负自由现金流的组合需持续观察，对关注AI算力赛道的投资者，资本开支强度是核心风险指标。"
+    ],
+    "highlights": [
+      "AI业务占比52%，Q3净利润44亿美元（去年同期亏损10亿）",
+      "AI收入含12亿一次性股权补偿，剔除后经营利润仅4.31亿美元",
+      "2027年算力指引超20GW，但资本开支强度远超经营现金流"
+    ]
+  },
+  {
+    "id": "2026-10-21-asi-robotics-325m-funding",
+    "date": "2026-10-21",
+    "category": "行业动态",
+    "title": "ASI Robotics融资3.25亿美元、估值30亿美元，剑指具身智能",
+    "summary": "人工智能初创公司ASI完成3.25亿美元融资，估值达30亿美元，由Spark Capital领投，Citadel Securities、Meritech Capital等参投，专注具身智能与AI机器人赛道。",
+    "source": "新浪财经",
+    "url": "https://tags.sina.com.cn/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD",
+    "tags": [
+      "具身智能",
+      "机器人",
+      "融资",
+      "ASI Robotics",
+      "Spark Capital"
+    ],
+    "body": [
+      "ASI Robotics宣布完成3.25亿美元新一轮融资，公司估值达30亿美元。Spark Capital领投，Citadel Securities旗下关联机构、Meritech Capital和Craft Ventures等跟投。",
+      "这是具身智能赛道的又一笔大额融资。ASI专注AI驱动的人形机器人研发，产品可应用于工业自动化、物流履约等领域。本轮投资方阵容包含多家顶级机构，显示资本市场对具身智能的持续看好。",
+      "2026年以来具身智能融资密集落地：法奥机器人近10亿元、伊塔动力超亿元、元环智能数亿元、无问芯穹23亿元，本月 ASI 的3.25亿美元是其中最大单笔融资。",
+      "学习提示：ASI本轮估值30亿美元，投资方含Citadel Securities等华尔街背景机构，融资估值具有参考性。关注ASI的具身智能产品落地进展，其技术路径与国内法奥、元环等有差异，可作对比研究。"
+    ],
+    "highlights": [
+      "ASI Robotics融资3.25亿美元、估值30亿美元",
+      "Spark Capital领投，Citadel Securities、Meritech Capital等跟投",
+      "2026年具身智能融资密集，本月最大单笔"
+    ]
+  },
+  {
+    "id": "2026-10-21-anthropic-600b-compute-commitment",
+    "date": "2026-10-21",
+    "category": "行业动态",
+    "title": "Anthropic据报未来十年算力承诺超6000亿美元，IPO在即",
+    "summary": "据《华尔街日报》援引Anthropic IPO招股书草稿报道，公司未来十年算力相关承诺支出合计逾5180亿美元，总承诺支出将超6000亿美元，正寻求以1.5-2万亿美元估值于11月上市。",
+    "source": "华尔街见闻",
+    "url": "https://www.readaitime.com/news/2026-10-21/jqb0kzpv",
+    "tags": [
+      "Anthropic",
+      "IPO",
+      "算力投入",
+      "融资",
+      "Claude"
+    ],
+    "body": [
+      "《华尔街日报》获取的Anthropic IPO招股书草稿显示，公司未来十年算力相关承诺支出合计逾5180亿美元，总算力承诺支出将超6000亿美元，计划总开支最高或达7500亿美元。",
+      "2026年上半年营收163亿美元，算力支出约90亿美元，净亏损超807亿美元——其中720亿美元为可转换票据等融资工具估值变动带来的会计计提，属于非现金性质。公司正寻求以1.5-2万亿美元估值于11月上市。",
+      "此前Anthropic已与Nscale敲定约450亿美元的算力租约，落地西弗吉尼亚州Monarch数据中心园区第二座设施、460兆瓦电力规模，采用英伟达Vera Rubin芯片。AI基础设施进入债务驱动阶段。",
+      "学习提示：超高算力承诺折射出Anthropic对算力密集型路线的押注，IPO估值1.5-2万亿美元已超多数科技巨头。但巨额亏损和算力租约的财务压力是上市后最大风险点，对AI investor而言需关注其单位模型能力的边际改善。"
+    ],
+    "highlights": [
+      "未来十年算力承诺超6000亿美元，2026上半年净亏损807亿美元（主为会计计提）",
+      "IPO估值目标1.5-2万亿美元，最早11月上市",
+      "与Nscale 450亿美元算力租约落地西弗吉尼亚460MW园区"
+    ]
+  },
+  {
     "id": "2026-10-18-ftc-subpoenas-openai-anthropic",
     "date": "2026-10-18",
     "category": "政策法规",
@@ -6329,330 +6490,6 @@
       "可灵 AI 单季收入 8.5 亿元+，同比 +240%，全球用户破亿",
       "分拆独立融资，投后估值 180 亿美元",
       "传统主业净利润同比 -30.3%，管理层主动牺牲短期利润押注 AI"
-    ]
-  },
-  {
-    "id": "2026-08-19-openai-chatgpt-teen-mode-release",
-    "date": "2026-08-19",
-    "category": "产品发布",
-    "title": "OpenAI 发布青少年版 ChatGPT：年龄预测路由 + 安静模式",
-    "summary": "OpenAI 于 8 月 18 日（美国）推出 13-17 岁专属青少年版 ChatGPT，通过年龄预测自动识别未成年用户并切换模式，拦截自伤/自残及情感类对话，家长可设安静时段并接收高风险安全通知。",
-    "source": "BNN Bloomberg / AP",
-    "url": "https://www.bnnbloomberg.ca/business/company-news/2026/08/18/openai-launches-chatgpt-for-teens-promising-a-more-age-appropriate-chatbot/",
-    "tags": [
-      "OpenAI",
-      "ChatGPT",
-      "青少年",
-      "内容安全",
-      "产品发布"
-    ],
-    "body": [
-      "OpenAI 于美国时间 8 月 18 日正式推出青少年版 ChatGPT，面向 13-17 岁用户，采用年龄预测模型自动识别未成年用户并路由至专属青少年模式。该模式主动拦截涉及自杀、自残、浪漫及性暗示类对话，研究显示模式会将未成年用户引导至更健康的内容方向。",
-      "家长控制功能允许设置每日安静时段（禁止使用）并接收高风险安全事件通知，青少年端还内置学习模式 nudge 系统，引导用户在作业、研究等场景下合理使用 AI。OpenAI 承诺青少年版不会用于改善模型训练（使用单独数据管道），符合 COPPA 法规要求。",
-      "这是 OpenAI 首次在产品层面针对未成年人做专项设计，此前 ChatGPT 仅依赖用户自报年龄，验证机制薄弱。Teen Mode 的推出正值美国多州对 AI 产品未成年保护立法窗口期，预计将引发 FTC 对 AI 年龄适当性标准的进一步关注。",
-      "对 AI 产品开发者：青少年版不是功能删减版，而是独立的安全护栏设计——家长控制、学习模式、内容过滤三层逻辑均需要对应工程实现；建议参考 OpenAI 的年龄预测 + 强制路由方案，在涉及未成年用户的应用中构建完整合规链路。"
-    ],
-    "highlights": [
-      "年龄预测模型自动识别 13-17 岁用户并强制切换青少年模式",
-      "家长可设每日安静时段 + 接收高风险安全通知，Teen Mode 不参与模型训练",
-      "美国多州未成年人 AI 保护立法窗口期的主动合规动作，Teen Mode 可能是行业首个参考标准"
-    ]
-  },
-  {
-    "id": "2026-08-19-cisa-ray-ai-rce-cve-2025-62593",
-    "date": "2026-08-19",
-    "category": "政策法规",
-    "title": "CISA 要求联邦机构 3 天内修复 Ray 框架 RCE 漏洞（CVSS 9.4）",
-    "summary": "CISA 将 Ray AI 框架 CVE-2025-62593 纳入已知已利用漏洞目录，CVSS评分 9.4，亚马逊、苹果、OpenAI 均使用该框架，要求联邦民用机构在 8 月 20 日前完成修补。",
-    "source": "The Hacker News / CISA",
-    "url": "https://thehackernews.com/2026/08/cisa-flags-actively-exploited-ray-flaw.html",
-    "tags": [
-      "CISA",
-      "Ray",
-      "RCE漏洞",
-      "安全",
-      "CVSS"
-    ],
-    "body": [
-      "CISA 于 8 月 17 日将 Ray AI 框架的高危远程代码执行漏洞 CVE-2025-62593 纳入已知已利用漏洞（KEV）目录，给联邦民用机构仅留 3 天窗口期——截止日期为 8 月 20 日。该漏洞 CVSS 评分 9.4（满分 10），属于严重级别，攻击者可通过浏览器触发 RCE。",
-      "Ray 由 UC Berkeley RISELab 开发，是当前最主流的分布式 ML 训练和推理框架之一，Anyscale（已被 NVIDIA 收购）维护的企业版被亚马逊、苹果、OpenAI 等用于扩展 ML 工作负载。漏洞存在于 Ray 的默认配置中，无需认证即可利用。",
-      "Wiz 研究团队最早发现并报告了该漏洞，概念验证（PoC）代码已在互联网公开，具体利用方式已被多个威胁行为者在野使用。考虑到受影响目标包括头部云厂商和 AI 公司，这是 2026 年 AI 供应链最具影响力的安全事件之一。",
-      "对 AI 开发者：立即检查是否在用 Ray（Anyscale Enterprise）并确认版本是否已升级至修补版本；若在 AWS SageMaker 或内部 Kubernetes 上跑 Ray 训练任务，需同步通知安全团队；该漏洞 PoC 已公开，不要赌它不会被利用。"
-    ],
-    "highlights": [
-      "CVSS 9.4，3 天修复窗口（截止 8 月 20 日），联邦机构强制要求",
-      "Ray 被亚马逊、苹果、OpenAI 等用于生产 ML 工作负载，默认配置无需认证即可 RCE",
-      "Wiz 最早发现，PoC 已公开，是 2026 年影响最广的 AI 供应链安全事件"
-    ]
-  },
-  {
-    "id": "2026-08-19-pennsylvania-data-center-executive-order",
-    "date": "2026-08-19",
-    "category": "政策法规",
-    "title": "宾夕法尼亚州长签署数据中心行政令：项目须获本地审批并承担电力基础设施费用",
-    "summary": "宾夕法尼亚州州长 Josh Shapiro 于 8 月 18 日签署第 2026-05 号行政令，将该州 GRID 数据中心标准升格为法律强制要求，新项目须签署Consent Order、承担新增电力基础设施全额费用并执行节水保护措施。",
-    "source": "Pennsylvania.gov / AI Weekly",
-    "url": "https://www.pa.gov/governor/newsroom/2026-press-releases/governor-shapiro-signs-executive-order-on-data-center-developmen",
-    "tags": [
-      "宾夕法尼亚",
-      "数据中心",
-      "法规",
-      "AI基础设施",
-      "电力"
-    ],
-    "body": [
-      "宾夕法尼亚州长 Josh Shapiro 于 8 月 18 日签署第 2026-05 号行政令（Executive Order 2026-05），将原有的 GRID 数据中心自愿标准升格为法律强制要求，所有新建及扩建数据中心项目必须签署《Consent Order》协议，承诺遵守当地审批流程、全额承担新增电力基础设施费用并执行节水保护措施。",
-      "该行政令针对的背景是：宾夕法尼亚州因电力成本低、土地便宜，成为数据中心建设热点，OpenAI、微软、Google 均在此区域有大型数据中心规划，但快速扩张给当地电网和水资源带来压力，地方政府与数据中心开发商之间矛盾频发。",
-      "美国其他州也在跟进类似立法：弗吉尼亚州（全球最大数据中心集群之一）正就电力容量上限进行辩论，加利福尼亚州则因电力紧张否决了多个数据中心项目。AI 数据中心的选址逻辑正在从单纯成本考量转向合规成本与社区关系并重。",
-      "对 AI 基础设施团队：宾夕法尼亚州的标准升级意味着选址评估模型需要加入「监管风险」维度；建议在选址阶段尽早进行 GRID 标准对标评估，并将社区关系建设（而非仅电力价格）纳入数据中心建设谈判的优先事项。"
-    ],
-    "highlights": [
-      "GRID 标准升格为法律强制，新建/扩建项目须签Consent Order并承担电力和水资源基础设施全额费用",
-      "宾夕法尼亚是美国 AI 数据中心建设热点，OpenAI/微软/Google 均有项目在此",
-      "美国各州正形成「数据中心监管竞赛」，选址逻辑从成本优先转向合规与社区并重"
-    ]
-  },
-  {
-    "id": "2026-08-19-alipay-agentic-commerce-platform-merchants",
-    "date": "2026-08-19",
-    "category": "产品发布",
-    "title": "支付宝推中国首个全栈 Agentic 商务平台：KFC、瑞幸等首批入驻",
-    "summary": "支付宝于 8 月 18 日在杭州合作伙伴大会上发布全栈 Agentic 商务平台，商家可将页面、商品、工作流一键转为 Agent Ready Skills 和 MCP 工具，接入消费者 Agent「智能宝」，首批已签约 KFC、瑞幸等品牌。",
-    "source": "TechNode Global",
-    "url": "https://technode.global/2026/08/18/alipay-launches-agentic-commerce-platform-in-china-to-bring-ai-tools-to-merchants/",
-    "tags": [
-      "支付宝",
-      "Agentic",
-      "商务平台",
-      "MCP",
-      "中国AI"
-    ],
-    "body": [
-      "支付宝于 8 月 18 日在杭州年度合作伙伴大会上发布全栈 Agentic 商务平台，商家可将现有页面、商品目录和工作流一键转换为 Agent Ready Skills（即符合 AHA 互操作协议的 MCP 工具），直接接入支付宝消费者 Agent「智能宝」（Ah Bao）向用户主动推荐并完成交易闭环。",
-      "AHA 互操作协议是该平台的技术核心：商家以 MCP 工具形式注册 Skills，平台统一做发现、路由和交易担保，无需商家自行构建 Agent。KFC 中国、瑞幸咖啡等首批品牌已签约，涵盖外卖、会员、优惠券等高频场景，日均触达用户预计超千万。",
-      "这是中国首个真正意义上的全栈 Agentic 商务平台，标志着 AI Agent 从「对话工具」走向「交易闭环」。此前百度、字节等尝试的 AI 营销更多停留在推荐层面，无法独立完成下单、支付、履约全流程；支付宝凭借支付基础设施实现了端到端。",
-      "对 AI 创业者：Agentic Commerce 是 2026 年最清晰的大模型商业化路径之一——不是替代搜索/推荐，而是替代「操作」本身；如果你的产品涉及交易履约环节，可接入 AHA/MCP 生态获取分发渠道。"
-    ],
-    "highlights": [
-      "商家以 MCP 工具形式注册 Skills，接入智能宝 Agent 实现交易闭环",
-      "KFC、瑞幸等首批入驻，日均触达用户预计超千万",
-      "中国首个全栈 Agentic 商务平台，支付宝支付基础设施打通履约全链路"
-    ]
-  },
-  {
-    "id": "2026-08-19-anthropic-claude-protein-binder-14-15-targets",
-    "date": "2026-08-19",
-    "category": "研究前沿",
-    "title": "Anthropic：Claude 设计蛋白binder成功率达22-35%，NMR分析仅需23分钟",
-    "summary": "Anthropic 公布 Claude 在蛋白质设计领域的实验室验证结果，Mythos Preview 和 Opus 4.8 在 15 个靶点中成功设计 14 个binder，成功率 22-35% 远超行业 10-15%；Opus 5 处理 NMR 和 LC-MS 原始数据仅需 23 和 19 分钟。",
-    "source": "Anthropic",
-    "url": "https://www.anthropic.com/research/Claude-accelerates-protein-design",
-    "tags": [
-      "Anthropic",
-      "Claude",
-      "蛋白质设计",
-      "药物研发",
-      "科学研究"
-    ],
-    "body": [
-      "Anthropic 于 8 月 18 日发布 Claude 加速蛋白质设计和化学分析的实验室验证结果。在蛋白质binder设计任务中，Claude（Mythos Preview 和 Opus 4.8）为 Adaptyv Bio 和 Twist Bioscience 提供的 15 个靶点设计binder，14 个成功命中，成功率在 22%-35% 之间，对比当前行业标准的 10-15% 提升约 2-3 倍。",
-      "更值得注意的是 Opus 5 在化学分析中的表现：给定原始 NMR（核磁共振）和 LC-MS（液相色谱-质谱）数据文件（通常需要专业实验室设备与技术人员分析数小时），Claude 仅凭一份合同实验室的原始文件加两句提示词，分别在 23 分钟和 19 分钟内返回分析结果，与实验室自身分析结果在氢原子计数和纯度（96.4% vs 96.33%）上高度吻合。",
-      "Anthropic 表示生命科学任务仍被其最强大模型（推测为 Model 2）暂时屏蔽，正准备推出科学家专项访问计划（access program）。这是 Claude 首次以 wet-lab 验证结果（非单纯基准测试）证明其在真实科学任务中的有效性。",
-      "对 AI + 科学研究者：蛋白质binder设计的 wet-lab 验证（22-35% vs 10-15%）是 AI4Science 领域的重大里程碑；化学分析加速（23/19 分钟 vs 传统数小时）意味着 AI 将显著降低药物发现的时间成本；建议生物/化学方向研究者关注 Anthropic 科学家访问计划的申请窗口。"
-    ],
-    "highlights": [
-      "Claude 在 15 个靶点中成功设计 14 个蛋白binder，22-35% 成功率 vs 行业 10-15%",
-      "Opus 5 处理 NMR 和 LC-MS 原始数据分别仅需 23 分钟和 19 分钟，纯度误差 0.07%",
-      "Anthropic 首次发布 wet-lab 验证结果，科学家专项访问计划即将推出"
-    ]
-  },
-  {
-    "id": "2026-08-19-wiz-red-agent-snowflake-repo-script-injection",
-    "date": "2026-08-19",
-    "category": "行业动态",
-    "title": "Wiz 自主 Red Agent 5 天攻陷 Snowflake 仓库，GitHub AI 审查 vs 实际漏洞责任成疑",
-    "summary": "Wiz 的自主 Red Agent 在 Snowflake 仓库上线 5 天后发现并利用脚本注入漏洞，窃取 Jira token；Wiz 称 GitHub AI 已审查并通过该变更，GitHub 则否认 AI 曾审查该代码，责任归属成疑。",
-    "source": "AIToolsRecap",
-    "url": "https://aitoolsrecap.com/daily-ai-news.aspx",
-    "tags": [
-      "Wiz",
-      "Red Agent",
-      "Snowflake",
-      "安全",
-      "AI黑客"
-    ],
-    "body": [
-      "Wiz 安全研究团队于 8 月 18 日披露其自主 Red Agent（AI 黑客系统）在目标仓库上线仅 5 天后便发现并成功利用了 Snowflake 某代码仓库中的脚本注入漏洞，完整攻击链包括：发现注入点 → 注入恶意脚本 → 窃取 Jira token →横向移动至项目管理系统。",
-      "该事件引发争议的核心在于漏洞责任链：Wiz 方面称该代码变更已通过 GitHub AI（推测为 GitHub Advanced Security 或其 AI 代码审查功能）的审查并被标记为安全；但 GitHub 发言人公开声明其 AI 系统从未针对该仓库启用该功能。双方各执一词，原始攻击的日志目前仅 Wiz 一方持有。",
-      "该事件是 AI 驱动的自主安全攻击首次公开记录：Wiz Red Agent 不同于传统的自动化扫描工具，它能自主判断漏洞价值、构造利用载荷、选择攻击路径，整个过程无需人工介入。这是安全社区长期警告的「AI 黑客」能力的首次实战演示。",
-      "对安全从业者：该事件将「AI 生成的代码是否等同于人工审查通过」这一法律和合规问题推向台前；建议在 SDLC 中明确标注 AI 审查结论的证明力和责任边界；同时关注 Wiz 是否会发布 Red Agent 技术白皮书——它是 2026 年最值得研究的自主安全 AI 系统。"
-    ],
-    "highlights": [
-      "Wiz Red Agent 上线 5 天自主发现并利用脚本注入漏洞，完整攻击链无需人工介入",
-      "GitHub AI 审查 vs GitHub 官方声明矛盾：漏洞变更是否被 AI 审查通过责任归属成疑",
-      "AI 黑客能力首次公开实战演示，「AI 生成代码 = 人工审查」的法律效力受到挑战"
-    ]
-  },
-  {
-    "id": "2026-08-18-stripe-70b-openrouter-acquisition",
-    "date": "2026-08-18",
-    "category": "行业动态",
-    "title": "Stripe 70亿美元收购 OpenRouter：AI调用「收费站」易主",
-    "summary": "Stripe以超70亿美元收购全球最大AI模型中转平台OpenRouter，5月估值才13亿美元，82天暴涨5倍。平台每周处理Token已超55万亿，2026年全年预计近2600万亿。",
-    "source": "AITNT / Bloomberg",
-    "url": "https://www.aitntnews.com/newDetail.html?newId=28311",
-    "tags": [
-      "Stripe",
-      "OpenRouter",
-      "收购",
-      "模型路由",
-      "AI基础设施"
-    ],
-    "body": [
-      "8月16日彭博社爆料，Stripe已敲定收购OpenRouter，价格超过70亿美元。OpenRouter5月26日刚完成1.13亿美元B轮融资估值13亿美元，到8月16日仅隔82天估值暴涨5倍，华尔街日报曾报道其可能卖到100亿美元仍有不止一家巨头在考虑出手。",
-      "OpenRouter通过统一API接入400+AI模型，为1000多万开发者提供自动路由服务，挑选最便宜、最快、最稳定的模型执行。截至8月10日平台周处理Token超55万亿，预计2026全年近2600万亿Token，经手模型包括GPT、Claude、Gemini、DeepSeek等几乎所有主流模型。",
-      "Stripe拿下OpenRouter后，将占据Agent和模型厂商之间的「计量口」，无论人花钱还是AI花钱都得经过其支付系统。Stripe同时还在洽谈以530亿美元收购PayPal，两笔交易叠加意图清晰：布局人花钱和Agent花钱的全面支付基础设施。",
-      "对AI开发者和投资人：OpenRouter被收购验证了「多模型路由」赛道的战略价值；其公开排行榜已成行业「温度计」，Stripe入主后API稳定性有望提升但生态独立性需观察；建议关注收购完成后的定价策略变化和独立API条款。"
-    ],
-    "highlights": [
-      "收购价超70亿美元，82天内估值从13亿涨至70亿+美元",
-      "周处理Token超55万亿，全年预计2600万亿，覆盖400+模型",
-      "Stripe目标：人花钱和Agent花钱都经过其支付基础设施"
-    ]
-  },
-  {
-    "id": "2026-08-18-codex-1m-context-gpt-56-sol",
-    "date": "2026-08-18",
-    "category": "产品发布",
-    "title": "Codex 开放 1M 上下文：Tibo 三行配置解除 GPT-5.6 Sol 封印",
-    "summary": "OpenAI研究员Tibo通过三行config配置，让Codex用户解锁GPT-5.6 Sol的1M上下文，约90万token时自动压缩历史。但超默认窗口后token消耗翻倍，512K-1M区间性能从91.5%降至73.8%。",
-    "source": "AITNT / 量子位",
-    "url": "https://www.aitntnews.com/newDetail.html?newId=28318",
-    "tags": [
-      "Codex",
-      "OpenAI",
-      "GPT-5.6",
-      "长上下文",
-      "产品发布"
-    ],
-    "body": [
-      "Tibo在社交媒体发布三行config咒语，在Codex的config.toml文件开头添加 model = \"gpt-5.6-sol\"、model_context_window = 1000000、model_auto_compact_token_limit = 900000，重启后即可解锁GPT-5.6 Sol的1M上下文窗口。约90万token时模型自动启动历史压缩。",
-      "OpenAI研究员Noam Brown提醒：超出默认上下文窗口后，Codex里模型token消耗会直接翻倍。OpenAI自己公布的长上下文评测中，MRCR v2上GPT-5.6 Sol处理256K-512K上下文时得分91.5%，512K-1M区间降至73.8%，性能衰减明显。",
-      "Tibo同时透露Codex确定会上Astra——即OpenAI下一代模型「GPT-6」。Codex默认策略背后的逻辑是：Agent运行越久，历史记录中真正需要原样保留的信息占比未必越高，通过压缩把旧信息浓缩后继续运行比保留全部历史更高效。",
-      "对开发者：1M上下文是把双刃剑——适合需要保持大量代码/对话历史的长期项目，但成本和性能衰减需权衡；建议先用默认配置跑通任务，有真实需求再切换到1M窗口，同时关注Tibo后续的Astra集成公告。"
-    ],
-    "highlights": [
-      "三行config解锁GPT-5.6 Sol的1M上下文，约90万token时自动压缩",
-      "超默认窗口token消耗翻倍，512K-1M性能从91.5%降至73.8%",
-      "Codex确定将集成Astra（GPT-6），OpenAI下一代旗舰模型"
-    ]
-  },
-  {
-    "id": "2026-08-18-xiaomi-super-xiaoai-2-agent",
-    "date": "2026-08-18",
-    "category": "产品发布",
-    "title": "超级小爱2.0：小米把语音助手做成 AI Agent，覆盖人车家全生态",
-    "summary": "小米澎湃OS 4 Beta隐藏超级小爱2.0，从被动语音助手升级为能理解意图并主动执行的AI Agent，支持跨端记忆云同步和跨端执行，已接入十多家第三方服务。",
-    "source": "AITNT",
-    "url": "https://www.aitntnews.com/newDetail.html?newId=28308",
-    "tags": [
-      "小米",
-      "超级小爱",
-      "AI Agent",
-      "人车家生态",
-      "MiMo"
-    ],
-    "body": [
-      "超级小爱2.0核心升级：AI架构全面重构，深度集成小米自研MiMo大模型，从「听得懂的对话框」升级为「做得到的协作者」。用户只需说出最终需求（如「找身份证照片」），AI自动规划路径、调用应用、执行任务，无需一步步教它怎么做。",
-      "小米的独特优势是人车家全生态覆盖：手机、汽车、电视、音箱、手表、智能家居数百款设备每天产生大量用户行为数据。这些跨端上下文让AI Agent对用户的理解深度远超单一App竞品，且小米与各互联网服务无竞争关系，可中立接入支付宝、高德等十多家第三方服务。",
-      "跨端记忆云同步是另一核心能力：在手机告诉小爱喜欢冰美式，换到平板车机后它仍知道你的偏好；早上在家设日程，出门上车车机自动规划路线，到机场手机弹出登机牌——整个过程用户只说一句话。",
-      "对AI产品经理：超级小爱2.0验证了「终端厂商做Agent」的差异化路径——有设备才有上下文，有上下文才有真正个性化的AI；建议关注其生态开放程度和API接口政策，这可能是国内最值得接入的本地化Agent平台之一。"
-    ],
-    "highlights": [
-      "从被动响应升级为主动执行，用户说目标AI规划完整路径",
-      "人车家全生态跨端记忆同步，换设备不换脑",
-      "小米MiMo模型调用量在OpenRouter平台排名前列，已验证模型能力"
-    ]
-  },
-  {
-    "id": "2026-08-18-hidream-o1-world-interactive-world-model",
-    "date": "2026-08-18",
-    "category": "技术突破",
-    "title": "HiDream-O1-World：首款原生全模态交互式世界模型登顶 WBench",
-    "summary": "智象未来发布全球首款原生全模态交互式世界模型HiDream-O1-World，基于自研UiT架构，WBench评测Nav i分榜第一，物理维度得分73.3全榜第一，一致性得分88.0综合第一。",
-    "source": "AITNT",
-    "url": "https://www.aitntnews.com/newDetail.html?newId=28316",
-    "tags": [
-      "HiDream",
-      "世界模型",
-      "UiT架构",
-      "多模态",
-      "交互式生成"
-    ],
-    "body": [
-      "智象未来发布HiDream-O1-World，基于自研原生全模态UiT（Unified Transformer）架构，将图像像素、文本Token、视频体素、音频、动作指令、空间坐标等所有原始信号统一映射到同一共享Token空间，在同一Transformer网络内完成交互、理解与生成。",
-      "在美团LongCat与复旦大学联合推出的交互式世界模型评测基准WBench中，HiDream-O1-World首次参评即登顶Navi分榜，物理维度（Physical）得分73.3全榜第一，一致性维度（Consistency）得分88.0综合第一，超越腾讯混元1.5、阿里Happy Oyster等模型。",
-      "核心能力：用户可在生成的世界中以第一/第三人称自由漫游，可实时编辑角色动作（抓取、奔跑、下蹲、跳跃）和触发环境变化（降雨、物体坠落），且保持长时空一致性和物理因果正确性。支持写实城市、自然地貌、二次元卡通、3A游戏渲染等多元风格。",
-      "对研究者和创作者：UiT架构用统一Token空间替代传统拼接式多模态，从根本上解决了跨模态因果逻辑在翻译中丢失的问题；该方向可能是世界模型从「渲染画面」走向「构造可交互世界」的关键突破，建议关注代码开源进度。"
-    ],
-    "highlights": [
-      "UiT统一Token空间架构，图像/文本/视频/动作/空间坐标同网络处理",
-      "WBench物理维度73.3分、一致性88.0分双项第一，超越腾讯混元1.5",
-      "用户可漫游、实时编辑角色动作和环境变化，保持物理和时空一致性"
-    ]
-  },
-  {
-    "id": "2026-08-18-tensorcast-pku-stepfun-ttft-93-percent",
-    "date": "2026-08-18",
-    "category": "技术突破",
-    "title": "北大×阶跃星辰 TensorCast：统一张量管理层，推理首字延迟降低93.2%",
-    "summary": "北京大学、阶跃星辰、北邮联合提出TensorCast，在计算引擎、网络与存储之间引入统一可编程的张量生命周期管理抽象层，高并发多轮Agent场景TTFT最高降低93.2%，模型启动速度提升228.6倍。",
-    "source": "Second Talent / Pandaily",
-    "url": "https://pandaily.com/tensorcast-pku-stepfun-bupt-tensor-management-llm-ttft-93-percent-aug2026",
-    "tags": [
-      "北京大学",
-      "阶跃星辰",
-      "TensorCast",
-      "LLM推理",
-      "Infra优化"
-    ],
-    "body": [
-      "TensorCast由北京大学、阶跃星辰与北京邮电大学联合提出，在计算引擎、网络与存储之间引入统一可编程的张量生命周期管理抽象层，将模型权重、KV Cache等张量状态从具体系统中解耦，使不同工作负载能复用统一的张量管理能力。",
-      "通过Identify、Place、Move、Transform、Materialize五类生命周期原语的组合，开发者可灵活实现跨组件优化。实验结果显示，高并发多轮Agent场景下TTFT（Time To First Token，首字延迟）最高降低93.2%，模型启动速度最高提升228.6倍。",
-      "该技术的核心价值在于：大模型推理的瓶颈往往不在计算本身，而在于张量在GPU显存、跨节点网络、HBM/SSD存储之间的调度效率。TensorCast把这层调度抽象为可编程原语，让Infra工程师无需深入每个硬件细节即可做全局优化。",
-      "对LLM Infra从业者：93.2%的TTFT降低是非常显著的数字，尤其对长对话多轮Agent场景；建议关注该工作的正式论文和开源实现，在模型推理引擎和网络调度两层之间还有大量优化空间，TensorCast提供了一条可复用的抽象路径。"
-    ],
-    "highlights": [
-      "TTFT最高降低93.2%，模型启动速度提升228.6倍",
-      "统一张量生命周期管理抽象，解耦权重/KV Cache与具体系统",
-      "北京大学+阶跃星辰+北邮联合研究，产学研结合的LLM Infra突破"
-    ]
-  },
-  {
-    "id": "2026-08-18-fable-5-ai-autonomous-research-prime-intellect",
-    "date": "2026-08-18",
-    "category": "研究前沿",
-    "title": "Fable 5 逼近人类科研极限：全球18大AI模型断网8天挑战nanoGPT优化",
-    "summary": "Prime Intellect公布全球最大规模AI自主科研实验：18个模型断网8天挑战nanoGPT优化，Fable 5以2726步追平人类2600步纪录的82%，OpenAI和Anthropic均预测2028年AI将实现自我改进。",
-    "source": "AITNT",
-    "url": "https://www.aitntnews.com/newDetail.html?newId=28295",
-    "tags": [
-      "Fable",
-      "AI自主科研",
-      "Prime Intellect",
-      "RSI",
-      "模型进化"
-    ],
-    "body": [
-      "Prime Intellect公布全球最大规模AI自主科研实验结果：18个AI模型在断网环境下用8天时间挑战nanoGPT优化任务，Fable 5以2726步追平人类研究员2600步基准纪录的82%，差距仅126步，这是首次量化AI科研能力的公开基准测试。",
-      "OpenAI和Anthropic均预测AI将在2028年实现自我改进（RSI，Recursive Self-Improvement）。本次实验中Kimi K3借助DeepSeek Harness框架逼近Claude Opus 5水平，印证了开源社区在Agent能力上与闭源前沿的差距正在快速收窄。",
-      "实验设计：18个模型在完全断网环境中只能访问代码仓库、编译器、实验日志，不能搜索互联网或请教外部专家，考验模型独立解决真实工程问题的能力。Fable 5表现最接近人类基线，但仍未超越。",
-      "对AI研究者：AI科研能力接近人类基线（82%）是重要信号，表明在特定受限场景下AI已能独立完成有价值的工程优化；建议关注RSI时间表和企业应用路径——当AI能自主优化AI本身时，模型迭代速度将远超人类监督下的传统研发流程。"
-    ],
-    "highlights": [
-      "Fable 5达人类基线的82%（2726步 vs 2600步），差距仅126步",
-      "18个模型断网8天挑战nanoGPT优化，首次量化AI科研能力",
-      "OpenAI和Anthropic均预测2028年AI将实现RSI自我改进"
     ]
   }
 ]
