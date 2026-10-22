@@ -1,5 +1,155 @@
 [
   {
+    "id": "2026-10-22-openai-models-google-cloud-model-garden",
+    "date": "2026-10-22",
+    "category": "行业动态",
+    "title": "OpenAI 模型上架 Google Cloud，打破微软独家渠道",
+    "summary": "OpenAI 与 Google Cloud 10月21日宣布，GPT-6 Astra、GPT-6.1 Sol、GPT-6 Luna 及 Codex 工作流进入 Google Cloud Model Garden，先私有预览，数周内正式可用。",
+    "source": "CNBC",
+    "url": "https://www.cnbc.com/2026/10/21/openai-bring-its-ai-models-to-googles-cloud-expands-beyond-microsoft.html",
+    "tags": [
+      "OpenAI",
+      "Google Cloud",
+      "云平台",
+      "智能体"
+    ],
+    "body": [
+      "OpenAI 与 Google Cloud 在 10 月 21 日同步宣布，OpenAI 的前沿模型与 Codex 智能体工作流将进入 Google Cloud 的 Model Garden，通过 Marketplace、Google Antigravity 编码环境和 Gemini Agent 框架分发。这是 OpenAI 模型首次在美国三大云厂商同时原生可售。",
+      "公告称本次先面向部分企业客户开放私有预览，未来数周正式可用；已有 Google Cloud 消费承诺的客户可以把承诺额度用于购买 OpenAI 模型。公告未提及终止与微软 Azure 的合作关系。",
+      "Ramp 企业卡数据显示，企业 AI 支出大头仍在 OpenAI 和 Anthropic，但部分企业 IT 部门已把 Gemini 模型接入自有系统。Google Cloud 平台目前同时提供 Google、OpenAI、Anthropic 三家的主流闭源模型。",
+      "对开发者的现实意义是：多云采购意味着议价能力上升，同一套 Agent 编排也能跨云跑通。做企业 AI 选型的可以关注两件事——三家模型在同一平台上的横向压测数据，以及从 Azure 迁出时的兼容层怎么做。"
+    ],
+    "highlights": [
+      "OpenAI 模型首次在美国三大云同时原生可售",
+      "同步进入 Model Garden、Marketplace、Antigravity 与 Gemini Agent"
+    ]
+  },
+  {
+    "id": "2026-10-22-anthropic-claude-duet-agent-launch",
+    "date": "2026-10-22",
+    "category": "产品发布",
+    "title": "Anthropic 发布 Claude Duet 自主智能体，主攻专业人士",
+    "summary": "Anthropic 基于 Claude Opus 5.5 推出 Claude Duet，以研究预览形态登陆 iOS、Android 与网页端：每天早晨推送跨应用简报，全天按需打扰，用户也可整件交办任务。",
+    "source": "The Tech Buzz",
+    "url": "https://www.techbuzz.ai/articles/anthropic-launches-claude-duet-ai-agent-to-take-on-meta-and-openai",
+    "tags": [
+      "Anthropic",
+      "Claude",
+      "AI智能体",
+      "生产力工具"
+    ],
+    "body": [
+      "Anthropic 于 10 月 21 日（北京时间 22 日凌晨）发布 Claude Duet，基于 Claude Opus 5.5，以研究预览形态同时登陆 iOS、Android 与 Claude 网页端，是公司迄今对智能体市场最直接的一次进攻。",
+      "核心机制是「环境式智能」：每天早晨推送一份跨已连接应用的重要事项简报；白天持续监控这些应用，只有真正需要人处理时才发通知；用户也可以把整件任务交出去让它自主执行。",
+      "定位上 Anthropic 明确对准专业人士和小企业主，而非企业大客户或普通消费者——夹在 Meta Muse（消费级）和 OpenAI Dots（开发者向）之间。定价尚未公布，官方也没说是否包含在现有 Claude 订阅内。",
+      "现实约束值得留意：Yelp、达美等站点已明确封锁来自 OpenAI、Meta、xAI 的自主智能体抓取；不兼容的 API 与频繁改版的接口也是持续监控型智能体的常见故障点。建议学习者先在低权限小场景试用，别一上来就给全量账号授权。"
+    ],
+    "highlights": [
+      "基于 Claude Opus 5.5，研究预览形态三端同步上线",
+      "定位小企业和自由职业者，主打环境式智能"
+    ]
+  },
+  {
+    "id": "2026-10-22-agibot-ai-wave-seven-releases",
+    "date": "2026-10-22",
+    "category": "产品发布",
+    "title": "智元 AI WAVE 今日启动，连发七项具身成果",
+    "summary": "智元从10月22日起启动「AI WAVE」，连续发布数据集、作业平台、机器人本体、Agent框架、仿真平台、基座大模型与群体经验学习范式；11月2-3日6台G2进便利店连播24小时考核。",
+    "source": "上海证券报·中国证券网",
+    "url": "https://finance.eastmoney.com/a/202610213902611487.html",
+    "tags": [
+      "具身智能",
+      "机器人",
+      "智元",
+      "产品发布"
+    ],
+    "body": [
+      "智元机器人宣布，从 10 月 22 日起启动「AI WAVE」，作为 2026 智元创新日（AGIBOT INNOVATION DAY）的前奏与延伸，连续发布数据集、作业平台、机器人本体、Agent 框架、仿真平台、基座大模型、群体经验学习范式等七项成果。",
+      "智元的逻辑是全栈协同而非单点突破：在物理世界里，数据、工具、本体、系统、模型少一环都跑不通，所以这次把每一环都摆上台面集中呈现。",
+      "验收环节更硬：11 月 2 日至 3 日，6 台 G2 机器人将走进便利店，做 24 小时不间断直播，完整跑午高峰、晚高峰、深夜值班、早餐准备四个班次，完成一次「转正考核」。",
+      "对学习者的含义是：具身智能的竞争焦点正从演示视频转向连续数小时真实场景的稳定性。想入局的话，别只盯本体参数，更该看数据采集成本、仿真到现实的迁移率，以及长时任务的失败恢复机制怎么做。"
+    ],
+    "highlights": [
+      "七项成果覆盖数据、本体、Agent、仿真到基座模型全栈",
+      "11月2-3日6台G2便利店24小时直播考核"
+    ]
+  },
+  {
+    "id": "2026-10-22-iflytek-new-generation-aipc-launch",
+    "date": "2026-10-22",
+    "category": "产品发布",
+    "title": "科大讯飞全新一代国产 AIPC 今日发布",
+    "summary": "科大讯飞在10月22日全球1024开发者节发布全新一代国产AIPC笔记本，方向是系统级AI、行业专家、软硬一体与安全可控，把AI从「功能增强」推向「智能体协同」。",
+    "source": "AI云资讯",
+    "url": "https://www.icloudnews.net/a/123762.html",
+    "tags": [
+      "科大讯飞",
+      "AIPC",
+      "端侧AI",
+      "国产化"
+    ],
+    "body": [
+      "科大讯飞官宣，全新一代国产 AIPC 笔记本将在 10 月 22 日的 2026 全球 1024 开发者节上正式发布，官方口径是推动 AI 从「功能增强」走向「智能体协同」。",
+      "科大讯飞 AIPC 总经理尚上给出四条升级方向：让 AI 融入系统而不只是响应指令；融入真实专业办公场景，既理解诉求也能协同执行操作；强化整机智能与软硬协同；以及这一切必须建立在安全可控前提上。",
+      "产品线上，讯飞去年推出「燎原」「炽宇」系列，今年 4 月发布 AIPC 笔记本，应用已覆盖党政、教育、医疗、金融、能源等行业；今年年中进入《信创 AI PC 竞争力矩阵》领导者象限。",
+      "另一条背景：讯飞前三季度研发费用增速快于营收，扣非净利润仍亏损 7.63 亿元——厂商用利润换智能体入口的赌注还在继续。开发者选型时建议先问清两件事：端侧模型能离线跑到什么程度，以及办公数据出域的边界在哪。"
+    ],
+    "highlights": [
+      "10月22日全球1024开发者节正式发布",
+      "四大方向：系统级AI、行业专家、软硬一体、安全可控"
+    ]
+  },
+  {
+    "id": "2026-10-22-google-veo31-shutdown-omni-flash",
+    "date": "2026-10-22",
+    "category": "行业动态",
+    "title": "Google 今日关停 Veo 3.1 系列视频模型",
+    "summary": "按谷歌官方废弃表，Veo 3.1 的三个版本于10月22日正式关停，统一迁移到 gemini-omni-1.1-flash——后者同时承担视频生成、编辑、关键帧插值与原生音频扩展。",
+    "source": "Google AI for Developers",
+    "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+    "tags": [
+      "谷歌",
+      "Gemini",
+      "视频生成",
+      "模型废弃"
+    ],
+    "body": [
+      "Google 官方废弃页面显示，veo-3.1-generate-preview、veo-3.1-fast-generate-preview 与 veo-3.1-lite-generate-preview 三个模型将在 2026 年 10 月 22 日关停，推荐替代模型统一为 gemini-omni-1.1-flash。",
+      "替代者不是同门视频专用模型，而是 Gemini Omni Flash——它同时负责快速视频生成、编辑、关键帧插值，并支持用原生音频做扩展，等于把视频能力并进了多模态主力模型。",
+      "对正在用 Veo 3.1 的团队来说这是一次强制迁移：接口、参数与计费口径都要按 Omni Flash 重写，积累的 prompt 工程未必能原样复用，得预留回归测试时间。",
+      "学习者提示：Google 的模型生命周期普遍只有一年左右，接依赖前先去 ai.google.dev 的 deprecations 页面对一遍，不要等关停通知才返工。选型时也值得把「是否同时出现在自家云市场」当成一个指标——这决定了出问题时你有多少迁移余地。"
+    ],
+    "highlights": [
+      "Veo 3.1 三个版本今日正式关停",
+      "统一迁移至 gemini-omni-1.1-flash，视频能力并入多模态主力"
+    ]
+  },
+  {
+    "id": "2026-10-22-ai-found-critical-php-vulnerability",
+    "date": "2026-10-22",
+    "category": "技术突破",
+    "title": "AI 协助发现 PHP 关键漏洞，波及 70% 网站",
+    "summary": "借助 Google 与 OpenAI 的新模型，研究团队在8月破解了被认为「太难利用」的PHP老漏洞并披露，波及最多约70%网站，欧洲与加拿大部分政府网站紧急下线更新。",
+    "source": "Mother Jones",
+    "url": "https://www.motherjones.com/politics/2026/10/ai-cybersecurity-hack-php-openai-anthropic-google/",
+    "tags": [
+      "AI安全",
+      "漏洞",
+      "OpenAI",
+      "网络安全"
+    ],
+    "body": [
+      "一组网络安全团队借助新模型发现并披露了 PHP 的关键漏洞。PHP 是 WordPress 等内容管理系统的基础语言，据《华尔街日报》报道最多约 70% 的网站存在风险；不修补的话，攻击者可快速接管网站、植入恶意代码或窃取用户数据。",
+      "《华尔街日报》指出这类漏洞几十年前已被记录，但因「太难利用」被长期搁置，直到 8 月研究人员用新模型找到可利用路径，参与者包括 Google 最新的模型和 OpenAI 今年 7 月发布的模型。OpenAI 称这是「近年记忆中最具影响力的安全问题之一」。",
+      "披露后各国安全机构紧急发通告，欧洲与加拿大部分政府网站直接下线等待更新。非营利机构 Epoch AI 的数据显示，几年前大型厂商一个月报几十个重大漏洞，现在典型月份是 600 个。OpenAI 总裁 Greg Brockman 当天另发说明：PHP 漏洞的修补流程缓慢且全靠手工，撑不住后续可能激增的漏洞量。",
+      "同一天 The Information 还报道，黑客借助 Anthropic、月之暗面、SpaceXSI（原 xAI）的模型，几乎全自动攻击了拉美 400 家金融机构。给学习者的直接建议：本周做一次依赖扫描、把 WAF 规则更新排进日程，并且不要把「模型没发现漏洞」当成安全现状——AI 找漏洞的速度已经超过人类修补的速度。"
+    ],
+    "highlights": [
+      "最多约70%网站面临风险，多国政府网站紧急下线",
+      "Epoch AI：重大漏洞月报量已从几十个涨到约600个"
+    ]
+  },
+  {
     "id": "2026-10-21-fal-flux3max-video-generation",
     "date": "2026-10-21",
     "category": "产品发布",
@@ -6275,221 +6425,6 @@
       "联合国AI与人类发展对话第三站，主题：具身AI与机器人技术前沿",
       "联合国常务副秘书长主持，中国政府合作，聚焦AI对就业和社会的影响",
       "西安举办体现中国AI发展重要地位，全球治理框架加速形成"
-    ]
-  },
-  {
-    "id": "2026-08-21-google-gemma-4-open-source",
-    "date": "2026-08-21",
-    "category": "技术突破",
-    "title": "Google发布Gemma 4系列开源模型：5个尺寸+MTP加速",
-    "summary": "Google DeepMind 8月21日发布Gemma 4系列开源模型，提供E2B/E4B/12B/26B-A4B/31B五种尺寸，支持文本图像音频视频四模态，256K上下文，140+语种，引入MTP草稿模型配合投机解码可将解码速度提升至3倍。",
-    "source": "Google DeepMind / Hugging Face",
-    "url": "https://huggingface.co/google/gemma-4",
-    "tags": [
-      "Google",
-      "Gemma",
-      "开源模型",
-      "多模态",
-      "MTP加速"
-    ],
-    "body": [
-      "Google DeepMind 于 8 月 21 日 5:49（北京时间）正式发布 Gemma 4 系列开源模型，提供 E2B、E4B、12B、26B-A4B、31B 共五种尺寸，覆盖从端侧手机到服务器的多种部署场景，全部采用 Apache 2.0 许可。",
-      "能力维度全面升级：模型支持文本、图像、音频与视频四种模态输入，上下文窗口最高达 256K tokens，覆盖超过 140 种语言；架构上同时提供密集（Dense）与 MoE（A4B 为混合专家）两种形态。",
-      "本次最关键的技术亮点是引入多 token 预测（MTP）草稿模型，配合投机解码（speculative decoding）可将解码速度最高提升至 3 倍，显著降低生成式推理的延迟与算力成本。",
-      "对 AI 开发者而言，Gemma 4 进一步压缩了开源模型与闭源前沿的差距：256K 上下文 + 多模态 + 端侧可跑 + 推理加速四件套覆盖了大半企业级场景；建议优先用 MTP 解码替代传统自回归推理，在 RAG、Agent、端侧语音助手三个方向做 POC 验证。"
-    ],
-    "highlights": [
-      "五种尺寸全覆盖：E2B/E4B/12B/26B-A4B/31B，密集+MoE 双架构",
-      "MTP 草稿模型配合投机解码可将解码速度提升至 3 倍",
-      "256K 上下文，文本+图像+音频+视频四模态，覆盖 140+ 语种"
-    ]
-  },
-  {
-    "id": "2026-08-21-cerebras-cs-4-750-pflops",
-    "date": "2026-08-21",
-    "category": "技术突破",
-    "title": "Cerebras发布CS-4系统：750 PFLOPS算力、129.6 PB/s内存带宽",
-    "summary": "Cerebras 8月21日正式发布新一代机架级AI系统CS-4，集成3颗WSE-3T芯片，提供750 PFLOPS 16位AI算力与129.6 PB/s内存带宽，跑GPT-OSS-120B每秒可生成4400 token，速度比最快GPU方案快30倍。",
-    "source": "HPCwire",
-    "url": "https://www.hpcwire.com/2026/08/21/cerebras-launches-cs-4-system",
-    "tags": [
-      "Cerebras",
-      "CS-4",
-      "WSE-3T",
-      "AI芯片",
-      "晶圆级"
-    ],
-    "body": [
-      "Cerebras 于 8 月 21 日 7:52（北京时间）正式发布新一代机架级 AI 系统 CS-4，集成 3 颗 WSE-3T 晶圆级芯片，提供 750 PFLOPS 的 16 位 AI 算力与 129.6 PB/s 内存带宽，单机柜即可承担前沿大模型训练与推理任务。",
-      "WSE-3T 单颗集成 4 万亿晶体管、90 万 AI 核心与 44GB SRAM，相较上代算力与带宽均翻倍。CS-4 跑 GPT-OSS-120B 模型时每用户每秒可生成 4400 tokens，Cerebras 自称比最快 GPU 方案快约 30 倍，并支持扩展至 50 万亿参数模型。",
-      "这是晶圆级芯片（WSE）首次进入「全机架产品」形态：之前 WSE-2 仅作为单芯片加速卡或 2 芯片半机架方案部署，CS-4 把晶圆级集成推到了系统级 AI 基础设施的水准，与英伟达 NVL72/GB300 NVL72 正面竞争。",
-      "对 AI Infra 团队：Cerebras 在 token/s 维度的领先主要受益于 SRAM 内存带宽（HBM 的近 100 倍）与超大单芯片规模；建议把 CS-4 列为 1B-70B 模型推理场景的备选，特别是延迟敏感的 Chatbot/Agent；其生态成熟度仍是主要短板。"
-    ],
-    "highlights": [
-      "750 PFLOPS 16 位算力 + 129.6 PB/s 内存带宽，单机柜承担前沿大模型任务",
-      "WSE-3T 单颗 4 万亿晶体管、90 万 AI 核心、44GB SRAM",
-      "跑 GPT-OSS-120B 每秒 4400 tokens/用户，自称比最快 GPU 方案快 30 倍"
-    ]
-  },
-  {
-    "id": "2026-08-21-ant-group-llada-22-flash-diffusion",
-    "date": "2026-08-21",
-    "category": "技术突破",
-    "title": "蚂蚁百灵发布LLaDA2.2-flash：103B扩散语言模型登顶Hugging Face",
-    "summary": "蚂蚁集团旗下百灵在Hugging Face发布LLaDA2.2-flash，是面向智能体场景的MoE扩散语言模型，总参数（非嵌入）100B，128K上下文，引入Levenshtein编辑控制符支持长上下文工具调用，SWE-bench Verified得分49.28，吞吐量519 TPS。",
-    "source": "蚂蚁百灵 / Hugging Face",
-    "url": "https://huggingface.co/inclusionAI/LLaDA2.2-flash",
-    "tags": [
-      "蚂蚁",
-      "百灵",
-      "扩散语言模型",
-      "LLaDA",
-      "智能体"
-    ],
-    "body": [
-      "蚂蚁集团旗下百灵（inclusionAI）于 8 月 21 日 0:01（北京时间）在 Hugging Face 发布 LLaDA2.2-flash，是一款面向智能体（Agent）应用的 MoE 扩散语言模型，总参数（非嵌入层）约 100B，上下文窗口扩展至 128K。",
-      "核心创新是引入 Levenshtein 编辑（DELETE/INSERT 控制符）机制，让模型可在生成过程中对已输出 token 做删除与插入式修改，从而支持长上下文工具调用、多轮交互与错误修正——这是传统自回归模型很难做到的细粒度可逆编辑。",
-      "官方基准显示：SWE-bench Verified 49.28、吞吐量 519 TPS，多项指标优于同尺寸对比模型；模型采用 Apache 2.0 许可，完全开源。",
-      "对 AI 工程师：扩散语言模型从去年 LLaDA 首次展示开始持续演进，本次 100B 规模 + 智能体定向设计验证了「非自回归路径在 Agent 场景的可行性」；Levenshtein 编辑控制符是值得跟踪的新机制，可直接借鉴到自研工具调用层。"
-    ],
-    "highlights": [
-      "103B 总参数（去嵌入层）+ 128K 上下文，MoE 扩散语言模型",
-      "Levenshtein 编辑（DELETE/INSERT）支持长上下文工具调用与错误修正",
-      "SWE-bench Verified 49.28，吞吐量 519 TPS，Apache 2.0 开源"
-    ]
-  },
-  {
-    "id": "2026-08-21-anthropic-ipo-apply-august",
-    "date": "2026-08-21",
-    "category": "行业动态",
-    "title": "Anthropic最快8月末递交IPO申请：规模或超SpaceX历史纪录",
-    "summary": "据华尔街见闻8月21日报道，Anthropic计划最快8月末向SEC递交IPO申请，CFO Krishna Rao已牵头向投资者介绍相关情况，规模预计将追平甚至超越SpaceX此前创下的历史纪录。",
-    "source": "华尔街见闻",
-    "url": "https://www.readaitime.com/news/2026-08-21/t7u8ctqe",
-    "tags": [
-      "Anthropic",
-      "IPO",
-      "上市",
-      "融资"
-    ],
-    "body": [
-      "据华尔街见闻 8 月 21 日 1:56（北京时间）报道，AI 公司 Anthropic 计划最快于 8 月末向美国证券交易委员会（SEC）递交 IPO 申请，公司首席财务官 Krishna Rao 近期已牵头向投资者介绍相关情况。",
-      "本次 IPO 的规模预计将追平甚至超越马斯克旗下 SpaceX 此前创下的历史纪录。Anthropic 最近一轮私募估值在 7 月已达约 965 亿美元，若成功上市有望冲击 3000 亿美元市值，成为 AI 大模型公司估值锚定的关键事件。",
-      "时机耐人寻味：OpenAI 据传也在同期筹备 IPO（最快 2026 年底至 2027 年初），两家公司估值合计或超 8000 亿美元。Anthropic 的安全差异化定位与 Claude Code、Claude Cowork 在企业市场的渗透是估值核心。",
-      "对 AI 投资人：Anthropic IPO 将为整个 AI 行业提供第二个公开市场估值锚点（首个将是 OpenAI），建议跟踪招股书披露的 ARR、API 调用量、付费转化率、企业 NDR 等指标，作为评估其他 AI 公司估值的参考基准。"
-    ],
-    "highlights": [
-      "最快 8 月末递交申请，CFO Krishna Rao 牵头投资人路演",
-      "规模预计追平或超越 SpaceX 历史纪录",
-      "私募估值已达 965 亿美元，IPO 后或冲击 3000 亿美元市值"
-    ]
-  },
-  {
-    "id": "2026-08-21-broadcom-100b-ai-debt-financing",
-    "date": "2026-08-21",
-    "category": "行业动态",
-    "title": "博通洽谈1000亿美元债务融资：押注AI芯片替代英伟达",
-    "summary": "博通正与黑石、阿波罗等机构洽谈近1000亿美元债务融资（含600-700亿优先担保+约300亿次级债务），用于采购定制AI芯片及硬件，挑战英伟达，预计明年AI芯片收入超1000亿美元。",
-    "source": "Yahoo Finance / 华尔街见闻",
-    "url": "https://www.readaitime.com/news/2026-08-21/15g49oy2",
-    "tags": [
-      "博通",
-      "AI芯片",
-      "债务融资",
-      "定制芯片",
-      "Anthropic"
-    ],
-    "body": [
-      "博通正与多家金融机构洽谈，计划通过债务融资近 1000 亿美元，用于采购定制 AI 芯片及硬件，扩大数据中心设备销售并挑战英伟达。融资方案可能包括 600-700 亿美元优先担保债务 + 约 300 亿美元次级债务，可能通过特殊目的载体（SPV）发行。",
-      "黑石（Blackstone）和阿波罗（Apollo）正参与谈判。本月初博通已与两家合作融资 350 亿美元支持 Anthropic 定制芯片租赁，叠加本次千亿融资，凸显 AI 基础设施正从股权融资走向债权融资的新阶段。",
-      "博通预计明年 AI 芯片收入将超过 1000 亿美元，已锁定 Google、OpenAI、Meta 的千兆瓦级订单。该融资同时承接 Alphabet-Marvell 协议引发的市场担忧——博通需更大规模资本投入来锁定客户黏性。",
-      "对 AI Infra 投资观察者：千亿美元级别债务融资是 AI 基建「超资本化」的标志事件，建议关注融资完成后博通的实际产能、客户绑定深度，以及 SPV 结构对 Anthropic、OpenAI 等核心客户的长期承诺。"
-    ],
-    "highlights": [
-      "近 1000 亿美元债务融资，包括 600-700 亿优先担保 + 约 300 亿次级债务",
-      "黑石、阿波罗参与谈判，Anthropic 定制芯片租赁承接方",
-      "博通预计明年 AI 芯片收入超 1000 亿美元，已锁定 Google/OpenAI/Meta 千兆瓦级订单"
-    ]
-  },
-  {
-    "id": "2026-08-21-alibaba-ai-cloud-profit-release",
-    "date": "2026-08-21",
-    "category": "行业动态",
-    "title": "阿里AI云利润释放：AI收入增123.76亿元，利润率升至12%",
-    "summary": "阿里2027财年Q1云业务外部商业化收入同比+45%创22个季度新高，AI相关产品收入123.76亿元连续12季三位数增长，AI云与算力业务EBITDA同比+133%，经调整EBITDA利润率升至12%，自研芯片真武M890已覆盖650+外部客户。",
-    "source": "华尔街见闻",
-    "url": "https://www.readaitime.com/news/2026-08-21/1avy2ewa",
-    "tags": [
-      "阿里云",
-      "AI收入",
-      "利润释放",
-      "真武M890",
-      "国产替代"
-    ],
-    "body": [
-      "阿里巴巴于 8 月 21 日 3:17（北京时间）公布 2027 财年第一财季业绩，云业务 AI 相关产品收入达 123.76 亿元，连续 12 个季度三位数增长；外部商业化收入同比增长 45%，创 22 个季度新高。",
-      "AI 云与算力业务 EBITDA 同比增长 133%，经调整 EBITDA 利润率升至 12%，标志阿里云从「算力规模扩张」转向「利润释放」阶段，AI 投入的盈利兑现路径得到验证。",
-      "自研芯片真武 M890 已覆盖超 650 家外部客户，数据中心交付周期压缩至 100 天，硬件 + 软件 + 服务的全栈 AI 能力闭环初步成形。",
-      "对国内云厂商和 AI 创业者：阿里云 AI 业务的利润释放是国产云「重投入 → 利润兑现」路径的标杆事件，建议关注真武 M890 的客户行业分布与算力定价走势；同价位竞争对手（百度智能云、腾讯云、火山引擎）将面临新一轮定价压力。"
-    ],
-    "highlights": [
-      "AI 相关产品收入 123.76 亿元，连续 12 个季度三位数增长",
-      "AI 云与算力业务 EBITDA 同比 +133%，经调整利润率升至 12%",
-      "自研芯片真武 M890 覆盖超 650 家外部客户，数据中心交付周期压至 100 天"
-    ]
-  },
-  {
-    "id": "2026-08-21-waymo-custom-robotaxi-asic",
-    "date": "2026-08-21",
-    "category": "技术突破",
-    "title": "Waymo自研Robotaxi ASIC芯片：1000+ TOPS算力，台积电5nm制程",
-    "summary": "Alphabet旗下Waymo已为其Robotaxi自研ASIC芯片，算力超1000 TOPS，采用台积电5nm制程，与英伟达最新自动驾驶芯片算力持平；此前Waymo依赖英伟达和AMD芯片，新举措旨在降低成本并减少对外部供应商依赖。",
-    "source": "Yahoo Finance",
-    "url": "https://www.readaitime.com/news/2026-08-21/9l9toowu",
-    "tags": [
-      "Waymo",
-      "ASIC",
-      "自动驾驶",
-      "台积电",
-      "5nm"
-    ],
-    "body": [
-      "Alphabet 旗下 Waymo 于 8 月 21 日 3:55（北京时间）披露已为其 Robotaxi 自研 ASIC 芯片，并已在最新一代车型中投产。该芯片算力超 1000 TOPS，采用台积电 5nm 制程，量产能力与英伟达最新自动驾驶系统芯片算力持平。",
-      "Waymo 此前依赖英伟达和 AMD 芯片，本次自研旨在降低成本并减少对外部供应商依赖，同时保留根据自身 Robotaxi 部署需求定制计算架构的能力。",
-      "Waymo 自研芯片标志着自动驾驶头部玩家在算力上寻求自主可控，可能影响英伟达、AMD 在自动驾驶芯片市场的份额预期，并凸显定制芯片在 AI 基础设施中的成本优势。",
-      "对 AI 芯片从业者：Waymo 是 Tesla 之后第二家大规模采用自研芯片的主流 Robotaxi 厂商，1000 TOPS 这一门槛已逐步成为行业标配；建议关注 L4/L5 玩家（百度 Apollo、文远知行、小马智行、AutoX）的自研芯片路线图，定制 AI 芯片 + 软件栈的协同将成下一阶段竞争焦点。"
-    ],
-    "highlights": [
-      "Robotaxi 自研 ASIC 芯片 1000+ TOPS 算力，台积电 5nm 制程量产",
-      "已在最新一代车型中投产，目标是替代英伟达与 AMD 外部供应",
-      "标志自动驾驶头部玩家从「通用芯片」转向「定制芯片 + 软件栈」"
-    ]
-  },
-  {
-    "id": "2026-08-21-kuaishou-kling-q2-240-percent",
-    "date": "2026-08-21",
-    "category": "行业动态",
-    "title": "快手Q2可灵AI单季收入超8.5亿元：同比+240%，独立融资估值180亿美元",
-    "summary": "快手2026 Q2总营收355.35亿元同比+1.4%，可灵AI单季收入超8.5亿元同比+240%、全球用户破亿；快手将可灵AI分拆独立融资，投后估值180亿美元，大幅增加研发投入，主动牺牲短期利润押注AI。",
-    "source": "虎嗅",
-    "url": "https://www.readaitime.com/news/2026-08-21/1nj6ss83",
-    "tags": [
-      "快手",
-      "可灵AI",
-      "视频生成",
-      "独立融资",
-      "AI商业化"
-    ],
-    "body": [
-      "快手于 8 月 21 日 7:00（北京时间）发布 2026 年第二季度财报：总营收 355.35 亿元，同比增长 1.4%；经调整净利润 39.13 亿元，同比下滑 30.3%。传统主业承压，但 AI 业务高速增长。",
-      "可灵 AI 单季收入超过 8.5 亿元，同比增长 240%，全球用户突破 1 亿；其作为视频生成头部产品已进入商业化兑现期。",
-      "快手已决定将可灵 AI 分拆独立融资，投后估值 180 亿美元；同时大幅增加研发投入，主动牺牲短期利润押注 AI 战略——管理层明确把 AI 业务的长期价值置于传统业务利润之上。",
-      "对 AI 视频赛道从业者：可灵 AI 180 亿美元估值是国内视频生成赛道的里程碑事件，240% 的同比增速远超 Sora、Veo、Runway 等海外竞品的商业化节奏；建议关注独立融资后的产品迭代速度、海外市场拓展策略，以及字节豆包视频生成、阿里 Happy Oyster 的应对策略。"
-    ],
-    "highlights": [
-      "可灵 AI 单季收入 8.5 亿元+，同比 +240%，全球用户破亿",
-      "分拆独立融资，投后估值 180 亿美元",
-      "传统主业净利润同比 -30.3%，管理层主动牺牲短期利润押注 AI"
     ]
   }
 ]
