@@ -1,5 +1,265 @@
 [
   {
+    "id": "2026-10-24-openai-decisions-api-gpt6-luna",
+    "date": "2026-10-24",
+    "category": "产品发布",
+    "title": "OpenAI 正式发布 Decisions API，速度最快提升 10 倍",
+    "summary": "基于 GPT-6 Luna 的 Decisions API 正式可用，专攻分类、路由、评分等有界答案问题，比走 Responses API 最快快 10 倍，并支持文本、图像与结构化输入。",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/decisions-api/",
+    "tags": [
+      "OpenAI",
+      "API",
+      "低延迟",
+      "GPT-6"
+    ],
+    "body": [
+      "OpenAI 今日宣布 Decisions API 正式可用，该接口建立在 GPT-6 Luna 之上，把模型能力聚焦到答案有界的任务上，包括分类、路由、评分等需要近实时决策的场景。官方称其处理文本、图像和结构化输入的速度最高可达 GPT-6 Luna 经由 Responses API 时的 10 倍，端点为 POST /v1/decisions。",
+      "这一接口的现实意义在于把「要不要用推理模型」的成本决策从应用层剥离出来：对于工单分类、意图识别、文档打标这类高频低价值调用，轻量决策接口可以做到比通用推理链路快一个数量级，同时保持精度不下降。",
+      "已有团队反馈，使用该接口进行 AI 成本归因比直接调用 GPT-6 Luna 快了 4 倍、成本低约 30%，且准确率没有牺牲。Reddit 上开发者也在用 GPT-6 Luna Decisions 与 Simo-1 做客服工单场景的对比测试。",
+      "对学习者的落地建议：如果你的应用里有大量「判断类」调用（下单校验、路由选择、标签判定、审核过滤），先把这部分从主对话链路里拆出来改用决策接口，通常是账单下降最明显的一次重构；官方定价页已可在 OpenRouter 上查到 GPT-6 Luna Decisions 的价格。"
+    ],
+    "highlights": [
+      "Decisions API 正式开放，端点 POST /v1/decisions",
+      "相比 Responses API 走 GPT-6 Luna 最快快 10 倍",
+      "已有团队反馈成本降约 30%、成本归因提速 4 倍"
+    ]
+  },
+  {
+    "id": "2026-10-24-anthropic-agent-skills-aaif-donation",
+    "date": "2026-10-24",
+    "category": "行业动态",
+    "title": "Anthropic 将 Agent Skills 开放标准捐赠给 Linux 基金会 AAIF",
+    "summary": "Anthropic 宣布把 Agent Skills 开放标准捐赠给 Linux 基金会旗下的 Agentic AI Foundation，此前它已向该基金会捐赠 MCP 标准。",
+    "source": "Anthropic",
+    "url": "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation",
+    "tags": [
+      "Anthropic",
+      "Agent Skills",
+      "开源标准",
+      "Linux基金会"
+    ],
+    "body": [
+      "Anthropic 今日在官方 Newsroom 宣布，将 Agent Skills 开放标准捐赠给 Linux 基金会旗下的 Agentic AI Foundation（AAIF）。这是继此前把 MCP（Model Context Protocol）捐赠给同一机构之后的第二次动作。",
+      "两笔捐赠的指向很明确：把「模型怎么接工具」和「智能体怎么加载技能包」这两层接口从单一厂商的私有规范，推向中立基金会托管。工具接入层和技能层一旦成为跨厂商标准，模型厂商就不再是生态入口的唯一守门人。",
+      "从时间线上看，这发生在 Anthropic IPO 前夕。公司近期披露已完成 6000 亿美元量级的长期算力承诺，并被报道最快于本周五公开提交 S-1 招股书；此时主动放弃两项核心标准的独家所有权，更像是在向公开市场展示生态影响力而非封闭护城河。",
+      "落地建议：如果你在做智能体框架，现在是接入 Agent Skills 规范的最佳窗口——把自定义技能按该标准的目录与描述格式整理一遍，就能同时被多家模型客户端识别；对中小团队来说，这是避免被单一厂商 API 锁死的低成本动作。"
+    ],
+    "highlights": [
+      "Agent Skills 开放标准正式进入 Linux 基金会 AAIF",
+      "Anthropic 此前已捐赠 MCP，两项核心标准均已中立化",
+      "发生在 Anthropic IPO 前夕，生态话语权布局明显"
+    ]
+  },
+  {
+    "id": "2026-10-24-deepseek-15b-funding-round-bloomberg",
+    "date": "2026-10-24",
+    "category": "行业动态",
+    "title": "彭博：DeepSeek 新一轮融资约 150 亿美元，估值约 748 亿",
+    "summary": "DeepSeek 最新一轮融资规模约 150 亿美元，为中国最大规模私募融资之一；目标数轮上调，宁德时代出资约 15 亿美元，投前估值约 748 亿美元。",
+    "source": "Bloomberg",
+    "url": "https://x.com/rohanpaul_ai/status/2113106318659928525",
+    "tags": [
+      "DeepSeek",
+      "融资",
+      "估值",
+      "中国AI"
+    ],
+    "body": [
+      "据 Bloomberg 报道，DeepSeek 最新一轮融资规模约 150 亿美元，为中国规模最大的私募融资之一。谈判期间融资目标至少两次上调，先从约 75 亿美元提高到 120 亿美元，最终落到约 150 亿美元。",
+      "出资方方面，宁德时代（CATL）与腾讯是最主要的投资方之一，其中宁德时代据报出资约 15 亿美元。本轮投前估值约 748 亿美元；加上 6 月已完成的首轮超 75 亿美元，DeepSeek 在约 6 个月内累计募资约 225 亿美元。",
+      "这轮融资的时间点接在 DeepSeek 达 10 亿美元 ARR、估值瞄准 5000 亿港元香港上市的传闻之后，资本与上市两条路径同时推进，指向的是把模型能力直接变成可计量的基础设施生意。",
+      "对学习者与创业者的提示：国产开源模型阵营的头部公司正在获得产业资本（而非纯财务投资人）的重注，意味着 DeepSeek 系模型在推理成本和私有化部署上的价格战还远未结束——基于开源权重做二次开发的团队，短期成本曲线大概率继续走平。"
+    ],
+    "highlights": [
+      "融资目标从 75 亿两度上调至约 150 亿美元",
+      "宁德时代出资约 15 亿美元，腾讯同为最大投资方之一",
+      "投前估值约 748 亿美元，半年累计募资约 225 亿美元"
+    ]
+  },
+  {
+    "id": "2026-10-24-anthropic-formal-verification-oss-libraries",
+    "date": "2026-10-24",
+    "category": "研究前沿",
+    "title": "Anthropic 用 Claude 完成 123 个开源库的形式化安全证明",
+    "summary": "Anthropic 与 Theorem 合作，把 OSS-Fuzz 模糊测试转成规格，为 123 个开源库的 239 个入口点证明任意 64MB 以下输入不崩溃，生成约 1.8 亿行 Rocq 证明。",
+    "source": "Anthropic",
+    "url": "https://www.anthropic.com/research/formal-verification",
+    "tags": [
+      "Anthropic",
+      "Claude",
+      "形式化验证",
+      "开源安全"
+    ],
+    "body": [
+      "Anthropic 与 Theorem 合作，用 Claude 把 OSS-Fuzz 的模糊测试结果转换为形式化规格，并对 123 个开源库中的 239 个入口点证明了「任意 64 MB 以下的输入都不会导致崩溃」，生成的 Rocq（Coq 证明语言）证明总量约 1.8 亿行。",
+      "规模本身就说明了问题：过去为一个入口点做形式化证明，人工往往需要数周到数月；现在 239 个入口点可以在同一套自动化流水线里并行跑完。这意味着「内存安全」这类此前只能靠人力审计覆盖的保证，开始有了可批量化的路径。",
+      "更值得注意的是方法的反转：不是让 AI 去读代码找漏洞，而是让 AI 把已有的模糊测试证据「翻译」成机器可检验的规格，再由证明器判定。AI 负责生成与转换，证明器负责判定正确性，人只做抽查。",
+      "学习者提示：如果你是做系统安全或数据库方向的，这篇工作值得完整读一遍。它给出了一条可复现的路径——用 Claude 把 fuzz harness 的断言升格成规格，再接入 Rocq 生态自动证明，是当下把形式化方法从「论文演示」推向「CI 流水线」最现实的一步。"
+    ],
+    "highlights": [
+      "覆盖 123 个开源库、239 个入口点，生成约 1.8 亿行 Rocq 证明",
+      "证明目标：任意 64 MB 以下输入不崩溃",
+      "路线是「AI 转规格 + 证明器判定」，而非 AI 直接找漏洞"
+    ]
+  },
+  {
+    "id": "2026-10-24-microsoft-sdbench-maidxo-science",
+    "date": "2026-10-24",
+    "category": "研究前沿",
+    "title": "微软发布 SDBench 基准与 MAI-DxO 诊断系统，论文登 Science",
+    "summary": "Microsoft AI 发布顺序诊断基准 SDBench 与 AI 诊断系统 MAI-DxO，相关论文发表于 Science，目标是评估模型在连续多步诊断中的推理能力。",
+    "source": "Microsoft AI",
+    "url": "https://microsoft.ai/news/building-medical-superintelligence/",
+    "tags": [
+      "Microsoft",
+      "AI医疗",
+      "基准测试",
+      "Science"
+    ],
+    "body": [
+      "Microsoft AI 今日发布 Sequential Diagnosis Benchmark（SDBench）以及配套的 AI 诊断系统 MAI-DxO，相关论文已发表于 Science。SDBench 专门用于评测模型在「连续诊断」这类需要多步推断、多轮修正的任务上的表现。",
+      "传统医学 AI 基准多以单点问答或静态数据集为准，而真实临床诊断是顺序性的：信息随问诊推进而到来，先验判断会决定下一步要问什么。SDBench 把这种序列结构本身纳入评测对象，而不是把一次性的最终答案当作唯一指标。",
+      "MAI-DxO 则是微软在该基准上构建的诊断系统实例。它与微软此前发布的模型系列同源，方向上延续了「模型 + 工具 + 可验证流程」的路线，而不是单纯放大参数规模。",
+      "对学习者的提示：医疗 AI 正在从「答题模型」转向「会问诊的诊断系统」，这与 agentic 医疗的发展是同一条线。做垂直领域 AI 的同学可以关注 SDBench 的任务构造方式——把「信息如何到达」设计成评测的一部分，这个思路可以直接迁移到法律、金融等其他信息逐步披露的专业场景。"
+    ],
+    "highlights": [
+      "SDBench 把「顺序诊断」而非单点问答作为评测对象",
+      "配套诊断系统 MAI-DxO 同日发布",
+      "论文发表于 Science，微软持续加码医疗超级智能方向"
+    ]
+  },
+  {
+    "id": "2026-10-24-claude-auto-mode-default-on",
+    "date": "2026-10-24",
+    "category": "产品发布",
+    "title": "Claude 网页与移动端下周起默认启用 auto mode",
+    "summary": "Anthropic 宣布下周起 Pro、Max、Team 套餐的 Claude 网页、桌面与移动端会话默认以 auto mode 运行，由自动检查拦截高风险操作。",
+    "source": "Anthropic",
+    "url": "https://x.com/claudeai/status/2113360845409583307",
+    "tags": [
+      "Anthropic",
+      "Claude",
+      "auto mode",
+      "智能体安全"
+    ],
+    "body": [
+      "Claude 官方宣布，从下周起，Pro、Max 和 Team 套餐在 Claude 网页、桌面端和移动端应用中的会话将默认以 auto mode 方式运行。auto mode 不再逐步向用户请求批准，而是由自动检查拦截高风险操作，用户可随时切回手动模式。",
+      "其引用的 Claude Code 更新给出了拦截效果的量级：auto mode 用独立分类器审查 shell 命令，在测试中拦截了 89% 的危险命令，而手动批准路径仅拦截 14%。也就是说在同一批危险操作上，自动审查的召回率大约是人工确认的六倍。",
+      "这是一次把安全审查从「用户手动确认」推向「模型自动判断」的产品级迁移，也意味着 Claude Code 这类能直接执行命令的工具，在默认配置下的权限边界正在变宽——安全从「每次问一句」变成「让分类器替你把关」。",
+      "学习者与团队提示：如果你在用 Claude Code 处理生产环境操作，请提前了解 auto mode 的行为差异，特别是哪些操作会被自动放行、哪些会被直接拦截；企业用户可以在 Organization Settings 里为任意角色设置 maximum effort 与 default effort，把审批粒度收回自己手里。"
+    ],
+    "highlights": [
+      "Pro/Max/Team 套餐下周起在网页、桌面、移动端默认 auto mode",
+      "测试中自动分类器拦截 89% 危险命令，手动批准仅 14%",
+      "企业管理员可在 Organization Settings 设置角色级 effort 上限"
+    ]
+  },
+  {
+    "id": "2026-10-24-amazon-jassy-220b-ai-capex",
+    "date": "2026-10-24",
+    "category": "行业动态",
+    "title": "a16z 盘点亚马逊 AI 业务：年化 250 亿美元，今年投 2200 亿",
+    "summary": "a16z 今日发文盘点亚马逊 CEO Andy Jassy 任期：五年间 AWS 规模近三倍、营收增长约 80%，AI 业务三年达 250 亿美元年化，公司预计今年投入 2200 亿美元。",
+    "source": "a16z",
+    "url": "https://x.com/a16z/status/2113678186425004418",
+    "tags": [
+      "亚马逊",
+      "AWS",
+      "资本开支",
+      "AI基础设施"
+    ],
+    "body": [
+      "a16z 今日发文盘点亚马逊 CEO Andy Jassy 的五年任期：他上任后 AWS 规模接近三倍，亚马逊整体营收增长约 80%，而亚马逊预计今年投入约 2200 亿美元以赢得 AI 竞争。",
+      "关键数字是 AI 业务的体量：亚马逊 AI 业务在三年内达到 250 亿美元的 run rate，年化增速比当年 AWS 起步时快数百倍。Jassy 表示 AI 需求远超供给，公司计划即便花掉 2200 亿美元，产能仍供不应求。",
+      "他同时给出一句被广泛引用的话：AI 模型发现的漏洞数量远超人类以往水平，这意味着「企业将不得不重写几乎全部代码，使其具备 agentic 能力」。这句话指向的是软件工程本体的重构，而不仅是采购一批模型。",
+      "对学习者的判断：2200 亿美元级别的资本开支最终会转化为可租用的推理算力供给，中期价格会继续向下走；而「代码需要按 agentic 方式重写」这一判断，则决定了未来几年工程教育里「智能体友好架构」会从选修课变成必修课。"
+    ],
+    "highlights": [
+      "亚马逊 AI 业务三年达到 250 亿美元年化 run rate",
+      "今年预计投入约 2200 亿美元资本开支",
+      "Jassy：企业将不得不重写几乎全部代码以具备 agentic 能力"
+    ]
+  },
+  {
+    "id": "2026-10-24-idc-ai-agents-78x-growth",
+    "date": "2026-10-24",
+    "category": "行业动态",
+    "title": "IDC：AI 智能体到 2029 年将增长 78 倍，40% 组织仍会错失目标",
+    "summary": "IDC 研究预计 AI agents 在 2025 至 2029 年间增长 78 倍，但仍有 40% 的组织预计错过 2026 年 AI 目标，IDC 指出瓶颈不在速度而在可验证数据。",
+    "source": "IDC",
+    "url": "https://www.idc.com/resource-center/blog/speed-and-control-depend-on-verified-data/",
+    "tags": [
+      "IDC",
+      "AI智能体",
+      "企业落地",
+      "数据治理"
+    ],
+    "body": [
+      "IDC 研究预测，AI agents 在 2025 至 2029 年间将增长 78 倍。但同一份研究给出了一个反差强烈的结论：预计有 40% 的组织仍将错过自己设定的 2026 年 AI 目标。",
+      "IDC 的 Dave McKenna 对此的判断是：速度本身从来不是问题，模型能力的提升速度快于多数组织的落地能力；真正卡住企业的是缺少可验证的数据——依赖供应商提供的数据，以及像学生给自己打分那样自评的结果，都存在同样的盲点。",
+      "这组数字解释了 2026 年企业 AI 项目的一个典型困境：PoC 成功率极高，但规模化部署时指标无法被审计，于是采购决策回到「相信供应商的 PPT」。可验证性，而不是模型强度，成了新的瓶颈。",
+      "落地建议：如果你的团队正为「ROI 说不清」发愁，先别急着换更强的模型，优先补的是评测集与埋点——让 AI 项目的效果能被第三方复核。IDC 的结论很直白：控制力与速度最终都依赖经过验证的数据。"
+    ],
+    "highlights": [
+      "AI agents 2025—2029 年预计增长 78 倍",
+      "仍有 40% 组织预计错过 2026 年 AI 目标",
+      "IDC：瓶颈不是速度，而是缺少可验证的数据"
+    ]
+  },
+  {
+    "id": "2026-10-24-replit-monitoring-agent-launch",
+    "date": "2026-10-24",
+    "category": "产品发布",
+    "title": "Replit 发布 Monitoring Agent：值班、修复、部署全自动化",
+    "summary": "Replit 推出 Monitoring Agent，可读取生产日志与指标排查错误、变慢和部署失败，开启 autofix 后验证修复并邮件汇报，auto-publish 后可直接自动部署。",
+    "source": "Replit",
+    "url": "https://replit.com/blog/replit-monitoring-agent",
+    "tags": [
+      "Replit",
+      "智能体",
+      "DevOps",
+      "自动修复"
+    ],
+    "body": [
+      "Replit 今日发布 Monitoring Agent，定位是应用上的「自主值班工程师」：它读取生产日志与指标，调查错误、性能变慢和部署失败三类问题。开启 autofix 后，智能体会验证修复方案并通过邮件汇报结果。",
+      "再开启 auto-publish，修复可以直接被自动部署上线。这项能力建立在 Replit 此前已上线的 App Monitoring 之上，用户可在应用的 Publishing 设置中逐个开启。",
+      "这条产品线折射出 2026 年智能体落地的一个明确趋势：从「写代码的智能体」扩展到「运维的智能体」。代码生成的边际成本早已趋零，真正的稀缺环节转移到上线之后——谁来看日志、谁来判断根因、谁来决定要不要重启。",
+      "学习者提示：这类工具的取舍点非常清晰——自主度越高，误修复的代价越大。把它用在有回滚、有灰度、有测试覆盖的服务上收益最高；关键链路建议保留 auto-publish 关闭，只开 autofix 做「自动提方案、人工点确认」。"
+    ],
+    "highlights": [
+      "读取生产日志与指标，自动排查错误、变慢与部署失败",
+      "autofix 自动验证修复并邮件汇报，auto-publish 可直接部署",
+      "智能体能力从「写代码」延伸到「值班运维」"
+    ]
+  },
+  {
+    "id": "2026-10-24-wiz-artex-storm-0940-attacks",
+    "date": "2026-10-24",
+    "category": "行业动态",
+    "title": "Wiz：开源智能体 ARTEX 被 Storm-0940 用于攻击软件厂商",
+    "summary": "Wiz 披露 2026 年 10 月有攻击者使用开源自主渗透测试框架 ARTEX 针对多家 IT 与软件厂商，活动与微软报告的国家级组织 Storm-0940 重叠，并扩展到供应链攻击。",
+    "source": "Wiz",
+    "url": "https://www.wiz.io/blog/artex-in-the-wild-storm-0940-expands-targeting-of-it-and-software-vendors",
+    "tags": [
+      "网络安全",
+      "智能体武器化",
+      "Wiz",
+      "供应链攻击"
+    ],
+    "body": [
+      "Wiz 今日披露，2026 年 10 月有攻击者使用开源自主渗透测试框架 ARTEX 针对多家 IT 与软件厂商发起攻击，其活动特征与微软报告过的国家级关联组织 Storm-0940 重叠。",
+      "更值得警惕的是扩散方向：攻击者已把活动从 IT 与软件厂商扩展到其他软件领域的供应链攻击尝试，也就是不只打目标本身，而是借道其供应链去打下游客户。",
+      "这件事的意义在于开源双刃剑的具体化——ARTEX 本是给防守方做自主渗透测试的工具，公开可得意味着攻防两端拿的是同一套代码，防守方无法靠「工具保密」建立优势，只能靠检测能力与权限治理。",
+      "给安全从业者的落地建议：优先确认自有环境里是否存在 ARTEX 的下载或运行痕迹（进程、网络出口、CI 环境），并把「智能体能自主完成侦察到利用的完整链路」当成新的攻击假设重做威胁建模；同时收紧生产凭证的可达范围——被智能体化的攻击不需要交互式凭据窃取，只需要一次成功利用。"
+    ],
+    "highlights": [
+      "攻击者使用开源自主渗透框架 ARTEX 攻击 IT 与软件厂商",
+      "活动与微软报告的 Storm-0940 重叠",
+      "攻击已扩展到其他软件领域的供应链尝试"
+    ]
+  },
+  {
     "id": "2026-10-23-openai-30b-raise-1-25t-valuation",
     "date": "2026-10-23",
     "category": "行业动态",
@@ -6094,248 +6354,6 @@
       "Vetta单任务成本0.298美元，约为Claude Code的三分之一",
       "在最低成本的同时保持最高任务完成率",
       "框架选择对Agent TCO的影响与模型同等重要"
-    ]
-  },
-  {
-    "id": "2026-08-23-generalist-gen-15-embodied-foundation",
-    "date": "2026-08-23",
-    "category": "技术突破",
-    "title": "Generalist AI发布GEN-1.5：具身foundation model一览成学",
-    "summary": "GEN-1.5通过3-12秒演示实现59%一步成功学，10步梯度后达83%，无需显式任务训练即涌现物理技能。",
-    "source": "HeadsUpAI",
-    "url": "https://headsupai.io/updates/generalist-ai-launches-gen-1-5-embodied-foundation-model",
-    "tags": [
-      "具身AI",
-      "GEN-1.5",
-      "Generalist AI",
-      "物理任务"
-    ],
-    "body": [
-      "Generalist AI于8月22日发布GEN-1.5，这是一款具身foundation model，能从3-12秒的人类演示视频中学习物理任务，在一步上下文学习（one-shot）下达到59%成功率，10步梯度更新后提升至83%。",
-      "核心创新在于连续8个月大规模物理交互数据预训练，而非显式任务特定训练，使技能从数据中自然涌现。模型可泛化到训练中未见过的任务类别，实现真正的少样本具身智能。",
-      "该方法相比传统机器人模仿学习需要数十至数百条演示，大幅降低数据需求；相比强化学习需要大量环境交互，效率提升一到两个数量级。",
-      "对AI+机器人研究者：GEN-1.5证明了「大规模预训练+少样本微调」路线在具身智能的可行性；建议在自有机器人平台用3-5条演示做few-shot评估，关注模型对物体重量、纹理、关节顺从性的泛化能力。"
-    ],
-    "highlights": [
-      "3-12秒演示一步学习59%成功率，10步后83%，数据效率远超传统模仿/强化学习",
-      "8个月物理交互数据预训练，无需显式任务特定训练即可涌现技能",
-      "具身AI从「大量数据」向「少样本泛化」转变的里程碑验证"
-    ]
-  },
-  {
-    "id": "2026-08-23-byteplus-dreamina-seedance-25-1080p",
-    "date": "2026-08-23",
-    "category": "产品发布",
-    "title": "BytePlus Dreamina Seedance 2.5原生1080P：10-bit色+纹理增强",
-    "summary": "BytePlus为Dreamina Seedance 2.5新增原生1080P输出，支持10-bit色彩、锐化纹理和改进光照，API同步上线限时8折。",
-    "source": "HeadsUpAI",
-    "url": "https://headsupai.io/updates/byteplus-adds-native-1080p-support-dreamina-seedance-2-5-model",
-    "tags": [
-      "BytePlus",
-      "Seedance",
-      "视频生成",
-      "1080P",
-      "Dreamina"
-    ],
-    "body": [
-      "BytePlus于8月22日在Dreamina应用中推出Seedance 2.5原生1080P输出支持，带来10-bit色彩深度、更锐化的纹理细节和改进的光照渲染质量，显著提升视频成片质感。",
-      "BytePlus API于8月17日同步更新，限时8折优惠，1080P视频生成约0.41美元/输出秒。企业客户可通过统一API接入，自动扩展。",
-      "Seedance 2.5定位对标Runway GEN-3和OpenAI Sora，1080P升级使其在企业制作场景更具竞争力，支持品牌广告、社交媒体内容、在线课程等高质量视频需求。",
-      "对视频内容创作者：1080P升级对商业制作意义重大，建议在当前限时优惠窗口期（8折）评估Seedance 2.5与企业工作流的集成；关注与Pika、Sora的实际画质对比测试结果再做选型决策。"
-    ],
-    "highlights": [
-      "原生1080P输出+10-bit色彩+纹理增强，成片质感对标Runway GEN-3",
-      "API限时8折约0.41美元/输出秒，8月17日已上线",
-      "BytePlus统一API支持自动扩展，企业制作场景竞争力提升"
-    ]
-  },
-  {
-    "id": "2026-08-23-google-gemini-free-year-students-2026",
-    "date": "2026-08-23",
-    "category": "产品发布",
-    "title": "Google为大学生提供一年免费Gemini高级版",
-    "summary": "Google向美国及140+国家大学生提供一年免费Gemini高级订阅，含语音Deep Research等学习工具，限2026年底前申请。",
-    "source": "HeadsUpAI",
-    "url": "https://headsupai.io/updates/google-offers-free-one-year-gemini-plans-new-study-tools",
-    "tags": [
-      "Google",
-      "Gemini",
-      "学生优惠",
-      "AI教育",
-      "Deep Research"
-    ],
-    "body": [
-      "Google于8月22日宣布为美国符合条件的大学生提供一年免费Google AI Pro订阅，并为140+国家用户提供Google AI Plus免费订阅，同时向Gemini应用新增全球学习工具。",
-      "新增学习功能包括：Gemini Live语音驱动Deep Research（口语提问即生成研究报告）、学生中心、学习笔记本和交互可视化工具，专注提升学术场景下的AI辅助效率。",
-      "该优惠至2026年12月31日截止，旨在在ChatGPT Edu之后进一步抢占教育市场。Google通过免费高级功能培养未来付费用户的使用习惯。",
-      "对AI学习者：在读大学生应优先申请该优惠（美国学生申请AI Pro，海外学生申请AI Plus）；语音Deep Research功能对文献综述和学期论文特别有帮助，是目前口语交互研究助手的较强免费选项。"
-    ],
-    "highlights": [
-      "美国学生免费一年AI Pro，140+国家学生免费AI Plus，含语音Deep Research",
-      "Gemini Live新增语音驱动Deep Research，口语提问生成研究报告",
-      "限2026年底前申请，Google抢占教育市场的重要动作"
-    ]
-  },
-  {
-    "id": "2026-08-23-cursor-origin-code-hosting-github-sync",
-    "date": "2026-08-23",
-    "category": "产品发布",
-    "title": "Cursor推出Origin代码托管平台：beta版支持GitHub同步",
-    "summary": "Cursor推出Origin代码托管平台（beta测试阶段），提供仓库托管、Pull Request和GitHub实时同步，集成Vercel/Buildkite/Depot支持预览部署。",
-    "source": "HeadsUpAI",
-    "url": "https://headsupai.io/updates/cursor-launches-origin-code-hosting-platform-with-github-sync",
-    "tags": [
-      "Cursor",
-      "Origin",
-      "代码托管",
-      "GitHub",
-      "AI编程"
-    ],
-    "body": [
-      "Cursor于8月22日发布Origin，这是一款代码托管平台，目前处于beta测试阶段，仅对付费计划用户开放。核心功能包括仓库托管、Pull Request和与GitHub的实时同步。",
-      "平台集成Vercel、Buildkite和Depot，支持预览部署和CI工作流。计划中的Agent原生功能将面向自主编码任务优化，使AI Agent能在平台内独立完成代码审查、修复和合并。",
-      "Cursor通过Origin进入GitHub和GitLab主导的代码托管市场，差异化在于深度AI集成。其AI代码编辑器用户可直接在平台内完成编码→托管→部署全流程。",
-      "对AI编程开发者：Origin的GitHub实时同步降低了迁移门槛，建议已有Cursor订阅的用户试用；同时关注Agent原生功能正式上线时间——这可能是首个将AI编程和代码托管深度融合的平台。"
-    ],
-    "highlights": [
-      "仓库托管+PR+GitHub实时同步，付费用户beta可用",
-      "集成Vercel/Buildkite/Depot支持预览部署和CI工作流",
-      "计划推出Agent原生功能，AI编程和代码托管深度融合的首个平台"
-    ]
-  },
-  {
-    "id": "2026-08-23-harvey-tenet-legal-model-kimi-k3",
-    "date": "2026-08-23",
-    "category": "产品发布",
-    "title": "Harvey发布Tenet法律专用模型：基于Kimi K3，成本降75%",
-    "summary": "Harvey联合Fireworks AI推出Tenet，基于Kimi K3后训练，法律基准所有通过率提升82%，成本降至顶级基础模型的1/4以下。",
-    "source": "HeadsUpAI",
-    "url": "https://headsupai.io/updates/harvey-launches-tenet-legal-specialized-model-built-on-kimi-k3",
-    "tags": [
-      "Harvey",
-      "Tenet",
-      "法律AI",
-      "Kimi K3",
-      "Fireworks AI"
-    ],
-    "body": [
-      "Harvey于8月22日发布Tenet，这是一款专用于法律场景的后训练模型，基于Kimi K3由Fireworks AI提供推理支持。LAB基准测试显示所有通过率提升82%，成本降至顶级基础模型的1/4以下。",
-      "同步发布三个法律子Agent专用模型：M&A尽职调查文档审查、律所知识管理和企业合同审查，专注法律工作流中高频重复任务。",
-      "Harvey此前以法律LLM闻名，Tenet的发布标志着垂直领域微调模型从「定制开发」走向「成熟产品化」，成本和性能双重优势可能加速法律AI普及。",
-      "对法律科技从业者：Tenet验证了「顶级开源基座+垂直领域后训练」路线的可行性；建议有法律AI需求的机构在当前成本优势窗口期做POC，重点评估尽职调查和合同审查场景的准确率与 hallucinations率。"
-    ],
-    "highlights": [
-      "LAB基准所有通过率提升82%，成本降至顶级基础模型的1/4以下",
-      "三个子Agent模型：M&A尽职调查、文档审查、律所知识管理",
-      "垂直领域后训练从定制走向产品化，法律AI普及成本门槛大幅降低"
-    ]
-  },
-  {
-    "id": "2026-08-23-replit-free-mode-gpt-56-luna",
-    "date": "2026-08-23",
-    "category": "产品发布",
-    "title": "Replit推出Free Mode：GPT-5.6 Luna驱动，聊天ideating不限量",
-    "summary": "Replit上线Free Mode，由GPT-5.6 Luna驱动，移除日常聊天和ideating的用量限制，付费订阅享30倍创作容量和每月30小时聊天。",
-    "source": "HeadsUpAI",
-    "url": "https://headsupai.io/updates/replit-launches-free-mode-powered-by-openai-gpt-5-6-luna-2",
-    "tags": [
-      "Replit",
-      "GPT-5.6",
-      "Luna",
-      "AI编程",
-      "免费"
-    ],
-    "body": [
-      "Replit于8月22日推出Free Mode，由OpenAI GPT-5.6 Luna驱动，移除了日常聊天和ideating阶段的用量限制，降低AI编程入门门槛。付费订阅用户享有30倍创作容量和每月30小时聊天额度。",
-      "同时推出重新设计的界面，简化从简单聊天到复杂项目构建的切换流程。Free Mode适合AI编程初学者做入门体验，付费档适合专业开发者日常使用。",
-      "GPT-5.6 Luna是OpenAI最新编程优化模型，此次Free Mode发布进一步扩大其开发者覆盖面，也是Replit应对Cursor和GitHub Copilot竞争的重要防御手段。",
-      "对AI编程入门者：Free Mode是体验GPT-5.6 Luna编程能力的零成本入口，建议先用Free Mode完成3-5个小项目（如个人网站、爬虫、自动化脚本）评估能力边界，再决定是否升级付费档。"
-    ],
-    "highlights": [
-      "Free Mode移除聊天和ideating用量限制，GPT-5.6 Luna驱动",
-      "付费档30倍创作容量+每月30小时聊天，界面重新设计",
-      "Replit扩大开发者覆盖，应对Cursor/GitHub Copilot竞争"
-    ]
-  },
-  {
-    "id": "2026-08-23-nvidia-rubin-blackwell-15-percent-price-hike",
-    "date": "2026-08-23",
-    "category": "行业动态",
-    "title": "Nvidia警告2027年 Rubin、Blackwell系统涨价15%以上",
-    "summary": "Nvidia合同服务器制造商告知微软、Google、Oracle将于2027年初开始对旗舰Vera Rubin和Grace Blackwell配置涨价超15%，主因是三星/SK海力士/美光 DRAM成本上涨。",
-    "source": "Fortune / Bloomberg",
-    "url": "https://fortune.com/2026/08/22/nvidia-customers-ai-related-price-hikes-15-percent-vera-rubin-grace-blackwell-chips/",
-    "tags": [
-      "Nvidia",
-      "Rubin",
-      "Blackwell",
-      "GPU涨价",
-      "AI基础设施"
-    ],
-    "body": [
-      "Nvidia通过合同服务器制造商告知微软、Google、Oracle，将于2027年初出货的AI服务器系统涨价超15%，涉及旗舰Vera Rubin和Grace Blackwell配置。这是Rubin时代首次面向超大规模厂商的全面涨价。",
-      "涨价驱动因素：三星、SK海力士和美光的DRAM成本持续上涨，Nvidia即使在75%毛利率下也无法继续吸收，被迫向下游传递成本压力。涨价幅度15%起步，部分配置可能更高。",
-      "对AI基础设施规划的影响：15%的GPU采购成本上涨将传导至云厂商定价，企业AI推理成本随之上升。以GB300 NVL72为例，涨价后单节点年运维成本将显著增加。",
-      "对AI基础设施团队：2027年预算规划需考虑GPU涨价因素，建议在2026年底前完成2027年全年算力需求评估并锁定供应合同；同时评估AMD MI350和自研芯片（如Google TPU v7、Meta MTIA）作为替代方案的可行性。"
-    ],
-    "highlights": [
-      "2027年初出货的Vera Rubin和Grace Blackwell涨价15%以上，Rubin时代首次全面涨价",
-      "DRAM成本上涨（三星/SK海力士/美光）是主因，Nvidia无法继续在75%毛利率下吸收",
-      "企业AI推理成本将随之上升，2026年底前锁定供应合同成关键"
-    ]
-  },
-  {
-    "id": "2026-08-23-freetoken-rtx5090-deeps-v4-flash",
-    "date": "2026-08-23",
-    "category": "技术突破",
-    "title": "FreeToken开源：单卡RTX5090跑满血DeepSeek V4Flash",
-    "summary": "UC Berkeley、MIT等联合团队开源FreeToken系统，让RTX 4060跑Qwen3.6-35B（39.3 token/s），RTX 5090跑DeepSeek-V4-Flash 284B，首Token延迟降低42-58%。",
-    "source": "机器之心",
-    "url": "https://www.aitntnews.com/newDetail.html?newId=28504",
-    "tags": [
-      "FreeToken",
-      "端侧部署",
-      "DeepSeek",
-      "MoE",
-      "开源"
-    ],
-    "body": [
-      "UC Berkeley、MIT等机构联合团队本周五（8月21日）发布FreeToken开源系统，专注于MoE大模型在消费级硬件上的端侧部署。RTX 4060可跑Qwen3.6-35B达39.3 token/s，RTX 5090可跑DeepSeek-V4-Flash 284B满血模型，均为单卡运行。",
-      "核心技术为带宽自适应混合调度（Bandwidth-Adaptive Execution）：运行时实时探测PCIe带宽与CPU算力，动态计算最优分流比率，将GPU LRU缓存未命中Expert智能分流至CPU并行计算，在PCIe 3.0/4.0/5.0各规格下均收敛至理论最大吞吐。",
-      "针对Agent工具循环交互场景（如Claude Code、OpenClaw），FreeToken在特殊Token边界设置轻量检查点，多轮交互TTFT减少65-80%；显存不足时自动收缩GPU LRU Cache，将未命中Expert转交CPU计算，保证服务平滑降级而不触发OOM崩溃。",
-      "对AI学习者：FreeToken证明了开源模型权重+端侧软件协同设计可大幅降低大模型使用门槛；建议关注GitHub（FlashML-org/FreeToken）及论文arXiv abs/2608.16157，了解动态带宽感知调度的工程实现细节，可尝试在个人PC上部署Qwen3.6-35B体验本地Agent开发。"
-    ],
-    "highlights": [
-      "RTX 4060跑Qwen3.6-35B达39.3 token/s，RTX 5090跑DeepSeek-V4-Flash 284B满血",
-      "首Token延迟降低42-58%，多轮Agent交互TTFT减少65-80%",
-      "消费级硬件单卡即可跑顶尖MoE模型，开源权重+端侧调度双重降低门槛"
-    ]
-  },
-  {
-    "id": "2026-08-23-yinhe-robots-astra-tennis-autonomous",
-    "date": "2026-08-23",
-    "category": "技术突破",
-    "title": "银河通用实现全球首次人形机器人自主网球赛",
-    "summary": "银河通用在北京国家速滑馆完成全球首次人形机器人自主网球全程直播，展示匹敌人类的实时感知、高速决策与精准运动控制能力，标志具身智能进入物理世界执行新阶段。",
-    "source": "RadarAI",
-    "url": "https://www.bestblogs.dev/article/6938273ac3",
-    "tags": [
-      "银河通用",
-      "人形机器人",
-      "具身智能",
-      "网球",
-      "自主决策"
-    ],
-    "body": [
-      "银河通用于2026年8月23日在北京国家速滑馆完成全球首次人形机器人自主网球赛全程直播，代号「AstraTennis时刻」，展现匹敌人类的实时感知、高速决策与精准运动控制的完整闭环能力。",
-      "该事件被RadarAI评价为AI从工具层向物理世界执行层纵深渗透的标志性节点，意味着真实物理场景下的感知-决策-行动（Perception-Decision-Action）闭环已在实验室之外得到验证。",
-      "同场速报还涉及AI原生组织转型（安克、出门问问等案例验证用AI重构协作逻辑而非仅提升个体效率）以及「假余华」「假鲁迅」等AI生成伪名言泛滥问题，人民日报呼吁平台强化作者溯源与内容核验机制。",
-      "对AI学习者：AstraTennis事件标志着具身智能进入物理执行新阶段，建议关注机器人实时感知与运动控制的最新论文，以及多模型协同的「神经多样性」如何在物理任务中体现；内容可信性基建（溯源/水印）将是下一阶段AI治理的重要方向。"
-    ],
-    "highlights": [
-      "全球首次人形机器人自主网球全程直播，验证物理世界感知-决策-行动闭环",
-      "「AstraTennis时刻」标志具身智能从实验室走向真实物理场景",
-      "AI原生组织与内容可信基建同步成为行业焦点"
     ]
   }
 ]
