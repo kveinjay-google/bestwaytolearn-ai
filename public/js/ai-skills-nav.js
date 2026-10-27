@@ -1054,6 +1054,33 @@ const AI_SKILLS_NAV_ITEMS = [
     github: "https://github.com/heygen-com/hyperframes-launches",
     install: "openclaw skill: hyperframes-studio",
   },
+  {
+    name: "security-audit-skill",
+    category: "Skill 安装与合集",
+    agents: ["Cursor", "Claude Code", "Codex", "Gemini CLI"],
+    stars: 49577,
+    desc: "A coding-agent skill for multi-phase security audits with independently verified, machine-readable findings",
+    github: "https://github.com/cloudflare/security-audit-skill",
+    install: "npx skills add cloudflare/security-audit-skill -g -y",
+  },
+  {
+    name: "codex-claude-academic-skills",
+    category: "Skill 安装与合集",
+    agents: ["Cursor", "Claude Code", "Codex", "Gemini CLI"],
+    stars: 5381,
+    desc: "本仓库包含三个面向学术科研人员的Skills，覆盖从文献阅读、论文写作到科学计算的完整研究工作流。office-academic-skill 负责论文阅读报告与学术 PPT/Word 文档生成；research-writing-skill 提供论文写作、润色与审稿回复辅助；scientific-toolkit-skill 整合 MATLAB/Python 科",
+    github: "https://github.com/zLanqing/codex-claude-academic-skills",
+    install: "npx skills add zLanqing/codex-claude-academic-skills -g -y",
+  },
+  {
+    name: "awesome-gamedev-agent-skills",
+    category: "Skill 安装与合集",
+    agents: ["Cursor", "Claude Code", "Codex", "Gemini CLI"],
+    stars: 5039,
+    desc: "74 game-dev skills for AI coding agents — Godot, Unity, Unreal, Phaser, PixiJS, three.js, Bevy, pygame, LÖVE, Roblox. Portable SKILL.md Agent Skills (the format Anthropic launched ",
+    github: "https://github.com/gamedev-skills/awesome-gamedev-agent-skills",
+    install: "npx skills add gamedev-skills/awesome-gamedev-agent-skills -g -y",
+  },
 ];
 
 function getAiSkillsNavCategorySlug(category) {
