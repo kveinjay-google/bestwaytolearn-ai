@@ -1081,6 +1081,15 @@ const AI_SKILLS_NAV_ITEMS = [
     github: "https://github.com/gamedev-skills/awesome-gamedev-agent-skills",
     install: "npx skills add gamedev-skills/awesome-gamedev-agent-skills -g -y",
   },
+  {
+    name: "obsidian-skills",
+    category: "Skill 安装与合集",
+    agents: ["Cursor", "Claude Code", "Codex", "Gemini CLI"],
+    stars: 51646,
+    desc: "Agent skills for Obsidian. Teach your agent to use Obsidian CLI and open formats including Markdown, Bases, JSON Canvas.",
+    github: "https://github.com/obsidianmd/obsidian-skills",
+    install: "npx skills add obsidianmd/obsidian-skills -g -y",
+  },
 ];
 
 function getAiSkillsNavCategorySlug(category) {

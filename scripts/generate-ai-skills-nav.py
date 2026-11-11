@@ -736,6 +736,9 @@ RAW: list[tuple] = [
     ('awesome-gamedev-agent-skills', 'Skill 安装与合集', ['Cursor', 'Claude Code', 'Codex', 'Gemini CLI'], 5039,
      '74 game-dev skills for AI coding agents — Godot, Unity, Unreal, Phaser, PixiJS, three.js, Bevy, pygame, LÖVE, Roblox. Portable SKILL.md Agent Skills (the format Anthropic launched ',
      'https://github.com/gamedev-skills/awesome-gamedev-agent-skills', 'npx skills add gamedev-skills/awesome-gamedev-agent-skills -g -y', None),
+    ('obsidian-skills', 'Skill 安装与合集', ['Cursor', 'Claude Code', 'Codex', 'Gemini CLI'], 51646,
+     'Agent skills for Obsidian. Teach your agent to use Obsidian CLI and open formats including Markdown, Bases, JSON Canvas.',
+     'https://github.com/obsidianmd/obsidian-skills', 'npx skills add obsidianmd/obsidian-skills -g -y', None),
 ]      
 
 
