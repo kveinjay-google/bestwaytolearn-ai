@@ -1090,6 +1090,15 @@ const AI_SKILLS_NAV_ITEMS = [
     github: "https://github.com/obsidianmd/obsidian-skills",
     install: "npx skills add obsidianmd/obsidian-skills -g -y",
   },
+  {
+    name: "Auto-Empirical-Research-Skills",
+    category: "Skill 安装与合集",
+    agents: ["Cursor", "Claude Code", "Codex", "Gemini CLI"],
+    stars: 5008,
+    desc: "🔬 A curated collection of 23,000+ agent skills for empirical research across 8 social science disciplines. | 精选 23,000+ AI Agent 技能库，覆盖8大社会科学学科的实证研究。CoPaper.AI 20分钟完成一篇可复现的规范实证论文，并",
+    github: "https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills",
+    install: "npx skills add brycewang-stanford/Auto-Empirical-Research-Skills -g -y",
+  },
 ];
 
 function getAiSkillsNavCategorySlug(category) {

@@ -739,6 +739,9 @@ RAW: list[tuple] = [
     ('obsidian-skills', 'Skill 安装与合集', ['Cursor', 'Claude Code', 'Codex', 'Gemini CLI'], 51646,
      'Agent skills for Obsidian. Teach your agent to use Obsidian CLI and open formats including Markdown, Bases, JSON Canvas.',
      'https://github.com/obsidianmd/obsidian-skills', 'npx skills add obsidianmd/obsidian-skills -g -y', None),
+    ('Auto-Empirical-Research-Skills', 'Skill 安装与合集', ['Cursor', 'Claude Code', 'Codex', 'Gemini CLI'], 5008,
+     '🔬 A curated collection of 23,000+ agent skills for empirical research across 8 social science disciplines. | 精选 23,000+ AI Agent 技能库，覆盖8大社会科学学科的实证研究。CoPaper.AI 20分钟完成一篇可复现的规范实证论文，并',
+     'https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills', 'npx skills add brycewang-stanford/Auto-Empirical-Research-Skills -g -y', None),
 ]      
 
 
