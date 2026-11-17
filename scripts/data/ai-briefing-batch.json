@@ -1,5 +1,213 @@
 [
   {
+    "id": "2026-11-17-alibaba-qwen4-max-official-launch",
+    "date": "2026-11-17",
+    "category": "产品发布",
+    "title": "阿里发布 Qwen4-Max 正式版，单任务成本降 58%",
+    "summary": "阿里通义千问推出新一代旗舰模型 Qwen4-Max，2.4 万亿总参数、原生视觉、百万 Token 上下文，API 单任务成本从 26.58 元降至 11.16 元，中小尺寸模型将陆续开源。",
+    "source": "IT之家",
+    "url": "https://www.ithome.com/1/027/512.htm",
+    "tags": [
+      "大模型",
+      "通义千问",
+      "开源",
+      "成本下降"
+    ],
+    "body": [
+      "阿里通义千问团队 11 月 16 日宣布推出新一代基座模型 Qwen4-Max 正式版，采用全新 MoE 架构，主干参数规模达 2.4 万亿，另引入 3280 亿 N-gram Embedding 参数，原生支持视觉理解，上下文窗口最长 100 万 Token。",
+      "价格端同步下调：国内 API 每百万 Token 输入 10 元、输出 30 元，较上一代约降 17%，缓存命中输入价从 1.5 元降至 0.5 元；在阿里自建 Work360 评测中，单任务平均费用从 Qwen3.8-Max 的 26.58 元降到 11.16 元，降幅约 58%，Xhigh 与 High 两档推理强度的 token 消耗分别比前代减少约 24% 与 35%。",
+      "官方还同步推出先出初稿、再按反馈迭代修改的智能体插件，模型已接入千问 AI 平台 API、Token Plan、千问办公与 Qoder，并预告 Qwen4 系列的中小尺寸权重将陆续开源。",
+      "对学习者的提示：想低成本试水百万上下文长文档与智能体任务，可以先用 Qwen4-Max API 做小规模验证；等中小尺寸开源版本放出后，再考虑本地或私有化部署，别在旗舰版上跑高并发流水线。"
+    ],
+    "highlights": [
+      "2.4 万亿总参数、每 token 激活 710 亿、100 万 Token 上下文、原生视觉",
+      "Work360 单任务成本 26.58 元 → 11.16 元，降幅约 58%",
+      "Qwen4 系列中小尺寸模型后续将陆续开源"
+    ]
+  },
+  {
+    "id": "2026-11-17-tencent-hy4-flash-low-cost-model",
+    "date": "2026-11-17",
+    "category": "产品发布",
+    "title": "腾讯混元发布 Hy4 flash，单任务成本仅 Hy4 二十分之一",
+    "summary": "混元推出主打性价比的 Hy4 flash，总参数 224B、激活 12B，支持 1M 上下文与多模态，解码超 150tps，单任务成本约 0.26 元。",
+    "source": "环球网科技",
+    "url": "https://tech.huanqiu.com/article/4U3AJOijLv3",
+    "tags": [
+      "大模型",
+      "腾讯混元",
+      "Agent",
+      "推理成本"
+    ],
+    "body": [
+      "腾讯混元 11 月 16 日发布语言模型 Hy4 flash，总参数量 224B（其中 64B 为 Engram 条件记忆参数），每次推理仅激活 12B，支持多模态输入与 100 万 Token 上下文，官方定位为迄今性价比最高的 Hy 模型。",
+      "架构上预训练引入混合注意力、LatentMoE 与 Engram，KV cache 大小仅为 Hy3 的 1/24、Hy4 的 1/6；后训练通过自蒸馏 Hy4 获得综合智能水平，强化学习让端到端任务输出长度下降 50%；推理阶段结合 megakernel、4bit 量化与 DFly，解码速度超过 150 tps。",
+      "价格上，每百万 Token 输入 0.5 元、输出 2 元、缓存命中 0.02 元，分别比 Hy4 的刊例价低约 12 倍、9 倍和 15 倍；内部 WorkIndex 测算其单任务成本仅为 Hy4 的 1/20，腾讯内部 85 位 WorkBuddy 用户在 27 类共 259 个任务盲测中满意度接近 Claude Haiku 5.5，单任务成本约 0.26 元，端到端时长中位数 6.7 分钟。",
+      "落地建议：需要高频调用、低成本长上下文 Agent 的业务可以先接 Hy4 flash 验证，11 月 30 日前 WorkBuddy 限时免费、TokenHub API 五折；混元团队表示计划开源该模型，适合关注国产低成本推理栈的开发者跟进。"
+    ],
+    "highlights": [
+      "224B 总参、12B 激活、1M 上下文，解码速度超 150 tps",
+      "单任务成本约 0.26 元，仅为 Hy4 的 1/20",
+      "KV cache 仅为 Hy4 的 1/6，计划开源"
+    ]
+  },
+  {
+    "id": "2026-11-17-huawei-cloudrobo-wm1-2-embodied-world-model",
+    "date": "2026-11-17",
+    "category": "技术突破",
+    "title": "华为云开源昇腾原生具身世界模型 CloudRobo-WM1.2",
+    "summary": "华为云发布并开源昇腾原生具身世界模型 CloudRobo-WM1.2，在 RoboTwin 2.0 与 LiberoPro 2.0 两个基准均排名第一，验证国产算力训练世界级具身模型的路径。",
+    "source": "科创板日报",
+    "url": "https://www.cls.cn/detail/2535460",
+    "tags": [
+      "具身智能",
+      "世界模型",
+      "昇腾",
+      "开源"
+    ],
+    "body": [
+      "华为云 11 月 16 日在「行业 AI 梦工厂」发布会上发布并开源昇腾原生具身世界模型 CloudRobo-WM1.2，该模型基于国产昇腾算力训练，采用共享世界模型骨干网络实现预测增强的世界表征，并基于世界模型原生 DualAct 架构实现动作生成。",
+      "模型在 RoboTwin 2.0、LiberoPro 2.0 两个评测基准中均位列第一；其构建的五项核心技术包括 PPA 多模态世界表征架构、世界模型原生 DualAct 架构、多粒度监督数据自适应预训练框架、本体语义保真跨具身运动建模，以及 World/Expert Action 与 Joint/Action-only 四种可组合的弹性推理模式。",
+      "生态方面，CloudRobo 具身智能平台已汇聚超 16500 名专业具身开发者与 230 多家企业高校，合作方包括亿嘉和、拓斯达、福龙马等上市公司以及节卡、千寻、星海图等本体企业，华为云称已有 80% 的中国具身智能企业选择昇腾云，并同步开放权重、推理与代码开源。",
+      "学习提示：具身智能是目前对算力、仿真与合成数据要求最高的赛道，CloudRobo-WM1.2 的开源意味着可以直接读它的动作生成与跨本体建模实现；结合昇腾云做机器人方向的开发者可关注其开源仓库与后续 SDK 版本。"
+    ],
+    "highlights": [
+      "国产昇腾算力训练，RoboTwin 2.0 与 LiberoPro 2.0 双榜第一",
+      "权重、推理与代码同步开源",
+      "昇腾云已覆盖 80% 中国具身智能企业、16500+ 具身开发者"
+    ]
+  },
+  {
+    "id": "2026-11-17-noeri-110m-self-improving-ai-funding",
+    "date": "2026-11-17",
+    "category": "行业动态",
+    "title": "斯坦福教授创办的 Noeri 获 1.1 亿美元融资，英伟达参投",
+    "summary": "成立仅五个月的 Noeri 获 Menlo Ventures 领投的 1.1 亿美元融资，英伟达、Snowflake、思科等跟投，目标是做能自我改进的企业级 AI 系统。",
+    "source": "观点网",
+    "url": "https://www.guandian.cn/article/20261117/628545.html",
+    "tags": [
+      "融资",
+      "企业AI",
+      "自我改进",
+      "斯坦福"
+    ],
+    "body": [
+      "由斯坦福大学 AI 教授 Yejin Choi 与 Carlos Guestrin 联合创办、成立仅五个月的初创公司 Noeri 宣布获得 1.1 亿美元融资，Menlo Ventures 领投，Madrona Venture Group、Kindred Ventures、Wing Venture Capital 与 NEA 参与，英伟达、Snowflake 与思科系统作为战略投资方跟投，估值未披露。",
+      "Noeri 的定位是面向企业与科学发现的自改进 AI：不再把训练完的模型视为冻结资产，而是让系统在与真实业务的交互中自我组织、自我优化，可同时改进 harness、技能、指令、工具链以及模型本身甚至底层参数。",
+      "公司强调每一次改动都可解释并推送给人审批，机制类似代码评审，系统同时兼容闭源与开放权重模型，这种「人在环中的自我改进」思路是其与多数智能体创业公司的主要差异。",
+      "对学习者的提示：这是资本押注「自改进智能体」的一个明确信号，值得跟踪 Noeri 后续开放的自我改进范式与审批工作流设计，企业 AI 平台方向的同学可以研究其权限与变更治理机制。"
+    ],
+    "highlights": [
+      "1.1 亿美元融资，Menlo Ventures 领投，英伟达、Snowflake、思科跟投",
+      "成立仅五个月，由斯坦福教授 Yejin Choi 与 Carlos Guestrin 创办",
+      "自我改进的每一处改动都可解释并需人工审批"
+    ]
+  },
+  {
+    "id": "2026-11-17-openai-csam-image-classifier",
+    "date": "2026-11-17",
+    "category": "政策法规",
+    "title": "OpenAI 发布 CSAM 图像分类器，向审核机构免费开放",
+    "summary": "OpenAI 推出可识别 AI 生成儿童性虐待图像的新分类器，向经审核的机构免费提供 API，并配套 ChatGPT 警告、开发指南与执法工具。",
+    "source": "TechCrunch",
+    "url": "https://techcrunch.com/2026/11/16/openai-releases-a-new-image-classifier-and-chatgpt-warnings-to-combat-csam/",
+    "tags": [
+      "AI安全",
+      "内容审核",
+      "OpenAI",
+      "合规"
+    ],
+    "body": [
+      "OpenAI 11 月 16 日宣布发布新的 CSAM 图像分类器，可检测潜在的儿童性虐待材料，包括已知的哈希匹配难以覆盖的新型与 AI 生成内容，并向通过审核的机构以 API 形式免费开放。",
+      "分类器对新出现、未见过的图像输出风险分数，官方称相比传统方案可减少约 48% 的误报，同时被判定为违规的图像其违规概率约为原来的两倍。",
+      "配套措施还包括在 ChatGPT 中对生成或访问涉儿童性化内容的行为给出警告并临时阻断，面向开发者的实操指南，以及面向儿童安全执法调查人员的工具与培训支持。",
+      "落地提示：做内容平台的团队可以申请接入该分类器，替换或补充现有的感知哈希方案；OpenAI 已在发布时与公益性质的内容审核工具 Coop 集成，小型团队可优先通过这类现成渠道降低接入成本。"
+    ],
+    "highlights": [
+      "识别 AI 生成的新型 CSAM 内容，误报减少约 48%",
+      "向通过审核的机构免费提供 API",
+      "配套 ChatGPT 阻断警告、开发者指南与执法工具"
+    ]
+  },
+  {
+    "id": "2026-11-17-claude-html-in-canvas-interactive-websites",
+    "date": "2026-11-17",
+    "category": "产品发布",
+    "title": "Claude 支持在 canvas 图形内构建可交互网页",
+    "summary": "Claude 借助 HTML-in-Canvas 技术把真实 HTML 文本与按钮嵌入 canvas 图形，保持可点击、可选中、可被屏幕阅读器读取，让画布内的页面重新具备交互性。",
+    "source": "The Decoder",
+    "url": "https://the-decoder.com/claude-now-builds-interactive-websites-inside-canvas-graphics-reviving-the-flash-era-with-real-html/",
+    "tags": [
+      "Claude",
+      "前端开发",
+      "HTML-in-Canvas",
+      "创意编码"
+    ],
+    "body": [
+      "Anthropic 的 Claude 现已能在复杂 canvas 图形与 3D 效果中嵌入真实 HTML 文本、按钮等元素，形成可交互、可选中的页面内容，Anthropic 工程师 Felix Rieseberg 在 X 上称其让人想起 Flash 时代。",
+      "该能力基于 WICG 的 HTML-in-Canvas 提案：标准 HTML 元素可点击可选中、可被屏幕阅读器读取但难以做视觉形变，canvas 可自由绘制但浏览器只当它是一张扁平位图，而 HTML-in-Canvas 让排版后的 DOM 子树可以被绘制进 2D、WebGL 与 WebGPU 画布，同时保留选中、页内查找、翻译与无障碍钩子。",
+      "Chrome 团队已在 Chrome 157 中正式落地该 API，当前该功能要求 Chrome 或 Edge 157 及以上、Claude 桌面版 5.11492 及以上，Safari 与 Firefox 暂不支持，并且需要用户在提示词中明确要求才会启用。",
+      "学习提示：如果做创意前端或互动可视化，可以让 Claude 尝试把按钮、表单等真实元素嵌进 canvas 图形；注意浏览器兼容与提示词触发条件，落地时优先用渐进增强思路，避免依赖尚未普及的特性。"
+    ],
+    "highlights": [
+      "canvas 图形内的文字可点击、可选中、可被屏幕阅读器读取",
+      "依赖 Chrome/Edge 157 与 Claude 桌面版 5.11492 以上",
+      "基于 WICG HTML-in-Canvas 提案，Chrome 157 正式落地"
+    ]
+  },
+  {
+    "id": "2026-11-17-goldman-ulanqabai-compute-cluster",
+    "date": "2026-11-17",
+    "category": "行业动态",
+    "title": "高盛：乌兰察布成亚太最大 AI 算力集群",
+    "summary": "高盛报告称乌兰察布已成为亚太规模最大、增长最快的 AI 算力集群，巴音片区 22 个数据中心在建，但算力投资对当地就业与税收带动有限。",
+    "source": "凤凰网",
+    "url": "https://news.10jqka.com.cn/20261116/c681867042.shtml",
+    "tags": [
+      "算力基础设施",
+      "数据中心",
+      "能源",
+      "区域经济"
+    ],
+    "body": [
+      "据《晚点 LatePost》报道，高盛两个月前发布的报告认为，仅有约 150 万人口的北方边境小城乌兰察布已崛起为亚太地区规模最大、增长最快的 AI 算力集群。",
+      "察哈尔高新区巴音片区一块地就有 22 个数据中心在建，中金数据、中联、华为、快手、世纪互联等企业在此布局；近 3 万名日薪超过 300 元的工人突击施工，每三个月建完一栋数据中心。单个园区占地 200 亩、投资额超 30 亿元，用电量约等于 145 万户家庭，内有 5000 多个两米多高的机柜，连接 GPU 的电线长达数十公里，光纤超过一千公里。",
+      "报道同时指出，算力集群对当地的就业和税收带动有限——这是算力红利与地方收益脱节的现实样本，也解释了为什么各地算力中心签约数量庞大而实际利用率仍是核心问题。",
+      "学习提示：想进入 AI 基础设施方向的同学，可以从「电力、土地、区位」这三个变量理解算力选址逻辑，而不是只看芯片供给；关注国内智算中心利用率与绿电直连比例，比只看规划容量更有判断价值。"
+    ],
+    "highlights": [
+      "高盛称乌兰察布为亚太规模最大、增长最快的 AI 算力集群",
+      "巴音片区 22 个数据中心在建，单园区投资超 30 亿元",
+      "算力投资对当地就业与税收的带动有限"
+    ]
+  },
+  {
+    "id": "2026-11-17-anthropic-mythos-amd-gpu-porting-three-days",
+    "date": "2026-11-17",
+    "category": "行业动态",
+    "title": "Anthropic 称三天完成模型 AMD GPU 适配",
+    "summary": "Anthropic 在 IPO 路演中披露，用 Claude Mythos Preview 生成的软件把模型迁移到 AMD MI355X 只需约三天，而传统方式需要 6 至 12 个月和数十名工程师。",
+    "source": "DEV Community",
+    "url": "https://dev.to/hiroki-ii-ai/ai-daily-digest-november-17-2026-claude-onboards-amd-gpus-in-3-days-vera-rubin-sweeps-mlperf-482n",
+    "tags": [
+      "Anthropic",
+      "AMD",
+      "算力适配",
+      "智能体"
+    ],
+    "body": [
+      "Anthropic 联合创始人兼首席算力官 Tom Brown 在 11 月 10 日的路演视频中表示，Claude Mythos Preview 用约三天完成了将公司一款模型跑在 AMD MI355X GPU 上所需的全部软件工作，且几乎不需要人工介入。",
+      "作为对比，同类工作过去需要 6 至 12 个月、动辄数十名工程师参与；同日提交的修订版招股说明书也写明，公司接入新芯片平台所需时间已大幅缩短，模型团队本身正在向「可自动生成适配软件」的方向演进。",
+      "同期英伟达下一代平台 Vera Rubin 在首次亮相的 MLPerf Training v6.1 中横扫全部训练基准，智能体场景每瓦吞吐提升约十倍，CoreWeave 也成为首家交付多机架 Vera Rubin MLPerf 成绩的云服务商。",
+      "落地提示：如果你的团队正被算力平台迁移拖慢，可以关注「用模型写迁移工具」这条路径；同时要留意模型自举带来的验证与合规要求——生产环境里的芯片适配代码仍需人工审核与回归测试，不能直接信生成结果。"
+    ],
+    "highlights": [
+      "Claude Mythos Preview 三天完成 AMD MI355X 适配，传统需 6-12 个月",
+      "几乎无需人工干预，修订招股书确认接入时间大幅缩短",
+      "Vera Rubin 首秀 MLPerf Training v6.1 全项领先，智能体每瓦吞吐提升约十倍"
+    ]
+  },
+  {
     "id": "2026-11-16-congress-tightens-ai-chip-export-rules",
     "date": "2026-11-16",
     "category": "政策法规",
