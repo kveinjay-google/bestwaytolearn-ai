@@ -1,5 +1,255 @@
 [
   {
+    "id": "2026-11-24-zhipu-glm54-preview-700b-multimodal",
+    "date": "2026-11-24",
+    "category": "产品发布",
+    "title": "智谱发布 GLM-5.4：7000亿参数原生多模态",
+    "summary": "智谱推出约 7000 亿参数的 GLM-5.4 preview，原生支持视觉理解，上下文 20 万 tokens，同步接入 Coding Plan。",
+    "source": "站长之家",
+    "url": "https://www.chinaz.com/2026/1123/1790043.shtml",
+    "tags": [
+      "大模型",
+      "多模态",
+      "开源模型",
+      "智谱"
+    ],
+    "body": [
+      "智谱 AI 正式发布新一代大模型 GLM-5.4 preview，总参数量约 7000 亿，采用 Loop Transformer 架构，支持原生多模态，可直接理解与处理视觉信息，用于替代现役旗舰 GLM-5.3。",
+      "模型上下文窗口扩展至 20 万 tokens，最大输出提升到 6.4 万 tokens；GLM Coding Plan 已向全量付费用户开放该模型，周使用额度相比 GLM-5.3 提升 1.5 倍，使用时把模型名设为 glm-5.4 即可启用。",
+      "多方评测认为 GLM-5.4 在不堆参数量的前提下把性能追到 Astra、Opus 级别，与 Claude Opus 5.5 的差距收窄到 5% 以内，被视为国产开源阵营的新标杆；智谱还计划在 12 月推出约 3 万亿参数的旗舰模型。",
+      "对学习者来说，GLM-5.4 是目前性价比最高的国产多模态编程模型之一。建议优先在 IDE 与 Coding Plan 中实测长文档理解与图像推理任务，再对照 GLM-5.3 做一次成本收益对比。"
+    ],
+    "highlights": [
+      "约 7000 亿参数、Loop Transformer 架构、原生多模态，上下文 20 万 tokens",
+      "Coding Plan 周额度较 GLM-5.3 提升 1.5 倍，12 月还有 3 万亿参数旗舰"
+    ]
+  },
+  {
+    "id": "2026-11-24-ant-group-lingsante-medical-models-open-weight",
+    "date": "2026-11-24",
+    "category": "产品发布",
+    "title": "蚂蚁开源灵光医疗模型 LingSante",
+    "summary": "蚂蚁宣布灵光（LingSante）医疗 AI 模型家族，首批 air-VL 与 flash 两款以 MIT 许可开放权重。",
+    "source": "Unite.AI",
+    "url": "https://www.unite.ai/ant-group-begins-open-weight-release-of-lingsante-medical-ai-models/",
+    "tags": [
+      "医疗AI",
+      "开源模型",
+      "蚂蚁集团",
+      "多模态"
+    ],
+    "body": [
+      "蚂蚁集团对外公布灵光（LingSante）医疗 AI 模型家族，首批两款模型以 MIT 许可证开放：LingSante-3.1-air-VL 面向影像判读与个人健康评估，LingSante-3.1-flash 作为更大的推理模型，负责证据综合与多阶段医疗工作流。",
+      "更广泛的 LingSante 系列权重将分阶段释放，官方称整体路线是先落地影像与个人健康两条轻量场景，再向复杂临床推理延伸。",
+      "采用 MIT 协议意味着商业部署、二次训练与嵌入医院信息系统都没有授权障碍，这在医疗 AI 领域并不多见，也让研究机构可以复现其评测口径。",
+      "学习者可用它验证多模态医疗问答的评估方法：先准备脱敏的影像-报告配对样本，再对比 air-VL 与 flash 在证据引用准确率上的差异，同时务必遵守医疗数据合规要求。"
+    ],
+    "highlights": [
+      "首批 LingSante-3.1-air-VL 与 3.1-flash 以 MIT 许可开源",
+      "覆盖影像判读、个人健康评估与临床证据综合三类场景"
+    ]
+  },
+  {
+    "id": "2026-11-24-meta-tlx-triton-warp-group-extension",
+    "date": "2026-11-24",
+    "category": "技术突破",
+    "title": "Meta 开源 TLX 低层扩展",
+    "summary": "Meta 发布 TLX 低层扩展，把 warp group 与 barrier 暴露给 Python 内核，支持 Hopper、Blackwell 及 AMD MI300，实测提速 4 倍。",
+    "source": "MarkTechPost",
+    "url": "https://www.marktechpost.com/2026/11/23/meta-tlx-triton-low-level-extensions/",
+    "tags": [
+      "GPU",
+      "Triton",
+      "开源工具",
+      "性能优化"
+    ],
+    "body": [
+      "Meta 发布 TLX 报告与实现，这是一套面向机器学习内核的 Triton 低层扩展，把原本难以触及的 warp group 与 barrier 原语暴露给 Python 层的算子编写者。",
+      "扩展同时面向 NVIDIA Hopper、Blackwell 以及 AMD MI300 系列，并支持 MI350 系列 GPU，采用 MIT 许可证发布，便于社区直接在现有 Triton 栈上叠加。",
+      "Meta 官方给出的实测数据是：在 H100 上针对广告推理的线性压缩内核获得约 4 倍加速，这类内核此前是 GPU 厂商内部调优、难以在 Triton 层复现的瓶颈路径。",
+      "对做推理优化的学习者，这是少见的能把硬件级原语与高层 Python API 打通的入口。建议先在本地小模型上改写一个简单的线性层内核，对比 TLX 版本与原生 Triton 版本的耗时与显存占用。"
+    ],
+    "highlights": [
+      "warp group 与 barrier 原语首次可在 Python 层 Triton 内核中使用",
+      "H100 广告推理线性压缩内核实测约 4 倍加速，MIT 许可"
+    ]
+  },
+  {
+    "id": "2026-11-24-mit-ai-automated-analog-chip-design",
+    "date": "2026-11-24",
+    "category": "研究前沿",
+    "title": "MIT 用 AI 提速模拟芯片设计",
+    "summary": "MIT 提出用生成式 AI 自动化模拟集成电路设计的繁琐流程，加快原型迭代并提升医疗监护等设备能效。",
+    "source": "MIT News",
+    "url": "https://news.mit.edu/2026/ai-driven-technique-could-help-engineers-design-analog-chips-faster-and-less-expensive-1123",
+    "tags": [
+      "模拟芯片",
+      "生成式AI",
+      "科研自动化",
+      "MIT"
+    ],
+    "body": [
+      "MIT 研究人员提出一种用人工智能简化模拟集成电路设计的方法，把以往高度依赖工程师手工调整的繁琐流程自动化，从而加快原型验证节奏。",
+      "这项技术的目标不只是提速，还包括提升最终器件的性能与能效，覆盖医疗监护仪等对模拟精度要求高的设备。",
+      "论文指出，前沿生成式 AI 模型已经在这类复杂设计任务上展现出自动化潜力，意味着芯片设计流程中相当一部分参数扫描与方案探索可以由模型代劳。",
+      "对学习者而言，这是「AI for Science」落到硬件设计环节的典型样本。建议关注论文原文中的约束建模方式，思考哪些 EDA 流程同样可以被生成式模型接管，从而迁移到自己的领域研究。"
+    ],
+    "highlights": [
+      "用生成式 AI 自动化模拟 IC 设计中的人工繁琐环节",
+      "目标是同时加快原型迭代并提升器件性能与能效"
+    ]
+  },
+  {
+    "id": "2026-11-24-bolna-syl-speech-recognition-model",
+    "date": "2026-11-24",
+    "category": "产品发布",
+    "title": "Bolna AI 发布语音识别模型 Syl",
+    "summary": "印度初创 Bolna AI 发布自研 ASR 模型 Syl，重点识别 haan、ji 这类被现有语音 AI 漏掉的短应答词。",
+    "source": "Analytics India Magazine",
+    "url": "https://analyticsindiamag.com/ai-startups/bolna-builds-its-own-speech-model-to-catch-what-voice-ai-misses/",
+    "tags": [
+      "语音识别",
+      "多语言",
+      "印度AI",
+      "产品发布"
+    ],
+    "body": [
+      "Bolna AI 在班加罗尔举行的 Symphony 大会上发布自研自动语音识别模型 Syl，这家初创公司最初是做语音 AI 解决方案起家的。",
+      "Syl 针对的是现有语音模型普遍漏掉的短应答场景，例如印地语里表示「是的」的 haan 和表示「好的」的 ji，这类词在嘈杂的静态电话线路中尤其容易被吞掉。",
+      "模型专门面向多语言环境下的短回复识别设计，目标是在噪声通话中把这类确认词的召回率提上去，这正是呼叫中心与外呼场景的真实痛点。",
+      "学习者可用它理解「窄场景 ASR」的产品思路：与其在通用语音基准上拼参数，不如锁定一个高频失败场景。对做客服或外呼系统的团队，值得直接对比自研与商用 ASR 在短应答上的错误率差异。"
+    ],
+    "highlights": [
+      "专攻 haan、ji 等被通用语音模型漏掉的短应答词识别",
+      "面向多语言与嘈杂静态电话线路等真实场景"
+    ]
+  },
+  {
+    "id": "2026-11-24-perplexity-monitor-api-scheduled-web-search",
+    "date": "2026-11-24",
+    "category": "产品发布",
+    "title": "Perplexity 推出 Monitor API",
+    "summary": "Perplexity 发布 Monitor API，按计划自动检索网页，由决策模型过滤无关结果后通过 webhook 推给智能体。",
+    "source": "The Decoder",
+    "url": "https://the-decoder.com/perplexitys-new-monitor-api-turns-web-search-from-a-one-off-query-into-a-nonstop-watchdog/",
+    "tags": [
+      "Perplexity",
+      "API",
+      "智能体",
+      "信息检索"
+    ],
+    "body": [
+      "Perplexity 发布 Monitor API，把网页检索从一次性查询改造成按计划持续运行的后台任务：用户设定监控主题与频率，服务端自动抓取并判定结果。",
+      "关键设计是引入其决策模型对检索结果做筛选，不重要的条目会在进入智能体上下文之前被过滤掉，只有值得注意的变化才通过 webhook 推送出去。",
+      "这一形态把搜索变成了「不间断看门狗」，让智能体可以在无人值守的情况下盯住价格、政策、竞品动态等长尾信号。",
+      "学习者可以把它当成一个通用的「定时信息流」模板：先用宽泛查询拿到候选，再让决策模型做二次过滤，避免把噪声直接塞进上下文，成本和准确率都会明显改善。"
+    ],
+    "highlights": [
+      "按计划自动抓取网页，决策模型先过滤再 webhook 推送",
+      "把一次性搜索变成不间断的监控看门狗"
+    ]
+  },
+  {
+    "id": "2026-11-24-skillprivus-agent-skill-privacy-audit",
+    "date": "2026-11-24",
+    "category": "研究前沿",
+    "title": "SkillPrivus 审计技能包隐私风险",
+    "summary": "SkillPrivus 在执行前静态分析智能体技能代码与说明，评估隐私风险；726 个真实技能中 563 个被标出隐患。",
+    "source": "arXiv",
+    "url": "https://arxiv.org/abs/2611.26747",
+    "tags": [
+      "智能体安全",
+      "隐私",
+      "技能审计",
+      "论文"
+    ],
+    "body": [
+      "SkillPrivus 提出一套在安装前完成、不执行代码的智能体技能审计方法：从代码与自然语言指令中抽取数据操作行为，再引入情境完整性（Contextual Integrity）框架判断这些数据流在场景中是否恰当。",
+      "研究在公开市场的 726 个真实技能上做了评估，其中 563 个会处理个人数据，SkillPrivus 对其中每一个都至少标出了一处潜在隐私危害。",
+      "这意味着技能市场里「会碰你数据」的技能比例远超直觉，而大多数用户在安装时并不会审阅其内部的数据处理逻辑。",
+      "对学习者的现实意义是：把安装前静态审计纳入自己的智能体工具链。建议先在自己的技能目录上跑一遍这类检查，列出哪些技能读取了敏感目录，再决定是否保留或替换。"
+    ],
+    "highlights": [
+      "不执行代码，静态分析技能的数据操作与自然语言指令",
+      "726 个真实技能中 563 个处理个人数据，全部被标出隐患"
+    ]
+  },
+  {
+    "id": "2026-11-24-ai-pair-brainstorming-study-168-participants",
+    "date": "2026-11-24",
+    "category": "研究前沿",
+    "title": "研究：单个 AI 伙伴效率最高",
+    "summary": "168 人实验发现，双 AI 房间想法总量更多但人类贡献下降；与一个校准良好的 AI 搭档效果最佳。",
+    "source": "arXiv",
+    "url": "https://arxiv.org/abs/2611.26663",
+    "body": [
+      "一项针对 168 名参与者的实验研究了人与 AI 协作进行头脑风暴时的产出结构，比较了单人、双人、双 AI 以及人与单个 AI 搭档等多种条件。",
+      "结果显示，双 AI 房间产出的想法总量更多，但在该条件下人类自己提出的想法数量大幅下降；与一个「平均校准」AI 搭档的人类反而提交了最多内容。",
+      "进一步的分析发现，AI 之间的社交性对话能预测人类发言更多，而 AI 发言量越多，反而越少有人把想法转化为实际方案。",
+      "对学习者的启示很直接：与其在工具里堆多个 AI，不如挑一个输出节奏合适、能收住的 AI 做固定搭档。可以用同样的会话结构做一次 A/B 测试，量化「AI 说得越多，人做得越少」在自己团队里的程度。"
+    ],
+    "highlights": [
+      "168 人实验：双 AI 房间想法总量更多，但人类产出明显下降",
+      "与单个校准良好的 AI 搭档的产出效果最佳"
+    ],
+    "tags": [
+      "人机协作",
+      "研究前沿",
+      "生产力",
+      "实验"
+    ]
+  },
+  {
+    "id": "2026-11-24-amodei-video-games-pacify-jobless",
+    "date": "2026-11-24",
+    "category": "行业动态",
+    "title": "阿莫迪谈 AI 失业与游戏缓冲",
+    "summary": "Anthropic CEO 阿莫迪提出，若 AI 造成大规模失业，电子游戏可能成为安抚公众的出口，但未给出时间表。",
+    "source": "The Verge",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1039745/dario-amodei-video-games-ai-joblessness",
+    "tags": [
+      "Anthropic",
+      "AI就业",
+      "观点",
+      "行业争议"
+    ],
+    "body": [
+      "Anthropic 联合创始人 Dario Amodei 在 Hacker News 社区讨论中提出一个设想：如果 AI 最终取代大量工作岗位，电子游戏这类低成本娱乐形式可能成为安抚大众情绪的出口。",
+      "这一表态没有给出具体的失业时间表，也没有提供关于岗位流失规模或游戏在社会情绪调节上效果的数据支撑。",
+      "值得留意的是，这类来自头部实验室高管的公开表态，往往先于政策讨论出现，可作为观察行业内部风险认知温度的信号。",
+      "对学习者的提示是：区分「有数据的判断」与「观点表达」。读这类新闻时可以顺手查一下后续是否出现正式报告或论文支撑，再决定要不要纳入自己的行业判断，避免被情绪化表述带偏。"
+    ],
+    "highlights": [
+      "阿莫迪公开讨论 AI 失业下的社会情绪缓冲问题",
+      "未给出时间表与数据，属观点表达而非结论"
+    ]
+  },
+  {
+    "id": "2026-11-24-infq-ai-harness-as-operating-system",
+    "date": "2026-11-24",
+    "category": "行业动态",
+    "title": "InfoQ：AI Harness 成新的 OS 抽象",
+    "summary": "QCon 旧金山 2026 上提出，智能体能力由 harness 决定：上下文、工具、状态、权限与反馈回路共同映射为操作系统职责。",
+    "source": "InfoQ",
+    "url": "https://www.infoq.com/news/2026/11/harness-new-operating-system/",
+    "tags": [
+      "智能体",
+      "架构",
+      "QCon",
+      "工程实践"
+    ],
+    "body": [
+      "Mad Labs 在 QCon San Francisco 2026 的主题演讲中提出：真正决定智能体能力边界的不是模型本身，而是包裹模型的 AI harness。",
+      "演讲把 harness 拆成上下文、工具、状态、权限与反馈回路五个组成部分，并逐一对映到操作系统中已有的成熟职责。",
+      "这个视角把「智能体」从神秘概念拉回到系统工程：模型是可替换的中间件，而 harness 的设计质量才直接决定智能体的能力与安全性。",
+      "学习者可以用它做一次自检：列出你所用智能体框架的上下文管理、工具白名单、状态持久化、权限审批与反馈机制分别是什么，哪一项最薄弱就优先补哪一项，比盲目换模型更有效。"
+    ],
+    "highlights": [
+      "harness 由上下文、工具、状态、权限、反馈回路五部分构成",
+      "映射到操作系统职责，给出可操作的智能体工程视角"
+    ]
+  },
+  {
     "id": "2026-11-23-openai-pachocki-perplexity-frontier-limits",
     "date": "2026-11-23",
     "category": "政策法规",
